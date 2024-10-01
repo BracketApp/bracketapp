@@ -1,0 +1,28 @@
+{
+    "name": "My Billing Account",
+    "accountID": "61L7E2u3c6j3z6I8y6O555p1q4",
+    "accountType": "business",
+    "country": "Lebanon",
+    "creditLimit": 0,
+    "currency": "COIN",
+    "languagePreference": "English",
+    "organizationAddress": "Beirut",
+    "organizationName": "Flight Booking Platform",
+    "paymentTerms": "Due on receipt",
+    "__props__": {
+        "id": "6167o203V6V3G6i8V6t5d6u2r2",
+        "doc": "billingAccount85",
+        "counter": 85,
+        "creationDate": 1723636865622,
+        "collection": "billingAccount",
+        "chunk": "chunk1",
+        "lastModified": 1723636865622,
+        "dev": false,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": [],
+        "secured": false,
+        "size": 562
+    }
+}

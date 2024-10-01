@@ -1,0 +1,55 @@
+{
+    "view": "View?id=login;class=flexbox;style:[minHeight=100vh;width=100%;backgroundColor=#f8f8f8];title='Login | Flight Booking Platform';data=@view.schema.page.login",
+    "children": [
+        {
+            "view": "View?style=[[_.style]];form=_.form",
+            "children": [
+                {
+                    "view": "[@view.component.custom.view]:[data=_.views]"
+                }
+            ]
+        }
+    ],
+    "__props__": {
+        "id": "J1r7T2z347r4q5F9w5Z3s437A4",
+        "doc": "login",
+        "counter": 2,
+        "creationDate": 1723745953474,
+        "collection": "view.page",
+        "chunk": "chunk1",
+        "lastModified": 1725450003419,
+        "dev": false,
+        "actions": {
+            "login": {
+                "_": "@view.server.login;login():[form()]:[successHandler()?_.success?failHandler()]?form().username;form().password?missingData()",
+                "missingData": "note():[text='Enter username & password!';type=danger]",
+                "failHandler": "note():[text=_.message;type=danger]",
+                "successHandler": "form().del();user:()=_.user;user:().verified=true;root():portal"
+            }
+        },
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "view",
+                "children",
+                "login"
+            ],
+            "children.0": [
+                "view",
+                "children"
+            ],
+            "children.0.children.0": [
+                "view"
+            ],
+            "login": [
+                "_",
+                "missingData",
+                "successHandler",
+                "failHandler"
+            ]
+        },
+        "secured": false,
+        "size": 1052
+    }
+}

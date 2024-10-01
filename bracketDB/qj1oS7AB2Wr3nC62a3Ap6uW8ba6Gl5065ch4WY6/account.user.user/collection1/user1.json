@@ -1,0 +1,25 @@
+{
+    "__props__": {
+        "id": "3127e2X4d559n373g5L1c4j9q3",
+        "doc": "user1",
+        "counter": 1,
+        "creationDate": 1724593351493,
+        "collection": "account.user.user",
+        "chunk": "chunk1",
+        "lastModified": 1726760310579,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "firstName",
+                "lastName"
+            ]
+        },
+        "secured": false,
+        "size": 333
+    },
+    "firstName": "Mohamad",
+    "lastName": "Obeid"
+}

@@ -1,0 +1,209 @@
+{
+    "view": "View?id=subscriptionForm;class=flex justify-center;style:[display=none;position=absolute;top=0;left=0;right=0;bottom=0;backgroundColor=#00000080;zIndex=1];subscription:()=[];getDataBeforeLoading()",
+    "children": [
+        {
+            "view": "View?class=flex column;style:[padding=4rem;transition=.5s;backgroundColor=#fff;width=150rem;gap=2rem;height=100%;overflowY=auto;backgroundColor=#fff;transform=translateY(-100%)];form=subscription",
+            "children": [
+                {
+                    "view": "Text?text='Enjoy Bigger Discounts on Longer Commitments!';style:[fontSize=1.75rem;padding=2rem 0;textAlign=left]"
+                },
+                {
+                    "view": "View?style:[display=grid;gridTemplateColumns=1fr 1fr;gapX=1rem;gapY=3rem;padding=1rem]",
+                    "children": [
+                        {
+                            "view": "[View]:[data=formInputs()]?style:[width=100%]",
+                            "children": [
+                                {
+                                    "view": "customInput"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "view": "View?class=flex column;style:[width=100%;gap=2rem]",
+                    "children": [
+                        {
+                            "view": "View?style:[width=100%;display=grid;gridTemplateColumns=1fr 1fr 1fr;gapX=3rem]",
+                            "children": [
+                                {
+                                    "view": "[View]:[data=plugins:()]?class=flex column pointer;style:[alignItems=center;borderRadius=1rem;border=1px solid #ddd;gap=2rem;transition=.2s;overflow=hidden;width=100%;[transform=scale(1.04)?_.selected]];defaultSelectedPackage();[click?choosePackage()]",
+                                    "children": [
+                                        {
+                                            "view": "Text?text=_.name;style:[fontSize=1.75rem;borderBottom=1px solid #ddd;padding=1rem 3rem;width=100%;textAlign=center;backgroundColor=#f6f6f6]"
+                                        },
+                                        {
+                                            "view": "Text?text=tag():[text=_.coins.price();style:[color=blue;fontSize=2.5rem]]+' COIN = '+tag():[text=_.priceUSD.price();style:[color=blue;fontSize=2.5rem]]+' USD';style:[fontSize=1.75rem;width=100%;textAlign=center]"
+                                        },
+                                        {
+                                            "view": "Text?text='1 COIN = '+[_.priceUSD/_.coins].price()+' USD';style:[fontSize=1.4rem;#width=100%;textAlign=center;paddingTop=1rem;borderTop=1px solid #ddd;marginTop=-1rem]"
+                                        },
+                                        {
+                                            "view": "View?class=flex column;style:[gap=2rem;padding=4rem;width=100%]",
+                                            "children": [
+                                                {
+                                                    "view": "Text?text='Minimum Purchase = '+_.priceUSD.price()+' USD';style:[fontSize=1.4rem;textAlign=left]"
+                                                },
+                                                {
+                                                    "view": "Text?text='Save '+[_.coins-_.priceUSD||0].price()+' USD';style:[fontSize=1.75rem;textAlign=left]"
+                                                },
+                                                {
+                                                    "view": "Text?text=_.msg;style:[fontSize=1.75rem;textAlign=left]"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "view": "View?style:[width=100%;display=grid;gridTemplateColumns=1fr 1fr 1fr;gapX=3rem]",
+                            "children": [
+                                {
+                                    "view": "[View]:[data=packages:()]?text=[Selected!?_.selected?];style:[fontSize=1.6rem;width=100%;textAlign=center]"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "view": "View?style:[minHeight=1px;backgroundColor=#ddd;marginTop=2rem;marginBottom=2rem;width=95%;marginLeft=2.5%]"
+                },
+                {
+                    "view": "View?id=totals;class=flex;style:[justifyContent=flex-end]",
+                    "children": [
+                        {
+                            "view": "View?class=flex column;style:[gap=1.5rem;padding=0 4rem;#backgroundColor=#f8f8f8;padding=2rem;borderRadius=1rem;border=1px solid #ddd]",
+                            "children": [
+                                {
+                                    "view": "[View]:[data=chosenPackage()]?class=flexbox;style:[justifyContent=flex-end;gap=1.5rem]",
+                                    "children": [
+                                        {
+                                            "view": "Text?text=_.label;style:[fontSize=1.5rem]"
+                                        },
+                                        {
+                                            "view": "Text?text=[form().[_.path]||0].price()+' '+tag():[text=_.unit;style:[fontSize=1.3rem]];style:[fontSize=1.5rem;color=blue;width=12.5rem;textAlign=right]?_.unit"
+                                        },
+                                        {
+                                            "view": "Text?text=form().[_.path];style:[fontSize=1.5rem;color=blue;width=12.5rem;textAlign=right]?!_.unit;!_.preUnit"
+                                        },
+                                        {
+                                            "view": "Text?text=_.preUnit+form().[_.path];style:[fontSize=1.5rem;width=12.5rem;textAlign=right]?_.preUnit"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "view": "View?class=flex;style:[justifyContent=flex-end;gap=1rem;marginTop=auto;marginLeft=auto]",
+                    "children": [
+                        {
+                            "view": "View?class=flexbox pointer;style:[padding=.75rem 4rem;width=15rem;borderRadius=.5rem;opacity=.8;transition=.2s;border=1px solid #ddd];hover.style.opacity=1;[click?[closeForm()]():[doc=tap]]",
+                            "children": [
+                                {
+                                    "view": "Text?text=Close;style:[fontSize=1.5rem]"
+                                }
+                            ]
+                        },
+                        {
+                            "view": "View?class=flexbox pointer;style:[padding=.75rem 4rem;width=15rem;backgroundColor=publicData:().public.btnBackgroundColor;borderRadius=.5rem;opacity=.8;transition=.2s;marginTop=auto;marginLeft=auto];hover.style.opacity=1;[click?buyCoins()]",
+                            "children": [
+                                {
+                                    "view": "Text?text=Buy Now;style:[fontSize=1.5rem;color=#fff]"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "view": "Icon?class=pointer;name=bi-x-lg;style:[position=absolute;top=2.5rem;right=2.5rem;fontSize=3rem;opacity=.8;color=#fff];hover.style.opacity=1;[click?[closeForm()]():[doc=tap]]"
+        }
+    ],
+    "__props__": {
+        "id": "c1G7R1R6Q3B8s4W3X5r1F175C9",
+        "doc": "subscriptionForm",
+        "counter": 105,
+        "creationDate": 1716384351159,
+        "active": true,
+        "actions": {
+            "formHandler": "[getPlugins()::[plugins:()=_.plugins];checkSubscribedBefore()::[subscribedBefore:()=_.subscribedBefore]]():[collection=actions;doc=main]",
+            "getDataBeforeLoading": "[getProjects()::[projects:()=_.projects];getPlugins():[names=true]:[plugins:()=_.plugins]]():[collection=actions;doc=main]",
+            "formInputs": ":[label=Choose Projects;items=projects:().():name;path=projects;multiSingle]:[label=Choose Plugin;path=plugin;items=plugins:().():name;stdItems;action='getPlugin():[id=plugins:().find():[name=form().plugin].id]:[plugin:()=_.plugin]']"
+        },
+        "comments": [
+            {
+                "note": "plugins",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    2,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "selected",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    2,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "note": "title",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    0
+                ]
+            }
+        ],
+        "collapsed": [
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    2
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    3
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    4
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    5
+                ]
+            }
+        ],
+        "arrange": [],
+        "chunk": "chunk1",
+        "secured": false,
+        "collection": "view"
+    }
+}

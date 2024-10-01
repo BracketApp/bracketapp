@@ -1,0 +1,91 @@
+{
+    "view": "View?id=root;checkSession()",
+    "children": [
+        {
+            "view": "droplist"
+        },
+        {
+            "view": "note"
+        },
+        {
+            "view": "tooltip"
+        },
+        {
+            "view": "loader"
+        },
+        {
+            "view": "@view.component.custom.popup"
+        },
+        {
+            "view": "@view.page.[manifest:().page]"
+        }
+    ],
+    "__props__": {
+        "id": "W1T7e243k6c3D6s8A9l9c2B3X1",
+        "doc": "root",
+        "counter": 3,
+        "creationDate": 1723636899231,
+        "collection": "view.application",
+        "chunk": "chunk1",
+        "lastModified": 1726770629788,
+        "dev": true,
+        "actions": {
+            "checkSession": {
+                "_": "@view.server.login;checkSession()::[successHandler()?_.success?failHandler()]?getCookie():session;!user:().verified?failHandler()?!getCookie():session?root():portal?manifest:().page=login",
+                "successHandler": "user:()=_.user;user:().verified=true;[root():portal?manifest:().page=login]",
+                "failHandler": "root():login?manifest:().page=portal"
+            },
+            "openPopup": {
+                "_": "openPopup()?():popup.positioner!=.id?closePopup()",
+                "openPopup": "():popup.refresh():[data=_]:[_.view.():[positioner=().id;position():[positioner=().id];opacity()=1;pointerEvents()=auto]]"
+            },
+            "closePopup": "():popup.():[positioner.del();fadeOut();pointerEvents()=none]"
+        },
+        "comments": [],
+        "collapsed": [
+            {
+                "path": [
+                    "openPopup"
+                ]
+            }
+        ],
+        "arrange": {
+            "": [
+                "view",
+                "children",
+                "checkSession",
+                "openPopup",
+                "closePopup"
+            ],
+            "children.0": [
+                "view"
+            ],
+            "children.1": [
+                "view"
+            ],
+            "children.2": [
+                "view"
+            ],
+            "children.3": [
+                "view"
+            ],
+            "children.4": [
+                "view"
+            ],
+            "children.5": [
+                "view"
+            ],
+            "checkSession": [
+                "_",
+                "successHandler",
+                "failHandler"
+            ],
+            "openPopup": [
+                "_",
+                "openPopup"
+            ]
+        },
+        "secured": false,
+        "size": 1406
+    }
+}

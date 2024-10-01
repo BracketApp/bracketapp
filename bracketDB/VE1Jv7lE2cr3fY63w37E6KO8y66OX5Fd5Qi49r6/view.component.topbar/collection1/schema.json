@@ -1,0 +1,362 @@
+{
+    "__props__": {
+        "id": "C1k7V2K3o7u3N8m7z8Z6G6c8U4",
+        "doc": "schema",
+        "counter": 2,
+        "creationDate": 1723738786684,
+        "collection": "view.component.topbar",
+        "chunk": "chunk1",
+        "lastModified": 1725450021371,
+        "dev": false,
+        "actions": {},
+        "comments": [
+            {
+                "note": "logo",
+                "path": [
+                    "views",
+                    0
+                ]
+            },
+            {
+                "note": "search",
+                "path": [
+                    "views",
+                    1
+                ]
+            },
+            {
+                "note": "search",
+                "path": [
+                    "views",
+                    1,
+                    "views",
+                    0
+                ]
+            },
+            {
+                "note": "notifications",
+                "path": [
+                    "views",
+                    2
+                ]
+            },
+            {
+                "note": "bell",
+                "path": [
+                    "views",
+                    2,
+                    "views",
+                    0
+                ]
+            },
+            {
+                "note": "notifications",
+                "path": [
+                    "views",
+                    2,
+                    "views",
+                    1
+                ]
+            },
+            {
+                "note": "divider",
+                "path": [
+                    "views",
+                    3
+                ]
+            },
+            {
+                "note": "user",
+                "path": [
+                    "views",
+                    4
+                ]
+            },
+            {
+                "note": "icon",
+                "path": [
+                    "views",
+                    4,
+                    "views",
+                    0
+                ]
+            },
+            {
+                "note": "user",
+                "path": [
+                    "views",
+                    4,
+                    "views",
+                    1
+                ]
+            }
+        ],
+        "collapsed": [
+            {
+                "path": [
+                    "views",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "views",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "views",
+                    1,
+                    "views",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "views",
+                    2
+                ]
+            },
+            {
+                "path": [
+                    "views",
+                    2,
+                    "views",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "views",
+                    2,
+                    "views",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "views",
+                    3
+                ]
+            },
+            {
+                "path": [
+                    "views",
+                    4
+                ]
+            },
+            {
+                "path": [
+                    "views",
+                    4,
+                    "views",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "views",
+                    4,
+                    "views",
+                    0,
+                    "container"
+                ]
+            },
+            {
+                "path": [
+                    "views",
+                    4,
+                    "views",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "views",
+                    4,
+                    "views",
+                    1,
+                    "container"
+                ]
+            }
+        ],
+        "arrange": {
+            "": [
+                "views",
+                "style"
+            ],
+            "views.0": [
+                "style",
+                "views"
+            ],
+            "views.0.views.0": [
+                "actions",
+                "src",
+                "style",
+                "type"
+            ],
+            "views.1": [
+                "style",
+                "views"
+            ],
+            "views.1.views.0": [
+                "actions",
+                "container",
+                "google",
+                "icon",
+                "style",
+                "type"
+            ],
+            "views.1.views.0.container": [
+                "style"
+            ],
+            "views.2": [
+                "style",
+                "views"
+            ],
+            "views.2.views.0": [
+                "actions",
+                "container",
+                "google",
+                "icon",
+                "style",
+                "type"
+            ],
+            "views.2.views.0.container": [
+                "style"
+            ],
+            "views.2.views.1": [
+                "container",
+                "id",
+                "style",
+                "text",
+                "type"
+            ],
+            "views.2.views.1.container": [
+                "conditions",
+                "style"
+            ],
+            "views.3": [
+                "views"
+            ],
+            "views.3.views.0": [
+                "style",
+                "type"
+            ],
+            "views.4": [
+                "actions",
+                "style",
+                "views"
+            ],
+            "views.4.views.0": [
+                "container",
+                "google",
+                "icon",
+                "style",
+                "type"
+            ],
+            "views.4.views.0.container": [
+                "style"
+            ],
+            "views.4.views.1": [
+                "container",
+                "id",
+                "style",
+                "text",
+                "type"
+            ],
+            "views.4.views.1.container": [
+                "style"
+            ]
+        },
+        "secured": false,
+        "size": 3765
+    },
+    "style": "display=flex;backgroundColor=#f5f5f5;height=100%;width=100%;alignItems=center;padding=0 1rem;gap=2rem",
+    "views": [
+        {
+            "style": "display=flex;alignItems=center",
+            "views": [
+                {
+                    "type": "image",
+                    "src": "/storage/eU1YM75W2Nq1Xo8JS3a24tw3d48yg5Mw0GI4Ff7/files/bucket1/Bv1HS7lS2oO27w0Td0vn5C332K2F29321tf7uA2.png",
+                    "style": "height=3.5rem;cursor=pointer",
+                    "actions": "[click?root():main]"
+                }
+            ]
+        },
+        {
+            "style": "gap=2rem;display=flex;marginLeft=auto",
+            "views": [
+                {
+                    "style": "color=#453f3f;fontSize=2.2rem;cursor=pointer",
+                    "type": "icon",
+                    "icon": "search",
+                    "google": true,
+                    "container": {
+                        "style": "display=flex;justifyContent=center;alignItems=center"
+                    },
+                    "actions": "[click?clearCollections()]"
+                }
+            ]
+        },
+        {
+            "style": "position=relative;display=flex",
+            "views": [
+                {
+                    "style": "color=#453f3f;fontSize=2rem;cursor=pointer;transition=.2s",
+                    "type": "icon",
+                    "icon": "notifications",
+                    "google": true,
+                    "actions": "[mouseenter?style().color=#fb3b1e;ring()];[mouseleave?stopRinging()]",
+                    "container": {
+                        "style": "display=flex;justifyContent=center;alignItems=center"
+                    }
+                },
+                {
+                    "container": {
+                        "style": "display=flex;alignItems=center;justifyContent=center;position=absolute;borderRadius=1rem;minWidth=1.1rem;height=1.2rem;backgroundColor=red;left=13px;top=-2px;padding=.2rem;cursor=pointer",
+                        "conditions": "dueNotifications:().len()>0"
+                    },
+                    "text": "3",
+                    "style": "fontSize=1rem;color=#fff;cursor=pointer",
+                    "type": "text",
+                    "id": "notificationIcon"
+                }
+            ]
+        },
+        {
+            "views": [
+                {
+                    "type": "divider",
+                    "style": "backgroundColor=#b2beb5;width=1px;height=2.5rem"
+                }
+            ]
+        },
+        {
+            "style": "display=flex;gap=1rem;marginRight=1rem;cursor=pointer",
+            "views": [
+                {
+                    "style": "fontSize=2.2rem;color=#453f3f",
+                    "type": "icon",
+                    "icon": "person",
+                    "google": true,
+                    "container": {
+                        "style": "display=flex;justifyContent=center;alignItems=center"
+                    }
+                },
+                {
+                    "text": "user:().firstName.capitalize()+' '+user:().lastName.capitalize()?user:()?Profile Name",
+                    "style": "fontSize=1.3rem;color=#453f3f",
+                    "type": "text",
+                    "container": {
+                        "style": "display=flex;justifyContent=center;alignItems=center"
+                    },
+                    "id": "profileName"
+                }
+            ],
+            "actions": "profileDroplist()"
+        }
+    ]
+}

@@ -1,0 +1,241 @@
+{
+    "view": "View:fileForm?class=flexbox;style:[position=fixed;top=0;left=0;right=0;bottom=0;zIndex=9999;pointerEvents=none;opacity=0;transition=.3s]",
+    "children": [
+        {
+            "view": "View?id=fileFormBackground;style:[height=100%;width=100%;backgroundColor=#00000030;padding=10rem];[click?parent().style():[pointerEvents=none;opacity=0]?clicked();!1stChild().contains():[clicked()]]",
+            "children": [
+                {
+                    "view": "View?class=flex column box-shadow-2;form=fileData;style:[gap=2rem;height=100%;width=100%;backgroundColor=#fff;borderRadius=.5rem;padding=2rem;position=relative;overflow=auto]",
+                    "children": [
+                        {
+                            "view": "Icon?class=flexbox pointer;name=bi-x;style:[height=3rem;width=3rem;fontSize=3rem;borderRadius=.5rem;position=absolute;right=.5rem;top=.5rem];hover.style.backgroundColor=#f6f6f6;click:[():fileForm.style():[pointerEvents=none;opacity=0]]"
+                        },
+                        {
+                            "view": "View?class=flex;style:[gap=2rem;width=100%;height='calc(100% - 8rem)']",
+                            "children": [
+                                {
+                                    "view": "View?class=flex column;style:[overflowY=auto;width=30%;maxWidth=30%;maxHeight=100%;borderRadius=.5rem;gap=2rem]",
+                                    "children": [
+                                        {
+                                            "view": "Input?path=name;label:[text=Name;style:[fontSize=1.3rem]];style:[width=100%;height=4.5rem;borderRadius=.5rem;border=1px solid #ddd;fontSize=1.3rem]"
+                                        },
+                                        {
+                                            "view": "Input?path=extension;readonly;label:[text=Type;style:[fontSize=1.3rem]];style:[width=100%;height=4.5rem;borderRadius=.5rem;border=1px solid #ddd;fontSize=1.3rem]"
+                                        },
+                                        {
+                                            "view": "Input?path=url;label:[text=Url;style:[fontSize=1.3rem]];readonly;style:[width=100%;height=4.5rem;borderRadius=.5rem;border=1px solid #ddd;fontSize=1.3rem];copyable"
+                                        },
+                                        {
+                                            "view": "Input?textarea;path=description;label:[text=Description;style:[fontSize=1.3rem]];style:[width=100%;height=25rem;borderRadius=.5rem;border=1px solid #ddd;fontSize=1.3rem]"
+                                        },
+                                        {
+                                            "view": "View?class=flex column;style.width=100%;style.gap=.5rem",
+                                            "children": [
+                                                {
+                                                    "view": "Text?style:[fontSize=1.3rem;width=fit-content];text=Tags"
+                                                },
+                                                {
+                                                    "view": "View?class=flex;form().tags=[form().tags||:''];style:[maxWidth=100%;width=100%;backgroundColor=#ff;borderRadius=.5rem;gap=.75rem;flexWrap=wrap]",
+                                                    "children": [
+                                                        {
+                                                            "view": "[View]:[path=tags]?class=flexbox;style:[position=relative;height=3.5rem;width=fit-content;border=1px solid #ddd;borderRadius=.5rem;padding=.5rem];mouseenter:[2ndChild().style().opacity=1];mouseleave:[2ndChild().style().opacity=0]",
+                                                            "children": [
+                                                                {
+                                                                    "view": "Input?style:[width=fit-content;minWidth=[8rem?form().tags.len()=0?5rem]];[keyup?2ndParent().insert()::[_.view.focus()]?txt();e().key=Enter?data().del()?!txt()]"
+                                                                },
+                                                                {
+                                                                    "view": "Icon?class=flexbox pointer;name=bi-x;style:[position=absolute;right=0;fontSize=2rem;width=fit-content;opacity=0;borderRadius=.5rem;transition=.2s;backgroundColor=#fff];[click?parent().rem()?form().tags.len()>1?data().del();prev().():[txt()=;focus()]?form().tags.len()=1]"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "view": "View?class=flex column;style:[width=70%;maxHeight=100%;borderRadius=.5rem;overflow=hidden]",
+                                    "children": [
+                                        {
+                                            "view": "View?class=flexbox;style:[overflow=hidden;width=100%;maxHeight=100%;height=100%]",
+                                            "children": [
+                                                {
+                                                    "view": "Image?src=[data().data||data().url];style:[maxWidth=100%;maxHeight=100%]?data().type.inc():image"
+                                                },
+                                                {
+                                                    "view": "Icon?name=bi-file-earmark;style:[fontSize=6rem;maxWidth=100%;maxHeight=100%]?!data().type.inc():image"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "view": "View?class=flex;style:[justifyContent=flex-end;gap=2rem;padding=1rem 0;minHeight=fit-content;width=100%;borderTop=1px solid #ddd;marginTop=1rem;marginBottom=-1rem;height=8rem]",
+                            "children": [
+                                {
+                                    "view": "View?class=flexbox pointer;style:[gap=1rem;height=3.5rem;width=10rem;borderRadius=.5rem;border=1px solid #ccc;transition=.3s];hover.style.border=1px solid #aaa;click:[():fileFormBackground.click()]",
+                                    "children": [
+                                        {
+                                            "view": "Text?text=Cancel;style.fontSize=1.3rem"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "view": "View?class=flexbox pointer;style:[gap=1rem;height=3.5rem;width=10rem;borderRadius=.5rem;border=1px solid #32c74d;backgroundColor=#32c74d;transition=.3s];hover.style:[backgroundColor=#2ca842;border=1px solid #2ca842];[click?uploadFile()]",
+                                    "children": [
+                                        {
+                                            "view": "Text?text=Save;style:[fontSize=1.3rem;color=#fff]"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "__props__": {
+        "id": "21O7N2H12908d8j185y9j2j0V9",
+        "doc": "fileForm",
+        "counter": 149,
+        "creationDate": 1721988159209,
+        "collection": "view",
+        "chunk": "chunk1",
+        "lastModified": 1723021302349,
+        "dev": false,
+        "actions": {
+            "uploadFile": {
+                "_": "loader.show;[saveData():[storage;publicID=project:().publicID;collection=files;data=fileData:()]:[replaceFile();handleRefresh()]]():[collection=actions;doc=db]",
+                "replaceFile": "files:().pull():[__props__.id=_.data.__props__.id].unshift():[_.data]",
+                "handleRefresh": "note():[text=Image saved succefully!];():fileFormBackground.click();():gallery.refresh()::[_.view.display()];loader.hide"
+            }
+        },
+        "comments": [
+            {
+                "note": "close btn",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "inputs",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "file",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "note": "btns",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    2
+                ]
+            },
+            {
+                "note": "form",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "note": "tags",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    4
+                ]
+            }
+        ],
+        "collapsed": [
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    2
+                ]
+            }
+        ],
+        "arrange": [],
+        "secured": false,
+        "size": 5322
+    }
+}

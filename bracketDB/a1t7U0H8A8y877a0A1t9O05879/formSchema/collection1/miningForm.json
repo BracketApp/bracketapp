@@ -1,0 +1,75 @@
+{
+    "__props__": {
+        "id": "U1s7P222P9Z4q7o1L3u0Y2O592",
+        "doc": "miningForm",
+        "counter": 9,
+        "creationDate": 1722947130252,
+        "collection": "formSchema",
+        "chunk": "chunk1",
+        "lastModified": 1723113652674,
+        "dev": false,
+        "actions": {},
+        "comments": [],
+        "collapsed": [
+            {
+                "path": [
+                    "requiredData"
+                ]
+            },
+            {
+                "path": [
+                    "sections"
+                ]
+            },
+            {
+                "path": [
+                    "confirmBtn"
+                ]
+            }
+        ],
+        "arrange": [],
+        "secured": false,
+        "size": 1539
+    },
+    "confirmBtn": {
+        "text": "Generate",
+        "action": "[genCoins():[form()]:[note():[text=_.message;type=danger]?!_.success?end():[_]]]():[collection=actions;doc=main]",
+        "msg": "We are generating coins. Please wait until we finish!"
+    },
+    "title": "Think big, start small, then scale or fail fast! Generate now.",
+    "styles": "width=100rem",
+    "reset": true,
+    "beforeLoadingActions": "[getBillingAccountBySession()::[billingAccountID:()=_.billingAccount];getPlugin():[pluginID='V1p7r1A7q4A2U04469R7O4m7w9';subscriptionExpiryDate=timestamp()]:[plugin:()=_.plugin;packages:()=_.packages.filter():trading.sort():[path=priceUSD;ascending]]]():[collection=actions;doc=main]",
+    "form": "mining",
+    "data": "[billingAccountID=billingAccountID:().id();pluginID=plugin:().id()]",
+    "requiredData": [
+        "packageID",
+        "pluginID",
+        "billingAccountID",
+        "coins",
+        "qty",
+        "priceUSD"
+    ],
+    "sections": [
+        {
+            "styles": "width=100%;display=grid;gridTemplateColumns=1fr 1fr;gapX=3rem",
+            "coinPackage": true,
+            "gridCards": true,
+            "cards": "packages:()"
+        },
+        {
+            "styles": "width=100%;display=grid;gridTemplateColumns=1fr 1fr;gapX=3rem",
+            "cards": "packages:()",
+            "gridCards": true,
+            "selected": true
+        },
+        {
+            "divider": true
+        },
+        {
+            "coinTotals": true,
+            "gridCards": true,
+            "styles": "width=100%;display=flex;justifyContent=flex-end"
+        }
+    ]
+}

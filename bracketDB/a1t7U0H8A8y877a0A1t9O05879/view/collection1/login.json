@@ -1,0 +1,355 @@
+{
+    "view": "View?id=login;class=flexbox;style:[position=relative;overflow=hidden;minHeight=100vh];name=Login To Bracket;title=Login To Bracket;meta:[title=Login To Bracket;description=Login To Bracket Builder]",
+    "children": [
+        {
+            "view": "View?class=column;form;style:[backgroundColor=#fff;borderRadius=1rem;width=30%;border=1px solid #ddd;padding=8rem 4rem;display=flex;paddingBottom=3rem;zIndex=1;position=fixed;gap=3rem]",
+            "children": [
+                {
+                    "view": "View?class=flexbox",
+                    "children": [
+                        {
+                            "view": "Image?class=pointer;style:[height=10rem;width=fit-content];src='https://firebasestorage.googleapis.com/v0/b/bracket-technologies.appspot.com/o/storage-engagement%2Foutput-onlinepngtools%20(1).png?alt=media&token=8e574d65-0021-40ed-be04-df86005f7676';[click?root():main]"
+                        }
+                    ]
+                },
+                {
+                    "view": "Text?text=Bracket Technologies;style:[fontSize=2.5rem;#fontWeight=bolder;color=#000]"
+                },
+                {
+                    "view": "View?id=loginText;class=flex column;style:[display=[none?user:()?flex]]",
+                    "children": [
+                        {
+                            "view": "Text?text=Log in;style:[fontSize=1.8rem;color=#888;marginBottom=2rem;height=5rem]"
+                        },
+                        {
+                            "view": "customInput?data=[id=email;path=email;container.style=[height=5.5rem;borderRadius=.5rem];style=[fontSize=1.5rem];label=[text=Email;style=[fontSize=1.4rem]]];keyup:[loginEmailHandler()?e().key=Enter]"
+                        }
+                    ]
+                },
+                {
+                    "view": "View?id=welcome;class=column;style:[display=[flex?user:()?none]]",
+                    "children": [
+                        {
+                            "view": "View?class=flexbox flex-start;style:[gap=1.5rem;width=100%;marginBottom=2rem;height=5rem]",
+                            "children": [
+                                {
+                                    "view": "Text?class=flexbox;text=[user:().firstName.0.capitalize()||]+[user:().lastName.0.capitalize()||];style:[fontSize=1.5rem;borderRadius=2rem;height=4rem;width=4rem;backgroundColor=#96BF48;color=#fff]"
+                                },
+                                {
+                                    "view": "View?class=flex column;style:[alignItems=flex-start;gap=.5rem;flex=1]",
+                                    "children": [
+                                        {
+                                            "view": "Text?text=user:().firstName+ +user:().lastName;style:[color=#111;fontSize=1.3rem]"
+                                        },
+                                        {
+                                            "view": "Text?text=user:().email;style:[color=#555;fontSize=1.3rem]"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "view": "Text?class=pointer;text=Change email;link:[path=login;preventDefault];hover.style.textDecoration=underline;style:[fontSize=1.3rem;width=auto;color=#ff0000];click:[changeEmailHandler()]"
+                                }
+                            ]
+                        },
+                        {
+                            "view": "customInput?data=[id=password;path=password;password;container.style=[height=5.5rem;borderRadius=.5rem];label=[text=Password;style=[fontSize=1.4rem]];style=[fontSize=1.5rem];clearable=false];keyup:[():Next.click()?e().key=Enter]"
+                        }
+                    ]
+                },
+                {
+                    "view": "Text?id=Next;text=Next;style:[fontWeigt=bold;color=#fff;padding=2rem;fontSize=1.5rem;width=100%;borderRadius=.5rem;backgroundColor=red;opacity=.8;transition=.2s];class=flex-box pointer;hover.style.opacity=1;click:[loginEmailHandler();loginPasswordHandler()]"
+                },
+                {
+                    "view": "View?id=help;class=flex;style:[width=100%;marginTop=8rem]",
+                    "children": [
+                        {
+                            "view": "View?class=flex-start;style:[gap=2.5rem;width=fit-content;marginLeft=auto]",
+                            "children": [
+                                {
+                                    "view": "[Text]:[data=helpBtns()]?text=_.text;style:[color=red;fontSize=1.4rem;transition=.2s];class=pointer;link.path=/help;hover.style.textDecoration=underline"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "__props__": {
+        "id": "u1r7s1W0I3R3V0X7z876f5j0K9",
+        "doc": "login",
+        "counter": 15,
+        "creationDate": 1710330786509,
+        "collection": "view",
+        "chunk": "chunk1",
+        "lastModified": 1727372797012,
+        "dev": false,
+        "actions": {
+            "loginPasswordHandler": {
+                "_": "loader.show;checkPassword():[password=form().password;user=user:()]:[resHandler()]?form().password",
+                "resHandler": "loader.hide;note():[text=Password is incorrect!;type=danger]?!_.verified?user:().verified=true;root():projects"
+            },
+            "loginEmailHandler": "loader.show;checkEmail():[email=form().email]:[loader.hide;[note():[text=_.message;type=danger]?!_.user.email?user:()=_.user;():login.refresh()::[():password.input().focus()]]]?form().email",
+            "changeEmailHandler": "():email.txt()='';():password.txt()='';user:().del();():'get-started'.display();():loginText.display();():Next.display();():help.display();():welcome.hide();():email.focus()",
+            "helpBtns": ":[text=Help;path=/help]:[text=Privacy;path=/privacy]:[text=Terms;path=/terms]"
+        },
+        "comments": [
+            {
+                "note": "title: bracket technologies",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "Bracket Technologies",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "note": "login, continue to bracket platform, email",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    2
+                ]
+            },
+            {
+                "note": "welcome, continue, change email, password",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    3
+                ]
+            },
+            {
+                "note": "circle, name, email, change email btn",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    3,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "password input",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    3,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "note": "next btn",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    4
+                ]
+            },
+            {
+                "note": "Help, Privacy",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    5
+                ]
+            }
+        ],
+        "collapsed": [
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    2
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    3
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    3,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    3,
+                    "children",
+                    0,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    3,
+                    "children",
+                    0,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    3,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    4
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    5
+                ]
+            },
+            {
+                "path": [
+                    "loginPasswordHandler"
+                ]
+            }
+        ],
+        "arrange": {
+            "": [
+                "view",
+                "children",
+                "changeEmailHandler",
+                "helpBtns",
+                "loginEmailHandler",
+                "loginPasswordHandler"
+            ],
+            "children.0": [
+                "view",
+                "children"
+            ],
+            "children.0.children.0": [
+                "view",
+                "children"
+            ],
+            "children.0.children.0.children.0": [
+                "view"
+            ],
+            "children.0.children.1": [
+                "view"
+            ],
+            "children.0.children.2": [
+                "view",
+                "children"
+            ],
+            "children.0.children.2.children.0": [
+                "view"
+            ],
+            "children.0.children.2.children.1": [
+                "view"
+            ],
+            "children.0.children.3": [
+                "view",
+                "children"
+            ],
+            "children.0.children.3.children.0": [
+                "view",
+                "children"
+            ],
+            "children.0.children.3.children.0.children.0": [
+                "view"
+            ],
+            "children.0.children.3.children.0.children.1": [
+                "view",
+                "children"
+            ],
+            "children.0.children.3.children.0.children.1.children.0": [
+                "view"
+            ],
+            "children.0.children.3.children.0.children.1.children.1": [
+                "view"
+            ],
+            "children.0.children.3.children.0.children.2": [
+                "view"
+            ],
+            "children.0.children.3.children.1": [
+                "view"
+            ],
+            "children.0.children.4": [
+                "view"
+            ],
+            "children.0.children.5": [
+                "view",
+                "children"
+            ],
+            "children.0.children.5.children.0": [
+                "view",
+                "children"
+            ],
+            "children.0.children.5.children.0.children.0": [
+                "view"
+            ],
+            "loginPasswordHandler": [
+                "_",
+                "resHandler"
+            ]
+        },
+        "secured": false,
+        "size": 6122
+    }
+}

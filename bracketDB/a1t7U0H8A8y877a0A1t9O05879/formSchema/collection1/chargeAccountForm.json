@@ -1,0 +1,159 @@
+{
+    "__props__": {
+        "id": "D1K7J1t6a585j8w2o7i3N3p1L2",
+        "doc": "chargeAccountForm",
+        "counter": 6,
+        "creationDate": 1716558273312,
+        "collection": "formSchema",
+        "chunk": "chunk1",
+        "lastModified": 1723110117840,
+        "dev": false,
+        "actions": {},
+        "comments": [
+            {
+                "note": "selected",
+                "path": [
+                    "sections",
+                    1
+                ]
+            },
+            {
+                "note": "coin package card",
+                "path": [
+                    "sections",
+                    0
+                ]
+            },
+            {
+                "note": "conditions",
+                "path": [
+                    "requiredData"
+                ]
+            },
+            {
+                "note": "divider",
+                "path": [
+                    "sections",
+                    2
+                ]
+            },
+            {
+                "note": "coin totals",
+                "path": [
+                    "sections",
+                    3
+                ]
+            }
+        ],
+        "collapsed": [
+            {
+                "path": [
+                    "sections",
+                    2,
+                    "inputs",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "sections",
+                    2,
+                    "inputs",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "sections",
+                    2,
+                    "inputs",
+                    2
+                ]
+            },
+            {
+                "path": [
+                    "requiredData"
+                ]
+            },
+            {
+                "path": [
+                    "confirmBtn"
+                ]
+            },
+            {
+                "path": [
+                    "sections",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "sections",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "sections",
+                    2
+                ]
+            },
+            {
+                "path": [
+                    "sections",
+                    3
+                ]
+            },
+            {
+                "path": [
+                    "sections"
+                ]
+            }
+        ],
+        "arrange": [],
+        "secured": false,
+        "size": 2018
+    },
+    "confirmBtn": {
+        "text": "Buy Now",
+        "action": "[chargeAccount():[form()]:[note():[text=_.message;type=danger]?!_.success?end():[_]]]():[collection=actions;doc=main]",
+        "msg": "We are charging your account. Please wait until we finish!",
+        "missingDataHandler": "Choose package correctly!"
+    },
+    "title": "Save money by choosing a profitable package!",
+    "requiredData": [
+        "packageID",
+        "pluginID",
+        "billingAccountID",
+        "coins",
+        "qty",
+        "priceUSD"
+    ],
+    "sections": [
+        {
+            "styles": "width=100%;display=grid;gridTemplateColumns=1fr 1fr;gapX=3rem",
+            "coinPackage": true,
+            "gridCards": true,
+            "cards": "packages:()"
+        },
+        {
+            "styles": "width=100%;display=grid;gridTemplateColumns=1fr 1fr;gapX=3rem",
+            "cards": "packages:()",
+            "gridCards": true,
+            "selected": true
+        },
+        {
+            "divider": true
+        },
+        {
+            "coinTotals": true,
+            "gridCards": true,
+            "styles": "width=100%;display=flex;justifyContent=flex-end"
+        }
+    ],
+    "styles": "width=100rem",
+    "reset": true,
+    "beforeLoadingActions": "[getBillingAccountBySession()::[billingAccountID:()=_.billingAccount];getPlugin():[pluginID='V1p7r1A7q4A2U04469R7O4m7w9';subscriptionExpiryDate=timestamp()]:[plugin:()=_.plugin;packages:()=_.packages.filter():[!trading].sort():[path=priceUSD;ascending]]]():[collection=actions;doc=main]",
+    "data": "[billingAccountID=billingAccountID:().id();pluginID=plugin:().id()]",
+    "form": "newProject"
+}

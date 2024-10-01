@@ -1,0 +1,23 @@
+{
+    "name": "Starter",
+    "__props__": {
+        "id": "I137j1O4I5s952s8w169l106v5",
+        "doc": "coinPackage1",
+        "counter": 1,
+        "creationDate": 1714592819166,
+        "active": true,
+        "actions": {},
+        "chunk": "chunk1",
+        "secured": false,
+        "collection": "package",
+        "createdByUserID": "41V7H078W8I8I780z1m9Y2E4Y2",
+        "comments": [],
+        "collapsed": []
+    },
+    "active": true,
+    "coins": 100,
+    "priceUSD": 100,
+    "pluginID": "V1p7r1A7q4A2U04469R7O4m7w9",
+    "description": "Get started!",
+    "savings": 0
+}

@@ -1,0 +1,23 @@
+{
+    "creationDate": 1718270197369,
+    "collection": "private",
+    "chunkMaxSizeMB": 20,
+    "lastChunk": 1,
+    "docsLength": 1,
+    "counter": 1,
+    "reads": 134,
+    "writes": 77,
+    "deletes": 0,
+    "size": 231,
+    "payloadIn": 20644,
+    "payloadOut": 37019,
+    "indexes": [
+        {
+            "find": [
+                "__props__.id"
+            ],
+            "doc": "index1"
+        }
+    ],
+    "lastIndex": 1
+}

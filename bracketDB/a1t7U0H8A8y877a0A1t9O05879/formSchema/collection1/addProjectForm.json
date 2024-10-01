@@ -1,0 +1,238 @@
+{
+    "__props__": {
+        "id": "613711m6c5y5e2L0B8l8T224K2",
+        "doc": "addProjectForm",
+        "counter": 5,
+        "creationDate": 1716552088242,
+        "collection": "formSchema",
+        "chunk": "chunk1",
+        "lastModified": 1725176518857,
+        "dev": false,
+        "actions": {
+            "branchHandler": "2ndParent().next().display()?data()=true?2ndParent().next().():[hide();input().txt()=];form().headProjectPublicID.del()",
+            "subscribeToTapHandler": "form().pluginID=plugin:().id();form().packageID=package:().id()?form().subscribeToPlugin?form().pluginID.del();form().packageID.del()"
+        },
+        "comments": [
+            {
+                "note": "conditions",
+                "path": [
+                    "requiredData"
+                ]
+            },
+            {
+                "note": "organization input",
+                "path": [
+                    "sections",
+                    0
+                ]
+            },
+            {
+                "note": "divider",
+                "path": [
+                    "sections",
+                    1
+                ]
+            },
+            {
+                "note": "subscription inputs",
+                "path": [
+                    "sections",
+                    2
+                ]
+            },
+            {
+                "note": "tap plugin",
+                "path": [
+                    "sections",
+                    3
+                ]
+            }
+        ],
+        "collapsed": [
+            {
+                "path": [
+                    "confirmBtn"
+                ]
+            },
+            {
+                "path": [
+                    "requiredData"
+                ]
+            },
+            {
+                "path": [
+                    "sections"
+                ]
+            },
+            {
+                "path": [
+                    "sections",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "sections",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "sections",
+                    2
+                ]
+            },
+            {
+                "path": [
+                    "sections",
+                    3
+                ]
+            }
+        ],
+        "arrange": {
+            "": [
+                "beforeLoadingActions",
+                "confirmBtn",
+                "form",
+                "requiredData",
+                "reset",
+                "sections",
+                "styles",
+                "title",
+                "branchHandler",
+                "subscribeToTapHandler"
+            ],
+            "confirmBtn": [
+                "action",
+                "msg",
+                "text"
+            ],
+            "sections.0": [
+                "gridInputs",
+                "inputs",
+                "styles"
+            ],
+            "sections.0.inputs.0": [
+                "label",
+                "path",
+                "required"
+            ],
+            "sections.1": [
+                "divider"
+            ],
+            "sections.2": [
+                "gridInputs",
+                "inputs",
+                "styles"
+            ],
+            "sections.2.inputs.0": [
+                "action",
+                "defaultValue",
+                "inputType",
+                "items",
+                "label",
+                "path",
+                "required"
+            ],
+            "sections.2.inputs.1": [
+                "action",
+                "display",
+                "inputType",
+                "items",
+                "label",
+                "path",
+                "required"
+            ],
+            "sections.3": [
+                "gridInputs",
+                "inputs",
+                "styles"
+            ],
+            "sections.3.inputs.0": [
+                "action",
+                "defaultValue",
+                "inputType",
+                "items",
+                "label",
+                "path",
+                "required"
+            ]
+        },
+        "secured": false,
+        "size": 3284
+    },
+    "confirmBtn": {
+        "text": "Create Project",
+        "action": "[addProject():[form()]:[[root():projects?_.success];end():[_]]]():[collection=actions;doc=main]",
+        "msg": "We are building your project. Please wait until we finish!"
+    },
+    "title": "Think big, start small, then scale or fail fast! Scale now and start your new project.",
+    "requiredData": [
+        "organization"
+    ],
+    "sections": [
+        {
+            "styles": "display=grid;gridTemplateColumns=1fr 1fr;gapX=1rem;gapY=3rem;padding=1rem",
+            "inputs": [
+                {
+                    "label": "New Organization Name",
+                    "path": "organization",
+                    "required": true
+                }
+            ],
+            "gridInputs": true
+        },
+        {
+            "divider": true
+        },
+        {
+            "inputs": [
+                {
+                    "label": "This project is a branch",
+                    "path": "addBranch",
+                    "defaultValue": false,
+                    "items": [
+                        "Yes",
+                        "No"
+                    ],
+                    "action": "[branchHandler()]():[collection=formSchema;doc=addProjectForm]",
+                    "inputType": "yesNo",
+                    "required": true
+                },
+                {
+                    "label": "Head Project",
+                    "path": "headProjectPublicID",
+                    "items": "projects:().filter():main.():name",
+                    "display": "none",
+                    "action": "form().headProjectPublicID=projects:().filter():main.find():[name=data()].publicID",
+                    "inputType": "stdItems",
+                    "required": true
+                }
+            ],
+            "styles": "display=grid;gridTemplateColumns=1fr 1fr;gapX=1rem;gapY=3rem;padding=1rem",
+            "gridInputs": true
+        },
+        {
+            "inputs": [
+                {
+                    "label": "Subscribe to Travel Booking Platform (Travel Booking Platform)",
+                    "path": "subscribeToPlugin",
+                    "defaultValue": false,
+                    "items": [
+                        "Yes",
+                        "No"
+                    ],
+                    "action": "[subscribeToTapHandler()]():[collection=formSchema;doc=addProjectForm]",
+                    "inputType": "yesNo",
+                    "required": true
+                }
+            ],
+            "styles": "display=grid;gridTemplateColumns=1fr 1fr;gapX=1rem;gapY=3rem;padding=1rem",
+            "gridInputs": true
+        }
+    ],
+    "styles": "width=100rem",
+    "reset": true,
+    "beforeLoadingActions": "[getPlugin()]():[collection=formSchema;doc=signupForm;path=:getDataOnLoaded]",
+    "form": "newProject"
+}

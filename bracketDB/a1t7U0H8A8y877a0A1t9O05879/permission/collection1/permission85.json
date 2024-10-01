@@ -1,0 +1,34 @@
+{
+    "userID": "91L7M2Z574f7L024T5V8X32520",
+    "accountID": "P1l7N295t4t7O0Y4E5i843w4l0",
+    "projects": [
+        {
+            "projectID": "z1S7M255N4I7j0c4T588x3d6q9",
+            "createBranch": true,
+            "admin": true,
+            "editData": true,
+            "accessConsole": true
+        }
+    ],
+    "getBillingAccounts": true,
+    "getPaymentMethods": true,
+    "createProject": true,
+    "deleteProject": true,
+    "chargeAccount": true,
+    "__props__": {
+        "id": "u107U2T5n4p750m4j5m8E368c4",
+        "doc": "permission85",
+        "counter": 85,
+        "creationDate": 1725470458384,
+        "collection": "permission",
+        "chunk": "chunk1",
+        "lastModified": 1725470458384,
+        "dev": false,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": [],
+        "secured": false,
+        "size": 586
+    }
+}

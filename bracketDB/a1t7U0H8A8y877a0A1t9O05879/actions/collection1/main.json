@@ -1,0 +1,643 @@
+{
+    "__props__": {
+        "id": "01C7h1p42559A218r808z0c5J2",
+        "doc": "main",
+        "counter": 1,
+        "creationDate": 1714592888052,
+        "collection": "actions",
+        "chunk": "chunk1",
+        "lastModified": 1723734606020,
+        "dev": false,
+        "actions": {
+            "getUserAccount": {
+                "_": "start();[getPermission();getUser()]()::[getAccount()::[end():[account=account:();user=user:();permission=permission:()]]]",
+                "getAccount": "search():[collection=account;find.'__props__.id'=user:().accountID]:[account:()=_.data.value()?_.data.value()]",
+                "getUser": "search():[collection=user;find.'__props__.id'=manifest:().session.userID]:[user:()=_.data.value()?_.data.value()]",
+                "getPermission": "search():[collection=permission;find.userID=manifest:().session.userID]:[permission:()=_.data.value()?_.data.value()]"
+            },
+            "chargeAccount": {
+                "_": "checkData();getPackage()::[getUserAccount()::[charge()::[resHandler()]]]",
+                "resHandler": "send():[invoice=salesInvoice:();msg='Coins purchased successfully!']",
+                "checkData": {
+                    "_": "checkPermissions();checkData();checkPluginIDPackageID()",
+                    "checkPermissions": "send():[msg=You dont have permission to add a new project!;success=false]?!manifest:().session.permissions.chargeAccount",
+                    "checkData": "send():[success=false;msg=Missing package!]?!_.packageID||!_.pluginID?send():[success=false;msg=Missing billing account!]?!_.billingAccountID?send():[success=false;msg=Wroung package details!]?!_.coins||!_.qty||!_.priceUSD",
+                    "checkPluginIDPackageID": "send():[msg=Choose a plugin and a package!;success=false]?_.subscribeToPlugin;[!_.pluginID||!_.packageID]"
+                },
+                "charge": "[charge():[from=[billingAccount.id=fromAccount();description=Sell Coins.];to=[accountID=account:().id();description=Buy Coins.];priceUSD=_.priceUSD;coins=_.coins]]():[path=:]",
+                "getPackage": {
+                    "_": "[getPackage():[[_].flat();end=true]]():[path=:]:[checkPackage()]",
+                    "checkPackage": "send():[success=false;msg=Wrong package details!]?!package:().find():[priceUSD=[_.priceUSD/_.qty];coins=[_.coins/_.qty]]"
+                },
+                "getUserAccount": "[getUserAccount()]():[path=:]"
+            },
+            "getBillingAccountBySession": {
+                "_": "start();getUserAccount()::[getBillingAccount():[end=true;accountID=_.account.id()]:[end():[billingAccount=_.billingAccount;lastTransaction=_.lastTransaction]?stack().renderer||___.end?send():[_]]]"
+            },
+            "createInvoice": {
+                "_": "start();createInvoice()::[createVoucher()::[createTransaction()::[end():[invoice=invoice:();transaction=transaction:();voucher=voucher:()]]]]",
+                "createInvoice": "invoice:()=[accountID=_.billingAccount.accountID;userID=user:().id();billingAccountID=_.billingAccount.id();[subscriptionID=_.subscription.id()?_.subscription];[publicID=_.publicID?_.publicID];pluginID=plugin:().id();packageID=package:().id();status=Confirmed;type=_.type;[purchaseInvoiceID=purchaseInvoice:().id()?_.type=Sales;purchaseInvoice:()];coins=_.coins;unit=COIN;[priceUSD=_.priceUSD?_.priceUSD];[description=_.description?_.description];paymentStatus=Paid];save():[collection=invoice;data=invoice:()]:[invoice:()=_.data]",
+                "createTransaction": {
+                    "_": "_.coins=_.coins||0;createTransaction()::[updateBillingAccountLastTransaction()]",
+                    "createTransaction": "transaction:()=[invoiceID=invoice:().id();voucherID=voucher:().id();projectID=_.project.id();billingAccountID=_.billingAccount.id();transactionDate=timestamp();credit=[_.coins?_.type=Sales?0];debit=[_.coins?_.type=Purchase?0];[balance=[_.lastTransaction.balance||0]+_.coins?_.type=Purchase?balance=[_.lastTransaction.balance||0]-_.coins];[totalDebits=[_.lastTransaction.totalDebits||0]+_.coins?_.type=Purchase?totalDebits=[_.lastTransaction.totalDebits||0]];[totalCredits=[_.lastTransaction.totalCredits||0]+_.coins?_.type=Sales?totalCredits=[_.lastTransaction.totalCredits||0]];description=_.description];save():[collection=transaction;data=transaction:()]:[transaction:()=_.data]",
+                    "updateBillingAccountLastTransaction": "_.billingAccount.lastTransactionID=transaction:().id();save():[collection=billingAccount;data=_.billingAccount]"
+                },
+                "createVoucher": {
+                    "_": "voucher:()=[accountID=_.billingAccount.accountID;userID=user:().id();invoiceID=invoice:().id();billingAccountID=_.billingAccount.id();amount=[_.priceUSD||0];unit=USD;voucherDate=timestamp();status=Confirmed;coins=_.coins;[description=_.description?_.description];[type=Payment?_.type=Purchase?type=Receipt]];save():[collection=voucher;data=voucher:()]:[voucher:()=_.data]"
+                }
+            },
+            "createBlocks": {
+                "_": "start();getPrevBlocks()::[[createBlocks()::[updatePrevBlocks()]]()::[end():[blocks=blocks:()]]]",
+                "getCoins": "search():[collection=coin;find.token.in=prevBlocks:().():token;limit=_.coins]:[coins:()=_.data.values()]?_.from.billingAccount",
+                "getPrevBlocks": {
+                    "_": "search():[collection=block;find:[nextBlockID=false;billingAccountID=_.fromBillingAccount.id()];limit=_.coins]:[resHandler()]?_.from.billingAccount",
+                    "resHandler": "prevBlocks:()=_.data.values()?_.data.values().len()=__.coins?send():[msg=No enough coins available!;success=false]"
+                },
+                "updatePrevBlocks": "prevBlocks:()._():[_.nextBlockID=blocks:().find():[token=_.token].id()];save():[collection=block;data=prevBlocks:()]?_.from.billingAccount",
+                "createBlocks": {
+                    "_": "[createBlocksThroughPrevBlocks()?_.from.billingAccount?createBlocksThroughCoins()];save():[collection=block;data=blocks:()]:[blocks:()=_.data.values()]",
+                    "createBlocksThroughPrevBlocks": "blocks:()=:;prevBlocks:()._():[blocks:()+=[prevBlockID=[_.id()||false];nextBlockID=false;billingAccountID=__.to.billingAccount.id();token=_.token;blockDate=timestamp();status=Confirmed;priceUSD=__.priceUSD]]",
+                    "createBlocksThroughCoins": "blocks:()=:;coins:()._():[blocks:()+=[nextBlockID=false;billingAccountID=__.to.billingAccount.id();token=_.token;blockDate=timestamp();status=Confirmed;priceUSD=__.priceUSD]]"
+                }
+            },
+            "addProject": {
+                "_": "[getUserAccount()]()::[checkConditions();getMainProject()::[createProject()::[createSubscription()::[resHandler()]]]]",
+                "resHandler": "send():[msg=Project created successfully!;success=true]",
+                "createProject": "[createProject():[[_].flat();[mainProject=mainProject:()?mainProject:()]]:[updateSession()]]():[path=:]",
+                "getMainProject": {
+                    "_": "getProject():[publicID=_.headProjectPublicID;main=true;end=true]:[checkProject();mainProject:()=_.project.clone()]",
+                    "checkProject": "send():[success=false;msg=['Cannot create a branch to this project!'?!_.project.branch?'Cannot create a branch to a branch project!']]?!_.project.main"
+                },
+                "checkConditions": {
+                    "_": "checkPermissions();checkData();checkAvNewProjects();checkPluginIDPackageID()",
+                    "checkPermissions": "send():[msg=You dont have permission to add a new project!;success=false]?!manifest:().session.permissions.createProject",
+                    "checkData": "send():[success=false;msg=Missing data!]?!_.organization||[!_.headProjectPublicID?_.addBranch?true]",
+                    "checkAvNewProjects": "send():[msg=You cannot create more projects unless you subscribe!;success=false]?!account:().availableCreateNewProjects",
+                    "checkPluginIDPackageID": "send():[msg=Choose a plugin and a package!;success=false]?_.subscribeToPlugin;[!_.pluginID||!_.packageID]"
+                },
+                "createSubscription": "[createSubscription()]():[path=:]?_.subscribeToPlugin"
+            },
+            "deleteProject": {
+                "_": "getUserAndAccount()::[getProject():[[_].flat();end=true]:[deleteProjectSubscriptions()::[deleteBillingAccountsTransactionsPaymentMethodsInvoicesBlocksVouchers();deleteAccountUsersPasswordsPermissions()]()::[resHandler()]]]?_.subdomain?missingDataHandler()",
+                "missingDataHandler": "send():[msg=Choose a project to delete!;success=false]",
+                "#deactivateProject": "project:().active=false;save():[collection=project;data=project:()]:[erase():[db=project:().db;confirm=true]:[send():[msg=Project removed successfully!;success=true]]]",
+                "deleteAccountUsersPasswordsPermissions": {
+                    "_": "getProjects():[end=true]:[deleteUsers();deletePasswords();deletePermissions();deleteAccount();deleteSession()?projects:().len()=0?updateAccountAvNewProjects()]",
+                    "deleteUsers": "erase():[collection=user;find:[accountID=account:().id()]]",
+                    "deleteAccount": "erase():[collection=account;find:['__props__.id'=account:().id()]]",
+                    "deletePasswords": "erase():[collection=password;find:[accountID=account:().id()]]",
+                    "deletePermissions": "erase():[collection=permission;find:[accountID=account:().id()]]",
+                    "deleteSession": "erase():[collection=session;doc=manifest:().session.__props__.doc]",
+                    "updateAccountAvNewProjects": "account:().availableCreateNewProjects+=1;save():[collection=account;data=account:()]:[account:()=_.data]"
+                },
+                "deleteProjectSubscriptions": {
+                    "_": "deleteProject();deleteSubscriptions()",
+                    "deleteProject": "erase():[collection=project;find:['__props__.id'=project:().id()]]",
+                    "deleteSubscriptions": "erase():[collection=subscription;find:[projectID=project:().id()]]"
+                },
+                "deleteBillingAccountsTransactionsPaymentMethodsInvoicesBlocksVouchers": {
+                    "_": "getBillingAccounts()::[deleteBillingAccounts();deleteTransactions()]",
+                    "deleteTransactions": "erase():[collection=transaction;find:[billingAccountID.in=billingAccounts:().():[id()]]]",
+                    "deleteBillingAccounts": "erase():[collection=billingAccount;findOne:['__props__.id'.in=billingAccounts:().():[id()]]]",
+                    "deletePaymentMethods": "erase():[collection=paymentMethod;find:[billingAccountID.in=billingAccounts:().():[id()]]]",
+                    "deleteInvoices": "erase():[collection=invoice;find:[billingAccountID.in=billingAccounts:().():[id()]]]",
+                    "deleteBlocks": "erase():[collection=block;find:[billingAccountID.in=billingAccounts:().():[id()]]]",
+                    "deleteVouchers": "erase():[collection=voucher;find:[billingAccountID.in=billingAccounts:().():[id()]]]"
+                },
+                "updatePermission": "permission:().projects.pull():[projectID=project:().id()];save():[collection=permission;data=permission:()]",
+                "checkPermission": "send():[success=false;msg=You do not have permission to delete projects!]?!permission:().deleteProject",
+                "resHandler": "send():[msg=Project deleted successfully!]",
+                "getUserAndAccount": "getUserAccount()::[checkPermission();updatePermission()]"
+            },
+            "getProjects": {
+                "_": "start();checkPermissions();getProjects()::[getHosts()::[restructureProjectData();resHandler()]]",
+                "getProjects": "search():[collection=project;find:['__props__.id'.in=manifest:().session.permissions.projects.():projectID]]:[myProjects:()=_.data.values()]",
+                "getHosts": "search():[collection=host;find:[private=true;publicID.in=myProjects:().():publicID];limit=myProjects:().len()]:[hosts:()=_.data.values()]",
+                "restructureProjectData": "projects:()=:;myProjects:()._():[projects:()+=[id=_.id();name=_.name;subdomain=_.subdomain;host=localIP()+':'+hosts:().find():[publicID=_.publicID].port;main=_.main;publicID=_.publicID]]",
+                "resHandler": "end():[success=true;projects=projects:()]?stack().renderer||_.end?send():[success=true;projects=projects:()]",
+                "checkPermissions": "[end():[success=false]?stack().renderer||_.end?send():[success=false]]?!manifest:().session.userID"
+            },
+            "getPlugins": {
+                "_": "start();getPlugins()::[getPackages()::[resHandler()]]",
+                "resHandler": "end():[plugins=plugins:()]?stack().renderer||__.end?send():[plugins=plugins:()]",
+                "getPlugins": "search():[collection=plugin]:[plugins:()=_.data.values()]",
+                "getPackages": "search():[collection=package;find=[pluginID.in=plugins:().():[__props__.id]]]:[plugins:()._():[_.packages=__.data.values().find():[pluginID=_.id()].sort():[path=priceList.0]]]"
+            },
+            "signup": {
+                "_": "checkEmail()::[createAccount()::[createProject()::[createBillingAccount()::[createSubscription()::[updateSession()::[resHandler()]]]]]]?checkData()?send():[success=false;msg=Missing data!]",
+                "createAccount": "[createAccount()]():[path=:]",
+                "createBillingAccount": "[createBillingAccount()]():[path=:]",
+                "updateSession": "manifest:().session.userID=user:().id();manifest:().session.username=user:().username;save():[collection=session;data=manifest:().session]",
+                "resHandler": "send():[success=true;msg=Congratulations you have created your first Bracket project!;user=[firstName=user:().firstName;lastName=user:().lastName;username=user:().username]]",
+                "checkData": "_.find():[email;password;organization;country;city;address;language;currency;firstName;lastName;phoneNumber;agreeToTermsAndConditions]",
+                "checkEmail": "search():[collection=account;find:[email=_.email]]:[send():[success=false;msg=This email has subscribed before to the platform! Use another email.]?_.data.value()]",
+                "createSubscription": "[createSubscription()?_.packageID;_.pluginID]():[path=:]"
+            },
+            "localIP": "'http://192.168.0.100'",
+            "getProject": {
+                "_": "start();getProject()::[getHost()::[resHandler()]]?_.projectID||_.publicID||_.subdomain?missingDataHandler()",
+                "checkProject": "project:()=_.data?_.data?[send():[success=false;msg=Project was not found!]?!stack().renderer;!__.end?end():[success=false;msg=Project was not found!]]",
+                "checkPermission": "send():[success=false;msg=You do not have the permission to access this project!]?!manifest:().session.permissions.projects.find():[projectID=project:().id()];!__.authorized",
+                "resHandler": {
+                    "_": "browserVersionProjectData();send():[project=project:()]?!stack().renderer;!_.end?end():[project=project:()]",
+                    "browserVersionProjectData": "project:()._():[project:()=[name=_.name;subdomain=_.subdomain;host=localIP()+':'+host:().port;main=_.main;publicID=_.publicID]]"
+                },
+                "getHost": "search():[collection=host;findOne:[publicID=project:().publicID]]:[checkHost()]",
+                "getProject": "search():[collection=project;findOne:[[publicID=_.publicID?_.publicID];['__props__.id'=_.projectID?_.projectID];[subdomain=_.subdomain?_.subdomain];[main=true?_.main]]]:[checkProject();checkPermission()]",
+                "checkHost": "host:()=_.data?_.data?[send():[success=false;msg=Project is not hosted!]?!stack().renderer;!__.end?end():[success=false;msg=Project is not hosted!]]",
+                "missingDataHandler": "send():[success=false;msg=Missing Data!]"
+            },
+            "charge": {
+                "_": "getFromBillingAccount()::[getToBillingAccount()::[createBlocks()::[createPurchaseInvoice()::[createSalesInvoice()]]]]?_.from;_.to",
+                "createBlocks": "[createBlocks():[from.billingAccount=fromBillingAccount:();to.billingAccount=toBillingAccount:();coins=[_.coins||0];[priceUSD=[_.priceUSD/_.coins]?_.priceUSD||_.priceUSD=0]]]():[path=:]?_.coins",
+                "createPurchaseInvoice": "createInvoice():[type=Purchase;[_.from].flat();[_].flat();billingAccount=toBillingAccount:();lastTransaction=toLastTransaction:()]:[purchaseInvoice:()=_.invoice]",
+                "createSalesInvoice": "createInvoice():[type=Sales;[_.to].flat();[_].flat();billingAccount=fromBillingAccount:();lastTransaction=fromLastTransaction:()]:[salesInvoice:()=_.invoice]",
+                "getFromBillingAccount": "getBillingAccount():[end=true;[id=_.from.billingAccount.id?_.from.billingAccount.id];[accountID=_.from.accountID?_.from.accountID]]:[fromBillingAccount:()=_.billingAccount.clone();fromLastTransaction:()=_.lastTransaction.clone()]",
+                "getToBillingAccount": "getBillingAccount():[end=true;[id=_.to.billingAccount.id?_.to.billingAccount.id];[accountID=_.to.accountID?_.to.accountID]]:[toBillingAccount:()=_.billingAccount.clone();toLastTransaction:()=_.lastTransaction.clone()]"
+            },
+            "getPackage": {
+                "_": "start();getPackage()::[getPlugin()::[resHandler()]]",
+                "packageHandler": "send():[success=false;msg=Package was not found!]?!_.data?package:()=_.data?stack().renderer||__.end?send():[package=package:()]",
+                "getPackage": "search():[collection=package;findOne:[active=true;['__props__.id'=_.packageID];[pluginID=_.pluginID?_.pluginID];[name.inc=_.name?_.name]]]:[packageHandler()]",
+                "getPlugin": "search():[collection=plugin;findOne:['__props__.id'=package:().pluginID]]:[plugin:()=_.data]",
+                "resHandler": "end():[package=package:();plugin=plugin:()]?stack().renderer||_.end?send():[package=package:();plugin=plugin:()]"
+            },
+            "getPackages": {
+                "_": "start();search():[collection=package;find:[[pluginID=_.pluginID?_.pluginID];['__props__.id'=_.packageID?_.packageID]]]:[packagesHandler()]",
+                "packagesHandler": "packages:()=_.data.values();[end():[packages=_.data.values()]?stack().renderer||__.end?send():[packages=_.data.values()]]?_.data.value()?send():[success=false;msg=No package found!]"
+            },
+            "subscribe": {
+                "_": "checkData();createSubscription()::[resHandler()]",
+                "createSubscription": {
+                    "_": "[createSubscription()]():[path=:]:[subscribeToConsole()]",
+                    "subscribeToConsole": {
+                        "_": "[getSubscription():[[_].flat();end=true]]()::[createHost()?_.pluginID=Q1p78107R4j1n2Z9a2E1K1r912;subscription:().free]",
+                        "createHost": "[createHost():[[_].flat();dev=true]]():[path=:]"
+                    }
+                },
+                "checkData": "send():[success=false;msg=Missing data!]?_.find():[!publicID||!pluginID||!packageID||!qty]",
+                "resHandler": "[browserVersionProjectData()]():[path=:getProject:resHandler];send():[subscription=subscription:();project=project:()]"
+            },
+            "createSubscription": {
+                "_": "getProject()::[getPlugin()::[getUserAccount()::[charge()::[getLastSubscription()::[initSubscription();createSubscription()]]]]]",
+                "initSubscription": "subscription:()=[accountID=account:().id();invoiceID=purchaseInvoice:().id();publicID=project:().publicID;pluginID=plugin:().id();packageID=package:().id();startDate=timestamp();status=Confirmed;free=[package:().free||false];description='Subscribed to plugin: '+plugin:().name+', package: '+package:().name+'.'];subscriptions:()._():[subscription:().startDate=_.expiryDate?_.expiryDate>=subscription:().startDate];subscription:().expiryDate=subscription:().startDate+package:().duration",
+                "createSubscription": "save():[collection=subscription;data=subscription:()]:[subscription:()=_.data]",
+                "getLastSubscription": "search():[collection=subscription;find:[publicID=project:().publicID;pluginID=plugin:().id();packageID=package:().id();expiryDate.gte=timestamp()]]:[subcriptions:()=_.data.values()]",
+                "getProject": "[getProject():[publicID=_.publicID;end=true]]():[path=:]?!project:();_.publicID?send():[success=false;msg=Missing data!]?!project:();!_.publicID",
+                "getPlugin": "[getPlugin():[[_].flat();end=true]]():[path=:]?!plugin:()||!package:();_.pluginID;_.packageID?send():[success=false;msg=Missing data!]?!plugin:()||!package:();!_.pluginID||!_.packageID?send():[success=false;msg=Missing package!]?!package:()?send():[success=false;msg=Missing plugin!]?!plugin:()",
+                "charge": "[charge():[from:[accountID=account:().id();description=Subscribe to plugin.];to.billingAccount.id=fromAccount();coins=[package:().coins||0]*[_.qty||1];description=Subscribe to plugin.]]():[path=:]?_.coins",
+                "getUserAccount": "[getUserAccount()]():[path=:]?!account:()||!user:()"
+            },
+            "createHost": {
+                "_": "getProject()::[getPortCounter()::[createPrivateHost()]]",
+                "getPortCounter": "search():[collection=private;doc=counters]:[counters:()=_.data;counters:().port=counters:().port+1;save():[collection=private;data=counters:()]]",
+                "createPrivateHost": "host:()=[publicID=project:().publicID;port=:[counters:().port];localhost=['dev.'?_.dev?'']+project:().subdomain+'.localhost';host=['dev.'?_.dev?'']+project:().subdomain+'.brackettechnologies.com';active=true;subdomain=['dev.'?_.dev?'']+project:().subdomain;[dev=true?_.dev]];save():[collection=host;data=host:()]",
+                "getProject": "[getProject():[publicID=_.publicID;end=true]]():[path=:]?!project:();_.publicID?send():[success=false;msg=Missing data!]?!project:()"
+            },
+            "createProject": {
+                "_": "initProjectData();checkSubdomainLength();checkSubdomain()",
+                "initProjectData": {
+                    "_": "subdomainHandler();project:()=[name=_.organization;active=true;main=[_.main?_.main!=undefined?true?!mainProject:().id()?false];[mainProjectID=mainProject:().id();branch=true?mainProject:()];accountID=account:().id();publicID=gen():[universal=true];subdomain=[().subdomain+'.'+mainProject:().subdomain?mainProject:()?().subdomain];[branch=true?mainProject:()]]",
+                    "subdomainHandler": "().subdomainCounter=0;().subdomain=[_.subdomain?_.dev?_.organization.replace():'/[^a-zA-Z0-9]/g':''.replaceAll():' ':''.lowercase()]"
+                },
+                "modifySubdomain": {
+                    "_": "branchSubdomainHandler()?mainProject:()?projectSubdomainHandler()",
+                    "branchSubdomainHandler": "().subdomainCounter+=1;project:().subdomain=().subdomain+().subdomainCounter+'.'+mainProject:().subdomain;checkSubdomain()",
+                    "projectSubdomainHandler": "().subdomainCounter+=1;project:().subdomain=().subdomain+().subdomainCounter;checkSubdomainLength();checkSubdomain()"
+                },
+                "createProject": "save():[collection=project;data=project:()]:[project:()=_.data;updateAccountAvNewProjects();[createPermission()?user:().newUser?updatePermission()]()::[createHost()]]",
+                "createPermission": "permission:()=[userID=user:().id();accountID=account:().id();projects=:[projectID=project:().id();createBranch=true;admin=true;editData=true;accessConsole=true];getBillingAccounts=true;getPaymentMethods=true;createProject=true;deleteProject=true;chargeAccount=true];save():[collection=permission;data=permission:()]:[permission:()=_.data;updateUser()]",
+                "updatePermission": "permission:().projects.push():[projectID=project:().id();[createBranch=true;admin=true?!mainProject:()];editData=true;accessConsole=true];save():[collection=permission;data=permission:()]",
+                "checkSubdomainLength": "project:().subdomain+=1;checkSubdomainLength()?project:().subdomain.len()<5",
+                "checkSubdomain": "search():[collection=project;find:[subdomain=project:().subdomain]]:[createProject()?!_.data.value()?modifySubdomain()]",
+                "updateAccountAvNewProjects": "account:().availableCreateNewProjects-=1;save():[collection=account;data=account:()]:[account:()=_.data]",
+                "updateUser": "user:().newUser=false;save():[collection=user;data=user:()]"
+            },
+            "fromAccount": "'31v7G0g8u8O817H0Y0S9d1W0c0'",
+            "getBillingAccounts": {
+                "endHandler": "end():[billingAccounts=billingAccounts:();lastTransactions=lastTransactions:()]?_.end||stack().renderer?send():[billingAccounts=billingAccounts:();lastTransactions=lastTransactions:()]",
+                "_": "start();getBillingAccounts()::[getLastTransactions()::[endHandler()]]?manifest:().session.permissions.getBillingAccounts",
+                "getBillingAccounts": "search():[collection=billingAccount;find:[[accountID=_.accountID?_.accountID]]]:[billingAccounts:()=_.data.values()]",
+                "getLastTransactions": "search():[collection=transaction;find:['__props__.id'.in=billingAccounts:().():lastTransactionID]]:[lastTransactions:()=[_.data.values()||[]]]"
+            },
+            "getBillingAccount": {
+                "endHandler": "end():[billingAccount=billingAccount:();lastTransaction=lastTransaction:()]?_.end||stack().renderer?send():[billingAccount=billingAccount:();lastTransaction=lastTransaction:()]",
+                "_": "start();getBillingAccount()::[getLastTransaction()::[endHandler()]]",
+                "getLastTransaction": "search():[collection=transaction;findOne:['__props__.id'=billingAccount:().lastTransactionID]]:[lastTransaction:()=[_.data||[]]]",
+                "getBillingAccount": "search():[collection=billingAccount;[doc=_.doc?_.doc];findOne:[[accountID=_.accountID?_.accountID];['__props__.id'=_.id?_.id]]]:[billingAccount:()=_.data]"
+            },
+            "searchBySchema": {
+                "_": "getSchema()?_.schema;_.data?send():[success=false;msg=Missing data!]",
+                "getSchema": "search():[collection=schema;doc=_.schema]:[schema:()=_.data?_.data?send():[success=false;msg=Schema does not exist!]]"
+            },
+            "getPaymentMethods": {
+                "_": "start();checkData();getPaymentMethods()::[endHandler()]?manifest:().session.permissions.getPaymentMethods?send():[success=false;msg=You do not have permission to access payment methdos!]",
+                "checkData": "send():[success=false;msg=Missing Data!]?!_.accountID",
+                "getPaymentMethods": "search():[collection=paymentMethod;find:[[accountID=_.accountID?_.accountID]]]:[paymentMethods:()=_.data.values()]",
+                "endHandler": "send():[paymentMethods=paymentMethods:()]?!stack().renderer;!_.end?end():[paymentMethods=paymentMethods:()]"
+            },
+            "getHost": {
+                "_": "search():[collection=host;findOne:[publicID=_.publicID;port.gte=80;dev=true]]:[_.data.ip=localIP()+':'+_.data.port.0;send():[host=_.data]]"
+            },
+            "getPlugin": {
+                "_": "start();getPlugin()::[getPackage()::[getAccessability()::[getSubscriptions()::[resHandler()]]]]",
+                "resHandler": "response:()=[plugin=plugin:();package=package:();packages=packages:();accessability=accessability:();subscriptions=subscriptions:()];[end():[;[response:()].flat()]?stack().renderer||_.end?send():[;[response:()].flat()]]",
+                "getAccessability": {
+                    "_": "search():[collection=accessability;findOne.'__props__.id'=package:().accessabilityID]:[checkAccessability()]?_.packageID",
+                    "checkAccessability": "accessability:()=_.data;#[?_.data?send():[success=false;msg='This package does not have any accessabilities!']]"
+                },
+                "getPackage": {
+                    "_": "search():[collection=package;find:[['__props__.id'=_.packageID?_.packageID];pluginID=plugin:().id()]]:[checkPackage()?__.packageID?checkPackages()]",
+                    "checkPackage": "send():[success=false;msg=Package does not exist!]?!_.data.value()?package:()=_.data.value()",
+                    "checkPackages": "send():[success=false;msg=This plugin does not have any package or package does not belong to the plugin!]?!_.data.value()?packages:()=_.data.values()"
+                },
+                "getPlugin": {
+                    "_": "search():[collection=plugin;findOne=['__props__.id'=_.pluginID];[name.inc=_.name?_.name]]:[checkPlugin()]",
+                    "checkPlugin": "send():[msg=Plugin has been expired!;success=false]?_.data;_.data.expiryDate<timestamp()?plugin:()=_.data?_.data?send():[msg=Plugin does not exist!;success=false]"
+                },
+                "getSubscriptions": {
+                    "_": "search():[collection=subscription;find:[[startDate.gte=_.subscriptionStartDate?_.subscriptionStartDate];[expiryDate.lte=_.subscriptionExpiryDate?_.subscriptionExpiryDate]]]:[subscriptions=_.data.values()]?_.subscriptionStartDate;_.subscriptionExpiryDate"
+                }
+            },
+            "getSubscription": {
+                "_": "start();getSubscription()::[resHandler()]",
+                "getSubscription": "search():[collection=subscription;findOne:[[accountID=_.accountID?_.accountID];[publicID=_.publicID?_.publicID];['__props__.id'=_.subscriptionID?_.subscriptionID];[pluginID=_.pluginID?_.pluginID];[expiryDate.gt=_.expiryDate?_.expiryDate];[startDate.lte=_.startDate?_.startDate]]]:[subscription:()=_.data?_.data]",
+                "resHandler": "[end():[subscription=subscription:()]?stack().renderer||_.end?send():[subscription=subscription:()]]?subscription:()?[end():[]?stack().renderer||_.end?send():[success=false;msg=No subscription exists!]]"
+            },
+            "getUser": {
+                "_": "search():[collection=user;findOne:[['__props__.id'=_.userID?_.userID];[email=_.email?_.email]]]:[user:()=_.data?_.data]?_.email||_.userID?send():[success=false;msg=Missing data!]"
+            },
+            "getAllInvoices": {
+                "_": "getAccount()::[getInvoices()::[getBillingAccounts()::[getPlugins()::[getPackages()::[resHandler()]]]]]",
+                "getInvoices": "search():[collection=invoice;find:[accountID=account:().id()]]:[invoices:()=_.data.values()]",
+                "getAccount": "getUserAccount()",
+                "getBillingAccounts": "search():[collection=billingAccount;find:[accountID=account:().id()]]:[billingAccounts:()=_.data.values()]",
+                "getPlugins": "search():[collection=plugin;find:['__props__.id'.in=invoices:().():pluginID]]:[plugins:()=_.data.values()]",
+                "getPackages": "search():[collection=package;find:['__props__.id'.in=invoices:().():packageID]]:[packages:()=_.data.values()]",
+                "resHandler": "send():[invoices=invoices:();billingAccounts=billingAccounts:();plugins=plugins:();packages=packages:()]"
+            },
+            "getAllSubscriptions": {
+                "_": "getAccount()::[getSubscriptions()::[getProjects()::[getPlugins()::[getPackages()::[resHandler()]]]]]",
+                "getAccount": "search():[collection=account;findOne:['__props__.id'=_.accountID]]:[account:()=_.data?_.data.value()]",
+                "getSubscriptions": "search():[collection=subscription;find:[accountID=account:().id()]]:[subscriptions:()=_.data.values()]",
+                "getProjects": "search():[collection=project;find:[accountID=account:().id()]]:[projects:()=_.data.values()]",
+                "getPlugins": "search():[collection=plugin;find:['__props__.id'.in=subscriptions:().():pluginID]]:[plugins:()=_.data.values()]",
+                "getPackages": "search():[collection=package;find:['__props__.id'.in=subscriptions:().():packageID]]:[packages:()=_.data.values()]",
+                "resHandler": "send():[subscriptions=subscriptions:();projects=projects:();plugins=plugins:();packages=packages:()]"
+            },
+            "getAllVouchers": {
+                "_": "getAccount()::[getVouchers()::[getBillingAccounts()::[getInvoices()::[resHandler()]]]]",
+                "getAccount": "getUserAccount()",
+                "getBillingAccounts": "search():[collection=billingAccount;find:['__props__.id'.in=vouchers:().():billingAccountID]]:[billingAccounts:()=_.data.values()]",
+                "resHandler": "send():[vouchers=vouchers:();billingAccounts=billingAccounts:();invoices=invoices:()]",
+                "getVouchers": "search():[collection=voucher;find:[accountID=account:().id()]]:[vouchers:()=_.data.values()]",
+                "getInvoices": "search():[collection=invoice;find:['__props__.id'.in=vouchers:().():invoiceID]]:[invoices:()=_.data.values()]"
+            },
+            "docCounter": {
+                "_": "getCounter()::[createNum()::[updateCounter()]]?_.collection",
+                "getCounter": "search():[collection=counter;findOne:[collection=_.collection]]:[counter:().[__.collection]=_.data?_.data?createCounter()]",
+                "createCounter": "counter:().[__.collection]=[counter=0;collection=__.collection]",
+                "createNum": "counter:().[_.collection].counter++",
+                "updateCounter": "save():[collection=counter;data=counter:().[_.collection]]:[counter:().[__.collection]=_.data]"
+            },
+            "createBillingAccount": {
+                "_": "initBillingAccount();createBillingAccount()",
+                "initBillingAccount": "billingAccount:()=[name=My Billing Account;accountID=account:().id();accountType=business;country=_.country;creditLimit=0;currency=COIN;languagePreference=_.language;organizationAddress=_.address;organizationName=_.organization;paymentTerms=Due on receipt]",
+                "createBillingAccount": "save():[collection=billingAccount;data=billingAccount:()]:[billingAccount:()=_.data]"
+            },
+            "createAccount": {
+                "_": "createAccount()::[createUser()::[createPassword()]]",
+                "createUser": {
+                    "_": "initUserData();checkUsername()",
+                    "checkUsername": "search():[collection=user;find:[username=user:().username]]:[createUser()?!_.data.value()?modifyUsername()]",
+                    "modifyUsername": "().usernameCounter+=1;user:().username=data:().firstName.replaceAll():' '.lowercase()+data:().lastName.replaceAll():' '.lowercase()+().usernameCounter;checkUsernameLength();checkUsername()",
+                    "initUserData": "usernameCounter=0;user:()=[firstName=_.firstName;lastName=_.lastName;accountID=account:().id();email=_.email;username=_.firstName.replaceAll():' '.lowercase()+_.lastName.replaceAll():' '.lowercase();newUser=true];checkUsernameLength()",
+                    "createUser": "save():[collection=user;data=user:()]:[user:()=_.data]",
+                    "checkUsernameLength": "user:().username+=1;checkUsernameLength()?user:().username.len()<5"
+                },
+                "createAccount": "account:()=[email=_.email;availableCreateNewProjects=2];save():[collection=account;data=account:()]:[account:()=_.data]",
+                "createPassword": "password:()=[userID=user:().id();accountID=account:().id();password=_.password];save():[collection=password;data=password:()]"
+            },
+            "genCoins": {
+                "_": "getPackage()::[getUserAccount()::[getBillingAccount()::[createCoins()::[createBlocks()::[createInvoice()::[resHandler()]]]]]]?manifest:().session.permissions.genCoins?send():[success=false;msg=You do not have the permission!]",
+                "createCoins": "coins:()=:;range():[_.coins].():[coins:()+=[token=gen():[universal=true];releaseDate=timestamp()]];save():[collection=coin;data=coins:()]:[coins:()=_.data.values()]",
+                "resHandler": "send():[msg=Coins generated successfully!]",
+                "getBillingAccount": "[getBillingAccount():[end=true;id=_.billingAccountID]]():[path=:]",
+                "createBlocks": "[createBlocks():[to.billingAccount=billingAccount:();coins=_.coins;priceUSD=_.priceUSD/_.coins]]():[path=:]",
+                "createInvoice": "[createInvoice():[billingAccount=billingAccount:();lastTransaction=lastTransaction:();type=Purchase;description=Coin release.;[_].flat()]]():[path=:]",
+                "getPackage": "[getPackage():[[_].flat();end=true]]():[path=:]:[send():[success=false;msg=Wrong package details!]?!package:().find():[priceUSD=[_.priceUSD/_.qty];coins=[_.coins/_.qty]]]",
+                "getUserAccount": "[getUserAccount()]():[path=:]"
+            },
+            "getOnlyPlugins": {
+                "_": "getPlugins()::[resHandler()]",
+                "getPlugins": "search():[collection=plugin]:[plugins:()=_.data.values().filter():[name!=Coins]]",
+                "resHandler": "send():[plugins=plugins:()]"
+            },
+            "getOnlyProjects": {
+                "_": "getAccount()::[getProjects()::[resHandler()]]",
+                "getAccount": "getUserAccount()",
+                "resHandler": "send():[projects=projects:()]",
+                "getProjects": "search():[collection=project;find:[accountID=account:().id()]]:[projects:()=_.data.values()]"
+            },
+            "getSubscriptions": {
+                "_": "search():[collection=subscription;find:[[accountID=_.accountID?_.accountID];[publicID=_.publicID?_.publicID];[pluginID=_.pluginID?_.pluginID];[expiryDate.gt=_.expiryDate?_.expiryDate];[startDate.lte=_.startDate?_.startDate]]]:[resHandler()]",
+                "resHandler": "subscriptions:()=_.data.values();send():[subscriptions=subscriptions:()]"
+            }
+        },
+        "comments": [
+            {
+                "note": "add new project + tap subscription",
+                "path": [
+                    "addProject"
+                ]
+            },
+            {
+                "note": "create invoices & blocks",
+                "path": [
+                    "charge"
+                ]
+            },
+            {
+                "note": "charge account",
+                "path": [
+                    "chargeAccount"
+                ]
+            },
+            {
+                "note": "subscribe to plugin",
+                "path": [
+                    "createSubscription"
+                ]
+            },
+            {
+                "note": "used in console preview btn",
+                "path": [
+                    "getHost"
+                ]
+            },
+            {
+                "note": "signup to bracket platform",
+                "path": [
+                    "getPlugin"
+                ]
+            }
+        ],
+        "collapsed": [
+            {
+                "path": [
+                    "addProject"
+                ]
+            },
+            {
+                "path": [
+                    "addProject",
+                    "checkConditions"
+                ]
+            },
+            {
+                "path": [
+                    "addProject",
+                    "getMainProject"
+                ]
+            },
+            {
+                "path": [
+                    "charge"
+                ]
+            },
+            {
+                "path": [
+                    "chargeAccount"
+                ]
+            },
+            {
+                "path": [
+                    "chargeAccount",
+                    "checkData"
+                ]
+            },
+            {
+                "path": [
+                    "chargeAccount",
+                    "getPackage"
+                ]
+            },
+            {
+                "path": [
+                    "createAccount"
+                ]
+            },
+            {
+                "path": [
+                    "createBillingAccount"
+                ]
+            },
+            {
+                "path": [
+                    "createBlocks"
+                ]
+            },
+            {
+                "path": [
+                    "createBlocks",
+                    "getPrevBlocks"
+                ]
+            },
+            {
+                "path": [
+                    "createHost"
+                ]
+            },
+            {
+                "path": [
+                    "createInvoice"
+                ]
+            },
+            {
+                "path": [
+                    "createProject"
+                ]
+            },
+            {
+                "path": [
+                    "createProject",
+                    "initProjectData"
+                ]
+            },
+            {
+                "path": [
+                    "createProject",
+                    "modifySubdomain"
+                ]
+            },
+            {
+                "path": [
+                    "createSubscription"
+                ]
+            },
+            {
+                "path": [
+                    "deleteProject"
+                ]
+            },
+            {
+                "path": [
+                    "docCounter"
+                ]
+            },
+            {
+                "path": [
+                    "genCoins"
+                ]
+            },
+            {
+                "path": [
+                    "getAllInvoices"
+                ]
+            },
+            {
+                "path": [
+                    "getAllSubscriptions"
+                ]
+            },
+            {
+                "path": [
+                    "getAllVouchers"
+                ]
+            },
+            {
+                "path": [
+                    "getBillingAccount"
+                ]
+            },
+            {
+                "path": [
+                    "getBillingAccountBySession"
+                ]
+            },
+            {
+                "path": [
+                    "getBillingAccounts"
+                ]
+            },
+            {
+                "path": [
+                    "getHost"
+                ]
+            },
+            {
+                "path": [
+                    "getOnlyPlugins"
+                ]
+            },
+            {
+                "path": [
+                    "getOnlyProjects"
+                ]
+            },
+            {
+                "path": [
+                    "getPackage"
+                ]
+            },
+            {
+                "path": [
+                    "getPackages"
+                ]
+            },
+            {
+                "path": [
+                    "getPaymentMethods"
+                ]
+            },
+            {
+                "path": [
+                    "getPlugin"
+                ]
+            },
+            {
+                "path": [
+                    "getPlugin",
+                    "getAccessability"
+                ]
+            },
+            {
+                "path": [
+                    "getPlugin",
+                    "getPackage"
+                ]
+            },
+            {
+                "path": [
+                    "getPlugin",
+                    "getPlugin"
+                ]
+            },
+            {
+                "path": [
+                    "getPlugin",
+                    "getSubscriptions"
+                ]
+            },
+            {
+                "path": [
+                    "getPlugins"
+                ]
+            },
+            {
+                "path": [
+                    "getProject"
+                ]
+            },
+            {
+                "path": [
+                    "getProjects"
+                ]
+            },
+            {
+                "path": [
+                    "getSubscription"
+                ]
+            },
+            {
+                "path": [
+                    "getSubscriptions"
+                ]
+            },
+            {
+                "path": [
+                    "getUser"
+                ]
+            },
+            {
+                "path": [
+                    "getUserAccount"
+                ]
+            },
+            {
+                "path": [
+                    "searchBySchema"
+                ]
+            },
+            {
+                "path": [
+                    "signup"
+                ]
+            },
+            {
+                "path": [
+                    "signup",
+                    "createAccount"
+                ]
+            },
+            {
+                "path": [
+                    "subscribe"
+                ]
+            }
+        ],
+        "arrange": [],
+        "secured": true,
+        "size": 33790
+    }
+}

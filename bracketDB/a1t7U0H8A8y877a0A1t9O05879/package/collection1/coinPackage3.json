@@ -1,0 +1,27 @@
+{
+    "name": "Trader",
+    "__props__": {
+        "id": "Q1X7z1s4O5c9K2e8O1O9N1u8X0",
+        "doc": "coinPackage3",
+        "counter": 3,
+        "creationDate": 1714592819180,
+        "collection": "package",
+        "chunk": "chunk1",
+        "lastModified": 1723110733806,
+        "dev": false,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": [],
+        "secured": false,
+        "size": 442
+    },
+    "active": true,
+    "priceUSD": 8000,
+    "coins": 10000,
+    "pluginID": "V1p7r1A7q4A2U04469R7O4m7w9",
+    "savings": 2000,
+    "description": "Become a trader!",
+    "trading": true,
+    "selected": true
+}

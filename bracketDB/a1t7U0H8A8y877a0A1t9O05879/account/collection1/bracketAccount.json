@@ -1,0 +1,17 @@
+{
+    "email": "acc@brackettechnologies.com",
+    "__props__": {
+        "id": "1197B078m8x8q4e9T5X949d858",
+        "doc": "bracketAccount",
+        "counter": 41,
+        "creationDate": 1716032270176,
+        "active": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "chunk": "chunk1",
+        "secured": false,
+        "collection": "account"
+    },
+    "availableCreateNewProjects": 2
+}

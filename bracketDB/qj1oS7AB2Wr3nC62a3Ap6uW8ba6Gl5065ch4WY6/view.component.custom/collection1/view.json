@@ -1,0 +1,506 @@
+{
+    "view": "View?[id=_.id?_.id];class=[_.class];style=[[_.style]];[[_.actions]]",
+    "__props__": {
+        "id": "y1z7g2K3q7P4B1D1x6C7n50147",
+        "doc": "view",
+        "counter": 2,
+        "creationDate": 1723741167517,
+        "collection": "view.component.custom",
+        "chunk": "chunk1",
+        "lastModified": 1726748575491,
+        "dev": true,
+        "actions": {},
+        "comments": [
+            {
+                "note": "text",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "input",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "note": "label",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "input",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "note": "input",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    1,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "clear",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    1,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "note": "droplist chevron",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    1,
+                    "children",
+                    2
+                ]
+            },
+            {
+                "note": "password",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    1,
+                    "children",
+                    3
+                ]
+            },
+            {
+                "note": "image",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    2
+                ]
+            },
+            {
+                "note": "icon",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    3
+                ]
+            },
+            {
+                "note": "divider",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    4
+                ]
+            },
+            {
+                "note": "checkbox",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    5
+                ]
+            },
+            {
+                "note": "checkbox",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    5,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "label",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    5,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "note": "view",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    6
+                ]
+            },
+            {
+                "note": "component",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    7
+                ]
+            }
+        ],
+        "collapsed": [
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    1,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    1,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    1,
+                    "children",
+                    2
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    1,
+                    "children",
+                    3
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    2
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    3
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    4
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    5
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    5,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    6
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    7
+                ]
+            }
+        ],
+        "arrange": {
+            "": [
+                "view",
+                "children"
+            ],
+            "children.0": [
+                "view",
+                "children"
+            ],
+            "children.0.children.0": [
+                "view"
+            ],
+            "children.0.children.1": [
+                "view",
+                "children"
+            ],
+            "children.0.children.1.children.0": [
+                "view",
+                "children"
+            ],
+            "children.0.children.1.children.0.children.0": [
+                "view"
+            ],
+            "children.0.children.1.children.0.children.1": [
+                "view"
+            ],
+            "children.0.children.1.children.1": [
+                "view",
+                "children"
+            ],
+            "children.0.children.1.children.1.children.0": [
+                "view"
+            ],
+            "children.0.children.1.children.1.children.1": [
+                "view"
+            ],
+            "children.0.children.1.children.1.children.2": [
+                "view"
+            ],
+            "children.0.children.1.children.1.children.3": [
+                "view",
+                "children"
+            ],
+            "children.0.children.1.children.1.children.3.children.0": [
+                "view"
+            ],
+            "children.0.children.1.children.1.children.3.children.1": [
+                "view"
+            ],
+            "children.0.children.2": [
+                "view"
+            ],
+            "children.0.children.3": [
+                "view"
+            ],
+            "children.0.children.4": [
+                "view"
+            ],
+            "children.0.children.5": [
+                "view",
+                "children"
+            ],
+            "children.0.children.5.children.0": [
+                "view",
+                "children"
+            ],
+            "children.0.children.5.children.0.children.0": [
+                "view"
+            ],
+            "children.0.children.5.children.1": [
+                "view",
+                "children"
+            ],
+            "children.0.children.5.children.1.children.0": [
+                "view"
+            ],
+            "children.0.children.5.children.1.children.1": [
+                "view"
+            ],
+            "children.0.children.6": [
+                "view"
+            ],
+            "children.0.children.7": [
+                "view"
+            ]
+        },
+        "secured": false,
+        "size": 7182
+    },
+    "children": [
+        {
+            "view": "[View]:[data=_.views]?[_.container=[[_.container]]?_.container.type()=text];class=[_.container.class];style=[[_.container.style]];[[_.container.actions]]?[[[_.conditions]]?_.conditions?true]",
+            "children": [
+                {
+                    "view": "Text?[id=_.id?_.id];text=[[_.text]];style=[[_.style]];[hover.style=[[_.hoverstyle]]?_.hoverstyle];[[_.actions]]?_.type=text"
+                },
+                {
+                    "view": "View?class=column +[_.mainContainer.class||''];style=[gap=.5rem;width=100%;[[_.mainContainer.style]]]?_.type=input",
+                    "children": [
+                        {
+                            "view": "View?class=flex +[_.label.container.class||''];style=[gap=.5rem;alignItems=center;[[_.label.container.style]]]?_.label",
+                            "children": [
+                                {
+                                    "view": "Icon?class=[_.label.icon.class||''];name=_.label.icon;style:[fontSize=1.3rem;[[_.label.icon.style]]]?_.label.icon"
+                                },
+                                {
+                                    "view": "Text?class=[_.label.class||''];text=_.label.text;style:[fontSize=1.3rem;overflow=hidden;whiteSpace=nowrap;textOverflow=ellipsis;[[_.label.style]]]?_.label.text"
+                                }
+                            ]
+                        },
+                        {
+                            "view": "View?class=flex align-center pointer +[_.inputContainer.class||''];path=[_.path];style=[gap=.25rem;alignItems=center;position=relative;border=1px solid #ddd;borderRadius=.5rem;overflow=hidden;backgroundColor=#fff;[[_.inputContainer.style]]];[[_.inputContainer.actions]];[hover?().class():x.():fadeIn()?mouseentered?().class():x.():fadeOut()]",
+                            "children": [
+                                {
+                                    "view": "Input?[class=_.class?_.class];style=[flex=1;padding=0 .5rem;border=0;width=100%;[cursor=pointer?_.readonly];[[_.style]]];[[_.actions]];[data()=[[_.data]]?_.data];text=[[_.text]];[droplist=[[_.droplist]]?_.droplist];type=[_.inputType||text];[readonly=true?_.readonly];[min=[[_.min]]?_.min];[max=[[_.max]]?_.max]"
+                                },
+                                {
+                                    "view": "Icon?class=x;name=bi-x;style:[fontSize=2.5rem;color=#999;opacity=0;transition=.2s;position=absolute;right=[2rem?_.inputType=date?0];height=2.5rem;width=2.5rem;backgroundColor=#fff];[click?data().del();prev().txt()=[0?prev().type()=number?'']]?prev().clearable||_.clearable"
+                                },
+                                {
+                                    "view": "Icon?class=chevron;name=bi-chevron-down;style:[pointerEvents=none;fontSize=1.3rem;color=[parent().1stChild().style.color||#999];position=absolute;right=0;height=2rem;width=2rem;backgroundColor=inherit]?parent().1stChild().droplist||_.droplist"
+                                },
+                                {
+                                    "view": "View?class=flexbox pointer;style:[height=100%;width=3rem;justifySelf=flex-end;backgroundColor=#f6f6f6]?parent().1stChild().password||_.password",
+                                    "children": [
+                                        {
+                                            "view": "Icon?class=chevron;name=bi-eye;style:[fontSize=1.6rem;color=#999;display=none]"
+                                        },
+                                        {
+                                            "view": "Icon?class=chevron;name=bi-eye-slash;style:[fontSize=1.6rem;color=#999;display=flex]"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "view": "Image?[id=_.id?_.id];style:[[_.style]];src=_.src;[[_.actions]]?_.type=image"
+                },
+                {
+                    "view": "Icon?[id=_.id?_.id];style:[[_.style]];name=_.icon;[[_.actions]];[google.symbol?_.google]?_.type=icon"
+                },
+                {
+                    "view": "View?[id=_.id?_.id];style:[[_.style]]?_.type=divider"
+                },
+                {
+                    "view": "View?class=flex +[_.mainContainer.class||''];;style:[gap=1rem;[[_.mainContainer.style]]];[path=_.path?_.path]?_.type=checkbox",
+                    "children": [
+                        {
+                            "view": "View?class=flexbox pointer;style:[position=relative;borderRadius=.5rem;border=1px solid #aaa;height=1.75rem;width=1.75rem;backgroundColor=#fff;[[_.checkboxstyle]]];[[_.actions]];[data()=false?!data()];[click?data()=false;child().fadeOut()?data()?data()=true;child().fadeIn()]",
+                            "children": [
+                                {
+                                    "view": "Icon?name=bi-check2;style:[position=absolute;color=#444;fontSize=2.4rem;left=-.1rem;bottom=-.2rem;transition=.2s;opacity=[1?data()?0];[[_.style]]]"
+                                }
+                            ]
+                        },
+                        {
+                            "view": "View?class=flex +[_.label.container.class||''];style=[gap=.5rem;alignItems=center;[[_.label.container.style]]]?_.label",
+                            "children": [
+                                {
+                                    "view": "Icon?class=[_.label.iconClass||''];name=_.label.icon;style:[fontSize=1.3rem;[[_.label.iconstyle]]]?_.label.icon"
+                                },
+                                {
+                                    "view": "Text?class=[_.label.class||''];text=_.label.text;style:[fontSize=1.3rem;overflow=hidden;whiteSpace=nowrap;textOverflow=ellipsis;[[_.label.style]]]?_.label.text"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "view": "view??_.type=view"
+                },
+                {
+                    "view": "_.component?[id=_.id?_.id];style:[[_.style]]?_.type=component"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,65 @@
+{
+    "view": "View?id=billing;title=Billing | Bracket Platform;style:[height=100vh;width=100%;position=relative];getBillingAccount();getSchema()",
+    "__props__": {
+        "id": "H1E7J184b3n8n5j8Z3M5G6b1R1",
+        "doc": "billing",
+        "counter": 26,
+        "creationDate": 1714385835611,
+        "collection": "view",
+        "chunk": "chunk1",
+        "actions": {
+            "genCoins": {
+                "_": "[confirmation:()=start();openConfirmationPopup()]()::[genCoins()?_.confirmed=true]",
+                "genCoins": "[genCoins():[coins=1000;priceUSDperCoin=1]:[note():[text=_.message;[danger=true?!_.success]]]]():[collection=actions;doc=main]"
+            },
+            "getBillingAccount": "[getBillingAccountBySession()::[billingAccount:()=_.billingAccount;lastTransaction:()=_.lastTransaction]]():[collection=actions;doc=main]",
+            "getSchema": "currentOpenManager:().del();[getSchema():[collection=schema;schema=billingManagerSchema]]():[doc=form]"
+        },
+        "comments": [],
+        "collapsed": [
+            {
+                "path": [
+                    "genCoins"
+                ]
+            }
+        ],
+        "arrange": [],
+        "secured": false,
+        "size": 1449
+    },
+    "children": [
+        {
+            "view": "topbar"
+        },
+        {
+            "view": "View?class=flex;style:[height=calc(100% - 5rem);width=100%]",
+            "children": [
+                {
+                    "view": "sidebar?data=schema:().billingManagerSchema.billing"
+                },
+                {
+                    "view": "View?id=managerBody;class=flex column;style:[padding=.5rem 1rem;width=100%]",
+                    "children": [
+                        {
+                            "view": "View?class=flex column;style:[width=100%;gap=.5rem];data=currentOpenManager:()?currentOpenManager:()",
+                            "children": [
+                                {
+                                    "view": "ManagerHeader?data=_.title"
+                                },
+                                {
+                                    "view": "SearchEngine?data=_.search"
+                                },
+                                {
+                                    "view": "Table?data=_.table;[_.data.action]()"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "view": "CoinPackagesForm"
+        }
+    ]
+}

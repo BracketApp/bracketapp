@@ -1,0 +1,24 @@
+{
+    "firstName": "Anonymous",
+    "lastName": "Anonymous",
+    "accountID": "61L7E2u3c6j3z6I8y6O555p1q4",
+    "email": "m.obeid@brackettechnologies.com",
+    "username": "anonymousanonymous",
+    "newUser": false,
+    "__props__": {
+        "id": "t1j792H396D3B6x8J615X5R2N8",
+        "doc": "user88",
+        "counter": 88,
+        "creationDate": 1723636865528,
+        "collection": "user",
+        "chunk": "chunk1",
+        "lastModified": 1723636865573,
+        "dev": false,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": [],
+        "secured": false,
+        "size": 433
+    }
+}

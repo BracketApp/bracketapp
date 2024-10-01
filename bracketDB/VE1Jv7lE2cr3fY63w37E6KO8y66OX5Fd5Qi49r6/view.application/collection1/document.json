@@ -1,0 +1,47 @@
+{
+    "view": "View?id=document",
+    "children": [
+        {
+            "view": "View?id=head"
+        },
+        {
+            "view": "View?id=body",
+            "children": [
+                {
+                    "view": "root"
+                }
+            ]
+        }
+    ],
+    "__props__": {
+        "id": "41Y7V2z3h6g3X6T889j9p2y2U0",
+        "doc": "document",
+        "counter": 2,
+        "creationDate": 1723636899220,
+        "collection": "view.application",
+        "chunk": "chunk1",
+        "lastModified": 1725450121819,
+        "dev": false,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "view",
+                "children"
+            ],
+            "children.0": [
+                "view"
+            ],
+            "children.1": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0": [
+                "view"
+            ]
+        },
+        "secured": false,
+        "size": 494
+    }
+}

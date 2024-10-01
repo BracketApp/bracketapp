@@ -1,0 +1,17 @@
+{
+    "docs": [
+        "coinPackage1",
+        "coinPackage2",
+        "coinPackage3",
+        "coinPackage5",
+        "package1",
+        "package11",
+        "package2",
+        "package3",
+        "package4",
+        "package5"
+    ],
+    "indexes": [],
+    "docsLength": 10,
+    "size": null
+}

@@ -1,0 +1,38 @@
+{
+    "view": "View?id=main;class=flexbox column;style:[height=100vh;width=100vw;gap=3rem];title=Flight Booking Platform;data=@view.schema.page.main",
+    "children": [
+        {
+            "view": "Text?text=_.welcomeStatement;style:[fontSize=4rem]"
+        },
+        {
+            "view": "Text?class=pointer;text=Login;style:[fontSize=2rem;textDecoration=underline];[click?root():login]"
+        }
+    ],
+    "__props__": {
+        "id": "81r7h233R7K4D5g9Q5q8l3G7L6",
+        "doc": "main",
+        "counter": 3,
+        "creationDate": 1723745958376,
+        "collection": "view.page",
+        "chunk": "chunk1",
+        "lastModified": 1725449998702,
+        "dev": false,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "view",
+                "children"
+            ],
+            "children.0": [
+                "view"
+            ],
+            "children.1": [
+                "view"
+            ]
+        },
+        "secured": false,
+        "size": 650
+    }
+}

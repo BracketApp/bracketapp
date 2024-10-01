@@ -1,0 +1,68 @@
+{
+    "__props__": {
+        "id": "v1u7I2Y2j8f665E2s1S5B1v6z1",
+        "doc": "publishDocForm",
+        "counter": 8,
+        "creationDate": 1722865215161,
+        "collection": "formSchema",
+        "chunk": "chunk1",
+        "lastModified": 1722936140310,
+        "dev": false,
+        "actions": {},
+        "comments": [],
+        "collapsed": [
+            {
+                "path": [
+                    "requiredData"
+                ]
+            },
+            {
+                "path": [
+                    "sections",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "sections"
+                ]
+            }
+        ],
+        "arrange": [],
+        "secured": false,
+        "size": 1031
+    },
+    "sections": [
+        {
+            "styles": "display=grid;gridTemplateColumns=1fr 1fr;gapX=1rem;gapY=3rem;padding=1rem",
+            "inputs": [
+                {
+                    "label": "Collection",
+                    "path": "collection",
+                    "required": true,
+                    "defaultValue": "data().collection"
+                },
+                {
+                    "label": "Document",
+                    "path": "doc",
+                    "required": true,
+                    "defaultValue": "data().doc"
+                }
+            ],
+            "gridInputs": true
+        }
+    ],
+    "confirmBtn": {
+        "text": "Publish",
+        "action": "[publish():[[publish:()].flat();publicID=project:().publicID]:[class():[openDoc:()+openCollection:()+'publish'].0.hide();end():[_]]]():[collection=actions;doc=db]",
+        "msg": "We are publishing. Please wait until we finish!"
+    },
+    "form": "publish",
+    "requiredData": [
+        "collection",
+        "doc",
+        "data"
+    ],
+    "styles": "width=80rem;height=fit-content",
+    "title": "Publish Document"
+}

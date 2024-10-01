@@ -1,0 +1,346 @@
+{
+    "view": "View?id=form;class=flex justify-center;style:[display=none;position=absolute;top=0;left=0;right=0;bottom=0;backgroundColor=#00000080;zIndex=1];getSchema()",
+    "__props__": {
+        "id": "U1u7M156k53537o7b8O030M4o3",
+        "doc": "form",
+        "counter": 110,
+        "creationDate": 1716557780043,
+        "collection": "view",
+        "chunk": "chunk1",
+        "lastModified": 1725168667887,
+        "dev": false,
+        "actions": {
+            "closeForm": "prev().transform()='translateY(-100%)';timer():[():form.hide()]:500",
+            "confirmHandler": {
+                "_": "getStarted();[start();[_.confirmBtn.action]()]()::[confirmed()]?!conditionsNotApplied()?note():[text='Enter all required info!';danger]",
+                "getStarted": "():msg.grandChild().txt()=_.confirmBtn.msg;():msg.display();():myloader.loader():show",
+                "confirmed": "():msg.hide();():myloader.loader():hide;[closeForm()]():[view=():form.2ndChild()];[note():[text=_.message;[danger=true?!_.success]];[form().del()?_.success]?_]",
+                "conditionsNotApplied": "_.requiredData._find():[!form().[_]]"
+            },
+            "openForm": "():form.refresh():[data=_]:[loader.hide;_.view.():[display();input().focus();timer():[_.view.1stChild().transform()='translateY(0)']:50]]",
+            "getSchema": {
+                "_": "[[getSchema():[schema=_.schema;collection=[_.collection||formSchema]]:[schema:().[__.schema]=_.schema]]():[collection=actions;doc=db]:[data=schema:().[_.schema]]?!schema:().[_.schema];_.schema?data=schema:().[_.schema]?_.schema]()::[beforeLoadingActions()]",
+                "beforeLoadingActions": "[schema:().[__.schema].beforeLoadingActions]()?schema:().[__.schema].beforeLoadingActions"
+            }
+        },
+        "comments": [
+            {
+                "note": "coin package",
+                "path": [
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "title",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "body",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "note": "cards & inputs",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "inputs",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "cards",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "note": "divider",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "note": "table",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    2
+                ]
+            },
+            {
+                "note": "btns: close, confirm",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    2
+                ]
+            },
+            {
+                "note": "package",
+                "path": [
+                    "children",
+                    1
+                ]
+            }
+        ],
+        "collapsed": [
+            {
+                "path": [
+                    "children",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    2
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    2
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "confirmHandler"
+                ]
+            },
+            {
+                "path": [
+                    "getSchema"
+                ]
+            }
+        ],
+        "arrange": {
+            "": [
+                "view",
+                "children",
+                "closeForm",
+                "confirmHandler",
+                "getSchema",
+                "openForm"
+            ],
+            "children.0": [
+                "view",
+                "children"
+            ],
+            "children.0.children.0": [
+                "view"
+            ],
+            "children.0.children.1": [
+                "view",
+                "children"
+            ],
+            "children.0.children.1.children.0": [
+                "view",
+                "children"
+            ],
+            "children.0.children.1.children.0.children.0": [
+                "view",
+                "children"
+            ],
+            "children.0.children.1.children.0.children.0.children.0": [
+                "view"
+            ],
+            "children.0.children.1.children.0.children.0.children.1": [
+                "view"
+            ],
+            "children.0.children.1.children.0.children.1": [
+                "view"
+            ],
+            "children.0.children.1.children.0.children.2": [
+                "view"
+            ],
+            "children.0.children.2": [
+                "view",
+                "children"
+            ],
+            "children.0.children.2.children.0": [
+                "view",
+                "children"
+            ],
+            "children.0.children.2.children.0.children.0": [
+                "view"
+            ],
+            "children.0.children.2.children.1": [
+                "view",
+                "children"
+            ],
+            "children.0.children.2.children.1.children.0": [
+                "view"
+            ],
+            "children.1": [
+                "view"
+            ],
+            "confirmHandler": [
+                "_",
+                "conditionsNotApplied",
+                "confirmed",
+                "getStarted"
+            ],
+            "getSchema": [
+                "_",
+                "beforeLoadingActions"
+            ]
+        },
+        "secured": false,
+        "size": 5237
+    },
+    "children": [
+        {
+            "view": "View?class=flex column;style:[padding=4rem;transition=.5s;backgroundColor=#fff;width=100rem;height=100%;overflowY=auto;backgroundColor=#fff;transform=translateY(-100%);[_.styles]().flat()];form=_.form;[form()=[[_.data]()?_.data?[]]?_.reset]",
+            "children": [
+                {
+                    "view": "Text?text=_.title;style:[fontSize=1.75rem;padding=2rem 0;textAlign=left]"
+                },
+                {
+                    "view": "View?class=flex column;style:[width=100%;height=fit-content;gap=2rem]",
+                    "children": [
+                        {
+                            "view": "[View]:[data=_.sections]?class=flex column;style:[width=100%]",
+                            "children": [
+                                {
+                                    "view": "View?style=[[_.styles]()]",
+                                    "children": [
+                                        {
+                                            "view": "[customInput]:[data=_.inputs?_.gridInputs;_.inputs]"
+                                        },
+                                        {
+                                            "view": "[card]:[data=[_.cards]()?_.gridCards]"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "view": "View?style:[minHeight=1px;backgroundColor=#ddd;width=100%]?_.divider"
+                                },
+                                {
+                                    "view": "Table??_.table"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "view": "View?class=flex;style:[justifyContent=flex-end;gap=1rem;marginTop=auto;marginLeft=auto]",
+                    "children": [
+                        {
+                            "view": "View?class=flexbox pointer;style:[padding=.75rem;width=15rem;borderRadius=.5rem;opacity=.8;transition=.2s;border=1px solid #ddd];hover.style.opacity=1;[click?2ndParent().next().click()]",
+                            "children": [
+                                {
+                                    "view": "Text?text=[_.closeBtn.text||Close];style:[fontSize=1.5rem]"
+                                }
+                            ]
+                        },
+                        {
+                            "view": "View?class=flexbox pointer;style:[padding=1rem;width=15rem;backgroundColor=publicData:().public.btnBackgroundColor;borderRadius=.5rem;opacity=.8;transition=.2s;marginTop=auto;marginLeft=auto];hover.style.opacity=1;[click?confirmHandler()]?_.confirmBtn",
+                            "children": [
+                                {
+                                    "view": "Text?text=[_.confirmBtn.text||Create];style:[fontSize=1.5rem;color=#fff]"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "view": "Icon?class=pointer;name=bi-x-lg;style:[position=absolute;top=2.5rem;right=2.5rem;fontSize=3rem;opacity=.8;color=#fff];hover.style.opacity=1;[click?closeForm()]"
+        }
+    ]
+}

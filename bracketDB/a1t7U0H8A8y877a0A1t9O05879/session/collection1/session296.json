@@ -1,0 +1,47 @@
+{
+    "publicID": "Ku1Xc73K2WA5Ob41T4YT7Hn4BE1ae0yz7uj5ca4",
+    "projectID": "31y732a5O4O4n7M4K1v0q7v7V6",
+    "projectDoc": "project185",
+    "subdomain": "test1",
+    "host": "192.168.0.104:91",
+    "db": "CU1qS7eS2Ke5LT4TT4OE79I4Au1U80cH7oL7He7",
+    "storage": "ez1iv7mv2Lm5XS4ut4UT7d64Eb1gP08Y76u7Xs7",
+    "devDB": "fi1xZ70R2TQ5PS4Jk47o77e4tk1Wa0Vf77p7IA7",
+    "dev": false,
+    "expiryDate": 1725534005391,
+    "encryptionKey": "1wsuf",
+    "userID": "",
+    "username": "",
+    "__props__": {
+        "id": "F1q7V2P524N4w7y650x5T31946",
+        "doc": "session296",
+        "counter": 296,
+        "creationDate": 1725447605396,
+        "collection": "session",
+        "chunk": "chunk1",
+        "lastModified": 1725448087037,
+        "dev": false,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "db",
+                "dev",
+                "devDB",
+                "encryptionKey",
+                "expiryDate",
+                "host",
+                "projectDoc",
+                "projectID",
+                "publicID",
+                "storage",
+                "subdomain",
+                "userID",
+                "username"
+            ]
+        },
+        "secured": false,
+        "size": 804
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "accountID": "k1A7R0N8X8Y8l7c030q8S8W7O3",
+    "approved": true,
+    "releaseDate": 1713533620115,
+    "expiryDate": 1797692580000,
+    "status": "Confirmed",
+    "name": "Coins",
+    "__props__": {
+        "id": "V1p7r1A7q4A2U04469R7O4m7w9",
+        "doc": "plugin6",
+        "counter": 6,
+        "creationDate": 1717420497479,
+        "active": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": [],
+        "chunk": "chunk1",
+        "secured": false,
+        "collection": "plugin"
+    }
+}

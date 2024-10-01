@@ -1,0 +1,29 @@
+{
+    "__props__": {
+        "id": "V1q7q266H7g7K6F397t8b4t2l2",
+        "doc": "airport2",
+        "counter": 2,
+        "creationDate": 1726776378422,
+        "collection": "flight.airport",
+        "chunk": "chunk1",
+        "lastModified": 1726776481356,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "name",
+                "country",
+                "city",
+                "iataCode"
+            ]
+        },
+        "secured": false,
+        "size": 401
+    },
+    "name": "Rafic Hariri International Airport",
+    "country": "country1",
+    "city": "city1",
+    "iataCode": "BEY"
+}

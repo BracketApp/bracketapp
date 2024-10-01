@@ -1,0 +1,359 @@
+{
+    "view": "View?id=gallery;class=flex column;style:[maxHeight=100%;transition=.2s;gap=2rem;width=100%;position=absolute;left=0;right=0;overflowY=auto;padding=2rem;display=none]",
+    "children": [
+        {
+            "view": "View?style:[display=flex;gap=2rem;width=100%]",
+            "children": [
+                {
+                    "view": "View?style.width=80%",
+                    "children": [
+                        {
+                            "view": "View?style:[display=grid;gridTemplateColumns=1fr 1fr 1fr 1fr;gap=2rem]?files:().len()>0",
+                            "children": [
+                                {
+                                    "view": "[View]:[data=files:().slice():0:4]?class=flexbox column;style:[width=100%;padding=.5rem;borderRadius=.5rem;height=15rem;overflow=hidden;border=1px solid #eee;position=relative;cursor=pointer];[mouseenter?1stChild().style().opacity=1];[mouseleave?1stChild().style().opacity=0];[click?fileData:()=_.clone();():fileForm.refresh()::[_.view.style():[pointerEvents=auto;opacity=1]]]",
+                                    "children": [
+                                        {
+                                            "view": "View?class=flexbox;style:[position=absolute;transition=.3s;height=100%;width=100%;backgroundColor=#00000033;zIndex=1;opacity=0];[mouseenter?1stChild().style().transform='scaleX(0.925) scaleY(0.875)'];[mouseleave?1stChild().style().transform=scaleX(1)]",
+                                            "children": [
+                                                {
+                                                    "view": "View?class=flexbox;style:[height=100%;width=100%;borderRadius=.5rem;border=2px solid #fff;transition=.3s;position=absolute;top=0;left=0]"
+                                                },
+                                                {
+                                                    "view": "Icon?name=bi-zoom-in;style:[borderRadius=.25rem;fontSize=2.5rem;color=#fff]"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "view": "View?class=flexbox;style:[height='calc(100% - 2rem)';width=100%;zIndex=0]",
+                                            "children": [
+                                                {
+                                                    "view": "Image?src=_.url;style:[maxHeight=100%;maxWidth=100%;zIndex=0]?_.type.inc():image"
+                                                },
+                                                {
+                                                    "view": "Icon?class=flexbox;name=bi-file-earmark;style:[maxHeight=100%;maxWidth=100%;zIndex=0;fontSize=4rem]?!_.type.inc():image"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "view": "Text?text=_.name;style:[width=100%;textAlign=center;textOverflow=ellipsis;overflow=hidden;whiteSpace=nowrap;fontSize=1.3rem;height=2rem]"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "view": "View?class=flexbox column;style:[border=1px dashed #ddd;width=calc(20% - 2rem);borderRadius=.5rem;height=15rem;backgroundColor=#f8f8f8;transition=.3s;position=relative;overflow=hidden;gap=1rem];hover.style.backgroundColor=#f0f0f0",
+                    "children": [
+                        {
+                            "view": "Icon?name=bi-cloud-arrow-up;style:[color=#999;fontSize=2.5rem;pointerEvents=none]"
+                        },
+                        {
+                            "view": "Text?text=Upload Files Here!;style:[fontSize=1.4rem;color=#888;pointerEvents=none]"
+                        },
+                        {
+                            "view": "Input?input.type=file;style:[cursor=pointer;position=absolute;top=-100px;left=-100px;height=200%;width=200%;opacity=0];[change?loader.show;newFile:()=true;read()::[fileData:()=_.data;():fileForm.refresh()::[_.view.style():[pointerEvents=auto;opacity=1];().txt()='';loader.hide]]]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "view": "View?style:[display=grid;gridTemplateColumns=1fr 1fr 1fr 1fr 1fr;gap=2rem;width=100%]?files:().len()>4",
+            "children": [
+                {
+                    "view": "[View]:[data=files:().slice():4]?class=flexbox column;style:[width=100%;padding=.5rem;borderRadius=.5rem;height=15rem;overflow=hidden;border=1px solid #eee;position=relative;cursor=pointer];[mouseenter?1stChild().style().opacity=1];[mouseleave?1stChild().style().opacity=0];[click?fileData:()=_.clone();():fileForm.refresh()::[_.view.style():[pointerEvents=auto;opacity=1]]]",
+                    "children": [
+                        {
+                            "view": "View?class=flexbox;style:[position=absolute;transition=.3s;height=100%;width=100%;backgroundColor=#00000033;zIndex=1;opacity=0];[mouseenter?1stChild().style().transform='scaleX(0.925) scaleY(0.875)'];[mouseleave?1stChild().style().transform=scaleX(1)]",
+                            "children": [
+                                {
+                                    "view": "View?class=flexbox;style:[height=100%;width=100%;borderRadius=.5rem;border=2px solid #fff;transition=.3s;position=absolute;top=0;left=0]"
+                                },
+                                {
+                                    "view": "Icon?name=bi-zoom-in;style:[borderRadius=.25rem;fontSize=2.5rem;color=#fff]"
+                                }
+                            ]
+                        },
+                        {
+                            "view": "View?class=flexbox;style:[height='calc(100% - 2rem)';width=100%;zIndex=0]",
+                            "children": [
+                                {
+                                    "view": "Image?src=_.url;style:[maxHeight=100%;maxWidth=100%;zIndex=0]?_.type.inc():image"
+                                },
+                                {
+                                    "view": "Icon?class=flexbox;name=bi-file-earmark;style:[maxHeight=100%;maxWidth=100%;zIndex=0;fontSize=4rem]?!_.type.inc():image"
+                                }
+                            ]
+                        },
+                        {
+                            "view": "Text?text=_.name;style:[width=100%;textAlign=center;textOverflow=ellipsis;overflow=hidden;whiteSpace=nowrap;fontSize=1.3rem;height=2rem]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "__props__": {
+        "id": "21O7N2H12908d8j185y9j2j0V9",
+        "doc": "gallery",
+        "counter": 149,
+        "creationDate": 1721988159209,
+        "collection": "view",
+        "chunk": "chunk1",
+        "lastModified": 1722003129990,
+        "dev": false,
+        "actions": {},
+        "comments": [
+            {
+                "note": "input",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "note": "name",
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    2
+                ]
+            },
+            {
+                "note": "image",
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "note": "zoom",
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "zoom",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "image",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "note": "name",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    2
+                ]
+            },
+            {
+                "note": "1st files",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "rest files",
+                "path": [
+                    "children",
+                    1
+                ]
+            },
+            {
+                "note": "1st row",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    0
+                ]
+            }
+        ],
+        "collapsed": [
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    4
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    4
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    4
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    3
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    2
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    2
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    0
+                ]
+            }
+        ],
+        "arrange": [],
+        "secured": false,
+        "size": 5624
+    }
+}

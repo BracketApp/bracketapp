@@ -1,0 +1,125 @@
+{
+    "__props__": {
+        "id": "81N7l1K7s570w927I3f5K6M1f2",
+        "doc": "db",
+        "counter": 29,
+        "creationDate": 1717509735612,
+        "collection": "actions",
+        "chunk": "chunk1",
+        "lastModified": 1725174475720,
+        "dev": false,
+        "actions": {
+            "getData": {
+                "_": "[getProject()?_.publicID]()::[getData()]?_.publicID?send():[success=false;msg=Missing data!]",
+                "getData": "search():[db=[project:().storage?_.storage?project:().db];devDB=project:().devDB;[_].flat();unsecure=true]:[send():[success=_.success;message=_.message;data=_.data]]"
+            },
+            "saveData": {
+                "_": "[getProject()]()::[saveDoc()]?_.collection;_.publicID?send():[success=false;msg=Missing data!]",
+                "saveDoc": "save():[db=[project:().storage?_.storage?project:().db];devDB=project:().devDB;[_].flat()]:[send():[data=_.data;msg=Data saved successfully!]]"
+            },
+            "getProject": {
+                "_": "[getProject():[[_].flat();end=true]:[checkPermission()]]():[collection=actions;doc=main]?_.publicID?send():[success=false;msg=Missing data!]",
+                "checkPermission": "send():[success=false;msg=You do not have the permission to edit data!]?!manifest:().session.permissions.projects.find():[projectID=project:().id()].find():[editData;accessConsole]"
+            },
+            "publish": {
+                "_": "[getProject()?_.publicID]()::[publishData()]?_.publicID?send():[success=false;msg=Missing data!]",
+                "publishData": "save():[db=project:().db;devDB=project:().devDB;publish=true;[_].flat()]:[send():[msg=Data published successfully!]]"
+            },
+            "checkSubscibedToConsole": "[getSubscription():[publicID=_.publicID;pluginID='Q1p78107R4j1n2Z9a2E1K1r912';expiryDate=timestamp()]]():[doc=main]",
+            "eraseData": {
+                "_": "[getProject():[[_].flat();end=true]]():[collection=actions;doc=main]:[eraseDoc()]?_.collection;_.publicID?send():[success=false;msg=Missing data!]",
+                "eraseDoc": "erase():[db=[project:().storage?_.storage?project:().db];devDB=project:().devDB;[_].flat()]:[send():[data=_.data;msg=Data erased successfully!]]"
+            },
+            "getSchema": "start();search():[collection=_.collection;doc=_.schema]:[send():[success=_.success;message=_.message;schema=_.data]?!stack().server=renderer?end():[success=_.success;message=_.message;schema=_.data]]",
+            "getProjectActivity": {
+                "_": "[getProject():[[_].flat();end=true]]():[collection=actions;doc=main]:[getProjectActivity()]?_.publicID?send():[success=false;msg=Missing data!]",
+                "getProjectActivity": "search():[collection=projectActivity;find:[projectID=project:().id();date.gte=_.monthStart;date.lte=_.monthEnd]]:[send():[success=_.success;message=_.message;projectActivity=_.data]]"
+            },
+            "getUserActivity": {
+                "_": "[[getUser():[email=_.email]]():[doc=main]?_.email]()::[getUserActivity()]?_.email?send():[success=false;msg=Missing data!]",
+                "getUserActivity": "search():[collection=userActivity;find:[userID=user:().id();date.gte=_.monthStart;date.lte=_.monthEnd]]:[send():[success=_.success;message=_.message;userActivity=_.data]]"
+            }
+        },
+        "comments": [],
+        "collapsed": [
+            {
+                "path": [
+                    "eraseData"
+                ]
+            },
+            {
+                "path": [
+                    "getData"
+                ]
+            },
+            {
+                "path": [
+                    "getProject"
+                ]
+            },
+            {
+                "path": [
+                    "getProjectActivity"
+                ]
+            },
+            {
+                "path": [
+                    "getUserActivity"
+                ]
+            },
+            {
+                "path": [
+                    "publish"
+                ]
+            },
+            {
+                "path": [
+                    "saveData"
+                ]
+            }
+        ],
+        "arrange": {
+            "": [
+                "checkSubscibedToConsole",
+                "eraseData",
+                "getData",
+                "getProject",
+                "getProjectActivity",
+                "getSchema",
+                "getUserActivity",
+                "publish",
+                "saveData"
+            ],
+            "eraseData": [
+                "_",
+                "eraseDoc"
+            ],
+            "getData": [
+                "_",
+                "getData"
+            ],
+            "getProject": [
+                "_",
+                "checkPermission"
+            ],
+            "getProjectActivity": [
+                "_",
+                "getProjectActivity"
+            ],
+            "getUserActivity": [
+                "_",
+                "getUserActivity"
+            ],
+            "publish": [
+                "_",
+                "publishData"
+            ],
+            "saveData": [
+                "_",
+                "saveDoc"
+            ]
+        },
+        "secured": true,
+        "size": 3370
+    }
+}

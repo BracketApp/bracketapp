@@ -1,0 +1,250 @@
+{
+    "view": "View?id=consoleSidebar;class=flex;style.transition=.2s;style.height=calc(100vh - 4rem);style.position=relative;sidebar-open-manager:()=page-view-sidebar;mouseenter:[lastChild().style().opacity=1];mouseleave:[lastChild().style().opacity=0]",
+    "children": [
+        {
+            "view": "View?id=sidebar-items;classw=flex column;style.width=4.5rem;style.backgroundColor=#f9f9f9;openedSidebarManager:()=false",
+            "children": [
+                {
+                    "view": "View?tooltip.text=database;open=if():[openedSidebarManager:()=().id]:true:false;class=flexbox pointer;style:[minHeight=5rem;width=100%;borderLeft=2px solid #ffffff00;borderRight=if():open:'2px solid #FF0000':'2px solid #ffffff00'];click:[openDataManager()]",
+                    "children": [
+                        {
+                            "view": "Icon?class=flexbox;name=data_table;google.symbol;style.color=if():[parent().open]:#FF0000:#888;style.fontSize=2.5rem"
+                        }
+                    ]
+                },
+                {
+                    "view": "View?id=gallery-icon;tooltip.text=storage;open=if():[openedSidebarManager:()=().id]:true:false;class=flexbox pointer;style:[minHeight=5rem;width=100%;borderLeft=2px solid #ffffff00;borderRight=if():[.open]:'2px solid #FF0000':'2px solid #ffffff00'];click:[openGallery()]",
+                    "children": [
+                        {
+                            "view": "Icon?class=flexbox;name=gallery_thumbnail;google.symbol;style.color=if():[parent().open]:#FF0000:#888;style.fontSize=2.5rem"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "view": "View?id=database;class=flex column;style:[transition=.2s;backgroundColor=#f0f0f0;overflow=auto;padding=.5rem 0;width=0rem]",
+            "children": [
+                {
+                    "view": "View?class=flex pointer align-center;hover.style.backgroundColor=#e9e9e9;style:[minHeight=3rem;width=100%;position=relative];[mouseenter?lastChild().display()?!next().hidden()];[mouseleave?lastChild().hide()];[click?toggleCollectionsFolder()]",
+                    "children": [
+                        {
+                            "view": "Icon?name=bi-chevron-right;style:[fontSize=1.1rem;width=2rem;transition=.2s;transform=rotate(0deg)];[loaded?timer():[rotate()=90]:0?collections:()]"
+                        },
+                        {
+                            "view": "Text?class=dots;text=database;style:[fontSize=1.3rem;flex=1]"
+                        },
+                        {
+                            "view": "Icon?tooltip.text=create new collection;name=bi-plus;style:[backgroundColor=inherit;display=none;color=#000;fontSize=1.9rem;position=absolute;right=.5rem;height=3rem;width=2rem;borderRadius=.25rem];hover.style.color=blue;[click?createNewCollection()]"
+                        }
+                    ]
+                },
+                {
+                    "view": "View?class=flex column;style:[width='calc(100% - 1.2rem)';marginLeft=1rem;borderLeft=1px solid #ddd]",
+                    "children": [
+                        {
+                            "view": "collections?collections()"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "view": "View?id=sidebarWidthController;style:[minHeight=100%;width=7px;backgroundColor=#34aeeb;cursor=ew-resize;position=absolute;right=-3px;top=0;zIndex=100;opacity=0;transition=.2s];mousedown:[widthVerticalBarMousedown()];():body.mousemove:[mousemoveVerticalBar()];():body.mouseup:[mousedownVerticalBar()]"
+        }
+    ],
+    "__props__": {
+        "id": "s1x7a115h5f0B9P6V0Y908t4V0",
+        "doc": "consoleSidebar",
+        "counter": 49,
+        "creationDate": 1715509609840,
+        "collection": "view",
+        "chunk": "chunk1",
+        "lastModified": 1724186739251,
+        "dev": false,
+        "actions": {
+            "mousedownVerticalBar": "mousedown=false;():document.style().cursor=default;():[sidebar-open-manager:()].style().transition=.2s;():dataViewer.style().transition=.2s;():mainActionsContainer.style().transition=.2s",
+            "openDataManager": {
+                "_": "if():[!open]:[open=true;closeAllMangers();openCurrentManager();closeGallery();setSidebarWidth();displayDataViewer()]:[closeDataManager()]",
+                "closeAllMangers": "():gallery.style().display=none;parent().children()._():[if():[_.id!=().id]:[_.open=false]];parent().children().():[style().borderRight=2px solid #ffffff00;1stChild().style().color=#888]",
+                "openCurrentManager": "openedSidebarManager:()=().id;style():[borderRight=2px solid #FF0000];1stChild().style().color=#FF0000",
+                "closeGallery": "2ndParent().children().slice():1:[-1].():[style().width=0px]",
+                "displayDataViewer": "():mainDataViewer.display();class():dataViewer.find():[openDoc=openDoc:();openCollection=openCollection:()].display();class():actions.find():[openDoc=openDoc:();openCollection=openCollection:()].display();if():[():dataViewerBar.children().len()>0]:[():dataViewerBar.display()]",
+                "closeDataManager": "().open=false;():database.style().width=0px;():dataViewer.style().width='calc(100vw - 4.5rem)';():mainActionsContainer.style().width='calc(100vw - 4.5rem)'",
+                "setSidebarWidth": "if():[():sidebarWidthController.width>5]:[():database.width()=():sidebarWidthController.width+():sidebarWidthController.diff+rem;():dataViewer.width()='calc(100vw - '+[():sidebarWidthController.width+():sidebarWidthController.diff+4.5]+'rem)';():mainActionsContainer.style().width=():dataViewer.style().width]:[():database.style().width=19rem;():dataViewer.style().width='calc(100vw - 23.5rem)';():mainActionsContainer.style().width='calc(100vw - 23.5rem)']"
+            },
+            "openGallery": {
+                "_": "toggleOpen();uncheckAll();checkGallery();hideCode();getFilesDisplayGallery()",
+                "hideCode": "():dataViewer.children().():[style().display=none];1stChild().style().color=#FF0000;():mainDataViewer.style().display=none;():dataViewerBar.style().display=none",
+                "toggleOpen": "parent().children()._():[if():[_.id!=.id]:[_.open=false]];open=.open.opp()",
+                "uncheckAll": "parent().children().():[style().borderRight=2px solid #ffffff00;1stChild().style().color=#888];2ndParent().children().slice():1:[-1].():[style().width=0px]",
+                "checkGallery": "style().borderRight=2px solid #FF0000;style().color=#FF0000;openedSidebarManager:()=().id",
+                "getFilesDisplayGallery": "[loader.show;getData():[storage;collection=files;publicID=project:().publicID]:[files:()=_.data.values().sort():[path=__props__.creationDate];():gallery.():[refresh()::[_.view.style().display=grid]];loader.hide]]():[collection=actions;doc=db]"
+            },
+            "widthVerticalBarMousedown": "mousedown=true;():document.style().cursor=ew-resize;():[sidebar-open-manager:()].style().transition=null;():dataViewer.style().transition=null;():mainActionsContainer.style().transition=null;width=():[sidebar-open-manager:()].style().width.split():rem.0.num();screenX=mousePosX:()",
+            "createCollection": "if():[collections:().inc():[txt()]]:[note():[text='Collection name already exists!';danger]]:[data:().editor.[txt()]=[];note():[text='Collection created successfully!'];():database.refresh()]",
+            "mousemoveVerticalBar": "diff=[[mousePosX:()]-[().screenX]].divide():10;():[sidebar-open-manager:()].style().width=[().width+().diff]+rem;():dataViewer.style().width='calc(100vw - '+[().width+().diff+4.5]+'rem)';():mainActionsContainer.style().width='calc(100vw - '+[().width+().diff+4.5]+'rem)'?mousedown",
+            "toggleCollectionsFolder": {
+                "_": "[openFolder();lastChild().hide()?next().1stChild().hidden()?closeFolder()]?clicked()!=lastChild()",
+                "openFolder": "getCollections()::[():database.refresh()::[[setSidebarWidth()]():[path=openDataManager;doc=consoleSidebar];2ndChild().1stChild().display();grandChild().rotate()=90;1stChild().lastChild().display()]]",
+                "closeFolder": "next().1stChild().hide();1stChild().rotate()=0;lastChild().hide()",
+                "getCollections": "[getData():[publicID=project:().publicID]:[collections:()=_.data]]():[collection=actions;doc=db]"
+            },
+            "createNewCollection": {
+                "_": "parent().next().1stChild().insert():[view=parent().next().1stChild();viewPath=:children:0;data='';index=0]:[_.view.1stChild().2ndChild().():[txt()='';editable();style():[textOverflow='';overflow=auto];focus();cursor()=text]]"
+            },
+            "collections": "data=collections:()._():[_.split():'.'.0].removeDuplicates().sort():[ascending]"
+        },
+        "comments": [
+            {
+                "note": "sidebar",
+                "path": [
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "database",
+                "path": [
+                    "children",
+                    1
+                ]
+            },
+            {
+                "note": "sidebar slider",
+                "path": [
+                    "children",
+                    2
+                ]
+            }
+        ],
+        "collapsed": [
+            {
+                "path": [
+                    "children",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    2
+                ]
+            },
+            {
+                "path": [
+                    "createNewCollection"
+                ]
+            },
+            {
+                "path": [
+                    "openDataManager"
+                ]
+            },
+            {
+                "path": [
+                    "openGallery"
+                ]
+            },
+            {
+                "path": [
+                    "toggleCollectionsFolder"
+                ]
+            }
+        ],
+        "arrange": {
+            "": [
+                "view",
+                "children",
+                "collections",
+                "createCollection",
+                "createNewCollection",
+                "mousedownVerticalBar",
+                "mousemoveVerticalBar",
+                "openDataManager",
+                "openGallery",
+                "toggleCollectionsFolder",
+                "widthVerticalBarMousedown"
+            ],
+            "children.0": [
+                "view",
+                "children"
+            ],
+            "children.0.children.0": [
+                "view",
+                "children"
+            ],
+            "children.0.children.0.children.0": [
+                "view"
+            ],
+            "children.0.children.1": [
+                "view",
+                "children"
+            ],
+            "children.0.children.1.children.0": [
+                "view"
+            ],
+            "children.1": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0.children.0": [
+                "view"
+            ],
+            "children.1.children.0.children.1": [
+                "view"
+            ],
+            "children.1.children.0.children.2": [
+                "view"
+            ],
+            "children.1.children.1": [
+                "view",
+                "children"
+            ],
+            "children.1.children.1.children.0": [
+                "view"
+            ],
+            "children.2": [
+                "view"
+            ],
+            "createNewCollection": [
+                "_"
+            ],
+            "openDataManager": [
+                "_",
+                "closeAllMangers",
+                "closeDataManager",
+                "closeGallery",
+                "displayDataViewer",
+                "openCurrentManager",
+                "setSidebarWidth"
+            ],
+            "openGallery": [
+                "_",
+                "checkGallery",
+                "getFilesDisplayGallery",
+                "hideCode",
+                "toggleOpen",
+                "uncheckAll"
+            ],
+            "toggleCollectionsFolder": [
+                "_",
+                "closeFolder",
+                "getCollections",
+                "openFolder"
+            ]
+        },
+        "secured": false,
+        "size": 8649
+    }
+}

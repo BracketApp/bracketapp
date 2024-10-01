@@ -1,0 +1,42 @@
+{
+    "creationDate": 1712567715452,
+    "collection": "user",
+    "chunkMaxSizeMB": 20,
+    "lastChunk": 1,
+    "docsLength": 8,
+    "counter": 90,
+    "reads": 57309,
+    "writes": 189,
+    "deletes": 0,
+    "size": 3345,
+    "payloadIn": 72702,
+    "payloadOut": 18933772,
+    "dirTree": [],
+    "indexes": [
+        {
+            "find": [
+                "__props__.id"
+            ],
+            "doc": "index1",
+            "lastRead": 1727787319346,
+            "expiryDate": 1730379319346
+        },
+        {
+            "find": [
+                "email"
+            ],
+            "doc": "index2",
+            "lastRead": 1727786850032,
+            "expiryDate": 1730378850032
+        },
+        {
+            "find": [
+                "username"
+            ],
+            "doc": "index3",
+            "lastRead": 1725470458345,
+            "expiryDate": 1728062458345
+        }
+    ],
+    "lastIndex": 3
+}

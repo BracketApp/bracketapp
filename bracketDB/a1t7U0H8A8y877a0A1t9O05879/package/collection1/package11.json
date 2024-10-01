@@ -1,0 +1,21 @@
+{
+    "__props__": {
+        "id": "11R7R1C736x7O9f5d0K1m7C0h8",
+        "doc": "package11",
+        "counter": 11,
+        "creationDate": 1717679501708,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": [],
+        "chunk": "chunk1",
+        "secured": false,
+        "collection": "package"
+    },
+    "pluginID": "Q1p78107R4j1n2Z9a2E1K1r912",
+    "name": "Senior",
+    "description": "Annual subscription",
+    "duration": 31536000000,
+    "savings": 0,
+    "coins": 100
+}

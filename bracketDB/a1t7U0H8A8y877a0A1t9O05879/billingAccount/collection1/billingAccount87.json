@@ -1,0 +1,28 @@
+{
+    "name": "My Billing Account",
+    "accountID": "P1l7N295t4t7O0Y4E5i843w4l0",
+    "accountType": "business",
+    "country": "Lebanon",
+    "creditLimit": 0,
+    "currency": "COIN",
+    "languagePreference": "English",
+    "organizationAddress": "dt",
+    "organizationName": "BARAKAT TRAVEL ",
+    "paymentTerms": "Due on receipt",
+    "__props__": {
+        "id": "E1D712v534a7r0v4p5S8x4r3k8",
+        "doc": "billingAccount87",
+        "counter": 87,
+        "creationDate": 1725470458438,
+        "collection": "billingAccount",
+        "chunk": "chunk1",
+        "lastModified": 1725470458438,
+        "dev": false,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": [],
+        "secured": false,
+        "size": 550
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "__props__": {
+        "id": "21S7A1V3N6l114C395f2t1z3Z8",
+        "doc": "actions",
+        "counter": 1,
+        "creationDate": 1713614352138,
+        "collection": "TBP",
+        "chunk": "chunk1",
+        "actions": {
+            "getTBPpageData": {
+                "_": "[getCurrencies();getCountries()]()::[send():[countries=countries:();currencies=currencies:()]]",
+                "getCurrencies": "search():[db='01I7C0K8W8X8h720t1U9P123p6';collection=sheet;find.name=Countries]:[countries:()=_.data.value().data.():country]",
+                "getCountries": "search():[db='01I7C0K8W8X8h720t1U9P123p6';collection=sheet;find.name=Currencies]:[currencies:()=_.data.value().data.():code]"
+            }
+        },
+        "comments": [],
+        "collapsed": [],
+        "arrange": [],
+        "secured": true,
+        "size": 617
+    }
+}

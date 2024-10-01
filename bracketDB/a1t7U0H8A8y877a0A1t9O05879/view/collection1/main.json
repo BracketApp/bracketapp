@@ -1,0 +1,19 @@
+{
+    "view": "View?id=main;root():tap",
+    "__props__": {
+        "id": "Z1k7y1V3F680p5o6S9R7I2y1v7",
+        "doc": "main",
+        "counter": 17,
+        "creationDate": 1713605697217,
+        "collection": "view",
+        "chunk": "chunk1",
+        "lastModified": 1721746618562,
+        "dev": false,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": [],
+        "secured": false,
+        "size": 286
+    }
+}

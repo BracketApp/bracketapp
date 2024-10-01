@@ -1,0 +1,23 @@
+{
+    "__props__": {
+        "id": "f1L7C176D773b5V5e3M5e9j8b8",
+        "doc": "package3",
+        "counter": 3,
+        "creationDate": 1716735535988,
+        "active": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": [],
+        "chunk": "chunk1",
+        "secured": false,
+        "collection": "package"
+    },
+    "pluginID": "r1c7d176U1B9m6C7i9F8T973T2",
+    "name": "Premium",
+    "description": "Annual subscription",
+    "duration": 31104000000,
+    "accessabilityID": "I14741U6b1B9B7U6S0q6L408x4",
+    "savings": 100,
+    "coins": 500
+}

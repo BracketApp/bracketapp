@@ -1,0 +1,16 @@
+{
+    "creationDate": 1724586736294,
+    "collection": "flight.pricing",
+    "maxSize": 1000,
+    "lastChunk": 1,
+    "docsLength": 0,
+    "counter": 0,
+    "reads": 0,
+    "writes": 2,
+    "deletes": 0,
+    "size": 0,
+    "payloadIn": 0,
+    "payloadOut": 8,
+    "indexes": [],
+    "lastIndex": 0
+}

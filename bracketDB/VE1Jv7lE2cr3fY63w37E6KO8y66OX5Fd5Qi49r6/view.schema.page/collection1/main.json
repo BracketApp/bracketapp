@@ -1,0 +1,23 @@
+{
+    "welcomeStatement": "Welcome to Flight Booking Platform!",
+    "__props__": {
+        "id": "W1b7Z2w4y19720q2K1n5K9N7J6",
+        "doc": "main",
+        "counter": 1,
+        "creationDate": 1724170215976,
+        "collection": "view.schema.page",
+        "chunk": "chunk1",
+        "lastModified": 1725449956313,
+        "dev": false,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "welcomeStatement"
+            ]
+        },
+        "secured": false,
+        "size": 344
+    }
+}

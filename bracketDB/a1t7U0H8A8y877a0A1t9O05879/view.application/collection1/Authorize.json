@@ -1,0 +1,27 @@
+{
+    "view": "Action?authUser()?manifest:().server!=database;#[_.collection!=view||manifest:().action!='search()'?manifest:().server=database?true]",
+    "__props__": {
+        "id": "H1r7g1U419d4b2x4U7S6W1s212",
+        "doc": "Authorize",
+        "counter": 42,
+        "creationDate": 1714942476122,
+        "collection": "view",
+        "chunk": "chunk1",
+        "actions": {
+            "authUser": {
+                "_": "root():login?manifest:().renderer;manifest:().page=console||=projects||=billing;!manifest:().session.userID?authorize()?manifest:().session.userID?send():[success=false;msg=You are not authorized!]?manifest:().server=database;!manifest:().session.userID",
+                "authorize": "search():[collection=user;findOne:['__props__.id'=manifest:().session.userID]]:[user:()=_.data;user:()=[firstName=user:().firstName;lastName=user:().lastName;email=user:().email];[root():projects?stack().server;manifest:().page=login]?_.data.value()?root():login?manifest:().server=renderer?send():[succes=false;msg=User is not recognized!]]"
+            },
+            "authProject": {
+                "resHandler": "project:()=_.data.value();projectName:()=project:().name;projectSubdomain:()=project:().subdomain;projectDB:()=project:().db;username:()=manifest:().session.username?projectAuthenticated()?root():projects?manifest:().server=renderer?send():[success=false;msg=Project does not exist!]",
+                "_": "search():[collection=project;find.publicID=manifest:().path.2]:[resHandler()]?manifest:().page=console;manifest:().path.2?root():login?manifest:().server=renderer;manifest:().page=console;!manifest:().path.2",
+                "projectAuthenticated": "_.data.value();manifest:().session.permissions.projects.find():[projectID=_.data.value().id()]"
+            }
+        },
+        "comments": [],
+        "collapsed": [],
+        "arrange": [],
+        "secured": false,
+        "size": 1635
+    }
+}

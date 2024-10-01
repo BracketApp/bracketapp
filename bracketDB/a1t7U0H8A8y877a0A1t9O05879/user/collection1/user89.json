@@ -1,0 +1,24 @@
+{
+    "firstName": "test",
+    "lastName": "test",
+    "accountID": "51N7K225E4V4Q7I4C1J0Z6U703",
+    "email": "test@test.com",
+    "username": "testtest",
+    "newUser": false,
+    "__props__": {
+        "id": "B147r2O5U484v7P4T1x0m7y0d8",
+        "doc": "user89",
+        "counter": 89,
+        "creationDate": 1725447410708,
+        "collection": "user",
+        "chunk": "chunk1",
+        "lastModified": 1725447410862,
+        "dev": false,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": [],
+        "secured": false,
+        "size": 395
+    }
+}

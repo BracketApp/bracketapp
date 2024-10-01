@@ -1,0 +1,381 @@
+{
+    "__props__": {
+        "id": "q1D7c2M4S1X7104109f9m1G0V0",
+        "doc": "login",
+        "counter": 2,
+        "creationDate": 1724170199100,
+        "collection": "view.schema.page",
+        "chunk": "chunk1",
+        "lastModified": 1725449961454,
+        "dev": false,
+        "actions": {},
+        "comments": [
+            {
+                "note": "logo",
+                "path": [
+                    "views",
+                    0
+                ]
+            },
+            {
+                "note": "header",
+                "path": [
+                    "views",
+                    1
+                ]
+            },
+            {
+                "note": "inputs",
+                "path": [
+                    "views",
+                    2
+                ]
+            },
+            {
+                "note": "username",
+                "path": [
+                    "views",
+                    2,
+                    "views",
+                    0
+                ]
+            },
+            {
+                "note": "password",
+                "path": [
+                    "views",
+                    2,
+                    "views",
+                    1
+                ]
+            },
+            {
+                "note": "login",
+                "path": [
+                    "views",
+                    3
+                ]
+            },
+            {
+                "note": "footer",
+                "path": [
+                    "views",
+                    4
+                ]
+            },
+            {
+                "note": "get your own",
+                "path": [
+                    "views",
+                    4,
+                    "views",
+                    0
+                ]
+            },
+            {
+                "note": "signup",
+                "path": [
+                    "views",
+                    4,
+                    "views",
+                    1
+                ]
+            },
+            {
+                "note": "forget password",
+                "path": [
+                    "views",
+                    4,
+                    "views",
+                    2
+                ]
+            }
+        ],
+        "collapsed": [
+            {
+                "path": [
+                    "views",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "views",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "views",
+                    2
+                ]
+            },
+            {
+                "path": [
+                    "views",
+                    2,
+                    "views",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "views",
+                    2,
+                    "views",
+                    0,
+                    "label"
+                ]
+            },
+            {
+                "path": [
+                    "views",
+                    2,
+                    "views",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "views",
+                    2,
+                    "views",
+                    1,
+                    "label"
+                ]
+            },
+            {
+                "path": [
+                    "views",
+                    3
+                ]
+            },
+            {
+                "path": [
+                    "views",
+                    4
+                ]
+            },
+            {
+                "path": [
+                    "views",
+                    4,
+                    "views",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "views",
+                    4,
+                    "views",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "views",
+                    4,
+                    "views",
+                    2
+                ]
+            },
+            {
+                "path": [
+                    "views",
+                    4,
+                    "views",
+                    2,
+                    "container"
+                ]
+            }
+        ],
+        "arrange": {
+            "": [
+                "form",
+                "views",
+                "style"
+            ],
+            "views.0": [
+                "style",
+                "views"
+            ],
+            "views.0.views.0": [
+                "actions",
+                "src",
+                "style",
+                "type"
+            ],
+            "views.1": [
+                "style",
+                "views"
+            ],
+            "views.1.views.0": [
+                "style",
+                "text",
+                "type"
+            ],
+            "views.1.views.1": [
+                "style",
+                "text",
+                "type"
+            ],
+            "views.2": [
+                "style",
+                "views"
+            ],
+            "views.2.views.0": [
+                "actions",
+                "label",
+                "path",
+                "style",
+                "type"
+            ],
+            "views.2.views.0.label": [
+                "style",
+                "text"
+            ],
+            "views.2.views.1": [
+                "actions",
+                "inputType",
+                "label",
+                "path",
+                "style",
+                "type"
+            ],
+            "views.2.views.1.label": [
+                "style",
+                "text"
+            ],
+            "views.3": [
+                "views"
+            ],
+            "views.3.views.0": [
+                "actions",
+                "hoverstyle",
+                "style",
+                "text",
+                "type"
+            ],
+            "views.4": [
+                "style",
+                "views"
+            ],
+            "views.4.views.0": [
+                "style",
+                "text",
+                "type"
+            ],
+            "views.4.views.1": [
+                "actions",
+                "style",
+                "text",
+                "type"
+            ],
+            "views.4.views.2": [
+                "actions",
+                "container",
+                "style",
+                "text",
+                "type"
+            ],
+            "views.4.views.2.container": [
+                "style"
+            ]
+        },
+        "secured": false,
+        "size": 3802
+    },
+    "style": "display=flex;flexDirection=column;gap=3rem;padding=5rem 3rem;backgroundColor=#fff;borderRadius=1rem;width=50rem",
+    "form": "login",
+    "views": [
+        {
+            "style": "display=flex;justifyContent=center",
+            "views": [
+                {
+                    "type": "image",
+                    "src": "/storage/eU1YM75W2Nq1Xo8JS3a24tw3d48yg5Mw0GI4Ff7/files/bucket1/Bv1HS7lS2oO27w0Td0vn5C332K2F29321tf7uA2.png",
+                    "style": "height=12rem;width=10rem;cursor=pointer",
+                    "actions": "[click?root():main]"
+                }
+            ]
+        },
+        {
+            "style": "gap=.5rem;display=flex;flexDirection=column",
+            "views": [
+                {
+                    "text": "Welcome To",
+                    "style": "fontSize=1.5rem",
+                    "type": "text"
+                },
+                {
+                    "text": "Flight Booking Platform",
+                    "style": "fontSize=2rem",
+                    "type": "text"
+                }
+            ]
+        },
+        {
+            "style": "display=flex;flexDirection=column;gap=3rem",
+            "views": [
+                {
+                    "path": "username",
+                    "style": "fontSize=1.4rem;height=4rem;width=100%",
+                    "type": "input",
+                    "label": {
+                        "text": "Username",
+                        "style": "fontSize=1.4rem"
+                    },
+                    "actions": "[keydown?[login()?data()?note():[text=Enter username!;danger]]?e().key=Enter];[loaded?focus()]"
+                },
+                {
+                    "label": {
+                        "text": "Password",
+                        "style": "fontSize=1.4rem"
+                    },
+                    "path": "password",
+                    "style": "fontSize=1.4rem;height=4rem;width=100%",
+                    "inputType": "password",
+                    "type": "input",
+                    "actions": "[keydown?[login()?data()?note():[text=Enter password!;danger]]?e().key=Enter]"
+                }
+            ]
+        },
+        {
+            "views": [
+                {
+                    "text": "Login",
+                    "style": "backgroundColor=#fb3b1e;color=#fff;fontSize=1.8rem;transition=.2s;borderRadius=.75rem;padding=1rem 0;cursor=pointer;textAlign=center;alignSelf=center",
+                    "hoverstyle": "backgroundColor=#de2307",
+                    "type": "text",
+                    "actions": "[click?login()]"
+                }
+            ]
+        },
+        {
+            "style": "display=flex;gap=.5rem;width=100%",
+            "views": [
+                {
+                    "text": "Get your own flight booking system!",
+                    "type": "text",
+                    "style": "fontSize=1.2rem"
+                },
+                {
+                    "text": "Signup",
+                    "style": "color=#fb3b1e;cursor=pointer;textDecoration=underline;fontSize=1.2rem",
+                    "type": "text",
+                    "actions": "[click?win().open():'http://192.168.0.100:81']"
+                },
+                {
+                    "text": "Forget password",
+                    "style": "cursor=pointer;textDecoration=underline;fontSize=1.2rem",
+                    "type": "text",
+                    "container": {
+                        "style": "marginLeft=auto"
+                    },
+                    "actions": "[click?root():forgetpassword]"
+                }
+            ]
+        }
+    ]
+}

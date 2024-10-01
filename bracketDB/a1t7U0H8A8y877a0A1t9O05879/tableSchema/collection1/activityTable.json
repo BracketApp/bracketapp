@@ -1,0 +1,109 @@
+{
+    "__props__": {
+        "id": "u1b7T2I2M4g2p3E3G3N6H8L0t3",
+        "doc": "activityTable",
+        "counter": 1,
+        "creationDate": 1722423336803,
+        "collection": "tableSchema",
+        "chunk": "chunk1",
+        "lastModified": 1722589238562,
+        "dev": false,
+        "actions": {},
+        "comments": [
+            {
+                "note": "table",
+                "path": [
+                    "sections",
+                    0
+                ]
+            }
+        ],
+        "collapsed": [
+            {
+                "path": [
+                    "sections",
+                    2,
+                    "inputs",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "sections",
+                    2,
+                    "inputs",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "sections",
+                    2,
+                    "inputs",
+                    2
+                ]
+            },
+            {
+                "path": [
+                    "sections",
+                    2
+                ]
+            },
+            {
+                "path": [
+                    "sections",
+                    3
+                ]
+            }
+        ],
+        "arrange": [],
+        "secured": false,
+        "size": 1586
+    },
+    "title": "Project Activity",
+    "sections": [
+        {
+            "table": true,
+            "headers": {
+                "styles": "gridTemplateColumns=3rem 1fr 1fr 1fr 1fr 1fr 1fr 1fr",
+                "headers": [
+                    {
+                        "header": "Date",
+                        "text": "__.date.toDateFormat()"
+                    },
+                    {
+                        "header": "Total Triggers",
+                        "path": "serverTriggers"
+                    },
+                    {
+                        "header": "Before Time",
+                        "text": "[calcBeforetimeHours()]():[collection=tableSchema;doc=userActivityTable]"
+                    },
+                    {
+                        "header": "Official Time",
+                        "text": "[calcOfficialHours()]():[collection=tableSchema;doc=userActivityTable]"
+                    },
+                    {
+                        "header": "After Time",
+                        "text": "[calcOvertimeHours()]():[collection=tableSchema;doc=userActivityTable]"
+                    },
+                    {
+                        "header": "Total Time",
+                        "text": "[[__.lastTrigger-__.firstTrigger]/60000].round():0+' min'"
+                    },
+                    {
+                        "header": "Real Time",
+                        "text": "[__.activityPerHour._():[_.lastTrigger-_.firstTrigger].sum()/60000].round():0+' min'"
+                    }
+                ]
+            },
+            "data": {
+                "publicID": "projectActivity"
+            }
+        }
+    ],
+    "styles": "width=150rem",
+    "reset": true,
+    "beforeLoadingActions": "[getProjectActivity():[publicID=project:().publicID;monthStart=monthStart().timestamp();monthEnd=monthEnd().timestamp()]:[data:().projectActivity=_.projectActivity.values().sort():[path=date;ascending]]]():[collection=actions;doc=db]",
+    "form": "activityTable"
+}

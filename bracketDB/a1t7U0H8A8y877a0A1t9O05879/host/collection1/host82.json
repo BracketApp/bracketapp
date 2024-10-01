@@ -1,0 +1,27 @@
+{
+    "publicID": "e4t6R0N8X8Yrtyc030q8S8W7O3",
+    "port": [
+        86
+    ],
+    "localhost": "dev.brackettechnologies.localhost",
+    "host": "dev.brackettechnologies.brackettechnologies.com",
+    "active": true,
+    "subdomain": "dev.brackettechnologies",
+    "dev": true,
+    "__props__": {
+        "id": "s1F73247D7i2R2z124S6T5u5M5",
+        "doc": "host82",
+        "counter": 82,
+        "creationDate": 1727722146555,
+        "collection": "host",
+        "chunk": "chunk1",
+        "lastModified": 1727722146555,
+        "dev": false,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": [],
+        "secured": false,
+        "size": 475
+    }
+}

@@ -1,0 +1,442 @@
+{
+    "view": "View?class=flex;style:[width=100%]",
+    "__props__": {
+        "id": "21x7o1M6l5y6c0S7P4v9b274X7",
+        "doc": "card",
+        "counter": 143,
+        "creationDate": 1716560749247,
+        "collection": "view",
+        "chunk": "chunk1",
+        "lastModified": 1725177139263,
+        "dev": false,
+        "actions": {
+            "defaultSelectedPackage": "form().qty=1;[[setChosenPackage()]():[path=[chooseCoinPackage?__.coinPackage?chooseSubscriptionPackage?__.subscriptionPackage]]?_.selected]",
+            "chooseCoinPackage": {
+                "_": "parent().siblings().():[1stChild().style().transform=scale(1)];form().qty=1;setChosenPackage();setSelected();beat();updatePackages()?form().packageID!=_.id()?addQty()",
+                "setSelected": "packages:().():[selected=false];packages:().find():[__props__.id=_.id()].selected=true",
+                "updatePackages": "3rdParent().next().refresh()::[class():'subscription-details'.0.refresh()]",
+                "setChosenPackage": "form().packageID=_.id();form().packageName=_.name;form().priceUSD=_.priceUSD*form().qty;form().coins=_.coins*form().qty",
+                "addQty": "form().qty+=1;setChosenPackage();beat();class():'subscription-details'.0.refresh()?form().qty<[_.max||9]?note():[text=You have reached maximum limit!;danger]",
+                "beat": "clearTimer():[().myTimer];style().transform=scale(1.06);myTimer=timer():[style().transform=scale(1.04)]:200"
+            },
+            "coinTotals": ":[label=Package Name;path=packageName]:[label=Quantity;path=qty;preUnit='x']:[label=Payment Amount;path=priceUSD;unit=USD]:[label=Coins Purchased;path=coins;unit=COIN]",
+            "subscriptionDetails": ":[label=Package Name;path=packageName;text=true]:[label=Quantity;path=qty;preUnit='x']:[label=Start Date;path=startDate;date=true]:[label=End Date;path=endDate;date=true]:[label=Coins;path=coins;unit=COINS]",
+            "chooseSubscriptionPackage": {
+                "_": "parent().siblings().():[1stChild().style().transform=scale(1)];form().qty=1;setChosenPackage();[setSelected();beat();updatePackages()]():[path=:chooseCoinPackage]?form().packageID!=_.id()?addQty()",
+                "setChosenPackage": "form().packageID=_.id();form().packageName=_.name;form().coins=_.coins*form().qty;form().startDate=timestamp();subscriptions:()._():[form().startDate=_.expiryDate?_.expiryDate>form().startDate];form().endDate=form().startDate+[_.duration*form().qty]",
+                "addQty": "form().qty+=1;setChosenPackage();[beat()]():[path=:chooseCoinPackage];class():'subscription-details'.0.refresh()?form().qty<[_.max||9]?note():[text=You have reached maximum limit!;danger]"
+            },
+            "timeUnit": "_/31536000000+' Year'+['s'?_/31536000000!=1?'']?_%31536000000=0?_/2592000000+' Month'+['s'?_/2592000000!=1?'']?_%2592000000=0?_/86400000+' Day'+['s'?_/86400000!=1?'']?_%86400000=0"
+        },
+        "comments": [
+            {
+                "note": "coin package",
+                "path": [
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "package",
+                "path": [
+                    "children",
+                    1
+                ]
+            },
+            {
+                "note": "selected",
+                "path": [
+                    "children",
+                    2
+                ]
+            },
+            {
+                "note": "coin totals",
+                "path": [
+                    "children",
+                    3
+                ]
+            },
+            {
+                "note": "subscription details",
+                "path": [
+                    "children",
+                    4
+                ]
+            },
+            {
+                "note": "label",
+                "path": [
+                    "children",
+                    4,
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "name",
+                "path": [
+                    "children",
+                    4,
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "note": "unit",
+                "path": [
+                    "children",
+                    4,
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    2
+                ]
+            },
+            {
+                "note": "qty",
+                "path": [
+                    "children",
+                    4,
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    3
+                ]
+            },
+            {
+                "note": "date",
+                "path": [
+                    "children",
+                    4,
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    4
+                ]
+            }
+        ],
+        "collapsed": [
+            {
+                "path": [
+                    "children",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    2
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    3
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    4
+                ]
+            },
+            {
+                "path": [
+                    "chooseCoinPackage"
+                ]
+            },
+            {
+                "path": [
+                    "chooseSubscriptionPackage"
+                ]
+            }
+        ],
+        "arrange": {
+            "": [
+                "view",
+                "children",
+                "chooseCoinPackage",
+                "chooseSubscriptionPackage",
+                "coinTotals",
+                "defaultSelectedPackage",
+                "subscriptionDetails",
+                "timeUnit"
+            ],
+            "children.0": [
+                "view",
+                "children"
+            ],
+            "children.0.children.0": [
+                "view"
+            ],
+            "children.0.children.1": [
+                "view"
+            ],
+            "children.0.children.2": [
+                "view"
+            ],
+            "children.0.children.3": [
+                "view",
+                "children"
+            ],
+            "children.0.children.3.children.0": [
+                "view"
+            ],
+            "children.0.children.3.children.1": [
+                "view"
+            ],
+            "children.1": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0": [
+                "view"
+            ],
+            "children.1.children.1": [
+                "view"
+            ],
+            "children.1.children.2": [
+                "view"
+            ],
+            "children.2": [
+                "view"
+            ],
+            "children.3": [
+                "view",
+                "children"
+            ],
+            "children.3.children.0": [
+                "view",
+                "children"
+            ],
+            "children.3.children.0.children.0": [
+                "view",
+                "children"
+            ],
+            "children.3.children.0.children.0.children.0": [
+                "view"
+            ],
+            "children.3.children.0.children.0.children.1": [
+                "view"
+            ],
+            "children.3.children.0.children.0.children.2": [
+                "view"
+            ],
+            "children.3.children.0.children.0.children.3": [
+                "view"
+            ],
+            "children.4": [
+                "view",
+                "children"
+            ],
+            "children.4.children.0": [
+                "view",
+                "children"
+            ],
+            "children.4.children.0.children.0": [
+                "view",
+                "children"
+            ],
+            "children.4.children.0.children.0.children.0": [
+                "view"
+            ],
+            "children.4.children.0.children.0.children.1": [
+                "view"
+            ],
+            "children.4.children.0.children.0.children.2": [
+                "view"
+            ],
+            "children.4.children.0.children.0.children.3": [
+                "view"
+            ],
+            "children.4.children.0.children.0.children.4": [
+                "view"
+            ],
+            "chooseCoinPackage": [
+                "_",
+                "addQty",
+                "beat",
+                "setChosenPackage",
+                "setSelected",
+                "updatePackages"
+            ],
+            "chooseSubscriptionPackage": [
+                "_",
+                "addQty",
+                "setChosenPackage"
+            ]
+        },
+        "secured": false,
+        "size": 10669
+    },
+    "children": [
+        {
+            "view": "View?class=flex column pointer;style:[alignItems=center;borderRadius=1rem;border=1px solid #ddd;gap=2rem;transition=.2s;overflow=hidden;width=100%;[transform=scale(1.04)?_.selected]];defaultSelectedPackage();[click?chooseCoinPackage()]?__.coinPackage",
+            "__props__": {
+                "id": "M1L791R6B5E507i5w9R8s9f0p2",
+                "doc": "packageCard",
+                "counter": 108,
+                "creationDate": 1716557598902,
+                "active": true,
+                "actions": {
+                    "defaultSelectedPackage": "form().qty=1;[[setChosenPackage()]():[path=choosePackage]?_.selected]",
+                    "choosePackage": {
+                        "_": "siblings().():[style().transform=scale(1)];form().qty=1;setChosenPackage();setSelected();updatePackages();beat()?form().packageName!=_.name?addQty()",
+                        "setSelected": "packages:().():[selected=false];packages:().find():[name=_.name].selected=true",
+                        "updatePackages": "parent().next().refresh()::[_.view.parent().2ndNext().1stChild().refresh()]",
+                        "setChosenPackage": "form().packageName=_.name;form().priceUSD=_.priceUSD*form().qty;form().coins=_.coins*form().qty",
+                        "addQty": "form().qty+=1;setChosenPackage();beat();2ndParent().2ndNext().1stChild().refresh()",
+                        "beat": "clearTimer():[().myTimer];style().transform=scale(1.06);myTimer=timer():[style().transform=scale(1.04)]:200"
+                    }
+                },
+                "comments": [],
+                "collapsed": [],
+                "arrange": [],
+                "chunk": "chunk1",
+                "secured": false,
+                "collection": "view"
+            },
+            "children": [
+                {
+                    "view": "Text?text=_.name;style:[fontSize=1.75rem;borderBottom=1px solid #ddd;padding=1rem 3rem;width=100%;textAlign=center;backgroundColor=#f6f6f6]"
+                },
+                {
+                    "view": "Text?text=tag():[text=_.coins.price();style:[color=blue;fontSize=2.5rem]]+' COIN = '+tag():[text=_.priceUSD.price();style:[color=blue;fontSize=2.5rem]]+' USD';style:[fontSize=1.75rem;width=100%;textAlign=center]"
+                },
+                {
+                    "view": "Text?text='1 COIN = '+[_.priceUSD/_.coins].price()+' USD';style:[fontSize=1.4rem;textAlign=center;paddingTop=1rem;borderTop=1px solid #ddd;marginTop=-1rem]"
+                },
+                {
+                    "view": "View?class=flex column;style:[gap=2rem;padding=3rem;width=100%]",
+                    "children": [
+                        {
+                            "view": "Text?text='Minimum Purchase = '+_.priceUSD.price()+' USD';style:[fontSize=1.4rem;textAlign=left]"
+                        },
+                        {
+                            "view": "Text?text='Save '+[_.coins-_.priceUSD||0].price()+' USD';style:[fontSize=1.75rem;textAlign=left]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "view": "View?class=flex column pointer;style:[alignItems=center;borderRadius=1rem;border=1px solid #ddd;gap=2rem;transition=.2s;overflow=hidden;paddingBottom=1rem;width=100%;[transform=scale(1.04)?_.selected]];defaultSelectedPackage();[click?chooseSubscriptionPackage()]?__.subscriptionPackage",
+            "__props__": {
+                "id": "M1L791R6B5E507i5w9R8s9f0p2",
+                "doc": "packageCard",
+                "counter": 108,
+                "creationDate": 1716557598902,
+                "active": true,
+                "actions": {
+                    "defaultSelectedPackage": "form().qty=1;[[setChosenPackage()]():[path=choosePackage]?_.selected]",
+                    "choosePackage": {
+                        "_": "siblings().():[style().transform=scale(1)];form().qty=1;setChosenPackage();setSelected();updatePackages();beat()?form().packageName!=_.name?addQty()",
+                        "setSelected": "packages:().():[selected=false];packages:().find():[name=_.name].selected=true",
+                        "updatePackages": "parent().next().refresh()::[_.view.parent().2ndNext().1stChild().refresh()]",
+                        "setChosenPackage": "form().packageName=_.name;form().priceUSD=_.priceUSD*form().qty;form().coins=_.coins*form().qty",
+                        "addQty": "form().qty+=1;setChosenPackage();beat();2ndParent().2ndNext().1stChild().refresh()",
+                        "beat": "clearTimer():[().myTimer];style().transform=scale(1.06);myTimer=timer():[style().transform=scale(1.04)]:200"
+                    }
+                },
+                "comments": [],
+                "collapsed": [],
+                "arrange": [],
+                "chunk": "chunk1",
+                "secured": false,
+                "collection": "view"
+            },
+            "children": [
+                {
+                    "view": "Text?text=_.name;style:[fontSize=1.75rem;borderBottom=1px solid #ddd;padding=1rem 3rem;width=100%;textAlign=center;backgroundColor=#f6f6f6]"
+                },
+                {
+                    "view": "Text?text=_.description;style:[fontSize=1.5rem;width=100%;textAlign=center]"
+                },
+                {
+                    "view": "Text?text=[_.coins.price()+' COINS'?_.coins!=0?Free]+' for '+timeUnit():[_.duration];style:[fontSize=1.5rem;textAlign=center;paddingTop=1rem;borderTop=1px solid #ddd;marginTop=-1rem]"
+                }
+            ]
+        },
+        {
+            "view": "Text?text=['Selected!'?_.selected?];style:[fontSize=1.6rem;width=100%;textAlign=center]?__.selected"
+        },
+        {
+            "view": "View?class=flex subscription-details;style:[justifyContent=flex-end;width=100%]?__.coinTotals",
+            "children": [
+                {
+                    "view": "View?class=flex column;style:[gap=1.5rem;padding=0 4rem;padding=2rem;borderRadius=1rem;border=1px solid #ddd]",
+                    "children": [
+                        {
+                            "view": "[View]:[data=coinTotals()]?class=flexbox;style:[justifyContent=flex-end;gap=1.5rem]",
+                            "children": [
+                                {
+                                    "view": "Text?text=_.label;style:[fontSize=1.5rem]"
+                                },
+                                {
+                                    "view": "Text?text=[form().[_.path]||0].price()+' '+tag():[text=_.unit;style:[fontSize=1.3rem]];style:[fontSize=1.5rem;color=blue;width=12.5rem;textAlign=right]?_.unit"
+                                },
+                                {
+                                    "view": "Text?text=form().[_.path];style:[fontSize=1.5rem;color=blue;width=12.5rem;textAlign=right]?!_.unit;!_.preUnit"
+                                },
+                                {
+                                    "view": "Text?text=_.preUnit+form().[_.path];style:[fontSize=1.5rem;width=12.5rem;textAlign=right]?_.preUnit"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "view": "View?class=flex subscription-details;style:[justifyContent=flex-end;width=100%]?__.subscriptionDetails;form().pluginID",
+            "children": [
+                {
+                    "view": "View?class=flex column;style:[gap=1.5rem;padding=0 4rem;padding=2rem;borderRadius=1rem;border=1px solid #ddd]",
+                    "children": [
+                        {
+                            "view": "[View]:[data=subscriptionDetails()]?class=flexbox;style:[justifyContent=flex-end;gap=1.5rem]",
+                            "children": [
+                                {
+                                    "view": "Text?text=_.label;style:[fontSize=1.5rem]"
+                                },
+                                {
+                                    "view": "Text?text=form().[_.path];style:[fontSize=1.5rem;width=12.5rem;textAlign=right]?_.text"
+                                },
+                                {
+                                    "view": "Text?text=[form().[_.path]||0].price()+' '+tag():[text=_.unit;style:[fontSize=1.3rem]];style:[fontSize=1.5rem;color=blue;width=12.5rem;textAlign=right]?_.unit"
+                                },
+                                {
+                                    "view": "Text?text=_.preUnit+form().[_.path];style:[fontSize=1.5rem;width=12.5rem;textAlign=right]?_.preUnit"
+                                },
+                                {
+                                    "view": "Text?text=form().[_.path].toDateFormat():format4.slice():4:[-8];style:[fontSize=1.5rem;width=12.5rem;textAlign=right]?_.date"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

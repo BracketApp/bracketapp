@@ -1,0 +1,27 @@
+{
+    "name": "Flight Booking Platform",
+    "active": true,
+    "main": true,
+    "accountID": "61L7E2u3c6j3z6I8y6O555p1q4",
+    "publicID": "F113n7lK2Cd3tB6Cu3L76gq8xH6lS5825xK4Mx2",
+    "subdomain": "flightbookingplatform",
+    "__props__": {
+        "id": "a1u7e2r3W6n3M6s8A6U5e5c456",
+        "doc": "project184",
+        "counter": 184,
+        "creationDate": 1723636865546,
+        "collection": "project",
+        "chunk": "chunk1",
+        "lastModified": 1723636865546,
+        "dev": false,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": [],
+        "secured": false,
+        "size": 452
+    },
+    "db": "VE1Jv7lE2cr3fY63w37E6KO8y66OX5Fd5Qi49r6",
+    "devDB": "qj1oS7AB2Wr3nC62a3Ap6uW8ba6Gl5065ch4WY6",
+    "storage": "ku1h97gg20f3t26YL3wC64l82B6RI5Xi5QP4iP6"
+}

@@ -1,0 +1,493 @@
+{
+    "view": "View?id=sidebar;style:[height=100%;backgroundColor=#fff;borderRight=1px solid #ddd]",
+    "children": [
+        {
+            "view": "View?class=flex column;style:[width=20rem;height=100%;transition=.2s;overflow=hidden]",
+            "children": [
+                {
+                    "view": "View?class=flex column;style:[overflowY=auto;overflowX=hidden]",
+                    "children": [
+                        {
+                            "view": "[View]:[data=_]?class=column;style:[width=100%;gap=.2rem];hover.style:[backgroundColor=#f5f5f5]",
+                            "children": [
+                                {
+                                    "view": "View?class=flex;style:[width=100%;height=4.5rem;borderRight=2px solid #f5f5f5];[click?handleSideBarClick()]",
+                                    "children": [
+                                        {
+                                            "view": "View?class=flex;style:[width=inherit;cursor=pointer;alignItems=center];tooltip:[text=_.tooltip]",
+                                            "children": [
+                                                {
+                                                    "view": "View?class=flexbox;style:[height=4.25rem;minWidth=4.25rem;transition=.2s]?_.icon",
+                                                    "children": [
+                                                        {
+                                                            "view": "Icon?name=_.icon;google.symbol;style:[fontSize=2.25rem;height=2.25rem;maxWidth=2.25rem;minWidth=2.25rem;color=#453f3f;transition=.2s;textAlign=left]"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "view": "View?class=flex;style:[alignItems=center;width=100%;height=100%;text-overflow=ellipsis;white-space=nowrap;overflow=hidden;opacity=1;transition=.2s]",
+                                                    "children": [
+                                                        {
+                                                            "view": "Text?text=_.text.capitalize();style:[fontSize=1.3rem]"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "view": "View?class=flexbox;style:[transition=.2s;marginLeft=auto;width=2.5rem]?_.subSidebar",
+                                                    "children": [
+                                                        {
+                                                            "view": "Icon?name=arrow_right;google.symbol;style:[transition=.2s;fontSize=2.25rem;color=#453f3f;transition=.2s]"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "view": "View?class=column;style:[marginTop=auto];().opened=true;click:[expandSidebar()]",
+                    "children": [
+                        {
+                            "view": "View?class=flexbox;style:[width=100%;position=relative;cursor=pointer];hover.style:[backgroundColor=#ddd]",
+                            "children": [
+                                {
+                                    "view": "View?class=flexbox;style:[height=4.5rem;width=100%;borderRight=2px solid #00000000;transition=.2s;transform=rotate(180deg)]",
+                                    "children": [
+                                        {
+                                            "view": "Icon?name=arrow_forward;google.symbol;style:[fontSize=2.25rem;color=#453f3f;transition=.2s]"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "__props__": {
+        "id": "w1V7h1e1n0M3n1E3M6d5n211M7",
+        "doc": "sidebar",
+        "counter": 50,
+        "creationDate": 1711031365217,
+        "collection": "view",
+        "chunk": "chunk1",
+        "actions": {
+            "handleSideBarClick": {
+                "_": "unselectSidebarItems();selectSidebarItem();displayManager()",
+                "selectSidebarItem": "selectedSideBarItem=true;#containerStyle;style():[backgroundColor=#f5f5f5;borderColor=#fb3b1e];#iconstyle;1stChild().1stChild().1stChild().style().color=#fb3b1e;#textStyle;1stChild().2ndChild().1stChild().style().color=#fb3b1e",
+                "unselectSidebarItems": "2ndParent().children()._():[_.1stChild().selectedSideBarItem=false;_.1stChild().style():[backgroundColor=#fff;borderColor=#fff];#iconColor;_.1stChild().1stChild().1stChild().1stChild().color()=#453f3f;#textColor;_.1stChild().1stChild().2ndChild().1stChild().color()=#453f3f]",
+                "displayManager": "currentOpenManager:()=_.manager;():managerBody.refresh()"
+            },
+            "expandSidebar": {
+                "collapseSidebar": "parent().style().width=4.5rem;1stChild().1stChild().1stChild().style().transform=rotate(180deg);opened=false;parent().1stChild().children().():[if():[1stChild().1stChild().2ndChild()]:[1stChild().1stChild().2ndChild().style():[opacity=0;width=0];1stChild().1stChild().lastChild().style():[opacity=0;width=0]]]",
+                "collapseSubSidebar": "parent().1stChild().children().():[if():[2ndChild();2ndChild().openedSubSidebar]:[2ndChild().style():[height=0];2ndChild().openedSubSidebar=false]]",
+                "expandSidebar": "parent().style():[width=20rem];1stChild().1stChild().1stChild().style().transform=rotate(0);opened=true;parent().1stChild().children()._():[_.1stChild().1stChild().2ndChild().style():[opacity=1;width=fit-content]]",
+                "expandSubSidebar": "parent().1stChild().children()._():[if():[_.2ndChild();_.2ndChild().openedSubSidebar]:[_.2ndChild().style():[height=[_]._.subSidebar.len()*3.25+'rem']]]",
+                "_": "if():[!().opened]:[expandSidebar();expandSubSidebar()]:[collapseSidebar();collapseSubSidebar()]"
+            },
+            "hideArrow": "style().backgroundColor=transparent;2ndChild().style():[right=0rem;width=0rem]",
+            "subSidebarItemHover": "[hover?[backgroundColor()=#f5f5f5;[1stChild().1stChild().lastChild().opacity()?_.hasHotCreateBtn]?!selectedSubSideBarItem]?mouseentered?[backgroundColor()=#fff;[1stChild().1stChild().lastChild().fade()?_.hasHotCreateBtn]?!selectedSubSideBarItem]]"
+        },
+        "comments": [
+            {
+                "note": "Flights Options",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    2
+                ]
+            },
+            {
+                "note": "Hotels",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    3
+                ]
+            },
+            {
+                "note": "Hotels Options",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    4
+                ]
+            },
+            {
+                "note": "Accounting",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    5
+                ]
+            },
+            {
+                "note": "Settings",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    6
+                ]
+            },
+            {
+                "note": "all items loop",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    "0",
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "image false",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    2
+                ]
+            },
+            {
+                "note": "icon",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    2,
+                    "children",
+                    2
+                ]
+            },
+            {
+                "note": "false",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    2
+                ]
+            },
+            {
+                "note": "sideBar items",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "sub items",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "note": "image as icon",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    2
+                ]
+            },
+            {
+                "note": "expand sidebar",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "note": ".subs",
+                "path": [
+                    "sidebarNavigationController"
+                ]
+            },
+            {
+                "note": "main sidebar item",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    0
+                ]
+            }
+        ],
+        "collapsed": [
+            {
+                "path": [
+                    "children",
+                    "0",
+                    "children",
+                    2,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    "0",
+                    "children",
+                    3
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    "0",
+                    "children",
+                    4
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    "0",
+                    "children",
+                    5
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    "0",
+                    "children",
+                    6
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    "0",
+                    "children",
+                    2,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    "0",
+                    "children",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    "0",
+                    "children",
+                    2
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    4,
+                    "children",
+                    1,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    5
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    3
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    7
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    8
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    6
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    4
+                ]
+            },
+            {
+                "path": [
+                    "functions",
+                    "expandListItems"
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    3
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    2,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    2,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "selectSubSidebarItem"
+                ]
+            },
+            {
+                "path": [
+                    "#selectSideBarItem"
+                ]
+            },
+            {
+                "path": [
+                    "expandListItems"
+                ]
+            },
+            {
+                "path": [
+                    "sidebarNavigationController"
+                ]
+            },
+            {
+                "path": [
+                    "#expandSidebar"
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "expandSidebar"
+                ]
+            },
+            {
+                "path": [
+                    "handleSideBarClick"
+                ]
+            }
+        ],
+        "arrange": [],
+        "secured": false,
+        "size": 6455
+    }
+}

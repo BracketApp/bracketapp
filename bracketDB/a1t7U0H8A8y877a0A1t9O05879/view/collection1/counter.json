@@ -1,0 +1,35 @@
+{
+    "view": "View?id=counter;class=flex column;style:[width=2rem;borderRight=1px solid #ddd];displayIndex:()=flex",
+    "children": [
+        {
+            "view": "[Text]:[data=numbersColumn:().[3rdParent().id]]?class=flexbox;text=_.index;style:[height=4rem;width=2rem;fontSize=1.1rem;color=#888];if():[_.path.len()<=displayPath:().len();styleCounter:()=true]:[displayIndex:()=flex;styleCounter:()=false;style.backgroundColor=#f3f3f3;style.color=#000];style.display=displayIndex:();if():[displayIndex:()=flex;form().clooossseeed.find():[path=_.path]]:[displayPath:()=_.path.clone();displayIndex:()=none;styleCounter:()=true]?!form()._view_"
+        }
+    ],
+    "__props__": {
+        "id": "X1c771b0m3H3F037p8j6a4c470",
+        "doc": "counter",
+        "counter": 1,
+        "creationDate": 1710330786440,
+        "collection": "view",
+        "chunk": "chunk1",
+        "lastModified": 1724592761054,
+        "dev": false,
+        "actions": {
+            "test": "log():'Hello World'"
+        },
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "view",
+                "children",
+                "test"
+            ],
+            "children.0": [
+                "view"
+            ]
+        },
+        "secured": false,
+        "size": 944
+    }
+}

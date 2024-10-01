@@ -1,0 +1,25 @@
+{
+    "__props__": {
+        "id": "q1e7Z214h5e9Z3P3F3E9x2f4U9",
+        "doc": "permission1",
+        "counter": 1,
+        "creationDate": 1724593339249,
+        "collection": "account.user.permission",
+        "chunk": "chunk1",
+        "lastModified": 1725450217557,
+        "dev": false,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "masterAdmin",
+                "userID"
+            ]
+        },
+        "secured": false,
+        "size": 337
+    },
+    "userID": "1",
+    "masterAdmin": true
+}

@@ -1,0 +1,27 @@
+{
+    "accountID": "P1l7N295t4t7O0Y4E5i843w4l0",
+    "publicID": "9E1al7EJ2Rg5Kp4hZ7zU0Lf4KV5BR8l93eG6j72",
+    "pluginID": "r1c7d176U1B9m6C7i9F8T973T2",
+    "packageID": "819781E687S3U5e2L9w6v3u9H8",
+    "startDate": 1725470458467,
+    "status": "Confirmed",
+    "free": true,
+    "description": "Subscribed to plugin: Travel Booking Platform, package: Free Tier.",
+    "expiryDate": 1726075258467,
+    "__props__": {
+        "id": "f197E2R5N497e0S4C5c8L4j6L9",
+        "doc": "subscription8",
+        "counter": 8,
+        "creationDate": 1725470458469,
+        "collection": "subscription",
+        "chunk": "chunk1",
+        "lastModified": 1725470458469,
+        "dev": false,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": [],
+        "secured": false,
+        "size": 613
+    }
+}

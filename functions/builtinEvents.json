@@ -1,0 +1,49 @@
+{
+    "droplist": [
+        {
+            "event": "[keydown:input()??e().key=Escape]?#close droplist;__droplistMouseleaveTimer__:()=0;():droplist.mouseleave()"
+        },
+        {
+            "event": "[click??__droplistPositioner__:()!=().id];[focus??__droplistPositioner__:()!=().id]?#open droplist on click;clearTimer():[__droplistTimer__:()];if():[__droplistPositioner__:()!=().id]:[__keyupIndex__:()=0;__droplistPositioner__:()=().id;droplist()]:[__droplistMouseleaveTimer__:()=0;():droplist.mouseleave()]"
+        },
+        {
+            "event": "keydown:input()?#choose item on enter;():droplist.children().[__keyupIndex__:()].click();[():droplist.mouseleave()?e().key=Tab]?e().key=Enter||=Tab"
+        },
+        {
+            "event": "mouseenter?#open on hoverin;clearTimer():[.droplistLeaved];if():[__droplistMouseenterer__:()!=().id]:[click();__droplistMouseenterer__:()=().id]?droplist.hoverable"
+        },
+        {
+            "event": "mouseleave?#close on hoverout;__droplistMouseleaveTimer__:()=0;():droplist.mouseleave()?droplist.hoverable"
+        },
+        {
+            "event": "input:input()?#search droplist;droplist()?droplist.searchable"
+        },
+        {
+            "event": "keydown:input()?#moveup/down items;():droplist.children().[__keyupIndex__:()||0].mouseleave();__keyupIndex__:()=if():[e().keyCode=40]:[__keyupIndex__:()+1]:[__keyupIndex__:()-1];():droplist.children().[__keyupIndex__:()].mouseenter()?e().keyCode=40||=38;__droplistPositioner__:();if():[e().keyCode=38]:[__keyupIndex__:()>0].elif():[e().keyCode=40]:[__keyupIndex__:()<():droplist.children().len()-1]"
+        }
+    ],
+    "hover": [
+        {
+            "event": "mouseenter?hover.style.keys()._():[style().[_]=hover.style.[_]]?!hover.disable"
+        },
+        {
+            "event": "mouseleave?hover.style.keys()._():[style().[_]=style.[_]||null]?!hover.disable"
+        }
+    ],
+    "mininote": [
+        {
+            "event": "click?():mininote-text.txt()=[.mininote.text||.mininote.note||''];clearTimeout():[mininote-timer:()];():mininote.style():[opacity=1;transform='scale(1)'];mininote-timer:()=():root.timer():[():mininote.style():[opacity=0;transform=scale(0)]]:[.mininote.timer||3000]"
+        }
+    ],
+    "tooltip": [
+        {
+            "event": "mousemove?if():[!__tooltipTimer__:()]:[__tooltipTimer__:()=timer():[():tooltip.style().opacity=1?mouseentered]:500];():'tooltip-text'.txt()=[().tooltip.text]();():tooltip.position():[positioner=mouse;placement=[().tooltip.placement||left];distance=[().tooltip.distance||0]]?mouseentered;[().tooltip.text]()"
+        },
+        {
+            "event": "mouseleave?mouseentered=false;clearTimer():[__tooltipTimer__:()];__tooltipTimer__:().del();():tooltip.style().opacity=0"
+        },
+        {
+            "event": "mouseenter?mouseentered=true"
+        }
+    ]
+}

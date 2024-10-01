@@ -1,0 +1,373 @@
+{
+    "view": "View?style:[width=100%;flex=1;[display=_.display?_.display]]",
+    "__props__": {
+        "id": "G1D751F6K3Z7o049G268P0R812",
+        "doc": "customInput",
+        "counter": 99,
+        "creationDate": 1716370928082,
+        "collection": "view",
+        "chunk": "chunk1",
+        "lastModified": 1725182567271,
+        "dev": false,
+        "actions": {
+            "droplistHandler": "input().txt()=clicked().txt();[data()=clicked().txt()?_.inputType!=yesNo?data()=[true?clicked().txt()=Yes?false]];[_.action]()",
+            "toggleCheck": "1stChild().():[form().[_]=true;display()?hidden()?form().[_]=false;hide()]"
+        },
+        "comments": [
+            {
+                "note": "multi single input",
+                "path": [
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "droplist input",
+                "path": [
+                    "children",
+                    1
+                ]
+            },
+            {
+                "note": "yes no input",
+                "path": [
+                    "children",
+                    2
+                ]
+            },
+            {
+                "note": "checkbox",
+                "path": [
+                    "children",
+                    3
+                ]
+            },
+            {
+                "note": "std input",
+                "path": [
+                    "children",
+                    4
+                ]
+            }
+        ],
+        "collapsed": [
+            {
+                "path": [
+                    "children",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    2
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    3
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    4
+                ]
+            }
+        ],
+        "arrange": {
+            "": [
+                "view",
+                "children",
+                "droplistHandler",
+                "toggleCheck"
+            ],
+            "children.0": [
+                "view",
+                "children"
+            ],
+            "children.0.children.0": [
+                "view",
+                "children"
+            ],
+            "children.0.children.0.children.0": [
+                "view"
+            ],
+            "children.0.children.1": [
+                "view",
+                "children"
+            ],
+            "children.0.children.1.children.0": [
+                "view",
+                "children"
+            ],
+            "children.0.children.1.children.0.children.0": [
+                "view"
+            ],
+            "children.0.children.1.children.0.children.1": [
+                "view",
+                "children"
+            ],
+            "children.0.children.1.children.0.children.1.children.0": [
+                "view",
+                "children"
+            ],
+            "children.0.children.1.children.0.children.1.children.0.children.0": [
+                "view"
+            ],
+            "children.0.children.1.children.0.children.1.children.1": [
+                "view",
+                "children"
+            ],
+            "children.0.children.1.children.0.children.1.children.1.children.0": [
+                "view"
+            ],
+            "children.1": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0": [
+                "view"
+            ],
+            "children.1.children.1": [
+                "view",
+                "children"
+            ],
+            "children.1.children.1.children.0": [
+                "view"
+            ],
+            "children.1.children.1.children.1": [
+                "view"
+            ],
+            "children.2": [
+                "view",
+                "children"
+            ],
+            "children.2.children.0": [
+                "view"
+            ],
+            "children.2.children.1": [
+                "view",
+                "children"
+            ],
+            "children.2.children.1.children.0": [
+                "view"
+            ],
+            "children.2.children.1.children.1": [
+                "view"
+            ],
+            "children.3": [
+                "view",
+                "children"
+            ],
+            "children.3.children.0": [
+                "view",
+                "children"
+            ],
+            "children.3.children.0.children.0": [
+                "view"
+            ],
+            "children.3.children.1": [
+                "view"
+            ],
+            "children.4": [
+                "view",
+                "children"
+            ],
+            "children.4.children.0": [
+                "view",
+                "children"
+            ],
+            "children.4.children.0.children.0": [
+                "view"
+            ],
+            "children.4.children.0.children.1": [
+                "view"
+            ],
+            "children.4.children.1": [
+                "view",
+                "children"
+            ],
+            "children.4.children.1.children.0": [
+                "view"
+            ],
+            "children.4.children.1.children.1": [
+                "view"
+            ],
+            "children.4.children.1.children.2": [
+                "view"
+            ],
+            "children.4.children.1.children.3": [
+                "view",
+                "children"
+            ],
+            "children.4.children.1.children.3.children.0": [
+                "view"
+            ],
+            "children.4.children.1.children.3.children.1": [
+                "view"
+            ]
+        },
+        "secured": false,
+        "size": 8073
+    },
+    "children": [
+        {
+            "view": "View?class=flex column;style:[width=100%]?_.inputType=multiSingle",
+            "children": [
+                {
+                    "view": "View?class=flex",
+                    "children": [
+                        {
+                            "view": "Text?class=pointer;text=_.label;[required?_.required];style:[textAlign=left;fontSize=1.4rem;width=fit-content;color=#666];[click?next().click()]"
+                        }
+                    ]
+                },
+                {
+                    "view": "View?class=flex column;style:[width=100%;gap=.5rem];_.multiSingle.del()",
+                    "children": [
+                        {
+                            "view": "[View]:[().[data()=:?!data()];path=_.path]?class=flex align-center;style:[gap=.5rem;width=100%]",
+                            "children": [
+                                {
+                                    "view": "customInput?data=__"
+                                },
+                                {
+                                    "view": "View?class=flex align-center;style:[gap=1rem]",
+                                    "children": [
+                                        {
+                                            "view": "View?class=flexbox;style:[height=100%]",
+                                            "children": [
+                                                {
+                                                    "view": "Icon?name=delete;google.symbol;style:[fontSize=1.5rem]"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "view": "View?class=flexbox;style:[height=100%]",
+                                            "children": [
+                                                {
+                                                    "view": "Icon?name=add_circle;google.symbol;style:[fontSize=1.5rem]"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "view": "View?class=flex column;style:[width=100%;gap=.5rem]?_.inputType=stdItems",
+            "children": [
+                {
+                    "view": "Text?class=pointer;text=_.label;[required?_.required];style:[textAlign=left;fontSize=1.4rem;width=fit-content;color=#666];[click?next().click()]"
+                },
+                {
+                    "view": "View?class=flexbox pointer;style:[border=1px solid #ddd;position=relative;height=4rem;borderRadius=.5rem;backgroundColor=#fff];path=_.path;droplist:[preventDefault;items=[_.items]();align=left];[click:droplist?droplistHandler()]",
+                    "children": [
+                        {
+                            "view": "Input?style:[flex=1;height=100%;fontSize=1.4rem;color=#666;padding=.5rem;cursor=pointer];[readonly?!_.editable];[clearable?_.clearable!=false];[text=[_.defaultValue]()?_.defaultValue!=undefined]"
+                        },
+                        {
+                            "view": "Icon?name=keyboard_arrow_up;google.symbol;style:[color=#888;fontSize=2.25rem;height=2rem;width=2rem;marginRight=.5rem;transform=rotate(180deg)]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "view": "View?class=flex column;style:[width=100%;gap=.5rem]?_.inputType=yesNo",
+            "children": [
+                {
+                    "view": "Text?class=pointer;text=_.label;[required?_.required];style:[textAlign=left;fontSize=1.4rem;width=fit-content;color=#666];[click?next().click()]"
+                },
+                {
+                    "view": "View?class=flexbox pointer;style:[border=1px solid #ddd;position=relative;height=4rem;borderRadius=.5rem;backgroundColor=#fff];path=_.path;[data()=[_.defaultValue]()?_.defaultValue!=undefined];droplist:[preventDefault;items=_.items;align=left];[click:droplist?droplistHandler()]",
+                    "children": [
+                        {
+                            "view": "Input?style:[flex=1;height=100%;fontSize=1.4rem;color=#666;padding=.5rem;cursor=pointer];readonly;text=[Yes?data()=true?No?!data();_.items=:Yes:No?data()]"
+                        },
+                        {
+                            "view": "Icon?name=keyboard_arrow_up;google.symbol;style:[color=#888;fontSize=2.25rem;height=2rem;width=2rem;marginRight=.5rem;transform=rotate(180deg)]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "view": "View?class=flex;style:[gap=1rem;alignItems=center;padding=1rem]?_.inputType=checkbox",
+            "children": [
+                {
+                    "view": "View?class=pointer flexbox;style:[border=1px solid #ccc;borderRadius=.25rem;height=1.75rem;width=1.75rem;backgroundColor=#fff];[click?toggleCheck():[_.path]]",
+                    "children": [
+                        {
+                            "view": "Icon?name=bi-check;style:[display=[flex?data().[_.path]?none];color=blue;fontSize=2rem]"
+                        }
+                    ]
+                },
+                {
+                    "view": "Text?text=[_.label]();style:[fontSize=1.4rem;fontWeight=bold]"
+                }
+            ]
+        },
+        {
+            "view": "View?class=column +[_.mainContainer.class||''];style=[gap=.5rem;width=100%;[[_.mainContainer.style]]]?!_.inputType||_.inputType=std",
+            "children": [
+                {
+                    "view": "View?[_.label=[text=_.label]?_.label.type()=text];class=flex +[_.label.container.class||''];style=[gap=.5rem;alignItems=center;[[_.label.container.style]]]?_.label",
+                    "children": [
+                        {
+                            "view": "Icon?class=[_.label.icon.class||''];name=_.label.icon;style:[fontSize=1.4rem;[[_.label.icon.style]]]?_.label.icon"
+                        },
+                        {
+                            "view": "Text?class=[_.label.class||''];text=_.label.text;style:[fontSize=1.4rem;overflow=hidden;whiteSpace=nowrap;textOverflow=ellipsis;[[_.label.style]]]?_.label.text"
+                        }
+                    ]
+                },
+                {
+                    "view": "View?class=flex align-center pointer +[_.container.class||''];path=[_.path];style=[gap=.25rem;alignItems=center;position=relative;border=1px solid #ddd;borderRadius=.5rem;height=4rem;minHeight=fit-content;overflow=hidden;backgroundColor=#fff;[[_.container.style]]];[[_.container.action]];[hover?().class():x.():fadeIn()?mouseentered?().class():x.():fadeOut()]",
+                    "children": [
+                        {
+                            "view": "Input?[class=_.class?_.class];style=[flex=1;padding=0 .5rem;border=0;height=100%;width=100%;[cursor=pointer?_.readonly];[[_.style]]];[[_.action]];[data()=[[_.data]]?_.data];text=[[_.text]];[droplist=[[_.droplist]]?_.droplist];type=[_.inputType||text];[readonly=true?_.readonly];[min=[[_.min]]?_.min];[max=[[_.max]]?_.max]"
+                        },
+                        {
+                            "view": "Icon?class=x;name=bi-x;style:[fontSize=2.5rem;color=#999;opacity=0;transition=.2s;position=absolute;right=[2rem?_.inputType=date?0];height=2.5rem;width=2.5rem;backgroundColor=#fff];[click?data().del();prev().txt()=[0?prev().type()=number?'']]?prev().clearable||[_.clearable?_.clearable!=undefined?true]"
+                        },
+                        {
+                            "view": "Icon?class=chevron;name=bi-chevron-down;style:[pointerEvents=none;fontSize=1.3rem;color=[parent().1stChild().style.color||#999];position=absolute;right=0;height=2rem;width=2rem;backgroundColor=inherit]?parent().1stChild().droplist||_.droplist"
+                        },
+                        {
+                            "view": "View?class=flexbox pointer;style:[height=100%;width=3rem;justifySelf=flex-end;backgroundColor=#f6f6f6]?parent().1stChild().password||_.password",
+                            "children": [
+                                {
+                                    "view": "Icon?class=chevron;name=bi-eye;style:[fontSize=1.6rem;color=#999;display=flex]"
+                                },
+                                {
+                                    "view": "Icon?class=chevron;name=bi-eye-slash;style:[fontSize=1.6rem;color=#999;display=none]"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,20 @@
+{
+    "addProjectForm": {
+        "__props__.id": "613711m6c5y5e2L0B8l8T224K2"
+    },
+    "chargeAccountForm": {
+        "__props__.id": "D1K7J1t6a585j8w2o7i3N3p1L2"
+    },
+    "renewSubscriptionForm": {
+        "__props__.id": "21U7D1L6q5z3r1s84306N9V7I2"
+    },
+    "signupForm": {
+        "__props__.id": "i1o7l1n6j5k3u1J8S1E049p1O4"
+    },
+    "subscribeToConsoleForm": {
+        "__props__.id": "p1C7B1x6s9C887w0E4f9V1i3k5"
+    },
+    "publishDocForm": {
+        "__props__.id": "v1u7I2Y2j8f665E2s1S5B1v6z1"
+    }
+}

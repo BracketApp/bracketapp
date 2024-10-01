@@ -1,0 +1,24 @@
+{
+    "name": "Saver",
+    "selected": true,
+    "__props__": {
+        "id": "T1K781Q475U932m8p1z9c127d3",
+        "doc": "coinPackage2",
+        "counter": 2,
+        "creationDate": 1714592819173,
+        "active": true,
+        "actions": {},
+        "chunk": "chunk1",
+        "secured": false,
+        "collection": "package",
+        "createdByUserID": "41V7H078W8I8I780z1m9Y2E4Y2",
+        "comments": [],
+        "collapsed": []
+    },
+    "active": true,
+    "coins": 1000,
+    "priceUSD": 900,
+    "pluginID": "V1p7r1A7q4A2U04469R7O4m7w9",
+    "description": "Save 100 coins!",
+    "savings": 100
+}

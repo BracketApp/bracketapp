@@ -1,0 +1,26 @@
+{
+    "creationDate": 1727298322068,
+    "collection": 1,
+    "maxSize": 1000,
+    "lastChunk": 1,
+    "docsLength": 5,
+    "counter": 5,
+    "reads": 326,
+    "writes": 169,
+    "deletes": 0,
+    "size": 2820,
+    "payloadIn": 101294,
+    "payloadOut": 196540,
+    "indexes": [
+        {
+            "find": [
+                "date",
+                "projectID"
+            ],
+            "doc": "index1",
+            "lastRead": 1727787319333,
+            "expiryDate": 1730379319333
+        }
+    ],
+    "lastIndex": 1
+}

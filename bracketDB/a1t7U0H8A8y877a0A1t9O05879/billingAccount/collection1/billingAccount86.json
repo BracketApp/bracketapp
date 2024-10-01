@@ -1,0 +1,28 @@
+{
+    "name": "My Billing Account",
+    "accountID": "51N7K225E4V4Q7I4C1J0Z6U703",
+    "accountType": "business",
+    "country": "Lebanon",
+    "creditLimit": 0,
+    "currency": "COIN",
+    "languagePreference": "English",
+    "organizationAddress": "Beirut",
+    "organizationName": "test",
+    "paymentTerms": "Due on receipt",
+    "__props__": {
+        "id": "n1r78225X4w4F7d4X1L0v9Z8N2",
+        "doc": "billingAccount86",
+        "counter": 86,
+        "creationDate": 1725447410982,
+        "collection": "billingAccount",
+        "chunk": "chunk1",
+        "lastModified": 1725447410982,
+        "dev": false,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": [],
+        "secured": false,
+        "size": 543
+    }
+}

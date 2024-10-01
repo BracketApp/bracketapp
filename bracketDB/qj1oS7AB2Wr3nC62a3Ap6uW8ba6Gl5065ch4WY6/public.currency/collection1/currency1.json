@@ -1,0 +1,29 @@
+{
+    "__props__": {
+        "id": "J1r772E6e7A6L5P739V8I1k1V2",
+        "doc": "currency1",
+        "counter": 1,
+        "creationDate": 1726765798112,
+        "collection": "public.currency",
+        "chunk": "chunk1",
+        "lastModified": 1726765947062,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "code",
+                "country",
+                "symbol",
+                "name"
+            ]
+        },
+        "secured": false,
+        "size": 386
+    },
+    "code": "USD",
+    "country": "United States",
+    "symbol": "$",
+    "name": "United States Dollar"
+}

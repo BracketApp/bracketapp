@@ -1,0 +1,76 @@
+{
+    "__props__": {
+        "id": "M19702K3B938B9C4R7K4L9W8Q7",
+        "doc": "sidebarSubItem",
+        "counter": 1,
+        "creationDate": 1723989474987,
+        "collection": "view.component.sidebar",
+        "chunk": "chunk1",
+        "lastModified": 1725450027582,
+        "dev": false,
+        "actions": {
+            "itemEvents": "[click?itemClickHandler()];[menter?backgroundColor()=#e7e7e7;2ndChild().opacity()=1?!selected];[mleave?backgroundColor()=#00000000;2ndChild().opacity()=0?!selected]",
+            "itemClickHandler": {
+                "_": "unselectItem();selectItem();openManager()",
+                "selectItem": "selected=true;backgroundColor()=#fb3b1e;1stChild().color()=#fff;2ndChild().():[opacity()=1;backgroundColor()=#fff;1stChild().color()=#fb3b1e]",
+                "unselectItem": "parent().children().():[selected=false;backgroundColor()=#00000000;1stChild().color()=#444;[2ndChild().():[backgroundColor()=#fb3b1e;1stChild().color()=#fff;opacity()=0]?2ndChild()]?selected=true]"
+            }
+        },
+        "comments": [
+            {
+                "note": "text",
+                "path": [
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "plus icon",
+                "path": [
+                    "children",
+                    1
+                ]
+            }
+        ],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "view",
+                "children",
+                "itemEvents",
+                "itemClickHandler"
+            ],
+            "children.0": [
+                "view"
+            ],
+            "children.1": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0": [
+                "view"
+            ],
+            "itemClickHandler": [
+                "_",
+                "selectItem",
+                "unselectItem"
+            ]
+        },
+        "secured": false,
+        "size": 1751
+    },
+    "children": [
+        {
+            "view": "Text?text=_.text;style:[fontSize=1.2rem]"
+        },
+        {
+            "view": "View?class=flexbox;style:[width=1.5rem;height=1.5rem;borderRadius=1rem;backgroundColor=#fb3b1e;opacity=0;transition=.2s];[click?timer():[openCreateForm()]:0]?_.createBtn",
+            "children": [
+                {
+                    "view": "Icon?name=add;google.symbol;style:[fontSize=1.5rem;color=#fff;transition=.2s]"
+                }
+            ]
+        }
+    ],
+    "view": "View?class=flexbox pointer;style:[width=100%;minHeight=3.25rem;padding=0 1rem 0 2rem;borderRadius=.8rem;justifyContent=space-between;textOverflow=ellipsis;whiteSpace=nowrap;transition=.2s];tooltip=_.tooltip;itemEvents()"
+}

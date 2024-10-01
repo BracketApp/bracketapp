@@ -1,0 +1,14 @@
+{
+    "fromUnit": "TOKEN",
+    "fromAmount": 1,
+    "toAmount": 1,
+    "toUnit": "USD",
+    "__props__": {
+        "id": "X1L7p0V8W89846J9Z9Y58584F5",
+        "doc": "exchangeRate1",
+        "creationDate": 1711031357675,
+        "active": true,
+        "createdByUserID": "41V7H078W8I8I780z1m9Y2E4Y2",
+        "counter": 1
+    }
+}

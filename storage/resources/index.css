@@ -1,0 +1,479 @@
+*,
+html,
+body {
+  padding: 0;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  font-family: "Lexend Deca", sans-serif;
+  color: #444;
+  float: none;
+}
+
+.darkmode {
+  filter: invert(90%)
+}
+
+.hidden {
+  display: none !important;
+}
+
+.colorizeActions {
+  text-decoration: underline;
+  color: inherit;
+  white-space: nowrap;
+}
+
+.page-break {
+  page-break-after: always;
+  page-break-inside: avoid;
+}
+
+*::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+  background-color: #f9f9f9;
+  z-index: 999;
+}
+
+*::-webkit-scrollbar-track {
+  background: #f9f9f9;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #999; /* color of the scroll thumb */
+  border: 3px solid #f9f9f9; /* creates padding around scroll thumb */
+  border-radius: 1rem;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #666; /* color of the scroll thumb */
+}
+
+*::-webkit-scrollbar-thumb:active {
+  background-color: rgb(182, 35, 35); /* color of the scroll thumb */
+}
+
+html {
+  font-size: 10px;
+  float: none;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  z-index: -1;
+  min-height: 100vh;
+  float: none;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+.center {
+  text-align: center;
+  align-self: center;
+  justify-self: center;
+}
+
+.flex {
+  display: flex;
+}
+
+.grid {
+  display: grid;
+}
+
+/*************************/
+
+.display-none {
+  display: none;
+}
+
+.flex-box, .flexbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.flex-start {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.align-start {
+  align-items: flex-start;
+}
+
+.relative {
+  position: relative;
+}
+
+.none {
+  display: none;
+}
+
+.flex-start-column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #00000050;
+}
+
+.unselectable {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+
+  /*
+    Introduced in Internet Explorer 10.
+    See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+  */
+  -ms-user-select: none;
+  user-select: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.arabic,
+.ar {
+  text-align: right;
+  font-family: "Noto Sans Arabic", sans-serif;
+}
+
+.en {
+  text-align: left;
+  font-family: "Lexend Deca", sans-serif;
+}
+
+/* -scrollbar arrows of number inputs */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.file-drop-area {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  padding: 20px;
+  border: 1px dashed #ccc;
+  border-radius: 3px;
+  transition: background-color 0.2s;
+  height: 10rem;
+}
+
+.center {
+  -fx-alignment: center;
+  -fx-text-alignment: center;
+  text-align: center;
+}
+
+.file-drop-area:hover {
+  background-color: #fff;
+}
+
+.file-drop-area.is-active {
+  background-color: #fff;
+}
+
+.file-msg {
+  font-size: small;
+  font-weight: 300;
+  line-height: 1.4;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  color: #444;
+}
+
+.file-input {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+  cursor: pointer;
+  opacity: 0;
+}
+
+.file-input:focus {
+  outline: none;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+}
+
+select {
+  white-space: nowrap;
+  overflow: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.box-shadow {
+  box-shadow: 0 0 5px -1px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 0 5px -1px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 0 5px -1px rgba(0, 0, 0, 0.5);
+}
+
+.box-shadow-1 {
+  box-shadow: 0 0 10px -1px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 0 10px -1px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 0 10px -1px rgba(0, 0, 0, 0.5);
+}
+
+.box-shadow-2 {
+  box-shadow: 0 0 20px -1px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 0 20px -1px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 0 20px -1px rgba(0, 0, 0, 0.5);
+}
+
+.box-shadow-3 {
+  box-shadow: 0 0 30px -1px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 0 30px -1px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 0 30px -1px rgba(0, 0, 0, 0.5);
+}
+
+.box-shadow-4 {
+  box-shadow: 0 0 40px -1px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 0 40px -1px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 0 40px -1px rgba(0, 0, 0, 0.5);
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.divider {
+  height: 1px;
+  width: 100%;
+  background-color: #eee;
+  margin: 1.5rem 0;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.start {
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.flex {
+  display: flex;
+}
+
+textarea {
+  resize: none;
+}
+
+i {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.english,
+.en {
+  text-align: left;
+  font-family: "Lexend Deca", sans-serif;
+}
+
+input {
+  border: 0;
+  background-color: #00000000;
+}
+
+.dots, .textoverflow {
+  display: inline-block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+[contenteditable] {
+  outline: 0px solid transparent;
+}
+
+.left {
+  text-align: left;
+}
+
+.right {
+  text-align: right;
+}
+
+.grid {
+  display: grid;
+}
+
+.gap-1 {
+  gap: 1rem;
+}
+
+.gap-2 {
+  gap: 2rem;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/*  Place holder color  */
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #aaa;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #aaa;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: #aaa;
+}
+
+@page {
+  margin: 0;
+}
+@media print{ 
+  body, html {
+      height: 100% !important;
+      width: 100% !important;
+      display: inline-block;
+  }
+}
+.ar::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #aaa;
+  opacity: 1; /* Firefox */
+  font-family: "Noto Sans Arabic", sans-serif;
+}
+
+.ar:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #aaa;
+  font-family: "Noto Sans Arabic", sans-serif;
+}
+
+.ar::-ms-input-placeholder { /* Microsoft Edge */
+  color: #aaa;
+  font-family: "Noto Sans Arabic", sans-serif;
+}
+
+.vertical {
+  display: flex;
+  flex-direction: column;
+}
+
+.horizontal {
+  display: flex;
+}
+
+/*  loader  */
+.loader-container {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.loader {
+  border: .75rem solid #f3f3f3;
+  border-radius: 50%;
+  border-top: .75rem solid #3498db;
+  width: 4rem;
+  min-width: 4rem;
+  height: 4rem;
+  min-height: 4rem;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+[contenteditable] {
+  outline: 0px solid transparent;
+}
+
+.undraggable {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+}

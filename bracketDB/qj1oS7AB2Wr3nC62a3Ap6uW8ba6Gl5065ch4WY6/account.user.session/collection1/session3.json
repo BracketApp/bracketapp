@@ -1,0 +1,29 @@
+{
+    "id": "CK1f37EE2c06NK7nW4az6UM2tm7y52lH7Qy2OG8",
+    "session": "y21pu7pY2bW6lh7kL7Qb0Uf6lB6Ja3FR7TS8Mm0",
+    "userID": "user1",
+    "expiryDate": 1726857063780,
+    "__props__": {
+        "id": "R127Y2u6E7e4B6q2O7F2s7q2e9",
+        "doc": "session3",
+        "counter": 3,
+        "creationDate": 1726746272729,
+        "collection": "account.user.session",
+        "chunk": "chunk1",
+        "lastModified": 1726770663784,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "expiryDate",
+                "id",
+                "session",
+                "userID"
+            ]
+        },
+        "secured": false,
+        "size": 455
+    }
+}

@@ -1,0 +1,24 @@
+{
+    "creationDate": 1712567715236,
+    "collection": "exchangeRate",
+    "chunkMaxSizeMB": 20,
+    "lastChunk": 1,
+    "docsLength": 1,
+    "counter": 1,
+    "reads": 35,
+    "writes": 0,
+    "deletes": 0,
+    "size": 253,
+    "payloadIn": 253,
+    "payloadOut": 8855,
+    "dirTree": [],
+    "indexes": [
+        {
+            "find": [
+                "__props__.id"
+            ],
+            "doc": "index1"
+        }
+    ],
+    "lastIndex": 1
+}

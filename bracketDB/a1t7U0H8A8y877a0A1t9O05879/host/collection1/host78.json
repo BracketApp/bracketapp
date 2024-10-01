@@ -1,0 +1,26 @@
+{
+    "publicID": "F113n7lK2Cd3tB6Cu3L76gq8xH6lS5825xK4Mx2",
+    "port": [
+        82
+    ],
+    "localhost": "flightbookingplatform.localhost",
+    "host": "flightbookingplatform.brackettechnologies.com",
+    "active": true,
+    "subdomain": "flightbookingplatform",
+    "__props__": {
+        "id": "M197y2E3H693P6s8B645Z5E8g8",
+        "doc": "host78",
+        "counter": 78,
+        "creationDate": 1723636865588,
+        "collection": "host",
+        "chunk": "chunk1",
+        "lastModified": 1723636865588,
+        "dev": false,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": [],
+        "secured": false,
+        "size": 471
+    }
+}

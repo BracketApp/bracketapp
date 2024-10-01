@@ -1,0 +1,306 @@
+{
+    "view": "View?class=column;style:[position=relative;padding=.5rem;gap=.5rem];form=_.form;[[_.actions]]",
+    "children": [
+        {
+            "view": "View?class=flexbox;style:[height=3.5rem;width=100%;justifyContent=space-between;position=relative]",
+            "children": [
+                {
+                    "view": "View?class=flexbox;style:[height=100%;cursor=default;gap=1rem]",
+                    "children": [
+                        {
+                            "view": "View?class=flex;style:[height=2.5rem;width=.2rem;backgroundColor=#fb3b1e]"
+                        },
+                        {
+                            "view": "Text?text=_.header.title;style:[fontSize=1.5rem]"
+                        }
+                    ]
+                },
+                {
+                    "view": "@view.component.custom.view?data=_.header"
+                }
+            ]
+        },
+        {
+            "view": "View?class=flexbox pointer;style:[width=7rem;height=2rem;backgroundColor=#fff;border=.1rem solid #ddd;borderTop=.1rem solid #fff;borderRadius=0 0 .75rem .75rem;position=absolute;right=calc(50% - 3.5rem);top=4.5rem;zIndex=1];[click?expandMore()]",
+            "children": [
+                {
+                    "view": "Icon?name=expand_more;google.symbol;style:[fontSize=2rem;color=#666;transition=.2s;transform=rotate(180deg)]"
+                }
+            ]
+        },
+        {
+            "view": "View?class=column;style:[height=fit-content;backgroundColor=#f5f5f5;borderBottom=1px solid #ddd;borderTop=1px solid #ddd;transition=height .2s;position=relative;overflow=hidden]",
+            "children": [
+                {
+                    "view": "@view.component.custom.view?data=_.navbar"
+                },
+                {
+                    "view": "View?class=flex;style:[padding=1rem;paddingTop=0;justifyContent=space-between]",
+                    "children": [
+                        {
+                            "view": "View?class=column;style:[gap=1rem]",
+                            "children": [
+                                {
+                                    "view": "[View]:[path=search]?class=column;style:[gap=1rem]",
+                                    "children": [
+                                        {
+                                            "view": "@view.component.custom.view?data=_.search"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "view": "View?class=flexbox pointer;style:[width=12rem;height=3rem;backgroundColor=#fb3b1e;borderRadius=.4rem;marginLeft=auto;marginTop=auto;transition=.2s];hover.style.backgroundColor=#db2e14;[click;[keydown:child()??e().code=Enter]?getData()]",
+                            "children": [
+                                {
+                                    "view": "Input?class=flexbox pointer;text=Search;readonly;style:[color=#fff;width=100%]"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "__props__": {
+        "id": "21z7d2e4k156w9w85106P142g7",
+        "doc": "searchEngine",
+        "counter": 2,
+        "creationDate": 1724169816127,
+        "collection": "view.component.manager",
+        "chunk": "chunk1",
+        "lastModified": 1725450070193,
+        "dev": false,
+        "actions": {
+            "expandMore": {
+                "_": "openSearchEngine()?closed?closeSearchEngine()",
+                "closeSearchEngine": "closed=true;next().style():[height=0;borderBottom=0];1stChild().rotate()=0;parent().next().1stChild().style():[height=calc(100vh - 10rem)]",
+                "openSearchEngine": "closed=false;next().style():[height=fit-content;borderBottom=1px solid #ddd];1stChild().rotate()=180;parent().next().1stChild().style():[height=calc(100vh - 17rem)]"
+            },
+            "openManager": "data().trip=_.text;():[_.view||manager].refresh()",
+            "updateReturnDateByDuration": {
+                "_": "updateDuration();2ndParent().data().returnDate=2ndParent().data().travelDate+data();3rdParent().prev().refresh()",
+                "updateDuration": "data()=[259200000?clicked().txt()=3 days?432000000?clicked().txt()=5 days?604800000?clicked().txt()=1 week?864000000?clicked().txt()=10 days?1296000000?clicked().txt()=15 days?2592000000?clicked().txt()=1 month?7776000000?clicked().txt()=3 month]"
+            },
+            "diagramBtnHandler": {
+                "_": "openHandler()?():popup.positioner!=.id?closeHandler()",
+                "closeHandler": "closePopup()",
+                "openHandler": "@view.application.root;openPopup():[form=searchEngine;path=pax;data='@view.schema.manager.adtChdInf']"
+            }
+        },
+        "comments": [
+            {
+                "note": "header",
+                "path": [
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "title",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "icons",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "note": "expand more",
+                "path": [
+                    "children",
+                    1
+                ]
+            },
+            {
+                "note": "search engine",
+                "path": [
+                    "children",
+                    2
+                ]
+            },
+            {
+                "note": "search inputs",
+                "path": [
+                    "children",
+                    2,
+                    "children",
+                    1,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "search btn",
+                "path": [
+                    "children",
+                    2,
+                    "children",
+                    1,
+                    "children",
+                    1
+                ]
+            }
+        ],
+        "collapsed": [
+            {
+                "path": [
+                    "children",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    2
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    2,
+                    "children",
+                    1,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    2,
+                    "children",
+                    1,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "expandMore"
+                ]
+            },
+            {
+                "path": [
+                    "updateReturnDateByDuration"
+                ]
+            },
+            {
+                "path": [
+                    "diagramBtnHandler"
+                ]
+            }
+        ],
+        "arrange": {
+            "": [
+                "view",
+                "children",
+                "expandMore",
+                "openManager",
+                "updateReturnDateByDuration",
+                "diagramBtnHandler"
+            ],
+            "children.0": [
+                "view",
+                "children"
+            ],
+            "children.0.children.0": [
+                "view",
+                "children"
+            ],
+            "children.0.children.0.children.0": [
+                "view"
+            ],
+            "children.0.children.0.children.1": [
+                "view"
+            ],
+            "children.0.children.1": [
+                "view"
+            ],
+            "children.1": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0": [
+                "view"
+            ],
+            "children.2": [
+                "view",
+                "children"
+            ],
+            "children.2.children.0": [
+                "view"
+            ],
+            "children.2.children.1": [
+                "view",
+                "children"
+            ],
+            "children.2.children.1.children.0": [
+                "view",
+                "children"
+            ],
+            "children.2.children.1.children.0.children.0": [
+                "view",
+                "children"
+            ],
+            "children.2.children.1.children.0.children.0.children.0": [
+                "view"
+            ],
+            "children.2.children.1.children.1": [
+                "view",
+                "children"
+            ],
+            "children.2.children.1.children.1.children.0": [
+                "view"
+            ],
+            "expandMore": [
+                "_",
+                "closeSearchEngine",
+                "openSearchEngine"
+            ],
+            "updateReturnDateByDuration": [
+                "_",
+                "updateDuration"
+            ],
+            "diagramBtnHandler": [
+                "_",
+                "closeHandler",
+                "openHandler"
+            ]
+        },
+        "secured": false,
+        "size": 4863
+    }
+}

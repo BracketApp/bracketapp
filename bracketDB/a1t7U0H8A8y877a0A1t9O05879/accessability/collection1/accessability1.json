@@ -1,0 +1,40 @@
+{
+    "__props__": {
+        "id": "I14741U6b1B9B7U6S0q6L408x4",
+        "doc": "accessability1",
+        "counter": 1,
+        "creationDate": 1716197606484,
+        "collection": "accessability",
+        "chunk": "chunk1",
+        "lastModified": 1725447213841,
+        "dev": false,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "accessabilities",
+                "packageID",
+                "pluginID"
+            ],
+            "accessabilities.0": [
+                "actions",
+                "collections",
+                "projectID"
+            ]
+        },
+        "secured": false,
+        "size": 558
+    },
+    "accessabilities": [
+        {
+            "actions": [
+                "search"
+            ],
+            "collections": true,
+            "projectID": "a1u7e2r3W6n3M6s8A6U5e5c456"
+        }
+    ],
+    "packageID": "819781E687S3U5e2L9w6v3u9H8",
+    "pluginID": "r1c7d176U1B9m6C7i9F8T973T2"
+}

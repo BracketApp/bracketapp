@@ -1,0 +1,29 @@
+{
+    "__props__": {
+        "id": "01A7B2a6x786G5k9q5b0d8c076",
+        "doc": "currency2",
+        "counter": 2,
+        "creationDate": 1726765950806,
+        "collection": "public.currency",
+        "chunk": "chunk1",
+        "lastModified": 1726765986627,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "code",
+                "symbol",
+                "name",
+                "country"
+            ]
+        },
+        "secured": false,
+        "size": 377
+    },
+    "code": "LBP",
+    "symbol": "L.L",
+    "name": "Lebanese Pounds",
+    "country": "Lebanon"
+}

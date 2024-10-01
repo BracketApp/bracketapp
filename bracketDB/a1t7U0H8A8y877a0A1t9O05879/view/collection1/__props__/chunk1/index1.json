@@ -1,0 +1,86 @@
+{
+    "actionlist": {
+        "__props__.id": "71f7V1c0V3A330O7B8a6d466V9"
+    },
+    "billing": {
+        "__props__.id": "H1E7J184b3n8n5j8Z3M5G6b1R1"
+    },
+    "card": {
+        "__props__.id": "21x7o1M6l5y6c0S7P4v9b274X7"
+    },
+    "CoinPackagesForm": {
+        "__props__.id": "g1O7o1f5k6C1s8w7T0g169J4A3"
+    },
+    "collections": {
+        "__props__.id": "41A7R1L023z3V0s7Y8B6f4b8q4"
+    },
+    "confirmationPopup": {
+        "__props__.id": "V1h7j1y6s0v2623852A1k2Q1M7"
+    },
+    "ConfirmPopup": {
+        "__props__.id": "L1q7F1p4I4x191Q7n026F5U4D4"
+    },
+    "console": {
+        "__props__.id": "j1H7G1P0l3o3F0z7m8S684b887"
+    },
+    "consoleSidebar": {
+        "__props__.id": "s1x7a115h5f0B9P6V0Y908t4V0"
+    },
+    "counter": {
+        "__props__.id": "X1c771b0m3H3F037p8j6a4c470"
+    },
+    "customInput": {
+        "__props__.id": "G1D751F6K3Z7o049G268P0R812"
+    },
+    "database": {
+        "__props__.id": "s1C7X1K4b9k2R1g7y1Q851P6q2"
+    },
+    "form": {
+        "__props__.id": "U1u7M156k53537o7b8O030M4o3"
+    },
+    "help": {
+        "__props__.id": "m1G7E1P3n8w0J4l1x6b1d0W1G9"
+    },
+    "login": {
+        "__props__.id": "u1r7s1W0I3R3V0X7z876f5j0K9"
+    },
+    "main": {
+        "__props__.id": "Z1k7y1V3F680p5o6S9R7I2y1v7"
+    },
+    "ManagerHeader": {
+        "__props__.id": "c1s7s1L4l3n999T3h6G7m1L9d1"
+    },
+    "Map": {
+        "__props__.id": "i1n7y1l0i33380J7a8D6G4A4o7"
+    },
+    "msg": {
+        "__props__.id": "b1i7i1j4B3U2N8V5f9l1R0d461"
+    },
+    "projects": {
+        "__props__.id": "u1Q7w1R3k6w1e4T291C9R6B1Q7"
+    },
+    "view": {
+        "__props__.id": "J1o7L1N0c3I390e7d8n6R5N4e5"
+    },
+    "SearchEngine": {
+        "__props__.id": "q1u7k1N4L4p0S0p0n9x9N942O3"
+    },
+    "sidebar": {
+        "__props__.id": "w1V7h1e1n0M3n1E3M6d5n211M7"
+    },
+    "subscriptionForm": {
+        "__props__.id": "c1G7R1R6Q3B8s4W3X5r1F175C9"
+    },
+    "Table": {
+        "__props__.id": "31a7o2D2b4J2U1z880P4a2d5w6"
+    },
+    "tap": {
+        "__props__.id": "f1m7p1v3i0G0C08430B1q8W9C9"
+    },
+    "topbar": {
+        "__props__.id": "h1k7G1d367h7U9r6n0y1P9b7y8"
+    },
+    "gallery": {
+        "__props__.id": "21O7N2H12908d8j185y9j2j0V9"
+    }
+}

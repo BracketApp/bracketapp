@@ -1,0 +1,102 @@
+{
+    "__props__": {
+        "id": "g1s7V2o3D7a3r8M5s7s3G3M7t2",
+        "doc": "login",
+        "counter": 2,
+        "creationDate": 1723738573372,
+        "collection": "view.server",
+        "chunk": "chunk1",
+        "lastModified": 1725449946929,
+        "dev": false,
+        "actions": {
+            "login": {
+                "_": "getUsername()::getPassword():getUser():getPermission():sessionHandler():successHandler()?_.username;_.password?send():[success=false;msg=Missing data!]",
+                "getUser": "search():[collection=account.user.user;findOne:[id=username:().userID]]:[user:()=_.data?_.data?send():[success=false;msg=User does not exist!]]",
+                "getPassword": "search():[collection=account.user.password;findOne:[password=_.password;usernameID=username:().id]]:[password:()=_.data?_.data?send():[success=false;msg=Wrong password!]]",
+                "getUsername": "search():[collection=account.user.username;findOne:[username=_.username]]:[username:()=_.data?_.data?send():[success=false;msg=Wrong username!]]",
+                "getPermission": "search():[collection=account.user.permission;findOne:[userID=user:().id]]:[permission:()=_.data]",
+                "sessionHandler": {
+                    "_": "getSession()::[updateSession()]?getCookie():session?createSession()",
+                    "getSession": "search():[collection=account.user.session;findOne:[session=getCookie():session;userID=user:().id]]:[session:()=_.data?_.data?wrongSession=true;createSession()]",
+                    "updateSession": "session:().():[session=gen():[universal=true];expiryDate=now().timestamp()+86400000];save():[collection=account.user.session;data=session:()]:[session:()=_.data]?!wrongSession",
+                    "createSession": {
+                        "_": "getUserAllSessions()::removeExpiredSessions():createSession()",
+                        "createSession": {
+                            "_": "initSession();save():[collection=account.user.session;data=session:()]:[session:()=_.data]?sessions:().keys().len()<3?reachedMax()",
+                            "reachedMax": "send():[success=false;msg=You cannot have more than three active users!]",
+                            "initSession": "session:()=[id=gen():[universal=true];session=gen():[universal=true];userID=user:().id;expiryDate=now().timestamp()+86400000]"
+                        },
+                        "getUserAllSessions": "search():[collection=account.user.session;find:[userID=user:().id]]:[sessions:()=_.data||[]]",
+                        "removeExpiredSessions": "sessions:().keys()._():[erase():[collection=account.user.session;doc=_];sessions:().[_].del()?sessions:().[_].expiryDate<now().timestamp()]"
+                    }
+                },
+                "successHandler": "setCookie():session:[session:().session];send():[user=user:()]"
+            },
+            "checkSession": {
+                "_": "start();getSession()::checkSession():updateSession():getUser():successHandler()?getCookie():session?failHandler()",
+                "getSession": "search():[collection=account.user.session;findOne:[session=getCookie():session]]:[session:()=_.data?_.data?()]",
+                "updateSession": "session:().():[session=gen():[universal=true];expiryDate=now().timestamp()+86400000];save():[collection=account.user.session;data=session:()]:[session:()=_.data]",
+                "checkSession": "erase():[collection=account.user.session;doc=getCookie():session]:[failHandler()]?session:().expiryDate<now().timestamp()",
+                "getUser": "search():[collection=account.user.user;findOne:[id=session:().userID]]:[user:()=_.data?_.data?failHandler()]",
+                "failHandler": "eraseCookie():session;send():[success=false]",
+                "successHandler": "setCookie():session:[session:().session];send():[success=true;user=user:()]"
+            }
+        },
+        "comments": [],
+        "collapsed": [
+            {
+                "path": [
+                    "checkSession"
+                ]
+            },
+            {
+                "path": [
+                    "login"
+                ]
+            }
+        ],
+        "arrange": {
+            "": [
+                "checkSession",
+                "login"
+            ],
+            "checkSession": [
+                "_",
+                "checkSession",
+                "failHandler",
+                "getSession",
+                "getUser",
+                "successHandler",
+                "updateSession"
+            ],
+            "login": [
+                "_",
+                "getPassword",
+                "getPermission",
+                "getUser",
+                "getUsername",
+                "sessionHandler",
+                "successHandler"
+            ],
+            "login.sessionHandler": [
+                "_",
+                "createSession",
+                "getSession",
+                "updateSession"
+            ],
+            "login.sessionHandler.createSession": [
+                "_",
+                "createSession",
+                "getUserAllSessions",
+                "removeExpiredSessions"
+            ],
+            "login.sessionHandler.createSession.createSession": [
+                "_",
+                "initSession",
+                "reachedMax"
+            ]
+        },
+        "secured": true,
+        "size": 3742
+    }
+}

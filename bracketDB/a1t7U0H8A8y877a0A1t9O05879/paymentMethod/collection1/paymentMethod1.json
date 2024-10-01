@@ -1,0 +1,31 @@
+{
+    "name": "My Card",
+    "type": "Master Card",
+    "primary": true,
+    "expiryMonth": "05",
+    "expiryYear": "31",
+    "cvc": "123",
+    "holderName": "Mohamad Baker Obeid",
+    "cardNumber": "1234 5678 9000 0000",
+    "addressLine1": "",
+    "addressLine2": "",
+    "city": "Beirut",
+    "postalCode": "12345",
+    "accountID": "1197B078m8x8q4e9T5X949d858",
+    "billingAccountID": "21w710Q828V8p7u0J1z9p0n3n7",
+    "__props__": {
+        "id": "F1A7q0r8T8l8o7C0K1v9Z0M629",
+        "doc": "paymentMethod1",
+        "counter": 1,
+        "creationDate": 1711031357672,
+        "collection": "paymentMethod",
+        "chunk": "chunk1",
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": [],
+        "secured": false,
+        "size": 579
+    },
+    "typ": "Master"
+}

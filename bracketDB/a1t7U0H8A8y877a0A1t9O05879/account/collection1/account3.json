@@ -1,0 +1,20 @@
+{
+    "__props__": {
+        "id": "N1c7i1G4e4C800o5J6l377C5Z7",
+        "doc": "account3",
+        "counter": 3,
+        "creationDate": 1714480563757,
+        "collection": "account",
+        "chunk": "chunk1",
+        "lastModified": 1723733505972,
+        "dev": false,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": [],
+        "secured": false,
+        "size": 333
+    },
+    "email": "training@brackettechnologies.com",
+    "availableCreateNewProjects": 0
+}

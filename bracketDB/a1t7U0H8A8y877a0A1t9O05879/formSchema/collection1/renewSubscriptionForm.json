@@ -1,0 +1,199 @@
+{
+    "__props__": {
+        "id": "21U7D1L6q5z3r1s84306N9V7I2",
+        "doc": "renewSubscriptionForm",
+        "counter": 4,
+        "creationDate": 1716531836972,
+        "collection": "formSchema",
+        "chunk": "chunk1",
+        "lastModified": 1723125697483,
+        "dev": false,
+        "actions": {
+            "getSubscriptionsAndPackages": {
+                "_": "[getPackages();getSubscriptions()]()::[nthParent():5.refresh()]",
+                "getPackages": "[getPackages():[pluginID=data()]:[packages:()=_.packages.sort():[path=coins]]]():[collection=actions;doc=main]",
+                "getSubscriptions": "[getSubscriptions():[pluginID=data();expiryDate=timestamp()]:[subscriptions:()=_.subscriptions]]():[collection=actions;doc=main]"
+            }
+        },
+        "comments": [
+            {
+                "note": "divider",
+                "path": [
+                    "sections",
+                    3
+                ]
+            },
+            {
+                "note": "project",
+                "path": [
+                    "sections",
+                    0,
+                    "inputs",
+                    0
+                ]
+            },
+            {
+                "note": "plugin",
+                "path": [
+                    "sections",
+                    0,
+                    "inputs",
+                    1
+                ]
+            },
+            {
+                "note": "inputs",
+                "path": [
+                    "sections",
+                    0
+                ]
+            },
+            {
+                "note": "packages",
+                "path": [
+                    "sections",
+                    1
+                ]
+            },
+            {
+                "note": "selected",
+                "path": [
+                    "sections",
+                    2
+                ]
+            },
+            {
+                "note": "subs details",
+                "path": [
+                    "sections",
+                    4
+                ]
+            }
+        ],
+        "collapsed": [
+            {
+                "path": [
+                    "confirmBtn"
+                ]
+            },
+            {
+                "path": [
+                    "requiredData"
+                ]
+            },
+            {
+                "path": [
+                    "sections",
+                    0,
+                    "inputs",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "sections",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "sections",
+                    2
+                ]
+            },
+            {
+                "path": [
+                    "sections",
+                    3
+                ]
+            },
+            {
+                "path": [
+                    "sections",
+                    0,
+                    "inputs",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "sections",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "sections",
+                    4
+                ]
+            }
+        ],
+        "arrange": [],
+        "secured": false,
+        "size": 2800
+    },
+    "beforeLoadingActions": "[getOnlyPlugins()::[plugins:()=_.plugins;packages:()=:];getOnlyProjects()::[projects:()=_.projects]]():[collection=actions;doc=main]",
+    "confirmBtn": {
+        "text": "Subscribe",
+        "action": "[subscribe():[form()]:[end():[_]]]():[collection=actions;doc=main]",
+        "msg": "We are subscribing. Please wait until we finish!"
+    },
+    "form": "newSubscription",
+    "requiredData": [
+        "publicID",
+        "packageID",
+        "pluginID",
+        "qty",
+        "startDate",
+        "endDate"
+    ],
+    "reset": true,
+    "sections": [
+        {
+            "inputs": [
+                {
+                    "label": "Project",
+                    "path": "publicID",
+                    "items": "projects:().():name",
+                    "action": "data()=projects:().find():[name=data()].publicID;nthParent():5.refresh()",
+                    "inputType": "stdItems",
+                    "required": true,
+                    "defaultValue": "projects:().find():[publicID=data()].name"
+                },
+                {
+                    "label": "Plugin",
+                    "path": "pluginID",
+                    "items": "plugins:().():name",
+                    "action": "data()=plugins:().find():[name=data()].id();[getSubscriptionsAndPackages()]():[collection=formSchema;doc=renewSubscriptionForm]",
+                    "inputType": "stdItems",
+                    "required": true,
+                    "defaultValue": "plugins:().find():[id()=data()].name"
+                }
+            ],
+            "styles": "display=grid;gridTemplateColumns=1fr 1fr;gapX=1rem;gapY=3rem;padding=1rem",
+            "gridInputs": true
+        },
+        {
+            "styles": "width=100%;display=grid;gridTemplateColumns=1fr 1fr 1fr;gapX=3rem",
+            "gridCards": true,
+            "cards": "packages:()",
+            "subscriptionPackage": true
+        },
+        {
+            "styles": "width=100%;display=grid;gridTemplateColumns=1fr 1fr 1fr;gapX=3rem",
+            "cards": "packages:()",
+            "gridCards": true,
+            "selected": true
+        },
+        {
+            "divider": true
+        },
+        {
+            "styles": "width=100%;display=flex;justifyContent=flex-end",
+            "subscriptionDetails": true,
+            "gridCards": true
+        }
+    ],
+    "styles": "width=120rem",
+    "title": "Subscribe to Bracket powerful plugins."
+}

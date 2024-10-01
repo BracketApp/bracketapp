@@ -1,0 +1,24 @@
+{
+    "view": "View?id=help;title=Help | Bracket Platform",
+    "__props__": {
+        "id": "m1G7E1P3n8w0J4l1x6b1d0W1G9",
+        "doc": "help",
+        "counter": 22,
+        "creationDate": 1713804161019,
+        "collection": "view",
+        "chunk": "chunk1",
+        "lastModified": 1723733055662,
+        "dev": false,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": [],
+        "secured": false,
+        "size": 336
+    },
+    "children": [
+        {
+            "view": "topbar"
+        }
+    ]
+}

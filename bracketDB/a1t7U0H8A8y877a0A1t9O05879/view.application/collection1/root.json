@@ -1,0 +1,80 @@
+{
+    "view": "View?id=root;class=column;style:[minHeight=100vh]",
+    "children": [
+        {
+            "view": "@view.[manifest:().page]"
+        },
+        {
+            "view": "droplist"
+        },
+        {
+            "view": "mininote"
+        },
+        {
+            "view": "note"
+        },
+        {
+            "view": "loader"
+        },
+        {
+            "view": "tooltip"
+        },
+        {
+            "view": "@view.confirmationPopup"
+        },
+        {
+            "view": "@view.form"
+        },
+        {
+            "view": "@view.msg"
+        }
+    ],
+    "__props__": {
+        "id": "i1I7F1L0f3a3U0G798f6s5k4B3",
+        "doc": "root",
+        "counter": 21,
+        "creationDate": 1710330786543,
+        "collection": "view.application",
+        "chunk": "chunk1",
+        "lastModified": 1725168709459,
+        "dev": false,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "view",
+                "children"
+            ],
+            "children.0": [
+                "view"
+            ],
+            "children.1": [
+                "view"
+            ],
+            "children.2": [
+                "view"
+            ],
+            "children.3": [
+                "view"
+            ],
+            "children.4": [
+                "view"
+            ],
+            "children.5": [
+                "view"
+            ],
+            "children.6": [
+                "view"
+            ],
+            "children.7": [
+                "view"
+            ],
+            "children.8": [
+                "view"
+            ]
+        },
+        "secured": false,
+        "size": 764
+    }
+}

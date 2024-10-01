@@ -1,0 +1,27 @@
+{
+    "__props__": {
+        "id": "Z1n7c276u7g725u4z2p8l4v8k2",
+        "doc": "cabin2",
+        "counter": 2,
+        "creationDate": 1726775428482,
+        "collection": "flight.cabin",
+        "chunk": "chunk1",
+        "lastModified": 1726775457555,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "class",
+                "seatCapacity",
+                "aircraft"
+            ]
+        },
+        "secured": false,
+        "size": 361
+    },
+    "class": "Business",
+    "seatCapacity": "35",
+    "aircraft": "aircraft1"
+}

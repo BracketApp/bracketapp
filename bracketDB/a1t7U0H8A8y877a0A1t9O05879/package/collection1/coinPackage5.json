@@ -1,0 +1,26 @@
+{
+    "__props__": {
+        "id": "v1P7J1f6q7C3n7p557V5w7Z7d2",
+        "doc": "coinPackage5",
+        "counter": 5,
+        "creationDate": 1716737575772,
+        "collection": "package",
+        "chunk": "chunk1",
+        "lastModified": 1723110739155,
+        "dev": false,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": [],
+        "secured": false,
+        "size": 434
+    },
+    "priceUSD": 70000,
+    "active": true,
+    "coins": 100000,
+    "name": "Investor",
+    "pluginID": "V1p7r1A7q4A2U04469R7O4m7w9",
+    "savings": 30000,
+    "description": "Become an investor!",
+    "trading": true
+}

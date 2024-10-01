@@ -1,0 +1,21 @@
+{
+    "port": 85,
+    "creationDate": 1727372828827,
+    "closes": [],
+    "__props__": {
+        "id": "z157V2E7q3Q7M2m8m2o8A843L4",
+        "doc": "runningServer6",
+        "counter": 6,
+        "creationDate": 1727372828834,
+        "collection": "runningServer",
+        "chunk": "chunk1",
+        "lastModified": 1727372828834,
+        "dev": false,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": [],
+        "secured": false,
+        "size": 322
+    }
+}

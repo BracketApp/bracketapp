@@ -1,0 +1,32 @@
+{
+    "creationDate": 1712567715252,
+    "collection": "paymentMethod",
+    "chunkMaxSizeMB": 20,
+    "lastChunk": 1,
+    "docsLength": 1,
+    "counter": 1,
+    "reads": 260,
+    "writes": 1,
+    "deletes": 0,
+    "size": 527,
+    "payloadIn": 1136,
+    "payloadOut": 155994,
+    "dirTree": [],
+    "indexes": [
+        {
+            "find": [
+                "__props__.id"
+            ],
+            "doc": "index1"
+        },
+        {
+            "find": [
+                "accountID"
+            ],
+            "doc": "index2",
+            "lastRead": 1723979551529,
+            "expiryDate": 1726571551529
+        }
+    ],
+    "lastIndex": 2
+}

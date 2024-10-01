@@ -1,0 +1,24 @@
+{
+    "accountID": "k1A7R0N8X8Y8l7c030q8S8W7O3",
+    "approved": true,
+    "releaseDate": 1713533620115,
+    "expiryDate": 1797692580000,
+    "status": "Confirmed",
+    "name": "Developer Editor",
+    "__props__": {
+        "id": "Q1p78107R4j1n2Z9a2E1K1r912",
+        "doc": "plugin4",
+        "counter": 4,
+        "creationDate": 1717412921192,
+        "collection": "plugin",
+        "chunk": "chunk1",
+        "lastModified": 1723121095556,
+        "dev": false,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": [],
+        "secured": false,
+        "size": 416
+    }
+}

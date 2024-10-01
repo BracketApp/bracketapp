@@ -1,0 +1,233 @@
+{
+    "view": "View?id=coinPackagesForm;class=flex justify-center;style:[display=none;position=absolute;top=0;left=0;right=0;bottom=0;backgroundColor=#00000080;zIndex=1]",
+    "__props__": {
+        "id": "g1O7o1f5k6C1s8w7T0g169J4A3",
+        "doc": "CoinPackagesForm",
+        "counter": 96,
+        "creationDate": 1715618701943,
+        "active": true,
+        "actions": {
+            "buyCoins": {
+                "_": "loader.show;[start();chargeAccount():[form()]:[end():[_]]]():[collection=actions;doc=main]:[loader.hide;postBuy()]?conditions()?missingDataHandler()",
+                "conditions": "form().find():[packageName;priceUSD;qty;coins]",
+                "missingDataHandler": "note():[text='Choose a package correctly!';danger]",
+                "postBuy": "note():[text=_.message;[danger=true?!_.success]];[[closeForm()]():[doc=tap;view=():coinPackagesForm.lastChild()]?_.success]"
+            },
+            "chosenPackage": ":[label=Package Name;path=packageName]:[label=Quantity;path=qty;preUnit='x']:[label=Payment Amount;path=priceUSD;unit=USD]:[label=Coins Purchased;path=coins;unit=COIN]"
+        },
+        "comments": [
+            {
+                "note": "packages",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "packages",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "note": "buy btn",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    5
+                ]
+            },
+            {
+                "note": "btns",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    4
+                ]
+            },
+            {
+                "note": "prices",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    3
+                ]
+            },
+            {
+                "note": "divider",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    2
+                ]
+            },
+            {
+                "note": "selected",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "note": "title",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    0
+                ]
+            }
+        ],
+        "collapsed": [
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    2
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    4
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "buyCoins"
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    3
+                ]
+            }
+        ],
+        "chunk": "chunk1",
+        "secured": false,
+        "collection": "view",
+        "createdByUserID": "41V7H078W8I8I780z1m9Y2E4Y2"
+    },
+    "children": [
+        {
+            "view": "View?class=flex column;style:[padding=4rem;transition=.5s;backgroundColor=#fff;width=150rem;gap=2rem;height=100%;overflowY=auto;backgroundColor=#fff;transform=translateY(-100%)];doc=chargeAccount",
+            "children": [
+                {
+                    "view": "Text?text=Save money and choose a profitable package!;style:[fontSize=1.75rem;padding=2rem 0;textAlign=left]"
+                },
+                {
+                    "view": "View?class=flex column;style:[width=100%;gap=2rem]",
+                    "children": [
+                        {
+                            "view": "View?style:[width=100%;display=grid;gridTemplateColumns=1fr 1fr 1fr;gapX=3rem]",
+                            "children": [
+                                {
+                                    "view": "[coinPackageCard]:[data=packages:()]"
+                                }
+                            ]
+                        },
+                        {
+                            "view": "View?style:[width=100%;display=grid;gridTemplateColumns=1fr 1fr 1fr;gapX=3rem]",
+                            "children": [
+                                {
+                                    "view": "[View]:[data=packages:()]?text=[Selected!?_.selected?];style:[fontSize=1.6rem;width=100%;textAlign=center]"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "view": "View?style:[minHeight=1px;backgroundColor=#ddd;marginTop=2rem;marginBottom=2rem;width=95%;marginLeft=2.5%]"
+                },
+                {
+                    "view": "View?id=totals;class=flex;style:[justifyContent=flex-end]",
+                    "children": [
+                        {
+                            "view": "View?class=flex column;style:[gap=1.5rem;padding=0 4rem;padding=2rem;borderRadius=1rem;border=1px solid #ddd]",
+                            "children": [
+                                {
+                                    "view": "[View]:[data=chosenPackage()]?class=flexbox;style:[justifyContent=flex-end;gap=1.5rem]",
+                                    "children": [
+                                        {
+                                            "view": "Text?text=_.label;style:[fontSize=1.5rem]"
+                                        },
+                                        {
+                                            "view": "Text?text=[form().[_.path]||0].price()+' '+tag():[text=_.unit;style:[fontSize=1.3rem]];style:[fontSize=1.5rem;color=blue;width=12.5rem;textAlign=right]?_.unit"
+                                        },
+                                        {
+                                            "view": "Text?text=form().[_.path];style:[fontSize=1.5rem;color=blue;width=12.5rem;textAlign=right]?!_.unit;!_.preUnit"
+                                        },
+                                        {
+                                            "view": "Text?text=_.preUnit+form().[_.path];style:[fontSize=1.5rem;width=12.5rem;textAlign=right]?_.preUnit"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "view": "View?class=flex;style:[justifyContent=flex-end;gap=1rem;marginTop=auto;marginLeft=auto]",
+                    "children": [
+                        {
+                            "view": "View?class=flexbox pointer;style:[padding=.75rem 4rem;width=15rem;borderRadius=.5rem;opacity=.8;transition=.2s;border=1px solid #ddd];hover.style.opacity=1;[click?[closeForm()]():[doc=tap]]",
+                            "children": [
+                                {
+                                    "view": "Text?text=Close;style:[fontSize=1.5rem]"
+                                }
+                            ]
+                        },
+                        {
+                            "view": "View?class=flexbox pointer;style:[padding=.75rem 4rem;width=15rem;backgroundColor=publicData:().public.btnBackgroundColor;borderRadius=.5rem;opacity=.8;transition=.2s;marginTop=auto;marginLeft=auto];hover.style.opacity=1;[click?buyCoins()]",
+                            "children": [
+                                {
+                                    "view": "Text?text=Buy Now;style:[fontSize=1.5rem;color=#fff]"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "view": "Icon?id=closeForm;class=pointer;name=bi-x-lg;style:[position=absolute;top=2.5rem;right=2.5rem;fontSize=3rem;opacity=.8;color=#fff];hover.style.opacity=1;[click?[closeForm()]():[doc=tap]]"
+        }
+    ]
+}

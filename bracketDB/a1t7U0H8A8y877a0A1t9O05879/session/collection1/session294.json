@@ -1,0 +1,31 @@
+{
+    "publicID": "Ku1Xc73K2WA5Ob41T4YT7Hn4BE1ae0yz7uj5ca4",
+    "projectID": "31y732a5O4O4n7M4K1v0q7v7V6",
+    "projectDoc": "project185",
+    "subdomain": "test1",
+    "host": "test1.localhost",
+    "db": "CU1qS7eS2Ke5LT4TT4OE79I4Au1U80cH7oL7He7",
+    "storage": "ez1iv7mv2Lm5XS4ut4UT7d64Eb1gP08Y76u7Xs7",
+    "devDB": "fi1xZ70R2TQ5PS4Jk47o77e4tk1Wa0Vf77p7IA7",
+    "dev": false,
+    "expiryDate": 1725533866915,
+    "encryptionKey": "ZBovs",
+    "userID": "",
+    "username": "",
+    "__props__": {
+        "id": "B1k7N2a5h434c7p4R676G9r2U3",
+        "doc": "session294",
+        "counter": 294,
+        "creationDate": 1725447466923,
+        "collection": "session",
+        "chunk": "chunk1",
+        "lastModified": 1725447466923,
+        "dev": false,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": [],
+        "secured": false,
+        "size": 666
+    }
+}

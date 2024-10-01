@@ -1,0 +1,90 @@
+{
+    "view": "View?id=manager;class=column;style:[width=100%;height=100%];[data=@view.schema.manager.[_.schema]?!_.searchEngine]",
+    "children": [
+        {
+            "view": "searchEngine??_"
+        },
+        {
+            "view": "View?style:[width=100%;padding=0 .5rem;overflow=hidden];[loaded?height()='calc(100% - '+prev().el().scrollHeight+'px)']",
+            "children": [
+                {
+                    "view": "table??_"
+                }
+            ]
+        }
+    ],
+    "__props__": {
+        "id": "j1Q7h204l1h6H9w8O110i4x9L6",
+        "doc": "manager",
+        "counter": 1,
+        "creationDate": 1724169810496,
+        "collection": "view.component.manager",
+        "chunk": "chunk1",
+        "lastModified": 1725450075563,
+        "dev": false,
+        "actions": {
+            "searchEngineParams": {
+                "_": "data=[searchEngineDefaultInputs();managerTitle();filterSearchEngineInputs();navbar();searchEngineInputs();searchAction();addAction()]",
+                "searchEngineDefaultInputs": "searchEngineDefaultInputs=publicData:().searchEngineDefaultValues.searchEngineInputs.find():[manager=currentOpenManager:().managerName]",
+                "managerTitle": "title=currentOpenManager:().title",
+                "filterSearchEngineInputs": "filterSearchEngineInputs=currentOpenManager:().filterSearchEngineInputs",
+                "navbar": "navBar=currentManager:().navBar.navBar",
+                "searchEngineInputs": "searchEngineInputs=[currentOpenManager:().searchEngineInputs.clone()?currentOpenManager:().searchEngineInputs.type()=list?sharedManagersInfo:().[currentOpenManager:().searchEngineInputs].searchEngineInputs]",
+                "searchAction": "searchAction=currentOpenManager:().searchAction",
+                "addAction": "addAction=currentOpenManager:().addAction"
+            },
+            "tableParams": {
+                "_": "data=[itemsList();setManagerTable()]",
+                "setManagerTable": "tableHeaderAndBody=sharedManagersInfo:().[currentOpenManager:().table].table?currentOpenManager:().table.type()=text?tableHeaderAndBody=currentOpenManager:().table",
+                "itemsList": "itemsList=managersSearchResult:().[currentOpenManager:().managerName]"
+            }
+        },
+        "comments": [
+            {
+                "note": "table",
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0
+                ]
+            }
+        ],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "view",
+                "children",
+                "searchEngineParams",
+                "tableParams"
+            ],
+            "children.0": [
+                "view"
+            ],
+            "children.1": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0": [
+                "view"
+            ],
+            "searchEngineParams": [
+                "_",
+                "addAction",
+                "filterSearchEngineInputs",
+                "managerTitle",
+                "navbar",
+                "searchAction",
+                "searchEngineDefaultInputs",
+                "searchEngineInputs"
+            ],
+            "tableParams": [
+                "_",
+                "itemsList",
+                "setManagerTable"
+            ]
+        },
+        "secured": false,
+        "size": 2209
+    }
+}

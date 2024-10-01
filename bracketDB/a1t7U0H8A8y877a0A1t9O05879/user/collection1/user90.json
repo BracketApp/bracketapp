@@ -1,0 +1,24 @@
+{
+    "firstName": "ali ",
+    "lastName": "BARAKAT",
+    "accountID": "P1l7N295t4t7O0Y4E5i843w4l0",
+    "email": "BARAKAT.TRAVEL1@GMAIL.COM",
+    "username": "alibarakat",
+    "newUser": false,
+    "__props__": {
+        "id": "91L7M2Z574f7L024T5V8X32520",
+        "doc": "user90",
+        "counter": 90,
+        "creationDate": 1725470458350,
+        "collection": "user",
+        "chunk": "chunk1",
+        "lastModified": 1725470458390,
+        "dev": false,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": [],
+        "secured": false,
+        "size": 412
+    }
+}

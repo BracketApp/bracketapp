@@ -1,0 +1,89 @@
+{
+    "view": "View?class=flex;style:[width=100%;height=4.5rem;borderRight=2px solid #00000000;cursor=pointer;alignItems=center;transition=.2s];tooltip=_.tooltip;[mouseenter?backgroundColor()=#e7e7e7?!selected];[mouseleave?backgroundColor()=#00000000?!selected];[click?itemClickHandler()]",
+    "children": [
+        {
+            "view": "View?class=flexbox;style:[height=4.25rem;width=4.25rem;transition=.2s]?_.icon",
+            "children": [
+                {
+                    "view": "Icon?name=_.icon;google.symbol;style:[fontSize=2.5rem;color=#453f3f;transition=.2s]"
+                }
+            ]
+        },
+        {
+            "view": "View?class=flex;style:[alignItems=center;width=10rem;height=100%;text-overflow=ellipsis;white-space=nowrap;overflow=hidden;opacity=1;transition=.2s]",
+            "children": [
+                {
+                    "view": "Text?text=_.tooltip.capitalize();style:[fontSize=1.2rem]"
+                }
+            ]
+        },
+        {
+            "view": "View?class=flexbox;style:[transition=.2s;marginLeft=auto;width=2.5rem]?_.subSidebar",
+            "children": [
+                {
+                    "view": "Icon?name=arrow_right;google.symbol;style:[transition=.2s;fontSize=2.5rem;color=#453f3f;transition=.2s]"
+                }
+            ]
+        }
+    ],
+    "__props__": {
+        "id": "W1n7x2H39958z9T4J788Y8B7p6",
+        "doc": "sidebarItem",
+        "counter": 2,
+        "creationDate": 1723989478876,
+        "collection": "view.component.sidebar",
+        "chunk": "chunk1",
+        "lastModified": 1725450035855,
+        "dev": false,
+        "actions": {
+            "itemClickHandler": {
+                "_": "[unselectItem();selectItem();openSubsidebar()?!selected?unselectItem();closeSubsidebar()]?_.subSidebar?unselectItem();selectItem();openManager()",
+                "openSubsidebar": "[():sidebarExpander.expandSidebar()?!():sidebarExpander.opened];next().height()=_.subSidebar.len()*3.4+'rem'?next()",
+                "selectItem": "selected=true;[lastChild().1stChild().rotate()=90?3rdChild()];children().():[1stChild().color()=#fb3b1e];backgroundColor()=#e7e7e7;borderRight()=2px solid #fb3b1e",
+                "unselectItem": "2ndParent().children().():[1stChild().():[selected=false;lastChild().1stChild().rotate()=0;children().():[1stChild().color()=#453f3f];backgroundColor()=#00000000;borderRight()=2px solid #00000000;[closeSubsidebar()?._.subSidebar]]?1stChild().selected]",
+                "closeSubsidebar": "next().height()=0;unselectSubItem()",
+                "unselectSubItem": "[next().1stChild().unselectItem()]():[doc=sidebarSubItem;path=:itemClickHandler]"
+            }
+        },
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "view",
+                "children",
+                "itemClickHandler"
+            ],
+            "children.0": [
+                "view",
+                "children"
+            ],
+            "children.0.children.0": [
+                "view"
+            ],
+            "children.1": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0": [
+                "view"
+            ],
+            "children.2": [
+                "view",
+                "children"
+            ],
+            "children.2.children.0": [
+                "view"
+            ],
+            "itemClickHandler": [
+                "_",
+                "closeSubsidebar",
+                "openSubsidebar",
+                "selectItem",
+                "unselectItem",
+                "unselectSubItem"
+            ]
+        },
+        "secured": false,
+        "size": 2489
+    }
+}

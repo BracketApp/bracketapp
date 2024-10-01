@@ -1,0 +1,47 @@
+{
+    "userID": "41V7H078W8I8I780z1m9Y2E4Y2",
+    "accountID": "1197B078m8x8q4e9T5X949d858",
+    "projects": [
+        {
+            "projectID": "K1x7d0l898q817C0w1W9c2j4d6",
+            "editData": true,
+            "admin": true,
+            "accessConsole": true,
+            "createProject": true
+        },
+        {
+            "projectID": "f1m7R0f878N8V7g0c1w8W9u1C6",
+            "editData": true,
+            "admin": true,
+            "accessConsole": true,
+            "createProject": true
+        },
+        {
+            "projectID": "K1h7d1Z464w881m8v5M0u896O5",
+            "editData": true,
+            "admin": true,
+            "accessConsole": true,
+            "createProject": true
+        }
+    ],
+    "__props__": {
+        "id": "E1K7T1o1H093n1u3B6Y032s014",
+        "doc": "permission2",
+        "counter": 2,
+        "creationDate": 1711031360204,
+        "collection": "permission",
+        "chunk": "chunk1",
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": [],
+        "secured": false,
+        "size": 788
+    },
+    "createProject": true,
+    "deleteProject": true,
+    "getBillingAccounts": true,
+    "genCoins": true,
+    "chargeAccount": true,
+    "getPaymentMethods": true
+}

@@ -1,0 +1,25 @@
+{
+    "__props__": {
+        "id": "w16712k6M7t7Z3v1l6B5I9N8v6",
+        "doc": "city1",
+        "counter": 1,
+        "creationDate": 1726773165986,
+        "collection": "public.city",
+        "chunk": "chunk1",
+        "lastModified": 1726773231619,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "city",
+                "country"
+            ]
+        },
+        "secured": false,
+        "size": 317
+    },
+    "city": "Beirut",
+    "country": "country1"
+}

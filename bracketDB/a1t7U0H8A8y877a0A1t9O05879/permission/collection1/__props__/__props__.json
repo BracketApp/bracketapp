@@ -1,0 +1,32 @@
+{
+    "creationDate": 1712567715263,
+    "collection": "permission",
+    "chunkMaxSizeMB": 20,
+    "lastChunk": 1,
+    "docsLength": 9,
+    "counter": 85,
+    "reads": 77423,
+    "writes": 246,
+    "deletes": 0,
+    "size": 3273,
+    "payloadIn": 307373,
+    "payloadOut": 58184090,
+    "dirTree": [],
+    "indexes": [
+        {
+            "find": [
+                "__props__.id"
+            ],
+            "doc": "index1"
+        },
+        {
+            "find": [
+                "userID"
+            ],
+            "doc": "index2",
+            "lastRead": 1727787319319,
+            "expiryDate": 1730379319319
+        }
+    ],
+    "lastIndex": 2
+}

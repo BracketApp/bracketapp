@@ -1,0 +1,23 @@
+{
+    "creationDate": 1713521276820,
+    "collection": "TAP",
+    "chunkMaxSizeMB": 20,
+    "lastChunk": 1,
+    "docsLength": -1,
+    "counter": 0,
+    "reads": 4767,
+    "writes": 329,
+    "deletes": 0,
+    "size": -6426,
+    "payloadIn": 1258620,
+    "payloadOut": 5991264,
+    "indexes": [
+        {
+            "find": [
+                "__props__.id"
+            ],
+            "doc": "index1"
+        }
+    ],
+    "lastIndex": 1
+}

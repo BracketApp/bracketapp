@@ -1,0 +1,47 @@
+{
+    "view": "View?id=msg;class=flexbox;style:[display=none;position=absolute;top=0;left=0;right=0;bottom=0;backgroundColor=#000000cc;zIndex=2]",
+    "__props__": {
+        "id": "b1i7i1j4B3U2N8V5f9l1R0d461",
+        "doc": "msg",
+        "counter": 24,
+        "creationDate": 1714328591041,
+        "collection": "view",
+        "chunk": "chunk1",
+        "lastModified": 1727372855108,
+        "dev": false,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "view",
+                "children"
+            ],
+            "children.0": [
+                "view",
+                "children"
+            ],
+            "children.0.children.0": [
+                "view"
+            ],
+            "children.0.children.1": [
+                "view"
+            ]
+        },
+        "secured": false,
+        "size": 788
+    },
+    "children": [
+        {
+            "view": "View?class=flex column;style:[padding=3rem;borderRadius=.5rem;backgroundColor=#fff;gap=.5rem]",
+            "children": [
+                {
+                    "view": "Text?text=_.msg;style:[fontSize=1.75rem]"
+                },
+                {
+                    "view": "Text?text=[_.2ndMsg||'It will take only few seconds...'];style:[fontSize=1.75rem]"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,532 @@
+{
+    "view": "View?id=tap;class=flex column;title=TAP | Travel Accounting Platform;style:[width=100vw]",
+    "__props__": {
+        "id": "f1m7p1v3i0G0C08430B1q8W9C9",
+        "doc": "tap",
+        "counter": 1,
+        "creationDate": 1713000401899,
+        "collection": "view",
+        "chunk": "chunk1",
+        "lastModified": 1725175539488,
+        "dev": false,
+        "actions": {
+            "pngs": {
+                "_": ":[label=Modern & Professional;png=modern()]:[label=Mobile Friendly;png=mobileFriendly()]:[label=Government Compatible;png=government()]:[label=Automated Follow-up;png=automation()]:[label=Batch Invoicing;png=batch()]:[label=Seamless Customization;png=customization()]",
+                "modern": "'https://firebasestorage.googleapis.com/v0/b/bracket-technologies.appspot.com/o/innovation_7261783.png?alt=media&token=90dcca52-4927-4974-8702-a8d62f63b4df'",
+                "mobileFriendly": "'https://firebasestorage.googleapis.com/v0/b/bracket-technologies.appspot.com/o/responsive-design.png?alt=media&token=e9e9cdbd-d274-4c62-80b0-b97d49835f16'",
+                "batch": "'https://firebasestorage.googleapis.com/v0/b/bracket-technologies.appspot.com/o/batch-picking.png?alt=media&token=e6222524-afd0-4c57-8e9a-be031b72f746'",
+                "government": "'https://firebasestorage.googleapis.com/v0/b/bracket-technologies.appspot.com/o/government.png?alt=media&token=1abab6e5-8cab-492e-94f4-9e27d578fbac'",
+                "customization": "'https://firebasestorage.googleapis.com/v0/b/bracket-technologies.appspot.com/o/web-design.png?alt=media&token=a4b56b10-0be2-48f9-b4aa-b38099c7c187'",
+                "automation": "'https://firebasestorage.googleapis.com/v0/b/bracket-technologies.appspot.com/o/automation.png?alt=media&token=14ff7560-b501-48c2-b5bb-1e5805b73ddf'"
+            },
+            "droplistHandler": "1stChild().txt()=clicked().txt();().[data()=clicked().txt()?clicked().txt()!=Yes;clicked().txt()!=No?data()=[true?clicked().txt()=Yes?false]];[_.action]()",
+            "openForm": "[openForm():[schema=signupForm]]():[doc=form]",
+            "subscriptionFormInputs": ":[label.text=Organization Name;path=organization]:[label.text=Phone Number;path=phoneNumber]:[label.text=Email Address;path=email]:[label.text=Password;path=password]",
+            "toggleCheck": "1stChild().():[form().[_]=true;display()?hidden()?form().[_]=false;hide()]"
+        },
+        "comments": [
+            {
+                "note": "topbar",
+                "path": [
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "main body",
+                "path": [
+                    "children",
+                    1
+                ]
+            },
+            {
+                "note": "first fr",
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "title",
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "slogan",
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "note": "pngs",
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    2
+                ]
+            },
+            {
+                "note": "second fr: form",
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "note": "form",
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "title",
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "inputs",
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "note": "terms and conditions",
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    2
+                ]
+            },
+            {
+                "note": "signup btn",
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    3
+                ]
+            },
+            {
+                "note": "login btn",
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    4
+                ]
+            }
+        ],
+        "collapsed": [
+            {
+                "path": [
+                    "children",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    2
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    2
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    3
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    4
+                ]
+            },
+            {
+                "path": [
+                    "pngs"
+                ]
+            }
+        ],
+        "arrange": {
+            "": [
+                "view",
+                "children",
+                "droplistHandler",
+                "openForm",
+                "pngs",
+                "subscriptionFormInputs",
+                "toggleCheck"
+            ],
+            "children.0": [
+                "view"
+            ],
+            "children.1": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0.children.0": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0.children.0.children.0": [
+                "view"
+            ],
+            "children.1.children.0.children.0.children.1": [
+                "view"
+            ],
+            "children.1.children.0.children.0.children.2": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0.children.0.children.2.children.0": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0.children.0.children.2.children.0.children.0": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0.children.0.children.2.children.0.children.0.children.0": [
+                "view"
+            ],
+            "children.1.children.0.children.0.children.2.children.0.children.1": [
+                "view"
+            ],
+            "children.1.children.0.children.1": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0.children.1.children.0": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0.children.1.children.0.children.0": [
+                "view"
+            ],
+            "children.1.children.0.children.1.children.0.children.1": [
+                "view"
+            ],
+            "children.1.children.0.children.1.children.0.children.2": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0.children.1.children.0.children.2.children.0": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0.children.1.children.0.children.2.children.0.children.0": [
+                "view"
+            ],
+            "children.1.children.0.children.1.children.0.children.2.children.1": [
+                "view"
+            ],
+            "children.1.children.0.children.1.children.0.children.3": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0.children.1.children.0.children.3.children.0": [
+                "view"
+            ],
+            "children.1.children.0.children.1.children.0.children.4": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0.children.1.children.0.children.4.children.0": [
+                "view"
+            ],
+            "children.1.children.0.children.1.children.0.children.4.children.1": [
+                "view"
+            ],
+            "pngs": [
+                "_",
+                "automation",
+                "batch",
+                "customization",
+                "government",
+                "mobileFriendly",
+                "modern"
+            ]
+        },
+        "secured": false,
+        "size": 8445
+    },
+    "children": [
+        {
+            "view": "topbar"
+        },
+        {
+            "view": "View?id=mainBody",
+            "children": [
+                {
+                    "view": "View?style:[width=100%;display=flex;gridTemplateColumns=1fr 1fr;padding=5rem 10% 0 10%]",
+                    "children": [
+                        {
+                            "view": "View?class=flex column;style:[width=100%;gap=2rem]",
+                            "children": [
+                                {
+                                    "view": "Text?text=Online Accounting Software Built For The +tag():[text=Travel Industry;style:[backgroundColor=blue;opacity=.6;color=#fff;padding=0 4rem]];style:[fontSize=6rem;textAlign=left]"
+                                },
+                                {
+                                    "view": "Text?id=slogan;text=Super powerful, yet super simple!;style:[color=#888;fontSize=3rem;textAlign=left;fontStyle=italic]"
+                                },
+                                {
+                                    "view": "View?style:[display=grid;gridTemplateColumns=1fr 1fr 1fr;marginTop=4rem]",
+                                    "children": [
+                                        {
+                                            "view": "[View]:[data=pngs()]?class=flex column align-center;style:[gap=1rem;gap=2rem;height=20rem]",
+                                            "children": [
+                                                {
+                                                    "view": "View?class=flexbox;style:[height=10rem;width=10rem;borderRadius=10rem;border=1px solid #ccc]",
+                                                    "children": [
+                                                        {
+                                                            "view": "Image?src=_.png;style:[height=8rem]"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "view": "Text?text=_.label;style:[fontSize=1.6rem;textAlign=center;width=80%]"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "view": "View?class=flexbox;style:[width=100%;gap=1.5rem;justifySelf=center;padding=0 10rem]",
+                            "children": [
+                                {
+                                    "view": "View?class=flex column;style:[padding=4rem;borderRadius=1rem;border=1px solid #ddd;width=50rem;gap=2rem];form=signupForm",
+                                    "children": [
+                                        {
+                                            "view": "Text?text=Getting a powerful accounting system is a profitable +tag():[text=investment;style:[backgroundColor=yellow]]+'!';style:[fontSize=1.75rem;padding=2rem 0;textAlign=left]"
+                                        },
+                                        {
+                                            "view": "[customInput]:[data=subscriptionFormInputs()]"
+                                        },
+                                        {
+                                            "view": "View?class=flex;style:[gap=1rem;alignItems=center;padding=2rem 0]",
+                                            "children": [
+                                                {
+                                                    "view": "View?class=pointer flexbox;style:[border=1px solid #ccc;borderRadius=.25rem;height=1.75rem;width=1.75rem];[click?toggleCheck():agreeToTermsAndConditions]",
+                                                    "children": [
+                                                        {
+                                                            "view": "Icon?name=bi-check;style:[display=none;color=blue;fontSize=2rem]"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "view": "Text?text=I agree to the +tag():[text=Terms of Service;class=pointer;style:[textDecoration=underline]]+ and +tag():[text=Privacy Policy;class=pointer;style:[textDecoration=underline]]+'.';style:[fontSize=1.3rem;fontWeight=bold]"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "view": "View?class=flexbox pointer;style:[width=100%;height=5rem;backgroundColor=#fb3e1e;borderRadius=.5rem;opacity=.8;transition=.2s];hover.style.opacity=1;[click?openForm()]",
+                                            "children": [
+                                                {
+                                                    "view": "Text?text=Sign Up For Free;style:[fontSize=1.5rem;color=#fff]"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "view": "View?class=flex align-center;style:[padding=1rem 0;gap=1rem]",
+                                            "children": [
+                                                {
+                                                    "view": "Text?text=Already have an account!;style:[fontSize=1.3rem;color=#666]"
+                                                },
+                                                {
+                                                    "view": "Text?class=pointer;text=Login;style:[fontSize=1.3rem;color=#fb3e1e;borderRadius=.5rem;padding=.25rem 1rem;transition=.2s;opacity=.8;marginLeft=auto;textDecoration=underline];hover.style.opacity=1;[click?root():login]"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

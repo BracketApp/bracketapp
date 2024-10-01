@@ -1,0 +1,21 @@
+{
+    "__props__": {
+        "id": "M1X7V1X4O4A8Z076N0c2l5x2R1",
+        "doc": "user5",
+        "counter": 5,
+        "creationDate": 1714480602521,
+        "active": true,
+        "actions": {},
+        "chunk": "chunk1",
+        "secured": false,
+        "collection": "user",
+        "createdByUserID": "41V7H078W8I8I780z1m9Y2E4Y2",
+        "comments": [],
+        "collapsed": []
+    },
+    "accountID": "N1c7i1G4e4C800o5J6l377C5Z7",
+    "email": "issam",
+    "firstName": "Issam",
+    "lastName": "Zeitouni",
+    "username": "issam"
+}

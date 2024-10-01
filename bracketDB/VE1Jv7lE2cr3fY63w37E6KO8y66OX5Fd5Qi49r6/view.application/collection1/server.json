@@ -1,0 +1,32 @@
+{
+    "view": "Action?id=server",
+    "children": [
+        {
+            "view": "Action?[[manifest:().action]]"
+        }
+    ],
+    "__props__": {
+        "id": "31B7j2i3F6C3H6G879v9m2L1W4",
+        "doc": "server",
+        "counter": 1,
+        "creationDate": 1723636899214,
+        "collection": "view.application",
+        "chunk": "chunk1",
+        "lastModified": 1725450130237,
+        "dev": false,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "view",
+                "children"
+            ],
+            "children.0": [
+                "view"
+            ]
+        },
+        "secured": true,
+        "size": 389
+    }
+}

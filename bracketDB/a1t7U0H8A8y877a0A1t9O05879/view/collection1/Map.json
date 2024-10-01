@@ -1,0 +1,831 @@
+{
+    "view": "View?id=Map;class=flex column;style:[width='calc(100% - 2rem)';marginLeft=2rem;borderLeft=1px solid #ddd;[width=100%;marginLeft=0;borderLeft=0?().path().len()=0]]",
+    "children": [
+        {
+            "view": "View?class=flex align-start Map;style:[alignItems=center;height=3rem;[backgroundColor=#f9f9f9?data().__props__]];[hover.style.backgroundColor=#f6f6f6?!data().__props__];mainMapControllers()?path().len()=0",
+            "children": [
+                {
+                    "view": "Icon?class=flex-box pointer;name=bi-caret-right-fill;style:[transform=if():[openData:().__props__.collapsed.find():[path=path()]]:'rotate(0deg)':'rotate(90deg)';width=2rem;fontSize=1.3rem;transition=transform .2s]?data().type()=map||data().type()=list"
+                },
+                {
+                    "view": "Text?text='/'+openCollection:().split():'.'.join():'/'+'/'+openDoc:();style:[fontSize=1.2rem;marginLeft=1rem]?data().__props__"
+                },
+                {
+                    "view": "Text?class=flexbox pointer;text='...';style:[marginLeft=.5rem;fontSize=1.4rem;display=if():[openData:().__props__.collapsed.find():[path=path()]]:flex:none]?data().type()=map||data().type()=list"
+                },
+                {
+                    "view": "View?class=flex align-center;style:[marginLeft=1rem;zIndex=11]?data().type()=map||data().type()=list",
+                    "children": [
+                        {
+                            "view": "Text?text='#';style:[color=green;fontSize=1.2rem;display=if():[data().type()=map||data().type()=list;!openData:().__props__.comments.find():[path=path()]]:none:flex];click:[next().focus()]"
+                        },
+                        {
+                            "view": "Text?class=comment;colorize:[colors=green];text=openData:().__props__.comments.find():[path=path()].note||'';editable;preventDefault;style:[alignItems=center;width=fit-content;height=2.5rem;borderRadius=.5rem;backgroundColor=#00000000;fontSize=1.2rem;padding=.5rem;color=green;border=1px solid #00000000];hover.style.border=1px solid #ddd;focus:[focused=true];blur:[focused=false;showCommentSlashes():[view=2ndParent();display=none]];entry:[showCommentSlashes():[view=2ndParent();display=if():[txt()]:flex:none];highlightTab();editComment()]"
+                        }
+                    ]
+                },
+                {
+                    "view": "View?class=flexbox actionlister;mainMapContainer=true;style:[transition=.1s;marginLeft=auto;gap=1.5rem;padding=0 .25rem];[click?actionListDisplayer()]",
+                    "children": [
+                        {
+                            "view": "Icon?class=flexbox pointer +openDoc:()+openCollection:()+'publish';tooltip.text=publish;name=bi-globe-americas;style:[color=#888;width=1.8rem;fontSize=2rem;transition=.2s;display=[flex?data().__props__.dev?none]];hover.style.color=#000;[click?publish():[collection=openCollection:();doc=openDoc:();data=_.data;data=data:().editor.[openCollection:()].[openDoc:()].clone()]]"
+                        },
+                        {
+                            "view": "Icon?class=flexbox pointer +openDoc:()+openCollection:()+'-unsecured';tooltip.text=unsecured;name=bi-shield-x;style:[color=#888;width=2rem;fontSize=2rem;transition=.2s;display=[none?data:().editor.[openCollection:()].[openDoc:()].__props__.secured?flex]];hover.style.color=red;[click?shield()]?data().__props__"
+                        },
+                        {
+                            "view": "Icon?class=flexbox pointer +openDoc:()+openCollection:()+'-secured';tooltip.text=secured;name=bi-shield-check;style:[color=#888;width=2rem;fontSize=2rem;transition=.2s;display=[none?!data:().editor.[openCollection:()].[openDoc:()].__props__.secured?flex]];hover.style.color=blue;[click?shield()]?data().__props__"
+                        },
+                        {
+                            "view": "Icon?class=flexbox pointer;tooltip.text=info;name=bi-info-circle;style:[color=#888;width=1.8rem;fontSize=2rem;transition=.2s];hover.style.color=#000;data=[collection=openCollection:();doc=openDoc:()];infoDroplist()?data().__props__"
+                        },
+                        {
+                            "view": "Icon?class=flexbox pointer actionlister;name=bi-three-dots-vertical;style:[color=#888;width=2rem;fontSize=2rem;transition=.2s];hover.style.color=blue"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "view": "[View]:[sort;arrange=[openData:().__props__.arrange.[path().join():'.']||parent().arrange];mount;keys]?class=flex column;style:[display=flex;position=relative;[width='calc(100% - 2rem)';marginLeft=2rem;borderLeft=1px solid #ddd?path().len()=1]]?data()!=:",
+            "children": [
+                {
+                    "view": "View?class=flex align-start Map collapsed;style:[alignItems=center;position=relative;height=4.25rem;[height=3.25rem?data().type()=map||=list]];open=[false?openData:().__props__.collapsed.find():[path=path()]?true];hover.style.backgroundColor=#f6f6f6;lineEvents()?path().lastEl()!=__props__",
+                    "children": [
+                        {
+                            "view": "Icon?class=flex-box pointer;name=bi-caret-right-fill;style:[transform=if():[openData:().__props__.collapsed.find():[path=path()]]:'rotate(0deg)':'rotate(90deg)';width=2rem;fontSize=1.3rem;transition=transform .2s]?data().type()=map||data().type()=list"
+                        },
+                        {
+                            "view": "View?style:[minWidth=.5rem;display=flex]?data().type()!=map;data().type()!=list"
+                        },
+                        {
+                            "view": "View?[loaded;blur?txt()=txt().colorize():[colors=blue]];class=flex align-center keyName;text=path().lastEl()+'';preventDefault;editable;style:[alignItems=center;width=fit-content;minWidth=fit-content;height=3rem;borderRadius=.5rem;backgroundColor=#00000000;border=if():txt():'1px solid #00000000':'1px solid #ddd';fontSize=1.4rem;padding=.5rem;color=blue;display=[flex?path().[-1]!='_'?none]];mouseenter:[style().border=1px solid #ddd];mouseleave:[style().border=1px solid #00000000?txt()];keyup:[updateKeyName();modifyUndo();keyInputDroplistHandler()];focus:[prev_value=form().clone()];blur:[[style().border=1px solid #00000000?txt()];el().innerHTML=txt().colorize():[colors=blue];pushToUndo()]?3rdParent().data().type()!=list"
+                        },
+                        {
+                            "view": "Input?readonly;class=flexbox pointer;text=[path().[-1]?path().[-1]!='_'?→];style:[color=#666;fontSize=[1.1rem?path().[-1]!='_'?1.4rem];marginRight=.5rem;minWidth=2rem;maxWidth=0;overflow=hidden;height=1.5rem;borderRadius=.5rem;[border=1px solid #ddd?path().[-1]!='_']];[click?next().click()?path().[-1]!='_']?3rdParent().data().type()=list||path().[-1]='_'"
+                        },
+                        {
+                            "view": "Text?text='';preventDefault;droplist:[preventDefault;align=center;items=:children:text:number:map:list:boolean:timestamp;isMap];[click:droplist?__keyupIndex__:()=clicked().index();chooseValueTypeDroplist()]"
+                        },
+                        {
+                            "view": "View?class=flex align-center value;style:[overflow=auto;whiteSpace=nowrap;width=auto;padding=.2rem];scroll:[lastSibling().style().display=none]?data().type()=text",
+                            "children": [
+                                {
+                                    "view": "View?class=flex align-center;style.display=inline-flex",
+                                    "children": [
+                                        {
+                                            "view": "View?class=flex;text=data();txt()=txt().colorize();[blur?txt()=txt().colorize()];editable;style:[alignItems=center;overflowY=hidden;width=auto;height=3rem;color=#a35521;fontSize=1.4rem;padding=.5rem;border=if():txt():'1px solid #00000000':'1px solid #ddd';borderRadius=.5rem];mouseenter:[style().border=1px solid #ddd];mouseleave:[style().border=1px solid #00000000?txt()];click:[3rdParent().lastChild().style().display=none];focus:[prev_value=form().clone()];blur:[pushToUndo()];keyup:[valueHandler();shortcutsHandler()]"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "view": "View?class=flex align-center value;style:[overflow=auto;whiteSpace=nowrap;width=auto;padding=.2rem];scroll:[lastSibling().style().display=none]?data().type()=number",
+                            "children": [
+                                {
+                                    "view": "View?class=flex align-center;style.display=inline-flex",
+                                    "children": [
+                                        {
+                                            "view": "Input?input.type=number;style:[height=3rem;color=olive;borderRadius=.5rem;border=1px solid #00000000;minWidth=fit-content;width=fit-content;maxWidth=fit-content];hover.style.border=1px solid #ddd;click:[3rdParent().lastChild().style().display=none];focus:[prev_value=form().clone()];blur:[pushToUndo()];keyup:[highlightTab();shortcutsHandler()]"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "view": "Input?class=pointer;readonly;style:[height=3rem;border='1px solid #ffffff00';color=purple;width=fit-content;borderRadius=.5rem;border=1px solid #00000000];hover.style.border=1px solid #ddd;droplist:[items=:'true':'false';preventDefault];[click?parent().lastChild().style().display=none;prev_value=form().clone()];[click:droplist?if():[clicked().txt()='true']:[data()=true;txt()='true']:[data()=false;txt()='false'];pushToUndo()]?data().type()=boolean"
+                        },
+                        {
+                            "view": "Input?input.type=datetime-local;style:[height=3rem;minWidth=25rem;borderRadius=.5rem;border=1px solid #00000000];hover.style.border=1px solid #ddd;mouseenter:[style().border=1px solid #ddd];mouseleave:[style().border=if():[txt()]:'1px solid #00000000':'1px solid #ddd'];entry:[highlightTab()];change:[data()=date():[txt()].timestamp()];loaded:[txt()=date():data().toDateInputFormat():[format='yyyy-MM-ddThh:mm']]?data().type()=timestamp"
+                        },
+                        {
+                            "view": "Input?input.type=time;style:[height=3rem;minWidth=25rem;borderRadius=.5rem;border=1px solid #00000000];hover.style.border=1px solid #ddd;mouseenter:[style().border=1px solid #ddd];mouseleave:[style().border=if():[txt()]:'1px solid #00000000':'1px solid #ddd'];entry:[highlightTab()];change:[data()=data().timestamp()];loaded:[txt()=data().toClock():[hr;min]]?data().type()=time"
+                        },
+                        {
+                            "view": "Text?class=flexbox pointer;text='...';style:[marginLeft=.5rem;fontSize=1.4rem;display=if():[openData:().__props__.collapsed.find():[path=path()]]:flex:none]?data().type()=map||data().type()=list"
+                        },
+                        {
+                            "view": "View?class=flex align-center;style:[marginLeft=1rem;zIndex=11]?data().type()=map||data().type()=list",
+                            "children": [
+                                {
+                                    "view": "Text?text='#';style:[color=green;fontSize=1.2rem;display=if():[data().type()=map||data().type()=list;!openData:().__props__.comments.find():[path=path()]]:none:flex];click:[next().focus()]"
+                                },
+                                {
+                                    "view": "Text?class=comment;editable;preventDefault;text=openData:().__props__.comments.find():[path=path()].note||'';style:[alignItems=center;width=fit-content;height=2.5rem;borderRadius=.5rem;backgroundColor=#00000000;fontSize=1.2rem;padding=.5rem;color=green;border=1px solid #00000000];hover.style.border=1px solid #ddd;[loaded;blur?txt()=txt().colorize():[colors=green]];[focus?focused=true];[blur?focused=false;[prev().display()?txt()?prev().hide()]];[keyup?[prev().display()?txt()?prev().hide()];highlightTab()]"
+                                }
+                            ]
+                        },
+                        {
+                            "view": "View?class=flexbox actionlister;style:[display=none;transition=.1s;marginLeft=auto;position=absolute;right=0;backgroundColor=#f6f6f6;height=100%;padding=0 .25rem];[click?actionlistHandler()]",
+                            "children": [
+                                {
+                                    "view": "Icon?class=flexbox pointer actionlister;name=bi-three-dots-vertical;style:[color=#888;width=2rem;fontSize=2rem;transition=.2s];hover.style.color=blue"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "view": "View?arrange=2ndParent().arrange;class=flex-start;style:[display=[none?openData:().__props__.collapsed.find():[path=path()]?flex];transition=.2s]?data().type()=map||=list;path().lastEl()!=__props__",
+                    "children": [
+                        {
+                            "view": "Map?arrange=parent().arrange"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "__props__": {
+        "id": "i1n7y1l0i33380J7a8D6G4A4o7",
+        "doc": "Map",
+        "counter": 2,
+        "creationDate": 1710330786447,
+        "collection": "view",
+        "chunk": "chunk1",
+        "lastModified": 1726738495468,
+        "dev": false,
+        "actions": {
+            "updateListIndexes": "_.nextSiblings()._():[if():[_.parent().data().type()=list]:[_.1stChild().2ndChild().txt()=_.path().lastEl().num()-1]]",
+            "pushToUndo": "undoEdit:().[openDoc:()+'/'+openCollection:()]||=:;if():[prev_value!=form()]:[undoEdit:().[openDoc:()+'/'+openCollection:()].push():[openDoc=openDoc:();openCollection=openCollection:();value=form().clone();prev_value=.prev_value]]",
+            "viewIndexHandler": "viewIndex:()+=1;viewIndex=viewIndex:()",
+            "chooseValueTypeDroplist": "().chosenType=[():droplist.children().[__keyupIndex__:()].txt()||clicked().txt()];data()=if():[().chosenType=children]:[:[view='']].elif():[().chosenType=text]:''.elif():[().chosenType=timestamp]:[today().getTime().num()].elif():[().chosenType=number]:0.elif():[().chosenType=boolean]:[true].elif():[().chosenType=list]:[:''].elif():[().chosenType=map]:[''=''?form().__props__?'_'=''?!data()?'_'=data()];():droplist.style():[opacity=0;transform=scale(0.5);pointerEvents=none];__droplistPositioner__:().del();#nthParent():4.refresh();insertView():[view=3rdParent();index=2ndParent().index();key=path().[-1];focusIndex=[5?().chosenType=children?1?().chosenType=number||=text||=boolean||=timestamp?[2?form().__props__?3]?().chosenType=map?3]]:[2ndParent().rem():[preventDefault=true]]?__droplistPositioner__:();():droplist.mouseentered;[e().key=Enter||():droplist.contains():clicked()];[():droplist.children().[__keyupIndex__:()].txt()!=data().type()||clicked().txt()!=data().type()]",
+            "openKeyInputDroplist": "__keyupIndex__:()=0;next().click();timer():[():droplist.mouseentered=true;():droplist.children().0.mouseenter()]:200?!__droplistPositioner__:();e().key=Enter;!e().ctrlKey",
+            "convertTextToChildrenOnEnterInKeyNameInput": "if():[data().type()=text]:[data()=:];if():[path().lastEl()=children]:[data()=:[view='']];2ndParent().refresh()::[_.view.inputs().1.focus()]?e().key=Enter;e().ctrlKey;path().lastEl()=children",
+            "openCloseMap": "highlightTab();updateOpenClose();if():[next().style().display=flex]:[open=false]:[open=true];#Map;next().style().display=if():[open]:flex:none;#caret;1stChild().style().transform=if():[open]:'rotate(90deg)':'rotate(0deg)';#...;3rdLastChild().style().display=if():[open]:none:flex;#updateIndexColumn()?data().type()=list||=map;!2ndChild().contains():[clicked()];!3rdChild().contains():[clicked()];!lastChild().contains():[clicked()];!2ndLastChild().contains():[clicked()];!3rdLastChild().contains():[clicked()]",
+            "deleteView": {
+                "_": "removeView()",
+                "removeView": "[_.wrapperParentIndex+=3?path().lastEl()=view;form():[path=path().slice():0:[-2]].len()=1];removeParent()?nthParent():[_.wrapperParentIndex+1].children().len()=1||path().lastEl()=view?removeSelf()",
+                "removeSelf": {
+                    "_": "focusNext();updateNextSiblings();nthParent():[_.wrapperParentIndex].rem()",
+                    "focusNext": "[nthParent():[_.wrapperParentIndex].next()||nthParent():[_.wrapperParentIndex].prev()].inputs().2.focus()",
+                    "updateNextSiblings": "updateNextSiblingsIndexesForErase():[view=nthParent():[_.wrapperParentIndex+1];index=nthParent():[_.wrapperParentIndex].index()]?nthParent():[_.wrapperParentIndex+1].data().type()=list"
+                },
+                "removeParent": {
+                    "_": "updateNextSiblings();focusNext();nthParent():[_.wrapperParentIndex+3].rem()",
+                    "focusNext": "[nthParent():[_.wrapperParentIndex+3].next()||nthParent():[_.wrapperParentIndex+3].prev()].inputs().3.focus()",
+                    "updateNextSiblings": "updateNextSiblingsIndexesForErase():[view=nthParent():[_.wrapperParentIndex+4];index=nthParent():[_.wrapperParentIndex+3].index()]"
+                }
+            },
+            "insertHandler": "addData();updateNextSiblingsIndexesForPush();insertView()",
+            "getNextPrevParentSibling": "if():[_.parent().children().len()=1]:[deleteParentId:()=_.3rdParent().id]:[deleteParentId:().del();nextSibling:()=_.nextSibling().id;if():[!nextSibling:()]:[nextSibling:()=_.prevSibling().id]]",
+            "actionlistHandler": "():actionlist.prev_value=form().clone();clearTimer():[actionlistTimer:()];if():[actionlistCaller:()!=.id||():actionlist.style().opacity='0']:[actionlistCaller:()=.id;():actionlist.refresh():[form=[().actionlist.form||().form];path=[().actionlist.path||().path()]]:[():actionlist.position():[positioner=().id;placement=left;distance=10;align=center];():actionlist.style():[transform='scale(1)';opacity=1;pointerEvents=auto]]]:[():actionlist.style():[opacity=0;transform='scale(0.5)';pointerEvents=none]]",
+            "showCommentSlashes": "if():[data().type()=map||data().type()=list;!openData:().__props__.comments.find():[path=path()];![_.view].2ndLastChild().2ndChild().focused]:[[_.view].2ndLastChild().1stChild().style().display=_.display]",
+            "addData": "if():[_.view.data().type()=map]:[_.view.data().[_.key]=_.value].elif():[_.view.data().type()=list]:[_.view.data().push():[_.value]:[_.index]]",
+            "insertView": "_.view.insert():[preventDefault;view=_.view;viewPath=:children:1;path=if():[_.view.data().type()=list]:[_.view.path().clone().push():[_.index]]:[_.view.path().clone().push():[_.key]];index=_.index]:[[_.view.inputs().[__.focusIndex||0]||_.view.input()].focus()]",
+            "actionListDisplayer": "clearTimer():[actionlistTimer:()];if():[actionlistCaller:()!=.id||():actionlist.style().opacity='0']:[actionlistCaller:()=.id;():actionlist.refresh():[form=().form;path=[().actionlist.path||path()]]:[():actionlist.position():[positioner=().id;placement=left;align=center];():actionlist.style():[transform='scale(1)';opacity=1;pointerEvents=auto]]]:[():actionlist.():[style():[opacity=0;transform='scale(0.5)';pointerEvents=none]]]?clicked()=lastChild()",
+            "insertViewSibling": "insertHandler():[index=nthParent():7.path().[-1]+1;view=nthParent():8;value=[[view='']?path().[-1]=view?''];key='';focusIndex=3];#modifyUndo():[insert=true]",
+            "updateIndexColumn": "():dataViewer.children().find():[openDoc=openDoc:();openCollection=openCollection:()].1stChild().1stChild().refresh()",
+            "highlightTab": "():dataViewerBar.children().find():[openCollection=openCollection:();openDoc=openDoc:()].2ndChild().style().border=1px solid #888?!e().key=Control;![e().ctrlKey;e().key=s];![e().ctrlKey;e().key=c];![e().ctrlKey;e().key='`']",
+            "updateKeyName": {
+                "unborder": "style().border=if():[txt();!mouseentered]:'1px solid #00000000':'1px solid #ddd'",
+                "updateDataPath": "2ndParent().deepChildren()._():[_.path().[path().lastIndex()]=txt()]",
+                "updateKey": "3rdParent().data().[txt()]=data().clone()||'';data().del()",
+                "_": "keyNameHandler();deleteViewHandler()",
+                "keyNameHandler": "unborder();highlightTab();updateKey();updateDataPath()?e().key!=Control;e().key!=Enter;e().keyCode!=40;e().keyCode!=38;[txt()!=path().lastEl()||data()=undefined];!3rdParent().data().keys().inc():txt()?note():[text=Key name already exists!;danger]?txt()=path().lastEl();txt().len()!=path().lastEl().len()",
+                "deleteViewHandler": "deleteView():[containerParentIndex=6;wrapperParentIndex=2]?e().ctrlKey;e().key=Delete;!e().shiftKey"
+            },
+            "textInputUndoHandler": "#modifyUndo():[wrapperID=3rdParent().3rdParent().2ndParent().id;value=3rdParent().3rdParent().2ndParent().data().clone()]",
+            "insertSibling": "insertHandler():[index=[_.index||nthParent():5.children().findIndex():[id=...nthParent():4.id]+if():[nthParent():5.type()=list]:2:1];view=[_.view||nthParent():5];key=[_.key||''];value=[_.value||''];focusIndex=_.focusIndex||[1?nthParent():5.data().type()=list?0]];#modifyUndo():[insert=true]",
+            "deleteParentView": "nthParent():7._():[updateListIndexes();getNextPrevParentSibling();_.rem()];if():[nextSibling:()]:[():[nextSibling:()].inputs().2.focus()];if():[deleteParentId:()]:[():[deleteParentId:()].rem()]",
+            "keyInputDroplistHandler": "openKeyInputDroplist();if():[e().key=Escape]:[():droplist.mouseleave()];moveUpwardAndDownwardDroplist();convertTextToChildrenOnEnterInKeyNameInput();chooseValueTypeDroplist()",
+            "valueHandler": "style().border=if():[txt();!mouseentered]:'1px solid #00000000':'1px solid #ddd';3rdParent().lastChild().style().display=none;highlightTab();textInputUndoHandler()?e().key!=Enter;e().key!=Control;e().key!=Shift;e().key!=Escape;e().key!=Tab;e().key!=CapsLock",
+            "moveUpwardAndDownwardDroplist": "():droplist.children().[__keyupIndex__:()].mouseleave();__keyupIndex__:()=if():[e().keyCode=40]:[__keyupIndex__:()+1]:[__keyupIndex__:()-1];if():[__keyupIndex__:()=():droplist.len()]:[__keyupIndex__:()=():droplist.len()-1];if():[__keyupIndex__:()=-1]:[__keyupIndex__:()=0];():droplist.children().[__keyupIndex__:()].mouseenter()?e().keyCode=40||=38;__droplistPositioner__:();if():[e().keyCode=38]:[__keyupIndex__:()>0].elif():[e().keyCode=40]:[__keyupIndex__:()<():droplist.children().len()-1]",
+            "updateNextSiblingsIndexesForErase": "if():[_.view.data().type()=list]:[_.view.children().slice():[_.index]._():[theIndex:()=_.path().lastIndex();theNewValue:()=_.path().lastEl().num()-1;#index;_.1stChild().2ndChild().txt()=theNewValue:()]]",
+            "updateNextSiblingsIndexesForPush": "_.view.children().slice():[_.index]._():[theIndex:()=_.path().lastIndex();theNewValue:()=_.path().lastEl().num()+1;#index;_.1stChild().2ndChild().txt()=theNewValue:();#path;_.deepChildren()._():[_.path().[theIndex:()]=theNewValue:()]]?_.view.data().type()=list",
+            "mainMapControllers": {
+                "_": "mouseenter:[#lastChild().style().opacity=1;showCommentSlashes():[display=flex]];mouseleave:[#lastChild().style().opacity=0;showCommentSlashes():[display=none]];click:[openCloseMapMain()]",
+                "openCloseMapMain": "highlightTab();updateOpenClose();if():[next().style().display=flex]:[open=false]:[open=true];#Maps;nextSiblings().():[style().display=if():[().open]:flex:none];#caret;1stChild().style().transform=if():[open]:'rotate(90deg)':'rotate(0deg)';#...;3rdLastChild().style().display=if():[open]:none:flex;#updateIndexColumn()?data().type()=list||data().type()=map;!lastChild().contains():[clicked()];!2ndLastChild().contains():[clicked()];!3rdLastChild().contains():[clicked()]"
+            },
+            "shield": "[class():[openDoc:()+openCollection:()+'-secured'].():[prev().display();hide()];[openData:().__props__.secured=false?openData:().__props__]?():dataViewer.class():[openDoc:()+openCollection:()+'-unsecured'].form().__props__.secured?class():[openDoc:()+openCollection:()+'-unsecured'].():[next().display();hide()];[openData:().__props__.secured=true?openData:().__props__]];[saveDocHandler()]():[doc=console]",
+            "lineEvents": "[mouseenter?lastChild().display();showCommentSlashes():[display=flex]];[mouseleave?lastChild().hide();showCommentSlashes():[display=none]];[mousedown?openCloseMap()]",
+            "shortcutsHandler": "if():[e().key=Enter;!e().ctrlKey]:[insertSibling():[key=children;value=:[view=''];focusIndex=5?form().__props__.collection=view;!nthParent():5.data().children]].elif():[e().key=Enter;e().ctrlKey]:[insertViewSibling()].elif():[e().ctrlKey;e().key=Delete;!e().shiftKey]:[deleteView():[wrapperParentIndex=4]].elif():[e().ctrlKey;e().key=Delete;e().shiftKey]:[deleteParentView()]",
+            "infoDroplist": {
+                "_": "droplist=[preventDefault;items=droplistItems();style.backgroundColor=#000000dd;item:[text.style:[color=#fff;fontSize=1.2rem];hover.style.backgroundColor=#000]]",
+                "droplistItems": "data:().editor.[_.collection].[_.doc].__props__.entries()._():[_.0+' : '+_.1?_.0=id||=doc||=counter||=collection||=chunk||=secured||=dev?_.0+' : '+_.1.toDateFormat():format4?_.0=creationDate||=lastModified?''].filter()"
+            },
+            "publish": "publish:()=[collection=_.collection;doc=_.doc;data=_.data];[openForm():[schema=publishDocForm]]():[doc=form]"
+        },
+        "comments": [
+            {
+                "note": "main Map controls",
+                "path": [
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "caret",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "path",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "note": "dots",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    2
+                ]
+            },
+            {
+                "note": "comment",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    3
+                ]
+            },
+            {
+                "note": "options",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    4
+                ]
+            },
+            {
+                "note": "map",
+                "path": [
+                    "children",
+                    1
+                ]
+            },
+            {
+                "note": "valueType=text||number||boolean||timestamp",
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "caret",
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "indentation",
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "note": "keyname input",
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    2
+                ]
+            },
+            {
+                "note": "index",
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    3
+                ]
+            },
+            {
+                "note": "value type droplist",
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    4
+                ]
+            },
+            {
+                "note": "text input",
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    5
+                ]
+            },
+            {
+                "note": "number input",
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    6
+                ]
+            },
+            {
+                "note": "boolean input",
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    7
+                ]
+            },
+            {
+                "note": "date input",
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    8
+                ]
+            },
+            {
+                "note": "time input",
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    9
+                ]
+            },
+            {
+                "note": "dots",
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    10
+                ]
+            },
+            {
+                "note": "comment",
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    11
+                ]
+            },
+            {
+                "note": "actions",
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    12
+                ]
+            },
+            {
+                "note": "valueType=list||map",
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "note": "input key entry handler",
+                "path": [
+                    "updateKeyName"
+                ]
+            }
+        ],
+        "collapsed": [
+            {
+                "path": [
+                    "children",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    2
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    3
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    4
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    3
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    4
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    5
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    6
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    7
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    8
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    9
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    10
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    11
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    12
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "deleteView"
+                ]
+            },
+            {
+                "path": [
+                    "infoDroplist"
+                ]
+            },
+            {
+                "path": [
+                    "mainMapControllers"
+                ]
+            },
+            {
+                "path": [
+                    "updateKeyName"
+                ]
+            }
+        ],
+        "arrange": {
+            "": [
+                "view",
+                "children",
+                "actionListDisplayer",
+                "actionlistHandler",
+                "addData",
+                "chooseValueTypeDroplist",
+                "convertTextToChildrenOnEnterInKeyNameInput",
+                "deleteParentView",
+                "deleteView",
+                "getNextPrevParentSibling",
+                "highlightTab",
+                "infoDroplist",
+                "insertHandler",
+                "insertSibling",
+                "insertView",
+                "insertViewSibling",
+                "keyInputDroplistHandler",
+                "lineEvents",
+                "mainMapControllers",
+                "moveUpwardAndDownwardDroplist",
+                "openCloseMap",
+                "openKeyInputDroplist",
+                "pushToUndo",
+                "shield",
+                "shortcutsHandler",
+                "showCommentSlashes",
+                "textInputUndoHandler",
+                "updateIndexColumn",
+                "updateKeyName",
+                "updateListIndexes",
+                "updateNextSiblingsIndexesForErase",
+                "updateNextSiblingsIndexesForPush",
+                "valueHandler",
+                "viewIndexHandler",
+                "publish"
+            ],
+            "children.0": [
+                "children",
+                "view"
+            ],
+            "children.0.children.0": [
+                "view"
+            ],
+            "children.0.children.1": [
+                "view"
+            ],
+            "children.0.children.2": [
+                "view"
+            ],
+            "children.0.children.3": [
+                "view",
+                "children"
+            ],
+            "children.0.children.3.children.0": [
+                "view"
+            ],
+            "children.0.children.3.children.1": [
+                "view"
+            ],
+            "children.0.children.4": [
+                "view",
+                "children"
+            ],
+            "children.0.children.4.children.0": [
+                "view"
+            ],
+            "children.0.children.4.children.1": [
+                "view"
+            ],
+            "children.0.children.4.children.2": [
+                "view"
+            ],
+            "children.0.children.4.children.3": [
+                "view"
+            ],
+            "children.0.children.4.children.4": [
+                "view"
+            ],
+            "children.1": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0.children.0": [
+                "view"
+            ],
+            "children.1.children.0.children.1": [
+                "view"
+            ],
+            "children.1.children.0.children.2": [
+                "view"
+            ],
+            "children.1.children.0.children.3": [
+                "view"
+            ],
+            "children.1.children.0.children.4": [
+                "view"
+            ],
+            "children.1.children.0.children.5": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0.children.5.children.0": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0.children.5.children.0.children.0": [
+                "view"
+            ],
+            "children.1.children.0.children.6": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0.children.6.children.0": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0.children.6.children.0.children.0": [
+                "view"
+            ],
+            "children.1.children.0.children.7": [
+                "view"
+            ],
+            "children.1.children.0.children.8": [
+                "view"
+            ],
+            "children.1.children.0.children.9": [
+                "view"
+            ],
+            "children.1.children.0.children.10": [
+                "view"
+            ],
+            "children.1.children.0.children.11": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0.children.11.children.0": [
+                "view"
+            ],
+            "children.1.children.0.children.11.children.1": [
+                "view"
+            ],
+            "children.1.children.0.children.12": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0.children.12.children.0": [
+                "view"
+            ],
+            "children.1.children.1": [
+                "view",
+                "children"
+            ],
+            "children.1.children.1.children.0": [
+                "view"
+            ],
+            "deleteView": [
+                "removeParent",
+                "removeSelf",
+                "removeView",
+                "_"
+            ],
+            "deleteView.removeParent": [
+                "focusNext",
+                "updateNextSiblings",
+                "_"
+            ],
+            "deleteView.removeSelf": [
+                "focusNext",
+                "updateNextSiblings",
+                "_"
+            ],
+            "infoDroplist": [
+                "droplistItems",
+                "_"
+            ],
+            "mainMapControllers": [
+                "openCloseMapMain",
+                "_"
+            ],
+            "updateKeyName": [
+                "deleteViewHandler",
+                "keyNameHandler",
+                "unborder",
+                "updateDataPath",
+                "updateKey",
+                "_"
+            ]
+        },
+        "secured": false,
+        "size": 26872
+    }
+}

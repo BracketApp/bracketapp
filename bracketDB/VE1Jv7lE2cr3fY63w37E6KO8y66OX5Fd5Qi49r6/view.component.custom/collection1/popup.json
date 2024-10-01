@@ -1,0 +1,46 @@
+{
+    "__props__": {
+        "id": "K1N7X2A4f2b6q508v8n228h9P2",
+        "doc": "popup",
+        "counter": 1,
+        "creationDate": 1724265882893,
+        "collection": "view.component.custom",
+        "chunk": "chunk1",
+        "lastModified": 1725450086851,
+        "dev": false,
+        "actions": {},
+        "comments": [
+            {
+                "note": "fin",
+                "path": [
+                    "children",
+                    0
+                ]
+            }
+        ],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "view",
+                "children"
+            ],
+            "children.0": [
+                "view"
+            ],
+            "children.1": [
+                "view"
+            ]
+        },
+        "secured": false,
+        "size": 980
+    },
+    "view": "View?id=popup;class=column;style:[position=fixed;opacity=0;pointerEvents=none;backgroundColor=#fff;borderRadius=.5rem;padding=1rem;border=1px solid #ddd;transition=opacity .2s;top=-1000px;left=-1000px;zIndex=1];form=_.form;path=_.path;data=[[_.data]];[mleave?timer=timer():[closePopup()]:400];[menter?timer.clearTimer()]",
+    "children": [
+        {
+            "view": "View?style:[height=1rem;width=1rem;borderTop=1px solid #ddd;borderRight=1px solid #ddd;borderRadius=.25rem;backgroundColor=#fff;zIndex=1;position=absolute;top=-.5rem;transform=rotate(-45deg);left=calc(50% - .5rem)]"
+        },
+        {
+            "view": "@view.component.custom.view"
+        }
+    ]
+}

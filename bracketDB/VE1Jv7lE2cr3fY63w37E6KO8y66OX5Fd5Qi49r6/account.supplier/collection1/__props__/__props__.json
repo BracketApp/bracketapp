@@ -1,0 +1,16 @@
+{
+    "creationDate": 1724585554768,
+    "collection": "account.supplier",
+    "maxSize": 1000,
+    "lastChunk": 1,
+    "docsLength": 0,
+    "counter": 0,
+    "reads": 0,
+    "writes": 2,
+    "deletes": 0,
+    "size": 0,
+    "payloadIn": 0,
+    "payloadOut": 20,
+    "indexes": [],
+    "lastIndex": 0
+}

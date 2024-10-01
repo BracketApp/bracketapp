@@ -1,0 +1,39 @@
+{
+    "view": "View?id=confirmationPopup;class=flexbox;style:[height=100vh;width=100vw;backgroundColor=#00000060;zIndex=1;opacity=0;pointerEvents=none;position=fixed;transition=.2s]",
+    "__props__": {
+        "id": "V1h7j1y6s0v2623852A1k2Q1M7",
+        "doc": "confirmationPopup",
+        "counter": 97,
+        "creationDate": 1716022821217,
+        "active": true,
+        "actions": {
+            "confirmation": "closeConfirmationPopup();confirmation:().end():[confirmed=_]"
+        },
+        "comments": {},
+        "collapsed": {},
+        "chunk": "chunk1",
+        "secured": false,
+        "collection": "view"
+    },
+    "children": [
+        {
+            "view": "View?class=flex column;style:[padding=3rem;backgroundColor=#fff;borderRadius=1rem;position=relative;gap=3rem;minWidth=40rem]",
+            "children": [
+                {
+                    "view": "Text?text=Do you confirm!;style:[textAlign=left;fontSize=1.4rem]"
+                },
+                {
+                    "view": "View?class=flex align-center;style:[gap=1rem;justifyContent=flex-end;]",
+                    "children": [
+                        {
+                            "view": "Text?class=pointer;text=Cancel;style:[padding=.75rem 3rem;border=1px solid #ddd;borderRadius=.5rem;opacity=.8;fontSize=1.3rem;transition=.2s];hover.style.opacity=1;[click?confirmation():false]"
+                        },
+                        {
+                            "view": "Text?class=pointer;text=Confirm;style:[padding=.75rem 3rem;backgroundColor=publicData:().public.btnBackgroundColor;borderRadius=.5rem;color=#fff;opacity=.8;fontSize=1.3rem;transition=.2s];hover.style.opacity=1;[click?confirmation():true]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

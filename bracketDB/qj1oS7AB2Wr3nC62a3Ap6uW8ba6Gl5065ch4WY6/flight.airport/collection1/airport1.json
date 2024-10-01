@@ -1,0 +1,29 @@
+{
+    "__props__": {
+        "id": "W1m7a2f6N7y7I4j5C0H5w2G6e4",
+        "doc": "airport1",
+        "counter": 1,
+        "creationDate": 1726774505264,
+        "collection": "flight.airport",
+        "chunk": "chunk1",
+        "lastModified": 1726774976098,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "name",
+                "iataCode",
+                "city",
+                "country"
+            ]
+        },
+        "secured": false,
+        "size": 383
+    },
+    "name": "Istanbul Airport",
+    "iataCode": "IST",
+    "city": "city2",
+    "country": "country2"
+}

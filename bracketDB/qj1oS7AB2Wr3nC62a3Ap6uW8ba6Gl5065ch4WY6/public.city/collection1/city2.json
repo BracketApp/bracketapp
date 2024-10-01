@@ -1,0 +1,25 @@
+{
+    "__props__": {
+        "id": "9167y2N6A7v7m3Y2F4c3w3n047",
+        "doc": "city2",
+        "counter": 2,
+        "creationDate": 1726773243307,
+        "collection": "public.city",
+        "chunk": "chunk1",
+        "lastModified": 1726773263473,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "city",
+                "country"
+            ]
+        },
+        "secured": false,
+        "size": 319
+    },
+    "city": "Istanbul",
+    "country": "country2"
+}

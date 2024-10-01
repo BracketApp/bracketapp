@@ -1,0 +1,133 @@
+{
+    "__props__": {
+        "id": "k1P7W2e2z550x3k1x6g1h0n4I5",
+        "doc": "userActivityTable",
+        "counter": 1,
+        "creationDate": 1722503161045,
+        "collection": "tableSchema",
+        "chunk": "chunk1",
+        "lastModified": 1722589644196,
+        "dev": false,
+        "actions": {
+            "getTimeInMins": "_.time.date().getHours()*60+_.time.date().getMinutes()",
+            "test": "__.firstTrigger.toDateFormat():format4.slice():[-5]+' - '+__.lastTrigger.toDateFormat():format4.slice():[-5]",
+            "calcOvertimeHours": {
+                "_": "startingHour()+' - '+endingHour()",
+                "startingHour": "__.activityPerHour._find():[[getTimeInMins()]():[collection=tableSchema;doc=userActivityTable]>=1020].firstTrigger.toDateFormat():format4.slice():[-5]||''",
+                "endingHour": "__.activityPerHour.clone().reverse()._find():[[getTimeInMins()]():[collection=tableSchema;doc=userActivityTable]>=1020].lastTrigger.toDateFormat():format4.slice():[-5]||''"
+            },
+            "calcOfficialHours": {
+                "_": "startingHour()+' - '+endingHour()",
+                "startingHour": "__.activityPerHour._find():[[getTimeInMins()]():[collection=tableSchema;doc=userActivityTable]>=540;[getTimeInMins()]():[collection=tableSchema;doc=userActivityTable]<1020].firstTrigger.toDateFormat():format4.slice():[-5]||''",
+                "endingHour": "__.activityPerHour.clone().reverse()._find():[[getTimeInMins()]():[collection=tableSchema;doc=userActivityTable]>=540;[getTimeInMins()]():[collection=tableSchema;doc=userActivityTable]<1020].lastTrigger.toDateFormat():format4.slice():[-5]||''"
+            },
+            "calcBeforetimeHours": {
+                "_": "startingHour()+' - '+endingHour()",
+                "startingHour": "__.activityPerHour._find():[[getTimeInMins()]():[collection=tableSchema;doc=userActivityTable]>=0;[getTimeInMins()]():[collection=tableSchema;doc=userActivityTable]<540].firstTrigger.toDateFormat():format4.slice():[-5]||''",
+                "endingHour": "__.activityPerHour.clone().reverse()._find():[[getTimeInMins()]():[collection=tableSchema;doc=userActivityTable]<540].lastTrigger.toDateFormat():format4.slice():[-5]||''"
+            }
+        },
+        "comments": [
+            {
+                "note": "table",
+                "path": [
+                    "sections",
+                    0
+                ]
+            }
+        ],
+        "collapsed": [
+            {
+                "path": [
+                    "sections",
+                    2,
+                    "inputs",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "sections",
+                    2,
+                    "inputs",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "sections",
+                    2,
+                    "inputs",
+                    2
+                ]
+            },
+            {
+                "path": [
+                    "sections",
+                    2
+                ]
+            },
+            {
+                "path": [
+                    "sections",
+                    3
+                ]
+            },
+            {
+                "path": [
+                    "sections",
+                    0
+                ]
+            }
+        ],
+        "arrange": [],
+        "secured": false,
+        "size": 3253
+    },
+    "title": "User Activity",
+    "sections": [
+        {
+            "table": true,
+            "headers": {
+                "styles": "gridTemplateColumns=3rem 1fr 1fr 1fr 1fr 1fr 1fr 1fr",
+                "headers": [
+                    {
+                        "header": "Date",
+                        "text": "__.date.toDateFormat()"
+                    },
+                    {
+                        "header": "Total Triggers",
+                        "path": "serverTriggers"
+                    },
+                    {
+                        "header": "Before Time",
+                        "text": "[calcBeforetimeHours()]():[collection=tableSchema;doc=userActivityTable]"
+                    },
+                    {
+                        "header": "Official Time",
+                        "text": "[calcOfficialHours()]():[collection=tableSchema;doc=userActivityTable]"
+                    },
+                    {
+                        "header": "After Time",
+                        "text": "[calcOvertimeHours()]():[collection=tableSchema;doc=userActivityTable]"
+                    },
+                    {
+                        "header": "Total Time",
+                        "text": "[[__.lastTrigger-__.firstTrigger]/60000].round():0+' min'"
+                    },
+                    {
+                        "header": "Real Time",
+                        "text": "[__.activityPerHour._():[_.lastTrigger-_.firstTrigger].sum()/60000].round():0+' min'"
+                    }
+                ]
+            },
+            "data": {
+                "publicID": "userActivity"
+            }
+        }
+    ],
+    "styles": "width=150rem",
+    "reset": true,
+    "beforeLoadingActions": "[getUserActivity():[email=user:().email;monthStart=monthStart().timestamp();monthEnd=monthEnd().timestamp()]:[data:().userActivity=_.userActivity.values().sort():[path=date;ascending]]]():[collection=actions;doc=db]",
+    "form": "activityTable"
+}

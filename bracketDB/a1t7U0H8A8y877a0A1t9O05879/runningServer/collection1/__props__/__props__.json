@@ -1,0 +1,26 @@
+{
+    "creationDate": 1727372545695,
+    "collection": 1,
+    "maxSize": 1000,
+    "lastChunk": 1,
+    "docsLength": 98,
+    "counter": 98,
+    "reads": 136,
+    "writes": 167,
+    "deletes": 0,
+    "size": 38603,
+    "payloadIn": 65905,
+    "payloadOut": 54798,
+    "indexes": [
+        {
+            "find": [
+                "port",
+                "serverID"
+            ],
+            "doc": "index1",
+            "lastRead": 1727786813442,
+            "expiryDate": 1730378813442
+        }
+    ],
+    "lastIndex": 1
+}

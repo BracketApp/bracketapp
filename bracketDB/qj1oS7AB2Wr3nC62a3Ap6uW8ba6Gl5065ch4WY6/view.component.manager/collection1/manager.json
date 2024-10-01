@@ -1,0 +1,57 @@
+{
+    "view": "View?id=manager;class=column;style:[width=100%;height=100%];[data=@view.schema.manager.[_.schema]?!_.searchEngine]",
+    "children": [
+        {
+            "view": "searchEngine??_"
+        },
+        {
+            "view": "View?style:[width=100%;padding=0 .5rem;overflow=hidden];[loaded?height()='calc(100% - '+prev().el().scrollHeight+'px)']",
+            "children": [
+                {
+                    "view": "table??_"
+                }
+            ]
+        }
+    ],
+    "__props__": {
+        "id": "j1Q7h204l1h6H9w8O110i4x9L6",
+        "doc": "manager",
+        "counter": 1,
+        "creationDate": 1724169810496,
+        "collection": "view.component.manager",
+        "chunk": "chunk1",
+        "lastModified": 1726746256492,
+        "dev": true,
+        "actions": {},
+        "comments": [
+            {
+                "note": "table",
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0
+                ]
+            }
+        ],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "view",
+                "children"
+            ],
+            "children.0": [
+                "view"
+            ],
+            "children.1": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0": [
+                "view"
+            ]
+        },
+        "secured": false,
+        "size": 761
+    }
+}

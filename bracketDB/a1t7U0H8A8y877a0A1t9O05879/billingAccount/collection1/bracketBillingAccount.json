@@ -1,0 +1,28 @@
+{
+    "name": "My Billing Account",
+    "currency": "COIN",
+    "creditLimit": 0,
+    "paymentTerms": "Monthly",
+    "organizationName": "Bracket Technologies",
+    "country": "Lebanon",
+    "accountType": "Business",
+    "organizationAddress": "Hazmieh Village",
+    "languagePreference": "English",
+    "accountID": "1197B078m8x8q4e9T5X949d858",
+    "__props__": {
+        "id": "31v7G0g8u8O817H0Y0S9d1W0c0",
+        "doc": "bracketBillingAccount",
+        "counter": 2,
+        "creationDate": 1711031357671,
+        "collection": "billingAccount",
+        "chunk": "chunk1",
+        "lastModified": 1723114777429,
+        "dev": false,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": [],
+        "secured": false,
+        "size": 565
+    }
+}

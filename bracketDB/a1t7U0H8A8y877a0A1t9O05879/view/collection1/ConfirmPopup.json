@@ -1,0 +1,38 @@
+{
+    "view": "View?id=ConfirmPopup;class=flexbox;style:[display=none;position=absolute;top=0;left=0;right=0;bottom=0;backgroundColor=#000000cc;zIndex=2]",
+    "__props__": {
+        "id": "L1q7F1p4I4x191Q7n026F5U4D4",
+        "doc": "ConfirmPopup",
+        "counter": 32,
+        "creationDate": 1714411706544,
+        "active": true,
+        "actions": {},
+        "chunk": "chunk1",
+        "secured": false,
+        "collection": "view",
+        "createdByUserID": "41V7H078W8I8I780z1m9Y2E4Y2",
+        "comments": [],
+        "collapsed": []
+    },
+    "children": [
+        {
+            "view": "View?class=flex column;style:[padding=3rem;borderRadius=.5rem;backgroundColor=#fff;gap=4rem]",
+            "children": [
+                {
+                    "view": "Text?text=_.msg;style:[fontSize=1.75rem]"
+                },
+                {
+                    "view": "View?class=flexbox;style:[justifyContent=flex-end;gap=2rem]",
+                    "children": [
+                        {
+                            "view": "Text?text=Cancel;style:[padding=1rem 4rem;fontSize=1.4rem;backgroundColor=#f9f9f9]"
+                        },
+                        {
+                            "view": "Text?text=Confirm;style:[padding=1rem 4rem;fontSize=1.4rem;backgroundColor=#fb3e1e;color=#fff]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

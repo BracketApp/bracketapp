@@ -1,0 +1,62 @@
+{
+    "subscription1": {
+        "publicID": "1rgwB078m8x8qhgrT5X949d858",
+        "pluginID": "Q1p78107R4j1n2Z9a2E1K1r912",
+        "startDate": 1723636678667
+    },
+    "subscription2": {
+        "publicID": "F113n7lK2Cd3tB6Cu3L76gq8xH6lS5825xK4Mx2",
+        "pluginID": "Q1p78107R4j1n2Z9a2E1K1r912",
+        "startDate": 1723636887489
+    },
+    "subscription3": {
+        "publicID": "e4t6R0N8X8Yrtyc030q8S8W7O3",
+        "pluginID": "Q1p78107R4j1n2Z9a2E1K1r912",
+        "startDate": 1723894781513
+    },
+    "subscription4": {
+        "publicID": "F113n7lK2Cd3tB6Cu3L76gq8xH6lS5825xK4Mx2",
+        "pluginID": "Q1p78107R4j1n2Z9a2E1K1r912",
+        "startDate": 1725306182713
+    },
+    "subscription5": {
+        "publicID": "1rgwB078m8x8qhgrT5X949d858",
+        "pluginID": "Q1p78107R4j1n2Z9a2E1K1r912",
+        "startDate": 1725376833096
+    },
+    "subscription6": {
+        "publicID": "e4t6R0N8X8Yrtyc030q8S8W7O3",
+        "pluginID": "Q1p78107R4j1n2Z9a2E1K1r912",
+        "startDate": 1725447006395
+    },
+    "subscription7": {
+        "publicID": "Ku1Xc73K2WA5Ob41T4YT7Hn4BE1ae0yz7uj5ca4",
+        "pluginID": "r1c7d176U1B9m6C7i9F8T973T2",
+        "startDate": 1725447411019
+    },
+    "subscription8": {
+        "publicID": "9E1al7EJ2Rg5Kp4hZ7zU0Lf4KV5BR8l93eG6j72",
+        "pluginID": "r1c7d176U1B9m6C7i9F8T973T2",
+        "startDate": 1725470458467
+    },
+    "subscription9": {
+        "publicID": "F113n7lK2Cd3tB6Cu3L76gq8xH6lS5825xK4Mx2",
+        "pluginID": "Q1p78107R4j1n2Z9a2E1K1r912",
+        "startDate": 1726737447053
+    },
+    "subscription10": {
+        "publicID": "e4t6R0N8X8Yrtyc030q8S8W7O3",
+        "pluginID": "Q1p78107R4j1n2Z9a2E1K1r912",
+        "startDate": 1726738236711
+    },
+    "subscription11": {
+        "publicID": "F113n7lK2Cd3tB6Cu3L76gq8xH6lS5825xK4Mx2",
+        "pluginID": "Q1p78107R4j1n2Z9a2E1K1r912",
+        "startDate": 1727372828783
+    },
+    "subscription12": {
+        "publicID": "e4t6R0N8X8Yrtyc030q8S8W7O3",
+        "pluginID": "Q1p78107R4j1n2Z9a2E1K1r912",
+        "startDate": 1727722146476
+    }
+}

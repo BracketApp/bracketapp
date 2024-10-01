@@ -1,0 +1,14 @@
+{
+    "docs": [
+        "miningForm",
+        "publishDocForm",
+        "addProjectForm",
+        "chargeAccountForm",
+        "renewSubscriptionForm",
+        "signupForm",
+        "subscribeToConsoleForm"
+    ],
+    "indexes": [],
+    "docsLength": 6,
+    "size": 4281
+}

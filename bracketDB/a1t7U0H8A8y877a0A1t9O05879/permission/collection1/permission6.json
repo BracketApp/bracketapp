@@ -1,0 +1,27 @@
+{
+    "__props__": {
+        "id": "I1K7z1p474C8a6G5m270J1n2t0",
+        "doc": "permission6",
+        "counter": 6,
+        "creationDate": 1714486520120,
+        "active": true,
+        "actions": {},
+        "chunk": "chunk1",
+        "secured": false,
+        "collection": "permission",
+        "createdByUserID": "41V7H078W8I8I780z1m9Y2E4Y2",
+        "comments": [],
+        "collapsed": []
+    },
+    "userID": "p1l781A1x043Q1Y3Q6e0K3W1b2",
+    "accountID": "1197B078m8x8q4e9T5X949d858",
+    "projects": [
+        {
+            "projectID": "f1m7R0f878N8V7g0c1w8W9u1C6",
+            "editData": true,
+            "accessConsole": true,
+            "createProject": true,
+            "admin": true
+        }
+    ]
+}

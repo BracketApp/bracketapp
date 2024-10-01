@@ -1,0 +1,71 @@
+{
+    "view": "View?id=tree;tree:()=:;data:().editor.[parent().data()].values()._():[tree:()+=[path=_.__props__.dirPath||:;doc=_.__props__.doc]]",
+    "__props__": {
+        "id": "w1U741I5H0z8T8O9D327H5W2z6",
+        "doc": "tree",
+        "counter": 44,
+        "creationDate": 1715088937526,
+        "collection": "view",
+        "chunk": "chunk1",
+        "lastModified": 1724592803899,
+        "dev": false,
+        "actions": {
+            "111": ""
+        },
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "view",
+                "children",
+                111
+            ],
+            "children.0": [
+                "view",
+                "children"
+            ],
+            "children.0.children.0": [
+                "view",
+                "children"
+            ],
+            "children.0.children.0.children.0": [
+                "view"
+            ],
+            "children.0.children.0.children.1": [
+                "view"
+            ],
+            "children.0.children.0.children.2": [
+                "view"
+            ],
+            "children.0.children.0.children.3": [
+                "view"
+            ]
+        },
+        "secured": false,
+        "size": 1864
+    },
+    "children": [
+        {
+            "view": "View",
+            "children": [
+                {
+                    "view": "[View]:[data=data:().editor.[parent().data()].keys().sort();mount]?class=flex pointer align-center;style:[minHeight=3rem;width=100%;position=relative];loaded:[loadedHandler()];click:[displayOpenedDoc();openDoc()];mouseenter:[showOptionIcon()];mouseleave:[hideOptionIcon()]?data()||[!openDoc:();openCollection:()=parent().data()]",
+                    "children": [
+                        {
+                            "view": "Icon?name=bi-file-earmark;style.fontSize=1.3rem;style.minWidth=2.25rem;click:[2ndNext().focus()]"
+                        },
+                        {
+                            "view": "Text?class=dots;text=data();style.fontSize=1.3rem"
+                        },
+                        {
+                            "view": "Input?class=dots;preventDefault;input.value=data();input.style.padding=0;style:[fontSize=1.3rem;border=0;height=3rem;padding=0;display=none;width='calc(100% - 2.25rem)'];mouseenter:[next().style().display=flex];mouseleave:[next().style().display=none];blur:[blurEdit()];keyup:[escapeEdit();issueInDocName();editDocName();createDoc()]"
+                        },
+                        {
+                            "view": "Icon?openDoc=data();openCollection=2ndParent().data();name='bi-three-dots-vertical';style:[fontSize=1.8rem;width=2rem;height=3rem;position=absolute;right=0;display=none;backgroundColor=#e9e9e9;borderRadius=.25rem];hover.style.color=blue;click:[toggleActionPopup()]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

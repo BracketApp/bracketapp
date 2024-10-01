@@ -1,0 +1,46 @@
+{
+    "coinPackage1": {
+        "active": true,
+        "__props__.id": "I137j1O4I5s952s8w169l106v5",
+        "pluginID": "V1p7r1A7q4A2U04469R7O4m7w9"
+    },
+    "coinPackage2": {
+        "active": true,
+        "__props__.id": "T1K781Q475U932m8p1z9c127d3",
+        "pluginID": "V1p7r1A7q4A2U04469R7O4m7w9"
+    },
+    "coinPackage3": {
+        "active": true,
+        "__props__.id": "Q1X7z1s4O5c9K2e8O1O9N1u8X0",
+        "pluginID": "V1p7r1A7q4A2U04469R7O4m7w9"
+    },
+    "coinPackage5": {
+        "active": true,
+        "__props__.id": "v1P7J1f6q7C3n7p557V5w7Z7d2",
+        "pluginID": "V1p7r1A7q4A2U04469R7O4m7w9"
+    },
+    "package1": {
+        "__props__.id": "819781E687S3U5e2L9w6v3u9H8",
+        "pluginID": "r1c7d176U1B9m6C7i9F8T973T2"
+    },
+    "package11": {
+        "__props__.id": "11R7R1C736x7O9f5d0K1m7C0h8",
+        "pluginID": "Q1p78107R4j1n2Z9a2E1K1r912"
+    },
+    "package2": {
+        "__props__.id": "b1L7f156K7v3p5Y4b241n7N5U7",
+        "pluginID": "r1c7d176U1B9m6C7i9F8T973T2"
+    },
+    "package3": {
+        "__props__.id": "f1L7C176D773b5V5e3M5e9j8b8",
+        "pluginID": "r1c7d176U1B9m6C7i9F8T973T2"
+    },
+    "package4": {
+        "__props__.id": "O1B7Z1b7B4o2u0Q833o9R5o2e9",
+        "pluginID": "Q1p78107R4j1n2Z9a2E1K1r912"
+    },
+    "package5": {
+        "__props__.id": "W1S7Z1n784e221H2C3P4C9k4T9",
+        "pluginID": "Q1p78107R4j1n2Z9a2E1K1r912"
+    }
+}

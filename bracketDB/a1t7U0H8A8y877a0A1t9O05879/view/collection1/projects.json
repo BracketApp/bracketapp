@@ -1,0 +1,139 @@
+{
+    "view": "View?id=projects;style:[minHeight=100vh;position=relative];title=Projects | Bracket Technologies;[root():login?!user:()];getDataBeforeLoading()",
+    "__props__": {
+        "id": "u1Q7w1R3k6w1e4T291C9R6B1Q7",
+        "doc": "projects",
+        "counter": 18,
+        "creationDate": 1713614219617,
+        "active": true,
+        "actions": {
+            "openConsole": {
+                "_": "[start();checkSubscibedToConsole():[publicID=_.publicID]:[end():[_]]]():[collection=actions;doc=db]:[checkSubscription()]?!lastChild().contains():clicked()",
+                "rootToConsole": "root():[path='/console/'+_.subscription.publicID]",
+                "checkSubscription": "rootToConsole()?_.subscription?[openForm():[schema=subscribeToConsoleForm;project=__]]():[collection=view;doc=form]"
+            },
+            "projectDroplistHandler": {
+                "_": "droplist:[placement=right;items=:[icon=edit]:[icon=captive_portal]:[icon=delete_forever];item:[icon:[google.symbol;style:[fontSize=2rem]];style:[height=4rem]]];[click:droplist?projectEditHandler()]",
+                "projectEditHandler": {
+                    "_": "editProjectHandler()?clicked().txt()=edit?deleteProjectHandler()?clicked().txt()=delete_forever?openURL()?clicked().txt()=captive_portal",
+                    "deleteProjectHandler": "loader.show;[deleteProject():[_]:[loader.hide;[root():projects?_.success?note():[text=_.message;danger]]]]():[collection=actions;doc=main]",
+                    "openURL": "win().open():[_.host]"
+                }
+            },
+            "projectHoverHandler": "[hover?backgroundColor()=#f9f9f9;lastChild().display()?mouseentered?backgroundColor()=#fff;lastChild().hide()]",
+            "getDataBeforeLoading": {
+                "_": "getProjects()",
+                "getProjects": "[getProjects()::[projects:()=_.projects?_.success?root():login]]():[collection=actions;doc=main]"
+            },
+            "openForm": "[openForm():[schema=addProjectForm]]():[doc=form]"
+        },
+        "chunk": "chunk1",
+        "collection": "view",
+        "createdByUserID": "41V7H078W8I8I780z1m9Y2E4Y2",
+        "comments": [
+            {
+                "note": "new project",
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "projects",
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "note": "topbar",
+                "path": [
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "main",
+                "path": [
+                    "children",
+                    1
+                ]
+            },
+            {
+                "note": "adding project message",
+                "path": [
+                    "children",
+                    2
+                ]
+            }
+        ],
+        "collapsed": [
+            {
+                "path": [
+                    "children",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    1
+                ]
+            }
+        ]
+    },
+    "children": [
+        {
+            "view": "topbar"
+        },
+        {
+            "view": "View?style:[width=100%;display=grid;gridTemplateColumns=1fr 1fr 1fr;gap=3rem;padding=8rem 30rem]",
+            "children": [
+                {
+                    "view": "View?class=flexbox column pointer;style:[borderRadius=1rem;border=1px solid #ddd;gap=1rem;height=20rem;transition=.2s];hover.style.backgroundColor=#f9f9f9;[click?openForm()]",
+                    "children": [
+                        {
+                            "view": "Icon?name=add_business;google.symbol;style:[fontSize=3rem;color=#888]"
+                        },
+                        {
+                            "view": "Text?text=Add Project;style:[fontSize=1.5rem]"
+                        }
+                    ]
+                },
+                {
+                    "view": "[View]:[data=projects:()]?class=flexbox column pointer;style:[position=relative;borderRadius=1rem;border=1px solid #ddd;gap=.5rem;backgroundColor=#fff;height=20rem;transition=.2s];projectHoverHandler();[click?openConsole()]",
+                    "children": [
+                        {
+                            "view": "Text?text=_.name;style:[fontSize=1.8rem]"
+                        },
+                        {
+                            "view": "Text?text=_.subdomain;style:[fontSize=1.5rem]"
+                        },
+                        {
+                            "view": "View?class=flexbox;style:[position=absolute;top=.5rem;right=.5rem;borderRadius=.5rem;height=4rem;width=4rem;transition=.2s;display=none];hover.style:[backgroundColor=#fff;border=1px solid #ddd];projectDroplistHandler()",
+                            "children": [
+                                {
+                                    "view": "Icon?name=more_vert;google.symbol;style:[color=#888;fontSize=2.5rem]"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
