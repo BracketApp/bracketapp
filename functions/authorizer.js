@@ -67,7 +67,7 @@ const getSession = ({ _window, req }) => {
   getPlugins({ _window, publicID: session.publicID, session })
 
   // activity
-  recordActivity({ _window, session })
+  // recordActivity({ _window, session })
 
   return { data: session, success: true }
 }
