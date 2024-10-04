@@ -6,11 +6,11 @@
         "creationDate": 1716531810914,
         "collection": "formSchema",
         "chunk": "chunk1",
-        "lastModified": 1725175534033,
+        "lastModified": 1728005806911,
         "dev": false,
         "actions": {
             "getDataOnLoaded": {
-                "_": "loader.show;[getCountriesAndCities();getPlugin()]()::[loader.hide]",
+                "_": "loader.show;[#getCountriesAndCities();getPlugin()]()::[loader.hide]",
                 "getCountriesAndCities": "[getTBPpageData()::[countries:()=_.countries;currencies:()=_.currencies]]():[collection=TBP;doc=actions]",
                 "getPlugin": "[getPlugin():[pluginID=[_.pluginID||'r1c7d176U1B9m6C7i9F8T973T2'];packageID=[_.packageID||'819781E687S3U5e2L9w6v3u9H8']]:[plugin:()=_.plugin;package:()=_.package]]():[collection=actions;doc=main]"
             }
@@ -210,7 +210,7 @@
             ]
         },
         "secured": false,
-        "size": 4585
+        "size": 4606
     },
     "confirmBtn": {
         "text": "Get Started!",

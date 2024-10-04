@@ -1,5 +1,5 @@
 const { setCookie } = require("./cookie")
-const { defaultAppEvents, initView, eventExecuter, starter, addEventListener } = require("./kernel")
+const { defaultAppEvents, initView, eventExecuter, starter, addEventListener, loader } = require("./kernel")
 const { openStack, endStack } = require("./stack")
 
 window.views = JSON.parse(document.getElementById("views").textContent)
@@ -62,3 +62,4 @@ arDiv.style.top = "-1000px"
 views.body.__element__.appendChild(arDiv)
 
 endStack({ stack })
+loader({ show: false })

@@ -7,7 +7,7 @@
         "creationDate": 1716557780043,
         "collection": "view",
         "chunk": "chunk1",
-        "lastModified": 1725168667887,
+        "lastModified": 1728006988785,
         "dev": false,
         "actions": {
             "closeForm": "prev().transform()='translateY(-100%)';timer():[():form.hide()]:500",
@@ -17,20 +17,13 @@
                 "confirmed": "():msg.hide();():myloader.loader():hide;[closeForm()]():[view=():form.2ndChild()];[note():[text=_.message;[danger=true?!_.success]];[form().del()?_.success]?_]",
                 "conditionsNotApplied": "_.requiredData._find():[!form().[_]]"
             },
-            "openForm": "():form.refresh():[data=_]:[loader.hide;_.view.():[display();input().focus();timer():[_.view.1stChild().transform()='translateY(0)']:50]]",
+            "openForm": "():form.refresh():[data=_]:[_.view.():[display();input().focus();timer():[_.view.1stChild().transform()='translateY(0)']:50]]",
             "getSchema": {
                 "_": "[[getSchema():[schema=_.schema;collection=[_.collection||formSchema]]:[schema:().[__.schema]=_.schema]]():[collection=actions;doc=db]:[data=schema:().[_.schema]]?!schema:().[_.schema];_.schema?data=schema:().[_.schema]?_.schema]()::[beforeLoadingActions()]",
                 "beforeLoadingActions": "[schema:().[__.schema].beforeLoadingActions]()?schema:().[__.schema].beforeLoadingActions"
             }
         },
         "comments": [
-            {
-                "note": "coin package",
-                "path": [
-                    "children",
-                    0
-                ]
-            },
             {
                 "note": "title",
                 "path": [
@@ -125,13 +118,6 @@
                     0,
                     "children",
                     2
-                ]
-            },
-            {
-                "note": "package",
-                "path": [
-                    "children",
-                    1
                 ]
             }
         ],
@@ -280,7 +266,7 @@
             ]
         },
         "secured": false,
-        "size": 5237
+        "size": 5138
     },
     "children": [
         {

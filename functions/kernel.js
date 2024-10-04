@@ -861,13 +861,14 @@ const actions = {
         }
         return loop
 
-    }, "timer()": ({ _window, req, res, o, stack, props, lookupActions, id, e, __, args, object, answer, pathJoined }) => { // timer():params:timer:repeats
+    }, "timer()": ({ _window, o, stack, props, lookupActions, id, e, __, args, object, answer, pathJoined }) => { // timer():params:timer:repeats
 
         if (_window) return console.log("Cannot run a timer in server => " + decode({ _window, string: pathJoined }))
 
-        var timer = args[2] ? parseInt(toValue({ req, res, _window, lookupActions, stack, props: { isValue: true }, id, data: args[2], __, e, object })) : 0
-        var repeats = args[3] ? parseInt(toValue({ req, res, _window, lookupActions, stack, props: { isValue: true }, id, data: args[3], __, e, object })) : false
-        var myFn = () => { eventExecuter({ req, res, event: "Timer", eventID: id, _window, lookupActions, id, string: decode({ string: args[1]}), __, e, object }) }
+        const timer = args[2] ? parseInt(toValue({ lookupActions, stack, props: { isValue: true }, id, data: args[2], __, e, object })) : 0
+        const repeats = args[3] ? parseInt(toValue({ lookupActions, stack, props: { isValue: true }, id, data: args[3], __, e, object })) : false
+        const string = decode({ string: args[1] })
+        const myFn = () => eventExecuter({ event: "Timer", eventID: id, lookupActions, id, string, __, e, object })
 
         if (typeof repeats === "boolean") {
 
@@ -878,6 +879,7 @@ const actions = {
 
             answer = []
             answer.push(setTimeout(myFn, timer))
+            
             if (repeats > 1) {
                 for (let index = 0; index < repeats; index++) {
                     answer.push(setTimeout(myFn, timer))
@@ -2902,6 +2904,8 @@ const actions = {
                     document.body.removeChild(lDiv)
                     lDiv = null
                 }
+                
+                loader({ show: false })
 
             } else if (!innerHTML) console.log("View has conditions which are not applied!");
 
@@ -3278,14 +3282,14 @@ const actions = {
     
         view.__html__ = html
 
-        delete view.__initialID__
+        //delete view.__initialID__
         delete view.__indexing__
         delete view.__initialIndex__
         delete view.__params__
         delete view.__subParamsInterpreted__
         delete view.__paramsInterpreted__
         delete view.__htmlStyles__
-        delete view.__indexed__
+        //delete view.__indexed__
     
         return html
 
@@ -5847,16 +5851,16 @@ const getViewParams = ({ view }) => {
 
 const removeView = ({ _window, global, views, id, stack, props, self = true, main, insert }) => {
 
-    var view = views[id]
+    let view = views[id]
     if (!view) return
-    var parent = views[view.__parent__], element = {}
+    let parent = views[view.__parent__], element = {}
 
     if (!parent) return
 
     view.__childrenRef__.map(({ id }) => id).map(id => removeView({ _window, global, views, id, stack, props, insert }))
     if (main || !self) view.__childrenInitialIDRef__.map(initialID => {
 
-        var unrenderedView = Object.values(views).find(view => initialID === (view || {}).__initialID__)
+        let unrenderedView = Object.values(views).find(view => initialID === (view || {}).__initialID__)
         if (unrenderedView) removeView({ _window, global, views, id: unrenderedView.id, stack, props, insert })
     })
 
@@ -5873,14 +5877,14 @@ const removeView = ({ _window, global, views, id, stack, props, self = true, mai
 
     // remove loader()
     if (!_window) {
-        var loader = document.getElementById(view.id + "-loader")
+        let loader = document.getElementById(view.id + "-loader")
         if (loader) loader.remove()
     }
 
     if (!self) {
 
         // remove from initial index list
-        var initialIDIndex = parent.__childrenInitialIDRef__.indexOf(view.__initialID__)
+        let initialIDIndex = parent.__childrenInitialIDRef__.indexOf(view.__initialID__)
         if (initialIDIndex > -1) parent.__childrenInitialIDRef__.splice(initialIDIndex, 1)
 
         return element
@@ -5888,7 +5892,7 @@ const removeView = ({ _window, global, views, id, stack, props, self = true, mai
 
     view.__timers__.map(timerID => clearTimeout(timerID))
 
-    var index = parent.__childrenRef__.findIndex(({ id }) => id === view.id)
+    let index = parent.__childrenRef__.findIndex(({ id }) => id === view.id)
 
     if (index > -1) {
         main && parent.__childrenRef__.slice(index + 1).map(viewRef => {
@@ -6558,7 +6562,7 @@ const route = async ({ lookupActions, stack, props, address, id, req, __, res, e
     if (response.__props__.session) setCookie({ name: "__session__", value: response.__props__.session })
 
     // check data for queries
-    if (data.searchDoc) queriesClient({ global: window.global, data: response })
+    /*if (data.searchDoc) */queriesClient({ global: window.global, data: response })
 
     // search doc
     if (data.searchDoc && !response.data) {
@@ -6709,5 +6713,5 @@ module.exports = {
     actions, kernel, toValue, toParam, reducer, toApproval, toAction, toLine, addEventListener,
     getDeepChildren, getDeepChildrenId, calcSubs, calcDivision, calcModulo, emptySpaces, isNumber, printAddress, endAddress, resetAddress,
     closePublicViews, updateDataPath, remove, initView, getViewParams, removeView, defaultEventHandler,
-    toNumber, defaultAppEvents, clearActions, route, eventExecuter, starter
+    toNumber, defaultAppEvents, clearActions, route, eventExecuter, starter, loader
 }

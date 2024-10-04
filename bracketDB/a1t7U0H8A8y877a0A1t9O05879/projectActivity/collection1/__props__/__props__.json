@@ -5,12 +5,12 @@
     "lastChunk": 1,
     "docsLength": 8,
     "counter": 8,
-    "reads": 948,
-    "writes": 483,
+    "reads": 1410,
+    "writes": 714,
     "deletes": 0,
     "size": 4512,
-    "payloadIn": 319775,
-    "payloadOut": 628318,
+    "payloadIn": 508982,
+    "payloadOut": 1006130,
     "indexes": [
         {
             "find": [
@@ -18,8 +18,8 @@
                 "projectID"
             ],
             "doc": "index1",
-            "lastRead": 1728003583337,
-            "expiryDate": 1730595583337
+            "lastRead": 1728068286871,
+            "expiryDate": 1730660286871
         }
     ],
     "lastIndex": 1

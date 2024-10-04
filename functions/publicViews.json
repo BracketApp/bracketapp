@@ -18,7 +18,7 @@
         }
     },
     "loader": {
-        "view": "View:loader-container?class=loader-container",
+        "view": "View:loader-container?class=loader-container;style.display=flex",
         "children": [
             {
                 "view": "View:loader?class=loader"
