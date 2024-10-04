@@ -1180,8 +1180,8 @@ const start = (port, serverID) => {
         // start(port, true);
 
         // update running server
-        var { data: runningServer } = database({ action: "search()", data: { db: bracketDB, collection: "runningServer", findOne: { port, serverID } } })
-        runningServer.closes.push(new Date().getTime())
+        //let { data: runningServer } = database({ action: "search()", data: { db: bracketDB, collection: "runningServer", findOne: { port, serverID } } })
+        //runningServer.closes.push(new Date().getTime())
         //database({ action: "save()", data: { db: bracketDB, collection: "runningServer", data: runningServer } })
 
         // start server again
