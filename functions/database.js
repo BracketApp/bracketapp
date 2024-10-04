@@ -1166,7 +1166,7 @@ const start = (port, serverID) => {
     var child = spawn("node", ["index.js", port, serverID])
     
     // running server
-    database({ action: "save()", data: { db: bracketDB, collection: "runningServer", find: { port, serverID }, data: { port, serverID, creationDate: new Date().getTime(), closes: [] } } })
+    //database({ action: "save()", data: { db: bracketDB, collection: "runningServer", find: { port, serverID }, data: { port, serverID, creationDate: new Date().getTime(), closes: [] } } })
 
     child.stdout.on("data", function (data) {
         //start(port, true)
@@ -1182,7 +1182,7 @@ const start = (port, serverID) => {
         // update running server
         var { data: runningServer } = database({ action: "search()", data: { db: bracketDB, collection: "runningServer", findOne: { port, serverID } } })
         runningServer.closes.push(new Date().getTime())
-        database({ action: "save()", data: { db: bracketDB, collection: "runningServer", data: runningServer } })
+        //database({ action: "save()", data: { db: bracketDB, collection: "runningServer", data: runningServer } })
 
         // start server again
         start(child.spawnargs[2], serverID)
