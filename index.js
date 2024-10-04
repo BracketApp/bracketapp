@@ -21,7 +21,7 @@ const port = parseInt(process.argv[2])
 // get hosts => run applications
 if (!port) {
 
-  createWebSocket()
+  //createWebSocket()
 
   // get hosts
   const { data } = database({ action: "search()", data: { db: bracketDB, collection: "host", find: { port: { gte: 80 } } } })
@@ -29,7 +29,7 @@ if (!port) {
 }
 
 // Connect to the WebSocket server
-const ws = connectToWebSocket({ serverID, port })
+//const ws = connectToWebSocket({ serverID, port })
 
 // create app
 const app = (req, res) => {
@@ -43,7 +43,7 @@ const app = (req, res) => {
 
       //req.ip = ip
       res.serverID = serverID
-      req.ws = ws
+      //req.ws = ws
       req.body = JSON.parse(Buffer.concat(req.body).toString() || "{}")
       router({ req, res })
     })

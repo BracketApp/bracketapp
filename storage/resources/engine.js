@@ -842,7 +842,7 @@ const { openStack, endStack } = require("./stack")
 window.views = JSON.parse(document.getElementById("views").textContent)
 window.global = JSON.parse(document.getElementById("global").textContent)
 
-//
+// test
 const views = window.views, global = window.global
 
 views.document.__element__ = document
