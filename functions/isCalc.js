@@ -2,7 +2,7 @@ const isCalc = ({ _window, string }) => {
 
     if (typeof string !== "string") return false
     
-    var global = _window ? _window.global : window.global
+    const global = _window ? _window.global : window.global
     if (string.slice(0, 2) === "@$" && string.length === 7) string = global.__refs__[string].data
 
     // recheck after decoding

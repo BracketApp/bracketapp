@@ -1,43 +1,43 @@
 const cssStyleKeyNames = require("./cssStyleKeyNames")
-const { hideSecured, respond, actions } = require("./kernel")
+const { actions } = require("./kernel")
+const { hideSecured, respond } = require("./database")
 
-module.exports = ({ _window, res, stack, props, address, __ }) => {
+const document = ({ _window, res, stack, props, address, __ }) => {
 
-    var { global, views } = _window
-    var page = global.manifest.page
-    var view = views[global.__pageViewID__ || page] || {}
+    let { global: { __refs__, __stacks__, __startAddresses__, ...global }, views } = _window
+    let page = global.manifest.page
+    let view = views[global.__pageViewID__ || page] || {}
 
     // head tags
-    var language = global.language = view.language || view.lang || "en"
-    var direction = view.direction || view.dir || (language === "ar" || language === "fa" ? "rtl" : "ltr")
-    var title = view.title || "Bracket App Title"
+    let language = global.language = view.language || view.lang || "en"
+    let direction = view.direction || view.dir || (language === "ar" || language === "fa" ? "rtl" : "ltr")
+    let title = view.title || "Bracket App Title"
 
     // favicon
-    var favicon = views.document.favicon && views.document.favicon.url
-    var faviconType = favicon && views.document.favicon.type
+    let favicon = views.document.favicon && views.document.favicon.url
+    let faviconType = favicon && views.document.favicon.type
 
     // meta
     view.meta = view.meta || {}
-    var metaHTTPEquiv = view.meta["http-equiv"] || view.meta["httpEquiv"] || {}
+    let metaHTTPEquiv = view.meta["http-equiv"] || view.meta["httpEquiv"] || {}
     if (typeof metaHTTPEquiv !== "object") metaHTTPEquiv = {}
     if (!metaHTTPEquiv["content-type"]) metaHTTPEquiv["content-type"] = "text/html; charset=UTF-8"
-    var metaKeywords = view.meta.keywords || ""
-    var metaDescription = view.meta.description || ""
-    var metaTitle = view.meta.title || view.title || ""
-    var metaViewport = view.meta.viewport || ""
+    let metaKeywords = view.meta.keywords || ""
+    let metaDescription = view.meta.description || ""
+    let metaTitle = view.meta.title || view.title || ""
+    let metaViewport = view.meta.viewport || ""
 
     global.manifest.session = global.manifest.session.__props__.id
 
     // logs
-    global.__server__.logs = stack.logs
+    // global.__server__.logs = stack.logs
 
     // hide secured
     hideSecured({ __, global })
 
-    actions["wait()"]({ _window, stack, props, address, __ })
+    actions["stackManager()"]({ _window, stack, props, address, __ })
     
-    return respond({ res, stack, props, global, __, response: (
-        `<!DOCTYPE html>
+    const doc = `<!DOCTYPE html>
         <html lang="${language}" dir="${direction}" class="html">
             <head>
                 <!-- css -->
@@ -105,5 +105,8 @@ module.exports = ({ _window, res, stack, props, address, __ }) => {
                 <script src="https://cdn.jsdelivr.net/npm/js-html2pdf@1.1.4/lib/html2pdf.min.js"></script>
             </body>
         </html>`
-    )})
+
+    return respond({ res, stack, props, global, __, response: doc })
 }
+
+module.exports = document

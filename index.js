@@ -1,6 +1,6 @@
 const http = require('node:http')
 // const EasyTunnel = require("./functions/easy-tunnel")
-const { getData, start, postData, database } = require("./functions/kernel")
+const { getData, start, postData, database } = require("./functions/database")
 const router = require('./functions/router')
 const { generate } = require('./functions/generate')
 const networkInterfaces = require('os').networkInterfaces()

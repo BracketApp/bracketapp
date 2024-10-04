@@ -15,7 +15,7 @@ const searchParams = ({ _window, lookupActions, stack, props, req, res, id, e, _
     var i = 1, stringList = string.split("field=")
     while (stringList[i]) {
 
-        stringList[i] = actions["encode()"]({ _window, string: stringList[i] })
+        stringList[i] = actions["encode()"]({ _window, stack, string: stringList[i] })
         var code = stringList[i].slice(0, 7)
         global.__refs__[code].type = "text"
         i++

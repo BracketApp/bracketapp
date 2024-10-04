@@ -14,9 +14,7 @@ const { toClock } = require("./toClock")
 const { note } = require("./note")
 const { isParam } = require("./isParam")
 const { lengthConverter, resize } = require("./resize")
-const { qr } = require("./qr")
 const { replaceNbsps } = require("./replaceNbsps")
-const { vcard } = require("./vcard")
 const { colorize } = require("./colorize")
 const { override, merge } = require("./merge")
 const { nthParent, nthNext, nthPrev } = require("./getView")
@@ -33,23 +31,12 @@ const { isArabic } = require("./isArabic")
 const cssStyleKeyNames = require("./cssStyleKeyNames")
 const events = require("./events.json")
 const builtinEvents = require("./builtinEvents.json")
-const passport = require("./passport")
 const myViews = ["View", "Input", "Text", "Image", "Icon", "Action", "Audio", "Video", "Link"]
 
-// database
-const { spawn } = require("child_process")
-const fs = require("fs")
-const util = require('util')
-
 // config
-require('dotenv').config()
 const executableRegex = /\(\)|@|^_+$/;
-const mime = require('mime-types')
 const { encoded } = require("./encoded")
 const { jsonToBracket } = require("./jsonToBracket")
-
-// project DB
-const bracketDB = process.env.BRACKETDB
 
 const actions = {
     "global()": () => _window ? _window.global : window.global,
@@ -445,18 +432,21 @@ const actions = {
         }
         return styles
 
-    }, "qr()": ({ _window, req, res, o, stack, props, lookupActions, id, e, __, args, object }) => {
+    }, "qrcode()": ({ _window, req, res, o, stack, props, lookupActions, id, e, __, args, object }) => {
 
         // wait address
-        var { address, data } = actions["addresser()"]({ _window, stack, props, args, status: "Start", asynchronous: true, id: o.id || id, action: "qr()", object, lookupActions, __, id })
-        return qr({ _window, id, req, res, data, e, __, stack, props, address, lookupActions })
+        let { address, data } = actions["addresser()"]({ _window, stack, props, args, status: "Start", asynchronous: true, id: o.id || id, action: "qrcode()", object, lookupActions, __, id })
+        
+        if (stack.server) return require("./database").qrCode({ _window, id, req, res, data, e, __, stack, props, address, lookupActions })
+        else return qrcode({ _window, id, req, res, data, e, __, stack, props, address, lookupActions })
 
     }, "contact()": ({ _window, req, res, o, id, e, __, args, object }) => {
 
         var data = toValue({ req, res, _window, id, e, __, data: args[1], object, props: { isValue: true } })
         if (typeof data !== "obejct") return o
 
-        return vcard({ _window, id, req, res, data, e, __ })
+        if (stack.server) return require("./database").vcard({ _window, id, req, res, data, e, __ })
+        else return vcard({ _window, id, req, res, data, e, __ })
 
     }, "bracket()": ({ o }) => {
 
@@ -877,7 +867,7 @@ const actions = {
 
         var timer = args[2] ? parseInt(toValue({ req, res, _window, lookupActions, stack, props: { isValue: true }, id, data: args[2], __, e, object })) : 0
         var repeats = args[3] ? parseInt(toValue({ req, res, _window, lookupActions, stack, props: { isValue: true }, id, data: args[3], __, e, object })) : false
-        var myFn = () => { eventExecuter({ req, res, event: "Timer", eventID: id, _window, lookupActions, id, string: args[1], __, e, object }) }
+        var myFn = () => { eventExecuter({ req, res, event: "Timer", eventID: id, _window, lookupActions, id, string: decode({ string: args[1]}), __, e, object }) }
 
         if (typeof repeats === "boolean") {
 
@@ -2126,7 +2116,7 @@ const actions = {
             })
 
             // address
-            if (address) actions["wait()"]({ _window, id, lookupActions, stack, props: { ...props, isValue: false }, address, __, req, res })
+            if (address) actions["stackManager()"]({ _window, id, lookupActions, stack, props: { ...props, isValue: false }, address, __, req, res })
 
         } else if (args[2]) {
 
@@ -2138,7 +2128,7 @@ const actions = {
             })
 
             // address
-            if (address) actions["wait()"]({ _window, id, lookupActions, stack, props, address, __, req, res })
+            if (address) actions["stackManager()"]({ _window, id, lookupActions, stack, props, address, __, req, res })
         }
 
         stack.loop = false
@@ -2208,7 +2198,7 @@ const actions = {
                             }).save().then((pdf) => {
 
                                 // await params
-                                if (args[2]) actions["wait()"]({ _window, lookupActions, stack, props, address, req, res, id, e, __: [pdf, ...__] })
+                                if (args[2]) actions["stackManager()"]({ _window, lookupActions, stack, props, address, req, res, id, e, __: [pdf, ...__] })
                                 window.devicePixelRatio = 1
                             })
                         }
@@ -2219,7 +2209,7 @@ const actions = {
 
 
                 // await params
-                if (args[2]) actions["wait()"]({ _window, lookupActions, stack, props, address, req, res, id, e, __: [pdf, ...__] })
+                if (args[2]) actions["stackManager()"]({ _window, lookupActions, stack, props, address, req, res, id, e, __: [pdf, ...__] })
                 window.devicePixelRatio = 1
             })
         })*/
@@ -2470,7 +2460,7 @@ const actions = {
     }, "colorize()": ({ _window, req, res, o, stack, props, lookupActions, id, e, __, args, object }) => {
 
         var data = toValue({ req, res, _window, lookupActions, stack, props: { isValue: true }, object, id, e, data: args[1] || "", __ })
-        var encoded = actions["encode()"]({_window, string: actions["encode()"]({_window, string: o, start: "'" }) })
+        var encoded = actions["encode()"]({_window, stack, string: actions["encode()"]({_window, stack, string: o, start: "'" }) })
         return colorize({ _window, string: encoded, ...data })
 
     }, "deepChildren()": ({ _window, o, stack, props, lookupActions }) => {
@@ -2571,7 +2561,7 @@ const actions = {
     }, "passport()": ({ _window, req, res, o, stack, props, lookupActions, id, e, __, args, object }) => {
 
         var { address, data } = actions["addresser()"]({ _window, stack, props, args, req, res, status: "Start", dataInterpretAction: "toParam", asynchronous: true, id: o.id, type: "Auth", action: "passport()", object, lookupActions, __, id })
-        passport({ _window, lookupActions, stack, props, address, id, e, __, req, res, data })
+        require("./database").passport({ _window, lookupActions, stack, props, address, id, e, __, req, res, data })
 
     }, "upload()": ({ _window, req, res, o, stack, props, lookupActions, id, e, __, args, object }) => {
 
@@ -2648,7 +2638,7 @@ const actions = {
 
         if (stack.renderer && !data.preventDefault) return actions["end()"]({ _window, req, res, stack, props, lookupActions, id, e, __, args, object, pathJoined, data })
 
-        respond({ res, stack, props, global, response, __ })
+        require("./database").respond({ res, stack, props, global, response, __ })
         return response
 
     }, "sent()": ({ res }) => {
@@ -2729,15 +2719,15 @@ const actions = {
 
     }, "refresh()": ({ _window, req, res, o = {}, stack, props, address, lookupActions, id, __, args, object, data, mount }) => {
 
-        var views = _window ? _window.views : window.views
-        var global = _window ? _window.global : window.global
+        const views = _window ? _window.views : window.views
+        const global = _window ? _window.global : window.global
 
         if (o.__view__) {
             var { address, data = {} } = actions["addresser()"]({ _window, stack, props, args, interpreting: true, status: "Start", type: "action", dataInterpretAction: "toValue", renderer: true, blockable: false, id, action: "refresh()", object, lookupActions, __ })
             data.id = data.id || o.id
         } else if (!data) return false
 
-        var view = views[data.id]
+        const view = views[data.id]
 
         if (!data.postUpdate) {
 
@@ -2815,7 +2805,7 @@ const actions = {
 
             // remove loop
             if (reducedView.view.charAt(0) === "[" && reducedView.view.split(":")[0].slice(-1)[0] === "]") {
-                reducedView.view = actions["encode()"]({ id, string: actions["encode()"]({ _window, id, string: reducedView.view, start: "'" }) })
+                reducedView.view = actions["encode()"]({ id, stack, string: actions["encode()"]({ _window, id, stack, string: reducedView.view, start: "'" }) })
                 reducedView.view = global.__refs__[reducedView.view.slice(0, 7)].data + "?" + decode({ string: reducedView.view.split("?").slice(1).join("?") })
             }
             
@@ -2834,40 +2824,31 @@ const actions = {
             // seq: END:toView => END:refresh() => START:postUpdate => END:postUpdate => START:waits => END:waits => START:spliceBlockedAddresses
 
             // address
-            actions["wait()"]({ _window, lookupActions, stack, props, address, id, req, res, __ })
+            actions["stackManager()"]({ _window, lookupActions, stack, props, address, id, req, res, __ })
             
             return myView
 
         } else { // post update
 
-            var { childIndex, elements, root, timer, parent, loop, inserted, unappend, ...data } = data
+            const { childIndex, elements, root, timer, parent, inserted, unappend, action } = data
             
             // tohtml parent
             delete parent.__html__
             actions["html()"]({ _window, lookupActions, stack, props, __, id: parent.id })
 
-            var renderedRefView = parent.__childrenRef__.filter(({ id, childIndex: chdIndex }) => (inserted ? chdIndex === childIndex : true) && !views[id].__rendered__ && views[id])
+            const renderedRefView = parent.__childrenRef__.filter(({ id, childIndex: chdIndex }) => (inserted ? chdIndex === childIndex : true) && !views[id].__rendered__ && views[id])
             if (unappend) {
-                renderedRefView.map(({index}) => parent.__childrenRef__.splice(index, 1))
+                renderedRefView.map(({ index }) => parent.__childrenRef__.splice(index, 1))
                 parent.__indexing__--
             }
 
-            var updatedViews = [], idLists = [], innerHTML = ""
-            
-            // get html
-            renderedRefView.map(({ id }) => {
+            const renderedIDs = renderedRefView.map(({ id }) => id)
 
-                var { __idList__, __html__ } = views[id]
+            // innerhtml
+            const innerHTML = renderedIDs.map(id => views[id].__html__).join("")
 
-                // push to html
-                innerHTML += __html__
-
-                // _.data
-                updatedViews.push(views[id])
-
-                // start
-                idLists.push(...[id, ...__idList__])
-            })
+            // id list
+            const idLists = innerHTML.split("id='").slice(1).map(id => id.split("'")[0])
 
             // remove prev elements
             elements.map(element => element.nodeType ? element.remove() : (delete views[element.id]))
@@ -2903,14 +2884,14 @@ const actions = {
                 })
 
                 // display view
-                updatedViews.map(({ id }) => views[id].__element__.style.opacity = "1")
+                renderedIDs.map(id => views[id].__element__.style.opacity = "1")
 
                 // state, title, & path
-                if (updatedViews[0].id === "root" && views[global.manifest.page]) {
+                if (renderedIDs[0] === "root" && views[global.manifest.page]) {
 
                     document.body.scrollTop = document.documentElement.scrollTop = 0
-                    var title = root.title || views[global.manifest.page].title
-                    var path = root.path || views[global.manifest.page].path
+                    let title = root.title || views[global.manifest.page].title
+                    let path = root.path || views[global.manifest.page].path
 
                     history.pushState(null, title, path)
                     document.title = title
@@ -2924,13 +2905,15 @@ const actions = {
 
             } else if (!innerHTML) console.log("View has conditions which are not applied!");
 
-            console.log((new Date()).getHours() + ":" + (new Date()).getMinutes(), (data.action || "REFRESH") + ":" + (data.action === "ROOT" ? global.manifest.page : (updatedViews[0] || {}).id), (new Date()).getTime() - timer)
-    
-            var data = { view: updatedViews.length === 1 ? updatedViews[0] : updatedViews, message: "View updated successfully!", success: true }
+            console.log((new Date()).getHours() + ":" + (new Date()).getMinutes(), (action || "REFRESH") + ":" + (action === "ROOT" ? global.manifest.page : renderedIDs[0]), (new Date()).getTime() - timer)
 
             if (address) {
-                address.params.__ = [data, ...address.params.__]
-                address.params.id = views[address.params.id] ? address.params.id : updatedViews[0].id
+                address.params.__ = [{
+                    view: renderedIDs.length === 1 ? views[renderedIDs[0]] : renderedIDs.map(id => views[id]), 
+                    message: "View updated successfully!", 
+                    success: true 
+                }, ...address.params.__]
+                address.params.id = views[address.params.id] ? address.params.id : renderedIDs[0]
             }
         }
 
@@ -3055,7 +3038,7 @@ const actions = {
     
         // remove loop
         if (view.view.charAt(0) === "[") {
-            view.view = actions["encode()"]({ id, string: actions["encode()"]({ id, string: view.view, start: "'" }) })
+            view.view = actions["encode()"]({ id, stack, string: actions["encode()"]({ id, stack, string: view.view, start: "'" }) })
             view.view = global.__refs__[view.view.slice(0, 7)].data + "?" + decode({ string: view.view.split("?").slice(1).join("?") })
         }
     
@@ -3172,30 +3155,29 @@ const actions = {
     
         return actions["refresh()"]({ lookupActions, stack, props, object, address, id, __, data: { view: { ...clone(view), __inserted__: true }, id: myID || id, path, data, form, __childIndex__, __index__: index, insert: true, mount, __parent__: parent.id, action: unappend ? "VIEW" : "INSERT", unappend, ...passData } })
 
-    }, "html()": ({ _window, id, o = {} }) => {
+    }, "html()": ({ _window, stack, id, o = {} }) => {
 
         if (o.id) id = o.id
-        var views = _window ? _window.views : window.views
-        var view = views[id], parent = views[view.__parent__]
+        const views = _window ? _window.views : window.views
+        let view = views[id], parent = views[view.__parent__]
         
         if (!parent) return 
-        var name = view.__name__, html = ""
+        let name = view.__name__, html = ""
     
         // remove view
         delete view.view
         delete view.children
-        delete view.__props__
     
         if (name === "Action") return
     
         // text
-        var text = typeof view.text !== "object" && view.text !== undefined ? view.text : ((view.editable || view.__name__ === "Input" || view.__name__ === "Text") && typeof view.data !== "object" && view.data !== undefined) ? view.data : ""
+        let text = typeof view.text !== "object" && view.text !== undefined ? view.text : ((view.editable || view.__name__ === "Input" || view.__name__ === "Text") && typeof view.data !== "object" && view.data !== undefined) ? view.data : ""
     
         // replace encoded spaces
         if (text) text = replaceNbsps(text)
     
         // html
-        var innerHTML = (view.__childrenRef__.map(({ id }) => views[id].__html__).join("") || text || "") + ""
+        let innerHTML = (view.__childrenRef__.map(({ id }) => views[id].__html__).join("") || text || "") + ""
     
         // required
         if (view.required && name === "Text") {
@@ -3207,8 +3189,7 @@ const actions = {
         }
     
         // html attributes
-        var atts = Object.entries(view.attribute || {}).map(([key, value]) => `${key}='${value}'`).join(" ")
-
+        let atts = Object.entries(view.attribute || {}).map(([key, value]) => `${key}='${value}'`).join(" ")
 
         // styles
         view.__htmlStyles__ = ""
@@ -3223,7 +3204,7 @@ const actions = {
         // colorize
         if (view.colorize) {
     
-            innerHTML = actions["encode()"]({ _window, id, string: actions["encode()"]({ _window, id, string: innerHTML, start: "'" }) })
+            innerHTML = actions["encode()"]({ _window, id, stack, string: actions["encode()"]({ _window, id, stack, string: innerHTML, start: "'" }) })
             innerHTML = colorize({ _window, string: innerHTML, ...(typeof view.colorize === "object" ? view.colorize : {}) })
         }
         
@@ -3265,11 +3246,11 @@ const actions = {
         } else return html = `<></>`
     
         // indexing
-        var index = 0
+        let index = 0
         if (!view.__indexed__) {
     
             // remove from initial index list
-            var initialIDIndex = parent.__childrenInitialIDRef__.indexOf(view.__initialID__)
+            let initialIDIndex = parent.__childrenInitialIDRef__.indexOf(view.__initialID__)
             if (initialIDIndex > -1) parent.__childrenInitialIDRef__.splice(initialIDIndex, 1)
 
             // find index
@@ -3290,20 +3271,22 @@ const actions = {
             parent.__childrenRef__.splice(index, 0, { id, index, childIndex: view.__childIndex__, initialIndex: view.__initialIndex__ })
     
             view.__indexed__ = true
-            // var index = parent ? indexing({ views, id, view, parent }) : 0
         }
     
         // init element
-        view.__element__ = view.__element__ || { text, id, innerHTML, index, style: {} }
+        // view.__element__ = view.__element__ || { text, id, index, style: {} }
     
-        // label
-        // if (view.label && !view.__labeled__) html = labelHandler({ _window, id, tag })
-    
-        view.__innerHTML__ = innerHTML
         view.__html__ = html
+
+        delete view.__initialID__
+        delete view.__indexing__
+        delete view.__initialIndex__
+        delete view.__params__
+        delete view.__subParamsInterpreted__
+        delete view.__paramsInterpreted__
+        delete view.__htmlStyles__
+        delete view.__indexed__
     
-        // id list
-        view.__idList__ = innerHTML.split("id='").slice(1).map(id => id.split("'")[0])
         return html
 
     }, "view()": ({ _window, lookupActions, stack, props = {}, address, req, res, __, id, o, object, args = [], data = {} }) => {
@@ -3327,7 +3310,7 @@ const actions = {
             if (!view.view) return removeView({ _window, global, views, lookupActions, stack, props, id, address, __ })
 
             // encode
-            view.__name__ = actions["encode()"]({ _window, id, string: actions["encode()"]({ _window, id, string: view.__name__, start: "'" }) })
+            view.__name__ = actions["encode()"]({ _window, id, stack, string: actions["encode()"]({ _window, id, stack, string: view.__name__, start: "'" }) })
 
             // 
             var name = view.__name__.split("?")[0]
@@ -3411,7 +3394,7 @@ const actions = {
             view.__paramsInterpreted__ = true
 
             // maybe update in params or root
-            if (address.blocked) return// actions["wait()"]({ _window, lookupActions, stack, props, address, id, req, res, __ })
+            if (address.blocked) return// actions["stackManager()"]({ _window, lookupActions, stack, props, address, id, req, res, __ })
             
             // asynchronous actions within view params
             if (address.hold) return actions["addresser()"]({ _window, id, stack, props, switchNextAddressIDWith: address, type: "function", function: "toView", __, lookupActions, stack, props, data: { view } })
@@ -3525,13 +3508,13 @@ const actions = {
         if (view.__page__) global.__pageViewID__ = view.id
         
         // address
-        if (!toViewAddress.hold) actions["wait()"]({ _window, lookupActions, stack, props, address, id, req, res, __ })
+        if (!toViewAddress.hold) actions["stackManager()"]({ _window, lookupActions, stack, props, address, id, req, res, __ })
         return view
 
-    }, "encode()": ({ _window, id, string, e, start = "[", end = "]", ignoreReplace = true }) => {
+    }, "encode()": ({ _window, id, string, e, stack, start = "[", end = "]", ignoreReplace = true }) => {
 
         if (typeof string !== "string") return string
-        var global = _window ? _window.global : window.global
+        let global = _window ? _window.global : window.global
 
         // text
         if (start === "'") end = "'"
@@ -3544,20 +3527,20 @@ const actions = {
             .replace(/\\\]/g, "__closeSquareBracket__")
 
         // init
-        var type = start === "'" ? "text" : "code"
-        var keys = string.split(start)
+        let type = start === "'" ? "text" : "code"
+        let keys = string.split(start)
 
         if (keys[1] !== undefined) {
 
-            var key = `@$${generate()}`
-            var subKey = keys[1].split(end)
+            let key = `@$${generate()}`
+            let subKey = keys[1].split(end)
 
             // ex. [ [ [] [] ] ]
             while (subKey[0] === keys[1] && keys[2] !== undefined) {
 
             keys[1] += `${start}${keys[2]}`
             if (keys[1].includes(end) && keys[2]) {
-                keys[1] = actions["encode()"]({ _window, id, string: keys[1], e, start, ignoreReplace: false })
+                keys[1] = actions["encode()"]({ _window, id, stack, string: keys[1], e, start, ignoreReplace: false })
             }
             keys.splice(2, 1)
             subKey = keys[1].split(end)
@@ -3567,29 +3550,31 @@ const actions = {
             if (subKey[0] === keys[1] && keys.length === 2) return keys.join(start)//.replaceAll("__map__", "[]")
 
             // text
-            if (subKey[0].split("'").length > 1) subKey[0] = actions["encode()"]({ _window, id, string: subKey[0], start: "'" })
+            if (subKey[0].split("'").length > 1) subKey[0] = actions["encode()"]({ _window, id, stack, string: subKey[0], start: "'" })
 
             // reference
             global.__refs__[key] = { 
-            id, 
-            type, 
-            data: subKey[0]
-            .replaceAll("__map__", "[]")
-            .replaceAll("__quote__", "'")
-            .replace("__openSquareBracket__", "[")
-            .replace("__closeSquareBracket__", "]")
+                id, 
+                type, 
+                data: subKey[0]
+                .replaceAll("__map__", "[]")
+                .replaceAll("__quote__", "'")
+                .replace("__openSquareBracket__", "[")
+                .replace("__closeSquareBracket__", "]")
             }
 
-            var value = key
-            var before = keys[0]
+            stack.refs.push(key)
+
+            let value = key
+            let before = keys[0]
             subKey = subKey.slice(1)
             keys = keys.slice(2)
-            var after = keys.join(start) ? `${start}${keys.join(start)}` : ""
+            let after = keys.join(start) ? `${start}${keys.join(start)}` : ""
 
             string = `${before}${value}${subKey.join(end)}${after}`
         }
 
-        if (string.split(start)[1] !== undefined && string.split(start).slice(1).join(start).length > 0) string = actions["encode()"]({ _window, id, string, e, start, ignoreReplace: false })
+        if (string.split(start)[1] !== undefined && string.split(start).slice(1).join(start).length > 0) string = actions["encode()"]({ _window, stack, id, string, e, start, ignoreReplace: false })
 
         if (ignoreReplace) string = string
             .replaceAll("__map__", "[]")
@@ -3598,10 +3583,14 @@ const actions = {
             .replace("__closeSquareBracket__", "]")
 
         return string
-    }, "wait()": ({ _window, req, res, address = {}, addressID, lookupActions, stack, props = {}, id, e, _, __ }) => {
-        
-        var global = _window ? _window.global : window.global
 
+    }, "stackManager()": ({ _window, req, res, address = {}, addressID, lookupActions, stack, props = {}, id, e, _, __ }) => {
+        
+        // no more addresses
+        if (stack.addresses.length === 0) return endStack({ _window, stack })
+
+        const global = _window ? _window.global : window.global
+        
         if (addressID && !address.id) address = stack.addresses.find(address => address.id === addressID)
         if (!address.id || stack.terminated || address.hold || address.starter || address.end) return
     
@@ -3609,13 +3598,13 @@ const actions = {
         address.params = address.params || {}
     
         // modify underscores
-        var my__ = _ !== undefined ? [_, ...(address.params.__ || __)] : (address.params.__ || __)
+        const my__ = _ !== undefined ? [_, ...(address.params.__ || __)] : (address.params.__ || __)
     
         // unblock stack
         if (stack.blocked && !address.blocked) stack.blocked = false
     
         // address
-        var nextAddress = stack.addresses.find(nextAddress => nextAddress.id === address.nextAddressID) || {}
+        const nextAddress = stack.addresses.find(nextAddress => nextAddress.id === address.nextAddressID) || {}
     
         if (address.blocked || address.status === "Start") {
     
@@ -3625,7 +3614,7 @@ const actions = {
             printAddress({ stack, address, nextAddress })
     
             // remove address
-            var index = stack.addresses.findIndex(waitingAddress => waitingAddress.id === address.id)
+            const index = stack.addresses.findIndex(waitingAddress => waitingAddress.id === address.id)
             if (index !== -1) {
                 stack.addresses[index] = null
                 stack.addresses.splice(index, 1)
@@ -3655,11 +3644,12 @@ const actions = {
             // logger
             if (address.logger && address.logger.start) logger({ _window, data: { key: address.logger.key, start: true } })
 
-            var params = { _window, lookupActions, stack, props, id, e, req, res, address, nextAddress, ...(address.params || {}), data: address.data, __: my__ }
+            const params = { _window, lookupActions, stack, props, id, e, req, res, address, nextAddress, ...(address.params || {}), data: address.data, __: my__ }
+    if (stack.viewID === "document") console.log(address.data);
     
             if (address.function) {
     
-                var func = address.function || "toLine"
+                const func = address.function || "toLine"
     
                 if (func === "toView") actions["view()"](params)
                 else if (func === "toHTML") actions["html()"](params)
@@ -3668,7 +3658,7 @@ const actions = {
     
                 address.interpreting = false
     
-                return !address.asynchronous && actions["wait()"]({ _window, lookupActions, stack, props, address, id, e, req, res, __: my__ })
+                return !address.asynchronous && actions["stackManager()"]({ _window, lookupActions, stack, props, address, id, e, req, res, __: my__ })
     
             } else if (address.type === "line" || address.type === "waits" || address.type === "action") {
                 
@@ -3681,12 +3671,12 @@ const actions = {
         // asynchronous unholds nextAddresses
         if (address.nextAddressID && !address.nextStackID && nextAddress.interpreting === false) {
     
-            var otherWaiting = stack.addresses.findIndex(waitingAddress => waitingAddress.nextAddressID === address.nextAddressID)
+            const otherWaiting = stack.addresses.findIndex(waitingAddress => waitingAddress.nextAddressID === address.nextAddressID)
     
             if (otherWaiting === -1 || (otherWaiting > -1 && !stack.addresses.find(waitingAddress => waitingAddress.nextAddressID === address.nextAddressID && !address.blocked))) {
     
                 nextAddress.hold = false
-                return actions["wait()"]({ _window, lookupActions, stack, props, address: nextAddress, id, req, res, __, e })
+                return actions["stackManager()"]({ _window, lookupActions, stack, props, address: nextAddress, id, req, res, __, e })
             }
     
         } else if (nextAddress.interpreting) stack.interpretingAddressID = nextAddress.id
@@ -3694,10 +3684,10 @@ const actions = {
         // address is for another stack
         if (address.nextStackID && global.__stacks__[address.nextStackID] && global.__stacks__[address.nextStackID].addresses.find(({ id }) => address.nextStackID === id)) {
     
-            actions["wait()"]({ _window, lookupActions, stack: global.__stacks__[address.nextStackID], props, address, id, e, req, res, __ })
+            actions["stackManager()"]({ _window, lookupActions, stack: global.__stacks__[address.nextStackID], props, address, id, e, req, res, __ })
         }
     
-        actions["wait()"]({ _window, stack, props })
+        actions["stackManager()"]({ _window, stack, props })
 
     }, "addresser()": ({ _window, addressID = generate(), index = 0, stack, unhold = false, hold = false, props = {}, args = [], req, res, e, type = "action", status = "Wait", file, data, waits, hasWaits, params, function: func, newLookupActions, nextAddressID, nextStack = {}, nextAddress = {}, blocked, blockable = true, dataInterpretAction, asynchronous = false, interpreting = false, renderer = false, action, __, id, object, lookupActions, logger, isAction, switchNextAddressIDWith }) => {
         
@@ -3968,7 +3958,7 @@ const kernel = ({ _window, lookupActions, stack, props = {}, id, __, e, req, res
 
                 var data = global.__refs__["@$" + args[1].slice(-5)].data
 
-                return views[id].__controls__.push({ event: k0 + "?" + data, id, __, lookupActions, eventID: o.id })
+                return views[id].__controls__.push({ event: decode({_window, string: k0 + "?" + data}), id, __, lookupActions, eventID: o.id })
             }
 
             o[k0] = o[k0] || {}
@@ -4029,7 +4019,7 @@ const toValue = ({ _window, lookupActions = [], stack = { addresses: [], returns
     if (value.slice(0, 2) === "@$" && value.length === 7) {
         value = toValue({ req, res, _window, id, stack, props: { isValue: true }, lookupActions, __, e, data: value, key, object })
         if (typeof value !== "string") return value
-        value = actions["encode()"]({ _window, id, string: actions["encode()"]({ _window, id, string: value, start: "'" }) })
+        value = actions["encode()"]({ _window, id, stack, string: actions["encode()"]({ _window, id, stack, string: value, start: "'" }) })
     }
 
     // value?condition?value
@@ -4221,7 +4211,7 @@ const toParam = ({ _window, lookupActions, stack = { addresses: [], returns: [] 
         
         if (typeof string !== "string") return string
 
-        string = actions["encode()"]({ _window, id, string: actions["encode()"]({ _window, id, string, start: "'" }) })
+        string = actions["encode()"]({ _window, id, stack, string: actions["encode()"]({ _window, id, stack, string, start: "'" }) })
         return toParam({ req, res, _window, lookupActions, stack, props, id, e, object, data: string, __ })
     }
 
@@ -4306,7 +4296,7 @@ const toParam = ({ _window, lookupActions, stack = { addresses: [], returns: [] 
             key = key.slice(0, -1)
             var myVal = (key.split(".")[0].slice(0, 2) === "()" || key.split(".")[0].slice(-3) === ":()" || key.includes("_") || key.split(".")[0] === "") ? key : (`().` + key)
             var data = `[${myVal}||[if():[type():[${value}]=number]:0.elif():[type():[${value}]=map]:[].elif():[type():[${value}]=list]:[:]:'']]`
-            data = actions["encode()"]({ _window, id, string: actions["encode()"]({ _window, id, string: data, start: "'" }) })
+            data = actions["encode()"]({ _window, id, stack, string: actions["encode()"]({ _window, id, stack, string: data, start: "'" }) })
             value = `${data}+${value}`
         }
 
@@ -4315,8 +4305,8 @@ const toParam = ({ _window, lookupActions, stack = { addresses: [], returns: [] 
 
             key = key.slice(0, -1)
             var myVal = (key.split(".")[0].slice(0, 2) === "()" || key.split(".")[0].slice(-3) === ":()" || key.includes("_") || key.split(".")[0] === "") ? key : (`().` + key)
-            var data = actions["encode()"]({ _window, id, string: `[${myVal}||0]` })
-            var data1 = actions["encode()"]({ _window, id, string: `[${value}||0]` })
+            var data = actions["encode()"]({ _window, id, stack, string: `[${myVal}||0]` })
+            var data1 = actions["encode()"]({ _window, id, stack, string: `[${value}||0]` })
             value = `${data}-${data1}`
         }
 
@@ -4325,7 +4315,7 @@ const toParam = ({ _window, lookupActions, stack = { addresses: [], returns: [] 
 
             key = key.slice(0, -1)
             var myVal = (key.split(".")[0].slice(0, 2) === "()" || key.split(".")[0].slice(-3) === ":()" || key.includes("_") || key.split(".")[0] === "") ? key : (`().` + key)
-            var data = actions["encode()"]({ _window, id, string: `[${myVal}||0]` })
+            var data = actions["encode()"]({ _window, id, stack, string: `[${myVal}||0]` })
             value = `${data}*${value}`
         }
 
@@ -4431,7 +4421,7 @@ const reducer = ({ _window, lookupActions = [], stack = { addresses: [], returns
 
         //console.log("before", decode({ _window, string: path0.slice(0, -2)}), clone(object));
         props.hasValue = false
-        var data = actions["wait()"]({ _window, lookupActions: myLookupActions, stack, props, object: myObject, address, id: myID || id, e, req, res, __: my__ }).data
+        var data = actions["stackManager()"]({ _window, lookupActions: myLookupActions, stack, props, object: myObject, address, id: myID || id, e, req, res, __: my__ }).data
         if (path[1]) return kernel({ _window, lookupActions, stack, props, id, __, e, req, res, object, data: { data, path: path.slice(1), value, key, pathJoined } })
         else return data
     }
@@ -4811,7 +4801,7 @@ const toAction = ({ _window, id, req, res, __, e, data: { action }, object = [],
         return route({ _window, req, res, id, e, data: { lookupActions: newLookupActions, server: "action", action: action0, data }, __, stack, props, lookupActions, address })
     }
 
-    var answer = actions["wait()"]({ _window, lookupActions, stack, props, address, id, e, req, res, __, _: data }).data
+    var answer = actions["stackManager()"]({ _window, lookupActions, stack, props, address, id, e, req, res, __, _: data }).data
     
     if (answer === "__continue__") return
     else return answer
@@ -4831,14 +4821,14 @@ const toLine = ({ _window, lookupActions, stack, props = {}, address = {}, id, e
     // splitter is for ? or :
     // i is for using name?params?conditions?elseparams
 
-    var terminator = ({ data, order }) => {
+    const terminator = ({ data, order }) => {
 
         if (stack.terminated || !address.id) return data
 
         address.interpreting = false
 
         // execute waits
-        actions["wait()"]({ _window, lookupActions, stack, props, address, id, e, req, res, __, _: returnForWaitActionExists ? data.data : undefined })
+        actions["stackManager()"]({ _window, lookupActions, stack, props, address, id, e, req, res, __, _: returnForWaitActionExists ? data.data : undefined })
 
         return data
     }
@@ -4850,7 +4840,7 @@ const toLine = ({ _window, lookupActions, stack, props = {}, address = {}, id, e
     if (!string) return terminator({ data: { success: true, message: `No action to execute!`, executionDuration: 0 }, order: 1 })
 
     // encode
-    string = actions["encode()"]({ _window, id, string: actions["encode()"]({ _window, id, string, start: "'" }) })
+    string = actions["encode()"]({ _window, id, stack, string: actions["encode()"]({ _window, id, stack, string, start: "'" }) })
 
     // decode
     if (string.slice(0, 2) === "@$" && string.length === 7) {
@@ -4901,7 +4891,7 @@ const toLine = ({ _window, lookupActions, stack, props = {}, address = {}, id, e
         if (elseIfList[1] && !elseIfList[0].split("?")[1] && elseIfList[0].split("=")[1]) {
 
             var key = elseIfList[0].split("=")[0]
-            string = actions["encode()"]({ _window, id, string: key + "=[" + elseIfList[0].split("=").slice(1).join("=") + "?" + key + "?" + elseIfList.slice(1).join("?") + "]" })
+            string = actions["encode()"]({ _window, id, stack, string: key + "=[" + elseIfList[0].split("=").slice(1).join("=") + "?" + key + "?" + elseIfList.slice(1).join("?") + "]" })
 
             // case: key=value?condition??value1?condition1??value2?condition2 (?? is elseif)
         } else if (elseIfList[1] && elseIfList[0].split("?")[1]) {
@@ -4909,7 +4899,7 @@ const toLine = ({ _window, lookupActions, stack, props = {}, address = {}, id, e
             string = elseIfList.at(-1)
             elseIfList.slice(0, -1).reverse().map(elseIf => string = elseIf + "?[" + string + "]")
             console.log(string);
-            string = actions["encode()"]({ _window, id, string })
+            string = actions["encode()"]({ _window, id, stack, string })
         }
 
         stringList = string.split("?")
@@ -4986,8 +4976,8 @@ const addEventListener = ({ event, id, string, __, stack, props, lookupActions, 
     // inherit from view
     if (!__) __ = view.__
     if (!lookupActions) lookupActions = view.__lookupActions__
-
-    var mainString = actions["encode()"]({ id, string: actions["encode()"]({ id, string: event, start: "'" }) })
+    
+    var mainString = actions["encode()"]({ id, stack, string: actions["encode()"]({ id, stack, string: event, start: "'" }) })
 
     mainString.split("?")[0].split(";").map(substring => {
 
@@ -4995,7 +4985,7 @@ const addEventListener = ({ event, id, string, __, stack, props, lookupActions, 
         if (substring.slice(0, 2) === "@$" && substring.length === 7) substring = global.__refs__[substring].data
 
         // event:id
-        var { data: eventID } = toLine({ id, data: { string: substring.split("?")[0].split(":")[1] }, props: { isValue: true } })
+        let { data: eventID } = toLine({ id, data: { string: substring.split("?")[0].split(":")[1] }, props: { isValue: true } })
         eventID = eventID || mainEventID || id
 
         toArray(eventID).map(eventID => {
@@ -5003,7 +4993,9 @@ const addEventListener = ({ event, id, string, __, stack, props, lookupActions, 
             if (typeof eventID === "object" && eventID.__view__) eventID = eventID.id
 
             // modify
-            var { event, string } = modifyEvent({ eventID, event: substring, string: mainString, id, __, stack, props, lookupActions, address })
+            let { event, string } = modifyEvent({ eventID, event: substring, string: mainString, id, __, stack, props, lookupActions, address })
+
+            string = decode({string})
 
             // watch
             if (event === "watch") return watch({ lookupActions, __, stack, props, address, string, id })
@@ -5229,7 +5221,7 @@ const exportHTMLToPDF = async ({ _window, pages, opt, lookupActions, stack, prop
     doc.save(opt.filename)
 
     // await params
-    if (args[2]) actions["wait()"]({ _window, lookupActions, stack, props, address, req, res, id, e, __ })
+    if (args[2]) actions["stackManager()"]({ _window, lookupActions, stack, props, address, req, res, id, e, __ })
 }
 
 const toDataURL = url => fetch(url)
@@ -5380,17 +5372,16 @@ const calcModulo = ({ _window, lookupActions, stack, props, value, __, id, e, re
 
 const endAddress = ({ _window, stack, props, data, req, res, id, e, __, lookupActions, endID }) => {
 
-    var global = _window ? _window.global : window.global
+    const global = _window ? _window.global : window.global
+    let nextAddressID = stack.interpretingAddressID, currentStackID = stack.id
+    let address = stack.addresses.find(address => address.id === nextAddressID)
 
-    var nextAddressID = stack.interpretingAddressID, currentStackID = stack.id
-    var address = stack.addresses.find(address => address.id === nextAddressID)
-
-    var endStarterAddress = ({ address, stack, props }) => {
+    const endStarterAddress = ({ address, stack, props }) => {
 
         address.starter = false
 
         // get start nextAddress to push data to its underscores
-        var starterNextAddress = stack.addresses.find(nextAddress => nextAddress.id === address.nextAddressID)
+        let starterNextAddress = stack.addresses.find(nextAddress => nextAddress.id === address.nextAddressID)
         if (starterNextAddress) {
 
             // push response to underscore
@@ -5399,7 +5390,7 @@ const endAddress = ({ _window, stack, props, data, req, res, id, e, __, lookupAc
             starterNextAddress.ended = true
 
             // start again from the current interpreting address and set blocked until reaching nextAddress
-            var stack = global.__stacks__[currentStackID], blockedAddress = true
+            let stack = global.__stacks__[currentStackID], blockedAddress = true
             nextAddressID = stack.interpretingAddressID
 
             while (blockedAddress && nextAddressID && nextAddressID !== starterNextAddress.id) {
@@ -5427,19 +5418,19 @@ const endAddress = ({ _window, stack, props, data, req, res, id, e, __, lookupAc
             stack.blocked = true
 
             // block current address
-            var address = stack.addresses.find(address => address.id === stack.interpretingAddressID)
+            address = stack.addresses.find(address => address.id === stack.interpretingAddressID)
             address.blocked = true
             address.status = "End"
 
-           // actions["wait()"]({ req, res, _window, lookupActions, stack, props, address, id, e, __ })
+           // actions["stackManager()"]({ req, res, _window, lookupActions, stack, props, address, id, e, __ })
 
             if (endID) {
 
-                var stack = global.__stacks__[global.__startAddresses__[endID].address.stackID]
-                var address = global.__startAddresses__[endID].address
+                let stack = global.__stacks__[global.__startAddresses__[endID].address.stackID]
+                let address = global.__startAddresses__[endID].address
 
                 delete global.__startAddresses__[endID]
-                actions["wait()"]({ req, res, _window, lookupActions, stack, props, address, id, e, __ })
+                actions["stackManager()"]({ req, res, _window, lookupActions, stack, props, address, id, e, __ })
             }
         }
     }
@@ -5447,8 +5438,8 @@ const endAddress = ({ _window, stack, props, data, req, res, id, e, __, lookupAc
     if (endID) {
 
         if (!global.__startAddresses__[endID]) return
-        var stack = global.__stacks__[global.__startAddresses__[endID].address.stackID]
-        var address = global.__startAddresses__[endID].address
+        let stack = global.__stacks__[global.__startAddresses__[endID].address.stackID]
+        let address = global.__startAddresses__[endID].address
 
         endStarterAddress({ address, stack, props })
 
@@ -5457,7 +5448,7 @@ const endAddress = ({ _window, stack, props, data, req, res, id, e, __, lookupAc
         while (nextAddressID && stack) {
 
             // start from self address (by interpretingAddressID) to reach the start head address
-            var address = stack.addresses.find(address => address.id === nextAddressID)
+            let address = stack.addresses.find(address => address.id === nextAddressID)
             if (!address) break
 
             if (address.starter) {
@@ -5489,18 +5480,18 @@ const resetAddress = ({ address, ...data }) => {
     })
 }
 
-const closePublicViews = ({ _window, id, __, lookupActions }) => {
+const closePublicViews = ({ _window, stack, id, __, lookupActions }) => {
 
     if (_window) return
 
     // close droplist
-    if (id !== "droplist") toParam({ id: "droplist", data: actions["encode()"]({ string: "__droplistMouseleaveTimer__:()=0;():droplist.mouseleave()" }), __, lookupActions })
+    if (id !== "droplist") toParam({ id: "droplist", data: actions["encode()"]({ stack, string: "__droplistMouseleaveTimer__:()=0;():droplist.mouseleave()" }), __, lookupActions })
 
     // close tooltip
-    toParam({ id: "tooltip", data: actions["encode()"]({ string: "clearTimer():[__tooltipTimer__:()];__tooltipTimer__:().del();():tooltip.style().opacity=0" }), __, lookupActions })
+    toParam({ id: "tooltip", data: actions["encode()"]({ stack, string: "clearTimer():[__tooltipTimer__:()];__tooltipTimer__:().del();():tooltip.style().opacity=0" }), __, lookupActions })
 
     // close mininote
-    toParam({ id: "mininote", data: actions["encode()"]({ string: "():mininote.style():[opacity=0;transform=scale(0)]" }), __, lookupActions })
+    toParam({ id: "mininote", data: actions["encode()"]({ stack, string: "():mininote.style():[opacity=0;transform=scale(0)]" }), __, lookupActions })
 }
 
 const remove = ({ _window, stack, props, data = {}, id, __, lookupActions }) => {
@@ -5584,7 +5575,7 @@ const sort = ({ _window, sort = {}, id, e, lookupActions, __, stack, props, obje
 
     // path
     var path = sort.path
-    if (typeof sort.path === "string") path = toArray(actions["encode()"]({ _window, string: path }).split("."))
+    if (typeof sort.path === "string") path = toArray(actions["encode()"]({ _window, stack, string: path }).split("."))
     if (!path) path = []
 
     if (!Array.isArray(data) && typeof data === "object") data = Object.values(data)
@@ -5768,7 +5759,7 @@ const loopOverView = ({ _window, id, stack, props, lookupActions, __, address, d
             address = actions["addresser()"]({ _window, id: params.id, stack, props, nextAddress: address, type: "function", function: "toView", renderer: true, blockable: false, __: !mount ? [values[key], ...__] : __, lookupActions, data: { view: views[params.id] } }).address
         }
         
-        actions["wait()"]({ _window, lookupActions, stack, props, address, id, req, res, __ })
+        actions["stackManager()"]({ _window, lookupActions, stack, props, address, id, req, res, __ })
     }
 
     for (let index = lastIndex; index >= limit; index--) {
@@ -5786,7 +5777,7 @@ const loopOverView = ({ _window, id, stack, props, lookupActions, __, address, d
     }
     
     address.terminated = false
-    actions["wait()"]({ _window, lookupActions, stack, props, address, id, req, res, __ })
+    actions["stackManager()"]({ _window, lookupActions, stack, props, address, id, req, res, __ })
 
     removeView({ _window, global, views, id, stack, props, address })
 }
@@ -5954,9 +5945,9 @@ const blockRelatedAddressesByViewID = ({ stack, id }) => {
 
 const eventExecuter = ({ _window, event, eventID, id, lookupActions, e, string, stack: nextStack, props, address: nextAddress, __, object = [] }) => {
 
-    var views = window.views
-    var global = window.global
-    var lookupActions = [...lookupActions]
+    const views = window.views, global = window.global
+
+    lookupActions = [...lookupActions]
 
     // view doesnot exist
     if (!views[id] || !views[eventID]) return
@@ -5973,7 +5964,7 @@ const eventExecuter = ({ _window, event, eventID, id, lookupActions, e, string, 
     const stack = openStack({ _window, event, id, eventID, string, e })
 
     // address line
-    var address = actions["addresser()"]({ _window, stack, props, id, status: "Start", type: "line", event, interpreting: true, lookupActions, __, nextStack, nextAddress, object }).address
+    const address = actions["addresser()"]({ _window, stack, props, id, status: "Start", type: "line", event, interpreting: true, lookupActions, __, nextStack, nextAddress, object }).address
 
     // main params
     toLine({ _window, lookupActions, stack, props, id, e, address, data: { string }, __, object, action: "toParam" })
@@ -6073,8 +6064,7 @@ const modifyEvent = ({ eventID, event, string, id, __, stack, props, lookupActio
 
 const starter = ({ lookupActions, stack, props, __, address, id }) => {
 
-    var view = window.views[id]
-    var global = window.global
+    const view = window.views[id], global = window.global
     if (!view) return {}
 
     // status
@@ -6103,9 +6093,7 @@ const starter = ({ lookupActions, stack, props, __, address, id }) => {
 
 const defaultInputHandler = ({ id }) => {
 
-    var views = window.views
-    var global = window.global
-    var view = views[id]
+    let views = window.views, global = window.global, view = views[id]
 
     if (!view) return
     if (view.__name__ !== "Input" && !view.editable) return
@@ -6114,9 +6102,6 @@ const defaultInputHandler = ({ id }) => {
     view.__element__.addEventListener("blur", (e) => { if (view) global.__focused__ = undefined })
 
     if (typeof view.preventDefault === "string") return
-
-    // resize input height on loaded
-    //if (view.__name__ === "Input" && (view.input || view).type === "text") resize({ id })
 
     // checkbox input
     if ((view.input || view).type === "checkbox") {
@@ -6147,18 +6132,14 @@ const defaultInputHandler = ({ id }) => {
     // readonly
     if (view.readonly) return
 
-    /*view.__element__.addEventListener("keydown", (e) => {
-      if (e.keyCode === 13 && !e.shiftKey) e.preventDefault()
-    })*/
-
     if (view.__name__ === "Input") view.prevValue = view.__element__.value
     else if (view.editable) view.prevValue = (view.__element__.textContent === undefined) ? view.__element__.innerText : view.__element__.textContent
 
-    var inputEventHandler = async (e) => {
+    const inputEventHandler = async (e) => {
 
         e.preventDefault()
 
-        var value
+        let value
         if (view.__name__ === "Input") value = e.target.value
         else if (view.editable) value = (e.target.textContent === undefined) ? e.target.innerText : e.target.textContent
 
@@ -6205,25 +6186,25 @@ const defaultInputHandler = ({ id }) => {
         view.prevValue = value
     }
 
-    var blurEventHandler = (e) => {
+    const blurEventHandler = (e) => {
 
-        var value
+        let value
         if (view.__name__ === "Input") value = view.__element__.value
         else if (view.editable) value = (view.__element__.textContent === undefined) ? view.__element__.innerText : view.__element__.textContent
 
         // colorize
         if (view.colorize) {
 
-            var _value = actions["encode()"]({ id, string: actions["encode()"]({ id, string: value, start: "'" }) })
+            let _value = actions["encode()"]({ id, stack, string: actions["encode()"]({ id, stack, string: value, start: "'" }) })
             if (view.__name__ === "Input") e.target.value = colorize({ string: _value, ...(typeof view.colorize === "object" ? view.colorize : {}) })
             else e.target.innerHTML = colorize({ string: _value, ...(typeof view.colorize === "object" ? view.colorize : {}) })
 
             /*
-            var sel = window.getSelection()
-            var selected_node = sel.anchorNode
+            let sel = window.getSelection()
+            let selected_node = sel.anchorNode
             
-            var prevValue = view.prevValue.split("")
-            var position = value.split("").findIndex((char, i) => char !== prevValue[i])
+            let prevValue = view.prevValue.split("")
+            let position = value.split("").findIndex((char, i) => char !== prevValue[i])
       
             sel.collapse(selected_node, position + 1)
             */
@@ -6242,47 +6223,24 @@ const defaultInputHandler = ({ id }) => {
         }
     }
 
-    var focusEventHandler = (e) => {
+    const focusEventHandler = (e) => {
 
-        var value = ""
+        let value = ""
         if (view.__name__ === "Input") value = view.__element__.value
         else if (view.editable) value = (view.__element__.textContent === undefined) ? view.__element__.innerText : view.__element__.textContent
 
         view.prevContent = value
     }
 
-    var fileEventHandler = (e) => {
+    const fileEventHandler = (e) => {
 
         view.__file__ = e.target.files[0]
         return view.__files__ = [...e.target.files]
     }
 
-    // 
     if (view.input ? view.input.type !== "file" : true) {
 
-        var type = view.input && view.input.type
-
         view.__element__.addEventListener("input", inputEventHandler)
-        /*if ("__defaultValue__" in view) {
-
-            if (view.__name__ === "Input") view.__element__.value = view.__defaultValue__
-            else if (view.editable) (view.__element__.textContent === undefined) ? (view.__element__.innerText = view.__defaultValue__) : (view.__element__.textContent = view.__defaultValue__)
-
-        } else {
-
-            var value
-            if (view.__name__ === "Input") value = view.__element__.value
-            else if (view.editable) value = (view.__element__.textContent === undefined) ? view.__element__.innerText : view.__element__.textContent
-
-            if (view.data !== undefined && typeof view.data !== type) { }
-
-            else {
-
-                if (isNumber(value) && (view.type === "number" || (view.input && view.input.type === "number"))) value = parseFloat(value)
-
-                if (view.form && value !== undefined && value !== "") setData({ id, data: { value }, __: view.__ })
-            }
-        }*/
     }
 
     view.__element__.addEventListener("blur", blurEventHandler)
@@ -6440,7 +6398,7 @@ const fileReader = ({ req, res, _window, lookupActions, stack, props, address, i
 
     data.files.map(file => {
 
-        var reader = new FileReader()
+        let reader = new FileReader()
         reader.onload = (e) => {
 
             global.__fileReader__.count++;
@@ -6450,20 +6408,19 @@ const fileReader = ({ req, res, _window, lookupActions, stack, props, address, i
                 lastModified: file.lastModified,
                 name: file.name,
                 size: file.size,
-                extension: mime.extension(file.type),
                 data: e.target.result
             })
 
             if (global.__fileReader__.count === global.__fileReader__.length) {
 
-                var files = global.__fileReader__.files
+                let files = global.__fileReader__.files
 
                 // parse JSON
                 if (type === "json") files.map(file => file.data = JSON.parse(file.data))
 
-                var data = { success: true, message: "File read successfully!", data: files.length === 1 ? files[0] : files }
+                let data = { success: true, message: "File read successfully!", data: files.length === 1 ? files[0] : files }
 
-                actions["wait()"]({ req, res, _window, lookupActions, stack, props, address, id, e, __, _: data })
+                actions["stackManager()"]({ req, res, _window, lookupActions, stack, props, address, id, e, __, _: data })
             }
         }
 
@@ -6551,16 +6508,16 @@ const callServer = async ({ _window, lookupActions, stack, props, address, id, r
     if (!_window) return route({ lookupActions, stack, props, address, id, req, __, res, e, data })
 
     // storage
-    else if (data.data.storage) var data = await storage({ _window, req, res, action: data.action, stack, props, data: data.data || {}, __ })
+    else if (data.data.storage) var data = await require("./storage").storage({ _window, req, res, action: data.action, stack, props, data: data.data || {}, __ })
 
     // database
-    else if (data.server === "datastore") var data = database({ _window, req, res, action: data.action, stack, props, data: data.data || {}, __ })
+    else if (data.server === "datastore") var data = require("./database").database({ _window, req, res, action: data.action, stack, props, data: data.data || {}, __ })
 
     // mail
     else if (data.server === "mail") var data = await mail({ _window, req, res, action: data.action, stack, props, data: data.data || {}, __ })
     
     // awaits
-    return actions["wait()"]({ _window, lookupActions, stack, props, id, address, e, req, res, _: data, __ })
+    return actions["stackManager()"]({ _window, lookupActions, stack, props, id, address, e, req, res, _: data, __ })
 }
 
 const route = async ({ lookupActions, stack, props, address, id, req, __, res, e, data }) => {
@@ -6612,7 +6569,7 @@ const route = async ({ lookupActions, stack, props, address, id, req, __, res, e
     loader({})
 
     // await
-    actions["wait()"]({ lookupActions, address, stack, props, id, e, req, res, _: response, __ })
+    actions["stackManager()"]({ lookupActions, address, stack, props, id, e, req, res, _: response, __ })
 }
 
 const loader = ({ _window, show }) => {
@@ -6687,1333 +6644,6 @@ const mountData = ({ _window, object, view, views, global, key, id, stack, looku
     }
 }
 
-const respond = ({ res, stack, props, global, response, __ }) => {
-
-    if (!res || res.headersSent) return
-
-    if (stack && typeof response === "object") {
-
-        var executionDuration = (new Date()).getTime() - stack.executionStartTime
-        stack.terminated = true
-
-        // logs
-        console.log((new Date()).getHours() + ":" + (new Date()).getMinutes() + " " + "SEND " + stack.action, executionDuration, global.manifest.session.subdomain || "", global.manifest.session.username || "")
-        stack.logs.push(stack.logs.length + " SEND " + stack.action + " (" + executionDuration + ")")
-
-        // props
-        response.__props__ = {
-            cookies: global.manifest.cookies,
-            action: stack.action,
-            session: global.manifest.session.__props__.id,
-            executionDuration,
-            executedActions: stack.executedActions
-        }
-
-        // hide secured
-        hideSecured({ global, __ })
-    }
-
-    if (typeof response === "object") {
-
-        // respond
-        res.setHeader('Content-Type', 'application/json')
-        res.write(JSON.stringify(response))
-
-    } else res.write(response)
-
-    res.end()
-}
-
-/////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////
-
-const storage = async ({ _window, req, res, action, preventDefault, data, stack, props, __ }) => {
-
-    var timer = (new Date()).getTime(), global = _window.global
-    data.datastore = "storage"
-    if (action === "search()") var response = getData({ _window, req, res, preventDefault, search: data, action })
-    else if (action === "save()") var response = await uploadFile({ _window, req, upload: data, action })
-    else if (action === "erase()") var response = await eraseFile({ _window, req, upload: data, action })
-
-    var time = (new Date()).getHours() + ":" + (new Date()).getMinutes()
-    
-    // log
-    global.manifest.session && console.log(time, action.slice(0, -2).toUpperCase(), data.collection || "*", (new Date()).getTime() - timer, global.manifest.session.subdomain || "", global.manifest.session.username || "");
-    return respond({ res, stack, props, global, response, __ })
-}
-
-const uploadFile = async ({ _window = {}, req, upload, action = "save()" }) => {
-
-    var datastore = "storage",
-        db = upload.db || _window.global.manifest.session.storage,
-        collection = upload.collection,
-        doc = upload.doc,
-        docs = upload.docs || [],
-        data = upload.data,
-        success = false, 
-        message = "Missing data!"
-
-    var { path, dbProps, collectionProps, success, message } = checkParams({ _window, req, data: upload, action, datastore })
-    if (!success) return { success, message, upload }
-
-    // rename collection
-    if (upload.rename && upload.collection) {
-
-        fs.renameSync(path, `storage/${db}/${upload.rename}`)
-
-        // props
-        dbProps.writes += 1
-        collectionProps.writes += 1
-        collectionProps.collection = collection = upload.rename
-
-        // props
-        fs.writeFileSync(`storage/${db}/${collection}/collection1/__props__/__props__.json`, JSON.stringify(collectionProps, null, 4))
-        fs.writeFileSync(`storage/${db}/__props__/db.json`, JSON.stringify(dbProps, null, 4))
-
-        return { success: true, message: "Collection name changed successfully!", upload }
-    }
-
-    var writesCounter = 0, newDocsLength = 0, payloadIn = 0, newDataSize = 0, chunks = {}, chunkName = `chunk${collectionProps.lastChunk}`
-    var length = toArray(data).length
-
-    // incompatible payload
-    if (("doc" in upload && length > 1 && docs.length !== length)) return {success:false, message: "Incompatible payload!"}
-
-    // push doc to docs
-    if ("doc" in upload && length === 1 && docs.length === 0) docs = [upload.doc]
-
-    var dataList = toArray(data)
-
-    for (let i = 0; i < dataList.length; i++) {
-
-        var { data: file, ...data } = dataList[i], createNewDoc = false, existingData = {}, chunkName = `chunk${collectionProps.lastChunk}`
-
-        // check if user is creating a new doc
-        var createNewDoc = !data.__props__ || !data.__props__.doc
-        // check doc by props.doc
-        if (!createNewDoc) {
-            var response = database({_window, action:"search()", data:{datastore: "storage", db, collection, doc:data.__props__.doc}})
-            if (response.data) existingData = response.data
-            else createNewDoc = true
-        }
-        
-        // check doc by given doc
-        if (createNewDoc && docs[i]) {
-            var response = database({_window, action:"search()", data:{datastore: "storage", db, collection, doc:docs[i]}})
-            if (response.data) {
-                existingData = response.data
-                createNewDoc = false
-            }
-        }
-
-        // collection props
-        writesCounter++
-        if (createNewDoc) {
-
-            newDocsLength++;
-            collectionProps.counter++;
-        }
-
-        if (!file && createNewDoc) continue;
-
-        var existingProps = existingData.__props__ || {}
-
-        // data props
-        data.__props__ = {
-            // main props: imutable
-            id: existingProps.id || generate({ unique: true }),
-            doc: docs[i] || existingProps.doc || (collection + collectionProps.counter),
-            file: existingProps.file || (generate({ universal: true }) + `.${mime.extension(data.type)}`),
-            counter: existingProps.counter || collectionProps.counter,
-            creationDate: existingProps.creationDate || (new Date()).getTime(),
-            collection: existingProps.collection || collection,
-            chunk: existingProps.chunk || chunkName,
-            bucket: existingProps.bucket || "bucket1",
-            extension: existingProps.extension || mime.extension(data.type),
-            charset: existingProps.charset || mime.charset(data.type),
-            lastModified: (new Date()).getTime(),
-            secured: false
-        }
-
-        // url
-        if (createNewDoc) data.url = `/storage/${db}/${collection}/${data.__props__.bucket}/${data.__props__.file}`
-
-        // set data size
-        data.__props__.size = JSON.stringify(data).length + data.size
-
-        // reset doc name
-        var doc = data.__props__.doc, oldDoc = existingProps.doc
-        
-        // get chunk props
-        var chunkName = data.__props__.chunk
-        if (!chunks[chunkName]) chunks[chunkName] = { props: JSON.parse(fs.readFileSync(`${path}/collection1/__props__/${chunkName}/__props__.json`)), indexings: {} }
-        var chunkProps = chunks[chunkName].props
-        
-        // push/replace doc to sorted docs & update chunk docslength & size
-        if (oldDoc && doc !== oldDoc) {
-            for (let i = 0; i < chunkProps.docs.length; i++) {
-                if (chunkProps.docs[i] === oldDoc) chunkProps.docs[i] = doc
-            }
-            chunkProps.size -= existingData.__props__.size
-        } else if (oldDoc) {
-            chunkProps.size -= existingData.__props__.size
-        } else if (!oldDoc) {
-
-            chunkProps.docs.unshift(doc)
-            chunkProps.docsLength += 1
-            
-            // check chunk docs length
-            if (chunkProps.docsLength === 1000) {
-
-                collectionProps.lastChunk += 1
-                chunkProps.reachedMax = true
-                createChunk({ db, collection, chunkName: `chunk${collectionProps.lastChunk}`, collectionProps })
-            }
-        }
-
-        // size
-        chunkProps.size += data.__props__.size
-
-        // upload data
-        if (createNewDoc) var { success, message } = await createWriteStream({ file, path: `storage/${db}/${collection}/${data.__props__.bucket}/${data.__props__.file}` })
-        fs.writeFileSync(`${path}/collection1/${doc}.json`, JSON.stringify(data, null, 4))
-
-        // loop over indexings
-        for (let i = 0; i < collectionProps.indexes.length; i++) {
-
-            var indexProps = collectionProps.indexes[i], sameFieldValue = true, indexingOfDoc = {}
-
-            // indexing expired
-            if (indexProps.expiryDate < new Date().getTime()) {
-                delete collectionProps.indexes[i]
-                fs.rmSync(`${path}/collection1/__props__/${chunkName}/${indexProps.doc}.json`)
-                continue;
-            }
-            
-            // loop over find search fields
-            for (let j = 0; j < indexProps.find.length; j++) {
-                var searchFields = indexProps.find[j]
-
-                // get new data field value 
-                var newFieldValue = getFieldValue(searchFields.split("."), data).value
-                indexingOfDoc[searchFields] = newFieldValue
-
-                // check prev value
-                if (oldDoc && sameFieldValue) {
-                    
-                    var prevFieldValue = getFieldValue(searchFields.split("."), existingData).value
-                    sameFieldValue = isEqual(prevFieldValue, newFieldValue)
-
-                } else sameFieldValue = false
-            }
-
-            // update indexing
-            if (!sameFieldValue) {
-
-                // get chunk indexing
-                if (!chunks[chunkName].indexings[indexProps.doc]) chunks[chunkName].indexings[indexProps.doc] = JSON.parse(fs.readFileSync(`${path}/collection1/__props__/${chunkName}/${indexProps.doc}.json`))
-
-                // get indexing
-                chunks[chunkName].indexings[indexProps.doc][doc] = indexingOfDoc
-            }
-        }
-
-        // props: data size
-        var dataSize = data.__props__.size
-        payloadIn += dataSize
-        if (createNewDoc) newDataSize += dataSize
-    }
-
-    // upload chunk props & indexings
-    Object.entries(chunks).map(([chunkName, chunk]) => {
-        fs.writeFileSync(`${path}/collection1/__props__/${chunkName}/__props__.json`, JSON.stringify(chunk.props, null, 4))
-        Object.entries(chunk.indexings).map(([indexingDoc, indexing]) => {
-            fs.writeFileSync(`${path}/collection1/__props__/${chunkName}/${indexingDoc}.json`, JSON.stringify(indexing, null, 4))
-        })
-    })
-    
-    // props
-    postProps({ db, collection, collectionProps, dbProps, writesCounter, newDocsLength, payloadIn, newDataSize, datastore })
-    
-    return { success: true, message: "Data uploaded successfully!", data }
-}
-
-const createWriteStream = async ({file, path}) => new Promise((resolve) => {
-
-    file = file.split(';base64,').pop();
-    const buffer = Buffer.from(file, 'base64')
-    const writeStream = fs.createWriteStream(path)
-    writeStream.write(buffer) // base64 buffer
-    writeStream.end();
-
-    writeStream.on('finish', () => {
-        resolve({ success: true, message: "File uploaded successfully!"})
-    })
-  
-    writeStream.on('error', (err) => {
-        resolve({ success: false, message: "Failed to upload file!"})
-    })
-})
-
-/////////////////////////////////////////////////////////////////////////////////////////
-
-const database = ({ _window = {global:{manifest:{}}}, req, res, action, preventDefault, data, stack, props, __, verified }) => {
-
-    var timer = (new Date()).getTime(), global = _window.global, responses = []
-    
-    // authorize
-    var authorizations = authorizeDB({ _window, global, action: action.slice(0, -2), data })
-    if (!authorizations) return respond({ res, stack, props, global, __, response: { success: false, message: "Not authorized!" } })
-
-    for (let index = 0; index < authorizations.length; index++) {
-
-        if (action === "search()") responses.push(getData({ _window, req, res, preventDefault, search: authorizations[index], action, verified }))
-        else if (action === "save()") responses.push(postData({ _window, req, res, preventDefault, save: authorizations[index], action, verified }))
-        else if (action === "erase()") responses.push(deleteData({ _window, req, res, preventDefault, erase: authorizations[index], action, verified }))
-    }
-
-    var time = (new Date()).getHours() + ":" + (new Date()).getMinutes()
-    
-    // log
-    global.manifest.session && console.log(time, action.slice(0, -2).toUpperCase(), (data.collection || "*") + (data.doc ? `/${data.doc}` : ""), (new Date()).getTime() - timer, global.manifest.session.subdomain || "", global.manifest.session.username || "");
-    
-    // end
-    return syncData({ global, action, responses })
-}
-
-const getData = ({ _window = {}, req, res, search, action = "search()", verified }) => {
-
-    var global = _window.global
-    var response = { success: false, message: "Something went wrong!" }
-    var datastore = search.datastore || "bracketDB" || global.manifest.datastore,
-        db = search.db = search.db || global.manifest.session.db,
-        collection = search.collection,
-        doc = search.doc,
-        docs = search.docs,
-        populate = search.populate,
-        select = search.select,
-        deselect = search.deselect,
-        assign = search.assign,
-        find = search.find,
-        findOne = search.findOne,
-        limit = search.limit || 1000,
-        skip = search.skip || 0,
-        data = {}, 
-        success = true, 
-        message = "Data queried successfully!",
-        single
-
-    if ("url" in search) {
-
-        try {
-
-            //data = await axios.get(search.url, { timeout: 1000 * 40 }).catch(err => err)
-
-            data = data.data
-            success = true
-            message = `Search done successfuly!`
-
-        } catch (err) {
-
-            data = {}
-            success = false
-            message = err
-        }
-
-        return response = { data, success, message }
-
-    }
-
-    var { path, dbProps, collectionProps, liveDB, success, message } = checkParams({ data: search, action, datastore })
-    if (!success) return { success, message, dev: search.dev, search }
-    
-    // no collection => return collection names
-    if (!collection) {
-
-        var data = getFolderNames(path)
-
-        var propsIndex = data.findIndex(coll => coll === "__props__")
-        data.splice(propsIndex, 1)
-
-        return ({ id: generate(), data, message: "Collection names sent successfully!", success: true, single, dev: search.dev, search })
-    }
-
-    // chunk details
-    var chunkIndex = collectionProps.lastChunk
-    var chunkName = "chunk" + chunkIndex
-    var chunksRunout = false, endSearch = false
-    
-    // findOne
-    if ("findOne" in search) {
-
-        search.find = find = search.findOne
-        limit = 1
-        single = true
-    }
-
-    if ("docs" in search) {
-
-        var foundDocs = []
-        toArray(docs).map(doc => {
-            if (fs.existsSync(`${path}/collection1/${doc}.json`)) {
-                data[doc] = JSON.parse(fs.readFileSync(`${path}/collection1/${doc}.json`))
-                foundDocs.push(doc);
-            }
-        })
-    }
-
-    else if ("doc" in search) {
-        
-        if (fs.existsSync(`${path}/collection1/${doc}.json`)) {
-
-            data = { [doc]: JSON.parse(fs.readFileSync(`${path}/collection1/${doc}.json`)) }
-            single = true
-
-            // doc does not exist in collection
-        } else data = undefined
-    }
-
-    else if ("findAny" in search) {
-
-        var value = toArray(search.findAny)
-        for (let index = collectionProps.lastChunk; index > 0; index--) {
-
-            var chunkProps = JSON.parse(fs.readFileSync(`${path}/collection1/__props__/chunk${index}/__props__.json`))
-            var docs = chunkProps.docs
-
-            for (let i = 0; i < docs.length; i++) {
-
-                var doc = docs[i]
-                var docData = JSON.parse(fs.readFileSync(`${path}/collection1/${doc}.json`))
-
-                value.map(value => {
-
-                    delete docData.__props__.active
-                    delete docData.__props__.creationDate
-                    delete docData.__props__.comments
-                    delete docData.__props__.collapsed
-                    delete docData.__props__.createdByUserID
-                    delete docData.__props__.id
-                    delete docData.__props__.doc
-                    delete docData.__props__.counter
-                    delete docData.__props__.chunk
-                    delete docData.__props__.version
-                    delete docData.__props__.dirPath
-                    delete docData.__props__.collection
-                    delete docData.__props__.chunk
-                    
-                    if (JSON.stringify(docData).includes(value)) {
-
-                        data[doc] = []
-
-                        var list = objectToString(docData).split(value)
-                        if (list.length <= 1) return
-
-                        list.map((text, i) => {
-                            if (i === 0) return
-                            data[doc].push(list[i - 1].split(": ").at(-1).split(",").at(-1).slice(-30) + `<mark>${value}</mark>` + text.split(",")[0])
-                        })
-                    }
-                })
-            }
-        }
-    }
-
-    else { // find on no find
-
-        while (!chunksRunout && !endSearch) {
-
-            if ("find" in search) {
-
-                // find=[] & find=[preventDefault] => do not return all data in collection
-                var searchFields = Object.keys(find)
-                if ((find.preventDefault && searchFields.length === 1) || searchFields.length === 0) return { data: {}, message: "No find conditions exist!", success: false, single, dev: search.dev, search }
-                delete find.preventDefault
-                
-                // get indexing
-                var {success, chunks, docs, message} = checkIndexing({global, path, search, finds: toArray(find), chunkName, collectionProps})
-                if (!success) break;
-
-                var i = 0
-
-                while (limit > 0 && (i <= docs.length - 1)) {
-
-                    var doc = docs[i]
-
-                    toArray(find).map((find, index) => {
-                        delete find.preventDefault
-                        if (limit === 0) return
-                        var push = true
-                        var chunk = chunks[index]
-                        
-                        searchFields.map(searchField => {
-
-                            if (!push) return
-                            // equal query without having equal operator
-                            if (typeof find[searchField] !== "object" || Array.isArray(find[searchField])) find[searchField] = { equal: find[searchField] }
-
-                            Object.entries(find[searchField]).map(([operator, value]) => {
-                                if (!push) return
-                                push = findData({ data: chunk.indexing[doc][searchField], operator: toOperator(operator), value })
-                            })
-                        })
-
-                        if (push && skip) skip--;
-                        else if (push && limit > 0 && !skip) {
-                            limit--;
-                            data[doc] = JSON.parse(fs.readFileSync(`${path}/collection1/${doc}.json`))
-                        }
-                        
-                        if (limit === 0) endSearch = true
-                        i++;
-                    })
-                }
-            }
-
-            else {
-
-                // get indexing
-                var {success, chunks, docs, message} = checkIndexing({db, collection, path, liveDB, finds: toArray(find), chunkName, collectionProps})
-                if (!success) break;
-
-                var i = 0
-
-                while (limit > 0 && (i <= docs.length - 1)) {
-
-                    var doc = docs[i]
-
-                    if (!skip) data[doc] = JSON.parse(fs.readFileSync(`${path}/collection1/${doc}.json`))
-                    if (skip) skip--;
-                    else limit--;
-                    i++;
-                }
-
-                if (limit === 0) endSearch = true
-            }
-
-            if (chunkIndex === 1 || endSearch) chunksRunout = true
-            else {
-                chunkIndex--;
-                chunkName = "chunk" + chunkIndex
-            }
-        }
-    }
-    
-    readProps({ collectionProps, dbProps, data, db: liveDB, collection, datastore })
-    
-    response = { id: generate(), data, message, success, single, dev: search.dev, search }
-
-    // ex: search():[collection=product;docs;populate=:[collection;key;field]] (key is keyname in data, field is the fields to return)
-    /*if ((populate || select || deselect || assign) && success) {
-
-        var data = response.data
-
-        // restructure
-        if (doc) data = { [doc]: data }
-
-        if (populate) populator({ _window, req, res, db, data, populate, search })
-        if (select) data = selector({ data, select })
-        else if (deselect) data = deselector({ data, deselect })
-        else if (assign) data = assigner({ data, assign })
-
-        // restructure
-        if (doc) data = data[doc]
-        response.data = data
-    }*/
-
-    return response
-}
-
-const postData = ({ _window = {}, req, res, save, action = "save()", verified }) => {
-
-    var datastore = save.datastore || "bracketDB" || _window.global.manifest.datastore
-    var db = save.db || _window.global.manifest.session.db,
-        collection = save.collection,
-        doc = save.doc,
-        docs = save.docs || [],
-        data = save.data,
-        find = save.find,
-        success = false, 
-        message = "Missing data!"
-
-    // update specific fields. ex: update:[name=Goerge;age=28] (it ignores appended data)
-    if (save.update) {
-
-        var search = { datastore, db, collection }
-        if (doc) search.doc = doc
-        else if (find) search.find = find
-
-        var { data: rawData, success, message } = database({ _window, req, action: "search()", data: search })
-        if (!success) return ({ success, message })
-        data = rawData
-
-        if (doc) data = { [data.__props__.doc]: data }
-
-        // update values for requested keys
-        Object.values(data).map(data => Object.entries(save.update).map(([key, value]) => key.split(".").reduce((o, k, i) => { if (i === key.split(".").length - 1) { o[k] = value } else return o[k] }, data)))
-        data = Object.values(data)
-    }
-
-    // find data
-    else if (find) {
-
-        var { data: rawData = {} } = database({ _window, req, res, action: "search()", data: save })
-        rawData = Object.values(rawData)
-        if (rawData.length > 1) return ({ success: false, message: "Incompatible use of find and save!" })
-        else if (rawData.length === 1) {
-            data = rawData[0]
-            // save.doc = rawData[0].__props__.doc
-            if (save.data) {
-                Object.entries(save.data).map(([key, value]) => {
-                    if (key === "__props__") return
-                    data[key] = value
-                })
-            }
-        }
-    }
-
-    var { path, dbProps, collectionProps, liveDB, success, message } = checkParams({ _window, req, data: save, action })
-    if (!success) return { success, message }
-
-    if (save.publish) {
-        var response = publish({ _window, req, data: save })
-        return response
-    }
-
-    // rename collection
-    if (save.rename && save.collection) {
-
-        fs.renameSync(path, `bracketDB/${db}/${save.rename}`)
-
-        // edit liveDB collection name
-        if (db !== liveDB && save.dev) fs.renameSync(`bracketDB/${liveDB}/${save.collection}`, `bracketDB/${liveDB}/${save.rename}`)
-
-        // props
-        dbProps.writes += 1
-        collectionProps.writes += 1
-        collectionProps.collection = collection = save.rename
-
-        // props
-        fs.writeFileSync(`bracketDB/${liveDB}/${collection}/collection1/__props__/__props__.json`, JSON.stringify(collectionProps, null, 4))
-        fs.writeFileSync(`bracketDB/${liveDB}/__props__/db.json`, JSON.stringify(dbProps, null, 4))
-
-        // change docs collection name
-        var docs = fs.readdirSync(`bracketDB/${db}/${collection}/collection1`)
-        docs.map(doc => {
-            if (doc === "__props__") return
-            var data = JSON.parse(fs.readFileSync(`bracketDB/${db}/${collection}/collection1/${doc}`))
-            data.__props__.collection = save.rename
-            fs.writeFileSync(`bracketDB/${db}/${collection}/collection1/${doc}`, JSON.stringify(data))
-        })
-
-        // update liveDB
-        if (save.dev) {
-            
-            // change docs collection name
-            var docs = fs.readdirSync(`bracketDB/${liveDB}/${collection}/collection1`)
-            docs.map(doc => {
-                if (doc === "__props__") return
-                var data = JSON.parse(fs.readFileSync(`bracketDB/${liveDB}/${collection}/collection1/${doc}`))
-                data.__props__.collection = save.rename
-                fs.writeFileSync(`bracketDB/${liveDB}/${collection}/collection1/${doc}`, JSON.stringify(data))
-            })
-        }
-
-        return { success: true, message: "Collection name changed successfully!" }
-    }
-
-    var chunks = {}, chunkName = `chunk${collectionProps.lastChunk}`
-    var length = toArray(data).length
-    
-    // incompatible payload
-    if (("doc" in save && length > 1 && docs.length !== length)) return {success:false, message: "Incompatible payload!"}
-
-    // push doc to docs
-    if ("doc" in save && length === 1 && docs.length === 0) docs = [save.doc]
-
-    var dataList = toArray(data)
-    
-    for (let i = 0; i < dataList.length; i++) {
-
-        var writesCounter = 0, newDocsLength = 0, payloadIn = 0, newDataSize = 0
-        var data = dataList[i], createNewDoc = false, existingData = {}, chunkName = `chunk${collectionProps.lastChunk}`
-
-        // check if user is creating a new doc
-        var createNewDoc = !data.__props__ || !data.__props__.doc
-        // check doc by props.doc
-        if (!createNewDoc) {
-            var response = database({_window, action:"search()", data:{db: liveDB, devDB: save.devDB, collection, doc:data.__props__.doc}, checkDataExists: true})
-            
-            if (response.data) {
-                existingData = response.data
-            } else createNewDoc = true
-        }
-        
-        // check doc by given doc
-        if (createNewDoc && docs[i] && !verified) {
-            var response = database({_window, action:"search()", data:{db: liveDB, devDB: save.devDB, collection, doc:docs[i]}})
-            if (response.data) {
-                existingData = response.data
-                createNewDoc = false
-            }
-        } else if (verified) {
-
-            existingData = data
-            createNewDoc = false
-        }
-
-        // recheck props
-        dbProps = JSON.parse(fs.readFileSync(`${datastore}/${liveDB}/__props__/db.json`))
-        collectionProps = JSON.parse(fs.readFileSync(`${datastore}/${liveDB}/${collection}/collection1/__props__/__props__.json`))
-
-        // collection props
-        writesCounter++
-        if (createNewDoc) {
-
-            newDocsLength++;
-            collectionProps.counter++;
-        }
-
-        var existingProps = existingData.__props__ || {}
-        var newProps = data.__props__ || {}
-        var docName = docs[i] || existingProps.doc || (collection.split(".")[collection.split(".").length - 1] + collectionProps.counter)
-
-        // data props
-        data.__props__ = {
-            // main props: imutable
-            id: existingProps.id || generate({ unique: true }),
-            doc: docName,
-            counter: existingProps.counter || collectionProps.counter,
-            creationDate: existingProps.creationDate || (new Date()).getTime(),
-            collection,
-            chunk: existingProps.chunk || chunkName,
-            lastModified: (new Date()).getTime(),
-            dev: save.dev || false,
-            // other props: mutable
-            actions: newProps.actions || existingProps.actions || {},
-            comments: newProps.comments || existingProps.comments || [],
-            collapsed: newProps.collapsed || existingProps.collapsed || [],
-            arrange: newProps.arrange || existingProps.arrange || [],
-            secured: newProps.secured || false,
-        }
-        
-        // set data size
-        data.__props__.size = JSON.stringify(data).length
-        
-        // create new db
-        if (collection === "project" && db === bracketDB && !existingProps.doc) createDB({ data })
-
-        // create new host
-        else if (collection === "host" && db === bracketDB && data.port && !existingProps.doc) data.port.map(port => start(port))
-
-        // reset doc name
-        var doc = data.__props__.doc, oldDoc = existingProps.doc, publishing = existingProps.dev && !data.__props__.dev, developing = !existingProps.dev && data.__props__.dev
-        
-        // get chunk props
-        var chunkName = data.__props__.chunk
-        if (!chunks[chunkName]) chunks[chunkName] = { props: JSON.parse(fs.readFileSync(`${path}/collection1/__props__/${chunkName}/__props__.json`)), indexings: {} }
-        var chunkProps = chunks[chunkName].props
-        
-        // push/replace doc to sorted docs & update chunk docslength & size
-        if (oldDoc && doc !== oldDoc) {
-            for (let i = 0; i < chunkProps.docs.length; i++) {
-                if (chunkProps.docs[i] === oldDoc) {
-                    chunkProps.docs[i] = doc
-                    break;
-                }
-            }
-            chunkProps.size -= existingData.__props__.size
-        } else if (oldDoc && !publishing && !developing) {
-            chunkProps.size -= existingData.__props__.size
-        } else if (!oldDoc || publishing || developing) {
-
-            chunkProps.docs.unshift(doc)
-            chunkProps.docsLength += 1
-            
-            // check chunk docs length
-            if (chunkProps.docsLength === 1000) {
-
-                collectionProps.lastChunk += 1
-                chunkProps.reachedMax = true
-                createChunk({ db, collection, chunkName: `chunk${collectionProps.lastChunk}`, collectionProps })
-            }
-        }
-
-        chunkProps.size += data.__props__.size
-
-        // loop over indexings
-        for (let i = 0; i < collectionProps.indexes.length; i++) {
-            var indexProps = collectionProps.indexes[i], sameFieldValue = !publishing && !developing, indexingOfDoc = {}
-
-            // indexing expired
-            if (indexProps.expiryDate < new Date().getTime()) {
-                delete collectionProps.indexes[i]
-                fs.rmSync(`${path}/collection1/__props__/${chunkName}/${indexProps.doc}.json`)
-                continue;
-            }
-            
-            // loop over find search fields
-            for (let j = 0; j < indexProps.find.length; j++) {
-                var searchFields = indexProps.find[j]
-
-                // get new data field value 
-                var newFieldValue = getFieldValue(searchFields.split("."), data).value
-                indexingOfDoc[searchFields] = newFieldValue
-
-                // check prev value
-                if (oldDoc && sameFieldValue) {
-                    
-                    var prevFieldValue = getFieldValue(searchFields.split("."), existingData).value
-                    sameFieldValue = isEqual(prevFieldValue, newFieldValue)
-
-                } else sameFieldValue = false
-            }
-
-            // update indexing
-            if (!sameFieldValue) {
-
-                // get chunk indexing
-                if (!chunks[chunkName].indexings[indexProps.doc]) chunks[chunkName].indexings[indexProps.doc] = JSON.parse(fs.readFileSync(`${path}/collection1/__props__/${chunkName}/${indexProps.doc}.json`))
-
-                // get indexing
-                chunks[chunkName].indexings[indexProps.doc][doc] = indexingOfDoc
-            }
-        }
-
-        // save data
-        fs.writeFileSync(`${path}/collection1/${doc}.json`, JSON.stringify(data, null, 4))
-
-        // props: data size
-        var dataSize = JSON.stringify({ [doc]: data }).length
-        payloadIn += dataSize
-        if (createNewDoc) newDataSize += dataSize
-
-        // props
-        postProps({ db: liveDB, collection, collectionProps, dbProps, writesCounter, newDocsLength, payloadIn, newDataSize })
-    }
-
-    // save chunk props & indexings
-    Object.entries(chunks).map(([chunkName, chunk]) => {
-        fs.writeFileSync(`${path}/collection1/__props__/${chunkName}/__props__.json`, JSON.stringify(chunk.props, null, 4))
-        Object.entries(chunk.indexings).map(([indexingDoc, indexing]) => {
-            fs.writeFileSync(`${path}/collection1/__props__/${chunkName}/${indexingDoc}.json`, JSON.stringify(indexing, null, 4))
-        })
-    })
-    
-    return { success: true, message: "Data saved successfully!", data: length === 1 ? data : dataList }
-}
-
-const deleteData = ({ _window = {}, req, res, erase, action = "erase()", verified }) => {
-
-    var global = _window.global
-    var collection = erase.collection,
-        datastore = erase.datastore || "bracketDB" || _window.global.manifest.datastore,
-        db = erase.db || global.manifest.session.db,
-        docs = toArray(erase.docs || erase.doc),
-        find = erase.find,
-        data = {},
-        success = true, 
-        message = "Documents erased successfully!"
-
-    var { path, dbProps, collectionProps, liveDB, success, message } = checkParams({ data: erase, action })
-    if (!success) return { success, message }
-
-    // erase collection
-    if (!("docs" in erase) && !("doc" in erase) && !("find" in erase)) {
-
-        if (fs.existsSync(path)) {
-
-            fs.rmSync(path, { recursive: true, force: true })
-
-            dbProps.deletes += 1
-            dbProps.collectionsLength -= 1
-            dbProps.docsLength -= collectionProps.docsLength
-            dbProps.size -= collectionProps.size
-
-            deleteProps({ db: liveDB, collection, collectionProps, dbProps })
-        }
-
-        var collections = getFolderNames(`${datastore}/${db}`)
-        collections.map(coll => {
-            if (coll.split(collection)[1] && !coll.split(collection)[0]) {
-
-                collectionProps = JSON.parse(fs.readFileSync(`${datastore}/${liveDB}/${coll}/collection1/__props__/__props__.json`))
-                fs.rmSync(`${datastore}/${db}/${coll}`, { recursive: true, force: true })
-
-                dbProps.deletes += 1
-                dbProps.collectionsLength -= 1
-                dbProps.docsLength -= collectionProps.docsLength
-                dbProps.size -= collectionProps.size
-
-                deleteProps({ db: liveDB, collection, collectionProps, dbProps })
-            }
-        })
-
-        return ({ success: true, message: "Collection erased successfully!" })
-    }
-
-    // find => get docs
-    if ("find" in erase || "findOne" in erase) {
-
-        var searchOptions = { datastore, db, collection, find }
-        if (erase.findOne) {
-            searchOptions.find = erase.findOne
-            searchOptions.limit = 1
-        }
-        find.preventDefault = true
-        var { data } = database({ _window, req, action: "search()", data: searchOptions })
-        docs = Object.keys(data)
-        docs.map(doc => data[doc] = "erased")
-    }
-
-    if (docs.length === 0) {
-
-        message = "No data found!"
-        collectionProps.deletes += 1
-        dbProps.deletes += 1
-
-    } else {
-
-        var docsLength = 0, dataSize = 0, chunks = {}
-
-        // remove docs
-        docs.map(doc => {
-            if (fs.existsSync(`${path}/collection1/${doc}.json`)) {
-
-                // get data
-                var docData = JSON.parse(fs.readFileSync(`${path}/collection1/${doc}.json`)), chunkName = docData.__props__.chunk
-                if (!chunks[chunkName]) chunks[chunkName] = JSON.parse(fs.readFileSync(`${path}/collection1/__props__/${chunkName}/__props__.json`))
-
-                // remove from docs
-                var index = chunks[chunkName].docs.indexOf(doc)
-                if (index > -1) chunks[chunkName].docs.splice(index, 1)
-                    
-                // case: delete project
-                if (collection === "project" && db === bracketDB) {
-                    if (fs.existsSync(`bracketDB/${docData.db}`)) fs.rmSync(`bracketDB/${docData.db}`, { recursive: true, force: true })
-                    if (fs.existsSync(`bracketDB/${docData.devDB}`)) fs.rmSync(`bracketDB/${docData.devDB}`, { recursive: true, force: true })
-                }
-
-                // props: length, size
-                docsLength++;
-                dataSize += docData.__props__.size
-                data[doc] = "erased"
-                
-                // last doc => decrement counter
-                if (collectionProps.counter === docData.__props__.counter) collectionProps.counter--
-
-                // update chunk props
-                chunks[chunkName].size -= docData.__props__.size
-                chunks[chunkName].docsLength -= 1
-                
-                // remove doc
-                fs.unlinkSync(`${path}/collection1/${doc}.json`)
-
-            } else delete data[doc]
-        })
-        
-        // reset docs according to erased 
-        var docs = Object.keys(data)
-
-        // update indexing & chunk props
-        Object.entries(chunks).map(([chunkName, chunkProps]) => {
-
-            // remove doc from indexing
-            collectionProps.indexes.map(({ doc: indexName }) => {
-                var indexing = JSON.parse(fs.readFileSync(`${path}/collection1/__props__/${chunkName}/${indexName}.json`))
-                docs.map(doc => delete indexing[doc])
-                fs.writeFileSync(`${path}/collection1/__props__/${chunkName}/${indexName}.json`, JSON.stringify(indexing, null, 4))
-            })
-
-            // save chunk props
-            fs.writeFileSync(`${path}/collection1/__props__/${chunkName}/__props__.json`, JSON.stringify(chunkProps, null, 4))
-        })
-    }
-
-    // props
-    deleteProps({ db: liveDB, collection, collectionProps, dbProps, docsLength, dataSize })
-
-    return ({ success, message, data })
-}
-
-const checkParams = ({ _window, req, data, action, datastore = "bracketDB" }) => {
-
-    var collection = data.collection, db = data.db
-    var path = `${datastore}/${db}`
-    var liveDB = data.dev ? data.liveDB : db
-
-    // props
-    if (!fs.existsSync(`${datastore}/${liveDB}`)) return ({ success: false, message: "Props error!" })
-
-    // publish
-    if (data.publish) return ({ success: true, path })
-
-    if (!fs.existsSync(path)) return ({ success: false, message: "Project does not exist!" })
-
-    // collection
-    if (collection) {
-
-        path += `/${collection}`
-        if (!fs.existsSync(path) && action !== "save()") {
-            
-            // erase collection=account but there is no collection=account however there is a collection=account.user
-            if (action === "erase()" && !("docs" in data) && !("doc" in data) && !("find" in data)) {
-                
-                var dbProps = JSON.parse(fs.readFileSync(`${datastore}/${liveDB}/__props__/db.json`))
-                return { collection, path, dbProps, liveDB, success: true, dev: data.dev }
-            }
-            return ({ success: false, message: "Collection does not exist!" }) // save without collection creates collection
-        }
-
-    } else if (action !== "search()") return ({ success: false, message: "No collection!" }) // search without collection gets collections
-
-    if (!fs.existsSync(`${datastore}/${liveDB}`)) return ({ success: false, message: "Props error!" })
-
-    var dbProps = JSON.parse(fs.readFileSync(`${datastore}/${liveDB}/__props__/db.json`))
-    var collectionProps = collection && fs.existsSync(`${datastore}/${liveDB}/${collection}`) && JSON.parse(fs.readFileSync(`${datastore}/${liveDB}/${collection}/collection1/__props__/__props__.json`))
-
-    // create collection
-    if (!collectionProps && action === "save()") collectionProps = createCollection({ _window, req, db, collection, liveDB, data, dev: liveDB !== db, datastore })
-    // devdb and create collection
-    else if (collectionProps && action === "save()" && liveDB !== db && (!fs.existsSync(path) || getDocNames(path).length === 0)) createCollection({ _window, req, db, collection, liveDB, collectionProps, datastore, dev: true })
-    // erase
-    if (!collectionProps && action === "erase()") return { success: false }
-    
-    return { collection, path, dbProps, collectionProps, liveDB, success: true, dev: data.dev }
-}
-
-const hideSecured = ({ global, __ }) => {
-
-    if (!global) return
-    var lookupServerAction = (collection, doc) => global.manifest.lookupServerActions && global.manifest.lookupServerActions.collection === collection && global.manifest.lookupServerActions.doc === doc
-
-    Object.keys(global.__queries__).map(collection => {
-        Object.keys(global.__queries__[collection]).map(doc => {
-            var data = global.__queries__[collection][doc]
-            if (data.__props__ && data.__props__.secured && !global.__authorized__[collection][doc]) {
-
-                Object.keys(data).map(key => {
-                    if (key === "__props__") {
-
-                        var found = false
-                        if (lookupServerAction(collection, doc)) {
-
-                            found = true
-
-                            var path = global.manifest.lookupServerActions.path || [], lastIndex = path.length - 1
-
-                            path.reduce((o, k, i) => {
-                                if (!(k in o) || !found) return found = false
-                                else if (typeof o[k] !== "object" && i !== lastIndex) found = false
-                                else return o[k]
-                            }, data.__props__.actions)
-
-                            // reset actions
-                            data.__props__.actions = {}
-
-                            path.reduce((o, k, i) => {
-
-                                if (i === lastIndex && !found) o[k] = false
-                                else if (i === lastIndex && found) o[k] = true
-                                else return o[k] = {}
-
-                            }, data.__props__.actions)
-
-                        } else data.__props__.actions = {}
-
-                        delete data.__props__.collapsed
-                        delete data.__props__.comments
-
-                    } else delete data[key]
-                })
-            }
-        })
-    })
-}
-
-const populator = ({ _window, req, data, db, populate }) => {
-
-    var populatedData = {}
-    var populates = toArray(populate)
-
-    // get data by IDs
-    var responses = populates.map((populate, i) => {
-
-        if (typeof populate === "string") populates[i] = populate = { db, collection: populate, field: populate, find: "id", deselect: [] }
-        if (!populate.collection) populate.collection = populate.field
-        if (!populate.find) populate.find = "id"
-
-        // get values from queried data
-        var IDSet = new Set()
-        Object.values(data).map(data => IDSet.add(data[populate.field]))
-
-        // add find conditions
-        if (populate.find === "doc") {
-            populate.docs = Array.from(IDSet)
-            delete populate.find
-        } else populate.find = { [populate.find]: { in: Array.from(IDSet) } }
-
-        var response = database({ _window, req, action: "search()", data: populate })
-        populatedData = { ...populatedData, ...response.data }
-        return response
-    })
-
-    //await Promise.all(responses)
-
-    // populate
-    populates.map(populate => {
-
-        // assign a value to key. ex: name instead of ID
-        if (populate.assign) {
-            Object.values(data).map(data => {
-                if (populatedData[data[populate.find]]) data[populate.find] = populatedData[data[populate.find]][populate.assign]
-            })
-        }
-
-        // select. return the doc with specific find. (considering data and populatedData are many docs)
-        else if (populate.select) data = selector({ data, key: populate.find, select: populate.select, populatedData })
-
-        // select. return the doc with specific find. (considering data and populatedData are many docs)
-        else if (populate.deselect) data = deselector({ data, key: populate.find, deselect: populate.deselect, populatedData })
-    })
-
-    return data
-}
-
-const selector = ({ data, key, select, populatedData }) => {
-
-    // select with populate
-    if (key && populatedData) {
-
-        Object.values(data).map(data => {
-            var doc = data[key]
-            if (populatedData[doc]) {
-                data[key] = {}
-                toArray(select).map(select => data[key][select] = populatedData[doc][select])
-            }
-        })
-
-        // select
-    } else {
-
-        var clonedData = clone(data)
-        data = {}
-        Object.keys(clonedData).map(doc => {
-            data[doc] = {}
-            toArray(select).map(select => data[doc][select] = clonedData[doc][select])
-        })
-    }
-
-    return data
-}
-
-const deselector = ({ data, key, deselect, populatedData }) => {
-
-    // deselect with populate
-    if (key && populatedData) {
-
-        Object.values(data).map(data => {
-            var doc = data[key]
-            if (populatedData[doc]) {
-                data[key] = populatedData[data[key]]
-                toArray(deselect).map(deselect => delete data[key][deselect])
-            }
-        })
-
-        // deselect
-    } else {
-
-        Object.keys(data).map(doc => {
-            toArray(deselect).map(deselect => delete data[doc][deselect])
-        })
-    }
-
-    return data
-}
-
-const assigner = ({ data, assign }) => {
-    Object.keys(data).map(doc => data[doc] = data[doc][assign])
-}
-
-const mongoOptions = ({ find }) => {
-
-    var options = {}
-
-    if (Array.isArray(find)) {
-
-        // init
-        options = { $or: [] }
-
-        find.map(find => options["$or"].push(mongoOptions({ find })))
-
-    } else {
-
-        Object.entries(find).map(([key, valueAndOperator]) => {
-
-            if (typeof valueAndOperator !== "object") valueAndOperator = { equal: valueAndOperator }
-
-            var operator = toOperator(Object.keys(valueAndOperator)[0])
-            var value = Object.values(valueAndOperator)[0]
-
-            options[key] = options[key] || {}
-
-            if (operator === "==") options[key]["$eq"] = value
-            else if (operator === "!=") options[key]["$ne"] = value
-            else if (operator === ">") options[key]["$gt"] = value
-            else if (operator === "<") options[key]["$lt"] = value
-            else if (operator === ">=") options[key]["$gte"] = value
-            else if (operator === "<=") options[key]["$lte"] = value
-            else if (operator === "in" && Array.isArray(value)) options[key]["$in"] = value
-            else if (operator === "notin" && Array.isArray(value)) options[key]["$nin"] = value
-            else if (operator === "regex") options[key]["$regex"] = value
-            else if (operator === "inc") options[key] = value
-            else if (operator === "incall") options[key]["$all"] = value
-            else if (operator === "length") options[key]["$size"] = value
-            else if (operator === "find") options[key] = { $elemMatch: mongoOptions({ find: value }) }
-        })
-    }
-
-    return options
-}
-
-const getFolderNames = path =>
-    fs.readdirSync(path, { withFileTypes: true })
-        .filter(dir => dir.isDirectory())
-        .map(dir => dir.name)
-
-const getDocNames = path =>
-    fs.readdirSync(path, { withFileTypes: true })
-        .filter(dir => !dir.isDirectory())
-        .map(dir => dir.name)
-
-const flattenObject = (obj, parentKey = '') => {
-    let flattened = {};
-
-    for (let key in obj) {
-        if (typeof obj[key] === 'object' && obj[key] !== null) {
-            let nestedObj = flattenObject(obj[key], parentKey + key + ': ');
-            flattened = { ...flattened, ...nestedObj };
-        } else {
-            flattened[parentKey + key] = Array.isArray(obj[key]) ? obj[key].join(', ') : obj[key];
-        }
-    }
-
-    return flattened;
-}
-
-const objectToString = (obj) => {
-    let flattenedObj = flattenObject(obj);
-    let str = '';
-
-    let usedKeys = {}; // Keep track of used parent keys
-
-    for (let key in flattenedObj) {
-        let parts = key.split(': '); // Split the key into parts by ': '
-        let parentKey = parts.slice(0, -1).join(': '); // Get the parent key
-        let lastKey = parts[parts.length - 1]; // Get the last part of the key
-
-        // Check if the parent key has been used before
-        if (!usedKeys[parentKey]) {
-            // If not used, add the parent key and the last key with value
-            str += parentKey + ': ' + lastKey + ': ' + flattenedObj[key] + ', ';
-            usedKeys[parentKey] = true; // Mark the parent key as used
-        } else {
-            // If used, just add the last key with value
-            str += lastKey + ': ' + flattenedObj[key] + ', ';
-        }
-    }
-
-    // Remove the trailing comma and space
-    str = str.slice(0, -2);
-
-    return str;
-}
-
-const readProps = ({ collectionProps, dbProps, data, db, collection, datastore }) => {
-
-    if (!collectionProps || !dbProps) return
-
-    var reads = data ? Object.keys(data).length : 1
-    var payloadOut = data ? JSON.stringify(data).length : 0
-    
-    // remove expired indexes
-    for (let i = collectionProps.indexes.length - 1; i >= 0; i--) {
-        if (collectionProps.indexes[i].expiryDate < new Date().getTime()) collectionProps.indexes.splice(i, 1)
-    }
-
-    // save collection props
-    collectionProps.reads += reads
-    collectionProps.payloadOut += payloadOut
-    fs.writeFileSync(`${datastore}/${db}/${collection}/collection1/__props__/__props__.json`, JSON.stringify(collectionProps, null, 4))
-
-    dbProps.reads += reads
-    dbProps.payloadOut += payloadOut
-    fs.writeFileSync(`${datastore}/${db}/__props__/db.json`, JSON.stringify(dbProps, null, 4))
-}
-
-const postProps = ({ db, collection, collectionProps, dbProps, writesCounter, newDocsLength, payloadIn, newDataSize, datastore = "bracketDB" }) => {
-
-    if (!collectionProps || !dbProps) return
-    
-    // remove expired indexes
-    for (let i = collectionProps.indexes.length - 1; i >= 0; i--) {
-        if (collectionProps.indexes[i].expiryDate < new Date().getTime()) collectionProps.indexes.splice(i, 1)
-    }
-
-    collectionProps.writes += writesCounter
-    collectionProps.docsLength += newDocsLength
-    collectionProps.payloadIn += payloadIn
-    collectionProps.size += newDataSize
-    fs.writeFileSync(`${datastore}/${db}/${collection}/collection1/__props__/__props__.json`, JSON.stringify(collectionProps, null, 4))
-
-    dbProps.writes += writesCounter
-    dbProps.docsLength += newDocsLength
-    dbProps.payloadIn += payloadIn
-    dbProps.size += newDataSize
-    fs.writeFileSync(`${datastore}/${db}/__props__/db.json`, JSON.stringify(dbProps, null, 4))
-}
-
-const deleteProps = ({ db, collection, collectionProps, dbProps, docsLength = 0, dataSize = 0, datastore = "bracketDB" }) => {
-
-    if (!collectionProps || !dbProps) return
-    
-    // remove expired indexes
-    for (let i = collectionProps.indexes.length - 1; i >= 0; i--) {
-        if (collectionProps.indexes[i].expiryDate < new Date().getTime()) collectionProps.indexes.splice(i, 1)
-    }
-
-    // props
-    collectionProps.docsLength -= docsLength
-    collectionProps.size -= dataSize
-    dbProps.docsLength -= docsLength
-    dbProps.size -= dataSize
-
-    if (!collectionProps.docsLength) collectionProps.counter = 0
-
-    // props
-    if (fs.existsSync(`${datastore}/${db}/${collection}`)) fs.writeFileSync(`${datastore}/${db}/${collection}/collection1/__props__/__props__.json`, JSON.stringify(collectionProps, null, 4))
-    fs.writeFileSync(`${datastore}/${db}/__props__/db.json`, JSON.stringify(dbProps, null, 4))
-}
-
-const queries = ({ global, data, search, collection }) => {
-
-    if (!global || !global.__queries__ || (search.preventDefault || {}).queries) return
-    
-    global.__queries__[collection] = global.__queries__[collection] || {}
-    global.__authorized__[collection] = global.__authorized__[collection] || {}
-    if (!data) global.__queries__[collection][search.doc] = false
-    else if (!Array.isArray(data)) {
-        Object.entries(data).map(([doc, data]) => {
-            if (Array.isArray(data) || typeof data !== "object") return
-            global.__queries__[collection][doc] = data
-            if (search.unsecure) global.__authorized__[collection][doc] = true
-        })
-    }
-}
-
 const queriesClient = ({ global, data }) => {
     Object.entries(data).map(([key, data]) => {
         if (typeof data === "object" && !Array.isArray(data)) {
@@ -8028,605 +6658,56 @@ const queriesClient = ({ global, data }) => {
     })
 }
 
-const createDB = ({ data }) => {
+const vcard = ({ res, data: { info, firstName, middleName, lastName, org, title, img, phone, address, email } }) => {
 
-    data.db = generate({ universal: true })
-    data.devDB = generate({ universal: true })
-    data.storage = generate({ universal: true })
+    let vcard = `BEGIN:VCARD
+    VERSION:3.0
+    N:${info}
+    FN:${firstName}
+    MN:${middleName}
+    LN:${lastName}
+    ORG:${org}
+    TITLE:${title}
+    PHOTO;TYPE=JPEG;ENCODING=b:[${img}]
+    TEL;TYPE=WORK,VOICE:${phone}
+    ADR;TYPE=WORK,PREF:;;${address}
+    EMAIL:${email}
+    REV:${new Date().toISOString()}
+    END:VCARD`;
 
-    var newProjectProps = {
-        creationDate: 0,
-        collectionsLength: 0,
-        docsLength: 0,
-        reads: 0,
-        writes: 0,
-        deletes: 0,
-        size: 0,
-        payloadIn: 0,
-        payloadOut: 0
-    }
-
-    // devDB
-    fs.mkdirSync(`bracketDB/${data.devDB}`)
-
-    // db
-    fs.mkdirSync(`bracketDB/${data.db}`)
-    fs.mkdirSync(`bracketDB/${data.db}/__props__`)
-    fs.writeFileSync(`bracketDB/${data.db}/__props__/db.json`, JSON.stringify(newProjectProps, null, 4))
-
-    // storage
-    fs.mkdirSync(`storage/${data.storage}`)
-    fs.mkdirSync(`storage/${data.storage}/__props__`)
-    fs.writeFileSync(`storage/${data.storage}/__props__/db.json`, JSON.stringify(newProjectProps, null, 4))
+    downloadToFile(vcard, 'vcard.vcf', 'text/vcard');
 }
 
-const authorizeDB = ({ _window, global, action, data }) => {
+const downloadToFile = (content, filename, contentType) => {
+    const a = document.createElement('a');
+    const file = new Blob([content], { type: contentType });
 
-    var authorizations = []
+    a.href = URL.createObjectURL(file);
+    a.download = filename;
+    a.click();
 
-    // devDB => add authorizations
-    if (data.devDB && data.db && data.dev !== false) {
-        authorizations.push({ ...data, db: data.devDB, devDB: data.devDB, dev: true, liveDB: data.db })
-        if (action === "save" || action === "upload") return authorizations
-    }
-
-    if (data.db) {
-        authorizations = [...authorizations, data]
-        return authorizations
-    }
-
-    // no session yet
-    if (!global.manifest.session) return authorizations
-
-    // devDB => add authorizations
-    if (global.manifest.session.dev) {
-        authorizations.unshift({ ...data, db: global.manifest.session.devDB, devDB: global.manifest.session.devDB, dev: true, liveDB: global.manifest.session.db })
-        if (action === "save" || action === "upload") return authorizations
-    }
-    authorizations.push({ ...data, db: global.manifest.session.db })
-
-    // special case
-    if (data.uncheckPlugins) return authorizations
-
-    // get plugins from session
-    var plugins = global.manifest.session.plugins || []
-
-    // no plugin found
-    if (plugins.length === 0) return authorizations
-
-    // check authority
-    var authPlugins = plugins.filter(plugin => pluginAuthConditions(plugin, action))
-
-    // not authorized
-    if (authPlugins.length === 0) return authorizations
-
-    var queryOptions = []
-    authPlugins.map(plugin => {
-
-        if (plugin.db) return authPlugins.push({ ...data, db: plugin.db, plugin })
-
-        // get db through projectID
-        var { data: project = {} } = getData({ _window, search: { db: bracketDB, collection: "project", findOne: { "__props__.id": plugin.projectID }, preventDefault: { queries: true } } })
-        project = Object.values(project)[0]
-        if (!project) return queryOptions.push(false)
-        queryOptions.push({ ...data, db: project.db, plugin })
-    })
-
-    // query options
-    return [...authorizations, ...queryOptions.filter(options => options)]
+    URL.revokeObjectURL(a.href);
 }
 
-const pluginAuthConditions = ({ collection, collections, doc, docs, actions = [] }, action) => (
+const qrcode = async ({ _window, id, req, res, data: qrData, __, e, stack, props, lookupActions, address }) => {
 
-    actions.includes(action) &&
-    // collection
-    (collections ? (typeof collections === "boolean" ? true : (Array.isArray(collections) && data.collection) ? collections.includes(data.collection) : false) : (collection && data.collection) ?
-        // doc
-        (collection === data.collection && (docs ? (typeof docs === "boolean" ? true : (Array.isArray(docs) && data.doc) ? docs.includes(data.doc) : false) : (doc && data.doc) ? doc === data.doc : false)) : false)
-)
+    let QRCode = require("easyqrcodejs")
 
-const start = (port, serverID) => {
-
-    var child = spawn("node", ["index.js", port, serverID])
+    // get image
+    let view = window.views[qrData.id], imageEl
+    if (view) imageEl = view.__element__
     
-    // running server
-    database({ action: "save()", data: { db: bracketDB, collection: "runningServer", find: { port, serverID }, data: { port, serverID, creationDate: new Date().getTime(), closes: [] } } })
+    let qrcode = new QRCode(document.getElementById(qrData.id), qrData)
+    let data = { message: "QR generated successfully!", data: qrcode, success: true }
 
-    child.stdout.on("data", function (data) {
-        //start(port, true)
-        console.log(child.spawnargs[2], data.toString())
-    })
-    child.stderr.on("data", function (data) {
-        //start(port, true)
-        console.log(child.spawnargs[2], data.toString())
-    })
-    child.on("close", function (data) {
-        // start(port, true);
+    console.log("QR", data)
 
-        // update running server
-        var { data: runningServer } = database({ action: "search()", data: { db: bracketDB, collection: "runningServer", findOne: { port, serverID } } })
-        runningServer.closes.push(new Date().getTime())
-        database({ action: "save()", data: { db: bracketDB, collection: "runningServer", data: runningServer } })
-
-        // start server again
-        start(child.spawnargs[2], serverID)
-    })
-}
-
-const saveLogs = () => {
-
-    // save logs to file
-    var logFile = fs.createWriteStream('log.txt', { flags: 'a' }); // w to clear on new process
-    var logStdout = process.stdout;
-    var logSterr = process.stderr;
-
-    console.log = function () {
-        logFile.write(util.format.apply(null, arguments) + '\n');
-        logStdout.write(util.format.apply(null, arguments) + '\n');
-        logSterr.write(util.format.apply(null, arguments) + '\n');
-    }
-
-    console.error = console.log
-}
-
-const publishCollection = ({ _window, req, collection, liveDB, devDB }) => {
-        
-    var collectionProps = JSON.parse(fs.readFileSync(`bracketDB/${liveDB}/${collection}/collection1/__props__/__props__.json`))
-    for (let i = collectionProps.lastChunk; i > 0; i--) {
-        
-        var chunkProps = JSON.parse(fs.readFileSync(`bracketDB/${devDB}/${collection}/collection1/__props__/chunk${i}/__props__.json`))
-
-        // save docs in liveDB and remove from devDB
-        for (let j = chunkProps.docs.length - 1; j >= 0; j--) {
-            var data = JSON.parse(fs.readFileSync(`bracketDB/${devDB}/${collection}/collection1/${chunkProps.docs[j]}.json`))
-            publishDoc({ _window, req, collection, doc: chunkProps.docs[j], data, liveDB, devDB })
-        }
-    }
-}
-
-const publishDoc = ({ _window, req, collection, doc, data, liveDB, devDB }) => {
-    postData({ _window, req, save: {db: liveDB, devDB, dev: false, collection, data, doc } })
-    deleteData({ _window, req, erase: {db: devDB, liveDB, dev: true, collection, doc } })
-}
-
-const publish = ({ _window, req, data }) => {
-
-    var devDB = data.devDB, liveDB = data.liveDB
-    if (!fs.existsSync(`bracketDB/${devDB}`) || !fs.existsSync(`bracketDB/${liveDB}`)) return ({ success: false, message: "Wrong DB!" })
-
-    if (data.collection) {
-
-        if (!data.doc) publishCollection({ _window, req, collection, liveDB, devDB })
-        else publishDoc({ _window, req, data: data.data, collection: data.collection, doc: data.doc, liveDB, devDB })
-
-        return ({ success: true, message: "Data published successfully!" })
-    }
-
-    var collections = fs.readdirSync(`bracketDB/${devDB}`)
-
-    for (let index = 0; index < collections.length; index++) {
-
-        var collection = collections[index]
-        if (collection === "__props__") return
-
-        publishCollection({ _window, req, collection })
-    }
-
-    // remove removed devData from liveData
-    // ... (later)
-
-    return ({ success: true, message: "Data published successfully!" })
-}
-
-const findData = ({ data, operator, value }) => {
-
-    var push = false
-
-    // list => loop
-    if (Array.isArray(data) && operator !== "inc") return push = data.find(data => findData({ data, operator, value })) || false
-
-    if (operator === "==") {
-        if (data === value) push = true
-    } else if (operator === "!=") {
-        if (data !== value) push = true
-    } else if (operator === ">=") {
-        if (data >= value) push = true
-    } else if (operator === "<=") {
-        if (data <= value) push = true
-    } else if (operator === "<") {
-        if (data < value) push = true
-    } else if (operator === ">") {
-        if (data > value) push = true
-    } else if (operator === "inc") {
-        if (typeof data === "string" && data.includes(value)) push = true
-        else if (toArray(data).includes(value)) push = true
-    } else if (operator === "in") {
-        if (toArray(value).includes(data)) push = true
-    } else if (operator === "regex") {
-        if (value.test(data)) push = true
-    } else if (operator === "exists") {
-        if (data !== undefined) push = true
-    } else if (operator === "doesnotexist") {
-        if (data === undefined) push = true
-    }
-
-    return push
-}
-
-const toFirebaseOperator = (string) => {
-    if (!string || string === 'equal' || string === 'equals' || string === 'equalsTo' || string === 'equalTo' || string === 'is') return '=='
-    if (string === 'notEqual' || string === 'notequal' || string === 'isnot') return '!='
-    if (string === 'greaterOrEqual' || string === 'greaterorequal') return '>='
-    if (string === 'lessOrEqual' || string === 'lessorequal') return '<='
-    if (string === 'less' || string === 'lessthan' || string === 'lessThan') return '<'
-    if (string === 'greater' || string === 'greaterthan' || string === 'greaterThan') return '>'
-    if (string === 'contains') return 'array-contains'
-    if (string === 'containsany') return 'array-contains-any'
-    if (string === 'doesnotContain' || string === 'doesnotcontain') return 'array-contains-any'
-    else return string
-}
-
-const toOperator = (string) => {
-    if (!string || string === 'equal' || string === 'eq') return '=='
-    if (string === 'notequal' || string === 'neq') return '!='
-    if (string === 'greaterorequal' || string === 'gte') return '>='
-    if (string === 'lessorequal' || string === 'lte') return '<='
-    if (string === 'less' || string === 'lt') return '<'
-    if (string === 'greater' || string === 'gt') return '>'
-    if (string === 'contains') return 'inc'
-    if (string === 'containsall' || string === "incall") return 'inc'
-    if (string === 'doesnotcontain' || string === "doesnotinclude") return 'notinc'
-    else return string
-}
-
-const syncData = ({ global, responses, action, response }) => {
-
-    if (!global.manifest.session || action !== "search()") response = responses[0]
-    else {
-
-        // get main response
-        response = responses.find(res => res.dev || (global.manifest.session.dev ? res.db === global.manifest.session.devDB : res.db === global.manifest.session.db))
-
-        // not db related response (reading from another db)
-        if (!response) response = responses[0]
-
-        // no data in main response
-        if (!response.data && responses.find(({ data, success }) => data && success)) response = { ...response, data: {}, success: true }
-
-        responses.map(res => {
-            if (res.id !== response.id && res.data) Object.entries(res.data).map(([doc, data]) => { if (!response.data[doc]) response.data[doc] = data })
-        })
-    }
-    
-    // __queries__
-    if (action === "search()") queries({ global, data: response.data, search: response.search, collection: response.search.collection })
-
-    // single
-    if (responses.find(({ single }) => single)) response.data = Object.values(response.data)[0]
-
-    return { success: response.success, message: response.message, data: response.data }
-}
-
-const checkIndexing = ({ global, path, search, finds, chunkName, collectionProps }) => {
-
-    var chunks = [], message, success = true
-    // get chunk props
-
-    var chunkProps = JSON.parse(fs.readFileSync(`${path}/collection1/__props__/${chunkName}/__props__.json`))
-    // get docs arrangement 
-    var docs = chunkProps.docs
-
-    for (let index = 0; index < finds.length; index++) {
-
-        if (!success) break;
-        var find = finds[index];
-
-        var searchFields = Object.keys(find), indexing = {}
-
-        // undefined field name
-        var wrongFields = searchFields.find(field => field.includes("undefined"))
-        if (wrongFields) {
-            success = false
-            message = "Wrong find keynames! Includes undefined"
-            break;
-        }
-
-        // check if indexed else create index
-        var indexProps = collectionProps.indexes.find(findProps => searchFields.length === findProps.find.length && !searchFields.find(field => !findProps.find.includes(field)))
-        
-        // not indexed => create an index
-        if (!indexProps) {
-            var {success, message, indexProps} = createIndex({ collectionProps, searchFields, path, search })
-            if (search.dev) createIndex({ collectionProps, searchFields, path: `bracketDB/${search.liveDB}/${search.collection}`, indexed: true })
-            else if (!global.manifest.dev && global.manifest.session && global.manifest.session.devDB) createIndex({ collectionProps, searchFields, path: `bracketDB/${global.manifest.session.devDB}/${search.collection}`, indexed: true })
-        }
-    
-        // get index
-        indexing = JSON.parse(fs.readFileSync(`${path}/collection1/__props__/${chunkName}/${indexProps.doc}.json`))
-
-        // update index expiryDate
-        indexProps.lastRead = new Date().getTime()
-        indexProps.expiryDate = indexProps.lastRead + 2592000000
-
-        // read index
-        fs.readFileSync(`${path}/collection1/__props__/${chunkName}/${indexProps.doc}.json`)
-        
-        chunks[index] = { indexing, find: searchFields }
-    }
-    
-    return {success, message, chunks, docs}
-}
-
-const getFieldValue = (fields, object) => {
-
-    var breakRequest = false
-    var lastIndex = fields.length - 1
-    var success = true, message = "Index created successfully!"
-
-    var answer = fields.reduce((o, k, i) => {
-        if (breakRequest || !o) return o
-        
-        if (Array.isArray(o) && !isNumber(k)) {
-            breakRequest = true
-            return o.map(o => getFieldValue(fields.slice(i), o).value).filter(value => value !== undefined)
-        }
-        else if (i === lastIndex && o[k] !== undefined) return o[k]
-        else if (k.slice(-2) === "()") return actions[k]({o})
-        else if (i !== lastIndex) {
-            if (typeof o !== "object"/* || (typeof o === "string" && !isNumber(k))*/) {
-                breakRequest = true
-                success = false
-                message = "Accessing a non object through field " + k + "!"
-                return
-            }
-            return o[k]
-        }
-    }, object)
-
-    return { success, value: answer, message }
-}
-
-const createCollection = ({ _window, req, db, chunkName = "chunk1", collection, liveDB, collectionProps = {}, dev, datastore = "bracketDB" }) => {
-
-    if (fs.existsSync(`${datastore}/${liveDB}/${collection}`)) return
-
-    fs.mkdirSync(`${datastore}/${liveDB}/${collection}`)
-    fs.mkdirSync(`${datastore}/${liveDB}/${collection}/collection1`)
-    fs.mkdirSync(`${datastore}/${liveDB}/${collection}/collection1/__props__`)
-    fs.mkdirSync(`${datastore}/${liveDB}/${collection}/collection1/__props__/chunk1`)
-    fs.writeFileSync(`${datastore}/${liveDB}/${collection}/collection1/__props__/chunk1/__props__.json`, JSON.stringify({ docs: [], chunk: "chunk1", docsLength: 0, size: 0 }, null, 4))
-
-    if (datastore === "storage") fs.mkdirSync(`${datastore}/${liveDB}/${collection}/bucket1`)
-
-    // props
-    var collectionProps = {
-        creationDate: new Date().getTime(),
-        collection,
-        maxSize: 1000,
-        lastChunk: 1,
-        collection: 1,
-        docsLength: 0,
-        counter: 0,
-        reads: 0,
-        writes: 1,
-        deletes: 0,
-        size: 0,
-        payloadIn: 0,
-        payloadOut: 0,
-        indexes: [],
-        lastIndex: 0
-    }
-
-    // collection props
-    fs.writeFileSync(`${datastore}/${liveDB}/${collection}/collection1/__props__/__props__.json`, JSON.stringify(collectionProps, null, 4))
-
-    // db props
-    var dbProps = JSON.parse(fs.readFileSync(`${datastore}/${liveDB}/__props__/db.json`))
-
-    dbProps.writes += 1
-    db.collectionsLength += 1
-
-    fs.writeFileSync(`${datastore}/${liveDB}/__props__/db.json`, JSON.stringify(dbProps, null, 4))
-
-    if (datastore === "storage") return collectionProps
-
-    // collection props has chunk and devDB does not have => create collection and chunk
-
-    if (_window.global.manifest.session && (_window.global.manifest.session.devDB || dev)) {
-
-        var devDB = _window.global.manifest.session.devDB || db
-        // create collection dir
-        if (fs.existsSync(`${datastore}/${devDB}/${collection}`)) return
-
-        fs.mkdirSync(`${datastore}/${devDB}/${collection}`)
-        fs.mkdirSync(`${datastore}/${devDB}/${collection}/collection1`)
-        fs.mkdirSync(`${datastore}/${devDB}/${collection}/collection1/__props__`)
-
-        createChunk({ db: devDB, collection, chunkName, collectionProps })
-    }
-
-    // create view collection
-    if (collection === "view") {
-
-        var data = [{
-            view: "Action?id=server",
-            children: [
-                {
-                    view: "Action?[manifest:().action]()"
-                }
-            ],
-            __props__: {
-                secured: true
-            }
-        }, {
-            view: "View?id=document",
-            children: [
-                {
-                    view: "View?id=head"
-                },
-                {
-                    view: "View?id=body",
-                    children: [
-                        {
-                            view: "root"
-                        }
-                    ]
-                }
-            ]
-        }, {
-            view: "View?id=root",
-            children: [
-                {
-                    view: "droplist"
-                },
-                {
-                    view: "note"
-                },
-                {
-                    view: "tooltip"
-                },
-                {
-                    view: "loader"
-                },
-                {
-                    view: "@view.page.[manifest:().page]"
-                }
-            ]
-        }, {
-            view: "View?id=main;class=flexbox;style:[height=100vh;width=100vw;gap=3rem];data=@view.schema.mainPageSchema",
-            children: [
-                {
-                    view: "Text?text=_.welcomeStatement;style:[fontSize=4rem]"
-                }
-            ]
-        }, {
-            welcomeStatement: "Welcome to Bracket Technologies!"
-        }]
-
-        
-        database({ _window, req, action: "save()", data: { db: liveDB, devDB: dev ? db : undefined, collection: "view.application", data: data[0], doc: "server" } })
-        database({ _window, req, action: "save()", data: { db: liveDB, devDB: dev ? db : undefined, collection: "view.application", data: data[1], doc: "document" } })
-        database({ _window, req, action: "save()", data: { db: liveDB, devDB: dev ? db : undefined, collection: "view.application", data: data[2], doc: "root" } })
-        database({ _window, req, action: "save()", data: { db: liveDB, devDB: dev ? db : undefined, collection: "view.page", data: data[3], doc: "main" } })
-        database({ _window, req, action: "save()", data: { db: liveDB, devDB: dev ? db : undefined, collection: "view.schema", data: data[4], doc: "mainPageSchema" } })
-    }
-
-    return collectionProps
-}
-
-const createChunk = ({ db, collection, chunkName, collectionProps, datastore = "bracketDB" }) => {
-
-    var chunkProps = { docs: [], chunk: chunkName, docsLength: 0, size: 0 }
-    fs.mkdirSync(`${datastore}/${db}/${collection}/collection1/__props__/${chunkName}`)
-
-    // create indexes in chunk1
-    if (fs.existsSync(`${datastore}/${db}/${collection}`))
-        collectionProps.indexes.map(({ doc }) => fs.writeFileSync(`${datastore}/${db}/${collection}/collection1/__props__/${chunkName}/${doc}.json`, JSON.stringify({}, null, 4)))
-
-    fs.writeFileSync(`${datastore}/${db}/${collection}/collection1/__props__/${chunkName}/__props__.json`, JSON.stringify(chunkProps, null, 4))
-    
-    for (let i = 0; i < collectionProps.indexes.length; i++) {
-        fs.writeFileSync(`${datastore}/${db}/${collection}/collection1/__props__/${chunkName}/${collectionProps.indexes[i].doc}.json`, JSON.stringify({}, null, 4))
-    }
-}
-
-const createIndex = ({ collectionProps, searchFields, path, indexed = false }) => {
-
-    var success = true, message = "", indexProps = {}
-
-    if (!indexed) {
-        collectionProps.lastIndex += 1
-        indexProps = { find: searchFields, doc: "index" + collectionProps.lastIndex }
-        collectionProps.indexes.push(indexProps)
-    }
-
-    for (let index = 1; index <= collectionProps.lastChunk; index++) {
-
-        var chunkName = "chunk" + index
-        var chunkProps = JSON.parse(fs.readFileSync(`${path}/collection1/__props__/${chunkName}/__props__.json`))
-        var { docs } = chunkProps
-        var indexing = {}
-        
-        // loop over all docs
-        for (let i = 0; i < docs.length; i++) {
-
-            var doc = docs[i];
-            if (!success) break;
-
-            // loop over find fields
-            for (let j = 0; j < searchFields.length; j++) {
-                var field = searchFields[j];
-
-                // get value
-                var { success, value, message } = getFieldValue(field.split("."), JSON.parse(fs.readFileSync(`${path}/collection1/${doc}.json`)))
-                if (!success) break;
-
-                if (j === 0) indexing[doc] = {}
-
-                // push values to indexing
-                if (value !== undefined) indexing[doc][field] = value
-            }
-        }
-    
-        // save index dev
-        fs.writeFileSync(`${path}/collection1/__props__/${chunkName}/index${collectionProps.lastIndex}.json`, JSON.stringify(indexing, null, 4))
-    }
-
-    return { success, message, indexProps }
-}
-
-const mail = async ({ _window, req, res, action, data, stack, props, __ }) => {
-
-    if (action === "sendEmail()") {
-        let transporter = require("nodemailer").createTransport({
-            service: data.service || "Gmail",
-            host: data.host || "smtp.gmail.com",
-            port: 465,
-            secure: true,
-            auth: {
-                user: data.user || 'komikbenim@gmail.com',
-                pass: data.pass || 'zcybkidtudibysxh'
-            }
-        });
-        
-        // Email options
-        let mailOptions = {
-            from: 'komikbenim@gmail.com',
-            to: data.to,
-            subject: data.subject || "",
-            text: data.text || "",
-            html: data.html || ""
-        };
-        
-        // Send the email
-        var info = await transporter.sendMail(mailOptions)/*, (error, info) => {
-            if (error) {
-                console.log('Error:', error);
-                resolve(error)
-            } else {
-                console.log('Email sent:', info.response);
-                resolve(info)
-            }
-        })*/
-        console.log('Email sent:', info.response);
-       return info
-    }
-}
-
-const saveToLogs = ({ _window, logs }) => {
-    logs.shift()
-    database({ _window, action: "save()", data: { collection: "logs", data: { logs } } })
+    actions["stackManager()"]({ _window, lookupActions, id, e, asyncer: true, address, stack, props, req, res, __, _: data })
 }
 
 module.exports = {
     actions, kernel, toValue, toParam, reducer, toApproval, toAction, toLine, addEventListener,
     getDeepChildren, getDeepChildrenId, calcSubs, calcDivision, calcModulo, emptySpaces, isNumber, printAddress, endAddress, resetAddress,
     closePublicViews, updateDataPath, remove, initView, getViewParams, removeView, defaultEventHandler,
-    toNumber, defaultAppEvents, clearActions, hideSecured, route, respond, eventExecuter, starter,
-    database,
-    getData,
-    postData,
-    deleteData,
-    start,
-    saveLogs
+    toNumber, defaultAppEvents, clearActions, route, eventExecuter, starter
 }

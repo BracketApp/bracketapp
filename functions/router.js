@@ -1,7 +1,8 @@
 const { authorizer } = require("./authorizer")
 const { getLocalFile } = require("./storageLocal")
 const { openStack, endStack } = require("./stack")
-const { database, isNumber, respond, actions } = require("./kernel")
+const { isNumber, actions } = require("./kernel")
+const { database, respond } = require("./database")
 const { logger } = require("./logger")
 const { parseCookies } = require("./cookie")
 
@@ -125,7 +126,6 @@ const initializer = ({ id, req, res }) => {
     __page__: page,
     __prevPage__: ["main"],
     __prevPath__: ["/"],
-    __document__: { body: "", head: "" },
     __server__: { startTime: (new Date()).getTime() },
 
     //

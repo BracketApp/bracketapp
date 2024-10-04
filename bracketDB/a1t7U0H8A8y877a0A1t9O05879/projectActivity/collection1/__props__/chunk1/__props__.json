@@ -1,5 +1,8 @@
 {
     "docs": [
+        "projectActivity8",
+        "projectActivity7",
+        "projectActivity6",
         "projectActivity5",
         "projectActivity4",
         "projectActivity3",
@@ -7,6 +10,6 @@
         "projectActivity1"
     ],
     "chunk": "chunk1",
-    "docsLength": 5,
-    "size": 2868
+    "docsLength": 8,
+    "size": 5366
 }

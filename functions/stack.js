@@ -18,7 +18,8 @@ const openStack = ({ _window, id: viewID, string = "", ...data }) => {
     executedActions: [],
     addresses: [],
     logs: [],
-    returns: []
+    returns: [],
+    refs: []
   }
 
   //stack.logs.push(`# Status TYPE ID Index Action => HeadID HeadIndex HeadAction`)
@@ -38,21 +39,22 @@ const clearStack = ({ stack }) => {
   stack.addresses = []
 }
 
-const endStack = ({ _window, stack, props }) => {
+const endStack = ({ _window, stack }) => {
 
-  if (stack.addresses.length !== 0)  return
+  if (stack.addresses.length !== 0) return
 
   const global = _window ? _window.global : window.global
-  const logs = `%cSTACK ${(new Date()).getTime() - stack.executionStartTime} ${stack.event}`
+  //const logs = `%cSTACK ${(new Date()).getTime() - stack.executionStartTime} ${stack.event}`
   // stack.logs.push(`${stack.logs.length} End STACK ${(new Date()).getTime() - stack.executionStartTime} ${stack.id} ${stack.event}`)
+
+  // print stack
+  //stack.print && !stack.printed && console.log("STACK:" + stack.event, logs, "color: blue", stack, props.logs)
+  //stack.printed = true
+  stack.status = "End"
+  stack.refs.map(ref => delete global.__refs__[ref])
 
   // remove stack
   delete global.__stacks__[stack.id]
-
-  // print stack
-  stack.print && !stack.printed && console.log("STACK:" + stack.event, logs, "color: blue", stack, props.logs)
-  stack.printed = true
-  stack.status = "End"
 }
 
 module.exports = { openStack, clearStack, endStack }

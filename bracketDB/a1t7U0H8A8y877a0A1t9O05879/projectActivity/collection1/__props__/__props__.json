@@ -3,14 +3,14 @@
     "collection": 1,
     "maxSize": 1000,
     "lastChunk": 1,
-    "docsLength": 5,
-    "counter": 5,
-    "reads": 326,
-    "writes": 169,
+    "docsLength": 8,
+    "counter": 8,
+    "reads": 948,
+    "writes": 483,
     "deletes": 0,
-    "size": 2820,
-    "payloadIn": 101294,
-    "payloadOut": 196540,
+    "size": 4512,
+    "payloadIn": 319775,
+    "payloadOut": 628318,
     "indexes": [
         {
             "find": [
@@ -18,8 +18,8 @@
                 "projectID"
             ],
             "doc": "index1",
-            "lastRead": 1727787319333,
-            "expiryDate": 1730379319333
+            "lastRead": 1728003583337,
+            "expiryDate": 1730595583337
         }
     ],
     "lastIndex": 1

@@ -5,12 +5,12 @@
     "lastChunk": 1,
     "docsLength": 5,
     "counter": 11,
-    "reads": 3932,
+    "reads": 3933,
     "writes": 114,
     "deletes": 0,
     "size": 1580,
     "payloadIn": 47340,
-    "payloadOut": 1675443,
+    "payloadOut": 1675921,
     "indexes": [
         {
             "find": [
@@ -34,8 +34,8 @@
                 "pluginID"
             ],
             "doc": "index3",
-            "lastRead": 1727722146410,
-            "expiryDate": 1730314146410
+            "lastRead": 1727828306950,
+            "expiryDate": 1730420306950
         }
     ],
     "lastIndex": 5

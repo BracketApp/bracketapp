@@ -3,14 +3,14 @@
     "collection": 1,
     "maxSize": 1000,
     "lastChunk": 1,
-    "docsLength": 5,
-    "counter": 5,
-    "reads": 234,
-    "writes": 123,
+    "docsLength": 9,
+    "counter": 9,
+    "reads": 838,
+    "writes": 429,
     "deletes": 0,
-    "size": 2760,
-    "payloadIn": 69988,
-    "payloadOut": 134064,
+    "size": 4968,
+    "payloadIn": 280253,
+    "payloadOut": 548380,
     "indexes": [
         {
             "find": [
@@ -18,8 +18,8 @@
                 "userID"
             ],
             "doc": "index1",
-            "lastRead": 1727787319324,
-            "expiryDate": 1730379319324
+            "lastRead": 1728003583323,
+            "expiryDate": 1730595583323
         }
     ],
     "lastIndex": 1

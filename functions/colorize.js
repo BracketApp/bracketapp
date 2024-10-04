@@ -18,7 +18,7 @@ const colorize = ({ _window, string, start = "[", index = 0, colors = _colors })
   // comment
   if (string.charAt(0) === "#" || string.includes("?#") || string.includes(";#") || string.includes("[#")) {
 
-    var string0 = "", operator = ""
+    let string0 = "", operator = ""
     if (string.split("?#")[1]) {
 
       string0 = string.split("?#")[0]
@@ -35,14 +35,14 @@ const colorize = ({ _window, string, start = "[", index = 0, colors = _colors })
       operator = "["
     }
 
-    var key = !operator ? string : string.split(string0 + operator).slice(1).join(string0 + operator)
+    let key = !operator ? string : string.split(string0 + operator).slice(1).join(string0 + operator)
 
     // comment
-    var comment = key.split("?")[0].split(";")[0]
+    let comment = key.split("?")[0].split(";")[0]
     // [params;#comment]
     if (comment.split("]")[1] !== undefined) comment = key.split("]")[0]
 
-    var string1 = key.split(comment).slice(1).join(comment)
+    let string1 = key.split(comment).slice(1).join(comment)
     string1 = colorize({ _window, string: string1, index, colors })
 
     if (string0) string0 = colorizeCoded({ _window, index, string: string0, colors })
@@ -61,20 +61,19 @@ const colorize = ({ _window, string, start = "[", index = 0, colors = _colors })
 
 const colorizeCoded = ({ _window, index, string, colors }) => {
 
-  var global = _window ? _window.global : window.global
-  var slicer = string.split("@$")
+  let global = _window ? _window.global : window.global
+  let slicer = string.split("@$")
   if (slicer.length < 2) return string
   if (!global.__refs__["@$" + slicer[1].slice(0, 5)]) return (slicer.slice(0, 2).join("@$") + (slicer[2] ? colorize({ _window, index, string: "@$" + slicer.slice(2).join("@$"), colors }) : ""))
   
-  var text = ""
-
-  var string0 = slicer[0]
-  var string1 = colorize({ _window, index, string: slicer.slice(1).join("@$").slice(5), colors })
-  var reference = global.__refs__["@$" + slicer[1].slice(0, 5)]
+  let text = ""
+  let string0 = slicer[0]
+  let string1 = colorize({ _window, index, string: slicer.slice(1).join("@$").slice(5), colors })
+  let reference = global.__refs__["@$" + slicer[1].slice(0, 5)]
 
   if (typeof reference === "object") {
 
-    var data = ""
+    let data = ""
     if (reference.type === "code") data = colorize({ _window, string: "[" + reference.data + "]", index: index + 1, colors })
     else data = `<span contenteditable style="background-color:#00000000; color:${colors[index + 1]}; white-space:nowrap">'${reference.data}'</span>`
 

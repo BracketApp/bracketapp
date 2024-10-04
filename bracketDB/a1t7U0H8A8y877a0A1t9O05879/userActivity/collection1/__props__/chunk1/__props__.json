@@ -1,5 +1,9 @@
 {
     "docs": [
+        "userActivity9",
+        "userActivity8",
+        "userActivity7",
+        "userActivity6",
         "userActivity5",
         "userActivity4",
         "userActivity3",
@@ -7,6 +11,6 @@
         "userActivity1"
     ],
     "chunk": "chunk1",
-    "docsLength": 5,
-    "size": 2823
+    "docsLength": 9,
+    "size": 5817
 }

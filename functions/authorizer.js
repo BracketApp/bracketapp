@@ -1,4 +1,5 @@
-const { database, actions } = require("./kernel")
+const { actions } = require("./kernel")
+const { database } = require("./database")
 const { logger } = require("./logger")
 const { generate } = require("./generate")
 
