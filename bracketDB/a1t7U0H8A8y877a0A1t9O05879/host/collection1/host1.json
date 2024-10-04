@@ -20,6 +20,7 @@
         81
     ],
     "subdomain": "brackettechnologies",
+    "host": "brackettechnologies.com",
     "active": true,
     "localhost": "localhost",
     "private": true,
