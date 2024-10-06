@@ -393,7 +393,7 @@ const postData = ({ _window = {}, req, res, save, action = "save()", verified })
     
     for (let i = 0; i < dataList.length; i++) {
 
-        var writesCounter = 0, newDocsLength = 0, payloadIn = 0, newDataSize = 0
+        let writesCounter = 0, newDocsLength = 0, payloadIn = 0, newDataSize = 0
         var data = dataList[i], createNewDoc = false, existingData = {}, chunkName = `chunk${collectionProps.lastChunk}`
 
         // check if user is creating a new doc
@@ -402,9 +402,8 @@ const postData = ({ _window = {}, req, res, save, action = "save()", verified })
         if (!createNewDoc) {
             var response = database({_window, action:"search()", data:{db: liveDB, devDB: save.devDB, collection, doc:data.__props__.doc}, checkDataExists: true})
             
-            if (response.data) {
-                existingData = response.data
-            } else createNewDoc = true
+            if (response.data) existingData = response.data
+            else createNewDoc = true
         }
         
         // check doc by given doc

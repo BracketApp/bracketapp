@@ -10,7 +10,7 @@
     "deletes": 0,
     "size": 250,
     "payloadIn": 5425,
-    "payloadOut": 1772276,
+    "payloadOut": 1772586,
     "indexes": [
         {
             "find": [
@@ -25,8 +25,8 @@
                 "packageID"
             ],
             "doc": "index2",
-            "lastRead": 1728228023743,
-            "expiryDate": 1730820023743
+            "lastRead": 1728249772921,
+            "expiryDate": 1730841772921
         }
     ],
     "lastIndex": 2

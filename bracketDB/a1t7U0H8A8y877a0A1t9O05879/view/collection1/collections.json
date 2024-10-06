@@ -67,7 +67,7 @@
         "creationDate": 1710330786484,
         "collection": "view",
         "chunk": "chunk1",
-        "lastModified": 1728216799100,
+        "lastModified": 1728239286639,
         "dev": false,
         "actions": {
             "clickCreateNewDoc": "parent().next().display();1stSibling().style().rotate()=90;if():[!duplicateDoc:()]:[openDoc:().del()];openCollection:()=data();parent().next().insert():[view=parent().next();viewPath=:children:1;index=0;data='']:[_.view.():[2ndChild().hide();3rdChild().():[display();txt()='';focus()]];hideActionPopup()]",
@@ -87,7 +87,7 @@
             },
             "importDoc": {
                 "existenceNote": "note():[text=Document name exists!;danger]",
-                "saveDoc": "@actions.db;saveData():[publicID=project:().publicID;collection=_.collection;data=__.data.data;doc=_.doc]:[note():[text=Document imported successfully!];data:().editor.[_.collection].[_.doc]=__.data.clone();nthParent():4.refresh();el().value='']",
+                "saveDoc": "@actions.db;saveData():[publicID=project:().publicID;collection=_.collection;data=__.data.data;doc=_.doc]:[note():[text=Document imported successfully!];data:().editor.[__.collection].[__.doc]=_.data.clone();nthParent():4.refresh();el().value='']",
                 "_": "collection=data();read():[file=file();type=json]:[openDoc=_.data.name.split():'.json'.0;if():[!data:().editor.[().collection].[().openDoc]]:[saveDoc():[collection=().collection;doc=().openDoc]]:[existenceNote()]]"
             },
             "toggleActionPopup": "if():[():actionPopup.style().opacity='1';actionPopupCaller:()=.id]:[hideActionPopup()]:[actionPopupCaller:()=.id;():actionPopup.():[caller=..id;position():[positioner=...id;placement=right];openDoc=..data();openCollection=..2ndParent().data();openActionPopup();3rdChild().refresh()]]",
@@ -166,6 +166,14 @@
             }
         ],
         "collapsed": [
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    0
+                ]
+            },
             {
                 "path": [
                     "children",
@@ -351,6 +359,6 @@
             ]
         },
         "secured": false,
-        "size": 15918
+        "size": 15956
     }
 }

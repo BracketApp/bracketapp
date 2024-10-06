@@ -1,11 +1,6 @@
 {
-    "docs": [
-        "availability4",
-        "availability3",
-        "availability2",
-        "availability1"
-    ],
+    "docs": [],
     "chunk": "chunk1",
-    "docsLength": 4,
-    "size": 1518
+    "docsLength": 0,
+    "size": 0
 }

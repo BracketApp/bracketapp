@@ -5,12 +5,12 @@
     "lastChunk": 1,
     "docsLength": 12,
     "counter": 12,
-    "reads": 11651,
+    "reads": 11806,
     "writes": 13,
     "deletes": 0,
     "size": 7545,
     "payloadIn": 7545,
-    "payloadOut": 7277232,
+    "payloadOut": 7373841,
     "indexes": [
         {
             "find": [
@@ -28,8 +28,8 @@
                 "publicID"
             ],
             "doc": "index2",
-            "lastRead": 1728228023741,
-            "expiryDate": 1730820023741
+            "lastRead": 1728249808253,
+            "expiryDate": 1730841808253
         },
         {
             "find": [

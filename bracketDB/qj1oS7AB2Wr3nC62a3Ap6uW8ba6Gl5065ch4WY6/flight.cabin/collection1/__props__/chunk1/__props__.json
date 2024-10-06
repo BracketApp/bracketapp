@@ -1,9 +1,6 @@
 {
-    "docs": [
-        "cabin2",
-        "cabin1"
-    ],
+    "docs": [],
     "chunk": "chunk1",
-    "docsLength": 2,
-    "size": 718
+    "docsLength": 0,
+    "size": 0
 }

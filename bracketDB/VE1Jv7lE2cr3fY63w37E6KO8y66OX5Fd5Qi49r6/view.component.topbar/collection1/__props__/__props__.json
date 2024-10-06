@@ -5,12 +5,12 @@
     "lastChunk": 1,
     "docsLength": -3,
     "counter": 0,
-    "reads": 3730,
+    "reads": 3742,
     "writes": 57,
     "deletes": 0,
     "size": -7578,
     "payloadIn": 162311,
-    "payloadOut": 4797674,
+    "payloadOut": 4812173,
     "indexes": [],
     "lastIndex": 0
 }

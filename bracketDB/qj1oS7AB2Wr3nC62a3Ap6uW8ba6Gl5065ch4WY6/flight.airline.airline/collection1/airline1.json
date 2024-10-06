@@ -1,0 +1,25 @@
+{
+    "__props__": {
+        "id": "j1H7g2F8x2f3P825e2y933A2d9",
+        "doc": "airline1",
+        "counter": 1,
+        "creationDate": 1728238529329,
+        "collection": "flight.airline.airline",
+        "chunk": "chunk1",
+        "lastModified": 1728238529329,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "airline",
+                "country"
+            ]
+        },
+        "secured": false,
+        "size": 347
+    },
+    "airline": "Turkish Airlines",
+    "country": "country2"
+}

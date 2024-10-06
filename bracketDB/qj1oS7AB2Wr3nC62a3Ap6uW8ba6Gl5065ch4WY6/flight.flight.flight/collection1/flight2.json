@@ -1,0 +1,33 @@
+{
+    "__props__": {
+        "id": "R1s702g832c39976c0A05237B7",
+        "doc": "flight2",
+        "counter": 2,
+        "creationDate": 1728239600277,
+        "collection": "flight.flight.flight",
+        "chunk": "chunk1",
+        "lastModified": 1728239600277,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "flightNumber",
+                "aircraft",
+                "from",
+                "to",
+                "departure",
+                "arrival"
+            ]
+        },
+        "secured": false,
+        "size": 455
+    },
+    "flightNumber": "TK1222",
+    "from": "airport2",
+    "to": "airport1",
+    "departure": 72000000,
+    "arrival": 79200000,
+    "aircraft": "aircraft1"
+}
