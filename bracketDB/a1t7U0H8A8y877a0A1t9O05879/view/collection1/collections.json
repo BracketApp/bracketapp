@@ -67,7 +67,7 @@
         "creationDate": 1710330786484,
         "collection": "view",
         "chunk": "chunk1",
-        "lastModified": 1726769165135,
+        "lastModified": 1728216799100,
         "dev": false,
         "actions": {
             "clickCreateNewDoc": "parent().next().display();1stSibling().style().rotate()=90;if():[!duplicateDoc:()]:[openDoc:().del()];openCollection:()=data();parent().next().insert():[view=parent().next();viewPath=:children:1;index=0;data='']:[_.view.():[2ndChild().hide();3rdChild().():[display();txt()='';focus()]];hideActionPopup()]",
@@ -133,7 +133,7 @@
             "openCollection": {
                 "_": "searchDocs()?clicked()!=nthLastChild():3;clicked()!=nthLastChild():2;clicked()!=nthLastChild():1;clicked()!=input()",
                 "searchDocs": "hideOptionsIcons();next().children().():[rem():[preventDefault=true]];searchDocsRequest()::[displayOptionsIcons()?mouseentered]?1stChild().style().transform='rotate(0deg)'?closeCollection()",
-                "searchDocsRequest": "[getData():[publicID=project:().publicID;collection=..data()]:[data:().editor.[data()]=_.data;1stChild().rotate()=90;next().refresh()::[next().display()]]]():[collection=actions;doc=db]",
+                "searchDocsRequest": "[getData():[publicID=project:().publicID;collection=parent().data()]:[data:().editor.[data()]=_.data;1stChild().rotate()=90;next().refresh()::[next().display()]]]():[collection=actions;doc=db]",
                 "closeCollection": "data:().editor.[data()].del();1stChild().rotate()=0;next().children().():[rem():[preventDefault=true]];hideOptionsIcons();lastChild().display()"
             },
             "cancelEditCreateDoc": "txt()=_.doc;hide();prev().display();[[closeFolder():[id=_.view]?!data:().editor.[_.collection]||data:().editor.[_.collection].keys().len()=0];parent().rem():[preventDefault=true]?!_.doc||!data:().editor.[_.collection].[_.doc]]"
@@ -166,14 +166,6 @@
             }
         ],
         "collapsed": [
-            {
-                "path": [
-                    "children",
-                    0,
-                    "children",
-                    0
-                ]
-            },
             {
                 "path": [
                     "children",
@@ -359,6 +351,6 @@
             ]
         },
         "secured": false,
-        "size": 15948
+        "size": 15918
     }
 }

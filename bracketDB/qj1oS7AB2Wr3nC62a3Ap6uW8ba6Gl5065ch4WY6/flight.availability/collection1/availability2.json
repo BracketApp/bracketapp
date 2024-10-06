@@ -1,0 +1,29 @@
+{
+    "__props__": {
+        "id": "91e7d268I1j5n6n7h9e3J9J5j1",
+        "doc": "availability2",
+        "counter": 2,
+        "creationDate": 1728156793951,
+        "collection": "flight.availability",
+        "chunk": "chunk1",
+        "lastModified": 1728157163900,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "cabin",
+                "flight",
+                "booked",
+                "available"
+            ]
+        },
+        "secured": false,
+        "size": 380
+    },
+    "cabin": "cabin1",
+    "flight": "flight2",
+    "available": 150,
+    "booked": 0
+}

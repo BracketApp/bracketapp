@@ -81,7 +81,7 @@ const checkHost = ({ _window, global, host }) => {
   else {
 
     message = "Host is not registered!"
-    props.findOne = { /*localhost: */host }
+    props.findOne = [{ localhost: host }, { host }]
   }
 
   // get host

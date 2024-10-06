@@ -3,14 +3,14 @@
     "collection": 1,
     "maxSize": 1000,
     "lastChunk": 1,
-    "docsLength": 6,
-    "counter": 320,
-    "reads": 57974,
-    "writes": 437,
-    "deletes": 34,
-    "size": -489,
-    "payloadIn": 304854,
-    "payloadOut": 40098801,
+    "docsLength": 30,
+    "counter": 347,
+    "reads": 58508,
+    "writes": 465,
+    "deletes": 39,
+    "size": 16909,
+    "payloadIn": 324923,
+    "payloadOut": 40467294,
     "indexes": [
         {
             "find": [
@@ -18,8 +18,8 @@
                 "publicID"
             ],
             "doc": "index1",
-            "lastRead": 1728068286842,
-            "expiryDate": 1730660286842
+            "lastRead": 1728228023738,
+            "expiryDate": 1730820023738
         }
     ],
     "lastIndex": 1

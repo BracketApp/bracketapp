@@ -6,27 +6,27 @@
         "creationDate": 1723738573372,
         "collection": "view.server",
         "chunk": "chunk1",
-        "lastModified": 1726765271893,
+        "lastModified": 1728153634880,
         "dev": true,
         "actions": {
             "login": {
                 "_": "getUsername()::getPassword():getUser():getPermission():sessionHandler():successHandler()?_.username;_.password?send():[success=false;msg=Missing data!]",
-                "getUser": "search():[collection=account.user.user;findOne:[id=username:().userID]]:[user:()=_.data?_.data?send():[success=false;msg=User does not exist!]]",
-                "getPassword": "search():[collection=account.user.password;findOne:[password=_.password;usernameID=username:().doc()]]:[password:()=_.data?_.data?send():[success=false;msg=Wrong password!]]",
+                "getUser": "search():[collection=account.user.user;doc=username:().user]:[user:()=_.data?_.data?send():[success=false;msg=User does not exist!]]",
+                "getPassword": "search():[collection=account.user.password;findOne:[password=_.password;username=username:().doc()]]:[password:()=_.data?_.data?send():[success=false;msg=Wrong password!]]",
                 "getUsername": "search():[collection=account.user.username;findOne:[username=_.username]]:[username:()=_.data?_.data?send():[success=false;msg=Wrong username!]]",
-                "getPermission": "search():[collection=account.user.permission;findOne:[userID=user:().doc()]]:[permission:()=_.data]",
+                "getPermission": "search():[collection=account.user.permission;findOne:[user=username:().user]]:[permission:()=_.data]",
                 "sessionHandler": {
                     "_": "getSession()::updateSession()?getCookie():session?createSession()",
-                    "getSession": "search():[collection=account.user.session;findOne:[session=getCookie():session;userID=user:().doc()]]:[session:()=_.data?_.data?wrongSession=true;createSession()]",
+                    "getSession": "search():[collection=account.user.session;findOne:[session=getCookie():session;user=user:().doc()]]:[session:()=_.data?_.data?wrongSession=true;createSession()]",
                     "updateSession": "session:().():[session=gen():[universal=true];expiryDate=now().timestamp()+86400000];save():[collection=account.user.session;data=session:()]:[session:()=_.data]?!wrongSession",
                     "createSession": {
                         "_": "getUserAllSessions()::removeExpiredSessions():createSession()",
                         "createSession": {
                             "_": "initSession();save():[collection=account.user.session;data=session:()]:[session:()=_.data]?sessions:().keys().len()<3?reachedMax()",
                             "reachedMax": "send():[success=false;msg=You cannot have more than three active users!]",
-                            "initSession": "session:()=[session=gen():[universal=true];userID=user:().doc();expiryDate=now().timestamp()+86400000]"
+                            "initSession": "session:()=[session=gen():[universal=true];user=user:().doc();expiryDate=now().timestamp()+86400000]"
                         },
-                        "getUserAllSessions": "search():[collection=account.user.session;find:[userID=user:().doc()]]:[sessions:()=_.data||[]]",
+                        "getUserAllSessions": "search():[collection=account.user.session;find:[user=user:().doc()]]:[sessions:()=_.data||[]]",
                         "removeExpiredSessions": "sessions:().keys()._():[erase():[collection=account.user.session;doc=_];sessions:().[_].del()?sessions:().[_].expiryDate<now().timestamp()]"
                     }
                 },
@@ -37,7 +37,7 @@
                 "getSession": "search():[collection=account.user.session;findOne:[session=getCookie():session]]:[session:()=_.data?_.data?()]",
                 "updateSession": "session:().():[session=gen():[universal=true];expiryDate=now().timestamp()+86400000];save():[collection=account.user.session;data=session:()]:[session:()=_.data]",
                 "checkSession": "erase():[collection=account.user.session;doc=getCookie():session]:[failHandler()]?session:().expiryDate<now().timestamp()",
-                "getUser": "search():[collection=account.user.user;doc=session:().userID]:[user:()=_.data?_.data?failHandler()]",
+                "getUser": "search():[collection=account.user.user;doc=session:().user]:[user:()=_.data?_.data?failHandler()]",
                 "failHandler": "eraseCookie():session;send():[success=false]",
                 "successHandler": "setCookie():session:[session:().session];send():[success=true;user=user:()]"
             }
@@ -97,6 +97,6 @@
             ]
         },
         "secured": true,
-        "size": 3719
+        "size": 3699
     }
 }

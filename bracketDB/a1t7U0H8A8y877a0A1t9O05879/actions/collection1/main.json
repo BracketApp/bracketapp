@@ -6,7 +6,7 @@
         "creationDate": 1714592888052,
         "collection": "actions",
         "chunk": "chunk1",
-        "lastModified": 1723734606020,
+        "lastModified": 1728227432968,
         "dev": false,
         "actions": {
             "getUserAccount": {
@@ -172,7 +172,8 @@
                     "_": "[createSubscription()]():[path=:]:[subscribeToConsole()]",
                     "subscribeToConsole": {
                         "_": "[getSubscription():[[_].flat();end=true]]()::[createHost()?_.pluginID=Q1p78107R4j1n2Z9a2E1K1r912;subscription:().free]",
-                        "createHost": "[createHost():[[_].flat();dev=true]]():[path=:]"
+                        "createHost": "[checkHost()::[createHost():[[_].flat();dev=true]?!host:()]]():[path=:]",
+                        "checkHost": "search():[collection=host;findOne:[publicID=_.publicID]]:[host:()=_.data]"
                     }
                 },
                 "checkData": "send():[success=false;msg=Missing data!]?_.find():[!publicID||!pluginID||!packageID||!qty]",
@@ -237,7 +238,7 @@
                 "endHandler": "send():[paymentMethods=paymentMethods:()]?!stack().renderer;!_.end?end():[paymentMethods=paymentMethods:()]"
             },
             "getHost": {
-                "_": "search():[collection=host;findOne:[publicID=_.publicID;port.gte=80;dev=true]]:[_.data.ip=localIP()+':'+_.data.port.0;send():[host=_.data]]"
+                "_": "search():[collection=host;findOne:[publicID=_.publicID;port.gte=80;[dev=_.dev?_.dev]]]:[_.data.ip=localIP()+':'+_.data.port.0;send():[host=_.data]]"
             },
             "getPlugin": {
                 "_": "start();getPlugin()::[getPackage()::[getAccessability()::[getSubscriptions()::[resHandler()]]]]",
@@ -636,8 +637,403 @@
                 ]
             }
         ],
-        "arrange": [],
+        "arrange": {
+            "": [
+                "addProject",
+                "charge",
+                "chargeAccount",
+                "createAccount",
+                "createBillingAccount",
+                "createBlocks",
+                "createHost",
+                "createInvoice",
+                "createProject",
+                "createSubscription",
+                "deleteProject",
+                "docCounter",
+                "fromAccount",
+                "genCoins",
+                "getAllInvoices",
+                "getAllSubscriptions",
+                "getAllVouchers",
+                "getBillingAccount",
+                "getBillingAccountBySession",
+                "getBillingAccounts",
+                "getHost",
+                "getOnlyPlugins",
+                "getOnlyProjects",
+                "getPackage",
+                "getPackages",
+                "getPaymentMethods",
+                "getPlugin",
+                "getPlugins",
+                "getProject",
+                "getProjects",
+                "getSubscription",
+                "getSubscriptions",
+                "getUser",
+                "getUserAccount",
+                "localIP",
+                "searchBySchema",
+                "signup",
+                "subscribe"
+            ],
+            "addProject": [
+                "_",
+                "checkConditions",
+                "createProject",
+                "createSubscription",
+                "getMainProject",
+                "resHandler"
+            ],
+            "addProject.checkConditions": [
+                "_",
+                "checkAvNewProjects",
+                "checkData",
+                "checkPermissions",
+                "checkPluginIDPackageID"
+            ],
+            "addProject.getMainProject": [
+                "_",
+                "checkProject"
+            ],
+            "charge": [
+                "_",
+                "createBlocks",
+                "createPurchaseInvoice",
+                "createSalesInvoice",
+                "getFromBillingAccount",
+                "getToBillingAccount"
+            ],
+            "chargeAccount": [
+                "_",
+                "charge",
+                "checkData",
+                "getPackage",
+                "getUserAccount",
+                "resHandler"
+            ],
+            "chargeAccount.checkData": [
+                "_",
+                "checkData",
+                "checkPermissions",
+                "checkPluginIDPackageID"
+            ],
+            "chargeAccount.getPackage": [
+                "_",
+                "checkPackage"
+            ],
+            "createAccount": [
+                "_",
+                "createAccount",
+                "createPassword",
+                "createUser"
+            ],
+            "createAccount.createUser": [
+                "_",
+                "checkUsername",
+                "checkUsernameLength",
+                "createUser",
+                "initUserData",
+                "modifyUsername"
+            ],
+            "createBillingAccount": [
+                "_",
+                "createBillingAccount",
+                "initBillingAccount"
+            ],
+            "createBlocks": [
+                "_",
+                "createBlocks",
+                "getCoins",
+                "getPrevBlocks",
+                "updatePrevBlocks"
+            ],
+            "createBlocks.createBlocks": [
+                "_",
+                "createBlocksThroughCoins",
+                "createBlocksThroughPrevBlocks"
+            ],
+            "createBlocks.getPrevBlocks": [
+                "_",
+                "resHandler"
+            ],
+            "createHost": [
+                "_",
+                "createPrivateHost",
+                "getPortCounter",
+                "getProject"
+            ],
+            "createInvoice": [
+                "_",
+                "createInvoice",
+                "createTransaction",
+                "createVoucher"
+            ],
+            "createInvoice.createTransaction": [
+                "_",
+                "createTransaction",
+                "updateBillingAccountLastTransaction"
+            ],
+            "createInvoice.createVoucher": [
+                "_"
+            ],
+            "createProject": [
+                "_",
+                "checkSubdomain",
+                "checkSubdomainLength",
+                "createPermission",
+                "createProject",
+                "initProjectData",
+                "modifySubdomain",
+                "updateAccountAvNewProjects",
+                "updatePermission",
+                "updateUser"
+            ],
+            "createProject.initProjectData": [
+                "_",
+                "subdomainHandler"
+            ],
+            "createProject.modifySubdomain": [
+                "_",
+                "branchSubdomainHandler",
+                "projectSubdomainHandler"
+            ],
+            "createSubscription": [
+                "_",
+                "charge",
+                "createSubscription",
+                "getLastSubscription",
+                "getPlugin",
+                "getProject",
+                "getUserAccount",
+                "initSubscription"
+            ],
+            "deleteProject": [
+                "_",
+                "#deactivateProject",
+                "checkPermission",
+                "deleteAccountUsersPasswordsPermissions",
+                "deleteBillingAccountsTransactionsPaymentMethodsInvoicesBlocksVouchers",
+                "deleteProjectSubscriptions",
+                "getUserAndAccount",
+                "missingDataHandler",
+                "resHandler",
+                "updatePermission"
+            ],
+            "deleteProject.deleteAccountUsersPasswordsPermissions": [
+                "_",
+                "deleteAccount",
+                "deletePasswords",
+                "deletePermissions",
+                "deleteSession",
+                "deleteUsers",
+                "updateAccountAvNewProjects"
+            ],
+            "deleteProject.deleteBillingAccountsTransactionsPaymentMethodsInvoicesBlocksVouchers": [
+                "_",
+                "deleteBillingAccounts",
+                "deleteBlocks",
+                "deleteInvoices",
+                "deletePaymentMethods",
+                "deleteTransactions",
+                "deleteVouchers"
+            ],
+            "deleteProject.deleteProjectSubscriptions": [
+                "_",
+                "deleteProject",
+                "deleteSubscriptions"
+            ],
+            "docCounter": [
+                "_",
+                "createCounter",
+                "createNum",
+                "getCounter",
+                "updateCounter"
+            ],
+            "genCoins": [
+                "_",
+                "createBlocks",
+                "createCoins",
+                "createInvoice",
+                "getBillingAccount",
+                "getPackage",
+                "getUserAccount",
+                "resHandler"
+            ],
+            "getAllInvoices": [
+                "_",
+                "getAccount",
+                "getBillingAccounts",
+                "getInvoices",
+                "getPackages",
+                "getPlugins",
+                "resHandler"
+            ],
+            "getAllSubscriptions": [
+                "_",
+                "getAccount",
+                "getPackages",
+                "getPlugins",
+                "getProjects",
+                "getSubscriptions",
+                "resHandler"
+            ],
+            "getAllVouchers": [
+                "_",
+                "getAccount",
+                "getBillingAccounts",
+                "getInvoices",
+                "getVouchers",
+                "resHandler"
+            ],
+            "getBillingAccount": [
+                "_",
+                "endHandler",
+                "getBillingAccount",
+                "getLastTransaction"
+            ],
+            "getBillingAccountBySession": [
+                "_"
+            ],
+            "getBillingAccounts": [
+                "_",
+                "endHandler",
+                "getBillingAccounts",
+                "getLastTransactions"
+            ],
+            "getHost": [
+                "_"
+            ],
+            "getOnlyPlugins": [
+                "_",
+                "getPlugins",
+                "resHandler"
+            ],
+            "getOnlyProjects": [
+                "_",
+                "getAccount",
+                "getProjects",
+                "resHandler"
+            ],
+            "getPackage": [
+                "_",
+                "getPackage",
+                "getPlugin",
+                "packageHandler",
+                "resHandler"
+            ],
+            "getPackages": [
+                "_",
+                "packagesHandler"
+            ],
+            "getPaymentMethods": [
+                "_",
+                "checkData",
+                "endHandler",
+                "getPaymentMethods"
+            ],
+            "getPlugin": [
+                "_",
+                "getAccessability",
+                "getPackage",
+                "getPlugin",
+                "getSubscriptions",
+                "resHandler"
+            ],
+            "getPlugin.getAccessability": [
+                "_",
+                "checkAccessability"
+            ],
+            "getPlugin.getPackage": [
+                "_",
+                "checkPackage",
+                "checkPackages"
+            ],
+            "getPlugin.getPlugin": [
+                "_",
+                "checkPlugin"
+            ],
+            "getPlugin.getSubscriptions": [
+                "_"
+            ],
+            "getPlugins": [
+                "_",
+                "getPackages",
+                "getPlugins",
+                "resHandler"
+            ],
+            "getProject": [
+                "_",
+                "checkHost",
+                "checkPermission",
+                "checkProject",
+                "getHost",
+                "getProject",
+                "missingDataHandler",
+                "resHandler"
+            ],
+            "getProject.resHandler": [
+                "_",
+                "browserVersionProjectData"
+            ],
+            "getProjects": [
+                "_",
+                "checkPermissions",
+                "getHosts",
+                "getProjects",
+                "resHandler",
+                "restructureProjectData"
+            ],
+            "getSubscription": [
+                "_",
+                "getSubscription",
+                "resHandler"
+            ],
+            "getSubscriptions": [
+                "_",
+                "resHandler"
+            ],
+            "getUser": [
+                "_"
+            ],
+            "getUserAccount": [
+                "_",
+                "getAccount",
+                "getPermission",
+                "getUser"
+            ],
+            "searchBySchema": [
+                "_",
+                "getSchema"
+            ],
+            "signup": [
+                "_",
+                "checkData",
+                "checkEmail",
+                "createAccount",
+                "createBillingAccount",
+                "createSubscription",
+                "resHandler",
+                "updateSession"
+            ],
+            "subscribe": [
+                "_",
+                "checkData",
+                "createSubscription",
+                "resHandler"
+            ],
+            "subscribe.createSubscription": [
+                "_",
+                "subscribeToConsole"
+            ],
+            "subscribe.createSubscription.subscribeToConsole": [
+                "_",
+                "createHost",
+                "checkHost"
+            ]
+        },
         "secured": true,
-        "size": 33790
+        "size": 39299
     }
 }

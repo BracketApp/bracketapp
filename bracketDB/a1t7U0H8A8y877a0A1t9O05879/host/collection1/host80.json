@@ -4,7 +4,7 @@
         84
     ],
     "localhost": "dev.brackettechnologies.localhost",
-    "host": "dev.brackettechnologies.brackettechnologies.com",
+    "host": "dev.brackettechnologies.com",
     "active": true,
     "subdomain": "dev.brackettechnologies",
     "dev": true,

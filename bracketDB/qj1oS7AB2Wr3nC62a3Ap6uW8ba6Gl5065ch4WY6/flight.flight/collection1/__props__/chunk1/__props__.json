@@ -1,6 +1,9 @@
 {
-    "docs": [],
+    "docs": [
+        "flight2",
+        "flight1"
+    ],
     "chunk": "chunk1",
-    "docsLength": 0,
-    "size": 0
+    "docsLength": 2,
+    "size": 896
 }

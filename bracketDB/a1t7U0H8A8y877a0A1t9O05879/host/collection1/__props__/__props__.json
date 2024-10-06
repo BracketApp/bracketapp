@@ -5,36 +5,36 @@
     "lastChunk": 1,
     "docsLength": 6,
     "counter": 82,
-    "reads": 154978,
+    "reads": 156265,
     "writes": 183,
     "deletes": 0,
     "size": 8489,
     "payloadIn": 68788,
-    "payloadOut": 61107627,
+    "payloadOut": 61722412,
     "indexes": [
         {
             "find": [
                 "port"
             ],
             "doc": "index1",
-            "lastRead": 1728072706532,
-            "expiryDate": 1730664706532
+            "lastRead": 1728227748724,
+            "expiryDate": 1730819748724
         },
         {
             "find": [
                 "localhost"
             ],
             "doc": "index2",
-            "lastRead": 1728068286838,
-            "expiryDate": 1730660286838
+            "lastRead": 1728228023736,
+            "expiryDate": 1730820023736
         },
         {
             "find": [
                 "publicID"
             ],
             "doc": "index3",
-            "lastRead": 1728008334333,
-            "expiryDate": 1730600334333
+            "lastRead": 1728228023793,
+            "expiryDate": 1730820023793
         },
         {
             "find": [
@@ -42,9 +42,27 @@
                 "publicID"
             ],
             "doc": "index4",
-            "lastRead": 1728008334346,
-            "expiryDate": 1730600334346
+            "lastRead": 1728228022777,
+            "expiryDate": 1730820022777
+        },
+        {
+            "find": [
+                "host"
+            ],
+            "doc": "index5",
+            "lastRead": 1728228023736,
+            "expiryDate": 1730820023736
+        },
+        {
+            "find": [
+                "publicID",
+                "port",
+                "dev"
+            ],
+            "doc": "index6",
+            "lastRead": 1728151063671,
+            "expiryDate": 1730743063671
         }
     ],
-    "lastIndex": 4
+    "lastIndex": 6
 }

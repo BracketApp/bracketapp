@@ -144,7 +144,7 @@
         "creationDate": 1710330786447,
         "collection": "view",
         "chunk": "chunk1",
-        "lastModified": 1726738495468,
+        "lastModified": 1728227979972,
         "dev": false,
         "actions": {
             "updateListIndexes": "_.nextSiblings()._():[if():[_.parent().data().type()=list]:[_.1stChild().2ndChild().txt()=_.path().lastEl().num()-1]]",
@@ -174,7 +174,7 @@
             "showCommentSlashes": "if():[data().type()=map||data().type()=list;!openData:().__props__.comments.find():[path=path()];![_.view].2ndLastChild().2ndChild().focused]:[[_.view].2ndLastChild().1stChild().style().display=_.display]",
             "addData": "if():[_.view.data().type()=map]:[_.view.data().[_.key]=_.value].elif():[_.view.data().type()=list]:[_.view.data().push():[_.value]:[_.index]]",
             "insertView": "_.view.insert():[preventDefault;view=_.view;viewPath=:children:1;path=if():[_.view.data().type()=list]:[_.view.path().clone().push():[_.index]]:[_.view.path().clone().push():[_.key]];index=_.index]:[[_.view.inputs().[__.focusIndex||0]||_.view.input()].focus()]",
-            "actionListDisplayer": "clearTimer():[actionlistTimer:()];if():[actionlistCaller:()!=.id||():actionlist.style().opacity='0']:[actionlistCaller:()=.id;():actionlist.refresh():[form=().form;path=[().actionlist.path||path()]]:[():actionlist.position():[positioner=().id;placement=left;align=center];():actionlist.style():[transform='scale(1)';opacity=1;pointerEvents=auto]]]:[():actionlist.():[style():[opacity=0;transform='scale(0.5)';pointerEvents=none]]]?clicked()=lastChild()",
+            "actionListDisplayer": "clearTimer():[actionlistTimer:()];if():[actionlistCaller:()!=.id||():actionlist.style().opacity='0']:[actionlistCaller:()=.id;():actionlist.refresh():[form=().form;path=[().actionlist.path||path()]]:[():actionlist.position():[positioner=lastChild().id;placement=left;align=center];():actionlist.style():[transform='scale(1)';opacity=1;pointerEvents=auto]]]:[():actionlist.():[style():[opacity=0;transform='scale(0.5)';pointerEvents=none]]]?clicked()=lastChild()",
             "insertViewSibling": "insertHandler():[index=nthParent():7.path().[-1]+1;view=nthParent():8;value=[[view='']?path().[-1]=view?''];key='';focusIndex=3];#modifyUndo():[insert=true]",
             "updateIndexColumn": "():dataViewer.children().find():[openDoc=openDoc:();openCollection=openCollection:()].1stChild().1stChild().refresh()",
             "highlightTab": "():dataViewerBar.children().find():[openCollection=openCollection:();openDoc=openDoc:()].2ndChild().style().border=1px solid #888?!e().key=Control;![e().ctrlKey;e().key=s];![e().ctrlKey;e().key=c];![e().ctrlKey;e().key='`']",
@@ -256,6 +256,61 @@
                 "path": [
                     "children",
                     0,
+                    "children",
+                    4
+                ]
+            },
+            {
+                "note": "publish",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    4,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "unsecured",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    4,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "note": "secured",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    4,
+                    "children",
+                    2
+                ]
+            },
+            {
+                "note": "info",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    4,
+                    "children",
+                    3
+                ]
+            },
+            {
+                "note": "options",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    4,
                     "children",
                     4
                 ]
@@ -480,6 +535,62 @@
                     0,
                     "children",
                     4
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    4,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    4,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    4,
+                    "children",
+                    2
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    4,
+                    "children",
+                    3
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    4,
+                    "children",
+                    4
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    1
                 ]
             },
             {
@@ -826,6 +937,6 @@
             ]
         },
         "secured": false,
-        "size": 26872
+        "size": 27489
     }
 }

@@ -6,7 +6,7 @@
         "creationDate": 1724593355682,
         "collection": "account.user.username",
         "chunk": "chunk1",
-        "lastModified": 1726765278052,
+        "lastModified": 1728153579726,
         "dev": true,
         "actions": {},
         "comments": [],
@@ -14,12 +14,12 @@
         "arrange": {
             "": [
                 "username",
-                "userID"
+                "user"
             ]
         },
         "secured": false,
-        "size": 329
+        "size": 325
     },
     "username": "x",
-    "userID": "user1"
+    "user": "user1"
 }

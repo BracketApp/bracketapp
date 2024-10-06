@@ -38,7 +38,7 @@
         "creationDate": 1710330786469,
         "collection": "view",
         "chunk": "chunk1",
-        "lastModified": 1723736305594,
+        "lastModified": 1728225104696,
         "dev": false,
         "actions": {
             "updateNextSiblingsIndexesForPush": "if():[data().type()=list]:[():[actionlistCaller:()].parent().next().1stChild().children().slice():[_.index?_.index.type()=number?clicked().txt().num()]._():[theIndex:()=_.path().lastIndex();theNewValue:()=_.path().lastEl().num()+1;_.1stChild().2ndChild().txt()=theNewValue:();_.deepChildren()._():[_.path().[theIndex:()]=theNewValue:()]]]",
@@ -48,7 +48,7 @@
             "importData": "insertHandler():[key=_.data.name.split():'.json'.0;value=_.data.data.clone();index=().droplistIndexClicked]",
             "hideActionListOnBodyClick": "mouseleave()?!contains():[clicked()];!clicked().classList().inc():'actionlister'",
             "pushToUndo": "undoEdit:().[openDoc:()+'/'+openCollection:()]||=:;if():[():actionlist.prev_value!=():actionlist.form()]:[undoEdit:().[openDoc:()+'/'+openCollection:()].push():[openDoc=openDoc:();openCollection=openCollection:();value=():actionlist.form().clone();prev_value=():actionlist.prev_value]]",
-            "createDroplistItems": "droplistLength:()=data().len();droplistItems:()=:;while():[droplistLength:()>-1]:[droplistItems:().push():[droplistLength:()];droplistLength:()--];droplist:[items=droplistItems:();placement=left;align=center;readonly;preventDefault]",
+            "createDroplistItems": "droplistLength:()=data().len();droplistItems:()=:;while():[droplistLength:()>-1]:[droplistItems:()+=droplistLength:();droplistLength:()--];droplist:[items=droplistItems:();placement=left;align=center;readonly;preventDefault]",
             "exportData": "export():[type=json;data=data().clone();name=path().lastEl()||openDoc:()]",
             "copyData": "copiedData:()=data().clone();copiedFileName:()=path().lastEl()",
             "hideActionList": "clearTimer():[actionlistTimer:()];actionlistTimer:()=timer():[():actionlist.():[children().():[style().pointerEvents=none];style():[opacity=0;transform='scale(0.5)';pointerEvents=none]]]:400",
@@ -208,6 +208,6 @@
             ]
         },
         "secured": false,
-        "size": 6771
+        "size": 6763
     }
 }

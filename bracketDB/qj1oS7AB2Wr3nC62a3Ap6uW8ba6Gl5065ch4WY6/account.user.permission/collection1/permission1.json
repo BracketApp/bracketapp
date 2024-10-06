@@ -6,7 +6,7 @@
         "creationDate": 1724593339249,
         "collection": "account.user.permission",
         "chunk": "chunk1",
-        "lastModified": 1726760337126,
+        "lastModified": 1728153552324,
         "dev": true,
         "actions": {},
         "comments": [],
@@ -14,12 +14,12 @@
         "arrange": {
             "": [
                 "masterAdmin",
-                "userID"
+                "user"
             ]
         },
         "secured": false,
-        "size": 340
+        "size": 336
     },
-    "userID": "user1",
-    "masterAdmin": true
+    "masterAdmin": true,
+    "user": "user1"
 }

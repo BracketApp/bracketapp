@@ -747,11 +747,12 @@ const actions = {
         var nth = toValue({ _window, __, data: args[1], e, id, lookupActions, stack, object, props: { isValue: true } })
         return o[o.length - nth]
 
-    }, "while()": ({ _window, req, res, o, stack, props, lookupActions, id, e, __, args, object }) => {
+    }, "while()": ({ _window, global, req, res, o, stack, props, lookupActions, id, e, __, args, object }) => {
 
-        while (toValue({ req, res, _window, lookupActions, stack, object, props: { isValue: true }, id, data: args[1], __, e })) {
+        while (toApproval({ req, res, _window, lookupActions, stack, object, props: { isValue: true }, id, data: args[1], __, e })) {
             toValue({ req, res, _window, lookupActions, stack, props: { isValue: true }, id, data: args[2], __, e })
         }
+        return true
 
     }, "data()": ({ _window, req, res, global, o, stack, props, lookupActions, id, e, __, args, object, i, lastIndex, value, key, path, breakRequest }) => {
 
@@ -4196,9 +4197,9 @@ const toValue = ({ _window, lookupActions = [], stack = { addresses: [], returns
 
 const toParam = ({ _window, lookupActions, stack = { addresses: [], returns: [] }, props = {}, address, data: string, e, id, req, res, object = [], __ }) => {
 
-    var views = _window ? _window.views : window.views
-    var global = _window ? _window.global : window.global
-    var view = views[id] || { id, __view__: true, __fake__: true }
+    let views = _window ? _window.views : window.views
+    let global = _window ? _window.global : window.global
+    let view = views[id] || { id, __view__: true, __fake__: true }
 
     // returned
     if ((stack.returns && stack.returns[0] || {}).returned || stack.terminated || stack.broke || stack.blocked) return
@@ -4234,15 +4235,15 @@ const toParam = ({ _window, lookupActions, stack = { addresses: [], returns: [] 
 
     // init
     if (object.length === 0) object.push({})
-    var params = object[0]
+    let params = object[0]
 
     props.isValue = false
 
-    var strings = string.split(";")
+    let strings = string.split(";")
 
     for (let j = 0; j < strings.length; j++) {
 
-        var param = strings[j]
+        let param = strings[j]
         if (!param || param.charAt(0) === "#") continue
 
         // set interpreting
@@ -4254,7 +4255,7 @@ const toParam = ({ _window, lookupActions, stack = { addresses: [], returns: [] 
         // returned || comment
         if ((stack.returns && stack.returns[0] || {}).returned || stack.terminated || stack.broke || stack.blocked) return
 
-        var key = undefined, value = undefined
+        let key = undefined, value = undefined
 
         // =
         if (param.includes("=")) {
@@ -4270,7 +4271,7 @@ const toParam = ({ _window, lookupActions, stack = { addresses: [], returns: [] 
             value = param.split("=").at(-1)
             param = param.slice(0, value.length * (-1) - 1)
 
-            var newParam = key + "=" + value
+            let newParam = key + "=" + value
             param.split("=").slice(1).map(key => { newParam += ";" + key + "=" + value })
             params = { ...params, ...toParam({ _window, lookupActions, stack, props, data: param, e, id, req, res, object, __ }) }
             continue
@@ -4339,7 +4340,8 @@ const toParam = ({ _window, lookupActions, stack = { addresses: [], returns: [] 
             if (keyValue && typeof keyValue === "string") keyValue = replaceNbsps(keyValue)
             hasValue = true
             
-        } else if (keyValue === undefined) keyValue = generate()
+        } else if (keyValue === undefined && value === undefined) keyValue = generate()
+        else keyValue = value
 
         // :@1asd1
         if (!path0 && path[0]) continue
@@ -4516,14 +4518,14 @@ const reducer = ({ _window, lookupActions = [], stack = { addresses: [], returns
     }
 
     // while()
-    else if (path0 === "while()") {
+    /*else if (path0 === "while()") {
 
         while (toApproval({ _window, lookupActions, stack, props, e, data: args[1], id, __, req, res, object })) {
             toValue({ req, res, _window, lookupActions, stack, props: { isValue: true }, id, data: args[2], __, e, object })
         }
         // path = path.slice(1)
         return global.return = false
-    }
+    }*/
 
     // global:()
     else if (path0 && args[1] === "()" && !args[2]) {
@@ -4678,9 +4680,9 @@ const toApproval = ({ _window, lookupActions, stack, props, e, data: string, id,
     // no string
     if (!string || typeof string !== "string") return true
 
-    var views = _window ? _window.views : window.views
-    var global = _window ? _window.global : window.global
-    var view = views[id], approval = true
+    let views = _window ? _window.views : window.views
+    let global = _window ? _window.global : window.global
+    let view = views[id], approval = true
 
     if ((stack.returns && stack.returns[0] || {}).returned) return
 
@@ -4692,6 +4694,8 @@ const toApproval = ({ _window, lookupActions, stack, props, e, data: string, id,
 
     string.split(";").map(condition => {
 
+        let key, value, conditions, equalOp, greaterOp, lessOp, notEqual
+        
         // no condition
         if (condition === "") return true
         if (!approval) return false
@@ -4701,8 +4705,8 @@ const toApproval = ({ _window, lookupActions, stack, props, e, data: string, id,
         // or
         if (condition.includes("||")) {
 
-            var conditions = condition.split("||"), i = 0
-            var key = conditions[0].split("=")[0]
+            conditions = condition.split("||"), i = 0
+            key = conditions[0].split("=")[0]
             if (key.at(-1) === "!") key = key.slice(0, -1)
             approval = false
 
@@ -4717,21 +4721,20 @@ const toApproval = ({ _window, lookupActions, stack, props, e, data: string, id,
         }
 
         condition = condition.split("=")
-        var equalOp = condition.length > 1
-        var greaterOp = condition[0].split(">")[1] !== undefined
+        equalOp = condition.length > 1
+        greaterOp = condition[0].split(">")[1] !== undefined
         if (greaterOp) {
             condition[1] = condition[1] || condition[0].split(">")[1]
             condition[0] = condition[0].split(">")[0]
         }
-        var lessOp = condition[0].split("<")[1] !== undefined
+        lessOp = condition[0].split("<")[1] !== undefined
         if (lessOp) {
             condition[1] = condition[1] || condition[0].split("<")[1]
             condition[0] = condition[0].split("<")[0]
         }
 
-        var key = condition[0] || ""
-        var value = condition[1]
-        var notEqual
+        key = condition[0] || ""
+        value = condition[1]
 
         // get value
         if (value) value = toValue({ _window, lookupActions, stack, props: { isCondition: true, isValue: true }, id, data: value, e, __, req, res, object })
@@ -5070,7 +5073,7 @@ const isAction = ({ _window, lookupActions, stack, props, address, id, __, e, re
         var viewActions = doc.__props__.actions
         
         // lookup through path
-        if (lookupAction.path && lookupAction.path.length > 0) {
+        if ((!stack.server ? !doc.__props__.secured : true) && lookupAction.path && lookupAction.path.length > 0) {
 
             var path = lookupAction.path
             clone(path).reverse().map((x, i) => {
@@ -5090,7 +5093,7 @@ const isAction = ({ _window, lookupActions, stack, props, address, id, __, e, re
             })
 
         // calling server action from browser
-        } else if (doc.__props__.secured && !stack.server && viewActions[name] === true) {
+        } else if (doc.__props__.secured && !stack.server && viewActions[name]/* === true*/) {
             
             actionFound = true
             serverAction = true

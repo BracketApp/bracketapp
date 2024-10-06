@@ -4,20 +4,32 @@
         "doc": "package5",
         "counter": 5,
         "creationDate": 1717421234949,
-        "active": true,
+        "collection": "package",
+        "chunk": "chunk1",
+        "lastModified": 1728149944209,
+        "dev": false,
         "actions": {},
         "comments": [],
         "collapsed": [],
-        "arrange": [],
-        "chunk": "chunk1",
+        "arrange": {
+            "": [
+                "coins",
+                "description",
+                "duration",
+                "name",
+                "pluginID",
+                "savings",
+                "selected"
+            ]
+        },
         "secured": false,
-        "collection": "package"
+        "size": 492
     },
     "pluginID": "Q1p78107R4j1n2Z9a2E1K1r912",
     "name": "Developer",
     "description": "Monthly subscription",
     "duration": 2592000000,
     "savings": 0,
-    "coins": 10,
+    "coins": 50,
     "selected": true
 }

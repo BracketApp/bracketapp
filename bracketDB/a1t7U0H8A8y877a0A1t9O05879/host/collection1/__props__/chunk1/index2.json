@@ -10,11 +10,5 @@
     },
     "host1": {
         "localhost": "localhost"
-    },
-    "host81": {
-        "localhost": "dev.flightbookingplatform.localhost"
-    },
-    "host82": {
-        "localhost": "dev.brackettechnologies.localhost"
     }
 }

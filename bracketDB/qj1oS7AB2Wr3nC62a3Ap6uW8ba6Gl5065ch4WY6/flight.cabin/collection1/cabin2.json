@@ -6,7 +6,7 @@
         "creationDate": 1726775428482,
         "collection": "flight.cabin",
         "chunk": "chunk1",
-        "lastModified": 1726775457555,
+        "lastModified": 1728157060725,
         "dev": true,
         "actions": {},
         "comments": [],
@@ -19,9 +19,9 @@
             ]
         },
         "secured": false,
-        "size": 361
+        "size": 359
     },
     "class": "Business",
-    "seatCapacity": "35",
+    "seatCapacity": 32,
     "aircraft": "aircraft1"
 }

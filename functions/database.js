@@ -7,6 +7,7 @@ const { spawn } = require("child_process")
 const fs = require("fs")
 const util = require('util')
 const vcards = require("vcards-js")
+const { clone } = require("./clone")
 
 // project DB
 require('dotenv').config()
@@ -38,8 +39,8 @@ const database = ({ _window = {global:{manifest:{}}}, req, res, action, preventD
 
 const getData = ({ _window = {}, req, res, search, action = "search()", verified }) => {
 
-    var global = _window.global
-    var response = { success: false, message: "Something went wrong!" }
+    let global = _window.global
+    let response = { success: false, message: "Something went wrong!" }
     var datastore = search.datastore || "bracketDB" || global.manifest.datastore,
         db = search.db = search.db || global.manifest.session.db,
         collection = search.collection,
@@ -94,9 +95,9 @@ const getData = ({ _window = {}, req, res, search, action = "search()", verified
     }
 
     // chunk details
-    var chunkIndex = collectionProps.lastChunk
-    var chunkName = "chunk" + chunkIndex
-    var chunksRunout = false, endSearch = false
+    let chunkIndex = collectionProps.lastChunk
+    let chunkName = "chunk" + chunkIndex
+    let chunksRunout = false, endSearch = false
     
     // findOne
     if ("findOne" in search) {
@@ -174,7 +175,7 @@ const getData = ({ _window = {}, req, res, search, action = "search()", verified
         }
     }
 
-    else { // find on no find
+    else { // find or no find
 
         while (!chunksRunout && !endSearch) {
 
@@ -190,14 +191,16 @@ const getData = ({ _window = {}, req, res, search, action = "search()", verified
                 if (!success) break;
 
                 var i = 0
-
+                
                 while (limit > 0 && (i <= docs.length - 1)) {
 
                     var doc = docs[i]
 
                     toArray(find).map((find, index) => {
-                        delete find.preventDefault
+
                         if (limit === 0) return
+                        delete find.preventDefault
+                        var searchFields = Object.keys(find)
                         var push = true
                         var chunk = chunks[index]
                         
@@ -218,24 +221,24 @@ const getData = ({ _window = {}, req, res, search, action = "search()", verified
                             limit--;
                             data[doc] = JSON.parse(fs.readFileSync(`${path}/collection1/${doc}.json`))
                         }
-                        
                         if (limit === 0) endSearch = true
-                        i++;
                     })
+                        
+                    i++;
                 }
             }
 
-            else {
+            else { // get all
 
                 // get indexing
                 var {success, chunks, docs, message} = checkIndexing({db, collection, path, liveDB, finds: toArray(find), chunkName, collectionProps})
                 if (!success) break;
 
-                var i = 0
+                let i = 0
 
                 while (limit > 0 && (i <= docs.length - 1)) {
 
-                    var doc = docs[i]
+                    let doc = docs[i]
 
                     if (!skip) data[doc] = JSON.parse(fs.readFileSync(`${path}/collection1/${doc}.json`))
                     if (skip) skip--;
@@ -327,13 +330,13 @@ const postData = ({ _window = {}, req, res, save, action = "save()", verified })
         }
     }
 
-    var { path, dbProps, collectionProps, liveDB, success, message } = checkParams({ _window, req, data: save, action })
-    if (!success) return { success, message }
-
     if (save.publish) {
         var response = publish({ _window, req, data: save })
         return response
     }
+
+    var { path, dbProps, collectionProps, liveDB, success, message } = checkParams({ _window, req, data: save, action })
+    if (!success) return { success, message }
 
     // rename collection
     if (save.rename && save.collection) {
@@ -616,6 +619,7 @@ const deleteData = ({ _window = {}, req, res, erase, action = "erase()", verifie
             searchOptions.limit = 1
         }
         find.preventDefault = true
+        
         var { data } = database({ _window, req, action: "search()", data: searchOptions })
         docs = Object.keys(data)
         docs.map(doc => data[doc] = "erased")
@@ -1347,20 +1351,19 @@ const checkIndexing = ({ global, path, search, finds, chunkName, collectionProps
 
     var chunks = [], message, success = true
     // get chunk props
-
-    var chunkProps = JSON.parse(fs.readFileSync(`${path}/collection1/__props__/${chunkName}/__props__.json`))
+    let chunkProps = JSON.parse(fs.readFileSync(`${path}/collection1/__props__/${chunkName}/__props__.json`))
     // get docs arrangement 
-    var docs = chunkProps.docs
+    let docs = chunkProps.docs
 
     for (let index = 0; index < finds.length; index++) {
 
         if (!success) break;
-        var find = finds[index];
+        let find = finds[index];
 
-        var searchFields = Object.keys(find), indexing = {}
+        let searchFields = Object.keys(find), indexing = {}
 
         // undefined field name
-        var wrongFields = searchFields.find(field => field.includes("undefined"))
+        let wrongFields = searchFields.find(field => field.includes("undefined"))
         if (wrongFields) {
             success = false
             message = "Wrong find keynames! Includes undefined"
@@ -1372,9 +1375,12 @@ const checkIndexing = ({ global, path, search, finds, chunkName, collectionProps
         
         // not indexed => create an index
         if (!indexProps) {
+            
             var {success, message, indexProps} = createIndex({ collectionProps, searchFields, path, search })
+            
             if (search.dev) createIndex({ collectionProps, searchFields, path: `bracketDB/${search.liveDB}/${search.collection}`, indexed: true })
-            else if (!global.manifest.dev && global.manifest.session && global.manifest.session.devDB) createIndex({ collectionProps, searchFields, path: `bracketDB/${global.manifest.session.devDB}/${search.collection}`, indexed: true })
+            else if (!global.manifest.dev && global.manifest.session && global.manifest.session.devDB && search.liveDB) 
+                createIndex({ collectionProps, searchFields, path: `bracketDB/${global.manifest.session.devDB}/${search.collection}`, indexed: true })
         }
     
         // get index
