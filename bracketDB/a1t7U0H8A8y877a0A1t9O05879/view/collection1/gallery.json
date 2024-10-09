@@ -54,7 +54,7 @@
                             "view": "Text?text=Upload Files Here!;style:[fontSize=1.4rem;color=#888;pointerEvents=none]"
                         },
                         {
-                            "view": "Input?input.type=file;style:[cursor=pointer;position=absolute;top=-100px;left=-100px;height=200%;width=200%;opacity=0];[change?loader.show;newFile:()=true;read()::[fileData:()=_.data;():fileForm.refresh()::[_.view.style():[pointerEvents=auto;opacity=1];().txt()='';loader.hide]]]"
+                            "view": "Input?input.type=file;style:[cursor=pointer;position=absolute;top=-100px;left=-100px;height=200%;width=200%;opacity=0];[change?loader.show;newFile:()=true;read()::[fileData:()=_.data;fileData:().url=fileData:().data;():fileForm.refresh()::[_.view.style():[pointerEvents=auto;opacity=1];().txt()='';loader.hide]]]"
                         }
                     ]
                 }
@@ -103,95 +103,24 @@
         "creationDate": 1721988159209,
         "collection": "view",
         "chunk": "chunk1",
-        "lastModified": 1722003129990,
+        "lastModified": 1728337804725,
         "dev": false,
         "actions": {},
         "comments": [
             {
-                "note": "input",
+                "note": "1st row",
                 "path": [
-                    "children",
-                    0,
-                    "children",
-                    1
-                ]
-            },
-            {
-                "note": "name",
-                "path": [
-                    "children",
-                    1,
-                    "children",
-                    0,
-                    "children",
-                    2
-                ]
-            },
-            {
-                "note": "image",
-                "path": [
-                    "children",
-                    1,
-                    "children",
-                    0,
-                    "children",
-                    1
-                ]
-            },
-            {
-                "note": "zoom",
-                "path": [
-                    "children",
-                    1,
-                    "children",
-                    0,
                     "children",
                     0
                 ]
             },
             {
-                "note": "zoom",
+                "note": "1st row",
                 "path": [
-                    "children",
-                    0,
-                    "children",
-                    0,
-                    "children",
-                    0,
                     "children",
                     0,
                     "children",
                     0
-                ]
-            },
-            {
-                "note": "image",
-                "path": [
-                    "children",
-                    0,
-                    "children",
-                    0,
-                    "children",
-                    0,
-                    "children",
-                    0,
-                    "children",
-                    1
-                ]
-            },
-            {
-                "note": "name",
-                "path": [
-                    "children",
-                    0,
-                    "children",
-                    0,
-                    "children",
-                    0,
-                    "children",
-                    0,
-                    "children",
-                    2
                 ]
             },
             {
@@ -208,6 +137,60 @@
                 ]
             },
             {
+                "note": "zoom",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "image",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "note": "name",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    2
+                ]
+            },
+            {
+                "note": "input",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    1
+                ]
+            },
+            {
                 "note": "rest files",
                 "path": [
                     "children",
@@ -215,12 +198,36 @@
                 ]
             },
             {
-                "note": "1st row",
+                "note": "zoom",
                 "path": [
+                    "children",
+                    1,
                     "children",
                     0,
                     "children",
                     0
+                ]
+            },
+            {
+                "note": "image",
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "note": "name",
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    2
                 ]
             }
         ],
@@ -228,47 +235,11 @@
             {
                 "path": [
                     "children",
-                    0,
-                    "children",
-                    0,
-                    "children",
-                    4
+                    0
                 ]
             },
             {
                 "path": [
-                    "children",
-                    0,
-                    "children",
-                    0,
-                    "children",
-                    4
-                ]
-            },
-            {
-                "path": [
-                    "children",
-                    0,
-                    "children",
-                    0,
-                    "children",
-                    4
-                ]
-            },
-            {
-                "path": [
-                    "children",
-                    0,
-                    "children",
-                    0,
-                    "children",
-                    3
-                ]
-            },
-            {
-                "path": [
-                    "children",
-                    1,
                     "children",
                     0,
                     "children",
@@ -301,6 +272,44 @@
                     0,
                     "children",
                     1
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    2
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    0
                 ]
             },
             {
@@ -321,39 +330,99 @@
                     0,
                     "children",
                     2
-                ]
-            },
-            {
-                "path": [
-                    "children",
-                    0,
-                    "children",
-                    0,
-                    "children",
-                    0,
-                    "children",
-                    0,
-                    "children",
-                    2
-                ]
-            },
-            {
-                "path": [
-                    "children",
-                    1
-                ]
-            },
-            {
-                "path": [
-                    "children",
-                    0,
-                    "children",
-                    0
                 ]
             }
         ],
-        "arrange": [],
+        "arrange": {
+            "": [
+                "view",
+                "children"
+            ],
+            "children.0": [
+                "view",
+                "children"
+            ],
+            "children.0.children.0": [
+                "view",
+                "children"
+            ],
+            "children.0.children.0.children.0": [
+                "view",
+                "children"
+            ],
+            "children.0.children.0.children.0.children.0": [
+                "view",
+                "children"
+            ],
+            "children.0.children.0.children.0.children.0.children.0": [
+                "view",
+                "children"
+            ],
+            "children.0.children.0.children.0.children.0.children.0.children.0": [
+                "view"
+            ],
+            "children.0.children.0.children.0.children.0.children.0.children.1": [
+                "view"
+            ],
+            "children.0.children.0.children.0.children.0.children.1": [
+                "view",
+                "children"
+            ],
+            "children.0.children.0.children.0.children.0.children.1.children.0": [
+                "view"
+            ],
+            "children.0.children.0.children.0.children.0.children.1.children.1": [
+                "view"
+            ],
+            "children.0.children.0.children.0.children.0.children.2": [
+                "view"
+            ],
+            "children.0.children.1": [
+                "view",
+                "children"
+            ],
+            "children.0.children.1.children.0": [
+                "view"
+            ],
+            "children.0.children.1.children.1": [
+                "view"
+            ],
+            "children.0.children.1.children.2": [
+                "view"
+            ],
+            "children.1": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0.children.0": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0.children.0.children.0": [
+                "view"
+            ],
+            "children.1.children.0.children.0.children.1": [
+                "view"
+            ],
+            "children.1.children.0.children.1": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0.children.1.children.0": [
+                "view"
+            ],
+            "children.1.children.0.children.1.children.1": [
+                "view"
+            ],
+            "children.1.children.0.children.2": [
+                "view"
+            ]
+        },
         "secured": false,
-        "size": 5624
+        "size": 6934
     }
 }

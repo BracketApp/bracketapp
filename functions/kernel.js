@@ -534,7 +534,7 @@ const actions = {
         console.log(...logs)
         stack.logs && stack.logs.push(stack.logs.length, ...logs)
 
-        if (_window) saveToLogs({ _window, logs })
+        //if (_window) saveToLogs({ _window, logs })
         return o
     
     }, "parent()": ({ _window, o }) => {
@@ -3478,9 +3478,9 @@ const actions = {
                 // inorder to stop recursion 
                 if (!newView.view) child.view = ""
 
-                var data = getViewParams({ view })
+                let data = getViewParams({ view })
                 
-                return actions["view()"]({ _window, stack, props, address, req, res, lookupActions: child.__lookupActions__, __: [...__], data: { view: child, parent: view.__parent__ } })
+                return actions["view()"]({ _window, stack, props, address, req, res, lookupActions: child.__lookupActions__, __: Object.keys(data).length > 0 ? [data, ...__] : [...__], data: { view: child, parent: view.__parent__ } })
             }
         }
         
@@ -5757,7 +5757,7 @@ const loopOverView = ({ _window, id, stack, props, lookupActions, __, address, d
             var key = myData[index]
             view.__looped__ = true
 
-            var params = { i: index, __loopIndex__: index, id: `${view.id}_${index}` }
+            var params = { __loopIndex__: index, id: `${view.id}_${index}` }
             key = isNumber(key) ? parseInt(key) : key
             if (mount) params = { ...params, form, __dataPath__: [...__dataPath__, key] }
 
@@ -5774,7 +5774,7 @@ const loopOverView = ({ _window, id, stack, props, lookupActions, __, address, d
         var key = myData[index]
         view.__looped__ = true
 
-        var params = { i: index, __loopIndex__: index, id: `${view.id}_${index}` }
+        var params = { __loopIndex__: index, id: `${view.id}_${index}` }
         key = isNumber(key) ? parseInt(key) : key
         if (mount) params = { ...params, form, __dataPath__: [...__dataPath__, key] }
 
@@ -5843,9 +5843,9 @@ const getViewParams = ({ view }) => {
 
     var {
         id, form, data, view, children, style, __lookupActions__, __element__, __dataPath__, __childrenRef__, __index__, __relEvents__, __loadedEvents__,
-        __loop__, __loopIndex__, __looped__, __mount__, i, __interpretingSubparams__, __underscoreLoopIndex__, __prevViewPath__,
+        __loop__, __loopIndex__, __looped__, __mount__, __interpretingSubparams__, __underscoreLoopIndex__, __prevViewPath__, __conditions__, __subParams__,
         __viewPath__, __customViewPath__, __indexing__, __childIndex__, __initialIndex__, __customView__, __htmlStyles__, __events__, __page__,
-        __defaultValue__, __childrenInitialIDRef__, __initialID__, __viewCollection__, __subParamsInterpreted__,
+        __defaultValue__, __childrenInitialIDRef__, __initialID__, __viewCollection__, __subParamsInterpreted__, __prevViewCollection__, __params__,
         __parent__, __controls__, __status__, __rendered__, __timers__, __view__, __name__, __customID__, __paramsInterpreted__, __, ...params
     } = view
 
@@ -6413,7 +6413,8 @@ const fileReader = ({ req, res, _window, lookupActions, stack, props, address, i
             global.__fileReader__.files.push({
                 type: file.type,
                 lastModified: file.lastModified,
-                name: file.name,
+                name: file.name.split('.').slice(0, -1).join('.'),
+                extension: getFileExtension(file.name),
                 size: file.size,
                 data: e.target.result
             })
@@ -6710,6 +6711,12 @@ const qrcode = async ({ _window, id, req, res, data: qrData, __, e, stack, props
     console.log("QR", data)
 
     actions["stackManager()"]({ _window, lookupActions, id, e, asyncer: true, address, stack, props, req, res, __, _: data })
+}
+
+const getFileExtension = (fileName) => {
+    let regex = new RegExp('[^.]+$');
+    let extension = fileName.match(regex);
+    return extension[0]
 }
 
 module.exports = {

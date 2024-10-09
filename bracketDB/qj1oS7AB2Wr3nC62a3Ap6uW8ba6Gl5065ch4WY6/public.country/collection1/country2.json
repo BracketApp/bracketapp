@@ -3,7 +3,7 @@
     "code": "TK",
     "capital": "Ankara",
     "callingCode": "+90",
-    "timeZone": "+3",
+    "timeZone": 3,
     "officialLanguage": "Turkish",
     "nationality": "Turkish",
     "__props__": {
@@ -13,7 +13,7 @@
         "creationDate": 1726771111078,
         "collection": "public.country",
         "chunk": "chunk1",
-        "lastModified": 1726771335537,
+        "lastModified": 1728301125204,
         "dev": true,
         "actions": {},
         "comments": [],
@@ -30,6 +30,6 @@
             ]
         },
         "secured": false,
-        "size": 493
+        "size": 490
     }
 }

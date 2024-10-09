@@ -1,0 +1,29 @@
+{
+    "__props__": {
+        "id": "D1T7r2g882e5U0j5p8Z5J4l9E8",
+        "doc": "pricing5",
+        "counter": 5,
+        "creationDate": 1728250585498,
+        "collection": "flight.pricing.pricing",
+        "chunk": "chunk1",
+        "lastModified": 1728250632715,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "availability",
+                "price",
+                "unit",
+                "trip"
+            ]
+        },
+        "secured": false,
+        "size": 390
+    },
+    "availability": "availability3",
+    "price": 150,
+    "unit": "USD",
+    "trip": "Round trip"
+}

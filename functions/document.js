@@ -1,8 +1,9 @@
 const cssStyleKeyNames = require("./cssStyleKeyNames")
 const { actions } = require("./kernel")
 const { hideSecured, respond } = require("./database")
+const { gzip } = require("node-gzip")
 
-const document = ({ _window, res, stack, props, address, __ }) => {
+const document = async ({ _window, res, stack, props, address, __ }) => {
 
     let { global: { __refs__, __stacks__, __startAddresses__, ...global }, views } = _window
     let page = global.manifest.page
@@ -37,7 +38,7 @@ const document = ({ _window, res, stack, props, address, __ }) => {
 
     actions["stackManager()"]({ _window, stack, props, address, __ })
     
-    const doc = `<!DOCTYPE html>
+    let doc = `<!DOCTYPE html>
         <html lang="${language}" dir="${direction}" class="html">
             <head>
                 <!-- css -->
@@ -106,7 +107,11 @@ const document = ({ _window, res, stack, props, address, __ }) => {
             </body>
         </html>`
 
-    return respond({ res, stack, props, global, __, response: doc })
+    // encode
+    doc = await gzip(doc)
+    res.setHeader("Content-Encoding", "gzip")
+    res.write(doc)
+    res.end()
 }
 
 module.exports = document

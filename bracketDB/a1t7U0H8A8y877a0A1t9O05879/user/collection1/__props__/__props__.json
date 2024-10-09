@@ -5,12 +5,12 @@
     "lastChunk": 1,
     "docsLength": 8,
     "counter": 90,
-    "reads": 58588,
+    "reads": 58829,
     "writes": 189,
     "deletes": 0,
     "size": 3345,
     "payloadIn": 72702,
-    "payloadOut": 19389339,
+    "payloadOut": 19486754,
     "dirTree": [],
     "indexes": [
         {
@@ -18,16 +18,16 @@
                 "__props__.id"
             ],
             "doc": "index1",
-            "lastRead": 1728249772928,
-            "expiryDate": 1730841772928
+            "lastRead": 1728480742769,
+            "expiryDate": 1731072742769
         },
         {
             "find": [
                 "email"
             ],
             "doc": "index2",
-            "lastRead": 1728151450364,
-            "expiryDate": 1730743450364
+            "lastRead": 1728338337017,
+            "expiryDate": 1730930337017
         }
     ],
     "lastIndex": 3

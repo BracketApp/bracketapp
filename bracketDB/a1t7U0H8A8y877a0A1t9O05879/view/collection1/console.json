@@ -393,7 +393,7 @@
         "creationDate": 1710330786487,
         "collection": "view",
         "chunk": "chunk1",
-        "lastModified": 1728228016411,
+        "lastModified": 1728251232803,
         "dev": false,
         "actions": {
             "openActionPopup": "():actionPopup.style():[opacity=1;pointerEvents=auto;zIndex=10;transform='scale(1)']",
@@ -1074,6 +1074,51 @@
                 "path": [
                     "children",
                     3
+                ]
+            },
+            {
+                "note": "rename",
+                "path": [
+                    "children",
+                    3,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "duplicate",
+                "path": [
+                    "children",
+                    3,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "note": "info",
+                "path": [
+                    "children",
+                    3,
+                    "children",
+                    2
+                ]
+            },
+            {
+                "note": "export",
+                "path": [
+                    "children",
+                    3,
+                    "children",
+                    3
+                ]
+            },
+            {
+                "note": "remove",
+                "path": [
+                    "children",
+                    3,
+                    "children",
+                    4
                 ]
             },
             {
@@ -2113,6 +2158,6 @@
             ]
         },
         "secured": false,
-        "size": 43939
+        "size": 44205
     }
 }

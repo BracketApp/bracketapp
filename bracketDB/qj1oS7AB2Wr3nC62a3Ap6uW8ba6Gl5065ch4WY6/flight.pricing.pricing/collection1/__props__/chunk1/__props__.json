@@ -1,8 +1,15 @@
 {
     "docs": [
+        "pricing8",
+        "pricing7",
+        "pricing6",
+        "pricing5",
+        "pricing4",
+        "pricing3",
+        "pricing2",
         "pricing1"
     ],
     "chunk": "chunk1",
-    "docsLength": 1,
-    "size": 363
+    "docsLength": 8,
+    "size": 3108
 }

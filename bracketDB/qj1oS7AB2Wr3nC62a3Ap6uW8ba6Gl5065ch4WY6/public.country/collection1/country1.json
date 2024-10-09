@@ -6,7 +6,7 @@
         "creationDate": 1726766007424,
         "collection": "public.country",
         "chunk": "chunk1",
-        "lastModified": 1726766418055,
+        "lastModified": 1728301115894,
         "dev": true,
         "actions": {},
         "comments": [],
@@ -23,13 +23,13 @@
             ]
         },
         "secured": false,
-        "size": 495
+        "size": 492
     },
     "country": "Lebanon",
     "code": "LB",
     "capital": "Beirut",
     "callingCode": "+961",
-    "timeZone": "+3",
+    "timeZone": 3,
     "officialLanguage": "Arabic",
     "nationality": "Lebanese"
 }

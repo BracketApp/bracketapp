@@ -12,6 +12,8 @@
   },
   "main": "index.js",
   "dependencies": {
+    "@node-minify/core": "^8.0.6",
+    "@node-minify/terser": "^8.0.6",
     "colors": "^1.4.0",
     "compress-json": "^3.0.3",
     "cookie-parser": "^1.4.6",
@@ -21,6 +23,7 @@
     "ip": "^2.0.1",
     "mime-types": "^2.1.35",
     "node-device-detector": "^2.0.12",
+    "node-gzip": "^1.1.2",
     "nodemailer": "^6.9.14",
     "qrcode": "^1.5.3",
     "qrcode-terminal": "^0.12.0",

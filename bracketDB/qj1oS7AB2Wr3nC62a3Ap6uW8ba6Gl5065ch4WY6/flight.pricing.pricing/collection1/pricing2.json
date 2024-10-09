@@ -1,0 +1,29 @@
+{
+    "__props__": {
+        "id": "e187i2a802m5x0d07676S8Z030",
+        "doc": "pricing2",
+        "counter": 2,
+        "creationDate": 1728250066800,
+        "collection": "flight.pricing.pricing",
+        "chunk": "chunk1",
+        "lastModified": 1728250431956,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "availability",
+                "price",
+                "unit",
+                "trip"
+            ]
+        },
+        "secured": false,
+        "size": 387
+    },
+    "availability": "availability1",
+    "price": 175,
+    "unit": "USD",
+    "trip": "One way"
+}

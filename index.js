@@ -1,10 +1,13 @@
 const http = require('node:http')
+const fs = require("fs")
 // const EasyTunnel = require("./functions/easy-tunnel")
 const { getData, start, postData, database } = require("./functions/database")
 const router = require('./functions/router')
 const { generate } = require('./functions/generate')
-const networkInterfaces = require('os').networkInterfaces()
 const { connectToWebSocket, createWebSocket } = require('./functions/websocket')
+const minify = require('@node-minify/core')
+const terser = require('@node-minify/terser')
+const { gzip, ungzip } = require('node-gzip')
 
 // config
 require('dotenv').config()
@@ -20,6 +23,18 @@ const port = parseInt(process.argv[2])
 
 // get hosts => run applications
 if (!port) {
+  
+  // minify
+  minify({
+    compressor: terser,
+    input: "./storage/resources/engine.js",
+    output: "./storage/resources/engine.js",
+    callback: async (err, min) => {
+      
+      let engine = await gzip(fs.readFileSync("./storage/resources/engine.js"))
+      fs.writeFileSync("./storage/resources/engine.js", engine)
+    }
+  });
 
   //createWebSocket()
 

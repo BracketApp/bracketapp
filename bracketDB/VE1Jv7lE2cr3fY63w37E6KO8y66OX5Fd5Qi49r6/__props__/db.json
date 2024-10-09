@@ -1,11 +1,11 @@
 {
     "creationDate": 0,
     "collectionsLength": -190,
-    "docsLength": -399,
-    "reads": 50240,
-    "writes": 3326,
+    "docsLength": -392,
+    "reads": 51006,
+    "writes": 3366,
     "deletes": 190,
-    "size": -299392,
-    "payloadIn": 11780363,
-    "payloadOut": 62724992
+    "size": -297313,
+    "payloadIn": 11796641,
+    "payloadOut": 63946838
 }

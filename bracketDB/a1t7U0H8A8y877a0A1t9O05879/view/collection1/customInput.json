@@ -7,7 +7,7 @@
         "creationDate": 1716370928082,
         "collection": "view",
         "chunk": "chunk1",
-        "lastModified": 1725182567271,
+        "lastModified": 1728337886692,
         "dev": false,
         "actions": {
             "droplistHandler": "input().txt()=clicked().txt();[data()=clicked().txt()?_.inputType!=yesNo?data()=[true?clicked().txt()=Yes?false]];[_.action]()",

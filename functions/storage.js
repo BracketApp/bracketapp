@@ -217,7 +217,7 @@ const uploadFile = async ({ _window = {}, req, upload, action = "save()" }) => {
     return { success: true, message: "Data uploaded successfully!", data }
 }
 
-const createWriteStream = async ({file, path}) => new Promise((resolve) => {
+const createWriteStream = async ({ file, path }) => new Promise((resolve) => {
 
     file = file.split(';base64,').pop();
     const buffer = Buffer.from(file, 'base64')
