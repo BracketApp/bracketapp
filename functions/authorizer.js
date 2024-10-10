@@ -1,7 +1,9 @@
 const { actions } = require("./kernel")
-const { database } = require("./database")
+const { database, respond } = require("./database")
 const { logger } = require("./logger")
 const { generate } = require("./generate")
+const fs = require("fs")
+const { gzip } = require("node-gzip")
 
 // config
 require('dotenv').config()
@@ -9,26 +11,26 @@ require('dotenv').config()
 // project DB
 const bracketDB = process.env.BRACKETDB
 
-const authorizer = ({ _window, req, res }) => {
+const authorizer = async ({ _window, req, res }) => {
 
   const global = _window.global
 
   logger({ _window, data: { key: "authorization", start: true } })
 
-  const { data, success, message } = getSession({ _window, req, res })
+  const { data, success, message, cached } = await getSession({ _window, req, res })
   global.manifest.session = data
 
-  logger({ _window, data: { key: "authorization", end: true } })
+  if (!cached) logger({ _window, data: { key: "authorization", end: true } })
 
-  if (!success) {
-    respond({ res, __, response: { success, message } }) // not auth
-    process.exit()
-  }
+  if (!success) respond({ res, response: { success, message } }) // not auth
+
+  return { success }
 }
 
-const getSession = ({ _window, req }) => {
+const getSession = async ({ _window, req, res, success = true, cached = false }) => {
 
   const global = _window.global, sessionID = global.manifest.cookies.__session__
+  let sessionNotExpired = false
 
   // get session by sessionID
   if (sessionID) {
@@ -47,7 +49,15 @@ const getSession = ({ _window, req }) => {
       createSession({ _window, req, session })
 
       // session garbage collector
-      database({ _window, req, action: "erase()", data: { db: bracketDB, collection: "session", find: { expiryDate: { "<": (new Date()).getTime() - 259200000 } } } })
+      let { data: sessions } = database({ _window, req, action: "erase()", data: { db: bracketDB, collection: "session", find: { expiryDate: { "<": (new Date()).getTime() - 259200000 } } } })
+      
+      // remove sessions
+      removeAppCaches(sessions)
+
+    } else {
+
+      sessionNotExpired = session.path.join("/") === global.manifest.path.join("/") && session.host === global.manifest.host && global.manifest.action === "createWebApp()"
+      updateSession({ _window, req, session })
     }
   }
 
@@ -63,13 +73,22 @@ const getSession = ({ _window, req }) => {
     session.permissions = permissions || {}
   }
 
-  // plugins
-  getPlugins({ _window, publicID: session.publicID, session })
+  // accsessabilities
+  getAccessabilities({ _window, publicID: session.publicID, session })
+
+  // session not expired
+  if (sessionNotExpired) var { success, cached } = await appCacheHandler({ _window, session, res })
 
   // activity
   // recordActivity({ _window, session })
 
-  return { data: session, success: true }
+  return { data: session, success, cached }
+}
+
+const updateSession = ({ _window, req, session }) => {
+  if (_window.global.manifest.action === "createWebApp()") session.path = _window.global.manifest.path
+  session.expiryDate = new Date().getTime() + 86400000
+  _window.global.manifest.session = session = database({ _window, req, action: "save()", data: { db: bracketDB, collection: "session", data: session } }).data
 }
 
 const createSession = ({ _window, req, res, session = {} }) => {
@@ -88,9 +107,11 @@ const createSession = ({ _window, req, res, session = {} }) => {
     // related to the opened project not the user
     publicID: project.publicID,
     projectID: project.__props__.id,
+    cacheID: project.cacheID,
     projectDoc: project.__props__.doc,
     subdomain: project.subdomain,
     host: global.manifest.host,
+    path: global.manifest.path,
     db: project.db,
     storage: project.storage,
     devDB: project.devDB || "",
@@ -163,27 +184,45 @@ const recordActivity = ({ _window, session }) => {
   projectActivity()
 }
 
-const getPlugins = ({ _window, publicID, session }) => {
-
-  // recheck subscriptions
-  let accessabilities = [], subscriptions = []
+const getAccessabilities = ({ _window, publicID, session }) => {
 
   // get subscriptions
-  let { data } = database({ _window, action: "search()", data: { db: bracketDB, collection: "subscription", find: { expiryDate: { greater: new Date().getTime() }, publicID } } })
-  subscriptions = Object.values(data || {})
+  let { data: subscriptions } = database({ _window, action: "search()", data: { db: bracketDB, collection: "subscription", find: { expiryDate: { greater: new Date().getTime() }, publicID } } })
+  subscriptions = Object.values(subscriptions || {})
 
-  // get plugins
-  if (subscriptions.length > 0) {
-    let { data } = database({ _window, action: "search()", data: { db: bracketDB, collection: "accessability", find: { packageID: { in: subscriptions.map(subs => subs.packageID) } } } })
-    accessabilities = Object.values(data || {})
-  }
+  // get accessabilities
+  if (subscriptions.length === 0) return session.accessabilities = []
+
+  let { data: accessabilities } = database({ _window, action: "search()", data: { db: bracketDB, collection: "accessability", find: { packageID: { in: subscriptions.map(subs => subs.packageID) } } } })
+  accessabilities = Object.values(accessabilities || {})
 
   // accessabilities
-  accessabilities = accessabilities.map(({ accessabilities }) => accessabilities).flat()
+  session.accessabilities = accessabilities.map(({ accessabilities }) => accessabilities).flat()
 
-  if (session) session.plugins = accessabilities
+  // if (session) session.accessabilities = accessabilities
+}
 
-  return accessabilities
+const appCacheHandler = async ({ _window, session, res, success = true }) => {
+
+  if (!fs.existsSync(`cache/${session.cacheID}/${session.__props__.id}`)) return { success }
+
+  logger({ _window, data: { key: "LoadCache", start: true } })
+
+  let doc = fs.readFileSync(`cache/${session.cacheID}/${session.__props__.id}`)
+  
+  // encode
+  doc = await gzip(doc)
+
+  res.setHeader("Content-Encoding", "gzip")
+  res.write(doc)
+  res.end()
+
+  logger({ _window, data: { key: "LoadCache", end: true } })
+  return { success: false, cached: true }
+}
+
+const removeAppCaches = (sessions) => {
+  Object.values(sessions).map(session => fs.unlinkSync(`cache/${session.cacheID}/${session.__props__.id}`))
 }
 
 module.exports = { authorizer }

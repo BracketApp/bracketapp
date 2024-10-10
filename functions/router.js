@@ -18,7 +18,7 @@ require('dotenv').config()
 // project DB
 const bracketDB = process.env.BRACKETDB
 
-module.exports = ({ req, res }) => {
+module.exports = async ({ req, res }) => {
 
   const path = decodeURI(req.url).split("/"), id = "server"
 
@@ -26,11 +26,14 @@ module.exports = ({ req, res }) => {
   if (path[1] === "storage") return getLocalFile({ req, res })
 
   // initialize
-  const _window = initializer({ id, req, res, path })
+  var { _window, success } = initializer({ id, req, res, path })
+  if (!success) return
+
   const global = _window.global, __ = global.__
 
   // authorize
-  authorizer({ _window, req, res })
+  var { success } = await authorizer({ _window, req, res })
+  if (!success) return
 
   // open stack
   const stack = openStack({ _window, id, event: req.method.toLowerCase(), server: global.manifest.server, action: global.manifest.action })
@@ -151,15 +154,17 @@ const initializer = ({ id, req, res }) => {
 
   // check host
   const { success, message } = checkHost({ host, _window, global })
+
+  // wrong host
   if (!success) {
-    respond({ res, __, response: { success, message } }) // wrong host
-    process.exit()
+    respond({ res, __, response: { success, message } })
+    return { success: false }
   }
 
   // log
   console.log((new Date()).getHours() + ":" + (new Date()).getMinutes() + " " + req.method, path.join("/"), action || "");
 
-  return _window
+  return { _window, success: true }
 }
 
 const isIPv4 = (host) => {

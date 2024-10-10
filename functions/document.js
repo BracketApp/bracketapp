@@ -2,6 +2,9 @@ const cssStyleKeyNames = require("./cssStyleKeyNames")
 const { actions } = require("./kernel")
 const { hideSecured, respond } = require("./database")
 const { gzip } = require("node-gzip")
+const fs = require("fs")
+const { logger } = require("./logger")
+const { clone } = require("./clone")
 
 const document = async ({ _window, res, stack, props, address, __ }) => {
 
@@ -27,8 +30,8 @@ const document = async ({ _window, res, stack, props, address, __ }) => {
     let metaDescription = view.meta.description || ""
     let metaTitle = view.meta.title || view.title || ""
     let metaViewport = view.meta.viewport || ""
-
-    global.manifest.session = global.manifest.session.__props__.id
+    let session = clone(global.manifest.session)
+    global.manifest.session = session.__props__.id
 
     // logs
     // global.__server__.logs = stack.logs
@@ -107,11 +110,25 @@ const document = async ({ _window, res, stack, props, address, __ }) => {
             </body>
         </html>`
 
+    // caching
+    createAppCache({ _window, session, doc })
+
     // encode
     doc = await gzip(doc)
+
     res.setHeader("Content-Encoding", "gzip")
     res.write(doc)
     res.end()
+}
+
+const createAppCache = ({ _window, session, doc }) => {
+
+    logger({ _window, data: { key: "caching", start: true } })
+
+    // cache app
+    fs.writeFileSync(`cache/${session.cacheID}/${session.__props__.id}`, doc)
+
+    logger({ _window, data: { key: "caching", end: false } })
 }
 
 module.exports = document

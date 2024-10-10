@@ -5,12 +5,12 @@
     "lastChunk": 1,
     "docsLength": 4,
     "counter": 186,
-    "reads": 432443,
+    "reads": 432466,
     "writes": 331,
     "deletes": 5,
     "size": 5336,
     "payloadIn": 166162,
-    "payloadOut": 79516805,
+    "payloadOut": 79532357,
     "dirTree": [],
     "indexes": [
         {
@@ -18,16 +18,16 @@
                 "__props__.id"
             ],
             "doc": "index1",
-            "lastRead": 1728465032608,
-            "expiryDate": 1731057032608
+            "lastRead": 1728578123628,
+            "expiryDate": 1731170123628
         },
         {
             "find": [
                 "publicID"
             ],
             "doc": "index2",
-            "lastRead": 1728477235545,
-            "expiryDate": 1731069235545
+            "lastRead": 1728578123611,
+            "expiryDate": 1731170123611
         }
     ],
     "lastIndex": 5

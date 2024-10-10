@@ -3,9 +3,9 @@ const { toArray } = require("./toArray")
 const { isEqual } = require("./isEqual")
 
 // database
-const { spawn } = require("child_process")
 const fs = require("fs")
 const util = require('util')
+const { spawn } = require("child_process")
 const vcards = require("vcards-js")
 const { clone } = require("./clone")
 
@@ -621,7 +621,7 @@ const deleteData = ({ _window = {}, req, res, erase, action = "erase()", verifie
         
         var { data } = database({ _window, req, action: "search()", data: searchOptions })
         docs = Object.keys(data)
-        docs.map(doc => data[doc] = "erased")
+        // docs.map(doc => data[doc] = "erased")
     }
 
     if (docs.length === 0) {
@@ -655,7 +655,7 @@ const deleteData = ({ _window = {}, req, res, erase, action = "erase()", verifie
                 // props: length, size
                 docsLength++;
                 dataSize += docData.__props__.size
-                data[doc] = "erased"
+                data[doc] = docData
                 
                 // last doc => decrement counter
                 if (collectionProps.counter === docData.__props__.counter) collectionProps.counter--
@@ -1072,6 +1072,7 @@ const createDB = ({ data }) => {
     data.db = generate({ universal: true })
     data.devDB = generate({ universal: true })
     data.storage = generate({ universal: true })
+    data.cacheID = generate({ universal: true })
 
     var newProjectProps = {
         creationDate: 0,
@@ -1097,6 +1098,9 @@ const createDB = ({ data }) => {
     fs.mkdirSync(`storage/${data.storage}`)
     fs.mkdirSync(`storage/${data.storage}/__props__`)
     fs.writeFileSync(`storage/${data.storage}/__props__/db.json`, JSON.stringify(newProjectProps, null, 4))
+    
+    // cache
+    fs.mkdirSync(`cache/${data.cacheID}`)
 }
 
 const authorizeDB = ({ _window, global, action, data }) => {
@@ -1127,25 +1131,25 @@ const authorizeDB = ({ _window, global, action, data }) => {
     // special case
     if (data.uncheckPlugins) return authorizations
 
-    // get plugins from session
-    var plugins = global.manifest.session.plugins || []
+    // get accessabilities from session
+    let accessabilities = global.manifest.session.accessabilities || []
 
     // no plugin found
-    if (plugins.length === 0) return authorizations
+    if (accessabilities.length === 0) return authorizations
 
     // check authority
-    var authPlugins = plugins.filter(plugin => pluginAuthConditions(plugin, action))
+    let authPlugins = accessabilities.filter(plugin => pluginAuthConditions(plugin, action))
 
     // not authorized
     if (authPlugins.length === 0) return authorizations
 
-    var queryOptions = []
+    let queryOptions = []
     authPlugins.map(plugin => {
 
         if (plugin.db) return authPlugins.push({ ...data, db: plugin.db, plugin })
 
         // get db through projectID
-        var { data: project = {} } = getData({ _window, search: { db: bracketDB, collection: "project", findOne: { "__props__.id": plugin.projectID }, preventDefault: { queries: true } } })
+        let { data: project = {} } = getData({ _window, search: { db: bracketDB, collection: "project", findOne: { "__props__.id": plugin.projectID }, preventDefault: { queries: true } } })
         project = Object.values(project)[0]
         if (!project) return queryOptions.push(false)
         queryOptions.push({ ...data, db: project.db, plugin })
