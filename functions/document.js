@@ -125,8 +125,13 @@ const createAppCache = ({ _window, session, doc }) => {
 
     logger({ _window, data: { key: "caching", start: true } })
 
+    const cacheID = session.dev ? session.devDB : session.db
+
+    // cache
+    if (!fs.existsSync(`cache/${cacheID}`)) fs.mkdirSync(`cache/${cacheID}`)
+
     // cache app
-    fs.writeFileSync(`cache/${session.cacheID}/${session.__props__.id}`, doc)
+    fs.writeFileSync(`cache/${cacheID}/${session.__props__.id}`, doc)
 
     logger({ _window, data: { key: "caching", end: false } })
 }

@@ -4,7 +4,11 @@
         "user": "1"
     },
     "session1": {
-        "session": "rP1TO7Dj2m48J94We8fx3Au3510fO1k31hF5K86",
+        "session": "uR1Da7432Me8Lc6VX7Vf3vq5877iA4Ta4ZN6Jn5",
+        "user": "user1"
+    },
+    "session2": {
+        "session": "O21VP7eq2om8EQ6iJ7UB5Iw7dR9sR7521yi1U80",
         "user": "user1"
     }
 }

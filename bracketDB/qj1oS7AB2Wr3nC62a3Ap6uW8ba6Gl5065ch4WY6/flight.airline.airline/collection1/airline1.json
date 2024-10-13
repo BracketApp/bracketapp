@@ -6,7 +6,7 @@
         "creationDate": 1728238529329,
         "collection": "flight.airline.airline",
         "chunk": "chunk1",
-        "lastModified": 1728238529329,
+        "lastModified": 1728677873132,
         "dev": true,
         "actions": {},
         "comments": [],
@@ -14,12 +14,14 @@
         "arrange": {
             "": [
                 "airline",
-                "country"
+                "country",
+                "logo"
             ]
         },
         "secured": false,
-        "size": 347
+        "size": 470
     },
     "airline": "Turkish Airlines",
-    "country": "country2"
+    "country": "country2",
+    "logo": "/storage/ku1h97gg20f3t26YL3wC64l82B6RI5Xi5QP4iP6/files/bucket1/FS1Ts7822JM89C3c33d47JE8mr3T07ZY8939xa6.png"
 }

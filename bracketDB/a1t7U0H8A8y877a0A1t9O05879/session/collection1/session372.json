@@ -7,13 +7,14 @@
     "host": "192.168.0.10",
     "path": [
         "",
-        "tap"
+        "console",
+        "F113n7lK2Cd3tB6Cu3L76gq8xH6lS5825xK4Mx2"
     ],
     "db": "a1t7U0H8A8y877a0A1t9O05879",
     "storage": "eU1YM75W2Nq1Xo8JS3a24tw3d48yg5Mw0GI4Ff7",
     "devDB": "",
     "dev": false,
-    "expiryDate": 1728664690403,
+    "expiryDate": 1728842643385,
     "encryptionKey": "WqbYp",
     "userID": "t1j792H396D3B6x8J615X5R2N8",
     "username": "Anonymous Anonymous",
@@ -24,13 +25,13 @@
         "creationDate": 1728577704450,
         "collection": "session",
         "chunk": "chunk1",
-        "lastModified": 1728578290406,
+        "lastModified": 1728756243390,
         "dev": false,
         "actions": {},
         "comments": [],
         "collapsed": [],
         "arrange": [],
         "secured": false,
-        "size": 736
+        "size": 782
     }
 }

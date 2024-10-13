@@ -27,7 +27,7 @@
                             ]
                         },
                         {
-                            "view": "Icon?name=bi-three-dots-vertical;style:[transition=.2s;backgroundColor=inherit;display=none;color=#000;fontSize=1.9rem;position=absolute;right=0;height=2.5rem;width=2rem;borderRadius=.5rem];hover.style:[color=blue;backgroundColor=#fff];droplist:[items=:[icon='bi-input-cursor-text']:[icon='bi-globe-americas']:[icon='bi-trash'];item.style:[fontSize=2rem;height=4rem];placement=right;align=center];[click:droplist?collectionEditorHandler()]"
+                            "view": "Icon?name=bi-three-dots-vertical;style:[transition=.2s;backgroundColor=inherit;display=none;color=#000;fontSize=1.9rem;position=absolute;right=0;height=2.5rem;width=2rem;borderRadius=.5rem];hover.style:[color=blue;backgroundColor=#fff];droplist:[items=:[icon='bi-input-cursor-text']:[icon='bi-diagram-3']:[icon='bi-globe-americas']:[icon='bi-trash'];item.style:[fontSize=2rem;height=4rem];placement=right;align=center];[click:droplist?collectionEditorHandler()]"
                         }
                     ]
                 },
@@ -38,7 +38,7 @@
                             "view": "collections?data=collections:()._filter():[_.split():[data()].1.0='.';!_.split():[data()].0]._():[_.split():'.'.slice():0:[3rdParent().collectionIndex+2].join():'.'].removeDuplicates().sort():[ascending]?collections:()._find():[_.split():[data()].1.0='.';!_.split():[data()].0]"
                         },
                         {
-                            "view": "[View]:[data=data:().editor.[parent().data()].keys().sort():[ascending];mount]?class=flex pointer align-center;style:[minHeight=3rem;width=100%;position=relative];loaded:[loadedHandler()];click:[displayOpenedDoc();openDoc()?clicked()!=lastChild()];mouseenter:[showOptionIcon()];mouseleave:[hideOptionIcon()]?data()||[!openDoc:();openCollection:()=parent().data()]",
+                            "view": "[View]:[data=data:().editor.[parent().data()].keys().sort():[ascending];mount]?class=flex pointer align-center;style:[minHeight=3rem;width=100%;position=relative];loaded:[loadedHandler()];click:[displayOpenedDoc();openDoc():[doc=data();collection=parent().data();data=data:().editor.[parent().data()].[data()].clone()]?clicked()!=lastChild()];mouseenter:[showOptionIcon()];mouseleave:[hideOptionIcon()]?data()||[!openDoc:();openCollection:()=parent().data()]",
                             "children": [
                                 {
                                     "view": "Icon?name=bi-file-earmark;style:[fontSize=1.1rem;minWidth=2rem];click:[2ndNext().focus()]"
@@ -67,7 +67,7 @@
         "creationDate": 1710330786484,
         "collection": "view",
         "chunk": "chunk1",
-        "lastModified": 1728338285517,
+        "lastModified": 1728755670437,
         "dev": false,
         "actions": {
             "clickCreateNewDoc": "parent().next().display();1stSibling().style().rotate()=90;if():[!duplicateDoc:()]:[openDoc:().del()];openCollection:()=data();parent().next().insert():[view=parent().next();viewPath=:children:1;index=0;data='']:[_.view.():[2ndChild().hide();3rdChild().():[display();txt()='';focus()]];hideActionPopup()]",
@@ -103,13 +103,13 @@
             "loadedHandler": "if():[new-file-created:();mapIndex=data:().editor.[parent().data()].keys().len()-1]:[new-file-created:().del();parent().style().display=flex;parent().prev().1stChild().style().transform='rotate(90deg)';click()]",
             "escapeEdit": "cancelEditCreateDoc():[view=2ndParent().data();collection=2ndParent().data();doc=..openDoc]?e().key=Escape",
             "openDoc": {
-                "_": "initOpens();displayViews();hideOtherData();[loader.show;insertTab();insertData();insertActions()]()::[loader.hide]?clicked()!=lastChild()!=2ndLastChild();!openDocs:().inc():[parent().data()+'/'+data()]",
-                "initOpens": "openDoc:()=data();openCollection:()=parent().data();openData:()=data:().editor.[openCollection:()].[openDoc:()].clone();openDocs:().replaceItem():[openCollection:()+'/'+openDoc:()]",
-                "displayViews": "():dataViewerBar.style().display=flex;():mainActionsContainer.style().height=actionsHeight:()+rem;():dataViewer.style().height='calc(100% - '+actionsHeight:()+'rem)';():mainActionsContainer.style().display=flex",
-                "hideOtherData": "class():dataViewer.():[style().display=none];():dataViewerBar.children().():[style().backgroundColor=inherit;hover.disable=false];class():actions.():[style().display=none]",
+                "_": "initOpens();displayMainContainers();hideAllOpenedDocs();insertTab();insertData();insertActions()?clicked()!=lastChild()!=2ndLastChild();!openDocs:().inc():[_.collection+'/'+_.doc]",
+                "initOpens": "openDoc:()=_.doc;openCollection:()=_.collection;openData:()=_.data;openDocs:().replaceItem():[openCollection:()+'/'+openDoc:()]",
                 "insertTab": "():dataViewerBar.insert():[view=():dataViewerBar;viewPath=:children:0;index=():dataViewerBar.children().len();preventDefault;mount=true;data=openCollection:()+'/'+openDoc:()]:[_.view.():[style().backgroundColor=#fff;hover.disable=true;openDoc=openDoc:();openCollection=openCollection:()]]",
                 "insertData": "():dataViewer.insert():[view=():dataViewer;viewPath=:children:0;index=():dataViewerBar.children().len();preventDefault;mount=true;data=openData:();index=():dataViewer.children().len()]:[_.view.():[openDoc=openDoc:();openCollection=openCollection:();openData=openData:()]]",
-                "insertActions": "():actions.insert():[view=():actions;viewPath=:children:0;preventDefault;mount=true;data=[openData:().__props__.actions||[]]]:[_.view.():[openDoc=openDoc:();openCollection=openCollection:()]]"
+                "insertActions": "():actions.insert():[view=():actions;viewPath=:children:0;preventDefault;mount=true;data=[openData:().__props__.actions||[]]]:[_.view.():[openDoc=openDoc:();openCollection=openCollection:()]]",
+                "displayMainContainers": "():dataViewerBar.display();():dataViewer.height()='calc(100% - '+actionsHeight:()+'rem)';():mainActionsContainer.display();():mainActionsContainer.height()=actionsHeight:()+rem",
+                "hideAllOpenedDocs": "():dataViewerBar.children().():[backgroundColor()=inherit;hover.disable=false];class():dataViewer.():[hide()];class():actions.():[hide()]"
             },
             "displayOpenedDoc": {
                 "_": "[initOpens();displayViews();hideOtherData()]():[path=openDoc];displayTab();displayData();displayActions()?clicked()!=lastChild();openDocs:().inc():[parent().data()+'/'+data()]",
@@ -118,7 +118,7 @@
                 "displayTab": "():dataViewerBar.children().find():[openDoc=openDoc:();openCollection=openCollection:()].():[style().backgroundColor=#fff;hover.disable=true]"
             },
             "collectionEditorHandler": {
-                "_": "removeCollection()?clicked().icon().txt()='bi-trash'?[setCollectionNameEditable()?clicked().icon().txt()='bi-input-cursor-text']",
+                "_": "removeCollection()?clicked().icon().txt()='bi-trash'?setCollectionNameEditable()?clicked().icon().txt()='bi-input-cursor-text'?openCollectionSchema()?clicked().icon().txt()='bi-diagram-3'",
                 "removeCollection": "loader.show;[eraseData():[publicID=project:().publicID;collection=data()]]():[collection=actions;doc=db]:[updateDatabase()]",
                 "editCollectionName": {
                     "_": "e().preventDefault();[editName()?data().type()=text;data()?createCollection()?txt();txt().0!='.';txt().[-1]!='.'?note():[text='Enter a correct collection name!';type=danger]?!data()]",
@@ -128,7 +128,10 @@
                 },
                 "setCollectionNameEditable": "2ndSibling().():[editable();focus();style():[textOverflow='';overflow=auto;cursor=text];txt()=data()];2ndSibling().text=2ndSibling().txt()",
                 "handleCollectionNameNote": "note():[text=['Enter a collection name!'?!txt()?'Collection name already exists!'?data:().editor.[txt()]];type=danger]",
-                "updateDatabase": "():dataViewerBar.children().filter():[openCollection=..data()].():[lastChild().click()];collections:()._filter():[_=data()||_.split():[data()].1]._():[data:().editor.[_].del();collections:().pullItem():[_]];note():[text='Collection removed successfully!'];():database.2ndChild().refresh()::[_.view.display()]"
+                "updateDatabase": "():dataViewerBar.children().filter():[openCollection=..data()].():[lastChild().click()];collections:()._filter():[_=data()||_.split():[data()].1]._():[data:().editor.[_].del();collections:().pullItem():[_]];note():[text='Collection removed successfully!'];():database.2ndChild().refresh()::[_.view.display()]",
+                "openCollectionSchema": {
+                    "_": "[getData():[publicID=project:().publicID;collection=data();doc=__schema__]:[openDoc():[collection=data();data=_.data;doc=__schema__]]]():[collection=actions;doc=db]"
+                }
             },
             "openCollection": {
                 "_": "searchDocs()?clicked()!=nthLastChild():3;clicked()!=nthLastChild():2;clicked()!=nthLastChild():1;clicked()!=input()",
@@ -176,7 +179,21 @@
             },
             {
                 "path": [
+                    "children",
+                    0,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "path": [
                     "collectionEditorHandler"
+                ]
+            },
+            {
+                "path": [
+                    "collectionEditorHandler",
+                    "editCollectionName"
                 ]
             },
             {
@@ -297,12 +314,16 @@
                 "removeCollection",
                 "setCollectionNameEditable",
                 "updateDatabase",
-                "_"
+                "_",
+                "openCollectionSchema"
             ],
             "collectionEditorHandler.editCollectionName": [
                 "closeRelatedDocs",
                 "createCollection",
                 "editName",
+                "_"
+            ],
+            "collectionEditorHandler.openCollectionSchema": [
                 "_"
             ],
             "createDoc": [
@@ -341,8 +362,8 @@
                 "_"
             ],
             "openDoc": [
-                "displayViews",
-                "hideOtherData",
+                "displayMainContainers",
+                "hideAllOpenedDocs",
                 "initOpens",
                 "insertActions",
                 "insertData",
@@ -351,6 +372,6 @@
             ]
         },
         "secured": false,
-        "size": 15927
+        "size": 16353
     }
 }

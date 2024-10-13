@@ -1,7 +1,7 @@
 const http = require('node:http')
 const fs = require("fs")
 // const EasyTunnel = require("./functions/easy-tunnel")
-const { getData, start, postData, database } = require("./functions/database")
+const { getData, start, postData, database, getFolderNames, getDocNames } = require("./functions/database")
 const router = require('./functions/router')
 const { generate } = require('./functions/generate')
 const { connectToWebSocket, createWebSocket } = require('./functions/websocket')
@@ -23,7 +23,13 @@ const port = parseInt(process.argv[2])
 
 // get hosts => run applications
 if (!port) {
-  
+
+  getFolderNames("cache").map(cacheID => {
+    getDocNames(`cache/${cacheID}`).map(id => {
+      fs.unlinkSync(`cache/${cacheID}/${id}`)
+    })
+  })
+
   // minify
   minify({
     compressor: terser,

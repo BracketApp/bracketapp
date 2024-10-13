@@ -59,7 +59,7 @@ const droplist = ({ id, e, __, stack, props, lookupActions, address, object }) =
         if (typeof item.text === "string") item.text = { text: item.text }
         
         return ({
-          view: `View?style:[minHeight=3rem;padding=0 1rem;gap=1rem];hover.style.backgroundColor=#eee;${jsonToBracket(view.droplist.item || {})};${jsonToBracket(item || {})};class=flex align-items pointer ${item.class || ""}`,
+          view: `View?style:[minHeight=3rem;padding=0 1rem;gap=1rem];[mouseenter?siblings().():[style().backgroundColor=#00000000];style().backgroundColor=#eee];${jsonToBracket(view.droplist.item || {})};${jsonToBracket(item || {})};class=flex align-items pointer ${item.class || ""}`,
           children: [{
             view: `View?style:[height=inherit;width=fit-content];${jsonToBracket(item.icon.container || {})};class=flexbox ${(item.icon.container || {}).class || ""}`,
             children: [{

@@ -5,20 +5,20 @@
     "lastChunk": 1,
     "docsLength": 5,
     "counter": 11,
-    "reads": 3988,
+    "reads": 3992,
     "writes": 116,
     "deletes": 0,
     "size": 1580,
     "payloadIn": 48347,
-    "payloadOut": 1701273,
+    "payloadOut": 1703166,
     "indexes": [
         {
             "find": [
                 "pluginID"
             ],
             "doc": "index2",
-            "lastRead": 1728338338219,
-            "expiryDate": 1730930338219
+            "lastRead": 1728662098607,
+            "expiryDate": 1731254098607
         },
         {
             "find": [
@@ -26,8 +26,8 @@
                 "pluginID"
             ],
             "doc": "index3",
-            "lastRead": 1728338363788,
-            "expiryDate": 1730930363788
+            "lastRead": 1728662102383,
+            "expiryDate": 1731254102383
         }
     ],
     "lastIndex": 5

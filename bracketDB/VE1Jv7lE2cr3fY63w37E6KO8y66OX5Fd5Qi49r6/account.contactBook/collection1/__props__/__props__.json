@@ -1,0 +1,16 @@
+{
+    "creationDate": 1728723617745,
+    "collection": "account.contactBook",
+    "maxSize": 1000,
+    "lastChunk": 1,
+    "docsLength": 2,
+    "counter": 2,
+    "reads": 16,
+    "writes": 11,
+    "deletes": 0,
+    "size": 604,
+    "payloadIn": 3655,
+    "payloadOut": 3622,
+    "indexes": [],
+    "lastIndex": 0
+}

@@ -1,5 +1,5 @@
 {
-    "view": "View?id=login;class=flexbox;style:[position=relative;overflow=hidden;minHeight=100vh];name=Login To Bracket;title=Login To Bracket;meta:[title=Login To Bracket;description=Login To Bracket Builder]",
+    "view": "View?id=login;class=flexbox;style:[position=relative;overflow=hidden;minHeight=100vh];name=Login To Bracket;title=Login To Bracket;meta:[title=Login To Bracket;description=Login To Bracket Builder];[loaded?():loginText.input().focus()?!():loginText.hidden()?():welcome.input().focus()]",
     "children": [
         {
             "view": "View?class=column;form;style:[backgroundColor=#fff;borderRadius=1rem;width=30%;border=1px solid #ddd;padding=8rem 4rem;display=flex;paddingBottom=3rem;zIndex=1;position=fixed;gap=3rem]",
@@ -82,7 +82,7 @@
         "creationDate": 1710330786509,
         "collection": "view",
         "chunk": "chunk1",
-        "lastModified": 1727372797012,
+        "lastModified": 1728596903526,
         "dev": false,
         "actions": {
             "loginPasswordHandler": {
@@ -350,6 +350,6 @@
             ]
         },
         "secured": false,
-        "size": 6122
+        "size": 6210
     }
 }

@@ -6,7 +6,7 @@
         "creationDate": 1724593351493,
         "collection": "account.user.user",
         "chunk": "chunk1",
-        "lastModified": 1726760310579,
+        "lastModified": 1728736026481,
         "dev": true,
         "actions": {},
         "comments": [],
@@ -14,12 +14,16 @@
         "arrange": {
             "": [
                 "firstName",
-                "lastName"
+                "lastName",
+                "agency",
+                "contactBook"
             ]
         },
         "secured": false,
-        "size": 333
+        "size": 404
     },
     "firstName": "Mohamad",
-    "lastName": "Obeid"
+    "lastName": "Obeid",
+    "agency": "agency1",
+    "contactBook": "contactBook1"
 }

@@ -37,7 +37,7 @@ const database = ({ _window = {global:{manifest:{}}}, req, res, action, preventD
     return syncData({ global, action, responses, data })
 }
 
-const getData = ({ _window = {}, req, res, search, action = "search()", verified }) => {
+const getData = ({ _window = {}, req, res, search, action = "search()", verified, collectionProps }) => {
 
     let global = _window.global
     let response = { success: false, message: "Something went wrong!" }
@@ -80,7 +80,7 @@ const getData = ({ _window = {}, req, res, search, action = "search()", verified
 
     }
 
-    var { path, dbProps, collectionProps, liveDB, success, message } = checkParams({ data: search, action, datastore })
+    if (!collectionProps) var { path, dbProps, collectionProps, liveDB, success, message } = checkParams({ data: search, action, datastore })
     if (!success) return { success, message, dev: search.dev, search }
     
     // no collection => return collection names
@@ -93,6 +93,9 @@ const getData = ({ _window = {}, req, res, search, action = "search()", verified
 
         return ({ id: generate(), data, message: "Collection names sent successfully!", success: true, single, dev: search.dev, search })
     }
+
+    // schema
+    if (doc === "__schema__") return getSchema({ search, liveDB, collection, collectionProps, dbProps })
 
     // chunk details
     let chunkIndex = collectionProps.lastChunk
@@ -258,6 +261,9 @@ const getData = ({ _window = {}, req, res, search, action = "search()", verified
     }
     
     readProps({ collectionProps, dbProps, data, db: liveDB, collection, datastore })
+
+    // schema
+    Object.values(data).map(data => applySchema({ _window, liveDB, db, schema: collectionProps.schema, data, datastore, collection, action }))
     
     response = { id: generate(), data, message, success, single, dev: search.dev, search }
 
@@ -338,6 +344,9 @@ const postData = ({ _window = {}, req, res, save, action = "save()", verified })
     var { path, dbProps, collectionProps, liveDB, success, message } = checkParams({ _window, req, data: save, action })
     if (!success) return { success, message }
 
+    // schema
+    if (doc === "__schema__") return saveSchema({ save, liveDB, collection, collectionProps, dbProps })
+
     // rename collection
     if (save.rename && save.collection) {
 
@@ -400,7 +409,7 @@ const postData = ({ _window = {}, req, res, save, action = "save()", verified })
         var createNewDoc = !data.__props__ || !data.__props__.doc
         // check doc by props.doc
         if (!createNewDoc) {
-            var response = database({_window, action:"search()", data:{db: liveDB, devDB: save.devDB, collection, doc:data.__props__.doc}, checkDataExists: true})
+            var response = database({_window, action:"search()", data:{db: liveDB, devDB: save.devDB, collection, doc:data.__props__.doc}})
             
             if (response.data) existingData = response.data
             else createNewDoc = true
@@ -431,9 +440,9 @@ const postData = ({ _window = {}, req, res, save, action = "save()", verified })
             collectionProps.counter++;
         }
 
-        var existingProps = existingData.__props__ || {}
-        var newProps = data.__props__ || {}
-        var docName = docs[i] || existingProps.doc || (collection.split(".")[collection.split(".").length - 1] + collectionProps.counter)
+        let existingProps = existingData.__props__ || {}
+        let newProps = data.__props__ || {}
+        let docName = docs[i] || existingProps.doc || (collection.split(".")[collection.split(".").length - 1] + collectionProps.counter)
 
         // data props
         data.__props__ = {
@@ -453,6 +462,9 @@ const postData = ({ _window = {}, req, res, save, action = "save()", verified })
             arrange: newProps.arrange || existingProps.arrange || [],
             secured: newProps.secured || false,
         }
+
+        // schema
+        applySchema({ liveDB, schema: collectionProps.schema, data, datastore, collection, action })
         
         // set data size
         data.__props__.size = JSON.stringify(data).length
@@ -463,13 +475,16 @@ const postData = ({ _window = {}, req, res, save, action = "save()", verified })
         // create new host
         else if (collection === "host" && db === bracketDB && data.port && !existingProps.doc) data.port.map(port => start(port))
 
+        // clear cache
+        else if (req.body.__props__.page === "console" && _window.global.manifest.session.db === bracketDB) clearProjectCache({db})
+
         // reset doc name
-        var doc = data.__props__.doc, oldDoc = existingProps.doc, publishing = existingProps.dev && !data.__props__.dev, developing = !existingProps.dev && data.__props__.dev
+        let doc = data.__props__.doc, oldDoc = existingProps.doc, publishing = existingProps.dev && !data.__props__.dev, developing = !existingProps.dev && data.__props__.dev
         
         // get chunk props
         var chunkName = data.__props__.chunk
         if (!chunks[chunkName]) chunks[chunkName] = { props: JSON.parse(fs.readFileSync(`${path}/collection1/__props__/${chunkName}/__props__.json`)), indexings: {} }
-        var chunkProps = chunks[chunkName].props
+        let chunkProps = chunks[chunkName].props
         
         // push/replace doc to sorted docs & update chunk docslength & size
         if (oldDoc && doc !== oldDoc) {
@@ -541,7 +556,7 @@ const postData = ({ _window = {}, req, res, save, action = "save()", verified })
         fs.writeFileSync(`${path}/collection1/${doc}.json`, JSON.stringify(data, null, 4))
 
         // props: data size
-        var dataSize = JSON.stringify({ [doc]: data }).length
+        let dataSize = JSON.stringify({ [doc]: data }).length
         payloadIn += dataSize
         if (createNewDoc) newDataSize += dataSize
 
@@ -985,7 +1000,7 @@ const objectToString = (obj) => {
     return str;
 }
 
-const readProps = ({ collectionProps, dbProps, data, db, collection, datastore }) => {
+const readProps = ({ collectionProps, dbProps, data, db, collection, datastore = "bracketDB" }) => {
 
     if (!collectionProps || !dbProps) return
 
@@ -1072,7 +1087,6 @@ const createDB = ({ data }) => {
     data.db = generate({ universal: true })
     data.devDB = generate({ universal: true })
     data.storage = generate({ universal: true })
-    data.cacheID = generate({ universal: true })
 
     var newProjectProps = {
         creationDate: 0,
@@ -1098,9 +1112,10 @@ const createDB = ({ data }) => {
     fs.mkdirSync(`storage/${data.storage}`)
     fs.mkdirSync(`storage/${data.storage}/__props__`)
     fs.writeFileSync(`storage/${data.storage}/__props__/db.json`, JSON.stringify(newProjectProps, null, 4))
-    
+
     // cache
-    fs.mkdirSync(`cache/${data.cacheID}`)
+    fs.mkdirSync(`cache/${data.db}`)
+    fs.mkdirSync(`cache/${data.devDB}`)
 }
 
 const authorizeDB = ({ _window, global, action, data }) => {
@@ -1700,6 +1715,15 @@ const respond = ({ res, stack, props, global, response, __ }) => {
     res.end()
 }
 
+const clearProjectCache = ({ db }) => {
+    
+    if (!fs.existsSync(`cache/${db}`)) return
+    
+    getDocNames(`cache/${db}`).map(id => {
+        fs.unlinkSync(`cache/${db}/${id}`)
+    })
+}
+
 const vcard = ({ res, data }) => {
 
     if (data.firstName && data.lastName && data.workPhone) {
@@ -1812,6 +1836,71 @@ const passport = async ({ _window, lookupActions, stack, props, address, id, e, 
     actions["stackManager()"]({ _window, lookupActions, stack, props, id, e, address, req, res, _: data, __ })
 }
 
+const saveSchema = ({ save, liveDB, collection, collectionProps, dbProps }) => {
+
+    collectionProps.schema = save.data
+
+    // props
+    postProps({ db: liveDB, collection, collectionProps, dbProps, writesCounter: 1, newDocsLength: 0, payloadIn: save.data.length, newDataSize: 0 })
+
+    return { success: true, message: "Schema saved successfully!", data: save.schema }
+}
+
+const getSchema = ({ search, liveDB, collection, collectionProps, dbProps }) => {
+
+    // props
+    readProps({ collectionProps, dbProps, db: liveDB, collection })
+
+    return { id: generate(), data: collectionProps.schema || {}, message: "Data queried successfully!", success: true, dev: search.dev, search }
+}
+
+const applySchema = ({ _window, liveDB, schema = {}, data = {}, datastore = "bracketDB", collection }) => {
+
+    Object.entries(schema).map(([key, props]) => {
+
+        // props is value
+        if (typeof props !== "object" && !Array.isArray(props)) props = { default: props, strict: true }
+
+        if (action === "search()") {
+            if (typeof props.type === "collection" && props.populate) {
+                if (typeof props.populate === "string") props.populate = { collection: props.populate }
+                if (typeof props.populate !== "object") props.populate = { collection }
+                if (!props.populate.collection) props.populate = { collection }
+                data[key] = database({ _window, action: "search()", data: { liveDB, db, collection, doc: data[key] } }).data
+            }
+            return
+        }
+
+        // value
+        if (props.required !== false) data[key] = data[key] !== undefined ? data[key] : props.default
+
+        // default
+        if (props.strict && props.default !== undefined) data[key] = props.default
+
+        // wrong type
+        if (props.type && typeof value !== props.type && props.required !== false) {
+            if (props.type === "boolean") data[key] = false
+            else if (props.type === "text") data[key] = ""
+            else if (props.type === "number") data[key] = 0
+            else if (props.type === "map") data[key] = {}
+            else if (props.type === "list") data[key] = []
+            else if (props.type === "timestamp") data[key] = new Date().getTime()
+            else if (props.type === "collection") {
+                let coll = typeof props.populate === "object" && props.populate.collection || collection
+                if (!fs.existsSync(`${datastore}/${liveDB}/${coll}`)) return delete data[key]
+            }
+        } else if (props.type && typeof value !== props.type && props.required === false) delete data[key]
+
+        let value = data[key]
+
+        // number
+        if (typeof value === "number") {
+            if (props.min && value < props.min) data[key] = value.min 
+            if (props.max && value > props.max) data[key] = value.max
+        }
+    })
+}
+
 module.exports = {
     hideSecured,
     database,
@@ -1827,5 +1916,7 @@ module.exports = {
     postProps,
     vcard,
     qrCode,
-    passport
+    passport,
+    getFolderNames,
+    getDocNames
 }

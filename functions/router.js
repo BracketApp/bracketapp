@@ -105,7 +105,7 @@ const initializer = ({ id, req, res }) => {
   // parse cookies (req.headers.cookies coming from client request)
   const host = req.headers.host
   const __ = req.body.data !== undefined ? [req.body.data] : []
-  const props = req.body.__props__ || {}
+  const props = req.body.__props__ = req.body.__props__ || {}
   const lookupServerActions = props.lookupServerActions ? req.body.data : false
   const lookupActions = props.lookupActions || []
   const path = props.path || decodeURI(req.url).split("/")

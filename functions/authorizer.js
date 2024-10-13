@@ -107,7 +107,6 @@ const createSession = ({ _window, req, res, session = {} }) => {
     // related to the opened project not the user
     publicID: project.publicID,
     projectID: project.__props__.id,
-    cacheID: project.cacheID,
     projectDoc: project.__props__.doc,
     subdomain: project.subdomain,
     host: global.manifest.host,
@@ -204,11 +203,12 @@ const getAccessabilities = ({ _window, publicID, session }) => {
 
 const appCacheHandler = async ({ _window, session, res, success = true }) => {
 
-  if (!fs.existsSync(`cache/${session.cacheID}/${session.__props__.id}`)) return { success }
+  const cacheID = session.dev ? session.devDB : session.db
+  if (!fs.existsSync(`cache/${cacheID}/${session.__props__.id}`)) return { success }
 
   logger({ _window, data: { key: "LoadCache", start: true } })
 
-  let doc = fs.readFileSync(`cache/${session.cacheID}/${session.__props__.id}`)
+  let doc = fs.readFileSync(`cache/${cacheID}/${session.__props__.id}`)
   
   // encode
   doc = await gzip(doc)
@@ -222,7 +222,7 @@ const appCacheHandler = async ({ _window, session, res, success = true }) => {
 }
 
 const removeAppCaches = (sessions) => {
-  Object.values(sessions).map(session => fs.unlinkSync(`cache/${session.cacheID}/${session.__props__.id}`))
+  Object.values(sessions).map(session => fs.unlinkSync(`cache/${session.dev ? session.devDB : session.db}/${session.__props__.id}`))
 }
 
 module.exports = { authorizer }

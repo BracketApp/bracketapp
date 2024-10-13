@@ -7,7 +7,7 @@
         "creationDate": 1716370928082,
         "collection": "view",
         "chunk": "chunk1",
-        "lastModified": 1728337886692,
+        "lastModified": 1728599955895,
         "dev": false,
         "actions": {
             "droplistHandler": "input().txt()=clicked().txt();[data()=clicked().txt()?_.inputType!=yesNo?data()=[true?clicked().txt()=Yes?false]];[_.action]()",
@@ -81,12 +81,6 @@
                 "path": [
                     "children",
                     3
-                ]
-            },
-            {
-                "path": [
-                    "children",
-                    4
                 ]
             }
         ],
@@ -224,7 +218,7 @@
             ]
         },
         "secured": false,
-        "size": 8073
+        "size": 8379
     },
     "children": [
         {
@@ -346,7 +340,7 @@
                     "view": "View?class=flex align-center pointer +[_.container.class||''];path=[_.path];style=[gap=.25rem;alignItems=center;position=relative;border=1px solid #ddd;borderRadius=.5rem;height=4rem;minHeight=fit-content;overflow=hidden;backgroundColor=#fff;[[_.container.style]]];[[_.container.action]];[hover?().class():x.():fadeIn()?mouseentered?().class():x.():fadeOut()]",
                     "children": [
                         {
-                            "view": "Input?[class=_.class?_.class];style=[flex=1;padding=0 .5rem;border=0;height=100%;width=100%;[cursor=pointer?_.readonly];[[_.style]]];[[_.action]];[data()=[[_.data]]?_.data];text=[[_.text]];[droplist=[[_.droplist]]?_.droplist];type=[_.inputType||text];[readonly=true?_.readonly];[min=[[_.min]]?_.min];[max=[[_.max]]?_.max]"
+                            "view": "Input?[class=_.class?_.class];style=[flex=1;padding=0 .5rem;border=0;height=100%;width=100%;[cursor=pointer?_.readonly];[[_.style]]];[[_.action]];[data()=[[_.data]]?_.data];text=[[_.text]];[droplist=[[_.droplist]]?_.droplist];type=[_.inputType||[password?_.password?text]];[readonly=true?_.readonly];[min=[[_.min]]?_.min];[max=[[_.max]]?_.max]"
                         },
                         {
                             "view": "Icon?class=x;name=bi-x;style:[fontSize=2.5rem;color=#999;opacity=0;transition=.2s;position=absolute;right=[2rem?_.inputType=date?0];height=2.5rem;width=2.5rem;backgroundColor=#fff];[click?data().del();prev().txt()=[0?prev().type()=number?'']]?prev().clearable||[_.clearable?_.clearable!=undefined?true]"
@@ -355,7 +349,7 @@
                             "view": "Icon?class=chevron;name=bi-chevron-down;style:[pointerEvents=none;fontSize=1.3rem;color=[parent().1stChild().style.color||#999];position=absolute;right=0;height=2rem;width=2rem;backgroundColor=inherit]?parent().1stChild().droplist||_.droplist"
                         },
                         {
-                            "view": "View?class=flexbox pointer;style:[height=100%;width=3rem;justifySelf=flex-end;backgroundColor=#f6f6f6]?parent().1stChild().password||_.password",
+                            "view": "View?class=flexbox pointer;style:[height=100%;width=4rem;justifySelf=flex-end;backgroundColor=#f6f6f6;transition=.2s];[menter?backgroundColor()=#eee;children().():[color()=#444]];[mleave?backgroundColor()=#f6f6f6;children().():[color()=#999]];[click?1stChild().display();2ndChild().hide();parent().input().type()=password?1stChild().hidden()?2ndChild().display();1stChild().hide();parent().input().type()=text]?parent().1stChild().password||_.password",
                             "children": [
                                 {
                                     "view": "Icon?class=chevron;name=bi-eye;style:[fontSize=1.6rem;color=#999;display=flex]"

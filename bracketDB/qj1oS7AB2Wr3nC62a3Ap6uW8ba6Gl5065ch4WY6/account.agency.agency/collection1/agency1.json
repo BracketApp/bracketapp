@@ -1,0 +1,27 @@
+{
+    "__props__": {
+        "id": "z1k702K8t7x2e2l7m2n096e0U1",
+        "doc": "agency1",
+        "counter": 1,
+        "creationDate": 1728722720601,
+        "collection": "account.agency.agency",
+        "chunk": "chunk1",
+        "lastModified": 1728724232625,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "name",
+                "type",
+                "contactBook"
+            ]
+        },
+        "secured": false,
+        "size": 394
+    },
+    "name": "Beirut Group Travel & Tourism",
+    "type": "Travel Agency",
+    "contactBook": "contactBook1"
+}

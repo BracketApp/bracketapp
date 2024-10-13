@@ -5,12 +5,12 @@
     "lastChunk": 1,
     "docsLength": 0,
     "counter": 0,
-    "reads": 44,
+    "reads": 46,
     "writes": 6,
     "deletes": 0,
     "size": 25,
     "payloadIn": 1853,
-    "payloadOut": 14128,
+    "payloadOut": 14856,
     "indexes": [
         {
             "find": [
@@ -27,8 +27,8 @@
                 "username"
             ],
             "doc": "index2",
-            "lastRead": 1728465036771,
-            "expiryDate": 1731057036771
+            "lastRead": 1728675753533,
+            "expiryDate": 1731267753533
         }
     ],
     "lastIndex": 2

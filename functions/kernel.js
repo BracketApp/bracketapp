@@ -202,8 +202,9 @@ const actions = {
     }, "height()": ({ o, key, value }) => {
 
         if (!o.__view__) return
+        
         if (key && value !== undefined) return o.__element__.style.height = value
-        else return o.__element__.offsetHeight / 10 + "rem"
+        else return o.__element__ && o.__element__.offsetHeight ? (o.__element__.offsetHeight / 10 + "rem") : o.style.height
 
     }, "border()": ({ o, key, value }) => {
 
@@ -479,18 +480,19 @@ const actions = {
     }, "input()": ({ _window, views, o, stack, props, lookupActions, id }) => {
 
         if (!o.__view__) return
-        var inputs = [], textareas = [], editables = [], input
+        let inputs = [], textareas = [], editables = [], input
 
         if (!o.__rendered__) {
             if (o.__name__ === "Input") return o
-            var findInputs = (view) => {
-                if (o.__name__ !== "View") return
-                o.__childrenRef__.map(({ id }) => {
+            let findInput = (view) => {
+                for (let i = 0; i <= view.__childrenRef__.length - 1; i++) {
                     if (input) return
-                    if (views[id].__name__ === "Input") return input = o
-                    else if (views[id].__name__ === "View") findInputs(view)
-                })
+                    let id = view.__childrenRef__[i].id
+                    if (views[id].__name__ === "Input") input = views[id]
+                    else if (views[id].__name__ === "View") findInput(views[id])
+                }
             }
+            if (o.__name__ === "View") findInput(o)
             return input
         }
 
@@ -2289,8 +2291,12 @@ const actions = {
             else console.log("Loader doesnot exist!")
         }
 
-    }, "type()": ({ _window, req, res, o, stack, props, lookupActions, id, e, __, args, object }) => {
+    }, "type()": ({ _window, req, res, o, stack, props, lookupActions, id, e, __, args, object, key, value }) => {
 
+        if (typeof o === "object" && o.__view__ && o.__name__ === "Input") {
+            if (key && value) return o.__element__.type = value
+            return o.__element__.type
+        }
         if (args[1]) return getType(toValue({ req, res, _window, lookupActions, stack, props: { isValue: true }, object, id, e, __, data: args[1] }))
         else return getType(o)
 
@@ -5987,7 +5993,9 @@ const defaultEventHandler = ({ id, events = ["click", "focus", "blur", "mouseent
     view.focused = false
     view.touchstarted = false
     view.mouseentered = false
+    view.mentered = false
     view.mousedowned = false
+    view.mdowned = false
 
     // linkable
     if (events.includes("click") && view.link && typeof view.link === "object" && view.link.preventDefault)
@@ -6000,18 +6008,18 @@ const defaultEventHandler = ({ id, events = ["click", "focus", "blur", "mouseent
         events.includes("blur") && defaultInputHandlerByEvent({ views, view, id, event: "blur", keyName: "focused", value: false })
     }
 
-    events.includes("mouseenter") && defaultInputHandlerByEvent({ views, view, id, event: "mouseenter", keyName: "mouseentered", value: true })
-    events.includes("mouseleave") && defaultInputHandlerByEvent({ views, view, id, event: "mouseleave", keyName: "mouseentered", value: false })
+    events.includes("mouseenter") && defaultInputHandlerByEvent({ views, view, id, event: "mouseenter", keyName: ["mouseentered", "mentered"], value: true })
+    events.includes("mouseleave") && defaultInputHandlerByEvent({ views, view, id, event: "mouseleave", keyName: ["mouseentered", "mentered"], value: false })
 
-    events.includes("mousedown") && defaultInputHandlerByEvent({ views, view, id, event: "mousedown", keyName: "mousedowned", value: true })
-    events.includes("mouseup") && defaultInputHandlerByEvent({ views, view, id, event: "mouseup", keyName: "mousedowned", value: false })
+    events.includes("mousedown") && defaultInputHandlerByEvent({ views, view, id, event: "mousedown", keyName: ["mousedowned", "mdowned"], value: true })
+    events.includes("mouseup") && defaultInputHandlerByEvent({ views, view, id, event: "mouseup", keyName: ["mousedowned", "mdowned"], value: false })
 }
 
 const defaultInputHandlerByEvent = ({ views, view, id, event, keyName, value }) => {
 
     // function
-    var fn = (e) => {
-        if (views[id]) view[keyName] = value
+    const fn = (e) => {
+        if (views[id]) toArray(keyName).map(keyName => view[keyName] = value)
     }
     view.__element__.addEventListener(event, fn)
 }
