@@ -1,0 +1,27 @@
+{
+    "__props__": {
+        "id": "v1r7f2Q9d797r1A8c6P0x6Z3g4",
+        "doc": "type19",
+        "counter": 19,
+        "creationDate": 1729771860634,
+        "collection": "flight.termsAndConditions.type",
+        "chunk": "chunk1",
+        "lastModified": 1729771878729,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "isSubType",
+                "name",
+                "type"
+            ]
+        },
+        "secured": false,
+        "size": 367
+    },
+    "name": "Validity Period",
+    "isSubType": true,
+    "type": "type1"
+}

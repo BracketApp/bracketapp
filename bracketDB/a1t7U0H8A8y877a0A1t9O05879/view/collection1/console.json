@@ -255,13 +255,13 @@
                                                     "view": "View?style:[width=1px;position=absolute;height=50%;left=0;backgroundColor=#ddd]"
                                                 },
                                                 {
-                                                    "view": "Icon?name=bi-file-earmark;style:[fontSize=1.3rem;height=2.25rem;width=2.25rem;minWidth=2.25rem;borderRadius=2rem;margin=0 .5rem]"
+                                                    "view": "Icon?name=[bi-file-earmark?data().split():'/'.[-1]!=__schema__?bi-diagram-3];style:[fontSize=1.3rem;height=2.25rem;width=2.25rem;minWidth=2.25rem;borderRadius=2rem;margin=0 .5rem]"
                                                 },
                                                 {
-                                                    "view": "Text?class=dots;text=data().split():'/'.[-1];tooltip.text=data().split():'/'.[-1];style:[fontSize=1.3rem;paddingRight=3.5rem]"
+                                                    "view": "Text?class=dots;text=[data().split():'/'.[-1]?data().split():'/'.[-1]!=__schema__?data().split():'/'.0];tooltip.text=[data().split():'/'.[-1]?data().split():'/'.[-1]!=__schema__?data().split():'/'.0];style:[fontSize=1.3rem;paddingRight=3.5rem]"
                                                 },
                                                 {
-                                                    "view": "Icon?class=pointer;name=bi-x;style:[fontSize=2rem;position=absolute;right=.5rem;borderRadius=.5rem;height=2.5rem;width=2.5rem];hover.style.backgroundColor=#e9e9e9;click:[closeTab()]"
+                                                    "view": "Icon?class=pointer;name=bi-x;style:[fontSize=2rem;position=absolute;right=.5rem;borderRadius=.5rem;height=2.5rem;width=2.5rem];hover.style.backgroundColor=#e9e9e9;[click?closeTab()]"
                                                 }
                                             ]
                                         }
@@ -393,7 +393,7 @@
         "creationDate": 1710330786487,
         "collection": "view",
         "chunk": "chunk1",
-        "lastModified": 1728251232803,
+        "lastModified": 1729701438382,
         "dev": false,
         "actions": {
             "openActionPopup": "():actionPopup.style():[opacity=1;pointerEvents=auto;zIndex=10;transform='scale(1)']",
@@ -424,7 +424,7 @@
                 "_": "parent().children().():[style().backgroundColor=inherit;hover.disable=false];style().backgroundColor=#fff;hover.disable=true;hideAllMapsAndActions();displayOpenMapAndAction()?clicked()!=lastChild()"
             },
             "closeTab": {
-                "closeData": "log():[.]:[class():dataViewer.find():[openDoc=parent().openDoc;openCollection=parent().openCollection]];class():dataViewer.find():[openDoc=parent().openDoc;openCollection=parent().openCollection].rem()",
+                "closeData": "class():dataViewer.find():[openDoc=parent().openDoc;openCollection=parent().openCollection].rem()",
                 "closeActions": "class():actions.find():[openDoc=parent().openDoc;openCollection=parent().openCollection].rem()",
                 "clickTab": {
                     "setActionsDisplayHeight": "():mainActionsContainer.style().height=actionsHeight:()+rem;():dataViewer.style().height='calc(100% - '+actionsHeight:()+'rem)'",
@@ -459,12 +459,13 @@
             "saveDocHandler": {
                 "_": "setProps();saveData()?():dataViewer.children().find():[style().display=flex]._():[openCollection:()=_.openCollection;openDoc:()=_.openDoc]",
                 "saveData": "[start();saveData():[publicID=project:().publicID;collection=openCollection:();doc=openDoc:();data=openData:()]:[end():[_]]]():[collection=actions;doc=db]:[note():[text=_.message;type=[danger?!_.success?success]];successHandler()]",
-                "successHandler": "class():[openDoc:()+openCollection:()+'publish'].0.display();():dataViewerBar.children().find():[openCollection=openCollection:();openDoc=openDoc:()].2ndChild().style().border=0;data:().editor.[openCollection:()].[openDoc:()]=openData:().clone()?_.success",
+                "successHandler": "class():[openDoc:()+openCollection:()+'publish'].0.display();():dataViewerBar.children().find():[openCollection=openCollection:();openDoc=openDoc:()].2ndChild().style().border=0;updateData()?_.success",
                 "setComments": "_.class():comment._filter():[_.txt()]._():[openData:().__props__.comments+=[note=_.txt();path=_.path()]]",
                 "setCollapsed": "_.class():collapsed._filter():[!_.open]._():[openData:().__props__.collapsed+=[path=_.path()]]",
-                "setArrange": "_.class():keyName._():[arrange.[_.path().slice():0:[-1].join():'.'].push():[_.path().[-1]]];log():_:[.arrange];openData:().__props__.arrange=.arrange",
+                "setArrange": "_.class():keyName._():[arrange.[_.path().slice():0:[-1].join():'.'].push():[_.path().[-1]]];openData:().__props__.arrange=.arrange",
                 "setProps": "resetProps();():dataViewer.children().find():[openCollection=openCollection:();openDoc=openDoc:()]._():[setComments();setCollapsed();setArrange()];():actions.children().find():[openCollection=openCollection:();openDoc=openDoc:()]._():[setComments();setCollapsed();setArrange()]",
-                "resetProps": "openData:().__props__.collapsed=:;openData:().__props__.comments=:;arrange=[]"
+                "resetProps": "openData:().__props__.collapsed=:;openData:().__props__.comments=:;arrange=[]",
+                "updateData": "data:().editor.[openCollection:()].[openDoc:()]=_.data.clone()?openDoc:()!=__schema__"
             },
             "ctrlSaveHandler": "[keydown:document?[e().preventDefault();():saveBtn.click()?e().ctrlKey;e().key=s];toggleActionEditor()]",
             "searchCollection": {
@@ -2121,6 +2122,7 @@
             ],
             "saveDocHandler": [
                 "saveData",
+                "updateData",
                 "setArrange",
                 "setCollapsed",
                 "setComments",
@@ -2158,6 +2160,6 @@
             ]
         },
         "secured": false,
-        "size": 44205
+        "size": 44310
     }
 }

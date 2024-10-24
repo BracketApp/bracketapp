@@ -1,0 +1,29 @@
+{
+    "__props__": {
+        "id": "V1o7g2594708I3Q270Y7q7M2X6",
+        "doc": "type15",
+        "counter": 15,
+        "creationDate": 1729783207726,
+        "collection": "flight.taxesFeesCharges.type",
+        "chunk": "chunk1",
+        "lastModified": 1729783270396,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "description",
+                "isSubType",
+                "name",
+                "type"
+            ]
+        },
+        "secured": false,
+        "size": 480
+    },
+    "name": "Baggage Fees",
+    "description": "Fees for checked luggage, carry-on baggage, and sometimes even personal items.",
+    "isSubType": true,
+    "type": "type14"
+}

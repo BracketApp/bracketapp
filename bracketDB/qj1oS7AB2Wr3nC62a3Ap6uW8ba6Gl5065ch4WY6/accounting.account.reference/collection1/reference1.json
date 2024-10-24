@@ -1,0 +1,33 @@
+{
+    "__props__": {
+        "id": "Z137f2l9b7X7K2B9k1r5z2U5m3",
+        "doc": "reference1",
+        "counter": 1,
+        "creationDate": 1729772915253,
+        "collection": "accounting.account.reference",
+        "chunk": "chunk1",
+        "lastModified": 1729773007217,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "collection",
+                "generalLedger",
+                "usedRefs",
+                "minRef",
+                "maxRef"
+            ]
+        },
+        "secured": false,
+        "size": 445
+    },
+    "generalLedger": 401,
+    "usedRefs": [
+        1
+    ],
+    "collection": "accounting.account.account",
+    "minRef": 1,
+    "maxRef": 1000
+}

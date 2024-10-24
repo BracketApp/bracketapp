@@ -1,0 +1,33 @@
+{
+    "__props__": {
+        "id": "d1a7q2z9S4N1i767r3g5r896E8",
+        "doc": "contactBook1",
+        "counter": 1,
+        "creationDate": 1729417735868,
+        "collection": "account.general.contactBook",
+        "chunk": "chunk1",
+        "lastModified": 1729417735868,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "address",
+                "city",
+                "contactNumber",
+                "country",
+                "name",
+                "email"
+            ]
+        },
+        "secured": false,
+        "size": 507
+    },
+    "city": "Beirut",
+    "country": "Lebanon",
+    "contactNumber": "009611234567",
+    "address": "Mcharrafiyeh",
+    "name": "Beirut Group Travel & Tourism",
+    "email": "ceo@beirutgrouptt.com"
+}

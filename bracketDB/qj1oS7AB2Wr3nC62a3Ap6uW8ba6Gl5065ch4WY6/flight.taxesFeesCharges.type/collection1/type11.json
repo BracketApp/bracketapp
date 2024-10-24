@@ -1,0 +1,29 @@
+{
+    "__props__": {
+        "id": "Y1N7Q2b9l7m8x3E0A825o4Z1a0",
+        "doc": "type11",
+        "counter": 11,
+        "creationDate": 1729783085410,
+        "collection": "flight.taxesFeesCharges.type",
+        "chunk": "chunk1",
+        "lastModified": 1729783103962,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "description",
+                "isSubType",
+                "name",
+                "type"
+            ]
+        },
+        "secured": false,
+        "size": 490
+    },
+    "name": "Landing Fees",
+    "description": "Airlines pay fees for using airport runways, and these costs may be passed to passengers.",
+    "isSubType": true,
+    "type": "type2"
+}

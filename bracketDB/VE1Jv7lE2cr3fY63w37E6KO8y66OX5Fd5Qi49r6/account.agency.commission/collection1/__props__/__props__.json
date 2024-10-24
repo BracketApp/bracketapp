@@ -3,14 +3,150 @@
     "collection": 1,
     "maxSize": 1000,
     "lastChunk": 1,
-    "docsLength": 0,
-    "counter": 0,
-    "reads": 0,
-    "writes": 1,
+    "docsLength": 1,
+    "counter": 1,
+    "reads": 20,
+    "writes": 29,
     "deletes": 0,
-    "size": 0,
-    "payloadIn": 0,
-    "payloadOut": 4,
+    "size": 443,
+    "payloadIn": null,
+    "payloadOut": 2985,
     "indexes": [],
-    "lastIndex": 0
+    "lastIndex": 0,
+    "schema": {
+        "__props__": {
+            "actions": {},
+            "collapsed": [
+                {
+                    "path": [
+                        "schema",
+                        "airline"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "amount"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "currency"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "percentage"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "agency"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "releaseDate"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "expiryDate"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "referencePrice"
+                    ]
+                }
+            ],
+            "comments": [],
+            "arrange": {
+                "": [
+                    "hideProps",
+                    "schema"
+                ],
+                "schema": [
+                    "airline",
+                    "amount",
+                    "currency",
+                    "percentage",
+                    "agency",
+                    "releaseDate",
+                    "expiryDate",
+                    "referencePrice"
+                ],
+                "schema.airline": [
+                    "type"
+                ],
+                "schema.amount": [
+                    "type"
+                ],
+                "schema.currency": [
+                    "type",
+                    "required"
+                ],
+                "schema.percentage": [
+                    "default",
+                    "type"
+                ],
+                "schema.agency": [
+                    "type",
+                    "collection"
+                ],
+                "schema.releaseDate": [
+                    "type"
+                ],
+                "schema.expiryDate": [
+                    "type"
+                ],
+                "schema.referencePrice": [
+                    "type",
+                    "options"
+                ]
+            }
+        },
+        "hideProps": true,
+        "schema": {
+            "airline": {
+                "type": "text"
+            },
+            "amount": {
+                "type": "number"
+            },
+            "percentage": {
+                "type": "boolean",
+                "default": true
+            },
+            "currency": {
+                "type": "text",
+                "required": false
+            },
+            "releaseDate": {
+                "type": "timestamp"
+            },
+            "expiryDate": {
+                "type": "timestamp"
+            },
+            "agency": {
+                "type": "collection",
+                "collection": "account.agency.agency"
+            },
+            "referencePrice": {
+                "type": "text",
+                "options": [
+                    "Base Fare",
+                    "Gross Fare",
+                    "Net Price",
+                    "Selling Price"
+                ]
+            }
+        }
+    }
 }

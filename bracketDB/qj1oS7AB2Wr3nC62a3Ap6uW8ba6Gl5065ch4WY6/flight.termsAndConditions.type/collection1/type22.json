@@ -1,0 +1,27 @@
+{
+    "__props__": {
+        "id": "r1J732y9I7E7e2X0C7N4G8Z5W1",
+        "doc": "type22",
+        "counter": 22,
+        "creationDate": 1729772074851,
+        "collection": "flight.termsAndConditions.type",
+        "chunk": "chunk1",
+        "lastModified": 1729772102876,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "isSubType",
+                "name",
+                "type"
+            ]
+        },
+        "secured": false,
+        "size": 362
+    },
+    "name": "Fare Types",
+    "isSubType": true,
+    "type": "type2"
+}

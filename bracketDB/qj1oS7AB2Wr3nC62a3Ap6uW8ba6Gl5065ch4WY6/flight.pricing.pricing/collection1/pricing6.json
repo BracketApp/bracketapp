@@ -6,7 +6,7 @@
         "creationDate": 1728250637200,
         "collection": "flight.pricing.pricing",
         "chunk": "chunk1",
-        "lastModified": 1728250725653,
+        "lastModified": 1729705653292,
         "dev": true,
         "actions": {},
         "comments": [],
@@ -15,15 +15,19 @@
             "": [
                 "availability",
                 "price",
-                "unit",
-                "trip"
+                "currency",
+                "trip",
+                "age"
             ]
         },
         "secured": false,
-        "size": 387
+        "size": 448
     },
-    "availability": "availability3",
+    "availability": "",
     "price": 220,
-    "unit": "USD",
-    "trip": "One way"
+    "trip": "One way",
+    "currency": "USD",
+    "age": "Adult",
+    "taxesFeesChargesIncluded": true,
+    "policies": []
 }

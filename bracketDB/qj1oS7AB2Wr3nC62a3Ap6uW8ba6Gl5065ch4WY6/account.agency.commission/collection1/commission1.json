@@ -1,0 +1,35 @@
+{
+    "__props__": {
+        "id": "w1i7c2K9E4A3t180S0s1W4j0S6",
+        "doc": "commission1",
+        "counter": 1,
+        "creationDate": 1729431001406,
+        "collection": "account.agency.commission",
+        "chunk": "chunk1",
+        "lastModified": 1729431001406,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "agency",
+                "airline",
+                "referencePrice",
+                "amount",
+                "expiryDate",
+                "percentage",
+                "releaseDate"
+            ]
+        },
+        "secured": false,
+        "size": 530
+    },
+    "airline": "Turkish Airlines",
+    "amount": 5,
+    "percentage": true,
+    "releaseDate": 1729424612804,
+    "expiryDate": 1729424603084,
+    "agency": "agency1",
+    "referencePrice": "Gross Fare"
+}

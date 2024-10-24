@@ -1,0 +1,34 @@
+{
+    "__props__": {
+        "id": "A1b7e2j9D2H7A7d1H5n729L2W3",
+        "doc": "country3",
+        "counter": 3,
+        "creationDate": 1729277157923,
+        "collection": "public.country",
+        "chunk": "chunk1",
+        "lastModified": 1729277157923,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "callingCode",
+                "capital",
+                "code",
+                "name",
+                "nationality",
+                "officialLanguage"
+            ]
+        },
+        "secured": false,
+        "size": 494
+    },
+    "callingCode": "1",
+    "capital": "Washington",
+    "code": "US",
+    "name": "United States Of America",
+    "nationality": "American",
+    "officialLanguage": "English",
+    "timezone": 0
+}

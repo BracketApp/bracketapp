@@ -27,7 +27,7 @@
         "creationDate": 1723636899231,
         "collection": "view.application",
         "chunk": "chunk1",
-        "lastModified": 1726770629788,
+        "lastModified": 1728845562332,
         "dev": true,
         "actions": {
             "checkSession": {
@@ -43,6 +43,11 @@
         },
         "comments": [],
         "collapsed": [
+            {
+                "path": [
+                    "checkSession"
+                ]
+            },
             {
                 "path": [
                     "openPopup"
@@ -86,6 +91,6 @@
             ]
         },
         "secured": false,
-        "size": 1406
+        "size": 1432
     }
 }

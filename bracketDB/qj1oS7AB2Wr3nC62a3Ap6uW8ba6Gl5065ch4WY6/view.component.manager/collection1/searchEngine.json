@@ -70,7 +70,7 @@
         "creationDate": 1724169816127,
         "collection": "view.component.manager",
         "chunk": "chunk1",
-        "lastModified": 1726765510728,
+        "lastModified": 1728945409756,
         "dev": true,
         "actions": {
             "expandMore": {
@@ -279,16 +279,6 @@
                     "children",
                     1,
                     "children",
-                    0
-                ]
-            },
-            {
-                "path": [
-                    "children",
-                    2,
-                    "children",
-                    1,
-                    "children",
                     1
                 ]
             },
@@ -478,6 +468,6 @@
             ]
         },
         "secured": false,
-        "size": 6622
+        "size": 6572
     }
 }

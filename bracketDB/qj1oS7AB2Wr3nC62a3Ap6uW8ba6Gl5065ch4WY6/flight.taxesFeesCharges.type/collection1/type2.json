@@ -1,0 +1,27 @@
+{
+    "__props__": {
+        "id": "91i762V9Y7u8e2q8m1v2S7h2B3",
+        "doc": "type2",
+        "counter": 2,
+        "creationDate": 1729782812723,
+        "collection": "flight.taxesFeesCharges.type",
+        "chunk": "chunk1",
+        "lastModified": 1729782821338,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "description",
+                "isSubType",
+                "name"
+            ]
+        },
+        "secured": false,
+        "size": 370
+    },
+    "name": "Airport Fees",
+    "description": "",
+    "isSubType": false
+}

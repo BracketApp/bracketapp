@@ -1,0 +1,25 @@
+{
+    "__props__": {
+        "id": "71M7f2w9P7E7g186a4l5U9E2s6",
+        "doc": "type12",
+        "counter": 12,
+        "creationDate": 1729771645926,
+        "collection": "flight.termsAndConditions.type",
+        "chunk": "chunk1",
+        "lastModified": 1729771651191,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "isSubType",
+                "name"
+            ]
+        },
+        "secured": false,
+        "size": 349
+    },
+    "name": "Special Assistance",
+    "isSubType": false
+}

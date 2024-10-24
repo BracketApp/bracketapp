@@ -1,0 +1,27 @@
+{
+    "__props__": {
+        "id": "h1K762h927G7g1x9I5K5i3v1l8",
+        "doc": "type21",
+        "counter": 21,
+        "creationDate": 1729771955318,
+        "collection": "flight.termsAndConditions.type",
+        "chunk": "chunk1",
+        "lastModified": 1729772070890,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "isSubType",
+                "name",
+                "type"
+            ]
+        },
+        "secured": false,
+        "size": 368
+    },
+    "name": "Non-Transferable",
+    "isSubType": true,
+    "type": "type1"
+}

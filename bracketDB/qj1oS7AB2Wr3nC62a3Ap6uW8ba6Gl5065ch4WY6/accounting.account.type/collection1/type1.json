@@ -1,0 +1,25 @@
+{
+    "__props__": {
+        "id": "51e702u9E3z3A9n0u9j0W4P3h7",
+        "doc": "type1",
+        "counter": 1,
+        "creationDate": 1729339090437,
+        "collection": "accounting.account.type",
+        "chunk": "chunk1",
+        "lastModified": 1729339090437,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "generalLedger",
+                "name"
+            ]
+        },
+        "secured": false,
+        "size": 341
+    },
+    "name": "B2B Customer",
+    "generalLedger": "41"
+}

@@ -3,14 +3,150 @@
     "collection": 1,
     "maxSize": 1000,
     "lastChunk": 1,
-    "docsLength": 0,
-    "counter": 0,
-    "reads": 0,
-    "writes": 1,
+    "docsLength": 1,
+    "counter": 1,
+    "reads": 7,
+    "writes": 6,
     "deletes": 0,
-    "size": 0,
-    "payloadIn": 0,
-    "payloadOut": 4,
+    "size": 448,
+    "payloadIn": 2131,
+    "payloadOut": 1583,
     "indexes": [],
-    "lastIndex": 0
+    "lastIndex": 0,
+    "schema": {
+        "__props__": {
+            "actions": {},
+            "collapsed": [
+                {
+                    "path": [
+                        "schema",
+                        "supplier"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "airline"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "amount"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "currency"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "expiryDate"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "percentage"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "referencePrice"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "releaseDate"
+                    ]
+                }
+            ],
+            "comments": [],
+            "arrange": {
+                "": [
+                    "hideProps",
+                    "schema"
+                ],
+                "schema": [
+                    "supplier",
+                    "airline",
+                    "amount",
+                    "currency",
+                    "expiryDate",
+                    "percentage",
+                    "referencePrice",
+                    "releaseDate"
+                ],
+                "schema.supplier": [
+                    "collection",
+                    "type"
+                ],
+                "schema.airline": [
+                    "type"
+                ],
+                "schema.amount": [
+                    "type"
+                ],
+                "schema.currency": [
+                    "required",
+                    "type"
+                ],
+                "schema.expiryDate": [
+                    "type"
+                ],
+                "schema.percentage": [
+                    "default",
+                    "type"
+                ],
+                "schema.referencePrice": [
+                    "options",
+                    "type"
+                ],
+                "schema.releaseDate": [
+                    "type"
+                ]
+            }
+        },
+        "hideProps": true,
+        "schema": {
+            "airline": {
+                "type": "text"
+            },
+            "amount": {
+                "type": "number"
+            },
+            "percentage": {
+                "type": "boolean",
+                "default": true
+            },
+            "currency": {
+                "type": "text",
+                "required": false
+            },
+            "releaseDate": {
+                "type": "timestamp"
+            },
+            "expiryDate": {
+                "type": "timestamp"
+            },
+            "referencePrice": {
+                "type": "text",
+                "options": [
+                    "Base Fare",
+                    "Gross Fare",
+                    "Net Price",
+                    "Selling Price"
+                ]
+            },
+            "supplier": {
+                "type": "collection",
+                "collection": "account.supplier.supplier"
+            }
+        }
+    }
 }

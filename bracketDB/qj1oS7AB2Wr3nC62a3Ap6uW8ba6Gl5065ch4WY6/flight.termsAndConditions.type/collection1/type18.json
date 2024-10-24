@@ -1,0 +1,25 @@
+{
+    "__props__": {
+        "id": "E107U2H9h7d7m186P9Q7Y122i8",
+        "doc": "type18",
+        "counter": 18,
+        "creationDate": 1729771697128,
+        "collection": "flight.termsAndConditions.type",
+        "chunk": "chunk1",
+        "lastModified": 1729771702994,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "isSubType",
+                "name"
+            ]
+        },
+        "secured": false,
+        "size": 353
+    },
+    "name": "Seat Assignment Policy",
+    "isSubType": false
+}

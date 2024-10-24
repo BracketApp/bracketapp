@@ -1,0 +1,102 @@
+{
+    "creationDate": 1729706128126,
+    "collection": "flight.taxesFeesCharges.charges",
+    "maxSize": 1000,
+    "lastChunk": 1,
+    "docsLength": 0,
+    "counter": 0,
+    "reads": 18,
+    "writes": 9,
+    "deletes": 0,
+    "size": 0,
+    "payloadIn": null,
+    "payloadOut": 8,
+    "indexes": [],
+    "lastIndex": 0,
+    "schema": {
+        "__props__": {
+            "actions": {},
+            "collapsed": [
+                {
+                    "path": [
+                        "schema",
+                        "amount"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "currency"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "description"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "name"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "type"
+                    ]
+                }
+            ],
+            "comments": [],
+            "arrange": {
+                "": [
+                    "hideProps",
+                    "schema"
+                ],
+                "schema": [
+                    "amount",
+                    "currency",
+                    "description",
+                    "name",
+                    "type"
+                ],
+                "schema.amount": [
+                    "type"
+                ],
+                "schema.currency": [
+                    "type"
+                ],
+                "schema.description": [
+                    "type"
+                ],
+                "schema.name": [
+                    "type"
+                ],
+                "schema.type": [
+                    "type",
+                    "collection"
+                ]
+            }
+        },
+        "hideProps": true,
+        "schema": {
+            "name": {
+                "type": "text"
+            },
+            "type": {
+                "type": "document",
+                "collection": "flight.taxesFeesCharges.type"
+            },
+            "currency": {
+                "type": "text"
+            },
+            "amount": {
+                "type": "number"
+            },
+            "description": {
+                "type": "text"
+            }
+        }
+    }
+}

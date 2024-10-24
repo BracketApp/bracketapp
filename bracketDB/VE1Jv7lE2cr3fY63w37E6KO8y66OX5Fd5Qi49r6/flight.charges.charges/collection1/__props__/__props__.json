@@ -1,0 +1,91 @@
+{
+    "creationDate": 1729709043525,
+    "collection": 1,
+    "maxSize": 1000,
+    "lastChunk": 1,
+    "docsLength": 0,
+    "counter": 0,
+    "reads": 0,
+    "writes": 5,
+    "deletes": 0,
+    "size": 0,
+    "payloadIn": null,
+    "payloadOut": 0,
+    "indexes": [],
+    "lastIndex": 0,
+    "schema": {
+        "__props__": {
+            "actions": {},
+            "collapsed": [
+                {
+                    "path": [
+                        "schema",
+                        "name"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "type"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "amount"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "currency"
+                    ]
+                }
+            ],
+            "comments": [],
+            "arrange": {
+                "": [
+                    "hideProps",
+                    "schema"
+                ],
+                "schema": [
+                    "name",
+                    "type",
+                    "amount",
+                    "currency"
+                ],
+                "schema.name": [
+                    "type"
+                ],
+                "schema.type": [
+                    "type",
+                    "options"
+                ],
+                "schema.amount": [
+                    "type"
+                ],
+                "schema.currency": [
+                    "type"
+                ]
+            }
+        },
+        "hideProps": true,
+        "schema": {
+            "name": {
+                "type": "text"
+            },
+            "type": {
+                "type": "text",
+                "options": [
+                    "Fuel Surcharges"
+                ]
+            },
+            "currency": {
+                "type": "text"
+            },
+            "amount": {
+                "type": "number"
+            }
+        }
+    }
+}

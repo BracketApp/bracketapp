@@ -1,0 +1,27 @@
+{
+    "__props__": {
+        "id": "K1r712m9q7K7V2o380c6P6u993",
+        "doc": "type29",
+        "counter": 29,
+        "creationDate": 1729772306694,
+        "collection": "flight.termsAndConditions.type",
+        "chunk": "chunk1",
+        "lastModified": 1729772325858,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "isSubType",
+                "name",
+                "type"
+            ]
+        },
+        "secured": false,
+        "size": 380
+    },
+    "name": "Checked and Carry-On Baggage",
+    "isSubType": true,
+    "type": "type4"
+}

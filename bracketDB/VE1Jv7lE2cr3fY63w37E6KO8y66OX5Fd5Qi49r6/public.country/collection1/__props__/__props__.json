@@ -3,14 +3,111 @@
     "collection": 1,
     "maxSize": 1000,
     "lastChunk": 1,
-    "docsLength": 2,
-    "counter": 2,
-    "reads": 28,
-    "writes": 9,
+    "docsLength": 3,
+    "counter": 3,
+    "reads": 304,
+    "writes": 24,
     "deletes": 0,
-    "size": 743,
-    "payloadIn": 3590,
-    "payloadOut": 10115,
+    "size": 1134,
+    "payloadIn": null,
+    "payloadOut": 149290,
     "indexes": [],
-    "lastIndex": 0
+    "lastIndex": 0,
+    "schema": {
+        "__props__": {
+            "actions": {},
+            "collapsed": [
+                {
+                    "path": [
+                        "schema",
+                        "callingCode"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "capital"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "code"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "name"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "nationality"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "officialLanguage"
+                    ]
+                }
+            ],
+            "comments": [],
+            "arrange": {
+                "": [
+                    "hideProps",
+                    "schema"
+                ],
+                "schema": [
+                    "callingCode",
+                    "capital",
+                    "code",
+                    "name",
+                    "nationality",
+                    "officialLanguage"
+                ],
+                "schema.callingCode": [
+                    "type"
+                ],
+                "schema.capital": [
+                    "type"
+                ],
+                "schema.code": [
+                    "type"
+                ],
+                "schema.name": [
+                    "type"
+                ],
+                "schema.nationality": [
+                    "type"
+                ],
+                "schema.officialLanguage": [
+                    "type"
+                ]
+            }
+        },
+        "schema": {
+            "callingCode": {
+                "type": "text"
+            },
+            "capital": {
+                "type": "text"
+            },
+            "code": {
+                "type": "text"
+            },
+            "name": {
+                "type": "text"
+            },
+            "nationality": {
+                "type": "text"
+            },
+            "officialLanguage": {
+                "type": "text"
+            }
+        },
+        "hideProps": true
+    }
 }

@@ -1,0 +1,21 @@
+{
+    "__props__": {
+        "id": "C1J7f2Q9C758q3c1c2O808Q7D6",
+        "doc": "type13",
+        "counter": 13,
+        "creationDate": 1729783128876,
+        "collection": "flight.taxesFeesCharges.type",
+        "chunk": "chunk1",
+        "lastModified": 1729783128876,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": [],
+        "secured": false,
+        "size": 323
+    },
+    "name": "",
+    "description": "",
+    "isSubType": false
+}

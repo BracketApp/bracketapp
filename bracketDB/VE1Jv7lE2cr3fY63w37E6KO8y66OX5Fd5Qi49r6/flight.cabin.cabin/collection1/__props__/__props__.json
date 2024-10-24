@@ -5,12 +5,101 @@
     "lastChunk": 1,
     "docsLength": 2,
     "counter": 2,
-    "reads": 10,
-    "writes": 3,
+    "reads": 41,
+    "writes": 18,
     "deletes": 0,
     "size": 774,
-    "payloadIn": 774,
-    "payloadOut": 779,
+    "payloadIn": 860,
+    "payloadOut": 9955,
     "indexes": [],
-    "lastIndex": 0
+    "lastIndex": 0,
+    "schema": {
+        "__props__": {
+            "actions": {},
+            "collapsed": [
+                {
+                    "path": [
+                        "schema",
+                        "class"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "seatCapacity"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "aircraft"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "availabilities"
+                    ]
+                }
+            ],
+            "comments": [],
+            "arrange": {
+                "": [
+                    "hideProps",
+                    "schema"
+                ],
+                "schema": [
+                    "class",
+                    "seatCapacity",
+                    "aircraft",
+                    "availabilities"
+                ],
+                "schema.class": [
+                    "type",
+                    "options"
+                ],
+                "schema.seatCapacity": [
+                    "type"
+                ],
+                "schema.aircraft": [
+                    "type"
+                ],
+                "schema.availabilities": [
+                    "type",
+                    "value"
+                ],
+                "schema.availabilities.value": [
+                    "type",
+                    "collection",
+                    "required"
+                ]
+            }
+        },
+        "schema": {
+            "class": {
+                "type": "text",
+                "options": [
+                    "Economy",
+                    "Premium Economy",
+                    "Business",
+                    "First Class"
+                ]
+            },
+            "seatCapacity": {
+                "type": "number"
+            },
+            "aircraft": {
+                "type": "text"
+            },
+            "availabilities": {
+                "type": "list",
+                "value": {
+                    "type": "collection",
+                    "collection": "flight.availability.availability",
+                    "required": false
+                }
+            }
+        },
+        "hideProps": true
+    }
 }

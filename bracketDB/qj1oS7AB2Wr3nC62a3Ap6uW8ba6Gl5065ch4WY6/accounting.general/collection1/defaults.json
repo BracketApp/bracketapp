@@ -1,0 +1,25 @@
+{
+    "__props__": {
+        "id": "p1Z7y2v9p4i3b2q1c1G4q9W0U9",
+        "doc": "defaults",
+        "counter": 1,
+        "creationDate": 1729432114909,
+        "collection": "accounting.general",
+        "chunk": "chunk1",
+        "lastModified": 1729432219841,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "currency",
+                "country"
+            ]
+        },
+        "secured": false,
+        "size": 331
+    },
+    "currency": "LBP",
+    "country": "Lebanon"
+}

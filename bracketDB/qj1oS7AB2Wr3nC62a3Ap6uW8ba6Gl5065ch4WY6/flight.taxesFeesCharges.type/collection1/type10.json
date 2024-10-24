@@ -1,0 +1,29 @@
+{
+    "__props__": {
+        "id": "w1g7J2y9J7s813f0J532u5H0r0",
+        "doc": "type10",
+        "counter": 10,
+        "creationDate": 1729783052500,
+        "collection": "flight.taxesFeesCharges.type",
+        "chunk": "chunk1",
+        "lastModified": 1729783082767,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "description",
+                "isSubType",
+                "name",
+                "type"
+            ]
+        },
+        "secured": false,
+        "size": 507
+    },
+    "name": "Security Fees",
+    "description": "Airports and governments may charge fees to cover security measures such as screening and airport safety.",
+    "isSubType": true,
+    "type": "type2"
+}

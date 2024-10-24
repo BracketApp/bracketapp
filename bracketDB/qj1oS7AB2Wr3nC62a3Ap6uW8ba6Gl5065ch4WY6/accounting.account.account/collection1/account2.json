@@ -1,0 +1,38 @@
+{
+    "__props__": {
+        "id": "61m7I2d9R3r4m6h1H9R2d0R3Y0",
+        "doc": "account2",
+        "counter": 2,
+        "creationDate": 1729346192030,
+        "collection": "accounting.account.account",
+        "chunk": "chunk1",
+        "lastModified": 1729346192030,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "accountNumber",
+                "currencies",
+                "generalLedger",
+                "history",
+                "name",
+                "type",
+                "supplier"
+            ]
+        },
+        "secured": false,
+        "size": 514
+    },
+    "name": "Turkish Airline",
+    "generalLedger": 401,
+    "accountNumber": 1,
+    "currencies": [
+        "currency1",
+        "currency2"
+    ],
+    "history": [],
+    "type": "type2",
+    "supplier": "supplier1"
+}

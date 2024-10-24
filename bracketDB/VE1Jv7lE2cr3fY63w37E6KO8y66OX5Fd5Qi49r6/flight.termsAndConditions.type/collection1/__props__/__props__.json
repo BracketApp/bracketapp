@@ -1,0 +1,61 @@
+{
+    "creationDate": 1729771300399,
+    "collection": 1,
+    "maxSize": 1000,
+    "lastChunk": 1,
+    "docsLength": 31,
+    "counter": 31,
+    "reads": 69,
+    "writes": 65,
+    "deletes": 0,
+    "size": 10203,
+    "payloadIn": 22359,
+    "payloadOut": 22339,
+    "indexes": [],
+    "lastIndex": 0,
+    "schema": {
+        "__props__": {
+            "actions": {},
+            "collapsed": [],
+            "comments": [],
+            "arrange": {
+                "": [
+                    "hideProps",
+                    "schema"
+                ],
+                "schema": [
+                    "name",
+                    "isSubType",
+                    "type"
+                ],
+                "schema.name": [
+                    "type"
+                ],
+                "schema.isSubType": [
+                    "type",
+                    "default"
+                ],
+                "schema.type": [
+                    "type",
+                    "collection",
+                    "required"
+                ]
+            }
+        },
+        "hideProps": true,
+        "schema": {
+            "name": {
+                "type": "text"
+            },
+            "isSubType": {
+                "type": "boolean",
+                "default": false
+            },
+            "type": {
+                "type": "document",
+                "collection": "flight.termsAndConditions.type",
+                "required": false
+            }
+        }
+    }
+}

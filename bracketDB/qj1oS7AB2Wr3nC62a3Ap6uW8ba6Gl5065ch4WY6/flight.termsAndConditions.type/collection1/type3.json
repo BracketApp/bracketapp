@@ -1,0 +1,25 @@
+{
+    "__props__": {
+        "id": "B1u7y2C9p797t1t5k5q3a7h1J2",
+        "doc": "type3",
+        "counter": 3,
+        "creationDate": 1729771553712,
+        "collection": "flight.termsAndConditions.type",
+        "chunk": "chunk1",
+        "lastModified": 1729771556892,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "isSubType",
+                "name"
+            ]
+        },
+        "secured": false,
+        "size": 359
+    },
+    "name": "Cancellation and No-Show Terms",
+    "isSubType": false
+}

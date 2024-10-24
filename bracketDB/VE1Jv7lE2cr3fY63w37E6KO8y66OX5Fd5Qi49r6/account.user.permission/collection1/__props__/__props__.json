@@ -5,12 +5,12 @@
     "lastChunk": 1,
     "docsLength": 0,
     "counter": 0,
-    "reads": 41,
-    "writes": 5,
+    "reads": 59,
+    "writes": 8,
     "deletes": 0,
     "size": 27,
-    "payloadIn": 1457,
-    "payloadOut": 12780,
+    "payloadIn": null,
+    "payloadOut": 17869,
     "indexes": [
         {
             "find": [
@@ -29,5 +29,32 @@
             "expiryDate": 1731267753545
         }
     ],
-    "lastIndex": 2
+    "lastIndex": 2,
+    "schema": {
+        "__props__": {
+            "actions": {},
+            "collapsed": [],
+            "comments": [],
+            "arrange": {
+                "": [
+                    "hideProps",
+                    "schema"
+                ],
+                "schema": [
+                    "user"
+                ],
+                "schema.user": [
+                    "collection",
+                    "type"
+                ]
+            }
+        },
+        "schema": {
+            "user": {
+                "collection": "account.user.user",
+                "type": "document"
+            }
+        },
+        "hideProps": true
+    }
 }

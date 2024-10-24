@@ -5,12 +5,101 @@
     "lastChunk": 1,
     "docsLength": 4,
     "counter": 4,
-    "reads": 40,
-    "writes": 11,
+    "reads": 93,
+    "writes": 24,
     "deletes": 0,
     "size": 1686,
-    "payloadIn": 4404,
-    "payloadOut": 7857,
+    "payloadIn": 1207,
+    "payloadOut": 25390,
     "indexes": [],
-    "lastIndex": 0
+    "lastIndex": 0,
+    "schema": {
+        "__props__": {
+            "actions": {},
+            "collapsed": [
+                {
+                    "path": [
+                        "schema",
+                        "pricings"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "pricings",
+                        "value"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "class"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "booked"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "available"
+                    ]
+                }
+            ],
+            "comments": [],
+            "arrange": {
+                "": [
+                    "hideProps",
+                    "schema"
+                ],
+                "schema": [
+                    "pricings",
+                    "class",
+                    "booked",
+                    "available"
+                ],
+                "schema.pricings": [
+                    "type",
+                    "value"
+                ],
+                "schema.pricings.value": [
+                    "collection",
+                    "type",
+                    "required"
+                ],
+                "schema.class": [
+                    "type"
+                ],
+                "schema.booked": [
+                    "type"
+                ],
+                "schema.available": [
+                    "type"
+                ]
+            }
+        },
+        "schema": {
+            "class": {
+                "type": "text"
+            },
+            "booked": {
+                "type": "number"
+            },
+            "available": {
+                "type": "number"
+            },
+            "pricings": {
+                "type": "list",
+                "value": {
+                    "type": "document",
+                    "collection": "flight.pricing.pricing",
+                    "required": false
+                }
+            }
+        },
+        "hideProps": true
+    }
 }

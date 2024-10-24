@@ -1,0 +1,29 @@
+{
+    "__props__": {
+        "id": "A1F7a2p9d7v87390Q2A770s3k3",
+        "doc": "type9",
+        "counter": 9,
+        "creationDate": 1729783027033,
+        "collection": "flight.taxesFeesCharges.type",
+        "chunk": "chunk1",
+        "lastModified": 1729783042387,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "description",
+                "isSubType",
+                "name",
+                "type"
+            ]
+        },
+        "secured": false,
+        "size": 490
+    },
+    "name": "Passenger Facility Charges (PFCs)",
+    "description": "These are charges airports impose to fund infrastructure improvements.",
+    "isSubType": true,
+    "type": "type2"
+}

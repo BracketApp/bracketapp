@@ -1,0 +1,27 @@
+{
+    "__props__": {
+        "id": "z1Z7T2h9n7G7C2E2v5p2l7o9P9",
+        "doc": "type27",
+        "counter": 27,
+        "creationDate": 1729772252799,
+        "collection": "flight.termsAndConditions.type",
+        "chunk": "chunk1",
+        "lastModified": 1729772269112,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "isSubType",
+                "name",
+                "type"
+            ]
+        },
+        "secured": false,
+        "size": 366
+    },
+    "name": "No-Show Policy",
+    "isSubType": true,
+    "type": "type3"
+}

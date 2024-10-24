@@ -1,0 +1,40 @@
+{
+    "__props__": {
+        "id": "o1G7l2o950Q0j4j7y0l729c654",
+        "doc": "browser",
+        "counter": 2,
+        "creationDate": 1729004707964,
+        "collection": "view.application",
+        "chunk": "chunk1",
+        "lastModified": 1729022011067,
+        "dev": true,
+        "actions": {
+            "checkAuthorization": {
+                "_": "eraseCookie():session;root():login?_.unauthorized"
+            }
+        },
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "view",
+                "children",
+                "checkAuthorization"
+            ],
+            "children.0": [
+                "view"
+            ],
+            "checkAuthorization": [
+                "_"
+            ]
+        },
+        "secured": false,
+        "size": 504
+    },
+    "view": "Action",
+    "children": [
+        {
+            "view": "Action?checkAuthorization()"
+        }
+    ]
+}

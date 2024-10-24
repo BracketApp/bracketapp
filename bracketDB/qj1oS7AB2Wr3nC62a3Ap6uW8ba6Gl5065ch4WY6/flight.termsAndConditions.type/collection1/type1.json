@@ -1,0 +1,25 @@
+{
+    "__props__": {
+        "id": "l1F7o2y9L7O7K1E5t3h3X6N9c8",
+        "doc": "type1",
+        "counter": 1,
+        "creationDate": 1729771533698,
+        "collection": "flight.termsAndConditions.type",
+        "chunk": "chunk1",
+        "lastModified": 1729771537458,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "isSubType",
+                "name"
+            ]
+        },
+        "secured": false,
+        "size": 344
+    },
+    "name": "Ticket Validity",
+    "isSubType": false
+}

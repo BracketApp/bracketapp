@@ -1,0 +1,130 @@
+{
+    "creationDate": 1729258028053,
+    "collection": 1,
+    "maxSize": 1000,
+    "lastChunk": 1,
+    "docsLength": 2,
+    "counter": 2,
+    "reads": 88,
+    "writes": 33,
+    "deletes": 0,
+    "size": 824,
+    "payloadIn": 1991,
+    "payloadOut": 22758,
+    "indexes": [],
+    "lastIndex": 0,
+    "schema": {
+        "__props__": {
+            "actions": {},
+            "collapsed": [
+                {
+                    "path": [
+                        "schema",
+                        "code"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "symbol"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "country"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "decimal"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "name"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "referenceNumber"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "lastExchangeRate"
+                    ]
+                }
+            ],
+            "comments": [],
+            "arrange": {
+                "": [
+                    "hideProps",
+                    "schema"
+                ],
+                "schema": [
+                    "code",
+                    "symbol",
+                    "country",
+                    "decimal",
+                    "name",
+                    "referenceNumber",
+                    "lastExchangeRate"
+                ],
+                "schema.code": [
+                    "type"
+                ],
+                "schema.symbol": [
+                    "type"
+                ],
+                "schema.country": [
+                    "type"
+                ],
+                "schema.decimal": [
+                    "type"
+                ],
+                "schema.name": [
+                    "type"
+                ],
+                "schema.referenceNumber": [
+                    "type"
+                ],
+                "schema.lastExchangeRate": [
+                    "type",
+                    "collection",
+                    "required"
+                ]
+            }
+        },
+        "hideProps": true,
+        "schema": {
+            "code": {
+                "type": "text"
+            },
+            "symbol": {
+                "type": "text"
+            },
+            "country": {
+                "type": "text"
+            },
+            "decimal": {
+                "type": "number"
+            },
+            "name": {
+                "type": "text"
+            },
+            "referenceNumber": {
+                "type": "number"
+            },
+            "lastExchangeRate": {
+                "type": "document",
+                "collection": "accounting.currency.exchangeRate",
+                "required": false
+            }
+        }
+    }
+}

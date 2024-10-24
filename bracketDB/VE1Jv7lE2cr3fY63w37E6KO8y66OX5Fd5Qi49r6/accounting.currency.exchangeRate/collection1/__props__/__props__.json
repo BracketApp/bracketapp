@@ -1,0 +1,76 @@
+{
+    "creationDate": 1729271024372,
+    "collection": 1,
+    "maxSize": 1000,
+    "lastChunk": 1,
+    "docsLength": 1,
+    "counter": 1,
+    "reads": 11,
+    "writes": 12,
+    "deletes": 0,
+    "size": 373,
+    "payloadIn": 810,
+    "payloadOut": 1213,
+    "indexes": [],
+    "lastIndex": 0,
+    "schema": {
+        "__props__": {
+            "actions": {},
+            "collapsed": [
+                {
+                    "path": [
+                        "schema",
+                        "currency"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "rate"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "referenceAmount"
+                    ]
+                }
+            ],
+            "comments": [],
+            "arrange": {
+                "": [
+                    "hideProps",
+                    "schema"
+                ],
+                "schema": [
+                    "currency",
+                    "rate",
+                    "referenceAmount"
+                ],
+                "schema.currency": [
+                    "type"
+                ],
+                "schema.rate": [
+                    "type"
+                ],
+                "schema.referenceAmount": [
+                    "type",
+                    "default"
+                ]
+            }
+        },
+        "hideProps": true,
+        "schema": {
+            "currency": {
+                "type": "text"
+            },
+            "rate": {
+                "type": "number"
+            },
+            "referenceAmount": {
+                "type": "number",
+                "default": 1
+            }
+        }
+    }
+}

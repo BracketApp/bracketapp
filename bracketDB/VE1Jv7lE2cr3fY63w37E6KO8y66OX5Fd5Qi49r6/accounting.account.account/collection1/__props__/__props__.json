@@ -1,0 +1,260 @@
+{
+    "creationDate": 1729106252238,
+    "collection": 1,
+    "maxSize": 1000,
+    "lastChunk": 1,
+    "docsLength": 2,
+    "counter": 2,
+    "reads": 87,
+    "writes": 49,
+    "deletes": 0,
+    "size": 764,
+    "payloadIn": null,
+    "payloadOut": 21088,
+    "indexes": [],
+    "lastIndex": 0,
+    "schema": {
+        "__props__": {
+            "actions": {},
+            "collapsed": [
+                {
+                    "path": [
+                        "schema",
+                        "accountNumber"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "currencies"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "generalLedger"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "name"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "openingBalanceAccount"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "lastTransaction"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "type"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "vatAccount"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "agency"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "supplier"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "salesman"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "customer"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "history"
+                    ]
+                }
+            ],
+            "comments": [],
+            "arrange": {
+                "": [
+                    "hideProps",
+                    "schema"
+                ],
+                "schema": [
+                    "accountNumber",
+                    "currencies",
+                    "generalLedger",
+                    "name",
+                    "openingBalanceAccount",
+                    "lastTransaction",
+                    "type",
+                    "vatAccount",
+                    "agency",
+                    "supplier",
+                    "salesman",
+                    "customer",
+                    "history"
+                ],
+                "schema.accountNumber": [
+                    "type"
+                ],
+                "schema.currencies": [
+                    "type",
+                    "value"
+                ],
+                "schema.currencies.value": [
+                    "collection",
+                    "type",
+                    "required"
+                ],
+                "schema.generalLedger": [
+                    "type"
+                ],
+                "schema.name": [
+                    "type"
+                ],
+                "schema.openingBalanceAccount": [
+                    "collection",
+                    "type",
+                    "required"
+                ],
+                "schema.lastTransaction": [
+                    "collection",
+                    "type",
+                    "required"
+                ],
+                "schema.type": [
+                    "collection",
+                    "type",
+                    "required"
+                ],
+                "schema.vatAccount": [
+                    "collection",
+                    "type",
+                    "required"
+                ],
+                "schema.agency": [
+                    "type",
+                    "collection",
+                    "required"
+                ],
+                "schema.supplier": [
+                    "type",
+                    "collection",
+                    "required"
+                ],
+                "schema.salesman": [
+                    "type",
+                    "collection",
+                    "required"
+                ],
+                "schema.customer": [
+                    "type",
+                    "collection",
+                    "required"
+                ],
+                "schema.history": [
+                    "type",
+                    "required",
+                    "value"
+                ],
+                "schema.history.value": [
+                    "collection",
+                    "type",
+                    "required"
+                ]
+            }
+        },
+        "hideProps": true,
+        "schema": {
+            "name": {
+                "type": "text"
+            },
+            "generalLedger": {
+                "type": "number"
+            },
+            "accountNumber": {
+                "type": "number"
+            },
+            "currencies": {
+                "type": "list",
+                "value": {
+                    "collection": "accounting.currency.currency",
+                    "type": "document",
+                    "required": false
+                }
+            },
+            "openingBalanceAccount": {
+                "collection": "accounting.account.account",
+                "type": "document",
+                "required": false
+            },
+            "vatAccount": {
+                "collection": "accounting.account.account",
+                "type": "document",
+                "required": false
+            },
+            "type": {
+                "collection": "accounting.account.type",
+                "type": "document",
+                "required": false
+            },
+            "lastTransaction": {
+                "type": "document",
+                "collection": "accounting.transaction.transaction",
+                "required": false
+            },
+            "agency": {
+                "type": "document",
+                "collection": "account.agency.agency",
+                "required": false
+            },
+            "supplier": {
+                "type": "document",
+                "collection": "account.supplier.supplier",
+                "required": false
+            },
+            "salesman": {
+                "type": "document",
+                "collection": "account.salesman.salesman",
+                "required": false
+            },
+            "customer": {
+                "type": "document",
+                "collection": "account.customer.customer",
+                "required": false
+            },
+            "history": {
+                "type": "list",
+                "value": {
+                    "type": "document",
+                    "collection": "accounting.account.history",
+                    "required": false
+                },
+                "required": false
+            }
+        }
+    }
+}

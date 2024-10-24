@@ -1,0 +1,25 @@
+{
+    "__props__": {
+        "id": "81o7J2Z9M7z7I125r7C6P5l4q3",
+        "doc": "type5",
+        "counter": 5,
+        "creationDate": 1729771576543,
+        "collection": "flight.termsAndConditions.type",
+        "chunk": "chunk1",
+        "lastModified": 1729771583591,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "isSubType",
+                "name"
+            ]
+        },
+        "secured": false,
+        "size": 343
+    },
+    "name": "Flight Changes",
+    "isSubType": false
+}

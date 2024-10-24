@@ -1,0 +1,29 @@
+{
+    "__props__": {
+        "id": "6107E2s9I7X8v2U8o9K2L7a010",
+        "doc": "type5",
+        "counter": 5,
+        "creationDate": 1729782892700,
+        "collection": "flight.taxesFeesCharges.type",
+        "chunk": "chunk1",
+        "lastModified": 1729782924564,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "description",
+                "isSubType",
+                "name",
+                "type"
+            ]
+        },
+        "secured": false,
+        "size": 454
+    },
+    "name": "Value Added Tax (VAT)",
+    "description": "Certain countries apply VAT to flight tickets.",
+    "isSubType": true,
+    "type": "type1"
+}

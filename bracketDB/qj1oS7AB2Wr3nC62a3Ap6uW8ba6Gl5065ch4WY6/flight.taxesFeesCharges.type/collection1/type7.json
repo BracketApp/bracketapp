@@ -1,0 +1,29 @@
+{
+    "__props__": {
+        "id": "H1u7V2v9R74822W957C0g9z5c1",
+        "doc": "type7",
+        "counter": 7,
+        "creationDate": 1729782970951,
+        "collection": "flight.taxesFeesCharges.type",
+        "chunk": "chunk1",
+        "lastModified": 1729782992440,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "description",
+                "isSubType",
+                "name",
+                "type"
+            ]
+        },
+        "secured": false,
+        "size": 502
+    },
+    "name": "Departure and Arrival Taxes",
+    "description": "Many countries charge taxes for passengers departing from or arriving at their airports.",
+    "isSubType": true,
+    "type": "type1"
+}

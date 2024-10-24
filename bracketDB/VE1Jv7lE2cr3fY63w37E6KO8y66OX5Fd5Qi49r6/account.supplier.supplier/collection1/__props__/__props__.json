@@ -3,14 +3,61 @@
     "collection": "account.supplier.supplier",
     "maxSize": 1000,
     "lastChunk": 1,
-    "docsLength": 0,
-    "counter": 0,
-    "reads": 0,
-    "writes": 2,
+    "docsLength": 1,
+    "counter": 1,
+    "reads": 21,
+    "writes": 12,
     "deletes": 0,
-    "size": 0,
-    "payloadIn": 0,
-    "payloadOut": 4,
+    "size": 329,
+    "payloadIn": 390,
+    "payloadOut": 2675,
     "indexes": [],
-    "lastIndex": 0
+    "lastIndex": 0,
+    "schema": {
+        "__props__": {
+            "actions": {},
+            "collapsed": [
+                {
+                    "path": [
+                        "schema",
+                        "name"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "contactBook"
+                    ]
+                }
+            ],
+            "comments": [],
+            "arrange": {
+                "": [
+                    "hideProps",
+                    "schema"
+                ],
+                "schema": [
+                    "name",
+                    "contactBook"
+                ],
+                "schema.name": [
+                    "type"
+                ],
+                "schema.contactBook": [
+                    "type",
+                    "collection"
+                ]
+            }
+        },
+        "schema": {
+            "name": {
+                "type": "text"
+            },
+            "contactBook": {
+                "type": "document",
+                "collection": "account.general.contactBook"
+            }
+        },
+        "hideProps": true
+    }
 }

@@ -1,0 +1,29 @@
+{
+    "__props__": {
+        "id": "g1c7a2n9v7r873l2n9I816a254",
+        "doc": "type17",
+        "counter": 17,
+        "creationDate": 1729783298624,
+        "collection": "flight.taxesFeesCharges.type",
+        "chunk": "chunk1",
+        "lastModified": 1729783322802,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "description",
+                "isSubType",
+                "name",
+                "type"
+            ]
+        },
+        "secured": false,
+        "size": 496
+    },
+    "name": "Other Optional Services",
+    "description": "Meals, in-flight entertainment, priority boarding, etc., may carry additional fees.",
+    "isSubType": true,
+    "type": "type14"
+}

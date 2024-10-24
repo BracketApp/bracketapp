@@ -1,0 +1,57 @@
+{
+    "creationDate": 1729415991240,
+    "collection": 1,
+    "maxSize": 1000,
+    "lastChunk": 1,
+    "docsLength": 2,
+    "counter": 2,
+    "reads": 9,
+    "writes": 7,
+    "deletes": 0,
+    "size": 652,
+    "payloadIn": 1862,
+    "payloadOut": 1847,
+    "indexes": [],
+    "lastIndex": 0,
+    "schema": {
+        "__props__": {
+            "actions": {},
+            "collapsed": [],
+            "comments": [],
+            "arrange": {
+                "": [
+                    "hideProps",
+                    "schema"
+                ],
+                "schema": [
+                    "airport",
+                    "iataCode",
+                    "city"
+                ],
+                "schema.airport": [
+                    "type"
+                ],
+                "schema.iataCode": [
+                    "type"
+                ],
+                "schema.city": [
+                    "type",
+                    "collection"
+                ]
+            }
+        },
+        "hideProps": true,
+        "schema": {
+            "airport": {
+                "type": "text"
+            },
+            "iataCode": {
+                "type": "text"
+            },
+            "city": {
+                "type": "document",
+                "collection": "public.city"
+            }
+        }
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "__props__": {
+        "id": "M197A2E9H7n7a1c9Z1X7b9v6u9",
+        "doc": "type20",
+        "counter": 20,
+        "creationDate": 1729771917969,
+        "collection": "flight.termsAndConditions.type",
+        "chunk": "chunk1",
+        "lastModified": 1729771939119,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "isSubType",
+                "name",
+                "type"
+            ]
+        },
+        "secured": false,
+        "size": 382
+    },
+    "name": "One-Way vs. Round-Trip Tickets",
+    "isSubType": true,
+    "type": "type1"
+}

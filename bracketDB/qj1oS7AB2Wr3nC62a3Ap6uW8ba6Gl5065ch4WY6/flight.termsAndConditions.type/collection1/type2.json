@@ -1,0 +1,25 @@
+{
+    "__props__": {
+        "id": "C1N7w2s9d7H7h1i584r4t4Z4t4",
+        "doc": "type2",
+        "counter": 2,
+        "creationDate": 1729771544444,
+        "collection": "flight.termsAndConditions.type",
+        "chunk": "chunk1",
+        "lastModified": 1729771547513,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "isSubType",
+                "name"
+            ]
+        },
+        "secured": false,
+        "size": 339
+    },
+    "name": "Fare Rules",
+    "isSubType": false
+}

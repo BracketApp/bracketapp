@@ -1,0 +1,108 @@
+{
+    "creationDate": 1729706208978,
+    "collection": 1,
+    "maxSize": 1000,
+    "lastChunk": 1,
+    "docsLength": 0,
+    "counter": 0,
+    "reads": 8,
+    "writes": 4,
+    "deletes": 0,
+    "size": 0,
+    "payloadIn": null,
+    "payloadOut": 4,
+    "indexes": [],
+    "lastIndex": 0,
+    "schema": {
+        "__props__": {
+            "actions": {},
+            "collapsed": [
+                {
+                    "path": [
+                        "schema",
+                        "amount"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "currency"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "name"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "type"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "description"
+                    ]
+                }
+            ],
+            "comments": [],
+            "arrange": {
+                "": [
+                    "hideProps",
+                    "schema"
+                ],
+                "schema": [
+                    "amount",
+                    "currency",
+                    "name",
+                    "type",
+                    "description"
+                ],
+                "schema.amount": [
+                    "type"
+                ],
+                "schema.currency": [
+                    "type"
+                ],
+                "schema.name": [
+                    "type"
+                ],
+                "schema.type": [
+                    "options",
+                    "type"
+                ],
+                "schema.description": [
+                    "type"
+                ]
+            }
+        },
+        "hideProps": true,
+        "schema": {
+            "name": {
+                "type": "text"
+            },
+            "type": {
+                "type": "text",
+                "options": [
+                    "Passenger Service Tax (PST)",
+                    "Value Added Tax (VAT)",
+                    "Goods and Services Tax (GST)",
+                    "Departure and Arrival Taxes",
+                    "International Taxes"
+                ]
+            },
+            "currency": {
+                "type": "text"
+            },
+            "amount": {
+                "type": "number"
+            },
+            "description": {
+                "type": "text"
+            }
+        }
+    }
+}

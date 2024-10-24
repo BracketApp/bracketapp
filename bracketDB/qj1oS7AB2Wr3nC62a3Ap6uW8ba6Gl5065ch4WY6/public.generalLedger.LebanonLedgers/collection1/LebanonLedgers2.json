@@ -1,0 +1,27 @@
+{
+    "__props__": {
+        "id": "g1I7C2y9n747w2K6x1D9P7P1E2",
+        "doc": "LebanonLedgers2",
+        "counter": 2,
+        "creationDate": 1729772619712,
+        "collection": "public.generalLedger.LebanonLedgers",
+        "chunk": "chunk1",
+        "lastModified": 1729772772056,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "generalLedger",
+                "nameAr",
+                "nameEn"
+            ]
+        },
+        "secured": false,
+        "size": 392
+    },
+    "generalLedger": 401,
+    "nameAr": "الموردون",
+    "nameEn": "suppliers"
+}

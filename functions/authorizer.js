@@ -222,7 +222,10 @@ const appCacheHandler = async ({ _window, session, res, success = true }) => {
 }
 
 const removeAppCaches = (sessions) => {
-  Object.values(sessions).map(session => fs.unlinkSync(`cache/${session.dev ? session.devDB : session.db}/${session.__props__.id}`))
+  Object.values(sessions).map(session => {
+    if (fs.existsSync(`cache/${session.dev ? session.devDB : session.db}/${session.__props__.id}`))
+      fs.unlinkSync(`cache/${session.dev ? session.devDB : session.db}/${session.__props__.id}`)
+})
 }
 
 module.exports = { authorizer }

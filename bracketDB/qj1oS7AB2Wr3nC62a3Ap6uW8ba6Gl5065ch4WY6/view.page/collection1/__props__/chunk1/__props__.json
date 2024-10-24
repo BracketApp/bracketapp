@@ -1,6 +1,8 @@
 {
-    "docs": [],
+    "docs": [
+        "main"
+    ],
     "chunk": "chunk1",
-    "docsLength": 0,
-    "size": 0
+    "docsLength": 1,
+    "size": 691
 }

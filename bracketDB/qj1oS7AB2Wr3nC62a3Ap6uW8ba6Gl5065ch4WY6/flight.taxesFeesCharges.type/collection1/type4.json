@@ -1,0 +1,29 @@
+{
+    "__props__": {
+        "id": "31h7U2C9Y7g8E278G3J8s8W0e2",
+        "doc": "type4",
+        "counter": 4,
+        "creationDate": 1729782838802,
+        "collection": "flight.taxesFeesCharges.type",
+        "chunk": "chunk1",
+        "lastModified": 1729782889150,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "description",
+                "isSubType",
+                "name",
+                "type"
+            ]
+        },
+        "secured": false,
+        "size": 513
+    },
+    "name": "Passenger Service Tax (PST)",
+    "description": "A government tax applied to each passenger, often based on the country of departure or destination.",
+    "isSubType": true,
+    "type": "type1"
+}

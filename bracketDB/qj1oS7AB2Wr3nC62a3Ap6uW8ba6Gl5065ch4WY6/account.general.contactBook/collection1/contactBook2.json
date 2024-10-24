@@ -1,0 +1,33 @@
+{
+    "__props__": {
+        "id": "W177E2l9u4q157R8u3d3b7o3L0",
+        "doc": "contactBook2",
+        "counter": 2,
+        "creationDate": 1729417833730,
+        "collection": "account.general.contactBook",
+        "chunk": "chunk1",
+        "lastModified": 1729417833730,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "address",
+                "city",
+                "contactNumber",
+                "country",
+                "email",
+                "name"
+            ]
+        },
+        "secured": false,
+        "size": 504
+    },
+    "city": "Beirut",
+    "country": "Lebanon",
+    "email": "m.obeid@brackettechnologies.com",
+    "contactNumber": "0096181026725",
+    "address": "Qmatiyeh",
+    "name": "Mohamad Baker Obeid"
+}

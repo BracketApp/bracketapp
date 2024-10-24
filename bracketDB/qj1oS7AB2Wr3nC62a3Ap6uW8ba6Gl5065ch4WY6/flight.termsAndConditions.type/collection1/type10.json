@@ -1,0 +1,25 @@
+{
+    "__props__": {
+        "id": "J1b7G2E9Z7U741k6B2C882v5M3",
+        "doc": "type10",
+        "counter": 10,
+        "creationDate": 1729771628253,
+        "collection": "flight.termsAndConditions.type",
+        "chunk": "chunk1",
+        "lastModified": 1729771631523,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "isSubType",
+                "name"
+            ]
+        },
+        "secured": false,
+        "size": 347
+    },
+    "name": "Travel Documents",
+    "isSubType": false
+}

@@ -1,0 +1,29 @@
+{
+    "__props__": {
+        "id": "j1E7f259t4J1h6D307C5e1l8T7",
+        "doc": "airport2",
+        "counter": 2,
+        "creationDate": 1729416375187,
+        "collection": "public.airport",
+        "chunk": "chunk1",
+        "lastModified": 1729439869641,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "airport",
+                "city",
+                "coutry",
+                "iataCode"
+            ]
+        },
+        "secured": false,
+        "size": 404
+    },
+    "airport": "Rafic Hariri International Airport",
+    "iataCode": "BEY",
+    "city": "city1",
+    "coutry": "Lebanon"
+}

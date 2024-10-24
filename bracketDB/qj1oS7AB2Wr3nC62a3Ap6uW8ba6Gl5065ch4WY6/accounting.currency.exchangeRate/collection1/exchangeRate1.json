@@ -1,0 +1,27 @@
+{
+    "__props__": {
+        "id": "k1k722t9i4w392532359u3b7V2",
+        "doc": "exchangeRate1",
+        "counter": 1,
+        "creationDate": 1729432339372,
+        "collection": "accounting.currency.exchangeRate",
+        "chunk": "chunk1",
+        "lastModified": 1729432339372,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "currency",
+                "rate",
+                "referenceAmount"
+            ]
+        },
+        "secured": false,
+        "size": 378
+    },
+    "currency": "USD",
+    "rate": 1,
+    "referenceAmount": 90000
+}

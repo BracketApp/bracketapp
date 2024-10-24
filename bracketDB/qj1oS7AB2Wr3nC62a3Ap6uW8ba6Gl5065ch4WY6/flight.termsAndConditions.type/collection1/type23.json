@@ -1,0 +1,27 @@
+{
+    "__props__": {
+        "id": "H1s7t2e9Y7V7J2j1K1J472x1t0",
+        "doc": "type23",
+        "counter": 23,
+        "creationDate": 1729772114210,
+        "collection": "flight.termsAndConditions.type",
+        "chunk": "chunk1",
+        "lastModified": 1729772127658,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "isSubType",
+                "name",
+                "type"
+            ]
+        },
+        "secured": false,
+        "size": 372
+    },
+    "name": "Non-Refundable Fares",
+    "isSubType": true,
+    "type": "type2"
+}

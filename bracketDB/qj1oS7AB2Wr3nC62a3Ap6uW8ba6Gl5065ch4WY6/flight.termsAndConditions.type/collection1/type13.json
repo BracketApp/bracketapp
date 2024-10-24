@@ -1,0 +1,25 @@
+{
+    "__props__": {
+        "id": "P1a702q9T7c7a13625B4A47731",
+        "doc": "type13",
+        "counter": 13,
+        "creationDate": 1729771654471,
+        "collection": "flight.termsAndConditions.type",
+        "chunk": "chunk1",
+        "lastModified": 1729771658804,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "isSubType",
+                "name"
+            ]
+        },
+        "secured": false,
+        "size": 354
+    },
+    "name": "Frequent Flyer Programs",
+    "isSubType": false
+}

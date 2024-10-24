@@ -1,0 +1,29 @@
+{
+    "__props__": {
+        "id": "p107Y259h7r8L2S9Q9V4T987S3",
+        "doc": "type8",
+        "counter": 8,
+        "creationDate": 1729782994973,
+        "collection": "flight.taxesFeesCharges.type",
+        "chunk": "chunk1",
+        "lastModified": 1729783017977,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "description",
+                "isSubType",
+                "name",
+                "type"
+            ]
+        },
+        "secured": false,
+        "size": 509
+    },
+    "name": "International Taxes",
+    "description": "For international flights, additional taxes may be levied by both the departing and arriving countries.",
+    "isSubType": true,
+    "type": "type1"
+}

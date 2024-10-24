@@ -1,0 +1,27 @@
+{
+    "__props__": {
+        "id": "H1J76209b7P7M2k2C7y2M2G0H0",
+        "doc": "type28",
+        "counter": 28,
+        "creationDate": 1729772272200,
+        "collection": "flight.termsAndConditions.type",
+        "chunk": "chunk1",
+        "lastModified": 1729772285631,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "isSubType",
+                "name",
+                "type"
+            ]
+        },
+        "secured": false,
+        "size": 372
+    },
+    "name": "24-Hour Cancellation",
+    "isSubType": true,
+    "type": "type3"
+}

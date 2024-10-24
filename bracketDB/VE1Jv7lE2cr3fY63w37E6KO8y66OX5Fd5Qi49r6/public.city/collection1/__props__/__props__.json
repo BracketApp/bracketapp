@@ -5,12 +5,37 @@
     "lastChunk": 1,
     "docsLength": 2,
     "counter": 2,
-    "reads": 18,
-    "writes": 7,
+    "reads": 281,
+    "writes": 9,
     "deletes": 0,
     "size": 581,
-    "payloadIn": 2085,
-    "payloadOut": 5147,
+    "payloadIn": null,
+    "payloadOut": 92695,
     "indexes": [],
-    "lastIndex": 0
+    "lastIndex": 0,
+    "schema": {
+        "__props__": {
+            "actions": {},
+            "collapsed": [],
+            "comments": [],
+            "arrange": {
+                "": [
+                    "hideProps",
+                    "schema"
+                ],
+                "schema": [
+                    "country"
+                ],
+                "schema.country": [
+                    "collection"
+                ]
+            }
+        },
+        "schema": {
+            "country": {
+                "collection": "public.country"
+            }
+        },
+        "hideProps": true
+    }
 }

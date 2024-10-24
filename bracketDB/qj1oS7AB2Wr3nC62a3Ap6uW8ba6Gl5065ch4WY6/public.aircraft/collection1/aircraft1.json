@@ -1,0 +1,29 @@
+{
+    "__props__": {
+        "id": "P117s2b9J4F1g6I5e3A7F0Z5k8",
+        "doc": "aircraft1",
+        "counter": 1,
+        "creationDate": 1729416537058,
+        "collection": "public.aircraft",
+        "chunk": "chunk1",
+        "lastModified": 1729439876615,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "airline",
+                "manufacturer",
+                "model",
+                "seatCapacity"
+            ]
+        },
+        "secured": false,
+        "size": 402
+    },
+    "model": "A330-300",
+    "manufacturer": "Airbus",
+    "airline": "airline1",
+    "seatCapacity": 290
+}

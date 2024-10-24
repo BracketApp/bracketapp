@@ -1,0 +1,33 @@
+{
+    "__props__": {
+        "id": "r15702n9U421e925E415z4A244",
+        "doc": "contactBook3",
+        "counter": 3,
+        "creationDate": 1729419545424,
+        "collection": "account.general.contactBook",
+        "chunk": "chunk1",
+        "lastModified": 1729419545424,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "address",
+                "city",
+                "contactNumber",
+                "country",
+                "email",
+                "name"
+            ]
+        },
+        "secured": false,
+        "size": 485
+    },
+    "city": "Beirut",
+    "country": "Lebanon",
+    "email": "saleschi@thy.com",
+    "contactNumber": "01858849",
+    "address": "Jnah",
+    "name": "Turkish Airlines Lebanon"
+}

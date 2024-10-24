@@ -1,0 +1,27 @@
+{
+    "__props__": {
+        "id": "r1V7T2l9b757N2y1S3l3j2A8d2",
+        "doc": "type24",
+        "counter": 24,
+        "creationDate": 1729772133282,
+        "collection": "flight.termsAndConditions.type",
+        "chunk": "chunk1",
+        "lastModified": 1729772152700,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "isSubType",
+                "name",
+                "type"
+            ]
+        },
+        "secured": false,
+        "size": 368
+    },
+    "name": "Refundable Fares",
+    "isSubType": true,
+    "type": "type2"
+}

@@ -1,0 +1,25 @@
+{
+    "__props__": {
+        "id": "Y177O2B9S7u7B1T5D8L6r6d1D8",
+        "doc": "type6",
+        "counter": 6,
+        "creationDate": 1729771586618,
+        "collection": "flight.termsAndConditions.type",
+        "chunk": "chunk1",
+        "lastModified": 1729771595282,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "isSubType",
+                "name"
+            ]
+        },
+        "secured": false,
+        "size": 342
+    },
+    "name": "Refund Policy",
+    "isSubType": false
+}

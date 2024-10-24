@@ -1,0 +1,35 @@
+{
+    "__props__": {
+        "id": "u1L7e2S91453G1F7u8x370a6F9",
+        "doc": "commission1",
+        "counter": 1,
+        "creationDate": 1729431783070,
+        "collection": "account.supplier.commission",
+        "chunk": "chunk1",
+        "lastModified": 1729431783070,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "airline",
+                "amount",
+                "expiryDate",
+                "percentage",
+                "referencePrice",
+                "releaseDate",
+                "supplier"
+            ]
+        },
+        "secured": false,
+        "size": 537
+    },
+    "airline": "Turkish Airlines",
+    "amount": 7,
+    "percentage": true,
+    "releaseDate": 1729431781254,
+    "expiryDate": 1729431709204,
+    "referencePrice": "Base Fare",
+    "supplier": "supplier1"
+}

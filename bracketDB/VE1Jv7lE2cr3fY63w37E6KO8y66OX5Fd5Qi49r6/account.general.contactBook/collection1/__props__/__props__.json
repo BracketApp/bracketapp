@@ -1,0 +1,76 @@
+{
+    "creationDate": 1729417288415,
+    "collection": 1,
+    "maxSize": 1000,
+    "lastChunk": 1,
+    "docsLength": 3,
+    "counter": 3,
+    "reads": 17,
+    "writes": 9,
+    "deletes": 0,
+    "size": 1147,
+    "payloadIn": 2727,
+    "payloadOut": 4334,
+    "indexes": [],
+    "lastIndex": 0,
+    "schema": {
+        "__props__": {
+            "actions": {},
+            "collapsed": [],
+            "comments": [],
+            "arrange": {
+                "": [
+                    "hideProps",
+                    "schema"
+                ],
+                "schema": [
+                    "city",
+                    "country",
+                    "email",
+                    "contactNumber",
+                    "address",
+                    "name"
+                ],
+                "schema.city": [
+                    "type"
+                ],
+                "schema.country": [
+                    "type"
+                ],
+                "schema.email": [
+                    "type"
+                ],
+                "schema.contactNumber": [
+                    "type"
+                ],
+                "schema.address": [
+                    "type"
+                ],
+                "schema.name": [
+                    "type"
+                ]
+            }
+        },
+        "hideProps": true,
+        "schema": {
+            "city": {
+                "type": "text"
+            },
+            "country": {
+                "type": "text"
+            },
+            "email": {
+                "type": "email"
+            },
+            "contactNumber": {
+                "type": "text"
+            },
+            "address": {
+                "type": "text"
+            },
+            "name": {
+                "type": "text"
+            }
+        }
+    }
+}

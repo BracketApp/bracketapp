@@ -6,7 +6,7 @@
         "creationDate": 1728239536562,
         "collection": "flight.cabin.cabin",
         "chunk": "chunk1",
-        "lastModified": 1728239536562,
+        "lastModified": 1729703309204,
         "dev": true,
         "actions": {},
         "comments": [],
@@ -15,13 +15,18 @@
             "": [
                 "class",
                 "seatCapacity",
-                "aircraft"
+                "aircraft",
+                "availabilities"
             ]
         },
         "secured": false,
-        "size": 365
+        "size": 432
     },
     "class": "Economy",
     "seatCapacity": 150,
-    "aircraft": "aircraft1"
+    "aircraft": "A330-300",
+    "availabilities": [
+        "availability1",
+        "availability3"
+    ]
 }

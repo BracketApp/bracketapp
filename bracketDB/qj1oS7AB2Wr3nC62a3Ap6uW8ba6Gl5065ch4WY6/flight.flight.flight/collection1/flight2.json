@@ -6,7 +6,7 @@
         "creationDate": 1728239600277,
         "collection": "flight.flight.flight",
         "chunk": "chunk1",
-        "lastModified": 1728239600277,
+        "lastModified": 1729701710099,
         "dev": true,
         "actions": {},
         "comments": [],
@@ -22,12 +22,13 @@
             ]
         },
         "secured": false,
-        "size": 455
+        "size": 500
     },
     "flightNumber": "TK1222",
-    "from": "airport2",
-    "to": "airport1",
+    "from": "Rafic Hariri International Airport",
+    "to": "Istanbul Airport",
     "departure": 72000000,
     "arrival": 79200000,
-    "aircraft": "aircraft1"
+    "aircraft": "A330-300",
+    "cabins": []
 }

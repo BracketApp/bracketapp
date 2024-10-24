@@ -1,0 +1,351 @@
+{
+    "creationDate": 1729458056327,
+    "collection": 1,
+    "maxSize": 1000,
+    "lastChunk": 1,
+    "docsLength": 0,
+    "counter": 0,
+    "reads": 4,
+    "writes": 29,
+    "deletes": 0,
+    "size": 0,
+    "payloadIn": null,
+    "payloadOut": 4,
+    "indexes": [],
+    "lastIndex": 0,
+    "schema": {
+        "__props__": {
+            "actions": {},
+            "collapsed": [
+                {
+                    "path": [
+                        "schema",
+                        "name"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "type"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "beforeAfter"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "chargesFeesAmount"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "chargesFeesCurrency"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "chargesFeesPercentage"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "description"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "duration"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "durationOperator"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "fareDifferenceSubjectToPayment"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "freeAmount"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "freeCurrency"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "freeUnit"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "minimumPurchaseAmount"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "minimumPurchaseCurrency"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "minimumPurchaseUnit"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "referenceDate"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "referencePrice"
+                    ]
+                }
+            ],
+            "comments": [],
+            "arrange": {
+                "": [
+                    "hideProps",
+                    "schema"
+                ],
+                "schema": [
+                    "name",
+                    "type",
+                    "beforeAfter",
+                    "chargesFeesAmount",
+                    "chargesFeesCurrency",
+                    "chargesFeesPercentage",
+                    "description",
+                    "duration",
+                    "durationOperator",
+                    "fareDifferenceSubjectToPayment",
+                    "freeAmount",
+                    "freeCurrency",
+                    "freeUnit",
+                    "minimumPurchaseAmount",
+                    "minimumPurchaseCurrency",
+                    "minimumPurchaseUnit",
+                    "referenceDate",
+                    "referencePrice"
+                ],
+                "schema.name": [
+                    "type"
+                ],
+                "schema.type": [
+                    "options",
+                    "type"
+                ],
+                "schema.beforeAfter": [
+                    "options",
+                    "type"
+                ],
+                "schema.chargesFeesAmount": [
+                    "required",
+                    "type"
+                ],
+                "schema.chargesFeesCurrency": [
+                    "required",
+                    "type"
+                ],
+                "schema.chargesFeesPercentage": [
+                    "required",
+                    "type"
+                ],
+                "schema.description": [
+                    "required",
+                    "type"
+                ],
+                "schema.duration": [
+                    "required",
+                    "type"
+                ],
+                "schema.durationOperator": [
+                    "options",
+                    "required",
+                    "type"
+                ],
+                "schema.fareDifferenceSubjectToPayment": [
+                    "required",
+                    "type"
+                ],
+                "schema.freeAmount": [
+                    "required",
+                    "type"
+                ],
+                "schema.freeCurrency": [
+                    "required",
+                    "type"
+                ],
+                "schema.freeUnit": [
+                    "options",
+                    "required",
+                    "type"
+                ],
+                "schema.minimumPurchaseAmount": [
+                    "required",
+                    "type"
+                ],
+                "schema.minimumPurchaseCurrency": [
+                    "required",
+                    "type"
+                ],
+                "schema.minimumPurchaseUnit": [
+                    "options",
+                    "required",
+                    "type"
+                ],
+                "schema.referenceDate": [
+                    "options",
+                    "required",
+                    "type"
+                ],
+                "schema.referencePrice": [
+                    "options",
+                    "type"
+                ]
+            }
+        },
+        "hideProps": true,
+        "schema": {
+            "referenceDate": {
+                "type": "text",
+                "options": [
+                    "Booking Date",
+                    "Travel Date",
+                    "Cancellation Date",
+                    "Refund Date",
+                    "Return Date"
+                ],
+                "required": false
+            },
+            "beforeAfter": {
+                "type": "text",
+                "options": [
+                    "Before",
+                    "After"
+                ]
+            },
+            "referencePrice": {
+                "type": "text",
+                "options": [
+                    "Base Fare",
+                    "Gross Fare",
+                    "Net Price",
+                    "Selling Price"
+                ]
+            },
+            "description": {
+                "type": "text",
+                "required": false
+            },
+            "fareDifferenceSubjectToPayment": {
+                "type": "boolean",
+                "required": false
+            },
+            "duration": {
+                "type": "timestamp",
+                "required": false
+            },
+            "durationOperator": {
+                "type": "text",
+                "options": [
+                    "Less Than",
+                    "More Than"
+                ],
+                "required": false
+            },
+            "freeAmount": {
+                "type": "number",
+                "required": false
+            },
+            "minimumPurchaseAmount": {
+                "type": "number",
+                "required": false
+            },
+            "minimumPurchaseUnit": {
+                "type": "text",
+                "options": [
+                    "Pax"
+                ],
+                "required": false
+            },
+            "freeUnit": {
+                "type": "text",
+                "options": [
+                    "Kg",
+                    "Seat"
+                ],
+                "required": false
+            },
+            "freeCurrency": {
+                "type": "text",
+                "required": false
+            },
+            "chargesFeesCurrency": {
+                "type": "text",
+                "required": false
+            },
+            "chargesFeesAmount": {
+                "type": "number",
+                "required": false
+            },
+            "minimumPurchaseCurrency": {
+                "type": "text",
+                "required": false
+            },
+            "chargesFeesPercentage": {
+                "type": "number",
+                "required": false
+            },
+            "name": {
+                "type": "text"
+            },
+            "type": {
+                "type": "text",
+                "options": [
+                    "Booking",
+                    "Cancellation",
+                    "Refund",
+                    "Change",
+                    "Hand Baggage",
+                    "Baggage",
+                    "No-show",
+                    "Overbooking",
+                    "Class of Service",
+                    "Loyalty Program",
+                    "Travel Insurance",
+                    "Rebooking",
+                    "Reissuing",
+                    "Seat Selection",
+                    "Upgrade",
+                    "Low Fare",
+                    "Group"
+                ]
+            }
+        }
+    }
+}

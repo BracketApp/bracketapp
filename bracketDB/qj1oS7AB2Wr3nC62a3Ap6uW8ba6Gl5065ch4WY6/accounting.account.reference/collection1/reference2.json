@@ -1,0 +1,29 @@
+{
+    "__props__": {
+        "id": "b1d762M9v7o7Q2A9J1u7u8a2H5",
+        "doc": "reference2",
+        "counter": 2,
+        "creationDate": 1729772917825,
+        "collection": "accounting.account.reference",
+        "chunk": "chunk1",
+        "lastModified": 1729773233691,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "collection",
+                "generalLedger",
+                "usedRefs"
+            ]
+        },
+        "secured": false,
+        "size": 401
+    },
+    "generalLedger": 41,
+    "usedRefs": [
+        1
+    ],
+    "collection": "accounting.account.account"
+}

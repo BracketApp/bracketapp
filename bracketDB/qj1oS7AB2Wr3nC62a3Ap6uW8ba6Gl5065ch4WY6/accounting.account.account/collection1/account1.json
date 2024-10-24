@@ -1,0 +1,38 @@
+{
+    "__props__": {
+        "id": "K1w7k2k9i3s4n2Z1j5S8U6E2C1",
+        "doc": "account1",
+        "counter": 1,
+        "creationDate": 1729342158621,
+        "collection": "accounting.account.account",
+        "chunk": "chunk1",
+        "lastModified": 1729342158621,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "accountNumber",
+                "currencies",
+                "generalLedger",
+                "name",
+                "agency",
+                "type",
+                "history"
+            ]
+        },
+        "secured": false,
+        "size": 520
+    },
+    "name": "Beirut Group Billing Account",
+    "generalLedger": 41,
+    "accountNumber": 1,
+    "currencies": [
+        "currency1",
+        "currency2"
+    ],
+    "agency": "agency1",
+    "history": [],
+    "type": "type1"
+}

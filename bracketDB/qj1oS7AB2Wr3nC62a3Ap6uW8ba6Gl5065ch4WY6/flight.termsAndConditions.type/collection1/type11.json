@@ -1,0 +1,25 @@
+{
+    "__props__": {
+        "id": "R197R2095787H1C6g3V6g3h9Q2",
+        "doc": "type11",
+        "counter": 11,
+        "creationDate": 1729771636392,
+        "collection": "flight.termsAndConditions.type",
+        "chunk": "chunk1",
+        "lastModified": 1729771642058,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "isSubType",
+                "name"
+            ]
+        },
+        "secured": false,
+        "size": 349
+    },
+    "name": "Flight Disruptions",
+    "isSubType": false
+}

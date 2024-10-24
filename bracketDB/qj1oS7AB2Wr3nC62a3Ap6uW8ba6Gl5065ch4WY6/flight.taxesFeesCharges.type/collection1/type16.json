@@ -1,0 +1,29 @@
+{
+    "__props__": {
+        "id": "u147r2c9s7t8W3q2v8o2y2Y444",
+        "doc": "type16",
+        "counter": 16,
+        "creationDate": 1729783282244,
+        "collection": "flight.taxesFeesCharges.type",
+        "chunk": "chunk1",
+        "lastModified": 1729783296259,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "description",
+                "isSubType",
+                "name",
+                "type"
+            ]
+        },
+        "secured": false,
+        "size": 491
+    },
+    "name": "Seat Selection Fees",
+    "description": "Additional charges for selecting specific seats, such as those with extra legroom.",
+    "isSubType": true,
+    "type": "type14"
+}

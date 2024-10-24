@@ -1,12 +1,12 @@
 {
     "__props__": {
-        "id": "z1k702K8t7x2e2l7m2n096e0U1",
+        "id": "9157Z2G9z3R5O5o3p996Z2u1y0",
         "doc": "agency1",
         "counter": 1,
-        "creationDate": 1728722720601,
+        "creationDate": 1729355396210,
         "collection": "account.agency.agency",
         "chunk": "chunk1",
-        "lastModified": 1728724232625,
+        "lastModified": 1729355396210,
         "dev": true,
         "actions": {},
         "comments": [],
@@ -14,14 +14,12 @@
         "arrange": {
             "": [
                 "name",
-                "type",
                 "contactBook"
             ]
         },
         "secured": false,
-        "size": 394
+        "size": 364
     },
     "name": "Beirut Group Travel & Tourism",
-    "type": "Travel Agency",
     "contactBook": "contactBook1"
 }

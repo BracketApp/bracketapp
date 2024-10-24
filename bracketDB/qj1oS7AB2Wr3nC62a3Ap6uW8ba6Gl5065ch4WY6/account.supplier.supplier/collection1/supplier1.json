@@ -1,0 +1,25 @@
+{
+    "__props__": {
+        "id": "h1N7Y2Y9w48119c4q7n0A0V8K3",
+        "doc": "supplier1",
+        "counter": 1,
+        "creationDate": 1729419470083,
+        "collection": "account.supplier.supplier",
+        "chunk": "chunk1",
+        "lastModified": 1729419470083,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "contactBook",
+                "name"
+            ]
+        },
+        "secured": false,
+        "size": 365
+    },
+    "name": "Turkish Airlines Lebanon",
+    "contactBook": "contactBook3"
+}

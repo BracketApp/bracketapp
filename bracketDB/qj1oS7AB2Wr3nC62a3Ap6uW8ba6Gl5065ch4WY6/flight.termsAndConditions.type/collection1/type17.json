@@ -1,0 +1,25 @@
+{
+    "__props__": {
+        "id": "41l7q2b9G787t1W678y948W3C9",
+        "doc": "type17",
+        "counter": 17,
+        "creationDate": 1729771689839,
+        "collection": "flight.termsAndConditions.type",
+        "chunk": "chunk1",
+        "lastModified": 1729771694321,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "isSubType",
+                "name"
+            ]
+        },
+        "secured": false,
+        "size": 354
+    },
+    "name": "Data and Privacy Policy",
+    "isSubType": false
+}

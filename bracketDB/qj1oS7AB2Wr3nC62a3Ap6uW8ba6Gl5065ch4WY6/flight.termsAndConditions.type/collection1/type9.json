@@ -1,0 +1,25 @@
+{
+    "__props__": {
+        "id": "l187O2A9x7o7c156j1y6e1q8U2",
+        "doc": "type9",
+        "counter": 9,
+        "creationDate": 1729771616182,
+        "collection": "flight.termsAndConditions.type",
+        "chunk": "chunk1",
+        "lastModified": 1729771620848,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "isSubType",
+                "name"
+            ]
+        },
+        "secured": false,
+        "size": 357
+    },
+    "name": "Overbooking and Compensation",
+    "isSubType": false
+}

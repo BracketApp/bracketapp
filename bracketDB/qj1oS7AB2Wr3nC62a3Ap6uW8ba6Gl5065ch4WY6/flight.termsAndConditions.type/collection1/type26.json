@@ -1,0 +1,27 @@
+{
+    "__props__": {
+        "id": "E197m2U987o7L2e2j3o417I3E3",
+        "doc": "type26",
+        "counter": 26,
+        "creationDate": 1729772234733,
+        "collection": "flight.termsAndConditions.type",
+        "chunk": "chunk1",
+        "lastModified": 1729772246146,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "isSubType",
+                "name",
+                "type"
+            ]
+        },
+        "secured": false,
+        "size": 371
+    },
+    "name": "Cancellation Policy",
+    "isSubType": true,
+    "type": "type3"
+}

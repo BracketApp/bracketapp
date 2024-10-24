@@ -1,0 +1,29 @@
+{
+    "__props__": {
+        "id": "x117e2S9N7v8X3K1o1j2A0G8c0",
+        "doc": "type12",
+        "counter": 12,
+        "creationDate": 1729783112080,
+        "collection": "flight.taxesFeesCharges.type",
+        "chunk": "chunk1",
+        "lastModified": 1729783126554,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "description",
+                "isSubType",
+                "name",
+                "type"
+            ]
+        },
+        "secured": false,
+        "size": 501
+    },
+    "name": "Customs/Immigration Fees",
+    "description": "International travelers may face additional fees for customs and immigration processing.",
+    "isSubType": true,
+    "type": "type2"
+}

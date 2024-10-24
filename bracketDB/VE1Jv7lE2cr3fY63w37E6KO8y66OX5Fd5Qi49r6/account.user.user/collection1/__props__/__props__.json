@@ -5,12 +5,12 @@
     "lastChunk": 1,
     "docsLength": 0,
     "counter": 0,
-    "reads": 178,
-    "writes": 10,
+    "reads": 565,
+    "writes": 23,
     "deletes": 0,
     "size": 21,
-    "payloadIn": 3638,
-    "payloadOut": 63453,
+    "payloadIn": null,
+    "payloadOut": 212136,
     "indexes": [
         {
             "find": [
@@ -21,5 +21,80 @@
             "expiryDate": 1730741048701
         }
     ],
-    "lastIndex": 1
+    "lastIndex": 1,
+    "schema": {
+        "__props__": {
+            "actions": {},
+            "collapsed": [
+                {
+                    "path": [
+                        "schema",
+                        "agency"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "contactBook"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "firstName"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "lastName"
+                    ]
+                }
+            ],
+            "comments": [],
+            "arrange": {
+                "": [
+                    "hideProps",
+                    "schema"
+                ],
+                "schema": [
+                    "agency",
+                    "contactBook",
+                    "firstName",
+                    "lastName"
+                ],
+                "schema.agency": [
+                    "collection",
+                    "type"
+                ],
+                "schema.contactBook": [
+                    "collection",
+                    "type"
+                ],
+                "schema.firstName": [
+                    "type"
+                ],
+                "schema.lastName": [
+                    "type"
+                ]
+            }
+        },
+        "schema": {
+            "agency": {
+                "collection": "account.agency.agency",
+                "type": "document"
+            },
+            "contactBook": {
+                "collection": "account.general.contactBook",
+                "type": "document"
+            },
+            "firstName": {
+                "type": "text"
+            },
+            "lastName": {
+                "type": "text"
+            }
+        },
+        "hideProps": true
+    }
 }

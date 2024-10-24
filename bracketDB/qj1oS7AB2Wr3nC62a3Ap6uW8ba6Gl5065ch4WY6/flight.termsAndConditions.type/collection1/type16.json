@@ -1,0 +1,25 @@
+{
+    "__props__": {
+        "id": "c1r782U9a747F1m6B880P5M5B3",
+        "doc": "type16",
+        "counter": 16,
+        "creationDate": 1729771680553,
+        "collection": "flight.termsAndConditions.type",
+        "chunk": "chunk1",
+        "lastModified": 1729771686970,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "isSubType",
+                "name"
+            ]
+        },
+        "secured": false,
+        "size": 346
+    },
+    "name": "In-Flight Rules",
+    "isSubType": false
+}

@@ -6,7 +6,7 @@
         "creationDate": 1728250465684,
         "collection": "flight.pricing.pricing",
         "chunk": "chunk1",
-        "lastModified": 1728250543165,
+        "lastModified": 1729705645571,
         "dev": true,
         "actions": {},
         "comments": [],
@@ -15,15 +15,19 @@
             "": [
                 "availability",
                 "price",
-                "unit",
-                "trip"
+                "currency",
+                "trip",
+                "age"
             ]
         },
         "secured": false,
-        "size": 390
+        "size": 451
     },
-    "availability": "availability2",
+    "availability": "",
     "price": 120,
-    "unit": "USD",
-    "trip": "Round trip"
+    "trip": "Round trip",
+    "currency": "USD",
+    "age": "Adult",
+    "taxesFeesChargesIncluded": true,
+    "policies": []
 }

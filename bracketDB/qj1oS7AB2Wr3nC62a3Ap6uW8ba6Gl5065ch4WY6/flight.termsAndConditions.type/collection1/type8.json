@@ -1,0 +1,25 @@
+{
+    "__props__": {
+        "id": "J1f7P2H9q777E1E6k0G8D2v6B5",
+        "doc": "type8",
+        "counter": 8,
+        "creationDate": 1729771608265,
+        "collection": "flight.termsAndConditions.type",
+        "chunk": "chunk1",
+        "lastModified": 1729771612231,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "isSubType",
+                "name"
+            ]
+        },
+        "secured": false,
+        "size": 346
+    },
+    "name": "Boarding Policies",
+    "isSubType": false
+}

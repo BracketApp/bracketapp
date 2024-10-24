@@ -1,8 +1,10 @@
 {
     "docs": [
+        "browser",
+        "server",
         "root"
     ],
     "chunk": "chunk1",
-    "docsLength": 1,
-    "size": 1406
+    "docsLength": 3,
+    "size": 2862
 }

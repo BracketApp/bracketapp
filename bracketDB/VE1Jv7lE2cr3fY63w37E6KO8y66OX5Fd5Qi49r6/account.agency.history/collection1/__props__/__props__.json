@@ -5,12 +5,74 @@
     "lastChunk": 1,
     "docsLength": 0,
     "counter": 0,
-    "reads": 0,
-    "writes": 1,
+    "reads": 4,
+    "writes": 2,
     "deletes": 0,
     "size": 0,
-    "payloadIn": 0,
-    "payloadOut": 4,
+    "payloadIn": null,
+    "payloadOut": 16,
     "indexes": [],
-    "lastIndex": 0
+    "lastIndex": 0,
+    "schema": {
+        "__props__": {
+            "actions": {},
+            "collapsed": [
+                {
+                    "path": [
+                        "schema",
+                        "createdBy"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "creationDate"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "description"
+                    ]
+                }
+            ],
+            "comments": [],
+            "arrange": {
+                "": [
+                    "hideProps",
+                    "schema"
+                ],
+                "schema": [
+                    "createdBy",
+                    "creationDate",
+                    "description"
+                ],
+                "schema.createdBy": [
+                    "collection",
+                    "type"
+                ],
+                "schema.creationDate": [
+                    "type"
+                ],
+                "schema.description": [
+                    "required",
+                    "type"
+                ]
+            }
+        },
+        "hideProps": true,
+        "schema": {
+            "creationDate": {
+                "type": "timestamp"
+            },
+            "createdBy": {
+                "type": "document",
+                "collection": "account.user.user"
+            },
+            "description": {
+                "type": "text",
+                "required": false
+            }
+        }
+    }
 }

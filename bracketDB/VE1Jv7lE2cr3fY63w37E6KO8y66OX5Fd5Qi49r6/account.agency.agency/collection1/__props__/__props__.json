@@ -5,12 +5,59 @@
     "lastChunk": 1,
     "docsLength": 1,
     "counter": 1,
-    "reads": 22,
-    "writes": 13,
+    "reads": 342,
+    "writes": 23,
     "deletes": 0,
     "size": 294,
-    "payloadIn": 5151,
-    "payloadOut": 5727,
+    "payloadIn": null,
+    "payloadOut": 127343,
     "indexes": [],
-    "lastIndex": 0
+    "lastIndex": 0,
+    "schema": {
+        "__props__": {
+            "actions": {},
+            "collapsed": [
+                {
+                    "path": [
+                        "schema",
+                        "name"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "contactBook"
+                    ]
+                }
+            ],
+            "comments": [],
+            "arrange": {
+                "": [
+                    "hideProps",
+                    "schema"
+                ],
+                "schema": [
+                    "name",
+                    "contactBook"
+                ],
+                "schema.name": [
+                    "type"
+                ],
+                "schema.contactBook": [
+                    "type",
+                    "collection"
+                ]
+            }
+        },
+        "schema": {
+            "name": {
+                "type": "text"
+            },
+            "contactBook": {
+                "type": "document",
+                "collection": "account.general.contactBook"
+            }
+        },
+        "hideProps": true
+    }
 }

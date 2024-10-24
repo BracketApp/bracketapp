@@ -1,0 +1,27 @@
+{
+    "__props__": {
+        "id": "B1P7D2M957u7L2y3p5A3W6y7b5",
+        "doc": "type31",
+        "counter": 31,
+        "creationDate": 1729772353675,
+        "collection": "flight.termsAndConditions.type",
+        "chunk": "chunk1",
+        "lastModified": 1729772361832,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "isSubType",
+                "name",
+                "type"
+            ]
+        },
+        "secured": false,
+        "size": 365
+    },
+    "name": "Special Items",
+    "isSubType": true,
+    "type": "type4"
+}

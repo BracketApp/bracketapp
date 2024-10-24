@@ -1,0 +1,27 @@
+{
+    "__props__": {
+        "id": "11Q7A2c9N7M8A361T8k0P09450",
+        "doc": "type14",
+        "counter": 14,
+        "creationDate": 1729783180040,
+        "collection": "flight.taxesFeesCharges.type",
+        "chunk": "chunk1",
+        "lastModified": 1729783264634,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "description",
+                "isSubType",
+                "name"
+            ]
+        },
+        "secured": false,
+        "size": 378
+    },
+    "name": "Airline Surcharges",
+    "description": "",
+    "isSubType": false
+}

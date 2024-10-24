@@ -5,12 +5,133 @@
     "lastChunk": 1,
     "docsLength": 2,
     "counter": 2,
-    "reads": 12,
-    "writes": 3,
+    "reads": 35,
+    "writes": 18,
     "deletes": 0,
     "size": 956,
-    "payloadIn": 956,
-    "payloadOut": 1918,
+    "payloadIn": 1046,
+    "payloadOut": 10492,
     "indexes": [],
-    "lastIndex": 0
+    "lastIndex": 0,
+    "schema": {
+        "__props__": {
+            "actions": {},
+            "collapsed": [
+                {
+                    "path": [
+                        "schema",
+                        "flightNumber"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "aircraft"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "from"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "to"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "departure"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "arrival"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "cabins"
+                    ]
+                }
+            ],
+            "comments": [],
+            "arrange": {
+                "": [
+                    "hideProps",
+                    "schema"
+                ],
+                "schema": [
+                    "flightNumber",
+                    "aircraft",
+                    "from",
+                    "to",
+                    "departure",
+                    "arrival",
+                    "cabins"
+                ],
+                "schema.flightNumber": [
+                    "type"
+                ],
+                "schema.aircraft": [
+                    "type"
+                ],
+                "schema.from": [
+                    "type"
+                ],
+                "schema.to": [
+                    "type"
+                ],
+                "schema.departure": [
+                    "type"
+                ],
+                "schema.arrival": [
+                    "type"
+                ],
+                "schema.cabins": [
+                    "type",
+                    "value"
+                ],
+                "schema.cabins.value": [
+                    "type",
+                    "collection",
+                    "required"
+                ]
+            }
+        },
+        "schema": {
+            "flightNumber": {
+                "type": "text"
+            },
+            "aircraft": {
+                "type": "text"
+            },
+            "from": {
+                "type": "text"
+            },
+            "to": {
+                "type": "text"
+            },
+            "departure": {
+                "type": "number"
+            },
+            "arrival": {
+                "type": "number"
+            },
+            "cabins": {
+                "type": "list",
+                "value": {
+                    "type": "document",
+                    "collection": "flight.cabin.cabin",
+                    "required": false
+                }
+            }
+        },
+        "hideProps": true
+    }
 }

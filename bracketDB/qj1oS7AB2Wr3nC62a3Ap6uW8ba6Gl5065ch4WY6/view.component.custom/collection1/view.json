@@ -7,7 +7,7 @@
         "creationDate": 1723741167517,
         "collection": "view.component.custom",
         "chunk": "chunk1",
-        "lastModified": 1728675773039,
+        "lastModified": 1728945406287,
         "dev": true,
         "actions": {
             "passwordEvents": "[menter?backgroundColor()=#eee;children().():[color()=#444]];[mleave?backgroundColor()=#f6f6f6;children().():[color()=#999]];[click?1stChild().display();2ndChild().hide();parent().input().type()=password?1stChild().hidden()?2ndChild().display();1stChild().hide();parent().input().type()=text]"

@@ -1,0 +1,27 @@
+{
+    "__props__": {
+        "id": "L1s7r299w7Q8e2H8n2O4c9Q965",
+        "doc": "type3",
+        "counter": 3,
+        "creationDate": 1729782824995,
+        "collection": "flight.taxesFeesCharges.type",
+        "chunk": "chunk1",
+        "lastModified": 1729783139206,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "description",
+                "isSubType",
+                "name"
+            ]
+        },
+        "secured": false,
+        "size": 512
+    },
+    "name": "Fuel Surcharges",
+    "description": "Some airlines impose fuel surcharges to offset fuel price fluctuations. This surcharge is included in the fare or listed as a separate fee.",
+    "isSubType": false
+}

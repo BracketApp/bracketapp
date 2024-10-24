@@ -1,0 +1,46 @@
+{
+    "view": "Action?id=server;authorize()",
+    "children": [
+        {
+            "view": "Action?[[manifest:().action]]"
+        }
+    ],
+    "__props__": {
+        "id": "41T7p2R8M9X9e479T643w5U0J0",
+        "doc": "server",
+        "counter": 1,
+        "creationDate": 1728994963500,
+        "collection": "view.application",
+        "chunk": "chunk1",
+        "lastModified": 1729103884049,
+        "dev": true,
+        "actions": {
+            "authorize": {
+                "_": "checkCookie();checkSession()?manifest:().page=portal;manifest:().action!='createWebApp()'",
+                "checkSession": "search():[collection=account.user.session;findOne:[session=getCookie():session]]:[session:()=_.data?_.data?failureHandler()]",
+                "checkCookie": "send():[success=false;message=Login to get access!;unauthorized=true]?!getCookie():session",
+                "failureHandler": "send():[success=false;message=You are not authorized!;unauthorized=true]"
+            }
+        },
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "view",
+                "children",
+                "authorize"
+            ],
+            "children.0": [
+                "view"
+            ],
+            "authorize": [
+                "_",
+                "checkSession",
+                "checkCookie",
+                "failureHandler"
+            ]
+        },
+        "secured": true,
+        "size": 926
+    }
+}

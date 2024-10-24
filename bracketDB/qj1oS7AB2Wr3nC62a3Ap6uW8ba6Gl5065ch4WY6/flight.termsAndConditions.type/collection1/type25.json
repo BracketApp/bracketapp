@@ -1,0 +1,27 @@
+{
+    "__props__": {
+        "id": "m117M2l9j7a7e2G1j6B3d4Y990",
+        "doc": "type25",
+        "counter": 25,
+        "creationDate": 1729772163490,
+        "collection": "flight.termsAndConditions.type",
+        "chunk": "chunk1",
+        "lastModified": 1729772173687,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "isSubType",
+                "name",
+                "type"
+            ]
+        },
+        "secured": false,
+        "size": 368
+    },
+    "name": "Fare Differences",
+    "isSubType": true,
+    "type": "type2"
+}

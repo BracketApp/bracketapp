@@ -47,7 +47,7 @@
             ]
         },
         {
-            "view": "[View]:[sort;arrange=[openData:().__props__.arrange.[path().join():'.']||parent().arrange];mount;keys]?class=flex column;style:[display=flex;position=relative;[width='calc(100% - 2rem)';marginLeft=2rem;borderLeft=1px solid #ddd?path().len()=1]]?data()!=:",
+            "view": "[View]:[sort;arrange=[openData:().__props__.arrange.[path().join():'.']||parent().arrange];mount;keys]?class=flex column;style:[display=flex;position=relative;[width='calc(100% - 2rem)';marginLeft=2rem;borderLeft=1px solid #ddd?path().len()=1]]?#data()!=:",
             "children": [
                 {
                     "view": "View?class=flex align-start Map collapsed;style:[alignItems=center;position=relative;height=4.25rem;[height=3.25rem?data().type()=map||=list]];open=[false?openData:().__props__.collapsed.find():[path=path()]?true];hover.style.backgroundColor=#f6f6f6;lineEvents()?path().lastEl()!=__props__",
@@ -94,7 +94,7 @@
                             ]
                         },
                         {
-                            "view": "Input?class=pointer;readonly;style:[height=3rem;border='1px solid #ffffff00';color=purple;width=fit-content;borderRadius=.5rem;border=1px solid #00000000];hover.style.border=1px solid #ddd;droplist:[items=:'true':'false';preventDefault];[click?parent().lastChild().style().display=none;prev_value=form().clone()];[click:droplist?if():[clicked().txt()='true']:[data()=true;txt()='true']:[data()=false;txt()='false'];pushToUndo()]?data().type()=boolean"
+                            "view": "Input?class=pointer;readonly;style:[height=3rem;border='1px solid #ffffff00';color=purple;width=fit-content;borderRadius=.5rem;border=1px solid #00000000];hover.style.border=1px solid #ddd;droplist:[items=:'true':'false';preventDefault;align=left];[click?parent().lastChild().style().display=none;prev_value=form().clone()];[click:droplist?if():[clicked().txt()='true']:[data()=true;txt()='true']:[data()=false;txt()='false'];pushToUndo()]?data().type()=boolean"
                         },
                         {
                             "view": "Input?input.type=datetime-local;style:[height=3rem;minWidth=25rem;borderRadius=.5rem;border=1px solid #00000000];hover.style.border=1px solid #ddd;mouseenter:[style().border=1px solid #ddd];mouseleave:[style().border=if():[txt()]:'1px solid #00000000':'1px solid #ddd'];entry:[highlightTab()];change:[data()=date():[txt()].timestamp()];loaded:[txt()=date():data().toDateInputFormat():[format='yyyy-MM-ddThh:mm']]?data().type()=timestamp"
@@ -144,7 +144,7 @@
         "creationDate": 1710330786447,
         "collection": "view",
         "chunk": "chunk1",
-        "lastModified": 1728227979972,
+        "lastModified": 1729271747252,
         "dev": false,
         "actions": {
             "updateListIndexes": "_.nextSiblings()._():[if():[_.parent().data().type()=list]:[_.1stChild().2ndChild().txt()=_.path().lastEl().num()-1]]",
@@ -598,6 +598,14 @@
                     "children",
                     1,
                     "children",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    1,
+                    "children",
                     0,
                     "children",
                     0
@@ -611,6 +619,16 @@
                     0,
                     "children",
                     1
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    2
                 ]
             },
             {
@@ -937,6 +955,6 @@
             ]
         },
         "secured": false,
-        "size": 27489
+        "size": 27588
     }
 }

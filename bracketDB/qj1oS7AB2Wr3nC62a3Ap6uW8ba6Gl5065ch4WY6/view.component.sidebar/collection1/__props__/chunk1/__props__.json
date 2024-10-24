@@ -1,6 +1,8 @@
 {
-    "docs": [],
+    "docs": [
+        "sidebarSubItem"
+    ],
     "chunk": "chunk1",
-    "docsLength": -2,
-    "size": -9461
+    "docsLength": -1,
+    "size": -7689
 }

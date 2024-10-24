@@ -1,0 +1,25 @@
+{
+    "__props__": {
+        "id": "M1e7S2l9w7u72115e6X1T6M316",
+        "doc": "type4",
+        "counter": 4,
+        "creationDate": 1729771561636,
+        "collection": "flight.termsAndConditions.type",
+        "chunk": "chunk1",
+        "lastModified": 1729771568954,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "isSubType",
+                "name"
+            ]
+        },
+        "secured": false,
+        "size": 343
+    },
+    "name": "Baggage Policy",
+    "isSubType": false
+}

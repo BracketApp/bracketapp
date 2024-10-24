@@ -1,0 +1,35 @@
+{
+    "__props__": {
+        "id": "q1E7V299w4S3j2k339p685F003",
+        "doc": "currency2",
+        "counter": 2,
+        "creationDate": 1729432396503,
+        "collection": "accounting.currency.currency",
+        "chunk": "chunk1",
+        "lastModified": 1729432396503,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "code",
+                "country",
+                "decimal",
+                "name",
+                "referenceNumber",
+                "symbol",
+                "lastExchangeRate"
+            ]
+        },
+        "secured": false,
+        "size": 524
+    },
+    "code": "USD",
+    "symbol": "$",
+    "country": "United States Of America",
+    "decimal": 2,
+    "name": "United States Dollar",
+    "referenceNumber": 1,
+    "lastExchangeRate": "exchangeRate1"
+}

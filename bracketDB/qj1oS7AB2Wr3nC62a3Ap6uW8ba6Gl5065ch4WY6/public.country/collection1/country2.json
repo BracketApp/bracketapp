@@ -1,19 +1,17 @@
 {
-    "country": "Turkey",
     "code": "TK",
     "capital": "Ankara",
-    "callingCode": "+90",
-    "timeZone": 3,
+    "callingCode": "90",
     "officialLanguage": "Turkish",
     "nationality": "Turkish",
     "__props__": {
-        "id": "Z15762Q6h7i7a1L1M151t0I7c8",
+        "id": "C1L7T2K9G2S7k7F1n6r3G7Q7q0",
         "doc": "country2",
-        "counter": 2,
-        "creationDate": 1726771111078,
+        "counter": 3,
+        "creationDate": 1729277163770,
         "collection": "public.country",
         "chunk": "chunk1",
-        "lastModified": 1728301125204,
+        "lastModified": 1729277163770,
         "dev": true,
         "actions": {},
         "comments": [],
@@ -23,13 +21,14 @@
                 "callingCode",
                 "capital",
                 "code",
-                "country",
+                "name",
                 "nationality",
-                "officialLanguage",
-                "timeZone"
+                "officialLanguage"
             ]
         },
         "secured": false,
-        "size": 490
-    }
+        "size": 472
+    },
+    "name": "Turkey",
+    "timezone": 0
 }

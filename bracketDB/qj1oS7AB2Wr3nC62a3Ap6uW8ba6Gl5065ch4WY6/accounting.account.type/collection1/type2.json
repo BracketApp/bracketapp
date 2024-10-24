@@ -1,0 +1,25 @@
+{
+    "__props__": {
+        "id": "r1I7e2W9g3V3h931t1e901d4Z9",
+        "doc": "type2",
+        "counter": 2,
+        "creationDate": 1729339119149,
+        "collection": "accounting.account.type",
+        "chunk": "chunk1",
+        "lastModified": 1729339119149,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "generalLedger",
+                "name"
+            ]
+        },
+        "secured": false,
+        "size": 338
+    },
+    "name": "Supplier",
+    "generalLedger": "401"
+}

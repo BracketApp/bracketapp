@@ -6,26 +6,23 @@
         "creationDate": 1728239449547,
         "collection": "flight.availability.availability",
         "chunk": "chunk1",
-        "lastModified": 1728240624475,
+        "lastModified": 1729701195563,
         "dev": true,
         "actions": {},
         "comments": [],
         "collapsed": [],
         "arrange": {
             "": [
-                "cabin",
-                "flight",
                 "class",
                 "booked",
                 "available"
             ]
         },
         "secured": false,
-        "size": 413
+        "size": 374
     },
-    "cabin": "cabin1",
-    "flight": "flight2",
     "available": 150,
     "booked": 0,
-    "class": "A"
+    "class": "A",
+    "pricings": []
 }

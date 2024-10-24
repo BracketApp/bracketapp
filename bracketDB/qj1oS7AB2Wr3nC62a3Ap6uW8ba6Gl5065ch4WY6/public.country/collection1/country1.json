@@ -1,12 +1,12 @@
 {
     "__props__": {
-        "id": "I1N7B226O7n666T0603764m2u4",
+        "id": "Z1X7Z2e9k2M7L7r1v6U8n221T9",
         "doc": "country1",
-        "counter": 1,
-        "creationDate": 1726766007424,
+        "counter": 3,
+        "creationDate": 1729277168219,
         "collection": "public.country",
         "chunk": "chunk1",
-        "lastModified": 1728301115894,
+        "lastModified": 1729277168219,
         "dev": true,
         "actions": {},
         "comments": [],
@@ -17,19 +17,19 @@
                 "code",
                 "capital",
                 "callingCode",
-                "timeZone",
                 "officialLanguage",
                 "nationality"
             ]
         },
         "secured": false,
-        "size": 492
+        "size": 490
     },
     "country": "Lebanon",
     "code": "LB",
     "capital": "Beirut",
-    "callingCode": "+961",
-    "timeZone": 3,
+    "callingCode": "961",
     "officialLanguage": "Arabic",
-    "nationality": "Lebanese"
+    "nationality": "Lebanese",
+    "name": "",
+    "timezone": 0
 }

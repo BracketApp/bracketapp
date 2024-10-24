@@ -1,0 +1,62 @@
+{
+    "creationDate": 1729416447073,
+    "collection": 1,
+    "maxSize": 1000,
+    "lastChunk": 1,
+    "docsLength": 1,
+    "counter": 1,
+    "reads": 9,
+    "writes": 6,
+    "deletes": 0,
+    "size": 351,
+    "payloadIn": null,
+    "payloadOut": 1211,
+    "indexes": [],
+    "lastIndex": 0,
+    "schema": {
+        "__props__": {
+            "actions": {},
+            "collapsed": [],
+            "comments": [],
+            "arrange": {
+                "": [
+                    "hideProps",
+                    "schema"
+                ],
+                "schema": [
+                    "model",
+                    "manufacturer",
+                    "airline",
+                    "seatCapacity"
+                ],
+                "schema.model": [
+                    "type"
+                ],
+                "schema.manufacturer": [
+                    "type"
+                ],
+                "schema.airline": [
+                    "type"
+                ],
+                "schema.seatCapacity": [
+                    "type"
+                ]
+            }
+        },
+        "hideProps": true,
+        "schema": {
+            "model": {
+                "type": "text"
+            },
+            "manufacturer": {
+                "type": "text"
+            },
+            "airline": {
+                "type": "text"
+            },
+            "seatCapacity": {
+                "type": "number"
+            }
+        }
+    }
+}

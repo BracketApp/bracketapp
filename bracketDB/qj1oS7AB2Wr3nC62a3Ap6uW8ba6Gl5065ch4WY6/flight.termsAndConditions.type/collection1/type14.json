@@ -1,0 +1,25 @@
+{
+    "__props__": {
+        "id": "0177p2w9T7C7w1x6v6L156z1V3",
+        "doc": "type14",
+        "counter": 14,
+        "creationDate": 1729771661613,
+        "collection": "flight.termsAndConditions.type",
+        "chunk": "chunk1",
+        "lastModified": 1729771668855,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "isSubType",
+                "name"
+            ]
+        },
+        "secured": false,
+        "size": 344
+    },
+    "name": "No-Show Terms",
+    "isSubType": false
+}

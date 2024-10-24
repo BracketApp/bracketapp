@@ -1,0 +1,29 @@
+{
+    "__props__": {
+        "id": "41O7h2n9n7K8H2k9N2y7l413F3",
+        "doc": "type6",
+        "counter": 6,
+        "creationDate": 1729782927433,
+        "collection": "flight.taxesFeesCharges.type",
+        "chunk": "chunk1",
+        "lastModified": 1729782957707,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "description",
+                "isSubType",
+                "name",
+                "type"
+            ]
+        },
+        "secured": false,
+        "size": 461
+    },
+    "name": "Goods and Services Tax (GST)",
+    "description": "Certain countries apply GST to flight tickets.",
+    "isSubType": true,
+    "type": "type1"
+}

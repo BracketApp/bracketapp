@@ -1,0 +1,25 @@
+{
+    "__props__": {
+        "id": "G1i7c269L7s7i1z6W7E3X0y4o5",
+        "doc": "type15",
+        "counter": 15,
+        "creationDate": 1729771673045,
+        "collection": "flight.termsAndConditions.type",
+        "chunk": "chunk1",
+        "lastModified": 1729771677397,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "isSubType",
+                "name"
+            ]
+        },
+        "secured": false,
+        "size": 344
+    },
+    "name": "Force Majeure",
+    "isSubType": false
+}

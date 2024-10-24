@@ -1,0 +1,111 @@
+{
+    "creationDate": 1729772875254,
+    "collection": 1,
+    "maxSize": 1000,
+    "lastChunk": 1,
+    "docsLength": 2,
+    "counter": 2,
+    "reads": 10,
+    "writes": 10,
+    "deletes": 0,
+    "size": 712,
+    "payloadIn": 1753,
+    "payloadOut": 1571,
+    "indexes": [],
+    "lastIndex": 0,
+    "schema": {
+        "__props__": {
+            "actions": {},
+            "collapsed": [
+                {
+                    "path": [
+                        "schema",
+                        "collection"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "generalLedger"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "maxRef"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "minRef"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "usedRefs"
+                    ]
+                }
+            ],
+            "comments": [],
+            "arrange": {
+                "": [
+                    "hideProps",
+                    "schema"
+                ],
+                "schema": [
+                    "collection",
+                    "generalLedger",
+                    "maxRef",
+                    "minRef",
+                    "usedRefs"
+                ],
+                "schema.collection": [
+                    "type"
+                ],
+                "schema.generalLedger": [
+                    "type"
+                ],
+                "schema.maxRef": [
+                    "required",
+                    "type"
+                ],
+                "schema.minRef": [
+                    "required",
+                    "type"
+                ],
+                "schema.usedRefs": [
+                    "type",
+                    "value"
+                ],
+                "schema.usedRefs.value": [
+                    "type"
+                ]
+            }
+        },
+        "hideProps": true,
+        "schema": {
+            "generalLedger": {
+                "type": "number"
+            },
+            "usedRefs": {
+                "type": "list",
+                "value": {
+                    "type": "number"
+                }
+            },
+            "collection": {
+                "type": "text"
+            },
+            "minRef": {
+                "type": "number",
+                "required": false
+            },
+            "maxRef": {
+                "type": "number",
+                "required": false
+            }
+        }
+    }
+}

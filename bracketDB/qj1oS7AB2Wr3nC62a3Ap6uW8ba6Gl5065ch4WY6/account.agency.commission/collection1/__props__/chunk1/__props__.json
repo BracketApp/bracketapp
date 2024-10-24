@@ -1,6 +1,8 @@
 {
-    "docs": [],
+    "docs": [
+        "commission1"
+    ],
     "chunk": "chunk1",
-    "docsLength": 0,
-    "size": 0
+    "docsLength": 4,
+    "size": 1932
 }

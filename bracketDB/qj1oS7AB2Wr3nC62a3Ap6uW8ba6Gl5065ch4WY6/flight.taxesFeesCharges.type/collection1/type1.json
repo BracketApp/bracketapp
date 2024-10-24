@@ -1,0 +1,27 @@
+{
+    "__props__": {
+        "id": "N1q7X2Q9p7t8T2A7Z9F5B7A6x2",
+        "doc": "type1",
+        "counter": 1,
+        "creationDate": 1729782795762,
+        "collection": "flight.taxesFeesCharges.type",
+        "chunk": "chunk1",
+        "lastModified": 1729782809706,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "description",
+                "isSubType",
+                "name"
+            ]
+        },
+        "secured": false,
+        "size": 374
+    },
+    "name": "Government Taxes",
+    "description": "",
+    "isSubType": false
+}

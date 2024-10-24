@@ -1,0 +1,27 @@
+{
+    "__props__": {
+        "id": "i1K7f2q9K7T7O2e3g3U0K299P9",
+        "doc": "type30",
+        "counter": 30,
+        "creationDate": 1729772330299,
+        "collection": "flight.termsAndConditions.type",
+        "chunk": "chunk1",
+        "lastModified": 1729772344587,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "isSubType",
+                "name",
+                "type"
+            ]
+        },
+        "secured": false,
+        "size": 375
+    },
+    "name": "Lost or Delayed Baggage",
+    "isSubType": true,
+    "type": "type4"
+}

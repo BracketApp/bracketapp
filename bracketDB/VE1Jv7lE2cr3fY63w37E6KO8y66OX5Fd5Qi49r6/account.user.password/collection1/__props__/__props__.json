@@ -5,12 +5,12 @@
     "lastChunk": 1,
     "docsLength": 0,
     "counter": 0,
-    "reads": 46,
-    "writes": 6,
+    "reads": 106,
+    "writes": 10,
     "deletes": 0,
     "size": 25,
-    "payloadIn": 1853,
-    "payloadOut": 14856,
+    "payloadIn": null,
+    "payloadOut": 33229,
     "indexes": [
         {
             "find": [
@@ -27,9 +27,45 @@
                 "username"
             ],
             "doc": "index2",
-            "lastRead": 1728675753533,
-            "expiryDate": 1731267753533
+            "lastRead": 1729253163565,
+            "expiryDate": 1731845163565
         }
     ],
-    "lastIndex": 2
+    "lastIndex": 2,
+    "schema": {
+        "__props__": {
+            "actions": {},
+            "collapsed": [],
+            "comments": [],
+            "arrange": {
+                "": [
+                    "hideProps",
+                    "schema"
+                ],
+                "schema": [
+                    "password",
+                    "username"
+                ],
+                "schema.password": [
+                    "type"
+                ],
+                "schema.username": [
+                    "type",
+                    "collection",
+                    "populate"
+                ]
+            }
+        },
+        "schema": {
+            "password": {
+                "type": "text"
+            },
+            "username": {
+                "type": "document",
+                "collection": "account.user.username",
+                "populate": false
+            }
+        },
+        "hideProps": true
+    }
 }

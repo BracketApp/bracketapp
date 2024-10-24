@@ -1,0 +1,25 @@
+{
+    "__props__": {
+        "id": "Q1A7U2X9t7q7c1b5v9A8i9V537",
+        "doc": "type7",
+        "counter": 7,
+        "creationDate": 1729771598957,
+        "collection": "flight.termsAndConditions.type",
+        "chunk": "chunk1",
+        "lastModified": 1729771603705,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "isSubType",
+                "name"
+            ]
+        },
+        "secured": false,
+        "size": 350
+    },
+    "name": "Check-In Requirements",
+    "isSubType": false
+}
