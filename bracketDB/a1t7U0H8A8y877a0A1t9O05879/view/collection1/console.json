@@ -268,7 +268,7 @@
                                     ]
                                 },
                                 {
-                                    "view": "View?id=mainDataViewer;style:[position=relative;width=100%;height='calc(100vh - 7.5rem)'];click:[class():dataViewer.find():[style().display=flex]._():[openDB:()=_.openDB;openData:()=_.openData;openCollection:()=_.openCollection;openDoc:()=_.openDoc]]",
+                                    "view": "View?id=mainDataViewer;style:[position=relative;width=100%;height='calc(100vh - 7.5rem)'];click:[class():dataViewer.find():[style().display=flex]._():[openData:()=_.openData;openCollection:()=_.openCollection;openDoc:()=_.openDoc]]",
                                     "children": [
                                         {
                                             "view": "View?id=dataViewer;style:[width='calc(100vw - '+[[():sidebarWidthController.width||0]+[():sidebarWidthController.diff||0]+4.5]+'rem)';height='calc(100% - '+actionsHeight:()+'rem)';transition=.2s]",
@@ -375,6 +375,9 @@
                     "view": "Icon?class=pointer;tooltip.text=info;name=bi-info-circle;style:[fontSize=1.5rem;width=3.25rem;height=3.5rem];hover.style.backgroundColor=#f0f0f0;[data=[collection=parent().openCollection;doc=parent().openDoc];infoDroplist()]():[doc=Map]"
                 },
                 {
+                    "view": "Icon?class=pointer;tooltip.text=duplicate;name=bi-diagram-3;style:[fontSize=1.5rem;width=3.25rem;height=3.5rem];hover.style.backgroundColor=#f0f0f0;[click?openDocSchema()]"
+                },
+                {
                     "view": "Icon?class=pointer;tooltip.text=export;name=bi-upload;style:[fontSize=1.5rem;width=3.25rem;height=3.5rem];hover.style.backgroundColor=#f0f0f0;click:[exportDoc()]"
                 },
                 {
@@ -393,7 +396,7 @@
         "creationDate": 1710330786487,
         "collection": "view",
         "chunk": "chunk1",
-        "lastModified": 1729701438382,
+        "lastModified": 1729952685238,
         "dev": false,
         "actions": {
             "openActionPopup": "():actionPopup.style():[opacity=1;pointerEvents=auto;zIndex=10;transform='scale(1)']",
@@ -457,15 +460,16 @@
             "releaseHorizontalSeperator": "mousedowned=false;():document.style().cursor=default;parent().style().transition=.2s;class():dataViewer.filter():[!hidden()].():[style().overflowY=auto];actionsHeight:()-=().diff?mousedowned",
             "metaData": "actionsHeight:()=20;name=Console | Bracket Technologies;title='Console | '+project:().name",
             "saveDocHandler": {
-                "_": "setProps();saveData()?():dataViewer.children().find():[style().display=flex]._():[openCollection:()=_.openCollection;openDoc:()=_.openDoc]",
-                "saveData": "[start();saveData():[publicID=project:().publicID;collection=openCollection:();doc=openDoc:();data=openData:()]:[end():[_]]]():[collection=actions;doc=db]:[note():[text=_.message;type=[danger?!_.success?success]];successHandler()]",
-                "successHandler": "class():[openDoc:()+openCollection:()+'publish'].0.display();():dataViewerBar.children().find():[openCollection=openCollection:();openDoc=openDoc:()].2ndChild().style().border=0;updateData()?_.success",
+                "_": "[docSchemaHandler()?openDoc:().split():'/'.1='__schema__'?setProps()];saveData()?():dataViewer.children().find():[style().display=flex]._():[openCollection:()=_.openCollection;openDoc:()=_.openDoc]",
+                "saveData": "[start();saveData():[publicID=project:().publicID;collection=openCollection:();doc=openDoc:();data=openData:()]:[end():[_]]]():[collection=actions;doc=db]:[note():[text=_.message;type=[danger?!_.success?success]];[tabBorder();updateData()?_.success]]",
                 "setComments": "_.class():comment._filter():[_.txt()]._():[openData:().__props__.comments+=[note=_.txt();path=_.path()]]",
                 "setCollapsed": "_.class():collapsed._filter():[!_.open]._():[openData:().__props__.collapsed+=[path=_.path()]]",
                 "setArrange": "_.class():keyName._():[arrange.[_.path().slice():0:[-1].join():'.'].push():[_.path().[-1]]];openData:().__props__.arrange=.arrange",
                 "setProps": "resetProps();():dataViewer.children().find():[openCollection=openCollection:();openDoc=openDoc:()]._():[setComments();setCollapsed();setArrange()];():actions.children().find():[openCollection=openCollection:();openDoc=openDoc:()]._():[setComments();setCollapsed();setArrange()]",
                 "resetProps": "openData:().__props__.collapsed=:;openData:().__props__.comments=:;arrange=[]",
-                "updateData": "data:().editor.[openCollection:()].[openDoc:()]=_.data.clone()?openDoc:()!=__schema__"
+                "updateData": "data:().editor.[openCollection:()].[openDoc:()]=_.data.clone()?openDoc:()!=__schema__",
+                "docSchemaHandler": "tabBorder();openDoc:()=openDoc:().split():'/__schema__'.0;data:().editor.[openCollection:()].[openDoc:()].__props__.schema=openData:().clone();openData:()=data:().editor.[openCollection:()].[openDoc:()].clone()",
+                "tabBorder": "class():[openDoc:()+openCollection:()+'publish'].0.display();():dataViewerBar.children().find():[openCollection=openCollection:();openDoc=openDoc:()].2ndChild().style().border=0"
             },
             "ctrlSaveHandler": "[keydown:document?[e().preventDefault();():saveBtn.click()?e().ctrlKey;e().key=s];toggleActionEditor()]",
             "searchCollection": {
@@ -502,7 +506,8 @@
                 "signout": "[clearPrevProjectData();user:().del()]():[path=:projectDroplistHandler];eraseCookie():__session__;root():tap",
                 "openUserActivity": "[openForm():[schema=userActivityTable;collection=tableSchema]]():[doc=form]?clicked().txt()=User Activity"
             },
-            "publishAndPreview": "[publish():[publicID=project:().publicID]:[note():[text=_.message;[danger=true?!_.success]]]]():[collection=actions;doc=db]:[openHost()]"
+            "publishAndPreview": "[publish():[publicID=project:().publicID]:[note():[text=_.message;[danger=true?!_.success]]]]():[collection=actions;doc=db]:[openHost()]",
+            "openDocSchema": "[openDoc():[collection=parent().openCollection;data=data:().editor.[parent().openCollection].[parent().openDoc].__props__.schema.clone()||[hideProps=true;schema=[]];doc=parent().openDoc+'/__schema__']]():[doc=collections]"
         },
         "comments": [
             {
@@ -1105,7 +1110,7 @@
                 ]
             },
             {
-                "note": "export",
+                "note": "schema",
                 "path": [
                     "children",
                     3,
@@ -1114,12 +1119,21 @@
                 ]
             },
             {
-                "note": "remove",
+                "note": "export",
                 "path": [
                     "children",
                     3,
                     "children",
                     4
+                ]
+            },
+            {
+                "note": "remove",
+                "path": [
+                    "children",
+                    3,
+                    "children",
+                    5
                 ]
             },
             {
@@ -1424,12 +1438,6 @@
             {
                 "path": [
                     "children",
-                    2
-                ]
-            },
-            {
-                "path": [
-                    "children",
                     2,
                     "children",
                     0,
@@ -1437,18 +1445,6 @@
                     1,
                     "children",
                     0
-                ]
-            },
-            {
-                "path": [
-                    "children",
-                    2,
-                    "children",
-                    0,
-                    "children",
-                    1,
-                    "children",
-                    1
                 ]
             },
             {
@@ -1609,12 +1605,6 @@
                     1,
                     "children",
                     2
-                ]
-            },
-            {
-                "path": [
-                    "children",
-                    3
                 ]
             },
             {
@@ -1657,11 +1647,6 @@
             {
                 "path": [
                     "projectDroplistHandler"
-                ]
-            },
-            {
-                "path": [
-                    "saveDocHandler"
                 ]
             },
             {
@@ -1742,7 +1727,8 @@
                 "toggleSearchResultsByDocument",
                 "undo",
                 "userDroplistHandler",
-                "openDoc"
+                "openDoc",
+                "openDocSchema"
             ],
             "children.0": [
                 "view"
@@ -2077,6 +2063,9 @@
             "children.3.children.4": [
                 "view"
             ],
+            "children.3.children.5": [
+                "view"
+            ],
             "children.4": [
                 "view"
             ],
@@ -2126,10 +2115,11 @@
                 "setArrange",
                 "setCollapsed",
                 "setComments",
-                "successHandler",
+                "tabBorder",
                 "_",
                 "resetProps",
-                "setProps"
+                "setProps",
+                "docSchemaHandler"
             ],
             "searchCollection": [
                 "resultHandler",
@@ -2159,7 +2149,8 @@
                 "_"
             ]
         },
+        "schema": {},
         "secured": false,
-        "size": 44310
+        "size": 44986
     }
 }

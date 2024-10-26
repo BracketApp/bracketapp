@@ -1,5 +1,7 @@
 {
     "docs": [
+        "pricing10",
+        "pricing9",
         "pricing8",
         "pricing7",
         "pricing6",
@@ -10,6 +12,6 @@
         "pricing1"
     ],
     "chunk": "chunk1",
-    "docsLength": 8,
-    "size": 3606
+    "docsLength": 10,
+    "size": 5862
 }

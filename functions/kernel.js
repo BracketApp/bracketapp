@@ -1726,7 +1726,7 @@ const actions = {
 
     }, "todayStart()": ({ o }) => {
 
-        var date = o instanceof Date ? o : new Date()
+        let date = o instanceof Date ? o : new Date()
         date.setHours(0, 0, 0, 0)
         
         return date.getTime()
@@ -2102,7 +2102,32 @@ const actions = {
 
         stack.loop = true
 
-        if (args[1] && underScored) {
+        if (args[2] && underScored) {
+
+            breakRequest.break = true
+            let address = actions["addresser()"]({ _window, req, res, id, stack, props: { ...props, isValue: false }, __, lookupActions, data: { string: args[2] }, object }).address;
+
+            ([...toArray(o)]).reverse().map(o => {
+                // address
+                address = actions["addresser()"]({ _window, req, res, id, stack, props: { ...props, isValue: false }, nextAddress: address, __: [o, ...__], lookupActions, data: { string: args[1] }, object }).address
+            })
+
+            // address
+            if (address) actions["stackManager()"]({ _window, id, lookupActions, stack, props: { ...props, isValue: false }, address, __, req, res, object })
+
+        } else if (args[2]) {
+
+            breakRequest.break = true
+            let address = actions["addresser()"]({ _window, req, res, id, stack, props: { ...props, isValue: false }, __, lookupActions, data: { string: args[2] }, object }).address;
+
+            ([...toArray(o)]).reverse().map(o => {
+                // address
+                address = actions["addresser()"]({ _window, id, stack, props, nextAddress: address, __, lookupActions, data: { string: args[1] }, object: [o, ...toArray(object)] }).address
+            })
+
+            // address
+            if (address) actions["stackManager()"]({ _window, id, lookupActions, stack, props, address, __, req, res })
+        } else if (args[1] && underScored) {
 
             var data = toArray(o).map(o => toValue({ req, res, _window, lookupActions, stack, props: { ...props, isValue: false }, id, data: args[1] || "", object, __: [o, ...__], e }))
             return notArray ? data[0] : data
@@ -2111,29 +2136,6 @@ const actions = {
 
             return toArray(o).map(o => toValue({ req, res, _window, lookupActions, stack, props: { ...props, isValue: false }, id, data: args[1] || "", object: [o, ...object], __, e }))
 
-        } else if (args[2] && underScored) {
-
-            breakRequest.break = true
-            var address;
-            ([...toArray(o)]).reverse().map(o => {
-                // address
-                address = actions["addresser()"]({ _window, id, stack, props: { ...props, isValue: false }, nextAddress: address, __: [o, ...__], lookupActions, data: { string: args[2] }, object }).address
-            })
-
-            // address
-            if (address) actions["stackManager()"]({ _window, id, lookupActions, stack, props: { ...props, isValue: false }, address, __, req, res })
-
-        } else if (args[2]) {
-
-            breakRequest.break = true
-            var address;
-            ([...toArray(o)]).reverse().map(o => {
-                // address
-                address = actions["addresser()"]({ _window, id, stack, props, nextAddress: address, __, lookupActions, data: { string: args[2] }, object: [o, ...toArray(object)] }).address
-            })
-
-            // address
-            if (address) actions["stackManager()"]({ _window, id, lookupActions, stack, props, address, __, req, res })
         }
 
         stack.loop = false

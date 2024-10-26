@@ -1,16 +1,16 @@
 {
-    "creationDate": 1729706229813,
-    "collection": 1,
+    "creationDate": 1729706128126,
+    "collection": "flight.taxesFeesCharges.taxesFeesCharges",
     "maxSize": 1000,
     "lastChunk": 1,
     "docsLength": 0,
     "counter": 0,
-    "reads": 12,
-    "writes": 4,
+    "reads": 22,
+    "writes": 10,
     "deletes": 0,
     "size": 0,
     "payloadIn": null,
-    "payloadOut": 8,
+    "payloadOut": 16,
     "indexes": [],
     "lastIndex": 0,
     "schema": {
@@ -32,6 +32,12 @@
                 {
                     "path": [
                         "schema",
+                        "description"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
                         "name"
                     ]
                 },
@@ -39,12 +45,6 @@
                     "path": [
                         "schema",
                         "type"
-                    ]
-                },
-                {
-                    "path": [
-                        "schema",
-                        "description"
                     ]
                 }
             ],
@@ -57,9 +57,9 @@
                 "schema": [
                     "amount",
                     "currency",
+                    "description",
                     "name",
-                    "type",
-                    "description"
+                    "type"
                 ],
                 "schema.amount": [
                     "type"
@@ -67,15 +67,15 @@
                 "schema.currency": [
                     "type"
                 ],
+                "schema.description": [
+                    "type"
+                ],
                 "schema.name": [
                     "type"
                 ],
                 "schema.type": [
-                    "options",
-                    "type"
-                ],
-                "schema.description": [
-                    "type"
+                    "type",
+                    "collection"
                 ]
             }
         },
@@ -85,13 +85,8 @@
                 "type": "text"
             },
             "type": {
-                "type": "text",
-                "options": [
-                    "Passenger Facility Charges (PFCs)",
-                    "Security Fees",
-                    "Landing Fees",
-                    "Customs/Immigration Fees"
-                ]
+                "type": "document",
+                "collection": "flight.taxesFeesCharges.type"
             },
             "currency": {
                 "type": "text"

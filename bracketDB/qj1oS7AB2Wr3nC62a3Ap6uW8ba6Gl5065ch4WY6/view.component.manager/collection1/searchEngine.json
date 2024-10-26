@@ -70,7 +70,7 @@
         "creationDate": 1724169816127,
         "collection": "view.component.manager",
         "chunk": "chunk1",
-        "lastModified": 1728945409756,
+        "lastModified": 1729884970216,
         "dev": true,
         "actions": {
             "expandMore": {
@@ -79,15 +79,6 @@
                 "openSearchEngine": "closed=false;next().style():[height=fit-content;borderBottom=1px solid #ddd];1stChild().rotate()=180;parent().next().1stChild().style():[height=calc(100vh - 17rem)]"
             },
             "openManager": "data().trip=_.text;():[_.view||manager].refresh()",
-            "updateReturnDateByDuration": {
-                "_": "updateDuration();2ndParent().data().returnDate=2ndParent().data().travelDate+data();3rdParent().prev().refresh()",
-                "updateDuration": "data()=[259200000?clicked().txt()=3 days?432000000?clicked().txt()=5 days?604800000?clicked().txt()=1 week?864000000?clicked().txt()=10 days?1296000000?clicked().txt()=15 days?2592000000?clicked().txt()=1 month?7776000000?clicked().txt()=3 month]"
-            },
-            "diagramBtnHandler": {
-                "_": "openHandler()?():popup.positioner!=.id?closeHandler()",
-                "closeHandler": "closePopup()",
-                "openHandler": "@view.application.root;openPopup():[form=searchEngine;path=pax;data='@view.schema.manager.adtChdInf']"
-            },
             "btns": {
                 "views": [
                     {
@@ -132,6 +123,10 @@
                     "class": "flexbox"
                 },
                 "style": "display=flex;gap=.75rem"
+            },
+            "get ": "",
+            "getData": {
+                "_": "[_.search.btn.action]()::[3rdParent().next().refresh()?_.success?note():[text=_.message;type=danger]]"
             }
         },
         "comments": [
@@ -279,22 +274,22 @@
                     "children",
                     1,
                     "children",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    2,
+                    "children",
+                    1,
+                    "children",
                     1
                 ]
             },
             {
                 "path": [
                     "expandMore"
-                ]
-            },
-            {
-                "path": [
-                    "updateReturnDateByDuration"
-                ]
-            },
-            {
-                "path": [
-                    "diagramBtnHandler"
                 ]
             },
             {
@@ -306,6 +301,12 @@
                 "path": [
                     "btns",
                     "container"
+                ]
+            },
+            {
+                "path": [
+                    "btns",
+                    "views"
                 ]
             },
             {
@@ -350,9 +351,8 @@
                 "children",
                 "expandMore",
                 "openManager",
-                "updateReturnDateByDuration",
-                "diagramBtnHandler",
-                "btns"
+                "btns",
+                "getData"
             ],
             "children.0": [
                 "view",
@@ -412,15 +412,6 @@
                 "closeSearchEngine",
                 "openSearchEngine"
             ],
-            "updateReturnDateByDuration": [
-                "_",
-                "updateDuration"
-            ],
-            "diagramBtnHandler": [
-                "_",
-                "closeHandler",
-                "openHandler"
-            ],
             "btns": [
                 "container",
                 "views",
@@ -465,9 +456,12 @@
                 "icon",
                 "tooltip",
                 "type"
+            ],
+            "getData": [
+                "_"
             ]
         },
         "secured": false,
-        "size": 6572
+        "size": 5931
     }
 }

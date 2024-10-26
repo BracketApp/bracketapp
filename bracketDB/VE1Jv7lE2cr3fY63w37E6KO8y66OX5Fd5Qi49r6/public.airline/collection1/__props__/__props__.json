@@ -5,12 +5,12 @@
     "lastChunk": 1,
     "docsLength": 1,
     "counter": 1,
-    "reads": 5,
-    "writes": 4,
+    "reads": 22,
+    "writes": 7,
     "deletes": 0,
     "size": 325,
-    "payloadIn": 811,
-    "payloadOut": 329,
+    "payloadIn": 486,
+    "payloadOut": 7627,
     "indexes": [],
     "lastIndex": 0,
     "schema": {
@@ -32,8 +32,7 @@
                     "type"
                 ],
                 "schema.country": [
-                    "type",
-                    "collection"
+                    "type"
                 ],
                 "schema.logo": [
                     "type"
@@ -46,8 +45,7 @@
                 "type": "text"
             },
             "country": {
-                "type": "document",
-                "collection": "public.country"
+                "type": "text"
             },
             "logo": {
                 "type": "text"

@@ -1,0 +1,72 @@
+{
+    "__props__": {
+        "id": "g1i7j239e8o8u267Y1u6v4t877",
+        "doc": "flight",
+        "counter": 1,
+        "creationDate": 1729882716487,
+        "collection": "view.server",
+        "chunk": "chunk1",
+        "lastModified": 1729897893177,
+        "dev": true,
+        "actions": {
+            "searchAvailability": {
+                "_": "flights:()=:;_.search._():[searchFlights()]:[responseHandler()]?checkRequiredInputs()?failResponse()",
+                "failResponse": "send():[success=false;message=Enter all required inputs!]",
+                "checkRequiredInputs": {
+                    "_": "oneWay()?_.trip=One way?roundTrip()?_.trip=Round trip?multiCity()?_.trip=Multi city?openReturn()?_.trip=Open return",
+                    "oneWay": "_.find():[search.0.find():[from;to;travelDate;class];pax.adt;groupType]",
+                    "roundTrip": "_.find():[search.0.find():[from;to;travelDate;returnDate;class];pax.adt;groupType]",
+                    "multiCity": "_.find():[search.find():[find():[from;to;travelDate;returnDate;class]];pax.adt;groupType]",
+                    "openReturn": "_.find():[search.0.find():[from;to;travelDate;class];pax.adt;groupType]"
+                },
+                "searchFlights": {
+                    "_": "oneWay()?__.trip=One way?roundTrip()?__.trip=Round trip?multiCity()?__.trip=Multi city?openReturn()?__.trip=Open return",
+                    "oneWay": "search():[collection=flight.flight.flight;find=[from=_.from;to=_.to;travelDate=_.travelDate]]:[flights:()+=_.data]",
+                    "roundTrip": "oneWay()::[oneWay():[from=_.to;to=_.from;travelDate=_.returnDate]]"
+                },
+                "responseHandler": "send():[flights=flights:()]"
+            }
+        },
+        "comments": [],
+        "collapsed": [
+            {
+                "path": [
+                    "searchAvailability",
+                    "checkRequiredInputs"
+                ]
+            },
+            {
+                "path": [
+                    "searchAvailability",
+                    "searchFlights"
+                ]
+            }
+        ],
+        "arrange": {
+            "": [
+                "searchAvailability"
+            ],
+            "searchAvailability": [
+                "_",
+                "failResponse",
+                "checkRequiredInputs",
+                "searchFlights",
+                "responseHandler"
+            ],
+            "searchAvailability.checkRequiredInputs": [
+                "_",
+                "oneWay",
+                "roundTrip",
+                "multiCity",
+                "openReturn"
+            ],
+            "searchAvailability.searchFlights": [
+                "_",
+                "oneWay",
+                "roundTrip"
+            ]
+        },
+        "secured": true,
+        "size": 1758
+    }
+}

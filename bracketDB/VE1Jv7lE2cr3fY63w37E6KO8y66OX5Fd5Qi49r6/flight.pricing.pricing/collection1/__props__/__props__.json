@@ -3,26 +3,20 @@
     "collection": 1,
     "maxSize": 1000,
     "lastChunk": 1,
-    "docsLength": 8,
-    "counter": 8,
-    "reads": 101,
-    "writes": 64,
+    "docsLength": 10,
+    "counter": 10,
+    "reads": 305,
+    "writes": 135,
     "deletes": 0,
-    "size": 2466,
-    "payloadIn": null,
-    "payloadOut": 29583,
+    "size": 3313,
+    "payloadIn": 6103,
+    "payloadOut": 130211,
     "indexes": [],
     "lastIndex": 0,
     "schema": {
         "__props__": {
             "actions": {},
             "collapsed": [
-                {
-                    "path": [
-                        "schema",
-                        "availability"
-                    ]
-                },
                 {
                     "path": [
                         "schema",
@@ -50,25 +44,19 @@
                 {
                     "path": [
                         "schema",
-                        "termsAndConditions"
+                        "groupType"
                     ]
                 },
                 {
                     "path": [
                         "schema",
-                        "feesIncluded"
+                        "taxesFeesChargesIncluded"
                     ]
                 },
                 {
                     "path": [
                         "schema",
-                        "taxesIncluded"
-                    ]
-                },
-                {
-                    "path": [
-                        "schema",
-                        "chargesIncluded"
+                        "taxesFeesCharges"
                     ]
                 },
                 {
@@ -80,19 +68,7 @@
                 {
                     "path": [
                         "schema",
-                        "fees"
-                    ]
-                },
-                {
-                    "path": [
-                        "schema",
-                        "charges"
-                    ]
-                },
-                {
-                    "path": [
-                        "schema",
-                        "taxes"
+                        "termsAndConditions"
                     ]
                 }
             ],
@@ -103,23 +79,15 @@
                     "schema"
                 ],
                 "schema": [
-                    "availability",
                     "price",
                     "currency",
                     "trip",
                     "age",
-                    "termsAndConditions",
-                    "feesIncluded",
-                    "taxesIncluded",
-                    "chargesIncluded",
+                    "groupType",
+                    "taxesFeesChargesIncluded",
+                    "taxesFeesCharges",
                     "policies",
-                    "fees",
-                    "charges",
-                    "taxes"
-                ],
-                "schema.availability": [
-                    "type",
-                    "collection"
+                    "termsAndConditions"
                 ],
                 "schema.price": [
                     "type"
@@ -135,63 +103,45 @@
                     "type",
                     "options"
                 ],
-                "schema.termsAndConditions": [
+                "schema.groupType": [
                     "type",
+                    "options"
+                ],
+                "schema.taxesFeesChargesIncluded": [
+                    "default",
+                    "type"
+                ],
+                "schema.taxesFeesCharges": [
+                    "type",
+                    "required",
+                    "value"
+                ],
+                "schema.taxesFeesCharges.value": [
                     "collection",
+                    "type",
                     "required"
-                ],
-                "schema.feesIncluded": [
-                    "default",
-                    "type"
-                ],
-                "schema.taxesIncluded": [
-                    "default",
-                    "type"
-                ],
-                "schema.chargesIncluded": [
-                    "default",
-                    "type"
                 ],
                 "schema.policies": [
                     "type",
                     "value"
                 ],
                 "schema.policies.value": [
-                    "type",
                     "collection",
-                    "required"
-                ],
-                "schema.fees": [
-                    "type",
-                    "value"
-                ],
-                "schema.fees.value": [
-                    "type",
-                    "collection"
-                ],
-                "schema.charges": [
-                    "type",
-                    "value"
-                ],
-                "schema.charges.value": [
-                    "collection",
+                    "required",
                     "type"
                 ],
-                "schema.taxes": [
+                "schema.termsAndConditions": [
                     "type",
                     "value"
                 ],
-                "schema.taxes.value": [
+                "schema.termsAndConditions.value": [
                     "collection",
+                    "required",
                     "type"
                 ]
             }
         },
         "schema": {
-            "availability": {
-                "type": "document",
-                "collection": "flight.availability.availability"
-            },
             "price": {
                 "type": "number"
             },
@@ -215,6 +165,19 @@
                     "Infant"
                 ]
             },
+            "taxesFeesChargesIncluded": {
+                "type": "boolean",
+                "default": true
+            },
+            "taxesFeesCharges": {
+                "type": "list",
+                "value": {
+                    "type": "document",
+                    "collection": "flight.taxesFeesCharges.taxesFeesCharges",
+                    "required": false
+                },
+                "required": false
+            },
             "policies": {
                 "type": "list",
                 "value": {
@@ -224,42 +187,19 @@
                 }
             },
             "termsAndConditions": {
-                "type": "document",
-                "collection": "flight.flight.termsAndConditions",
-                "required": false
-            },
-            "fees": {
                 "type": "list",
                 "value": {
                     "type": "document",
-                    "collection": "flight.taxesFeesCharges.fees"
+                    "collection": "flight.termsAndConditions.termsAndConditions",
+                    "required": false
                 }
             },
-            "charges": {
-                "type": "list",
-                "value": {
-                    "type": "document",
-                    "collection": "flight.taxesFeesCharges.charges"
-                }
-            },
-            "taxes": {
-                "type": "list",
-                "value": {
-                    "type": "document",
-                    "collection": "flight.taxesFeesCharges.taxes"
-                }
-            },
-            "chargesIncluded": {
-                "type": "boolean",
-                "default": true
-            },
-            "taxesIncluded": {
-                "type": "boolean",
-                "default": true
-            },
-            "feesIncluded": {
-                "type": "boolean",
-                "default": true
+            "groupType": {
+                "type": "text",
+                "options": [
+                    "Individual",
+                    "Group"
+                ]
             }
         },
         "hideProps": true

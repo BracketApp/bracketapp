@@ -1,5 +1,6 @@
 {
     "docs": [
+        "type18",
         "type17",
         "type16",
         "type15",
@@ -19,6 +20,6 @@
         "type1"
     ],
     "chunk": "chunk1",
-    "docsLength": 17,
-    "size": 7851
+    "docsLength": 18,
+    "size": 8330
 }

@@ -5,12 +5,12 @@
     "lastChunk": 1,
     "docsLength": 1,
     "counter": 1,
-    "reads": 9,
-    "writes": 6,
+    "reads": 27,
+    "writes": 7,
     "deletes": 0,
     "size": 351,
     "payloadIn": null,
-    "payloadOut": 1211,
+    "payloadOut": 5912,
     "indexes": [],
     "lastIndex": 0,
     "schema": {
@@ -36,7 +36,8 @@
                     "type"
                 ],
                 "schema.airline": [
-                    "type"
+                    "type",
+                    "collection"
                 ],
                 "schema.seatCapacity": [
                     "type"
@@ -52,7 +53,8 @@
                 "type": "text"
             },
             "airline": {
-                "type": "text"
+                "type": "document",
+                "collection": "public.airline"
             },
             "seatCapacity": {
                 "type": "number"

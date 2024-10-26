@@ -135,7 +135,7 @@
                 "type": "timestamp"
             },
             "agency": {
-                "type": "collection",
+                "type": "document",
                 "collection": "account.agency.agency"
             },
             "referencePrice": {

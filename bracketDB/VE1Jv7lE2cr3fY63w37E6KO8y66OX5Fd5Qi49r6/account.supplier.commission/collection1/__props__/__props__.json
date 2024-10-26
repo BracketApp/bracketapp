@@ -144,7 +144,7 @@
                 ]
             },
             "supplier": {
-                "type": "collection",
+                "type": "document",
                 "collection": "account.supplier.supplier"
             }
         }

@@ -1,0 +1,29 @@
+{
+    "__props__": {
+        "id": "b1d7g2e9y8w5f821F8m0J2f5n2",
+        "doc": "policy1",
+        "counter": 1,
+        "creationDate": 1729858180252,
+        "collection": "flight.policy.policy",
+        "chunk": "chunk1",
+        "lastModified": 1729863359061,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "freeUnit",
+                "name",
+                "type",
+                "freeAmount"
+            ]
+        },
+        "secured": false,
+        "size": 378
+    },
+    "freeUnit": "Kg",
+    "name": "Baggage",
+    "type": "Baggage",
+    "freeAmount": 25
+}

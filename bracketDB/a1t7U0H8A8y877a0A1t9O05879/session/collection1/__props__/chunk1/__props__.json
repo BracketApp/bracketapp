@@ -1,9 +1,10 @@
 {
     "docs": [
-        "session3",
+        "session5",
+        "session4",
         "session2"
     ],
     "chunk": "chunk1",
-    "docsLength": 2,
-    "size": 1472
+    "docsLength": 3,
+    "size": 2181
 }

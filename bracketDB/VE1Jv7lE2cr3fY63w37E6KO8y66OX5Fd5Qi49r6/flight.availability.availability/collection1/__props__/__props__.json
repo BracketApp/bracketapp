@@ -5,12 +5,12 @@
     "lastChunk": 1,
     "docsLength": 4,
     "counter": 4,
-    "reads": 93,
-    "writes": 24,
+    "reads": 173,
+    "writes": 53,
     "deletes": 0,
     "size": 1686,
-    "payloadIn": 1207,
-    "payloadOut": 25390,
+    "payloadIn": 3318,
+    "payloadOut": 55287,
     "indexes": [],
     "lastIndex": 0,
     "schema": {
@@ -26,26 +26,19 @@
                 {
                     "path": [
                         "schema",
-                        "pricings",
-                        "value"
-                    ]
-                },
-                {
-                    "path": [
-                        "schema",
                         "class"
                     ]
                 },
                 {
                     "path": [
                         "schema",
-                        "booked"
+                        "bookedSeats"
                     ]
                 },
                 {
                     "path": [
                         "schema",
-                        "available"
+                        "availableSeats"
                     ]
                 }
             ],
@@ -58,8 +51,8 @@
                 "schema": [
                     "pricings",
                     "class",
-                    "booked",
-                    "available"
+                    "bookedSeats",
+                    "availableSeats"
                 ],
                 "schema.pricings": [
                     "type",
@@ -73,10 +66,10 @@
                 "schema.class": [
                     "type"
                 ],
-                "schema.booked": [
+                "schema.bookedSeats": [
                     "type"
                 ],
-                "schema.available": [
+                "schema.availableSeats": [
                     "type"
                 ]
             }
@@ -85,12 +78,6 @@
             "class": {
                 "type": "text"
             },
-            "booked": {
-                "type": "number"
-            },
-            "available": {
-                "type": "number"
-            },
             "pricings": {
                 "type": "list",
                 "value": {
@@ -98,6 +85,12 @@
                     "collection": "flight.pricing.pricing",
                     "required": false
                 }
+            },
+            "bookedSeats": {
+                "type": "number"
+            },
+            "availableSeats": {
+                "type": "number"
             }
         },
         "hideProps": true

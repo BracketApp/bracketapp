@@ -67,7 +67,7 @@
         "creationDate": 1710330786484,
         "collection": "view",
         "chunk": "chunk1",
-        "lastModified": 1729273497854,
+        "lastModified": 1729948844367,
         "dev": false,
         "actions": {
             "clickCreateNewDoc": "parent().next().display();1stSibling().style().rotate()=90;if():[!duplicateDoc:()]:[openDoc:().del()];openCollection:()=data();parent().next().insert():[view=parent().next();viewPath=:children:1;index=0;data='']:[_.view.():[2ndChild().hide();3rdChild().():[display();txt()='';focus()]];hideActionPopup()]",
@@ -188,12 +188,6 @@
             {
                 "path": [
                     "collectionEditorHandler"
-                ]
-            },
-            {
-                "path": [
-                    "collectionEditorHandler",
-                    "openCollectionSchema"
                 ]
             },
             {
@@ -372,6 +366,6 @@
             ]
         },
         "secured": false,
-        "size": 16403
+        "size": 16343
     }
 }

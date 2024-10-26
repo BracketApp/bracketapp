@@ -1,0 +1,26 @@
+{
+    "__props__": {
+        "id": "v1a7B2c999N4U6F4I0u5W0R896",
+        "doc": "defaults",
+        "counter": 1,
+        "creationDate": 1729946405086,
+        "collection": "flight.general",
+        "chunk": "chunk1",
+        "lastModified": 1729946440376,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "topAirports"
+            ]
+        },
+        "secured": false,
+        "size": 321
+    },
+    "topAirports": [
+        "airport1",
+        "airport2"
+    ]
+}

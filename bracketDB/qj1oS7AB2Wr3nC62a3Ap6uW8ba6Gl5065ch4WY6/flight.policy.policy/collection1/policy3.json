@@ -1,0 +1,31 @@
+{
+    "__props__": {
+        "id": "V1Z772O988f7m3y968S1R9I0m3",
+        "doc": "policy3",
+        "counter": 3,
+        "creationDate": 1729873981903,
+        "collection": "flight.policy.policy",
+        "chunk": "chunk1",
+        "lastModified": 1729874297730,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "name",
+                "type",
+                "referenceDate",
+                "referenceDuration",
+                "referenceDurationOperator"
+            ]
+        },
+        "secured": false,
+        "size": 516
+    },
+    "name": "Auto Booking Cancellation",
+    "type": "Auto Cancellation",
+    "referenceDate": "Booking Date",
+    "referenceDuration": 7200000,
+    "referenceDurationOperator": "Greater Than"
+}

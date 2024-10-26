@@ -1,0 +1,29 @@
+{
+    "__props__": {
+        "id": "p1S7S2J9B8d1Y0k7y8q4t6Y498",
+        "doc": "cabin3",
+        "counter": 3,
+        "creationDate": 1729810784648,
+        "collection": "flight.cabin.cabin",
+        "chunk": "chunk1",
+        "lastModified": 1729813744686,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "availabilities",
+                "cabin",
+                "seatCapacity"
+            ]
+        },
+        "secured": false,
+        "size": 383
+    },
+    "seatCapacity": 150,
+    "availabilities": [
+        "availability2"
+    ],
+    "cabin": "Economy"
+}

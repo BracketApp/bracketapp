@@ -1,23 +1,23 @@
 {
-    "creationDate": 1729454148623,
+    "creationDate": 1729946399698,
     "collection": 1,
     "maxSize": 1000,
     "lastChunk": 1,
-    "docsLength": 0,
-    "counter": 0,
-    "reads": 0,
-    "writes": 1,
+    "docsLength": 1,
+    "counter": 1,
+    "reads": 2,
+    "writes": 3,
     "deletes": 0,
-    "size": 0,
-    "payloadIn": 0,
-    "payloadOut": 0,
+    "size": 289,
+    "payloadIn": 634,
+    "payloadOut": 293,
     "indexes": [],
     "lastIndex": 0,
     "schema": {
         "__props__": {
             "actions": {}
         },
-        "hideProps": false,
+        "hideProps": true,
         "schema": {}
     }
 }

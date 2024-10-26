@@ -6,7 +6,7 @@
         "creationDate": 1728239596897,
         "collection": "flight.flight.flight",
         "chunk": "chunk1",
-        "lastModified": 1729701688090,
+        "lastModified": 1729897575972,
         "dev": true,
         "actions": {},
         "comments": [],
@@ -17,18 +17,24 @@
                 "aircraft",
                 "from",
                 "to",
+                "travelDate",
                 "departure",
-                "arrival"
+                "arrival",
+                "cabins"
             ]
         },
         "secured": false,
-        "size": 500
+        "size": 567
     },
     "flightNumber": "TK1221",
     "from": "Istanbul Airport",
     "to": "Rafic Hariri International Airport",
     "departure": 21600000,
     "arrival": 28800000,
-    "aircraft": "A330-300",
-    "cabins": []
+    "aircraft": "aircraft1",
+    "cabins": [
+        "cabin1",
+        "cabin2"
+    ],
+    "travelDate": 1730066400000
 }

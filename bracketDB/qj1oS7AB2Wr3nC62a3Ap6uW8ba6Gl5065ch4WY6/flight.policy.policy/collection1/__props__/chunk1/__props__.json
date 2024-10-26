@@ -1,6 +1,10 @@
 {
-    "docs": [],
+    "docs": [
+        "policy3",
+        "policy2",
+        "policy1"
+    ],
     "chunk": "chunk1",
-    "docsLength": 0,
-    "size": 0
+    "docsLength": 3,
+    "size": 1313
 }

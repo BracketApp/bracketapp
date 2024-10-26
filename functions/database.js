@@ -272,7 +272,11 @@ const getData = ({ _window = {}, req, res, search, action = "search()", verified
     readProps({ collectionProps, dbProps, data, db: liveDB, collection, datastore })
 
     // schema
-    Object.values(data || {}).map(data => applySchema({ _window, liveDB, db, req, dev: search.dev, schema: collectionProps.schema, data, datastore, collection, action, search, unpopulate }))
+    Object.values(data || {}).map(data => {
+        
+        let schema = Object.keys(data.__props__.schema || {}).length > 0 ? data.__props__.schema : collectionProps.schema
+        applySchema({ _window, liveDB, db, req, dev: search.dev, schema, data, datastore, collection, action, search, unpopulate })
+    })
     
     response = { id: generate(), data, message, success, single, dev: search.dev, search }
     
@@ -470,12 +474,14 @@ const postData = ({ _window = {}, req, res, save, action = "save()", verified })
             actions: newProps.actions || existingProps.actions || {},
             comments: newProps.comments || existingProps.comments || [],
             collapsed: newProps.collapsed || existingProps.collapsed || [],
-            arrange: newProps.arrange || existingProps.arrange || [],
+            arrange: newProps.arrange || existingProps.arrange || {},
+            schema: newProps.schema || existingProps.schema || {},
             secured: newProps.secured || false,
         }
 
         // schema
-        applySchema({ liveDB, db, req, dev: save.dev, schema: collectionProps.schema, data, datastore, collection, action, existingData })
+        let schema = Object.keys(data.__props__.schema).length > 0 ? data.__props__.schema : collectionProps.schema
+        applySchema({ liveDB, db, req, dev: save.dev, schema, data, datastore, collection, action, existingData })
         
         // console.log(createNewDoc, collection, data);
         // set data size
@@ -1910,7 +1916,7 @@ const applySaveSchemaForValue = ({ _window, liveDB, db, key, req, dev, props, da
     } else if (props.type === "text") {
 
         if (typeof value !== "string" && props.required !== false) data[key] = props.options ? props.options[0] : ""
-        else if (props.options && !props.options.includes(value)) data[key] = props.options[0]
+        else if (value && props.options && !props.options.includes(value)) data[key] = props.options[0]
 
     } else if (props.type === "email") {
         
@@ -1933,7 +1939,7 @@ const applySaveSchemaForValue = ({ _window, liveDB, db, key, req, dev, props, da
     } else if (props.type === "list") {
 
         if (!Array.isArray(value) && props.required !== false) data[key] = []
-        else if (props.value) data[key].map((d, i) => applySaveSchemaForValue({ _window, liveDB, db, key: i, props: props.value, data: data[key], datastore, collection, action, existingData: existingData[key], unpopulate }))
+        else if (props.value && data[key]) data[key].map((d, i) => applySaveSchemaForValue({ _window, liveDB, db, key: i, props: props.value, data: data[key], datastore, collection, action, existingData: existingData[key], unpopulate }))
 
     } else if (props.type === "timestamp") {
 
@@ -1949,7 +1955,7 @@ const applySaveSchemaForValue = ({ _window, liveDB, db, key, req, dev, props, da
         if (!value && props.required !== false) data[key] = ""
 
         // update data that populated but we dont want to save the populated, instead we want to save the docname
-        if ((props.collection || props.populate !== false) && Object.keys(existingData).length > 0 && existingData[key] && typeof existingData[key] === "string") data[key] = existingData[key]
+        if ((props.collection || props.populate !== false) && Object.keys(existingData || {}).length > 0 && existingData[key] && typeof existingData[key] === "string") data[key] = existingData[key]
     }
 }
 
@@ -1963,6 +1969,12 @@ const applySearchSchemaForValue = ({ _window, liveDB, db, key, props, data, data
         data[key] = database({ _window, action: "search()", data: { ...search, collection: props.collection, doc: data[key] } }).data
 
         if (props.hideProps) delete data.__props__
+
+    } else if (props.type === "list" && Array.isArray(data[key]) && props.value.type === "document" && props.value.collection && props.value.populate !== false && !unpopulate) {
+
+        data[key] = data[key].map(doc => database({ _window, action: "search()", data: { ...search, collection: props.value.collection, doc } }).data)
+
+        if (props.value.hideProps) data[key].map(data => delete data.__props__)
     }
 
     // action

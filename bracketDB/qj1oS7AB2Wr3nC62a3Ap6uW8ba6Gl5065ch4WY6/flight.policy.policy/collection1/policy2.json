@@ -1,0 +1,29 @@
+{
+    "__props__": {
+        "id": "v1m7Z229F8M743h6V4k9B5E8Q0",
+        "doc": "policy2",
+        "counter": 2,
+        "creationDate": 1729873649580,
+        "collection": "flight.policy.policy",
+        "chunk": "chunk1",
+        "lastModified": 1729873927851,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "name",
+                "type",
+                "chargesFeesAmount",
+                "chargesFeesCurrency"
+            ]
+        },
+        "secured": false,
+        "size": 419
+    },
+    "name": "Free Booking",
+    "type": "Booking",
+    "chargesFeesAmount": 0,
+    "chargesFeesCurrency": "USD"
+}

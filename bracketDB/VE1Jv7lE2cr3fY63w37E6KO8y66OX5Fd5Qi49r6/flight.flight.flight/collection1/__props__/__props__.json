@@ -5,14 +5,25 @@
     "lastChunk": 1,
     "docsLength": 2,
     "counter": 2,
-    "reads": 35,
-    "writes": 18,
+    "reads": 84,
+    "writes": 34,
     "deletes": 0,
     "size": 956,
-    "payloadIn": 1046,
-    "payloadOut": 10492,
-    "indexes": [],
-    "lastIndex": 0,
+    "payloadIn": 3538,
+    "payloadOut": 35082,
+    "indexes": [
+        {
+            "find": [
+                "from",
+                "to",
+                "travelDate"
+            ],
+            "doc": "index1",
+            "lastRead": 1729897779869,
+            "expiryDate": 1732489779869
+        }
+    ],
+    "lastIndex": 1,
     "schema": {
         "__props__": {
             "actions": {},
@@ -58,6 +69,12 @@
                         "schema",
                         "cabins"
                     ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "travelDate"
+                    ]
                 }
             ],
             "comments": [],
@@ -73,13 +90,15 @@
                     "to",
                     "departure",
                     "arrival",
-                    "cabins"
+                    "cabins",
+                    "travelDate"
                 ],
                 "schema.flightNumber": [
                     "type"
                 ],
                 "schema.aircraft": [
-                    "type"
+                    "type",
+                    "collection"
                 ],
                 "schema.from": [
                     "type"
@@ -101,6 +120,9 @@
                     "type",
                     "collection",
                     "required"
+                ],
+                "schema.travelDate": [
+                    "type"
                 ]
             }
         },
@@ -109,7 +131,8 @@
                 "type": "text"
             },
             "aircraft": {
-                "type": "text"
+                "type": "document",
+                "collection": "public.aircraft"
             },
             "from": {
                 "type": "text"
@@ -130,6 +153,9 @@
                     "collection": "flight.cabin.cabin",
                     "required": false
                 }
+            },
+            "travelDate": {
+                "type": "timestamp"
             }
         },
         "hideProps": true

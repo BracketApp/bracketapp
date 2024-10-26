@@ -1,0 +1,27 @@
+{
+    "__props__": {
+        "id": "Y187L2y9N7X8E9o1n6R6f7x9z6",
+        "doc": "type18",
+        "counter": 18,
+        "creationDate": 1729789166796,
+        "collection": "flight.taxesFeesCharges.type",
+        "chunk": "chunk1",
+        "lastModified": 1729789198797,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "description",
+                "isSubType",
+                "name"
+            ]
+        },
+        "secured": false,
+        "size": 479
+    },
+    "name": "Environmental or Carbon Taxes",
+    "description": "Environmental taxes to reduce the carbon footprint of air travel, passed on to passengers.",
+    "isSubType": false
+}

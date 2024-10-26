@@ -3,14 +3,14 @@
     "collection": 1,
     "maxSize": 1000,
     "lastChunk": 1,
-    "docsLength": 0,
-    "counter": 0,
-    "reads": 4,
-    "writes": 29,
+    "docsLength": 3,
+    "counter": 3,
+    "reads": 40,
+    "writes": 53,
     "deletes": 0,
-    "size": 0,
+    "size": 1118,
     "payloadIn": null,
-    "payloadOut": 4,
+    "payloadOut": 13015,
     "indexes": [],
     "lastIndex": 0,
     "schema": {
@@ -32,7 +32,8 @@
                 {
                     "path": [
                         "schema",
-                        "beforeAfter"
+                        "type",
+                        "options"
                     ]
                 },
                 {
@@ -57,18 +58,6 @@
                     "path": [
                         "schema",
                         "description"
-                    ]
-                },
-                {
-                    "path": [
-                        "schema",
-                        "duration"
-                    ]
-                },
-                {
-                    "path": [
-                        "schema",
-                        "durationOperator"
                     ]
                 },
                 {
@@ -124,6 +113,31 @@
                         "schema",
                         "referencePrice"
                     ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "referenceBeforeAfter"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "referenceBeforeAfter",
+                        "options"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "referenceDuration"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "referenceDurationOperator"
+                    ]
                 }
             ],
             "comments": [],
@@ -135,13 +149,10 @@
                 "schema": [
                     "name",
                     "type",
-                    "beforeAfter",
                     "chargesFeesAmount",
                     "chargesFeesCurrency",
                     "chargesFeesPercentage",
                     "description",
-                    "duration",
-                    "durationOperator",
                     "fareDifferenceSubjectToPayment",
                     "freeAmount",
                     "freeCurrency",
@@ -150,16 +161,15 @@
                     "minimumPurchaseCurrency",
                     "minimumPurchaseUnit",
                     "referenceDate",
-                    "referencePrice"
+                    "referencePrice",
+                    "referenceBeforeAfter",
+                    "referenceDuration",
+                    "referenceDurationOperator"
                 ],
                 "schema.name": [
                     "type"
                 ],
                 "schema.type": [
-                    "options",
-                    "type"
-                ],
-                "schema.beforeAfter": [
                     "options",
                     "type"
                 ],
@@ -176,15 +186,6 @@
                     "type"
                 ],
                 "schema.description": [
-                    "required",
-                    "type"
-                ],
-                "schema.duration": [
-                    "required",
-                    "type"
-                ],
-                "schema.durationOperator": [
-                    "options",
                     "required",
                     "type"
                 ],
@@ -225,6 +226,21 @@
                 ],
                 "schema.referencePrice": [
                     "options",
+                    "type",
+                    "required"
+                ],
+                "schema.referenceBeforeAfter": [
+                    "options",
+                    "required",
+                    "type"
+                ],
+                "schema.referenceDuration": [
+                    "type",
+                    "required"
+                ],
+                "schema.referenceDurationOperator": [
+                    "options",
+                    "required",
                     "type"
                 ]
             }
@@ -242,13 +258,6 @@
                 ],
                 "required": false
             },
-            "beforeAfter": {
-                "type": "text",
-                "options": [
-                    "Before",
-                    "After"
-                ]
-            },
             "referencePrice": {
                 "type": "text",
                 "options": [
@@ -256,7 +265,8 @@
                     "Gross Fare",
                     "Net Price",
                     "Selling Price"
-                ]
+                ],
+                "required": false
             },
             "description": {
                 "type": "text",
@@ -264,18 +274,6 @@
             },
             "fareDifferenceSubjectToPayment": {
                 "type": "boolean",
-                "required": false
-            },
-            "duration": {
-                "type": "timestamp",
-                "required": false
-            },
-            "durationOperator": {
-                "type": "text",
-                "options": [
-                    "Less Than",
-                    "More Than"
-                ],
                 "required": false
             },
             "freeAmount": {
@@ -329,6 +327,7 @@
                 "options": [
                     "Booking",
                     "Cancellation",
+                    "Auto Cancellation",
                     "Refund",
                     "Change",
                     "Hand Baggage",
@@ -345,6 +344,26 @@
                     "Low Fare",
                     "Group"
                 ]
+            },
+            "referenceBeforeAfter": {
+                "type": "text",
+                "options": [
+                    "Before",
+                    "After"
+                ],
+                "required": false
+            },
+            "referenceDurationOperator": {
+                "type": "text",
+                "options": [
+                    "Less Than",
+                    "Greater Than"
+                ],
+                "required": false
+            },
+            "referenceDuration": {
+                "type": "timestamp",
+                "required": false
             }
         }
     }

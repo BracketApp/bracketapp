@@ -13,25 +13,25 @@
     "storage": "eU1YM75W2Nq1Xo8JS3a24tw3d48yg5Mw0GI4Ff7",
     "devDB": "",
     "dev": false,
-    "expiryDate": 1729787838310,
-    "encryptionKey": "uLRMM",
+    "expiryDate": 1730039085154,
+    "encryptionKey": "ipMJO",
     "userID": "41V7H078W8I8I780z1m9Y2E4Y2",
     "username": "Mohamad Obeid",
     "__props__": {
-        "id": "K1u7N20937h0s1H2T151Q393j2",
-        "doc": "session3",
-        "counter": 3,
-        "creationDate": 1729701211332,
+        "id": "21z7e2W9W904m7M0p143X9q6I6",
+        "doc": "session5",
+        "counter": 5,
+        "creationDate": 1729947013966,
         "collection": "session",
         "chunk": "chunk1",
-        "lastModified": 1729701438313,
+        "lastModified": 1729952685158,
         "dev": false,
         "actions": {},
         "comments": [],
         "collapsed": [],
         "arrange": [],
+        "schema": {},
         "secured": false,
-        "size": 725
-    },
-    "accessabilities": []
+        "size": 716
+    }
 }

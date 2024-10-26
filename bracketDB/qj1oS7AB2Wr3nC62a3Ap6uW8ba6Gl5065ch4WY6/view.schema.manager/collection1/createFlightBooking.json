@@ -6,9 +6,19 @@
         "creationDate": 1724170563877,
         "collection": "view.schema.manager",
         "chunk": "chunk1",
-        "lastModified": 1728945402927,
+        "lastModified": 1729946834215,
         "dev": true,
-        "actions": {},
+        "actions": {
+            "updateReturnDateByDuration": {
+                "_": "updateDuration();2ndParent().data().returnDate=2ndParent().data().travelDate+data();3rdParent().prev().refresh()",
+                "updateDuration": "data()=[259200000?clicked().txt()=3 days?432000000?clicked().txt()=5 days?604800000?clicked().txt()=1 week?864000000?clicked().txt()=10 days?1296000000?clicked().txt()=15 days?2592000000?clicked().txt()=1 month?7776000000?clicked().txt()=3 month]"
+            },
+            "diagramBtnHandler": {
+                "_": "openHandler()?():popup.positioner!=.id?closeHandler()",
+                "closeHandler": "closePopup()",
+                "openHandler": "@view.application.root;openPopup():[form=searchEngine;path=pax;data='@view.schema.manager.adtChdInf']"
+            }
+        },
         "comments": [
             {
                 "note": "Round trip",
@@ -204,6 +214,12 @@
             {
                 "path": [
                     "navbar",
+                    "views"
+                ]
+            },
+            {
+                "path": [
+                    "navbar",
                     "views",
                     0
                 ]
@@ -260,6 +276,17 @@
                     4,
                     "views",
                     1
+                ]
+            },
+            {
+                "path": [
+                    "navbar",
+                    "views",
+                    4,
+                    "views",
+                    1,
+                    "views",
+                    0
                 ]
             },
             {
@@ -376,6 +403,11 @@
                     "views",
                     1
                 ]
+            },
+            {
+                "path": [
+                    "diagramBtnHandler"
+                ]
             }
         ],
         "arrange": {
@@ -384,7 +416,9 @@
                 "actions",
                 "title",
                 "navbar",
-                "search"
+                "search",
+                "updateReturnDateByDuration",
+                "diagramBtnHandler"
             ],
             "navbar": [
                 "class",
@@ -497,13 +531,18 @@
             ],
             "search": [
                 "style",
+                "btn",
                 "views"
+            ],
+            "search.btn": [
+                "action"
             ],
             "search.views.0": [
                 "actions",
                 "label",
                 "path",
                 "style",
+                "droplist",
                 "type"
             ],
             "search.views.0.label": [
@@ -627,10 +666,19 @@
             "search.views.7.views.1.container": [
                 "class",
                 "style"
+            ],
+            "updateReturnDateByDuration": [
+                "_",
+                "updateDuration"
+            ],
+            "diagramBtnHandler": [
+                "_",
+                "closeHandler",
+                "openHandler"
             ]
         },
         "secured": false,
-        "size": 10611
+        "size": 11769
     },
     "form": "searchEngine",
     "navbar": {
@@ -694,7 +742,7 @@
                                 "container": {
                                     "style": "minHeight=3rem;width=2.5rem;border=1px solid #aaa;borderRadius=.5rem;backgroundColor=#fff;transition=.2s",
                                     "class": "flexbox pointer",
-                                    "actions": "[click?diagramBtnHandler()]"
+                                    "actions": "[click?@view.schema.manager.createFlightBooking;diagramBtnHandler()]"
                                 }
                             },
                             {
@@ -738,7 +786,7 @@
         "style": "padding=1rem;width=100%"
     },
     "search": {
-        "style": "gap=.5rem;display=grid;width=100%;gridTemplateColumns=[25rem 4rem 25rem 15rem 15rem 10rem 10rem 2fr?form().trip=Round trip?25rem 4rem 25rem 15rem 10rem 2fr 2fr?form().trip=Multi city?25rem 4rem 25rem 15rem 10rem 2fr]",
+        "style": "gap=.5rem;display=grid;width=100%;gridTemplateColumns=[25rem 4rem 25rem 15rem 15rem 10rem 10rem 2fr?form().trip=Round trip?25rem 4rem 25rem 15rem 10rem 2fr 2fr?form().trip=Multi city?25rem 4rem 25rem 15rem 10rem 2fr]",
         "views": [
             {
                 "label": {
@@ -748,7 +796,8 @@
                 "path": "from",
                 "style": "fontSize=1.3rem;height=3.5rem;width=100%",
                 "type": "input",
-                "actions": "clearable=true"
+                "actions": "clearable=true",
+                "droplist": "items=airports:().():name"
             },
             {
                 "actions": "[click?from=data().from;data().from=data().to;data().to=.from;parent().():[prev().refresh();next().refresh()]]",
@@ -772,7 +821,7 @@
                 "actions": "clearable=true"
             },
             {
-                "actions": "data()=todayStart().timestamp()+259200000;[change?data()=data().timestamp();2ndParent().data().returnDate=data()+2ndParent().data().duration;3rdParent().next().refresh()?data()]",
+                "actions": "data()=todayStart().timestamp()+259200000;[change?data()=data().date().todayStart().timestamp();2ndParent().data().returnDate=data()+2ndParent().data().duration;3rdParent().next().refresh()?data()]",
                 "type": "input",
                 "inputType": "date",
                 "label": {
@@ -786,7 +835,7 @@
                 "min": "now().timestamp().toDateInputFormat()"
             },
             {
-                "actions": "data()=[data()||2ndParent().data().travelDate+604800000];[change?data()=data().timestamp()]",
+                "actions": "data()=[data()||2ndParent().data().travelDate+604800000];[change?data()=data().date().todayStart().timestamp()]",
                 "type": "input",
                 "inputType": "date",
                 "label": {
@@ -860,7 +909,10 @@
                 },
                 "conditions": "form().trip=Multi city"
             }
-        ]
+        ],
+        "btn": {
+            "action": "start();@view.server.flight;searchAvailability():[form()]:[end():_]"
+        }
     },
     "actions": "data()=[trip=Round trip;directFlights=true;groupType=Individual;pax=[adt=2;chd=0;inf=0];search=:[]]?!data().trip?data().search=data().search.slice():0:1;[data().search.():[duration.del();returnDate.del()]?data().trip!=Round trip]",
     "title": "Create Flight Booking"

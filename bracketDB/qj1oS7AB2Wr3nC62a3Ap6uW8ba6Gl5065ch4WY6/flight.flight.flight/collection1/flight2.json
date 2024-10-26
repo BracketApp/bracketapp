@@ -6,7 +6,7 @@
         "creationDate": 1728239600277,
         "collection": "flight.flight.flight",
         "chunk": "chunk1",
-        "lastModified": 1729701710099,
+        "lastModified": 1729897590230,
         "dev": true,
         "actions": {},
         "comments": [],
@@ -17,12 +17,14 @@
                 "aircraft",
                 "from",
                 "to",
+                "travelDate",
                 "departure",
-                "arrival"
+                "arrival",
+                "cabins"
             ]
         },
         "secured": false,
-        "size": 500
+        "size": 566
     },
     "flightNumber": "TK1222",
     "from": "Rafic Hariri International Airport",
@@ -30,5 +32,9 @@
     "departure": 72000000,
     "arrival": 79200000,
     "aircraft": "A330-300",
-    "cabins": []
+    "cabins": [
+        "cabin3",
+        "cabin4"
+    ],
+    "travelDate": 1730671200000
 }

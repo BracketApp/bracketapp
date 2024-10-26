@@ -1,0 +1,40 @@
+{
+    "__props__": {
+        "id": "S1Q7T2z9H8X6v7N8V228M3d4i7",
+        "doc": "pricing9",
+        "counter": 9,
+        "creationDate": 1729867828347,
+        "collection": "flight.pricing.pricing",
+        "chunk": "chunk1",
+        "lastModified": 1729885333194,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "age",
+                "currency",
+                "price",
+                "taxesFeesChargesIncluded",
+                "termsAndConditions",
+                "trip",
+                "policies"
+            ]
+        },
+        "secured": false,
+        "size": 552
+    },
+    "price": 50,
+    "currency": "USD",
+    "trip": "One way",
+    "age": "Infant",
+    "taxesFeesChargesIncluded": true,
+    "termsAndConditions": [],
+    "policies": [
+        "policy1",
+        "policy2",
+        "policy3"
+    ],
+    "groupType": "Individual"
+}
