@@ -1,9 +1,10 @@
 {
     "docs": [
+        "portal",
         "flight",
         "login"
     ],
     "chunk": "chunk1",
-    "docsLength": 0,
-    "size": -710
+    "docsLength": 1,
+    "size": 1318
 }

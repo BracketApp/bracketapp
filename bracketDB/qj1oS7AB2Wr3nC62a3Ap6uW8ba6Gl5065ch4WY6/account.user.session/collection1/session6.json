@@ -1,0 +1,70 @@
+{
+    "session": "Yf1gj77N3Zm00S54O7zZ34C2Yo4zQ4UU5sO33S0",
+    "user": {
+        "firstName": "Mohamad Baker",
+        "lastName": "Obeid",
+        "agency": {
+            "name": "Beirut Group Travel & Tourism",
+            "contactBook": {
+                "city": "Beirut",
+                "country": "Lebanon",
+                "contactNumber": "009611234567",
+                "address": "Mcharrafiyeh",
+                "name": "Beirut Group Travel & Tourism",
+                "email": "ceo@beirutgrouptt.com"
+            },
+            "commissionSheets": [
+                {
+                    "airline": "Turkish Airlines",
+                    "amount": 5,
+                    "percentage": true,
+                    "releaseDate": 1729424612804,
+                    "expiryDate": 1729424603084,
+                    "referencePrice": "Gross Fare",
+                    "supplier": "supplier1",
+                    "name": "Commission Sheet 1",
+                    "trips": [
+                        "One way",
+                        "Round trip"
+                    ],
+                    "service": "Flight",
+                    "age": [
+                        "Adult",
+                        "Child"
+                    ]
+                }
+            ],
+            "permissions": {
+                "flight": {
+                    "searchByGroup": true
+                }
+            }
+        },
+        "contactBook": {
+            "city": "Beirut",
+            "country": "Lebanon",
+            "contactNumber": "009611234567",
+            "address": "Mcharrafiyeh",
+            "name": "Beirut Group Travel & Tourism",
+            "email": "ceo@beirutgrouptt.com"
+        }
+    },
+    "expiryDate": 1730659644530,
+    "__props__": {
+        "id": "B1T713z0a5B7d3t2J4n4e5e3c5",
+        "doc": "session6",
+        "counter": 6,
+        "creationDate": 1730573244535,
+        "collection": "account.user.session",
+        "chunk": "chunk1",
+        "lastModified": 1730573244535,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {},
+        "schema": {},
+        "secured": false,
+        "size": 1167
+    }
+}

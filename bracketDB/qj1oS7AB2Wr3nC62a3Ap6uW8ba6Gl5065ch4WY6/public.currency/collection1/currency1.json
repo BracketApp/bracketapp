@@ -6,7 +6,7 @@
         "creationDate": 1726765798112,
         "collection": "public.currency",
         "chunk": "chunk1",
-        "lastModified": 1726765947062,
+        "lastModified": 1730573589666,
         "dev": true,
         "actions": {},
         "comments": [],
@@ -16,14 +16,17 @@
                 "code",
                 "country",
                 "symbol",
-                "name"
+                "name",
+                "decimal"
             ]
         },
+        "schema": {},
         "secured": false,
-        "size": 386
+        "size": 420
     },
     "code": "USD",
     "country": "United States",
     "symbol": "$",
-    "name": "United States Dollar"
+    "name": "United States Dollar",
+    "decimal": 2
 }

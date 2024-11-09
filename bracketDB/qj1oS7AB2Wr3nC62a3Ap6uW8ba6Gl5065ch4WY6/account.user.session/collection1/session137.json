@@ -1,0 +1,70 @@
+{
+    "session": "mp17J7aq3Il1o10Kr8pb11g2N34529pt61H06W7",
+    "user": {
+        "firstName": "Mohamad Baker",
+        "lastName": "Obeid",
+        "agency": {
+            "name": "Beirut Group Travel & Tourism",
+            "contactBook": {
+                "city": "Beirut",
+                "country": "Lebanon",
+                "contactNumber": "009611234567",
+                "address": "Mcharrafiyeh",
+                "name": "Beirut Group Travel & Tourism",
+                "email": "ceo@beirutgrouptt.com"
+            },
+            "commissionSheets": [
+                {
+                    "airline": "Turkish Airlines",
+                    "amount": 5,
+                    "percentage": true,
+                    "releaseDate": 1729424612804,
+                    "expiryDate": 1729424603084,
+                    "referencePrice": "Gross Fare",
+                    "supplier": "supplier1",
+                    "name": "Commission Sheet 1",
+                    "trips": [
+                        "One way",
+                        "Round trip"
+                    ],
+                    "service": "Flight",
+                    "age": [
+                        "Adult",
+                        "Child"
+                    ]
+                }
+            ],
+            "permissions": {
+                "flight": {
+                    "searchByGroup": true
+                }
+            }
+        },
+        "contactBook": {
+            "city": "Beirut",
+            "country": "Lebanon",
+            "contactNumber": "009611234567",
+            "address": "Mcharrafiyeh",
+            "name": "Beirut Group Travel & Tourism",
+            "email": "ceo@beirutgrouptt.com"
+        }
+    },
+    "expiryDate": 1731167649607,
+    "__props__": {
+        "id": "Q1x7K3j1J0b8K1k2F4I9u6p0m9",
+        "doc": "session137",
+        "counter": 137,
+        "creationDate": 1731081249609,
+        "collection": "account.user.session",
+        "chunk": "chunk1",
+        "lastModified": 1731081249609,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {},
+        "schema": {},
+        "secured": false,
+        "size": 1171
+    }
+}

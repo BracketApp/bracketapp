@@ -6,22 +6,25 @@
         "creationDate": 1729416335467,
         "collection": "public.airport",
         "chunk": "chunk1",
-        "lastModified": 1729416335467,
+        "lastModified": 1730029633639,
         "dev": true,
         "actions": {},
         "comments": [],
         "collapsed": [],
         "arrange": {
             "": [
-                "airport",
+                "name",
                 "city",
+                "country",
                 "iataCode"
             ]
         },
+        "schema": {},
         "secured": false,
-        "size": 358
+        "size": 396
     },
-    "airport": "Istanbul Airport",
     "iataCode": "IST",
-    "city": "city2"
+    "city": "Istanbul",
+    "country": "Turkey",
+    "name": "Istanbul Airport"
 }

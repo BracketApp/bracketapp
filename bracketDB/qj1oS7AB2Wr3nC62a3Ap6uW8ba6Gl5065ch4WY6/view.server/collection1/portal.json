@@ -1,0 +1,32 @@
+{
+    "__props__": {
+        "id": "H1m7K3G0U4J9M745e095D468s5",
+        "doc": "portal",
+        "counter": 2,
+        "creationDate": 1730497505485,
+        "collection": "view.server",
+        "chunk": "chunk1",
+        "lastModified": 1730498716261,
+        "dev": true,
+        "actions": {
+            "getDefaults": {
+                "_": "start();defaults:().flight=@flight.general.defaults;defaults:().accounting=@accounting.general.defaults;sendDefaults()?manifest:().page=portal;session:()?send():[success=false;msg=You are not authorized!]",
+                "sendDefaults": "end():[data=defaults:()]?stack().createWebApp?send():[data=defaults:()]"
+            }
+        },
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "getDefaults"
+            ],
+            "getDefaults": [
+                "_",
+                "sendDefaults"
+            ]
+        },
+        "schema": {},
+        "secured": true,
+        "size": 639
+    }
+}

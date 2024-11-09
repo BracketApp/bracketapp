@@ -5,14 +5,23 @@
     "lastChunk": 1,
     "docsLength": 2,
     "counter": 2,
-    "reads": 9,
-    "writes": 7,
+    "reads": 2565,
+    "writes": 16,
     "deletes": 0,
     "size": 652,
-    "payloadIn": 1862,
-    "payloadOut": 1847,
-    "indexes": [],
-    "lastIndex": 0,
+    "payloadIn": 857,
+    "payloadOut": 1097760,
+    "indexes": [
+        {
+            "find": [
+                "name"
+            ],
+            "doc": "index1",
+            "lastRead": 1731172135667,
+            "expiryDate": 1733764135667
+        }
+    ],
+    "lastIndex": 1,
     "schema": {
         "__props__": {
             "actions": {},
@@ -24,33 +33,38 @@
                     "schema"
                 ],
                 "schema": [
-                    "airport",
+                    "name",
                     "iataCode",
-                    "city"
+                    "city",
+                    "country"
                 ],
-                "schema.airport": [
+                "schema.name": [
                     "type"
                 ],
                 "schema.iataCode": [
                     "type"
                 ],
                 "schema.city": [
-                    "type",
-                    "collection"
+                    "type"
+                ],
+                "schema.country": [
+                    "type"
                 ]
             }
         },
         "hideProps": true,
         "schema": {
-            "airport": {
-                "type": "text"
-            },
             "iataCode": {
                 "type": "text"
             },
             "city": {
-                "type": "document",
-                "collection": "public.city"
+                "type": "text"
+            },
+            "country": {
+                "type": "text"
+            },
+            "name": {
+                "type": "text"
             }
         }
     }

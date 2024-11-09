@@ -6,7 +6,7 @@
         "creationDate": 1728239596897,
         "collection": "flight.flight.flight",
         "chunk": "chunk1",
-        "lastModified": 1729897575972,
+        "lastModified": 1730988577285,
         "dev": true,
         "actions": {},
         "comments": [],
@@ -20,15 +20,17 @@
                 "travelDate",
                 "departure",
                 "arrival",
+                "flightDuration",
                 "cabins"
             ]
         },
+        "schema": {},
         "secured": false,
-        "size": 567
+        "size": 587
     },
     "flightNumber": "TK1221",
-    "from": "Istanbul Airport",
-    "to": "Rafic Hariri International Airport",
+    "from": "airport1",
+    "to": "airport2",
     "departure": 21600000,
     "arrival": 28800000,
     "aircraft": "aircraft1",
@@ -36,5 +38,6 @@
         "cabin1",
         "cabin2"
     ],
-    "travelDate": 1730066400000
+    "travelDate": 1733781600000,
+    "flightDuration": 7200000
 }

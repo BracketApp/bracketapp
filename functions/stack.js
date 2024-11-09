@@ -19,7 +19,8 @@ const openStack = ({ _window, id: viewID, string = "", ...data }) => {
     addresses: [],
     logs: [],
     returns: [],
-    refs: []
+    refs: [],
+    createWebApp: data.action === "createWebApp()"
   }
 
   //stack.logs.push(`# Status TYPE ID Index Action => HeadID HeadIndex HeadAction`)

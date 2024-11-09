@@ -6,24 +6,25 @@
         "creationDate": 1728239536562,
         "collection": "flight.cabin.cabin",
         "chunk": "chunk1",
-        "lastModified": 1729811937429,
+        "lastModified": 1730209046240,
         "dev": true,
         "actions": {},
         "comments": [],
         "collapsed": [],
         "arrange": {
             "": [
-                "cabin",
+                "class",
                 "seatCapacity",
                 "availabilities"
             ]
         },
+        "schema": {},
         "secured": false,
-        "size": 383
+        "size": 395
     },
     "seatCapacity": 150,
     "availabilities": [
         "availability1"
     ],
-    "cabin": "Economy"
+    "class": "Economy"
 }

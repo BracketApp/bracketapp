@@ -5,12 +5,12 @@
     "lastChunk": 1,
     "docsLength": 1,
     "counter": 1,
-    "reads": 22,
-    "writes": 7,
+    "reads": 563,
+    "writes": 9,
     "deletes": 0,
     "size": 325,
-    "payloadIn": 486,
-    "payloadOut": 7627,
+    "payloadIn": 492,
+    "payloadOut": 272655,
     "indexes": [],
     "lastIndex": 0,
     "schema": {
@@ -24,11 +24,11 @@
                     "schema"
                 ],
                 "schema": [
-                    "airline",
+                    "name",
                     "country",
                     "logo"
                 ],
-                "schema.airline": [
+                "schema.name": [
                     "type"
                 ],
                 "schema.country": [
@@ -41,13 +41,13 @@
         },
         "hideProps": true,
         "schema": {
-            "airline": {
-                "type": "text"
-            },
             "country": {
                 "type": "text"
             },
             "logo": {
+                "type": "text"
+            },
+            "name": {
                 "type": "text"
             }
         }

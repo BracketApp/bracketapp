@@ -6,7 +6,7 @@
         "creationDate": 1729355396210,
         "collection": "account.agency.agency",
         "chunk": "chunk1",
-        "lastModified": 1729355396210,
+        "lastModified": 1730201358448,
         "dev": true,
         "actions": {},
         "comments": [],
@@ -14,12 +14,19 @@
         "arrange": {
             "": [
                 "name",
-                "contactBook"
+                "contactBook",
+                "permissions",
+                "commissionSheets"
             ]
         },
+        "schema": {},
         "secured": false,
-        "size": 364
+        "size": 473
     },
     "name": "Beirut Group Travel & Tourism",
-    "contactBook": "contactBook1"
+    "contactBook": "contactBook1",
+    "commissionSheets": [
+        "commission1"
+    ],
+    "permissions": "permissions1"
 }

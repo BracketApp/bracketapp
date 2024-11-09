@@ -1,0 +1,67 @@
+{
+    "__props__": {
+        "id": "51e7O35024p6y0L893V0g1s4n8",
+        "doc": "popup",
+        "counter": 1,
+        "creationDate": 1730460830148,
+        "collection": "view.component.custom",
+        "chunk": "chunk1",
+        "lastModified": 1730637996948,
+        "dev": true,
+        "actions": {},
+        "comments": [
+            {
+                "note": "fin",
+                "path": [
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "views",
+                "path": [
+                    "children",
+                    1
+                ]
+            },
+            {
+                "note": "view",
+                "path": [
+                    "children",
+                    2
+                ]
+            }
+        ],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "view",
+                "children"
+            ],
+            "children.0": [
+                "view"
+            ],
+            "children.1": [
+                "view"
+            ],
+            "children.2": [
+                "view"
+            ]
+        },
+        "schema": {},
+        "secured": false,
+        "size": 1269
+    },
+    "view": "View?id=popup;class=column;style:[position=fixed;opacity=0;pointerEvents=none;backgroundColor=#fff;borderRadius=.5rem;border=1px solid #ddd;transition=opacity .2s;top=-1000px;left=-1000px;zIndex=1];[form=_.form?_.form];[path=_.path?_.path];positioner=_.positioner;data=[[_.data]];[mleave?timer=timer():[@view.application.root:openPopup;closePopup()]:400];[menter?timer.clearTimer()]",
+    "children": [
+        {
+            "view": "View?style:[height=1rem;width=1rem;borderTop=1px solid #ddd;borderRight=1px solid #ddd;borderRadius=.25rem;backgroundColor=inherit;zIndex=-1;position=fixed;top=-.5rem;transform=rotate(-45deg);left=calc(50% - .5rem)];[loaded?position():[distance=5;positioner=_.positioner||__.positioner]]?!_.noFin"
+        },
+        {
+            "view": "@view.component.custom.view??_.views"
+        },
+        {
+            "view": "_.view??_.view"
+        }
+    ]
+}

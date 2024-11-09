@@ -6,7 +6,7 @@
         "creationDate": 1729432114909,
         "collection": "accounting.general",
         "chunk": "chunk1",
-        "lastModified": 1729432219841,
+        "lastModified": 1730499098839,
         "dev": true,
         "actions": {},
         "comments": [],
@@ -17,9 +17,18 @@
                 "country"
             ]
         },
+        "schema": {
+            "hideProps": true,
+            "schema": {
+                "currency": {
+                    "type": "document",
+                    "collection": "public.currency"
+                }
+            }
+        },
         "secured": false,
-        "size": 331
+        "size": 438
     },
-    "currency": "LBP",
+    "currency": "currency1",
     "country": "Lebanon"
 }

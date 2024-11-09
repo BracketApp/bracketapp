@@ -1,0 +1,19 @@
+{
+    "__props__": {
+        "id": "D16703D02319X6P55576x7k6Q1",
+        "doc": "type1",
+        "counter": 1,
+        "creationDate": 1730396556761,
+        "collection": "flight.policy.type",
+        "chunk": "chunk1",
+        "lastModified": 1730396556761,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {},
+        "schema": {},
+        "secured": false,
+        "size": 278
+    }
+}

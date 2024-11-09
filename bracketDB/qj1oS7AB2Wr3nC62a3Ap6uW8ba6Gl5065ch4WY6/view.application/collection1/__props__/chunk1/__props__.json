@@ -1,10 +1,11 @@
 {
     "docs": [
+        "document",
         "browser",
         "server",
         "root"
     ],
     "chunk": "chunk1",
-    "docsLength": 3,
-    "size": 2862
+    "docsLength": 4,
+    "size": 3615
 }

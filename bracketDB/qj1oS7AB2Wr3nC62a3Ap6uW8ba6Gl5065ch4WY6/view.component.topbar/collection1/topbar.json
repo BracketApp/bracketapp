@@ -1,0 +1,49 @@
+{
+    "view": "View?id=topbar;style:[height=4.5rem];data=@.schema",
+    "children": [
+        {
+            "view": "View?style=[[_.style]]",
+            "children": [
+                {
+                    "view": "[@view.component.custom.view]:[data=_.views]"
+                }
+            ]
+        }
+    ],
+    "__props__": {
+        "id": "31T7E3O062f4b4I0I8L662Q2M5",
+        "doc": "topbar",
+        "counter": 1,
+        "creationDate": 1730244086225,
+        "collection": "view.component.topbar",
+        "chunk": "chunk1",
+        "lastModified": 1730244757995,
+        "dev": true,
+        "actions": {
+            "profileDroplist": "droplist:[items=:Profile:Logout;align=right;style:[width=10rem];item.text.style:[justifyContent=center];preventDefault];[click:droplist?@view.server.login;remSession()::[eraseCookie():session;root():login]?clicked().txt()='Logout']",
+            "stopRinging": "timer.():[clearTimer():[.]];style():[color=#000;rotate()=0]",
+            "ring": "timer.():[clearTimer():[.]];timer=:;deg=30;range():0:1000:200._():[timer+=[timer():[rotate()=.deg;deg*=[-1]]:[_]]?_<=800?timer():[rotate()=0]:[_]]"
+        },
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "view",
+                "children",
+                "profileDroplist",
+                "ring",
+                "stopRinging"
+            ],
+            "children.0": [
+                "view",
+                "children"
+            ],
+            "children.0.children.0": [
+                "view"
+            ]
+        },
+        "schema": {},
+        "secured": false,
+        "size": 1068
+    }
+}

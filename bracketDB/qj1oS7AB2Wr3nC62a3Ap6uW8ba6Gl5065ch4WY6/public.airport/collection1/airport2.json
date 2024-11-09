@@ -6,24 +6,25 @@
         "creationDate": 1729416375187,
         "collection": "public.airport",
         "chunk": "chunk1",
-        "lastModified": 1729439869641,
+        "lastModified": 1730029635932,
         "dev": true,
         "actions": {},
         "comments": [],
         "collapsed": [],
         "arrange": {
             "": [
-                "airport",
+                "name",
                 "city",
-                "coutry",
+                "country",
                 "iataCode"
             ]
         },
+        "schema": {},
         "secured": false,
-        "size": 404
+        "size": 413
     },
-    "airport": "Rafic Hariri International Airport",
     "iataCode": "BEY",
-    "city": "city1",
-    "coutry": "Lebanon"
+    "city": "Beirut",
+    "country": "Lebanon",
+    "name": "Rafic Hariri International Airport"
 }

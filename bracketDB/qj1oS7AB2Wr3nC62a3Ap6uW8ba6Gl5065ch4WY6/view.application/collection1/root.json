@@ -1,5 +1,5 @@
 {
-    "view": "View?id=root;checkSession()",
+    "view": "View?id=root;checkSession()::getDefaults()",
     "children": [
         {
             "view": "droplist"
@@ -18,6 +18,9 @@
         },
         {
             "view": "@view.page.[manifest:().page]"
+        },
+        {
+            "view": "@view.component.manager.flight.pricingDetails"
         }
     ],
     "__props__": {
@@ -27,30 +30,26 @@
         "creationDate": 1723636899231,
         "collection": "view.application",
         "chunk": "chunk1",
-        "lastModified": 1728845562332,
+        "lastModified": 1730914385148,
         "dev": true,
         "actions": {
             "checkSession": {
                 "_": "@view.server.login;checkSession()::[successHandler()?_.success?failHandler()]?getCookie():session;!user:().verified?failHandler()?!getCookie():session?root():portal?manifest:().page=login",
                 "successHandler": "user:()=_.user;user:().verified=true;[root():portal?manifest:().page=login]",
-                "failHandler": "root():login?manifest:().page=portal"
+                "failHandler": "[root():login?manifest:().page=portal];eraseCookie():session"
             },
             "openPopup": {
                 "_": "openPopup()?():popup.positioner!=.id?closePopup()",
-                "openPopup": "():popup.refresh():[data=_]:[_.view.():[positioner=().id;position():[positioner=().id];opacity()=1;pointerEvents()=auto]]"
+                "openPopup": "_.positioner=().id;():popup.refresh():[data=_]:[_.view.():[position():[positioner=().id];opacity()=1;pointerEvents()=auto]]",
+                "closePopup": "():popup.():[positioner.del();fadeOut();pointerEvents()=none]"
             },
-            "closePopup": "():popup.():[positioner.del();fadeOut();pointerEvents()=none]"
+            "getDefaults": "@view.server.portal;getDefaults()::[defaults:()=_.data]?manifest:().page=portal;session:()"
         },
         "comments": [],
         "collapsed": [
             {
                 "path": [
                     "checkSession"
-                ]
-            },
-            {
-                "path": [
-                    "openPopup"
                 ]
             }
         ],
@@ -60,7 +59,7 @@
                 "children",
                 "checkSession",
                 "openPopup",
-                "closePopup"
+                "getDefaults"
             ],
             "children.0": [
                 "view"
@@ -80,6 +79,9 @@
             "children.5": [
                 "view"
             ],
+            "children.6": [
+                "view"
+            ],
             "checkSession": [
                 "_",
                 "successHandler",
@@ -87,10 +89,12 @@
             ],
             "openPopup": [
                 "_",
-                "openPopup"
+                "openPopup",
+                "closePopup"
             ]
         },
+        "schema": {},
         "secured": false,
-        "size": 1432
+        "size": 1662
     }
 }

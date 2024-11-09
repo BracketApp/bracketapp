@@ -5,12 +5,65 @@
     "lastChunk": 1,
     "docsLength": 2,
     "counter": 2,
-    "reads": 14,
-    "writes": 6,
+    "reads": 261,
+    "writes": 14,
     "deletes": 0,
     "size": 584,
-    "payloadIn": 1771,
-    "payloadOut": 4218,
+    "payloadIn": 881,
+    "payloadOut": 109618,
     "indexes": [],
-    "lastIndex": 0
+    "lastIndex": 0,
+    "schema": {
+        "__props__": {
+            "actions": {},
+            "collapsed": [],
+            "comments": [],
+            "arrange": {
+                "": [
+                    "hideProps",
+                    "schema"
+                ],
+                "schema": [
+                    "name",
+                    "code",
+                    "country",
+                    "symbol",
+                    "decimal"
+                ],
+                "schema.name": [
+                    "type"
+                ],
+                "schema.code": [
+                    "type"
+                ],
+                "schema.country": [
+                    "type"
+                ],
+                "schema.symbol": [
+                    "type"
+                ],
+                "schema.decimal": [
+                    "type"
+                ]
+            }
+        },
+        "schema": {
+            "code": {
+                "type": "text"
+            },
+            "country": {
+                "type": "text"
+            },
+            "symbol": {
+                "type": "text"
+            },
+            "name": {
+                "type": "text"
+            },
+            "decimal": {
+                "type": "number"
+            }
+        },
+        "hideProps": true
+    }
 }

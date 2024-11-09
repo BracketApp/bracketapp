@@ -6,37 +6,54 @@
         "creationDate": 1728239641528,
         "collection": "flight.pricing.pricing",
         "chunk": "chunk1",
-        "lastModified": 1729885306242,
+        "lastModified": 1730638249847,
         "dev": true,
         "actions": {},
         "comments": [],
         "collapsed": [],
         "arrange": {
             "": [
-                "price",
                 "currency",
                 "trip",
-                "age",
-                "policies",
-                "taxesFeesChargesIncluded",
-                "taxesFeesCharges",
-                "termsAndConditions"
+                "adult",
+                "child",
+                "infant"
+            ],
+            "adult": [
+                "group",
+                "individual",
+                "fare"
+            ],
+            "child": [
+                "group",
+                "individual",
+                "fare"
+            ],
+            "infant": [
+                "group",
+                "individual",
+                "fare"
             ]
         },
+        "schema": {},
         "secured": false,
-        "size": 593
+        "size": 658
     },
-    "price": 100,
-    "trip": "One way",
+    "trip": "Round trip",
     "currency": "USD",
-    "age": "Adult",
-    "taxesFeesChargesIncluded": true,
-    "taxesFeesCharges": [],
-    "policies": [
-        "policy1",
-        "policy2",
-        "policy3"
-    ],
-    "termsAndConditions": [],
-    "groupType": "Individual"
+    "child": {
+        "group": 90,
+        "individual": 90,
+        "fare": "Gross Fare"
+    },
+    "infant": {
+        "group": 25,
+        "individual": 25,
+        "fare": "Gross Fare"
+    },
+    "adult": {
+        "group": 100,
+        "individual": 100,
+        "fare": "Gross Fare"
+    }
 }

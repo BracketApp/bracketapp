@@ -65,7 +65,7 @@
                             "view": "Input?readonly;class=flexbox pointer;text=[path().[-1]?path().[-1]!='_'?→];style:[color=#666;fontSize=[1.1rem?path().[-1]!='_'?1.4rem];marginRight=.5rem;minWidth=2rem;maxWidth=0;overflow=hidden;height=1.5rem;borderRadius=.5rem;[border=1px solid #ddd?path().[-1]!='_']];[click?next().click()?path().[-1]!='_']?3rdParent().data().type()=list||path().[-1]='_'"
                         },
                         {
-                            "view": "Text?text='';preventDefault;droplist:[preventDefault;align=center;items=:children:text:number:map:list:boolean:timestamp;isMap];[click:droplist?__keyupIndex__:()=clicked().index();chooseValueTypeDroplist()]"
+                            "view": "Text?text='';preventDefault;droplist:[preventDefault;align=center;items=:children:text:number:map:list:map action:boolean:timestamp;isMap];[click:droplist?__keyupIndex__:()=clicked().index();chooseValueTypeDroplist()]"
                         },
                         {
                             "view": "View?class=flex align-center value;style:[overflow=auto;whiteSpace=nowrap;width=auto;padding=.2rem];scroll:[lastSibling().style().display=none]?data().type()=text",
@@ -144,13 +144,13 @@
         "creationDate": 1710330786447,
         "collection": "view",
         "chunk": "chunk1",
-        "lastModified": 1729271747252,
+        "lastModified": 1730989962245,
         "dev": false,
         "actions": {
             "updateListIndexes": "_.nextSiblings()._():[if():[_.parent().data().type()=list]:[_.1stChild().2ndChild().txt()=_.path().lastEl().num()-1]]",
             "pushToUndo": "undoEdit:().[openDoc:()+'/'+openCollection:()]||=:;if():[prev_value!=form()]:[undoEdit:().[openDoc:()+'/'+openCollection:()].push():[openDoc=openDoc:();openCollection=openCollection:();value=form().clone();prev_value=.prev_value]]",
             "viewIndexHandler": "viewIndex:()+=1;viewIndex=viewIndex:()",
-            "chooseValueTypeDroplist": "().chosenType=[():droplist.children().[__keyupIndex__:()].txt()||clicked().txt()];data()=if():[().chosenType=children]:[:[view='']].elif():[().chosenType=text]:''.elif():[().chosenType=timestamp]:[today().getTime().num()].elif():[().chosenType=number]:0.elif():[().chosenType=boolean]:[true].elif():[().chosenType=list]:[:''].elif():[().chosenType=map]:[''=''?form().__props__?'_'=''?!data()?'_'=data()];():droplist.style():[opacity=0;transform=scale(0.5);pointerEvents=none];__droplistPositioner__:().del();#nthParent():4.refresh();insertView():[view=3rdParent();index=2ndParent().index();key=path().[-1];focusIndex=[5?().chosenType=children?1?().chosenType=number||=text||=boolean||=timestamp?[2?form().__props__?3]?().chosenType=map?3]]:[2ndParent().rem():[preventDefault=true]]?__droplistPositioner__:();():droplist.mouseentered;[e().key=Enter||():droplist.contains():clicked()];[():droplist.children().[__keyupIndex__:()].txt()!=data().type()||clicked().txt()!=data().type()]",
+            "chooseValueTypeDroplist": "().chosenType=[():droplist.children().[__keyupIndex__:()].txt()||clicked().txt()];data()=if():[().chosenType=children]:[:[view='']].elif():[().chosenType=text]:''.elif():[().chosenType=timestamp]:[today().getTime().num()].elif():[().chosenType=number]:0.elif():[().chosenType=boolean]:[true].elif():[().chosenType=list]:[:''].elif():[().chosenType=map]:[''=''].elif():[().chosenType=map action]:['_'=''?!data()?'_'=data()];():droplist.style():[opacity=0;transform=scale(0.5);pointerEvents=none];__droplistPositioner__:().del();#nthParent():4.refresh();insertView():[view=3rdParent();index=2ndParent().index();key=path().[-1];focusIndex=[5?().chosenType=children?1?().chosenType=number||=text||=boolean||=timestamp?2?().chosenType=map?3]]:[2ndParent().rem():[preventDefault=true]]?__droplistPositioner__:();():droplist.mouseentered;[e().key=Enter||():droplist.contains():clicked()];[():droplist.children().[__keyupIndex__:()].txt()!=data().type()||clicked().txt()!=data().type()]",
             "openKeyInputDroplist": "__keyupIndex__:()=0;next().click();timer():[():droplist.mouseentered=true;():droplist.children().0.mouseenter()]:200?!__droplistPositioner__:();e().key=Enter;!e().ctrlKey",
             "convertTextToChildrenOnEnterInKeyNameInput": "if():[data().type()=text]:[data()=:];if():[path().lastEl()=children]:[data()=:[view='']];2ndParent().refresh()::[_.view.inputs().1.focus()]?e().key=Enter;e().ctrlKey;path().lastEl()=children",
             "openCloseMap": "highlightTab();updateOpenClose();if():[next().style().display=flex]:[open=false]:[open=true];#Map;next().style().display=if():[open]:flex:none;#caret;1stChild().style().transform=if():[open]:'rotate(90deg)':'rotate(0deg)';#...;3rdLastChild().style().display=if():[open]:none:flex;#updateIndexColumn()?data().type()=list||=map;!2ndChild().contains():[clicked()];!3rdChild().contains():[clicked()];!lastChild().contains():[clicked()];!2ndLastChild().contains():[clicked()];!3rdLastChild().contains():[clicked()]",
@@ -598,14 +598,6 @@
                     "children",
                     1,
                     "children",
-                    0
-                ]
-            },
-            {
-                "path": [
-                    "children",
-                    1,
-                    "children",
                     0,
                     "children",
                     0
@@ -954,7 +946,8 @@
                 "_"
             ]
         },
+        "schema": {},
         "secured": false,
-        "size": 27588
+        "size": 27572
     }
 }

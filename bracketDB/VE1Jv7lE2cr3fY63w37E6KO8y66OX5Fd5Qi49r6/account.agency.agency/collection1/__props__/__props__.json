@@ -5,12 +5,12 @@
     "lastChunk": 1,
     "docsLength": 1,
     "counter": 1,
-    "reads": 483,
-    "writes": 23,
+    "reads": 1729,
+    "writes": 29,
     "deletes": 0,
     "size": 294,
-    "payloadIn": null,
-    "payloadOut": 181910,
+    "payloadIn": 496,
+    "payloadOut": 691718,
     "indexes": [],
     "lastIndex": 0,
     "schema": {
@@ -28,6 +28,18 @@
                         "schema",
                         "contactBook"
                     ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "commissionSheets"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "permissions"
+                    ]
                 }
             ],
             "comments": [],
@@ -38,12 +50,27 @@
                 ],
                 "schema": [
                     "name",
-                    "contactBook"
+                    "contactBook",
+                    "commissionSheets",
+                    "permissions"
                 ],
                 "schema.name": [
                     "type"
                 ],
                 "schema.contactBook": [
+                    "type",
+                    "collection"
+                ],
+                "schema.commissionSheets": [
+                    "type",
+                    "value"
+                ],
+                "schema.commissionSheets.value": [
+                    "type",
+                    "collection",
+                    "required"
+                ],
+                "schema.permissions": [
                     "type",
                     "collection"
                 ]
@@ -56,6 +83,18 @@
             "contactBook": {
                 "type": "document",
                 "collection": "account.general.contactBook"
+            },
+            "commissionSheets": {
+                "type": "list",
+                "value": {
+                    "type": "document",
+                    "collection": "account.agency.commission",
+                    "required": true
+                }
+            },
+            "permissions": {
+                "type": "document",
+                "collection": "account.agency.permissions"
             }
         },
         "hideProps": true

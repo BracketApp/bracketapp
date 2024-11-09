@@ -1,0 +1,23 @@
+{
+    "creationDate": 1730201254759,
+    "collection": "account.agency.permissions",
+    "maxSize": 1000,
+    "lastChunk": 1,
+    "docsLength": 0,
+    "counter": 0,
+    "reads": 270,
+    "writes": 6,
+    "deletes": 0,
+    "size": 27,
+    "payloadIn": 1421,
+    "payloadOut": 105569,
+    "indexes": [],
+    "lastIndex": 0,
+    "schema": {
+        "__props__": {
+            "actions": {}
+        },
+        "hideProps": true,
+        "schema": {}
+    }
+}

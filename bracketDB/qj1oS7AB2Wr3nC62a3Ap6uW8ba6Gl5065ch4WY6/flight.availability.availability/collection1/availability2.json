@@ -6,7 +6,7 @@
         "creationDate": 1728239449547,
         "collection": "flight.availability.availability",
         "chunk": "chunk1",
-        "lastModified": 1729873612281,
+        "lastModified": 1731169772781,
         "dev": true,
         "actions": {},
         "comments": [],
@@ -16,19 +16,26 @@
                 "class",
                 "bookedSeats",
                 "availableSeats",
-                "pricings"
+                "pricings",
+                "policies",
+                "termsAndConditions"
             ]
         },
+        "schema": {},
         "secured": false,
-        "size": 449
+        "size": 537
     },
     "class": "A",
     "pricings": [
-        "pricing2",
-        "pricing4",
-        "pricing9",
-        "pricing10"
+        "pricing3",
+        "pricing4"
     ],
     "bookedSeats": 0,
-    "availableSeats": 150
+    "availableSeats": 150,
+    "policies": [
+        "policy1",
+        "policy2",
+        "policy3"
+    ],
+    "termsAndConditions": []
 }

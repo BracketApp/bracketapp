@@ -3,14 +3,14 @@
     "collection": 1,
     "maxSize": 1000,
     "lastChunk": 1,
-    "docsLength": 10,
-    "counter": 10,
-    "reads": 305,
-    "writes": 135,
+    "docsLength": 8,
+    "counter": 8,
+    "reads": 4834,
+    "writes": 225,
     "deletes": 0,
-    "size": 3313,
-    "payloadIn": 6103,
-    "payloadOut": 130211,
+    "size": 2354,
+    "payloadIn": 9554,
+    "payloadOut": 3158380,
     "indexes": [],
     "lastIndex": 0,
     "schema": {
@@ -20,7 +20,115 @@
                 {
                     "path": [
                         "schema",
-                        "price"
+                        "adult"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "adult",
+                        "value",
+                        "fare"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "adult",
+                        "value",
+                        "group"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "adult",
+                        "value",
+                        "individual"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "adult",
+                        "value",
+                        "taxesFeesCharges"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "infant"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "infant",
+                        "value",
+                        "fare"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "infant",
+                        "value",
+                        "group"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "infant",
+                        "value",
+                        "individual"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "infant",
+                        "value",
+                        "taxesFeesCharges"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "child"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "child",
+                        "value",
+                        "fare"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "child",
+                        "value",
+                        "group"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "child",
+                        "value",
+                        "individual"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "child",
+                        "value",
+                        "taxesFeesCharges"
                     ]
                 },
                 {
@@ -34,42 +142,6 @@
                         "schema",
                         "trip"
                     ]
-                },
-                {
-                    "path": [
-                        "schema",
-                        "age"
-                    ]
-                },
-                {
-                    "path": [
-                        "schema",
-                        "groupType"
-                    ]
-                },
-                {
-                    "path": [
-                        "schema",
-                        "taxesFeesChargesIncluded"
-                    ]
-                },
-                {
-                    "path": [
-                        "schema",
-                        "taxesFeesCharges"
-                    ]
-                },
-                {
-                    "path": [
-                        "schema",
-                        "policies"
-                    ]
-                },
-                {
-                    "path": [
-                        "schema",
-                        "termsAndConditions"
-                    ]
                 }
             ],
             "comments": [],
@@ -79,17 +151,103 @@
                     "schema"
                 ],
                 "schema": [
-                    "price",
+                    "adult",
+                    "infant",
+                    "child",
                     "currency",
-                    "trip",
-                    "age",
-                    "groupType",
-                    "taxesFeesChargesIncluded",
-                    "taxesFeesCharges",
-                    "policies",
-                    "termsAndConditions"
+                    "trip"
                 ],
-                "schema.price": [
+                "schema.adult": [
+                    "type",
+                    "value"
+                ],
+                "schema.adult.value": [
+                    "fare",
+                    "group",
+                    "individual",
+                    "taxesFeesCharges"
+                ],
+                "schema.adult.value.fare": [
+                    "type",
+                    "default",
+                    "options"
+                ],
+                "schema.adult.value.group": [
+                    "type"
+                ],
+                "schema.adult.value.individual": [
+                    "type"
+                ],
+                "schema.adult.value.taxesFeesCharges": [
+                    "required",
+                    "type",
+                    "value"
+                ],
+                "schema.adult.value.taxesFeesCharges.value": [
+                    "collection",
+                    "required",
+                    "type"
+                ],
+                "schema.infant": [
+                    "type",
+                    "value"
+                ],
+                "schema.infant.value": [
+                    "fare",
+                    "group",
+                    "individual",
+                    "taxesFeesCharges"
+                ],
+                "schema.infant.value.fare": [
+                    "default",
+                    "options",
+                    "type"
+                ],
+                "schema.infant.value.group": [
+                    "type"
+                ],
+                "schema.infant.value.individual": [
+                    "type"
+                ],
+                "schema.infant.value.taxesFeesCharges": [
+                    "required",
+                    "type",
+                    "value"
+                ],
+                "schema.infant.value.taxesFeesCharges.value": [
+                    "collection",
+                    "required",
+                    "type"
+                ],
+                "schema.child": [
+                    "type",
+                    "value"
+                ],
+                "schema.child.value": [
+                    "fare",
+                    "group",
+                    "individual",
+                    "taxesFeesCharges"
+                ],
+                "schema.child.value.fare": [
+                    "default",
+                    "options",
+                    "type"
+                ],
+                "schema.child.value.group": [
+                    "type"
+                ],
+                "schema.child.value.individual": [
+                    "type"
+                ],
+                "schema.child.value.taxesFeesCharges": [
+                    "required",
+                    "type",
+                    "value"
+                ],
+                "schema.child.value.taxesFeesCharges.value": [
+                    "collection",
+                    "required",
                     "type"
                 ],
                 "schema.currency": [
@@ -98,53 +256,10 @@
                 "schema.trip": [
                     "type",
                     "options"
-                ],
-                "schema.age": [
-                    "type",
-                    "options"
-                ],
-                "schema.groupType": [
-                    "type",
-                    "options"
-                ],
-                "schema.taxesFeesChargesIncluded": [
-                    "default",
-                    "type"
-                ],
-                "schema.taxesFeesCharges": [
-                    "type",
-                    "required",
-                    "value"
-                ],
-                "schema.taxesFeesCharges.value": [
-                    "collection",
-                    "type",
-                    "required"
-                ],
-                "schema.policies": [
-                    "type",
-                    "value"
-                ],
-                "schema.policies.value": [
-                    "collection",
-                    "required",
-                    "type"
-                ],
-                "schema.termsAndConditions": [
-                    "type",
-                    "value"
-                ],
-                "schema.termsAndConditions.value": [
-                    "collection",
-                    "required",
-                    "type"
                 ]
             }
         },
         "schema": {
-            "price": {
-                "type": "number"
-            },
             "currency": {
                 "type": "text"
             },
@@ -157,49 +272,89 @@
                     "Open return"
                 ]
             },
-            "age": {
-                "type": "text",
-                "options": [
-                    "Adult",
-                    "Child",
-                    "Infant"
-                ]
-            },
-            "taxesFeesChargesIncluded": {
-                "type": "boolean",
-                "default": true
-            },
-            "taxesFeesCharges": {
-                "type": "list",
+            "adult": {
+                "type": "map",
                 "value": {
-                    "type": "document",
-                    "collection": "flight.taxesFeesCharges.taxesFeesCharges",
-                    "required": false
-                },
-                "required": false
-            },
-            "policies": {
-                "type": "list",
-                "value": {
-                    "type": "document",
-                    "collection": "flight.policy.policy",
-                    "required": false
+                    "group": {
+                        "type": "number"
+                    },
+                    "individual": {
+                        "type": "number"
+                    },
+                    "taxesFeesCharges": {
+                        "type": "list",
+                        "value": {
+                            "type": "document",
+                            "collection": "flight.taxesFeesCharges.taxesFeesCharges",
+                            "required": false
+                        },
+                        "required": false
+                    },
+                    "fare": {
+                        "type": "text",
+                        "options": [
+                            "Base Fare",
+                            "Gross Fare"
+                        ],
+                        "default": "Gross Fare"
+                    }
                 }
             },
-            "termsAndConditions": {
-                "type": "list",
+            "infant": {
+                "type": "map",
                 "value": {
-                    "type": "document",
-                    "collection": "flight.termsAndConditions.termsAndConditions",
-                    "required": false
+                    "group": {
+                        "type": "number"
+                    },
+                    "individual": {
+                        "type": "number"
+                    },
+                    "taxesFeesCharges": {
+                        "type": "list",
+                        "value": {
+                            "type": "document",
+                            "collection": "flight.taxesFeesCharges.taxesFeesCharges",
+                            "required": false
+                        },
+                        "required": false
+                    },
+                    "fare": {
+                        "type": "text",
+                        "options": [
+                            "Base Fare",
+                            "Gross Fare"
+                        ],
+                        "default": "Gross Fare"
+                    }
                 }
             },
-            "groupType": {
-                "type": "text",
-                "options": [
-                    "Individual",
-                    "Group"
-                ]
+            "child": {
+                "type": "map",
+                "value": {
+                    "group": {
+                        "type": "number"
+                    },
+                    "individual": {
+                        "type": "number"
+                    },
+                    "taxesFeesCharges": {
+                        "type": "list",
+                        "value": {
+                            "type": "document",
+                            "collection": "flight.taxesFeesCharges.taxesFeesCharges",
+                            "required": false
+                        },
+                        "required": false
+                    },
+                    "fare": {
+                        "type": "text",
+                        "options": [
+                            "Base Fare",
+                            "Gross Fare"
+                        ],
+                        "default": "Gross Fare"
+                    }
+                }
             }
         },
         "hideProps": true

@@ -1,12 +1,12 @@
 {
     "flight2": {
-        "from": "Rafic Hariri International Airport",
-        "to": "Istanbul Airport",
-        "travelDate": 1730671200000
+        "from": "airport2",
+        "to": "airport1",
+        "travelDate": 1734386400000
     },
     "flight1": {
-        "from": "Istanbul Airport",
-        "to": "Rafic Hariri International Airport",
-        "travelDate": 1730066400000
+        "from": "airport1",
+        "to": "airport2",
+        "travelDate": 1733781600000
     }
 }

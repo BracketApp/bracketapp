@@ -1,52 +1,44 @@
 {
-    "creationDate": 1724613847225,
+    "creationDate": 1730569441451,
     "collection": 1,
     "maxSize": 1000,
     "lastChunk": 1,
-    "docsLength": 2,
-    "counter": 5,
-    "reads": 1029,
-    "writes": 235,
+    "docsLength": 192,
+    "counter": 195,
+    "reads": 2127,
+    "writes": 198,
     "deletes": 0,
-    "size": 1431,
-    "payloadIn": 5446,
-    "payloadOut": 391562,
+    "size": 229013,
+    "payloadIn": 230523,
+    "payloadOut": 2484046,
     "indexes": [
-        {
-            "find": [
-                "userID"
-            ],
-            "doc": "index2",
-            "lastRead": 1728149691084,
-            "expiryDate": 1730741691084
-        },
         {
             "find": [
                 "session"
             ],
-            "doc": "index3",
-            "lastRead": 1729897779778,
-            "expiryDate": 1732489779778
+            "doc": "index1",
+            "lastRead": 1731172344683,
+            "expiryDate": 1733764344683
         },
         {
             "find": [
                 "session",
                 "user"
             ],
-            "doc": "index4",
-            "lastRead": 1729857733849,
-            "expiryDate": 1732449733849
+            "doc": "index2",
+            "lastRead": 1730907517623,
+            "expiryDate": 1733499517623
         },
         {
             "find": [
                 "user"
             ],
-            "doc": "index5",
-            "lastRead": 1729253163598,
-            "expiryDate": 1731845163598
+            "doc": "index3",
+            "lastRead": 1730907517633,
+            "expiryDate": 1733499517633
         }
     ],
-    "lastIndex": 5,
+    "lastIndex": 3,
     "schema": {
         "__props__": {
             "actions": {},
@@ -58,34 +50,34 @@
                     "schema"
                 ],
                 "schema": [
-                    "user",
+                    "expiryDate",
                     "session",
-                    "expiryDate"
+                    "user"
                 ],
-                "schema.user": [
-                    "collection",
+                "schema.expiryDate": [
                     "type"
                 ],
                 "schema.session": [
                     "type"
                 ],
-                "schema.expiryDate": [
+                "schema.user": [
+                    "collection",
                     "type"
                 ]
             }
         },
+        "hideProps": true,
         "schema": {
-            "user": {
-                "collection": "account.user.user",
-                "type": "document"
-            },
             "session": {
-                "type": "id"
+                "type": "text"
+            },
+            "user": {
+                "type": "document",
+                "collection": "account.user.user"
             },
             "expiryDate": {
                 "type": "timestamp"
             }
-        },
-        "hideProps": false
+        }
     }
 }

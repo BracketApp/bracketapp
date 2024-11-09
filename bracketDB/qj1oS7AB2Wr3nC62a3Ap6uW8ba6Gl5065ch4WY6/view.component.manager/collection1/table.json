@@ -1,0 +1,76 @@
+{
+    "__props__": {
+        "id": "z1M7t3A0K0X2T9r1v8r1N1e9E9",
+        "doc": "table",
+        "counter": 1,
+        "creationDate": 1730029181199,
+        "collection": "view.component.manager",
+        "chunk": "chunk1",
+        "lastModified": 1730221793578,
+        "dev": true,
+        "actions": {},
+        "comments": [
+            {
+                "note": "headers",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    0
+                ]
+            }
+        ],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "view",
+                "children"
+            ],
+            "children.0": [
+                "view",
+                "children"
+            ],
+            "children.0.children.0": [
+                "view"
+            ],
+            "children.0.children.1": [
+                "view",
+                "children"
+            ],
+            "children.0.children.1.children.0": [
+                "view",
+                "children"
+            ],
+            "children.0.children.1.children.0.children.0": [
+                "view"
+            ]
+        },
+        "schema": {},
+        "secured": false,
+        "size": 1055
+    },
+    "view": "View?class=flex column;style=[height=100%;width=100%;[[_.table.style]]];[[_.table.actions]]",
+    "children": [
+        {
+            "view": "[View]?style=[height=50%?form().length>1?height=100%]?data()",
+            "children": [
+                {
+                    "view": "@view.component.custom.view?data=_.table.headers"
+                },
+                {
+                    "view": "View?style=[height=100%;width=100%;overflowY=auto]",
+                    "children": [
+                        {
+                            "view": "View?class=flex column;style=[width=100%;height=fit-content]",
+                            "children": [
+                                {
+                                    "view": "[@view.component.custom.view]?data=_.table.rows"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

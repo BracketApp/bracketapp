@@ -5,12 +5,12 @@
     "lastChunk": 1,
     "docsLength": 4,
     "counter": 4,
-    "reads": 173,
-    "writes": 53,
+    "reads": 2328,
+    "writes": 81,
     "deletes": 0,
     "size": 1686,
-    "payloadIn": 3318,
-    "payloadOut": 55287,
+    "payloadIn": 15189,
+    "payloadOut": 1232013,
     "indexes": [],
     "lastIndex": 0,
     "schema": {
@@ -20,7 +20,7 @@
                 {
                     "path": [
                         "schema",
-                        "pricings"
+                        "policies"
                     ]
                 },
                 {
@@ -40,6 +40,18 @@
                         "schema",
                         "availableSeats"
                     ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "termsAndConditions"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "pricings"
+                    ]
                 }
             ],
             "comments": [],
@@ -49,16 +61,18 @@
                     "schema"
                 ],
                 "schema": [
-                    "pricings",
+                    "policies",
                     "class",
                     "bookedSeats",
-                    "availableSeats"
+                    "availableSeats",
+                    "termsAndConditions",
+                    "pricings"
                 ],
-                "schema.pricings": [
+                "schema.policies": [
                     "type",
                     "value"
                 ],
-                "schema.pricings.value": [
+                "schema.policies.value": [
                     "collection",
                     "type",
                     "required"
@@ -71,12 +85,52 @@
                 ],
                 "schema.availableSeats": [
                     "type"
+                ],
+                "schema.termsAndConditions": [
+                    "type",
+                    "value"
+                ],
+                "schema.termsAndConditions.value": [
+                    "collection",
+                    "type",
+                    "required"
+                ],
+                "schema.pricings": [
+                    "type",
+                    "value"
+                ],
+                "schema.pricings.value": [
+                    "collection",
+                    "type",
+                    "required"
                 ]
             }
         },
         "schema": {
             "class": {
                 "type": "text"
+            },
+            "bookedSeats": {
+                "type": "number"
+            },
+            "availableSeats": {
+                "type": "number"
+            },
+            "policies": {
+                "type": "list",
+                "value": {
+                    "type": "document",
+                    "collection": "flight.policy.policy",
+                    "required": false
+                }
+            },
+            "termsAndConditions": {
+                "type": "list",
+                "value": {
+                    "type": "document",
+                    "collection": "flight.termsAndConditions.termsAndConditions",
+                    "required": false
+                }
             },
             "pricings": {
                 "type": "list",
@@ -85,12 +139,6 @@
                     "collection": "flight.pricing.pricing",
                     "required": false
                 }
-            },
-            "bookedSeats": {
-                "type": "number"
-            },
-            "availableSeats": {
-                "type": "number"
             }
         },
         "hideProps": true

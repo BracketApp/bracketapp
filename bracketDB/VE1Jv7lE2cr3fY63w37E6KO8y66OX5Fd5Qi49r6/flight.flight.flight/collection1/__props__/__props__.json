@@ -5,12 +5,12 @@
     "lastChunk": 1,
     "docsLength": 2,
     "counter": 2,
-    "reads": 84,
-    "writes": 34,
+    "reads": 1175,
+    "writes": 60,
     "deletes": 0,
     "size": 956,
-    "payloadIn": 3538,
-    "payloadOut": 35082,
+    "payloadIn": 8540,
+    "payloadOut": 697067,
     "indexes": [
         {
             "find": [
@@ -19,11 +19,28 @@
                 "travelDate"
             ],
             "doc": "index1",
-            "lastRead": 1729897779869,
-            "expiryDate": 1732489779869
+            "lastRead": 1731172135758,
+            "expiryDate": 1733764135758
+        },
+        {
+            "find": [
+                "travelDate"
+            ],
+            "doc": "index2",
+            "lastRead": 1730212144428,
+            "expiryDate": 1732804144428
+        },
+        {
+            "find": [
+                "from",
+                "travelDate"
+            ],
+            "doc": "index3",
+            "lastRead": 1730068765355,
+            "expiryDate": 1732660765355
         }
     ],
-    "lastIndex": 1,
+    "lastIndex": 3,
     "schema": {
         "__props__": {
             "actions": {},
@@ -75,6 +92,12 @@
                         "schema",
                         "travelDate"
                     ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "flightDuration"
+                    ]
                 }
             ],
             "comments": [],
@@ -91,7 +114,8 @@
                     "departure",
                     "arrival",
                     "cabins",
-                    "travelDate"
+                    "travelDate",
+                    "flightDuration"
                 ],
                 "schema.flightNumber": [
                     "type"
@@ -101,10 +125,12 @@
                     "collection"
                 ],
                 "schema.from": [
-                    "type"
+                    "type",
+                    "collection"
                 ],
                 "schema.to": [
-                    "type"
+                    "type",
+                    "collection"
                 ],
                 "schema.departure": [
                     "type"
@@ -123,6 +149,9 @@
                 ],
                 "schema.travelDate": [
                     "type"
+                ],
+                "schema.flightDuration": [
+                    "type"
                 ]
             }
         },
@@ -135,10 +164,12 @@
                 "collection": "public.aircraft"
             },
             "from": {
-                "type": "text"
+                "type": "document",
+                "collection": "public.airport"
             },
             "to": {
-                "type": "text"
+                "type": "document",
+                "collection": "public.airport"
             },
             "departure": {
                 "type": "number"
@@ -155,6 +186,9 @@
                 }
             },
             "travelDate": {
+                "type": "timestamp"
+            },
+            "flightDuration": {
                 "type": "timestamp"
             }
         },

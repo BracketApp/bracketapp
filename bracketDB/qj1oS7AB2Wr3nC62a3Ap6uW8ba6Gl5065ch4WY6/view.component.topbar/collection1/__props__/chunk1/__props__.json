@@ -1,6 +1,8 @@
 {
-    "docs": [],
+    "docs": [
+        "topbar"
+    ],
     "chunk": "chunk1",
-    "docsLength": -3,
-    "size": -8800
+    "docsLength": -2,
+    "size": -7732
 }

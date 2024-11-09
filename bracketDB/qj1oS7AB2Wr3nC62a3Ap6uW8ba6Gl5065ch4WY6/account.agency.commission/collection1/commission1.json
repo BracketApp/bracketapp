@@ -6,30 +6,56 @@
         "creationDate": 1729431001406,
         "collection": "account.agency.commission",
         "chunk": "chunk1",
-        "lastModified": 1729431001406,
+        "lastModified": 1730563972258,
         "dev": true,
         "actions": {},
         "comments": [],
-        "collapsed": [],
+        "collapsed": [
+            {
+                "path": [
+                    "trips"
+                ]
+            },
+            {
+                "path": [
+                    "age"
+                ]
+            }
+        ],
         "arrange": {
             "": [
-                "agency",
+                "name",
                 "airline",
+                "supplier",
                 "referencePrice",
                 "amount",
                 "expiryDate",
                 "percentage",
-                "releaseDate"
+                "releaseDate",
+                "trips",
+                "service",
+                "age"
             ]
         },
+        "schema": {},
         "secured": false,
-        "size": 530
+        "size": 718
     },
     "airline": "Turkish Airlines",
     "amount": 5,
     "percentage": true,
     "releaseDate": 1729424612804,
     "expiryDate": 1729424603084,
-    "agency": "agency1",
-    "referencePrice": "Gross Fare"
+    "referencePrice": "Gross Fare",
+    "supplier": "supplier1",
+    "name": "Commission Sheet 1",
+    "trips": [
+        "One way",
+        "Round trip"
+    ],
+    "service": "Flight",
+    "age": [
+        "Adult",
+        "Child"
+    ]
 }

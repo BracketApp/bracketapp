@@ -6,7 +6,7 @@
         "creationDate": 1726765950806,
         "collection": "public.currency",
         "chunk": "chunk1",
-        "lastModified": 1726765986627,
+        "lastModified": 1730573592328,
         "dev": true,
         "actions": {},
         "comments": [],
@@ -16,14 +16,17 @@
                 "code",
                 "symbol",
                 "name",
-                "country"
+                "country",
+                "decimal"
             ]
         },
+        "schema": {},
         "secured": false,
-        "size": 377
+        "size": 411
     },
     "code": "LBP",
     "symbol": "L.L",
     "name": "Lebanese Pounds",
-    "country": "Lebanon"
+    "country": "Lebanon",
+    "decimal": 2
 }

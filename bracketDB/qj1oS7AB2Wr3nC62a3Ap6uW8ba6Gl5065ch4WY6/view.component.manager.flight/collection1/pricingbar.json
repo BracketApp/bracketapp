@@ -1,0 +1,126 @@
+{
+    "__props__": {
+        "id": "F1n7G3g0b3r8e85963s8O703X9",
+        "doc": "pricingbar",
+        "counter": 1,
+        "creationDate": 1730388938739,
+        "collection": "view.component.manager.flight",
+        "chunk": "chunk1",
+        "lastModified": 1730490067439,
+        "dev": true,
+        "actions": {
+            "bookingPolicyValue": {
+                "_": "'✓'?():bookingPolicyStatus.1stChild().txt()=Free Booking||=Free Cancellation||=Non-Bookable Non-Cancellable?bookingFees()?():bookingPolicyStatus.1stChild().txt()=Booking Fees?cancellationFees()?():bookingPolicyStatus.1stChild().txt()=Cancellation Fees",
+                "bookingFees": "bookedAvailabilities:().():[cabins.availabilities.policies.find():[type=Booking;chargesFeesAmount>=0]].max():[chargesFeesAmount]",
+                "cancellationFees": "bookedAvailabilities:().():[cabins.availabilities.policies.find():[type=Cancellation;chargesFeesAmount>=0]].max():[chargesFeesAmount]"
+            },
+            "bookingPolicyStatus": {
+                "_": "Free Booking?freeBooking()?Booking Fees?payableBooking()?Free Cancellation?freeCancellation()?Cancellation Fees?payableCancellation()?Non-Bookable Non-Cancellable",
+                "freeBooking": "bookedAvailabilities:().filter():[cabins.availabilities.policies.find():[type=Booking;chargesFeesAmount=0]].len()=bookedAvailabilities:().len()",
+                "freeCancellation": "bookedAvailabilities:().filter():[cabins.availabilities.policies.find():[type=Cancellation;chargesFeesAmount=0]].len()=bookedAvailabilities:().len()",
+                "payableBooking": "bookedAvailabilities:().():[cabins.availabilities.policies.find():[type=Booking;chargesFeesAmount>=0]]",
+                "payableCancellation": "bookedAvailabilities:().():[cabins.availabilities.policies.find():[type=Cancellation;chargesFeesAmount>=0]]"
+            },
+            "pricingbarList": [
+                {
+                    "keyname": "bookingPolicyStatus()",
+                    "value": "bookingPolicyValue()",
+                    "id": "bookingPolicyStatus"
+                },
+                {
+                    "keyname": "Base Fare",
+                    "value": "bookedAvailabilities:().():[.cabins.availabilities.pricings.adult.[searchEngine:().groupType.lowercase()]*searchEngine:().pax.adt+.cabins.availabilities.pricings.child.[searchEngine:().groupType.lowercase()]*searchEngine:().pax.chd+.cabins.availabilities.pricings.infant.[searchEngine:().groupType.lowercase()]*searchEngine:().pax.inf].sum()",
+                    "id": "baseFare"
+                },
+                {
+                    "keyname": "Gross Fare",
+                    "value": "bookedAvailabilities:().():[[.cabins.availabilities.pricings.adult.[searchEngine:().groupType.lowercase()]+[.cabins.availabilities.pricings.taxesFeesCharges.():amount.sum()||0]]*searchEngine:().pax.adt+.cabins.availabilities.pricings.child.[searchEngine:().groupType.lowercase()]*searchEngine:().pax.chd+.cabins.availabilities.pricings.infant.[searchEngine:().groupType.lowercase()]*searchEngine:().pax.inf].sum()",
+                    "id": "baseFare"
+                }
+            ]
+        },
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "view",
+                "children",
+                "pricingbarList",
+                "bookingPolicyStatus",
+                "bookingPolicyValue"
+            ],
+            "children.0": [
+                "view",
+                "children"
+            ],
+            "children.0.children.0": [
+                "view",
+                "children"
+            ],
+            "children.0.children.0.children.0": [
+                "view",
+                "children"
+            ],
+            "children.0.children.0.children.0.children.0": [
+                "view"
+            ],
+            "children.0.children.0.children.0.children.1": [
+                "view"
+            ],
+            "pricingbarList.0": [
+                "keyname",
+                "value",
+                "id"
+            ],
+            "pricingbarList.1": [
+                "keyname",
+                "value",
+                "id"
+            ],
+            "pricingbarList.2": [
+                "id",
+                "keyname",
+                "value"
+            ],
+            "bookingPolicyStatus": [
+                "_",
+                "freeBooking",
+                "payableBooking",
+                "freeCancellation",
+                "payableCancellation"
+            ],
+            "bookingPolicyValue": [
+                "_",
+                "bookingFees",
+                "cancellationFees"
+            ]
+        },
+        "schema": {},
+        "secured": false,
+        "size": 3803
+    },
+    "view": "View?id=pricingbar;style=[height=4rem;width=100%]",
+    "children": [
+        {
+            "view": "View?class=flex;style=[padding=0 1.5rem;backgroundColor=#f5f5f5;borderTop=1px solid #ddd;height=100%]",
+            "children": [
+                {
+                    "view": "View?class=flex align-center;style=[display=grid;gridTemplateColumns=1fr 1fr 1fr 1fr 1fr 1fr;width=100%;gap=1rem]",
+                    "children": [
+                        {
+                            "view": "[View]:[data=pricingbarList()]?id=_.id;class=flexbox;style=[justifyContent=space-between]",
+                            "children": [
+                                {
+                                    "view": "Text?text=[[_.keyname]];style=[fontSize=1.2rem]"
+                                },
+                                {
+                                    "view": "Text?text=[[_.value]];style=[fontSize=1.2rem]"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

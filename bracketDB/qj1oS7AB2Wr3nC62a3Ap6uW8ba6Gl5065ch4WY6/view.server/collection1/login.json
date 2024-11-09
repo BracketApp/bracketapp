@@ -6,7 +6,7 @@
         "creationDate": 1723738573372,
         "collection": "view.server",
         "chunk": "chunk1",
-        "lastModified": 1729253524102,
+        "lastModified": 1730244592178,
         "dev": true,
         "actions": {
             "login": {
@@ -37,11 +37,11 @@
                 "_": "start();getSession()::checkSessionExpiry():updateSession():successHandler()?getCookie():session?failureHandler()",
                 "getSession": "search():[collection=account.user.session;findOne:[session=getCookie():session]]:[session:()=_.data?_.data?failureHandler()]",
                 "updateSession": "session:().():[session=gen():[universal=true];expiryDate=now().timestamp()+86400000];save():[collection=account.user.session;data=session:()]",
-                "getUser": "search():[collection=account.user.user;doc=session:().user]:[user:()=_.data?_.data?failureHandler()]",
                 "successHandler": "setCookie():session:[session:().session];send():[success=true;user=session:().user]",
                 "failureHandler": "eraseCookie():session;send():[success=false]",
                 "checkSessionExpiry": "erase():[collection=account.user.session;doc=getCookie():session]:[failureHandler()]?session:().expiryDate<now().timestamp()"
-            }
+            },
+            "remSession": "erase():[collection=account.user.session;findOne=[session=getCookie():session]]?getCookie():session"
         },
         "comments": [],
         "collapsed": [
@@ -65,14 +65,14 @@
         "arrange": {
             "": [
                 "checkSession",
-                "login"
+                "login",
+                "remSession"
             ],
             "checkSession": [
                 "_",
                 "checkSessionExpiry",
                 "failureHandler",
                 "getSession",
-                "getUser",
                 "successHandler",
                 "updateSession"
             ],
@@ -104,7 +104,8 @@
                 "reachedMax"
             ]
         },
+        "schema": {},
         "secured": true,
-        "size": 3815
+        "size": 3832
     }
 }

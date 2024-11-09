@@ -6,7 +6,7 @@
         "creationDate": 1729858180252,
         "collection": "flight.policy.policy",
         "chunk": "chunk1",
-        "lastModified": 1729863359061,
+        "lastModified": 1730984104127,
         "dev": true,
         "actions": {},
         "comments": [],
@@ -16,14 +16,21 @@
                 "freeUnit",
                 "name",
                 "type",
-                "freeAmount"
+                "perTicket",
+                "freeAmount",
+                "perPNR",
+                "trip"
             ]
         },
+        "schema": {},
         "secured": false,
-        "size": 378
+        "size": 477
     },
     "freeUnit": "Kg",
     "name": "Baggage",
-    "type": "Baggage",
-    "freeAmount": 25
+    "type": "Checked Baggage",
+    "freeAmount": 25,
+    "perTicket": true,
+    "perPNR": true,
+    "trip": "Round trip"
 }

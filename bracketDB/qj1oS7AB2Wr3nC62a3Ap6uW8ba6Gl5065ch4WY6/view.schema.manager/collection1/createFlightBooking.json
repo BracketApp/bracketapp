@@ -6,18 +6,29 @@
         "creationDate": 1724170563877,
         "collection": "view.schema.manager",
         "chunk": "chunk1",
-        "lastModified": 1729946834215,
+        "lastModified": 1731096095151,
         "dev": true,
         "actions": {
             "updateReturnDateByDuration": {
                 "_": "updateDuration();2ndParent().data().returnDate=2ndParent().data().travelDate+data();3rdParent().prev().refresh()",
                 "updateDuration": "data()=[259200000?clicked().txt()=3 days?432000000?clicked().txt()=5 days?604800000?clicked().txt()=1 week?864000000?clicked().txt()=10 days?1296000000?clicked().txt()=15 days?2592000000?clicked().txt()=1 month?7776000000?clicked().txt()=3 month]"
             },
-            "diagramBtnHandler": {
-                "_": "openHandler()?():popup.positioner!=.id?closeHandler()",
-                "closeHandler": "closePopup()",
-                "openHandler": "@view.application.root;openPopup():[form=searchEngine;path=pax;data='@view.schema.manager.adtChdInf']"
-            }
+            "getTopAirports": "search():[collection=flight.general;doc=defaults]:[defaults:().flight=_.data;airports:()=_.data.topAirports]",
+            "resetData": "availabilities:()=:;bookedAvailabilities:()=:",
+            "initFlightData": "data()=[trip=Round trip;directFlights=true;groupType=Individual;pax=[adt=2;chd=0;inf=0];search=:[]]",
+            "resetFlightData": "data().search=data().search.slice():0:1;[data().search.():[duration.del();returnDate.del()]?data().trip!=Round trip]",
+            "selectClass": {
+                "_": "setBooking();selectBullet();updatePaxDetails();pricingDetails();():paxDetails.refresh()",
+                "setBooking": "bookedAvailabilities:().[nthParent():7.index()]=parent().data().clone();bookedAvailabilities:().[nthParent():7.index()].cabins.availabilities=data().clone()",
+                "selectBullet": "backgroundColor()=#f5dfdf;border()=1px solid #fc9a9a",
+                "pricingDetails": "@view.component.manager.flight.pricingDetails;pricingDetails()",
+                "updatePaxDetails": {
+                    "_": "getMaxAvailableSeats();updatePaxDetails()",
+                    "updatePaxDetails": "[searchEngine:().pax.adt=pricingDetails:().maxAvailableSeats?pricingDetails:().maxAvailableSeats<=searchEngine:().pax.adt?searchEngine:().pax.chd=pricingDetails:().maxAvailableSeats-searchEngine:().pax.adt]?pricingDetails:().maxAvailableSeats<searchEngine:().pax.adt+searchEngine:().pax.chd",
+                    "getMaxAvailableSeats": "pricingDetails:().maxAvailableSeats=bookedAvailabilities:().():[cabins.availabilities.availableSeats].min()"
+                }
+            },
+            "paxDroplistClickHandler": "txt()=clicked().txt();data().chd=[data().chd?txt()>data().chd||data().chd=0?data().chd-[data().chd-txt()]?data().chd>0];data().adt=clicked().txt()+0-data().chd;data().inf=0;@view.component.manager.flight.pricingDetails;pricingDetails();@view.application.root:openPopup;closePopup()?bookedAvailabilities:().len()=0||[clicked().txt().num()<=bookedAvailabilities:().():[cabins.availabilities.availableSeats].min()]"
         },
         "comments": [
             {
@@ -284,34 +295,18 @@
                     "views",
                     4,
                     "views",
-                    1,
-                    "views",
-                    0
-                ]
-            },
-            {
-                "path": [
-                    "navbar",
-                    "views",
-                    4,
-                    "views",
-                    1,
-                    "views",
-                    1
-                ]
-            },
-            {
-                "path": [
-                    "navbar",
-                    "views",
-                    4,
-                    "views",
                     2
                 ]
             },
             {
                 "path": [
                     "search"
+                ]
+            },
+            {
+                "path": [
+                    "search",
+                    "btn"
                 ]
             },
             {
@@ -406,7 +401,232 @@
             },
             {
                 "path": [
-                    "diagramBtnHandler"
+                    "table"
+                ]
+            },
+            {
+                "path": [
+                    "table",
+                    "headers"
+                ]
+            },
+            {
+                "path": [
+                    "table",
+                    "headers",
+                    "views",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "table",
+                    "headers",
+                    "views",
+                    0,
+                    "container"
+                ]
+            },
+            {
+                "path": [
+                    "table",
+                    "headers",
+                    "views",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "table",
+                    "headers",
+                    "views",
+                    2
+                ]
+            },
+            {
+                "path": [
+                    "table",
+                    "headers",
+                    "views",
+                    3
+                ]
+            },
+            {
+                "path": [
+                    "table",
+                    "headers",
+                    "views",
+                    4
+                ]
+            },
+            {
+                "path": [
+                    "table",
+                    "headers",
+                    "views",
+                    5
+                ]
+            },
+            {
+                "path": [
+                    "table",
+                    "headers",
+                    "views",
+                    6
+                ]
+            },
+            {
+                "path": [
+                    "table",
+                    "headers",
+                    "views",
+                    7
+                ]
+            },
+            {
+                "path": [
+                    "table",
+                    "headers",
+                    "views",
+                    8
+                ]
+            },
+            {
+                "path": [
+                    "table",
+                    "headers",
+                    "views",
+                    9
+                ]
+            },
+            {
+                "path": [
+                    "table",
+                    "headers",
+                    "views",
+                    10
+                ]
+            },
+            {
+                "path": [
+                    "table",
+                    "rows",
+                    "views",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "table",
+                    "rows",
+                    "views",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "table",
+                    "rows",
+                    "views",
+                    2
+                ]
+            },
+            {
+                "path": [
+                    "table",
+                    "rows",
+                    "views",
+                    3
+                ]
+            },
+            {
+                "path": [
+                    "table",
+                    "rows",
+                    "views",
+                    4
+                ]
+            },
+            {
+                "path": [
+                    "table",
+                    "rows",
+                    "views",
+                    5
+                ]
+            },
+            {
+                "path": [
+                    "table",
+                    "rows",
+                    "views",
+                    6
+                ]
+            },
+            {
+                "path": [
+                    "table",
+                    "rows",
+                    "views",
+                    7
+                ]
+            },
+            {
+                "path": [
+                    "table",
+                    "rows",
+                    "views",
+                    8
+                ]
+            },
+            {
+                "path": [
+                    "table",
+                    "rows",
+                    "views",
+                    9
+                ]
+            },
+            {
+                "path": [
+                    "table",
+                    "rows",
+                    "views",
+                    10
+                ]
+            },
+            {
+                "path": [
+                    "table",
+                    "rows",
+                    "views",
+                    10,
+                    "views",
+                    0,
+                    "views",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "table",
+                    "rows",
+                    "views",
+                    10,
+                    "views",
+                    0,
+                    "views",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "updateReturnDateByDuration"
+                ]
+            },
+            {
+                "path": [
+                    "selectClass"
                 ]
             }
         ],
@@ -417,8 +637,15 @@
                 "title",
                 "navbar",
                 "search",
+                "table",
+                "pricingbar",
                 "updateReturnDateByDuration",
-                "diagramBtnHandler"
+                "getTopAirports",
+                "initFlightData",
+                "resetFlightData",
+                "resetData",
+                "selectClass",
+                "paxDroplistClickHandler"
             ],
             "navbar": [
                 "class",
@@ -484,6 +711,7 @@
                 "style"
             ],
             "navbar.views.4.views.1": [
+                "id",
                 "type",
                 "style",
                 "views"
@@ -566,7 +794,8 @@
                 "label",
                 "path",
                 "style",
-                "type"
+                "type",
+                "droplist"
             ],
             "search.views.2.label": [
                 "style",
@@ -667,18 +896,305 @@
                 "class",
                 "style"
             ],
+            "table": [
+                "style",
+                "actions",
+                "headers",
+                "rows"
+            ],
+            "table.headers": [
+                "style",
+                "views"
+            ],
+            "table.headers.views.0": [
+                "actions",
+                "container",
+                "style",
+                "text",
+                "type"
+            ],
+            "table.headers.views.0.container": [
+                "class",
+                "style"
+            ],
+            "table.headers.views.1": [
+                "actions",
+                "container",
+                "style",
+                "text",
+                "type"
+            ],
+            "table.headers.views.1.container": [
+                "class",
+                "style"
+            ],
+            "table.headers.views.2": [
+                "actions",
+                "container",
+                "style",
+                "text",
+                "type"
+            ],
+            "table.headers.views.2.container": [
+                "class",
+                "style"
+            ],
+            "table.headers.views.3": [
+                "actions",
+                "container",
+                "style",
+                "text",
+                "type"
+            ],
+            "table.headers.views.3.container": [
+                "class",
+                "style"
+            ],
+            "table.headers.views.4": [
+                "actions",
+                "container",
+                "style",
+                "text",
+                "type"
+            ],
+            "table.headers.views.4.container": [
+                "class",
+                "style"
+            ],
+            "table.headers.views.5": [
+                "actions",
+                "container",
+                "style",
+                "text",
+                "type"
+            ],
+            "table.headers.views.5.container": [
+                "class",
+                "style"
+            ],
+            "table.headers.views.6": [
+                "actions",
+                "container",
+                "style",
+                "text",
+                "type"
+            ],
+            "table.headers.views.6.container": [
+                "class",
+                "style"
+            ],
+            "table.headers.views.7": [
+                "actions",
+                "container",
+                "style",
+                "text",
+                "type"
+            ],
+            "table.headers.views.7.container": [
+                "class",
+                "style"
+            ],
+            "table.headers.views.8": [
+                "actions",
+                "container",
+                "style",
+                "text",
+                "type"
+            ],
+            "table.headers.views.8.container": [
+                "class",
+                "style"
+            ],
+            "table.headers.views.9": [
+                "actions",
+                "container",
+                "style",
+                "text",
+                "type"
+            ],
+            "table.headers.views.9.container": [
+                "class",
+                "style"
+            ],
+            "table.headers.views.10": [
+                "actions",
+                "container",
+                "style",
+                "text",
+                "type"
+            ],
+            "table.headers.views.10.container": [
+                "class",
+                "style"
+            ],
+            "table.rows": [
+                "style",
+                "actions",
+                "views"
+            ],
+            "table.rows.views.0": [
+                "type",
+                "class",
+                "style",
+                "views"
+            ],
+            "table.rows.views.0.views.0": [
+                "type",
+                "style",
+                "src"
+            ],
+            "table.rows.views.0.views.1": [
+                "type",
+                "style",
+                "text"
+            ],
+            "table.rows.views.1": [
+                "type",
+                "text",
+                "style",
+                "container"
+            ],
+            "table.rows.views.1.container": [
+                "class"
+            ],
+            "table.rows.views.2": [
+                "container",
+                "style",
+                "text",
+                "type"
+            ],
+            "table.rows.views.2.container": [
+                "class"
+            ],
+            "table.rows.views.3": [
+                "container",
+                "style",
+                "text",
+                "type"
+            ],
+            "table.rows.views.3.container": [
+                "class"
+            ],
+            "table.rows.views.4": [
+                "container",
+                "style",
+                "text",
+                "type"
+            ],
+            "table.rows.views.4.container": [
+                "class"
+            ],
+            "table.rows.views.5": [
+                "container",
+                "style",
+                "text",
+                "type"
+            ],
+            "table.rows.views.5.container": [
+                "class"
+            ],
+            "table.rows.views.6": [
+                "container",
+                "style",
+                "text",
+                "type"
+            ],
+            "table.rows.views.6.container": [
+                "class"
+            ],
+            "table.rows.views.7": [
+                "container",
+                "style",
+                "text",
+                "type"
+            ],
+            "table.rows.views.7.container": [
+                "class"
+            ],
+            "table.rows.views.8": [
+                "container",
+                "style",
+                "text",
+                "type"
+            ],
+            "table.rows.views.8.container": [
+                "class"
+            ],
+            "table.rows.views.9": [
+                "container",
+                "style",
+                "text",
+                "type"
+            ],
+            "table.rows.views.9.container": [
+                "class"
+            ],
+            "table.rows.views.10": [
+                "type",
+                "class",
+                "conditions",
+                "style",
+                "views"
+            ],
+            "table.rows.views.10.views.0": [
+                "type",
+                "style",
+                "views",
+                "container",
+                "data",
+                "actions",
+                "loop",
+                "mount"
+            ],
+            "table.rows.views.10.views.0.views.0": [
+                "type",
+                "container",
+                "text",
+                "style"
+            ],
+            "table.rows.views.10.views.0.views.0.container": [
+                "class",
+                "style"
+            ],
+            "table.rows.views.10.views.0.views.1": [
+                "type",
+                "style",
+                "container",
+                "text"
+            ],
+            "table.rows.views.10.views.0.views.1.container": [
+                "class",
+                "style"
+            ],
+            "table.rows.views.10.views.0.container": [
+                "style"
+            ],
+            "table.rows.views.10.views.1": [
+                "type",
+                "icon",
+                "actions",
+                "style"
+            ],
             "updateReturnDateByDuration": [
                 "_",
                 "updateDuration"
             ],
-            "diagramBtnHandler": [
+            "selectClass": [
                 "_",
-                "closeHandler",
-                "openHandler"
+                "setBooking",
+                "pricingDetails",
+                "selectBullet",
+                "updatePaxDetails"
+            ],
+            "selectClass.updatePaxDetails": [
+                "_",
+                "getMaxAvailableSeats",
+                "updatePaxDetails"
             ]
         },
+        "schema": {},
         "secured": false,
-        "size": 11769
+        "size": 22769
     },
     "form": "searchEngine",
     "navbar": {
@@ -730,20 +1246,20 @@
                             "style": "border=0;backgroundColor=#00000000"
                         },
                         "path": "groupType",
-                        "actions": "[click:droplist?[form().pax.():[adt=2;chd=0;inf=0]?clicked().txt()=Individual];3rdParent().next().refresh();closePopup()]"
+                        "actions": "[click:droplist?[form().pax.():[adt=2;chd=0;inf=0]?clicked().txt()=Individual;form().pax.adt+form().pax.chd>9];3rdParent().next().refresh();closePopup()]"
                     },
                     {
                         "type": "view",
                         "views": [
                             {
                                 "style": "fontSize=1.3rem;color=#fb3b1e;transition=.2s",
-                                "type": "icon",
                                 "icon": "bi-diagram-3",
                                 "container": {
                                     "style": "minHeight=3rem;width=2.5rem;border=1px solid #aaa;borderRadius=.5rem;backgroundColor=#fff;transition=.2s",
                                     "class": "flexbox pointer",
-                                    "actions": "[click?@view.schema.manager.createFlightBooking;diagramBtnHandler()]"
-                                }
+                                    "actions": "[click?openPopup():[form=searchEngine;path=pax;data='@view.schema.manager.adtChdInf']]"
+                                },
+                                "type": "icon"
                             },
                             {
                                 "type": "input",
@@ -758,12 +1274,13 @@
                                 "mainContainer": {
                                     "style": "flexDirection=row-reverse;gap=1rem"
                                 },
-                                "actions": "preventDefault;[readonly=true;droplist=[align=left;preventDefault;items=:1:2:3:4:5:6:7:8:9]?form().groupType=Individual];[mouseup:droplist;change?txt()=clicked().txt();data().chd=[data().chd?txt()>data().chd||data().chd=0?data().chd-[data().chd-txt()]?data().chd>0];data().adt=clicked().txt()+0-data().chd;data().inf=0;closePopup()]",
+                                "actions": "preventDefault;[readonly=true;droplist=[align=left;preventDefault;items=:1:2:3:4:5:6:7:8:9]?form().groupType=Individual];[mouseup:droplist;change?@view.schema.manager.createFlightBooking;paxDroplistClickHandler()]",
                                 "path": "pax",
                                 "text": "data().adt+data().chd"
                             }
                         ],
-                        "style": "display=flex;gap=.5rem"
+                        "style": "display=flex;gap=.5rem",
+                        "id": "paxDetails"
                     },
                     {
                         "type": "checkbox",
@@ -797,7 +1314,7 @@
                 "style": "fontSize=1.3rem;height=3.5rem;width=100%",
                 "type": "input",
                 "actions": "clearable=true",
-                "droplist": "items=airports:().():name"
+                "droplist": "items=airports:().():name;align=left"
             },
             {
                 "actions": "[click?from=data().from;data().from=data().to;data().to=.from;parent().():[prev().refresh();next().refresh()]]",
@@ -818,10 +1335,11 @@
                 "path": "to",
                 "style": "fontSize=1.3rem;height=3.5rem;width=100%",
                 "type": "input",
-                "actions": "clearable=true"
+                "actions": "clearable=true",
+                "droplist": "items=airports:().():name;align=left"
             },
             {
-                "actions": "data()=todayStart().timestamp()+259200000;[change?data()=data().date().todayStart().timestamp();2ndParent().data().returnDate=data()+2ndParent().data().duration;3rdParent().next().refresh()?data()]",
+                "actions": "data()=todayStart().timestamp()+259200000;[change?data()=data().date().todayStart().timestamp();[2ndParent().data().returnDate=data()+2ndParent().data().duration;3rdParent().next().refresh()?;form().trip=Round trip]?data()]",
                 "type": "input",
                 "inputType": "date",
                 "label": {
@@ -911,9 +1429,269 @@
             }
         ],
         "btn": {
-            "action": "start();@view.server.flight;searchAvailability():[form()]:[end():_]"
+            "action": "start();@view.server.flight;searchAvailability():[form()]:[availabilities:()=_.availabilities;commissionSheets:()=_.commissionSheets;end():_]"
         }
     },
-    "actions": "data()=[trip=Round trip;directFlights=true;groupType=Individual;pax=[adt=2;chd=0;inf=0];search=:[]]?!data().trip?data().search=data().search.slice():0:1;[data().search.():[duration.del();returnDate.del()]?data().trip!=Round trip]",
-    "title": "Create Flight Booking"
+    "actions": "@view.schema.manager.createFlightBooking;resetData();[initFlightData();getTopAirports()?!data().trip?resetFlightData()]",
+    "title": "Create Flight Booking",
+    "table": {
+        "style": "padding=0 .5rem",
+        "headers": {
+            "views": [
+                {
+                    "type": "text",
+                    "text": "Airline",
+                    "style": "fontSize=1.2rem;color=#888;transition=.2s;cursor=pointer",
+                    "actions": "hover.style=[color=#444]",
+                    "container": {
+                        "style": "height=100%",
+                        "class": "flex align-center"
+                    }
+                },
+                {
+                    "type": "text",
+                    "text": "Travel Date",
+                    "style": "fontSize=1.2rem;color=#888;transition=.2s;cursor=pointer",
+                    "actions": "hover.style=[color=#444]",
+                    "container": {
+                        "style": "height=100%",
+                        "class": "flex align-center"
+                    }
+                },
+                {
+                    "type": "text",
+                    "text": "Flight No.",
+                    "style": "fontSize=1.2rem;color=#888;transition=.2s;cursor=pointer",
+                    "actions": "hover.style=[color=#444]",
+                    "container": {
+                        "style": "height=100%",
+                        "class": "flex align-center"
+                    }
+                },
+                {
+                    "type": "text",
+                    "text": "From",
+                    "style": "fontSize=1.2rem;color=#888;transition=.2s;cursor=pointer",
+                    "actions": "hover.style=[color=#444]",
+                    "container": {
+                        "style": "height=100%",
+                        "class": "flex align-center"
+                    }
+                },
+                {
+                    "type": "text",
+                    "text": "To",
+                    "style": "fontSize=1.2rem;color=#888;transition=.2s;cursor=pointer",
+                    "actions": "hover.style=[color=#444]",
+                    "container": {
+                        "style": "height=100%",
+                        "class": "flex align-center"
+                    }
+                },
+                {
+                    "type": "text",
+                    "text": "Dep",
+                    "style": "fontSize=1.2rem;color=#888;transition=.2s;cursor=pointer",
+                    "actions": "hover.style=[color=#444]",
+                    "container": {
+                        "style": "height=100%",
+                        "class": "flex align-center"
+                    }
+                },
+                {
+                    "type": "text",
+                    "text": "Arr",
+                    "style": "fontSize=1.2rem;color=#888;transition=.2s;cursor=pointer",
+                    "actions": "hover.style=[color=#444]",
+                    "container": {
+                        "style": "height=100%",
+                        "class": "flex align-center"
+                    }
+                },
+                {
+                    "type": "text",
+                    "text": "Stops",
+                    "style": "fontSize=1.2rem;color=#888;transition=.2s;cursor=pointer",
+                    "actions": "hover.style=[color=#444]",
+                    "container": {
+                        "style": "height=100%",
+                        "class": "flex align-center"
+                    }
+                },
+                {
+                    "type": "text",
+                    "text": "Aircraft",
+                    "style": "fontSize=1.2rem;color=#888;transition=.2s;cursor=pointer",
+                    "actions": "hover.style=[color=#444]",
+                    "container": {
+                        "style": "height=100%",
+                        "class": "flex align-center"
+                    }
+                },
+                {
+                    "type": "text",
+                    "text": "Duration",
+                    "style": "fontSize=1.2rem;color=#888;transition=.2s;cursor=pointer",
+                    "actions": "hover.style=[color=#444]",
+                    "container": {
+                        "style": "height=100%",
+                        "class": "flex align-center"
+                    }
+                },
+                {
+                    "type": "text",
+                    "text": "Availability",
+                    "style": "fontSize=1.2rem;color=#888;transition=.2s;cursor=pointer",
+                    "actions": "hover.style=[color=#444]",
+                    "container": {
+                        "style": "height=100%",
+                        "class": "flex align-center"
+                    }
+                }
+            ],
+            "style": "display=grid;gridTemplateColumns=2.5fr 1.5fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 6fr;height=4rem;borderBottom=1px solid #ddd;width=100%"
+        },
+        "rows": {
+            "style": "display=grid;gridTemplateColumns=2.5fr 1.5fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 6fr;height=4rem;width=100%;transition=.2s",
+            "views": [
+                {
+                    "type": "view",
+                    "class": "flex align-center",
+                    "style": "height=100%",
+                    "views": [
+                        {
+                            "type": "image",
+                            "style": "maxHeight=3.5rem;maxWidth=6rem",
+                            "src": "data().aircraft.airline.logo"
+                        },
+                        {
+                            "style": "fontSize=1.2rem",
+                            "text": "data().aircraft.airline.name",
+                            "type": "text"
+                        }
+                    ]
+                },
+                {
+                    "type": "text",
+                    "text": "data().travelDate.date().toDateFormat()",
+                    "style": "fontSize=1.2rem",
+                    "container": {
+                        "class": "flex align-center"
+                    }
+                },
+                {
+                    "type": "text",
+                    "text": "data().flightNumber",
+                    "style": "fontSize=1.2rem",
+                    "container": {
+                        "class": "flex align-center"
+                    }
+                },
+                {
+                    "type": "text",
+                    "text": "data().from.iataCode",
+                    "style": "fontSize=1.2rem",
+                    "container": {
+                        "class": "flex align-center"
+                    }
+                },
+                {
+                    "type": "text",
+                    "text": "data().to.iataCode",
+                    "style": "fontSize=1.2rem",
+                    "container": {
+                        "class": "flex align-center"
+                    }
+                },
+                {
+                    "type": "text",
+                    "text": "data().departure.toClock()",
+                    "style": "fontSize=1.2rem",
+                    "container": {
+                        "class": "flex align-center"
+                    }
+                },
+                {
+                    "type": "text",
+                    "text": "data().arrival.toClock()",
+                    "style": "fontSize=1.2rem",
+                    "container": {
+                        "class": "flex align-center"
+                    }
+                },
+                {
+                    "type": "text",
+                    "text": "0",
+                    "style": "fontSize=1.2rem",
+                    "container": {
+                        "class": "flex align-center"
+                    }
+                },
+                {
+                    "type": "text",
+                    "text": "data().aircraft.model",
+                    "style": "fontSize=1.2rem",
+                    "container": {
+                        "class": "flex align-center"
+                    }
+                },
+                {
+                    "type": "text",
+                    "text": "data().flightDuration.toClock():[format=format2]",
+                    "style": "fontSize=1.2rem",
+                    "container": {
+                        "class": "flex align-center"
+                    }
+                },
+                {
+                    "type": "view",
+                    "class": "flex",
+                    "style": "width=100%;height=4rem;padding=.8rem 0;gap=.5rem;justifyContent=space-between",
+                    "views": [
+                        {
+                            "type": "view",
+                            "style": "display=flex;height=100%;width=6rem;border=1px solid #ccc;borderRadius=.5rem;backgroundColor=#eee;cursor=pointer;overflow=hidden",
+                            "views": [
+                                {
+                                    "type": "text",
+                                    "text": "data().class",
+                                    "style": "fontSize=1.2rem",
+                                    "container": {
+                                        "class": "flexbox",
+                                        "style": "width=50%;height=100%"
+                                    }
+                                },
+                                {
+                                    "type": "text",
+                                    "container": {
+                                        "class": "flexbox",
+                                        "style": "backgroundColor=#fff;width=50%;height=100%"
+                                    },
+                                    "text": "data().availableSeats?data().availableSeats<=9?'9+'",
+                                    "style": "fontSize=1.2rem"
+                                }
+                            ],
+                            "loop": true,
+                            "data": "data().cabins.availabilities.filter():[availableSeats>0].sort():[path=pricings.adult.group]",
+                            "mount": true,
+                            "container": {
+                                "style": "display=flex;height=2.4rem;flex=1;gap=.3rem;flexWrap=wrap"
+                            },
+                            "actions": "[[loaded?parent().index()=0];click?@view.schema.manager.createFlightBooking;selectClass()]"
+                        },
+                        {
+                            "type": "icon",
+                            "actions": "google.symbol;hover.style.color=#000",
+                            "style": "fontSize=2.5rem;color=#888;cursor=pointer;transition=.2s",
+                            "icon": "expand_more"
+                        }
+                    ],
+                    "conditions": "data().cabins"
+                }
+            ],
+            "actions": "hover.style.backgroundColor=#f6f6f6"
+        },
+        "actions": "availabilities:()||=:;form=availabilities"
+    },
+    "pricingbar": true
 }

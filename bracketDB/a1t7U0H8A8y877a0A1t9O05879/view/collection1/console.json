@@ -258,7 +258,7 @@
                                                     "view": "Icon?name=[bi-file-earmark?data().split():'/'.[-1]!=__schema__?bi-diagram-3];style:[fontSize=1.3rem;height=2.25rem;width=2.25rem;minWidth=2.25rem;borderRadius=2rem;margin=0 .5rem]"
                                                 },
                                                 {
-                                                    "view": "Text?class=dots;text=[data().split():'/'.[-1]?data().split():'/'.[-1]!=__schema__?data().split():'/'.0];tooltip.text=[data().split():'/'.[-1]?data().split():'/'.[-1]!=__schema__?data().split():'/'.0];style:[fontSize=1.3rem;paddingRight=3.5rem]"
+                                                    "view": "Text?class=dots;text=[data().split():'/'.[-1]?data().split():'/'.[-1]!=__schema__?data().split():'/__schema__'.0];tooltip.text=[data().split():'/'.[-1]?data().split():'/'.[-1]!=__schema__?data().split():'/__schema__'.0];style:[fontSize=1.3rem;paddingRight=3.5rem]"
                                                 },
                                                 {
                                                     "view": "Icon?class=pointer;name=bi-x;style:[fontSize=2rem;position=absolute;right=.5rem;borderRadius=.5rem;height=2.5rem;width=2.5rem];hover.style.backgroundColor=#e9e9e9;[click?closeTab()]"
@@ -396,7 +396,7 @@
         "creationDate": 1710330786487,
         "collection": "view",
         "chunk": "chunk1",
-        "lastModified": 1729952685238,
+        "lastModified": 1729958270100,
         "dev": false,
         "actions": {
             "openActionPopup": "():actionPopup.style():[opacity=1;pointerEvents=auto;zIndex=10;transform='scale(1)']",
@@ -1444,7 +1444,7 @@
                     "children",
                     1,
                     "children",
-                    0
+                    1
                 ]
             },
             {
@@ -1647,6 +1647,11 @@
             {
                 "path": [
                     "projectDroplistHandler"
+                ]
+            },
+            {
+                "path": [
+                    "saveDocHandler"
                 ]
             },
             {
@@ -2151,6 +2156,6 @@
         },
         "schema": {},
         "secured": false,
-        "size": 44986
+        "size": 45034
     }
 }

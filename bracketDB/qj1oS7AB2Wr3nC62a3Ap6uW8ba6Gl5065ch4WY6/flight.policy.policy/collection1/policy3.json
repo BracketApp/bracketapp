@@ -1,12 +1,12 @@
 {
     "__props__": {
-        "id": "V1Z772O988f7m3y968S1R9I0m3",
+        "id": "V117K3D161O6S7l3X6v0x65727",
         "doc": "policy3",
         "counter": 3,
-        "creationDate": 1729873981903,
+        "creationDate": 1731167360677,
         "collection": "flight.policy.policy",
         "chunk": "chunk1",
-        "lastModified": 1729874297730,
+        "lastModified": 1731171536453,
         "dev": true,
         "actions": {},
         "comments": [],
@@ -15,17 +15,28 @@
             "": [
                 "name",
                 "type",
+                "perPnrOrTicket",
+                "chargesFeesAmount",
+                "chargesFeesCurrency",
                 "referenceDate",
                 "referenceDuration",
-                "referenceDurationOperator"
+                "referenceDurationOperator",
+                "referenceBeforeAfter",
+                "trip"
             ]
         },
+        "schema": {},
         "secured": false,
-        "size": 516
+        "size": 731
     },
-    "name": "Auto Booking Cancellation",
-    "type": "Auto Cancellation",
-    "referenceDate": "Booking Date",
-    "referenceDuration": 7200000,
-    "referenceDurationOperator": "Greater Than"
+    "name": "Free Cancellation",
+    "trip": "Round trip",
+    "perPnrOrTicket": "PNR",
+    "chargesFeesAmount": 0,
+    "chargesFeesCurrency": "USD",
+    "referenceDate": "Travel Date",
+    "referenceDuration": 2592000000,
+    "referenceDurationOperator": "Greater than",
+    "referenceBeforeAfter": "Before",
+    "type": "Cancellation"
 }

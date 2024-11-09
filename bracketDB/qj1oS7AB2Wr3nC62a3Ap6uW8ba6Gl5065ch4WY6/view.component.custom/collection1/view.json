@@ -7,7 +7,7 @@
         "creationDate": 1723741167517,
         "collection": "view.component.custom",
         "chunk": "chunk1",
-        "lastModified": 1729946185859,
+        "lastModified": 1730489404106,
         "dev": true,
         "actions": {
             "passwordEvents": "[menter?backgroundColor()=#eee;children().():[color()=#444]];[mleave?backgroundColor()=#f6f6f6;children().():[color()=#999]];[click?1stChild().display();2ndChild().hide();parent().input().type()=password?1stChild().hidden()?2ndChild().display();1stChild().hide();parent().input().type()=text]"
@@ -180,6 +180,15 @@
                     "children",
                     7
                 ]
+            },
+            {
+                "note": "loop",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    8
+                ]
             }
         ],
         "collapsed": [
@@ -324,6 +333,14 @@
                     "children",
                     7
                 ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    8
+                ]
             }
         ],
         "arrange": {
@@ -411,17 +428,21 @@
             ],
             "children.0.children.7": [
                 "view"
+            ],
+            "children.0.children.8": [
+                "view"
             ]
         },
+        "schema": {},
         "secured": false,
-        "size": 7640
+        "size": 8048
     },
     "children": [
         {
-            "view": "[View]:[data=_.views]?[_.container=[[_.container]]?_.container.type()=text];class=[_.container.class];style=[[_.container.style]];[[_.container.actions]]?[[[_.conditions]]?_.conditions?true]",
+            "view": "[View]:[data=_.views]?[_.container=[[_.container]]?_.container.type()=text];class=[_.container.class];style=[[_.container.style]];[tooltip.text=_.tooltip?_.tooltip];[[_.container.actions]]?[[[_.conditions]]?_.conditions?true]",
             "children": [
                 {
-                    "view": "Text?[id=_.id?_.id];text=[[_.text]];style=[[_.style]];[hover.style=[[_.hoverstyle]]?_.hoverstyle];[[_.actions]]?_.type=text"
+                    "view": "Text?[id=_.id?_.id];[path=_.path?_.path];text=[[_.text]];style=[[_.style]];[hover.style=[[_.hoverstyle]]?_.hoverstyle];[[_.actions]]?_.type=text"
                 },
                 {
                     "view": "View?class=column +[_.mainContainer.class||''];style=[gap=.5rem;width=100%;[[_.mainContainer.style]]]?_.type=input",
@@ -444,10 +465,10 @@
                                     "view": "Input?[class=_.class?_.class];style=[flex=1;padding=0 .5rem;border=0;width=100%;[cursor=pointer?_.readonly];[[_.style]]];[[_.actions]];[data()=[[_.data]]?_.data];text=[[_.text]];[droplist=[[_.droplist]]?_.droplist];type=[_.inputType||[password?_.password?text]];[readonly=true?_.readonly];[min=[[_.min]]?_.min];[max=[[_.max]]?_.max]"
                                 },
                                 {
-                                    "view": "Icon?class=x;name=bi-x;style:[fontSize=2.5rem;color=#999;opacity=0;transition=.2s;position=absolute;right=[2rem?_.inputType=date?0];height=2.5rem;width=2.5rem;backgroundColor=#fff];[click?data().del();prev().txt()=[0?prev().type()=number?'']]?prev().clearable||_.clearable"
+                                    "view": "Icon?class=x;name=bi-x;style:[fontSize=2.4rem;color=#999;opacity=0;transition=.2s;position=absolute;right=[2rem?_.inputType=date||_.clearable||prev().clearable?0];height=2.5rem;width=2.5rem;backgroundColor=#fff];[click?data().del();prev().txt()=[0?prev().type()=number?'']]?prev().clearable||_.clearable"
                                 },
                                 {
-                                    "view": "Icon?class=chevron;name=bi-chevron-down;style:[pointerEvents=none;fontSize=1.3rem;color=[parent().1stChild().style.color||#999];position=absolute;right=0;height=2rem;width=2rem;backgroundColor=inherit]?parent().1stChild().droplist||_.droplist"
+                                    "view": "Icon?class=chevron;name=keyboard_arrow_up;google.symbol;style:[pointerEvents=none;fontSize=2.2rem;color=[parent().1stChild().style.color||#999];position=absolute;right=0;height=2.5rem;width=2.5rem;backgroundColor=inherit;transform=rotate(180deg)]?parent().1stChild().droplist||_.droplist"
                                 },
                                 {
                                     "view": "View?class=flexbox pointer;style:[height=100%;width=4rem;justifySelf=flex-end;backgroundColor=#f6f6f6;transition=.2s;height=parent().input().height();[[_.password.style]]];passwordEvents()?parent().1stChild().password||_.password||_.inputType=password",
@@ -465,7 +486,7 @@
                     ]
                 },
                 {
-                    "view": "Image?[id=_.id?_.id];style:[[_.style]];src=_.src;[[_.actions]]?_.type=image"
+                    "view": "Image?[id=_.id?_.id];style:[[_.style]];[path=_.path?_.path];src=[[_.src]];[[_.actions]]?_.type=image"
                 },
                 {
                     "view": "Icon?[id=_.id?_.id];style:[[_.style]];name=_.icon;[[_.actions]];[google.symbol?_.google]?_.type=icon"
@@ -498,10 +519,13 @@
                     ]
                 },
                 {
-                    "view": "view??_.type=view"
+                    "view": "view??_.type=view;!_.loop"
                 },
                 {
                     "view": "_.component?[id=_.id?_.id];style:[[_.style]]?_.type=component"
+                },
+                {
+                    "view": "[view]:[[data=[[_.data]]?_.data];[mount=true?_.mount];[path=[[_.path]]?_.path]?_.type=view;_.loop]"
                 }
             ]
         }

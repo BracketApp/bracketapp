@@ -1,0 +1,505 @@
+{
+    "__props__": {
+        "id": "V1K7w3H0T429F0g0z7o3h8w992",
+        "doc": "pricingDetails",
+        "counter": 1,
+        "creationDate": 1730490073892,
+        "collection": "view.component.manager.flight",
+        "chunk": "chunk1",
+        "lastModified": 1731172188470,
+        "dev": true,
+        "actions": {
+            "pricingDetailsList": [
+                {
+                    "keyname": "pricingDetails:().bookingPolicy.status||Free Booking",
+                    "value": "pricingDetails:().bookingPolicy.value?pricingDetails:().bookingPolicy.value='✔'||='✖'?pricingDetails:().bookingPolicy.value+' '+defaults:().accounting.currency.symbol?pricingDetails:().bookingPolicy.value?'✔'",
+                    "subItems": [
+                        {
+                            "keyname": "Hold-on Period",
+                            "value": "pricingDetails:().bookingPolicy.bookingDuration.toClock():[format=format2;day=true]||'00d:00h:00m'"
+                        }
+                    ]
+                },
+                {
+                    "keyname": "pricingDetails:().cancellationPolicy.status||Free Cancellation",
+                    "value": "pricingDetails:().cancellationPolicy.value?pricingDetails:().cancellationPolicy.value='✔'||='✖'?pricingDetails:().cancellationPolicy.value+' '+defaults:().accounting.currency.symbol?pricingDetails:().cancellationPolicy.value?'✔'"
+                },
+                {
+                    "keyname": "Passengers",
+                    "value": "[searchEngine:().pax.adt||0]+[searchEngine:().pax.chd||0]"
+                },
+                {
+                    "keyname": "Base Fare",
+                    "value": "[pricingDetails:().total.baseFare.price():[decimal=defaults:().accounting.currency.decimal]||0]+' '+defaults:().accounting.currency.symbol"
+                },
+                {
+                    "keyname": "Taxes, Fees & Charges",
+                    "value": "[pricingDetails:().total.taxesFeesCharges.price():[decimal=defaults:().accounting.currency.decimal]||0]+' '+defaults:().accounting.currency.symbol"
+                },
+                {
+                    "keyname": "Gross Fare",
+                    "value": "[pricingDetails:().total.grossFare.price():[decimal=defaults:().accounting.currency.decimal]||0]+' '+defaults:().accounting.currency.symbol"
+                },
+                {
+                    "keyname": "Commission",
+                    "value": "[pricingDetails:().total.commission.price():[decimal=defaults:().accounting.currency.decimal]||0]+' '+defaults:().accounting.currency.symbol"
+                },
+                {
+                    "keyname": "Payable",
+                    "value": "[pricingDetails:().total.payable.price():[decimal=defaults:().accounting.currency.decimal]||0]+' '+defaults:().accounting.currency.symbol"
+                }
+            ],
+            "pricingDetails": {
+                "_": "initPricingDetails();bookingPolicy();cancellationPolicy();makePricingCalculations()",
+                "makePricingCalculations": {
+                    "_": "calcPrices();calcTotal()",
+                    "calcPrices": "bookedAvailabilities:().():[pricingDetails:().bookings+=[baseFare();taxesFeesCharges();grossFare();commission();payable()]]",
+                    "baseFare": "baseFare.adult=[..cabins.availabilities.pricings.adult.[pricingDetails:().groupType]*pricingDetails:().pax.adt?..cabins.availabilities.pricings.adult.fare=Base Fare?0];baseFare.child=[..cabins.availabilities.pricings.child.[pricingDetails:().groupType]*pricingDetails:().pax.chd?..cabins.availabilities.pricings.child.fare=Base Fare?0];baseFare.infant=[..cabins.availabilities.pricings.infant.[pricingDetails:().groupType]*pricingDetails:().pax.inf?..cabins.availabilities.pricings.infant.fare=Base Fare?0]",
+                    "taxesFeesCharges": "taxesFeesCharges.adult=[..cabins.availabilities.pricings.adult.taxesFeesCharges.():amount.sum()*pricingDetails:().pax.adt||0?!..cabins.availabilities.pricings.adult.fare=Base Fare?0];taxesFeesCharges.child=[..cabins.availabilities.pricings.child.taxesFeesCharges.():amount.sum()*pricingDetails:().pax.chd||0?!..cabins.availabilities.pricings.child.fare=Base Fare?0];taxesFeesCharges.infant=[..cabins.availabilities.pricings.infant.taxesFeesCharges.():amount.sum()*pricingDetails:().pax.inf||0?!..cabins.availabilities.pricings.infant.fare=Base Fare?0]",
+                    "grossFare": "grossFare.adult=[..cabins.availabilities.pricings.adult.[pricingDetails:().groupType]*pricingDetails:().pax.adt?..cabins.availabilities.pricings.adult.fare=Gross Fare?.baseFare.adult+.taxesFeesCharges.adult];grossFare.child=[..cabins.availabilities.pricings.child.[pricingDetails:().groupType]*pricingDetails:().pax.chd?..cabins.availabilities.pricings.child.fare=Gross Fare?.baseFare.child+.taxesFeesCharges.child];grossFare.infant=[..cabins.availabilities.pricings.infant.[pricingDetails:().groupType]*pricingDetails:().pax.inf?..cabins.availabilities.pricings.infant.fare=Gross Fare?.baseFare.infant+.taxesFeesCharges.infant]",
+                    "commission": "user:().agency.commissionSheets.find():[airline=...aircraft.airline.name;trips.inc():[pricingDetails:().trip]].():[..commission.adult=[[.amount*0.01*[..baseFare.adult?.referencePrice=Base Fare?..grossFare.adult]?.percentage?.amount]?.age.inc():Adult?0];..commission.child=[[.amount*0.01*[..baseFare.child?.referencePrice=Base Fare?..grossFare.child]?.percentage?.amount]?.age.inc():Child?0];..commission.infant=[[.amount*0.01*[..baseFare.infant?.referencePrice=Base Fare?..grossFare.infant]?.percentage?.amount]?.age.inc():Infant?0]]",
+                    "payable": "payable.adult=.grossFare.adult-.commission.adult;payable.child=.grossFare.child-.commission.child;payable.infant=.grossFare.infant-.commission.infant",
+                    "calcTotal": {
+                        "_": "pricingDetails:().bookings.():[baseFare();taxesFeesCharges();grossFare();commission();payable()]",
+                        "baseFare": "pricingDetails:().total.baseFare+=.baseFare.adult+.baseFare.child+.baseFare.infant",
+                        "taxesFeesCharges": "pricingDetails:().total.taxesFeesCharges+=.taxesFeesCharges.adult+.taxesFeesCharges.child+.taxesFeesCharges.infant",
+                        "grossFare": "pricingDetails:().total.grossFare+=.grossFare.adult+.grossFare.child+.grossFare.infant",
+                        "commission": "pricingDetails:().total.commission+=.commission.adult+.commission.child+.commission.infant",
+                        "payable": "pricingDetails:().total.payable+=.payable.adult+.payable.child+.payable.infant"
+                    }
+                },
+                "initPricingDetails": "pricingDetails:().():[additionalServices=[];bookedAdditionalServices=[];trip=searchEngine:().trip;groupType=searchEngine:().groupType.lowercase();pax=searchEngine:().pax;bookings=:;total=[]]",
+                "bookingPolicy": {
+                    "_": "setPolicyStatus();setPolicyValue()",
+                    "setPolicyStatus": {
+                        "_": "index=0;pricingDetails:().bookingPolicy.policies=:;getBookingPolicies();setPolicyStatus()",
+                        "getBookingPolicies": "bookedAvailabilities:().():[getFreeBookingPolicy();getPayableBookingPolicy()]",
+                        "checkBookingDuration": "..travelDate-.referenceDuration>now().timestamp()?referenceBeforeAfter=Before;referenceDate=Travel Date;referenceDurationOperator=Greater than",
+                        "setPolicyStatus": "pricingDetails:().bookingPolicy.status=Free Booking;getFreeBookingDuration()?pricingDetails:().bookingPolicy.freeBooking?pricingDetails:().bookingPolicy.status=Booking Fees;getPayableBookingDuration()?pricingDetails:().bookingPolicy.payableBooking?pricingDetails:().bookingPolicy.status=Non-Bookable",
+                        "getFreeBookingPolicy": "pricingDetails:().bookingPolicy.policies+=:[.cabins.availabilities.policies.filter():[checkFreeBooking();checkBookingDuration()]];hasFreeBooking()",
+                        "getPayableBookingPolicy": "pricingDetails:().additionalServices.bookingPolicy.policies+=:[.cabins.availabilities.policies.filter():[checkPayableBooking();checkBookingDuration()]];hasPayableBooking()",
+                        "checkFreeBooking": "type=Booking;trip=pricingDetails:().trip;chargesFeesAmount=0;freeUnit=Duration;freeAmount>0",
+                        "checkPayableBooking": "type=Booking;trip=pricingDetails:().trip;chargesFeesAmount>0;freeUnit=Duration;freeAmount>0",
+                        "hasPayableBooking": "pricingDetails:().additionalServices.bookingPolicy.payableBooking=true?!pricingDetails:().additionalServices.bookingPolicy.policies.find():[.len()=0]",
+                        "hasFreeBooking": "pricingDetails:().bookingPolicy.freeBooking=true?!pricingDetails:().bookingPolicy.policies.find():[.len()=0]",
+                        "getFreeBookingDuration": "pricingDetails:().bookingPolicy.bookingDuration=pricingDetails:().bookingPolicy.policies.():[.min():[bookedAvailabilities:().[...index++].travelDate-.referenceDuration].freeAmount].min()",
+                        "getPayableBookingDuration": "pricingDetails:().additionalServices.bookingPolicy.bookingDuration=pricingDetails:().additionalServices.bookingPolicy.policies.():[.min():[bookedAvailabilities:().[...index++].travelDate-.referenceDuration].freeAmount].min()"
+                    },
+                    "setPolicyValue": {
+                        "_": "index=0;pricingDetails:().bookingPolicy.value=['✔'?freeBookingPolicyApplied()?bookingFees()?payableBookingPolicyApplied()?'✖'?nonBookablePolicyApplied()]",
+                        "bookingFees": "pricingDetails:().bookingPolicy.policies.():[.min():[bookedAvailabilities:().[...index++].travelDate-.referenceDuration]].():[.chargesFeesAmount*[pricingDetails:().pax.adt+pricingDetails:().pax.chd?.perPnrOrTicket=Ticket?1]].sum()",
+                        "freeBookingPolicyApplied": "pricingDetails:().bookingPolicy.status=Free Booking",
+                        "payableBookingPolicyApplied": "pricingDetails:().bookingPolicy.status=Booking Fees",
+                        "nonBookablePolicyApplied": "pricingDetails:().bookingPolicy.status=Non-Bookable"
+                    }
+                },
+                "cancellationPolicy": {
+                    "_": "setPolicyStatus();setPolicyValue()",
+                    "setPolicyStatus": {
+                        "_": "index=0;pricingDetails:().cancellationPolicy.policies=:;getCancellationPolicies();setPolicyStatus()",
+                        "getCancellationPolicies": "bookedAvailabilities:().():[getFreeCancellationPolicy();getPayableCancellationPolicy()]",
+                        "getFreeCancellationPolicy": "pricingDetails:().cancellationPolicy.policies+=:[.cabins.availabilities.policies.filter():[checkFreeCancellation();checkCancellationDuration()]];hasFreeCancellation()",
+                        "getPayableCancellationPolicy": "pricingDetails:().additionalServices.cancellationPolicy.policies+=:[.cabins.availabilities.policies.filter():[checkPayableCancellation();checkCancellationDuration()]];hasPayableCancellation()",
+                        "checkFreeCancellation": "type=Cancellation;trip=pricingDetails:().trip;chargesFeesAmount=0",
+                        "checkCancellationDuration": "..travelDate-.referenceDuration>now().timestamp()?referenceBeforeAfter=Before;referenceDate=Travel Date;referenceDurationOperator=Greater than",
+                        "hasFreeCancellation": "pricingDetails:().cancellationPolicy.freeCancellation=true?!pricingDetails:().cancellationPolicy.policies.find():[.len()=0]",
+                        "checkPayableCancellation": "type=Cancellation;trip=pricingDetails:().trip;chargesFeesAmount>0",
+                        "hasPayableCancellation": "pricingDetails:().additionalServices.cancellationPolicy.payableCancellation=true?!pricingDetails:().additionalServices.cancellationPolicy.policies.find():[.len()=0]",
+                        "setPolicyStatus": "pricingDetails:().cancellationPolicy.status=Free Cancellation;getFreeCancellationDuration()?pricingDetails:().cancellationPolicy.freeCancellation?pricingDetails:().cancellationPolicy.status=CancellationFees;getPayableCancellationDuration()?pricingDetails:().cancellationPolicy.payableCancellation?pricingDetails:().cancellationPolicy.status=Non-Cancellable",
+                        "getFreeCancellationDuration": "pricingDetails:().cancellationPolicy.cancellationDuration=pricingDetails:().cancellationPolicy.policies.():[.min():[bookedAvailabilities:().[...index++].travelDate-.referenceDuration].freeAmount].min()",
+                        "getPayableCancellationDuration": "pricingDetails:().additionalServices.bookingPolicy.bookingDuration=pricingDetails:().additionalServices.bookingPolicy.policies.():[.min():[bookedAvailabilities:().[...index++].travelDate-.referenceDuration].freeAmount].min()"
+                    },
+                    "setPolicyValue": {
+                        "_": "index=0;pricingDetails:().cancellationPolicy.value=['✔'?freeCancellationPolicyApplied()?bookingFees()?payableCancellationPolicyApplied()?'✖'?nonCancellablePolicyApplied()]",
+                        "bookingFees": "pricingDetails:().cancellationPolicy.policies.():[.min():[bookedAvailabilities:().[...index++].travelDate-.referenceDuration]].():[.chargesFeesAmount*[pricingDetails:().pax.adt+pricingDetails:().pax.chd?.perPnrOrTicket=Ticket?1]].sum()",
+                        "nonCancellablePolicyApplied": "pricingDetails:().cancellationPolicy.status=Non-Cancellable",
+                        "payableCancellationPolicyApplied": "pricingDetails:().cancellationPolicy.status=Cancellation Fees",
+                        "freeCancellationPolicyApplied": "pricingDetails:().cancellationPolicy.status=Free Cancellation"
+                    }
+                }
+            },
+            "closePricingDetails": "fadeOut();pointerEvents()=none",
+            "toggleItem": "next().opened=true;next().height()=_.subItems.len()*3+rem;1stChild().1stChild().rotate()=0?!next().opened?next().opened=false;next().height()=0;1stChild().1stChild().rotate()=180"
+        },
+        "comments": [
+            {
+                "note": "additional services",
+                "path": [
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "pricing details",
+                "path": [
+                    "children",
+                    1
+                ]
+            },
+            {
+                "note": "main",
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    1,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "submain",
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    1,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "note": "bookingPolicy",
+                "path": [
+                    "pricingDetailsList",
+                    0
+                ]
+            },
+            {
+                "note": "cancellationPolicy",
+                "path": [
+                    "pricingDetailsList",
+                    1
+                ]
+            },
+            {
+                "note": "passenger",
+                "path": [
+                    "pricingDetailsList",
+                    2
+                ]
+            },
+            {
+                "note": "baseFare",
+                "path": [
+                    "pricingDetailsList",
+                    3
+                ]
+            },
+            {
+                "note": "taxesFeesCharges",
+                "path": [
+                    "pricingDetailsList",
+                    4
+                ]
+            },
+            {
+                "note": "grossFare",
+                "path": [
+                    "pricingDetailsList",
+                    5
+                ]
+            },
+            {
+                "note": "commission",
+                "path": [
+                    "pricingDetailsList",
+                    6
+                ]
+            },
+            {
+                "note": "payable",
+                "path": [
+                    "pricingDetailsList",
+                    7
+                ]
+            }
+        ],
+        "collapsed": [
+            {
+                "path": [
+                    "pricingDetailsList",
+                    3
+                ]
+            },
+            {
+                "path": [
+                    "pricingDetailsList",
+                    4
+                ]
+            },
+            {
+                "path": [
+                    "pricingDetailsList",
+                    5
+                ]
+            },
+            {
+                "path": [
+                    "pricingDetailsList",
+                    6
+                ]
+            },
+            {
+                "path": [
+                    "pricingDetailsList",
+                    7
+                ]
+            },
+            {
+                "path": [
+                    "pricingDetails",
+                    "bookingPolicy",
+                    "setPolicyStatus"
+                ]
+            },
+            {
+                "path": [
+                    "pricingDetails",
+                    "bookingPolicy",
+                    "setPolicyValue"
+                ]
+            },
+            {
+                "path": [
+                    "pricingDetails",
+                    "cancellationPolicy",
+                    "setPolicyValue"
+                ]
+            },
+            {
+                "path": [
+                    "pricingDetails",
+                    "makePricingCalculations"
+                ]
+            },
+            {
+                "path": [
+                    "pricingDetails",
+                    "makePricingCalculations",
+                    "calcTotal"
+                ]
+            }
+        ],
+        "arrange": {
+            "": [
+                "view",
+                "children",
+                "toggleItem",
+                "pricingDetailsList",
+                "pricingDetails",
+                "closePricingDetails"
+            ],
+            "children.0": [
+                "view"
+            ],
+            "children.1": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0": [
+                "view"
+            ],
+            "children.1.children.1": [
+                "view",
+                "children"
+            ],
+            "children.1.children.1.children.0": [
+                "view",
+                "children"
+            ],
+            "children.1.children.1.children.0.children.0": [
+                "view",
+                "children"
+            ],
+            "children.1.children.1.children.0.children.0.children.0": [
+                "view"
+            ],
+            "children.1.children.1.children.0.children.0.children.1": [
+                "view"
+            ],
+            "children.1.children.1.children.1": [
+                "view",
+                "children"
+            ],
+            "children.1.children.1.children.1.children.0": [
+                "view",
+                "children"
+            ],
+            "children.1.children.1.children.1.children.0.children.0": [
+                "view"
+            ],
+            "children.1.children.1.children.1.children.0.children.1": [
+                "view"
+            ],
+            "pricingDetailsList.0": [
+                "keyname",
+                "value",
+                "subItems"
+            ],
+            "pricingDetailsList.0.subItems.0": [
+                "keyname",
+                "value"
+            ],
+            "pricingDetailsList.1": [
+                "keyname",
+                "value"
+            ],
+            "pricingDetailsList.2": [
+                "keyname",
+                "value"
+            ],
+            "pricingDetailsList.3": [
+                "keyname",
+                "value"
+            ],
+            "pricingDetailsList.4": [
+                "keyname",
+                "value"
+            ],
+            "pricingDetailsList.5": [
+                "keyname",
+                "value"
+            ],
+            "pricingDetailsList.6": [
+                "keyname",
+                "value"
+            ],
+            "pricingDetailsList.7": [
+                "keyname",
+                "value"
+            ],
+            "pricingDetails": [
+                "_",
+                "initPricingDetails",
+                "bookingPolicy",
+                "cancellationPolicy",
+                "makePricingCalculations"
+            ],
+            "pricingDetails.bookingPolicy": [
+                "_",
+                "setPolicyStatus",
+                "setPolicyValue"
+            ],
+            "pricingDetails.bookingPolicy.setPolicyStatus": [
+                "_",
+                "checkBookingDuration",
+                "checkFreeBooking",
+                "checkPayableBooking",
+                "getBookingPolicies",
+                "getFreeBookingDuration",
+                "getFreeBookingPolicy",
+                "getPayableBookingDuration",
+                "getPayableBookingPolicy",
+                "hasFreeBooking",
+                "hasPayableBooking",
+                "setPolicyStatus"
+            ],
+            "pricingDetails.bookingPolicy.setPolicyValue": [
+                "_",
+                "bookingFees",
+                "freeBookingPolicyApplied",
+                "nonBookablePolicyApplied",
+                "payableBookingPolicyApplied"
+            ],
+            "pricingDetails.cancellationPolicy": [
+                "_",
+                "setPolicyStatus",
+                "setPolicyValue"
+            ],
+            "pricingDetails.cancellationPolicy.setPolicyStatus": [
+                "_",
+                "checkCancellationDuration",
+                "checkFreeCancellation",
+                "checkPayableCancellation",
+                "getCancellationPolicies",
+                "getFreeCancellationPolicy",
+                "getPayableCancellationPolicy",
+                "getFreeCancellationDuration",
+                "getPayableCancellationDuration",
+                "hasFreeCancellation",
+                "hasPayableCancellation",
+                "setPolicyStatus"
+            ],
+            "pricingDetails.cancellationPolicy.setPolicyValue": [
+                "_",
+                "bookingFees",
+                "freeCancellationPolicyApplied",
+                "nonCancellablePolicyApplied",
+                "payableCancellationPolicyApplied"
+            ],
+            "pricingDetails.makePricingCalculations": [
+                "_",
+                "baseFare",
+                "calcPrices",
+                "calcTotal",
+                "commission",
+                "grossFare",
+                "payable",
+                "taxesFeesCharges"
+            ],
+            "pricingDetails.makePricingCalculations.calcTotal": [
+                "_",
+                "baseFare",
+                "commission",
+                "grossFare",
+                "payable",
+                "taxesFeesCharges"
+            ]
+        },
+        "schema": {},
+        "secured": false,
+        "size": 16980
+    },
+    "view": "View?id=pricingDetails;class=column box-shadow-1;style:[position=fixed;opacity=0;pointerEvents=none;backgroundColor=#fff;padding=1rem;transition=opacity .2s;bottom=0;right=0;top=0;width=30rem;zIndex=1];[mleave?timer=timer():[@view.component.manager.flight.pricingDetails;closePricingDetails()]:400];[menter?timer.clearTimer()]",
+    "children": [
+        {
+            "view": "View?class=flex column;style=[width=100%]"
+        },
+        {
+            "view": "View?class=flex column;style=[width=100%]",
+            "children": [
+                {
+                    "view": "Text?class=flex;style=[width=100%;fontSize=1.6rem;padding=2rem 0];text=Pricing Details"
+                },
+                {
+                    "view": "[View]:[data=pricingDetailsList()]?class=flex column;style=[overflowY=hidden]",
+                    "children": [
+                        {
+                            "view": "View?class=flexbox;style=[height=3.5rem;transition=.2s];hover.style.backgroundColor=#f6f6f6",
+                            "children": [
+                                {
+                                    "view": "View?class=flexbox;style=[justifyContent=space-between;flex=1]",
+                                    "children": [
+                                        {
+                                            "view": "Text?text=[[_.keyname]];style=[fontSize=1.3rem]"
+                                        },
+                                        {
+                                            "view": "Text?text=[[_.value]];style=[fontSize=1.2rem]"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "view": "View?class=flex column;opened=[_.subItems.len()>0];style=[backgroundColor=#fff;paddingLeft=2rem;height=[_.subItems.len()||0]*3+rem;overflowY=hidden;transition=.2s];hover.style.backgroundColor=#f6f6f6",
+                            "children": [
+                                {
+                                    "view": "[View]:[data=_.subItems?_.subItems]?class=flexbox;style=[justifyContent=space-between;height=3rem]",
+                                    "children": [
+                                        {
+                                            "view": "Text?text=[[_.keyname]];style=[fontSize=1.2rem]"
+                                        },
+                                        {
+                                            "view": "Text?text=[[_.value]];style=[fontSize=1.2rem]"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

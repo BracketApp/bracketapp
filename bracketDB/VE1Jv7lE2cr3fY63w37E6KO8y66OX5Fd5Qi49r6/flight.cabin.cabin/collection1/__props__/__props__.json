@@ -5,12 +5,12 @@
     "lastChunk": 1,
     "docsLength": 4,
     "counter": 4,
-    "reads": 108,
-    "writes": 42,
+    "reads": 2190,
+    "writes": 48,
     "deletes": 0,
     "size": 1462,
-    "payloadIn": null,
-    "payloadOut": 33421,
+    "payloadIn": 1668,
+    "payloadOut": 892760,
     "indexes": [],
     "lastIndex": 0,
     "schema": {
@@ -20,7 +20,7 @@
                 {
                     "path": [
                         "schema",
-                        "cabin"
+                        "class"
                     ]
                 },
                 {
@@ -43,11 +43,11 @@
                     "schema"
                 ],
                 "schema": [
-                    "cabin",
+                    "class",
                     "seatCapacity",
                     "availabilities"
                 ],
-                "schema.cabin": [
+                "schema.class": [
                     "type",
                     "options"
                 ],
@@ -77,7 +77,7 @@
                     "required": false
                 }
             },
-            "cabin": {
+            "class": {
                 "type": "text",
                 "options": [
                     "Economy",

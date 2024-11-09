@@ -1,5 +1,4 @@
 {
-    "view": "View?class=column;style:[position=relative;padding=.5rem;gap=.5rem];form=_.form;[[_.actions]]",
     "children": [
         {
             "view": "View?class=flexbox;style:[height=3.5rem;width=100%;justifyContent=space-between;position=relative]",
@@ -51,10 +50,15 @@
                             ]
                         },
                         {
-                            "view": "View?class=flexbox pointer;style:[width=12rem;height=3rem;backgroundColor=#fb3b1e;borderRadius=.4rem;marginLeft=auto;marginTop=auto;transition=.2s];hover.style.backgroundColor=#db2e14;[click;[keydown:child()??e().code=Enter]?getData()]",
+                            "view": "View?class=flexbox;style:[marginLeft=auto;marginTop=auto;gap=1rem]",
                             "children": [
                                 {
-                                    "view": "Input?class=flexbox pointer;text=Search;readonly;style:[color=#fff;width=100%]"
+                                    "view": "View?class=flexbox pointer;style:[width=12rem;height=3rem;backgroundColor=#fb3b1e;borderRadius=.4rem;transition=.2s];hover.style.backgroundColor=#db2e14;[click;[keydown:child()??e().code=Enter]?getData()]",
+                                    "children": [
+                                        {
+                                            "view": "Input?class=flexbox pointer;text=Search;readonly;style:[color=#fff;width=100%]"
+                                        }
+                                    ]
                                 }
                             ]
                         }
@@ -70,7 +74,7 @@
         "creationDate": 1724169816127,
         "collection": "view.component.manager",
         "chunk": "chunk1",
-        "lastModified": 1729884970216,
+        "lastModified": 1731096168405,
         "dev": true,
         "actions": {
             "expandMore": {
@@ -110,6 +114,17 @@
                         "actions": "style:[fontSize=2rem];google;[click?exportData()]"
                     },
                     {
+                        "icon": "shopping_bag",
+                        "tooltip": "shopping cart",
+                        "type": "icon",
+                        "container": {
+                            "actions": "hover.style.backgroundColor=#f6f6f6;[click?():pricingDetails.refresh()::[_.view.():[opacity()=1;pointerEvents()=auto]]]",
+                            "class": "flexbox",
+                            "style": "height=4rem;width=4rem;border=1px solid #ddd;borderRadius=.8rem;cursor=pointer;transition=.2s;position=fixed;bottom=2rem;right=2rem"
+                        },
+                        "actions": "style:[fontSize=2rem];google"
+                    },
+                    {
                         "icon": "add",
                         "tooltip": "create",
                         "type": "icon",
@@ -124,10 +139,7 @@
                 },
                 "style": "display=flex;gap=.75rem"
             },
-            "get ": "",
-            "getData": {
-                "_": "[_.search.btn.action]()::[3rdParent().next().refresh()?_.success?note():[text=_.message;type=danger]]"
-            }
+            "getData": "[_.search.btn.action]()::[[note():[text=_.message;type=danger]?!_.success];nthParent():4.next().refresh()]"
         },
         "comments": [
             {
@@ -224,11 +236,19 @@
                 ]
             },
             {
-                "note": "form",
+                "note": "pricing",
                 "path": [
                     "btns",
                     "views",
                     4
+                ]
+            },
+            {
+                "note": "form",
+                "path": [
+                    "btns",
+                    "views",
+                    5
                 ]
             }
         ],
@@ -306,12 +326,6 @@
             {
                 "path": [
                     "btns",
-                    "views"
-                ]
-            },
-            {
-                "path": [
-                    "btns",
                     "views",
                     0
                 ]
@@ -342,6 +356,13 @@
                     "btns",
                     "views",
                     4
+                ]
+            },
+            {
+                "path": [
+                    "btns",
+                    "views",
+                    5
                 ]
             }
         ],
@@ -405,6 +426,10 @@
                 "children"
             ],
             "children.2.children.1.children.1.children.0": [
+                "view",
+                "children"
+            ],
+            "children.2.children.1.children.1.children.0.children.0": [
                 "view"
             ],
             "expandMore": [
@@ -457,11 +482,22 @@
                 "tooltip",
                 "type"
             ],
-            "getData": [
-                "_"
+            "btns.views.4.container": [
+                "actions",
+                "class",
+                "style"
+            ],
+            "btns.views.5": [
+                "actions",
+                "container",
+                "icon",
+                "tooltip",
+                "type"
             ]
         },
+        "schema": {},
         "secured": false,
-        "size": 5931
-    }
+        "size": 6627
+    },
+    "view": "View?class=column;style:[position=relative;padding=.5rem;gap=.5rem];form=_.form;[[_.actions]]"
 }

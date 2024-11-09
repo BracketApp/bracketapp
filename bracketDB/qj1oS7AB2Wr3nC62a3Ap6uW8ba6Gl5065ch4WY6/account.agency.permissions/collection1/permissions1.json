@@ -1,0 +1,29 @@
+{
+    "__props__": {
+        "id": "A1D773t0G2C04192D8P5M1k5t1",
+        "doc": "permissions1",
+        "counter": 1,
+        "creationDate": 1730201285151,
+        "collection": "account.agency.permissions",
+        "chunk": "chunk1",
+        "lastModified": 1730201939884,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "flight"
+            ],
+            "flight": [
+                "searchByGroup"
+            ]
+        },
+        "schema": {},
+        "secured": false,
+        "size": 365
+    },
+    "flight": {
+        "searchByGroup": true
+    }
+}

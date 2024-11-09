@@ -3,14 +3,14 @@
     "collection": 1,
     "maxSize": 1000,
     "lastChunk": 1,
-    "docsLength": 15,
-    "counter": 15,
-    "reads": 15696,
-    "writes": 16,
+    "docsLength": 16,
+    "counter": 16,
+    "reads": 16600,
+    "writes": 17,
     "deletes": 0,
-    "size": 9427,
-    "payloadIn": 9427,
-    "payloadOut": 9809850,
+    "size": 10062,
+    "payloadIn": 10062,
+    "payloadOut": 10396410,
     "indexes": [
         {
             "find": [
@@ -19,8 +19,8 @@
                 "startDate"
             ],
             "doc": "index1",
-            "lastRead": 1729255293019,
-            "expiryDate": 1731847293019
+            "lastRead": 1730402689696,
+            "expiryDate": 1732994689696
         },
         {
             "find": [
@@ -28,8 +28,8 @@
                 "publicID"
             ],
             "doc": "index2",
-            "lastRead": 1729952685172,
-            "expiryDate": 1732544685172
+            "lastRead": 1731172344653,
+            "expiryDate": 1733764344653
         },
         {
             "find": [
@@ -38,8 +38,8 @@
                 "expiryDate"
             ],
             "doc": "index3",
-            "lastRead": 1729701226019,
-            "expiryDate": 1732293226019
+            "lastRead": 1730739118106,
+            "expiryDate": 1733331118106
         },
         {
             "find": [
@@ -49,9 +49,17 @@
                 "expiryDate"
             ],
             "doc": "index4",
-            "lastRead": 1729255293003,
-            "expiryDate": 1731847293003
+            "lastRead": 1730402689682,
+            "expiryDate": 1732994689682
+        },
+        {
+            "find": [
+                "accountID"
+            ],
+            "doc": "index6",
+            "lastRead": 1730740217394,
+            "expiryDate": 1733332217394
         }
     ],
-    "lastIndex": 5
+    "lastIndex": 6
 }

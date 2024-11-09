@@ -6,11 +6,11 @@
         "creationDate": 1729882716487,
         "collection": "view.server",
         "chunk": "chunk1",
-        "lastModified": 1729897893177,
+        "lastModified": 1730413558956,
         "dev": true,
         "actions": {
             "searchAvailability": {
-                "_": "flights:()=:;_.search._():[searchFlights()]:[responseHandler()]?checkRequiredInputs()?failResponse()",
+                "_": "availabilities:()=:;_.search._():[searchFlights()]:[getCommissionSheets()::responseHandler()]?checkRequiredInputs();checkAgentPermissions()?failResponse()",
                 "failResponse": "send():[success=false;message=Enter all required inputs!]",
                 "checkRequiredInputs": {
                     "_": "oneWay()?_.trip=One way?roundTrip()?_.trip=Round trip?multiCity()?_.trip=Multi city?openReturn()?_.trip=Open return",
@@ -20,11 +20,18 @@
                     "openReturn": "_.find():[search.0.find():[from;to;travelDate;class];pax.adt;groupType]"
                 },
                 "searchFlights": {
-                    "_": "oneWay()?__.trip=One way?roundTrip()?__.trip=Round trip?multiCity()?__.trip=Multi city?openReturn()?__.trip=Open return",
-                    "oneWay": "search():[collection=flight.flight.flight;find=[from=_.from;to=_.to;travelDate=_.travelDate]]:[flights:()+=_.data]",
-                    "roundTrip": "oneWay()::[oneWay():[from=_.to;to=_.from;travelDate=_.returnDate]]"
+                    "_": "getAirports()::oneWay()?__.trip=One way||__.trip=Multi city?getAirports()::roundTrip()?__.trip=Round trip?openReturn()?__.trip=Open return",
+                    "oneWay": "search():[collection=flight.flight.flight;find=[from=_.from;to=_.to;travelDate=_.travelDate]]:[restructureData();availabilities:()+=:[_.data.values()]?_.data.value()?failResponse()]",
+                    "roundTrip": "oneWay()::[oneWay():[from=_.to;to=_.from;travelDate=_.returnDate;class=_.class;returnFlight=true]]",
+                    "getAirports": "search():[collection=public.airport;findOne.name=_.from]:[__.from=_.doc];search():[collection=public.airport;findOne.name=_.to]:[__.to=_.doc]",
+                    "failResponse": "send():[success=false;message=[No return flight found on this date!?__.returnFlight?No flight found on this date!]]"
                 },
-                "responseHandler": "send():[flights=flights:()]"
+                "responseHandler": "send():[availabilities=availabilities:();commissionSheets=commissionSheets:()]",
+                "getCommissionSheets": "search():[collection=account.agency.commission;docs=session:().user.agency.commissionSheets]:[commissionSheets:()=_.data.values()]",
+                "checkAgentPermissions": {
+                    "_": "send():[success=false;msg=You dont have the permission to search by group!]?_.groupType=Group;!session:().user.agency.permissions.flight.searchByGroup?true"
+                },
+                "restructureData": "_.data.values()._():[_.cabins=_.cabins.find():[class=___.class];[_.cabins.availabilities._():[_.availableSeats-=_.bookedSeats;_.bookedSeats.del();[_.availableSeats=10?_.availableSeats>10];[_.pricings=_.pricings.find():[trip=[_____.trip||______.trip]]]?_.availableSeats?_.availableSeats.del()]?_.cabins]]"
             }
         },
         "comments": [],
@@ -32,13 +39,13 @@
             {
                 "path": [
                     "searchAvailability",
-                    "checkRequiredInputs"
+                    "checkAgentPermissions"
                 ]
             },
             {
                 "path": [
                     "searchAvailability",
-                    "searchFlights"
+                    "checkRequiredInputs"
                 ]
             }
         ],
@@ -49,9 +56,15 @@
             "searchAvailability": [
                 "_",
                 "failResponse",
+                "checkAgentPermissions",
                 "checkRequiredInputs",
                 "searchFlights",
-                "responseHandler"
+                "responseHandler",
+                "getCommissionSheets",
+                "restructureData"
+            ],
+            "searchAvailability.checkAgentPermissions": [
+                "_"
             ],
             "searchAvailability.checkRequiredInputs": [
                 "_",
@@ -63,10 +76,13 @@
             "searchAvailability.searchFlights": [
                 "_",
                 "oneWay",
-                "roundTrip"
+                "failResponse",
+                "roundTrip",
+                "getAirports"
             ]
         },
+        "schema": {},
         "secured": true,
-        "size": 1758
+        "size": 3130
     }
 }

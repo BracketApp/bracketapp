@@ -1,18 +1,4 @@
 {
-    "view": "View?id=manager;class=column;style:[width=100%;height=100%];[data=@view.schema.manager.[_.schema]?!_.searchEngine]",
-    "children": [
-        {
-            "view": "searchEngine??_"
-        },
-        {
-            "view": "View?style:[width=100%;padding=0 .5rem;overflow=hidden];[loaded?height()='calc(100% - '+prev().el().scrollHeight+'px)']",
-            "children": [
-                {
-                    "view": "table??_"
-                }
-            ]
-        }
-    ],
     "__props__": {
         "id": "j1Q7h204l1h6H9w8O110i4x9L6",
         "doc": "manager",
@@ -20,7 +6,7 @@
         "creationDate": 1724169810496,
         "collection": "view.component.manager",
         "chunk": "chunk1",
-        "lastModified": 1726746256492,
+        "lastModified": 1730491090048,
         "dev": true,
         "actions": {},
         "comments": [
@@ -51,7 +37,22 @@
                 "view"
             ]
         },
+        "schema": {},
         "secured": false,
-        "size": 761
-    }
+        "size": 773
+    },
+    "view": "View?id=manager;class=column;style:[width=100%;height=100%];[data=@view.schema.manager.[_.schema]?!_.searchEngine]",
+    "children": [
+        {
+            "view": "searchEngine??_"
+        },
+        {
+            "view": "View?style:[width=100%;overflow=hidden;padding=0 .5rem];[loaded?height()='calc(100% - '+prev().el().scrollHeight+'px)']",
+            "children": [
+                {
+                    "view": "table??_"
+                }
+            ]
+        }
+    ]
 }

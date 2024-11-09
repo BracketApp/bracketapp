@@ -6,7 +6,7 @@
         "creationDate": 1729873649580,
         "collection": "flight.policy.policy",
         "chunk": "chunk1",
-        "lastModified": 1729873927851,
+        "lastModified": 1731099307612,
         "dev": true,
         "actions": {},
         "comments": [],
@@ -15,15 +15,32 @@
             "": [
                 "name",
                 "type",
+                "perPnrOrTicket",
                 "chargesFeesAmount",
-                "chargesFeesCurrency"
+                "chargesFeesCurrency",
+                "referenceDate",
+                "referenceDuration",
+                "referenceDurationOperator",
+                "referenceBeforeAfter",
+                "trip",
+                "freeUnit",
+                "freeAmount"
             ]
         },
+        "schema": {},
         "secured": false,
-        "size": 419
+        "size": 791
     },
     "name": "Free Booking",
     "type": "Booking",
-    "chargesFeesAmount": 0,
-    "chargesFeesCurrency": "USD"
+    "chargesFeesAmount": 20,
+    "chargesFeesCurrency": "USD",
+    "referenceDate": "Travel Date",
+    "referenceDuration": 2592000000,
+    "referenceDurationOperator": "Greater than",
+    "trip": "Round trip",
+    "referenceBeforeAfter": "Before",
+    "freeUnit": "Duration",
+    "freeAmount": 172800000,
+    "perPnrOrTicket": "PNR"
 }

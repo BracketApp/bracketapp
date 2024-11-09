@@ -1,0 +1,619 @@
+{
+    "__props__": {
+        "id": "w1G753C0c6z1k5Z311i7F3b8Q7",
+        "doc": "adtChdInf",
+        "counter": 1,
+        "creationDate": 1730615317387,
+        "collection": "view.schema.manager",
+        "chunk": "chunk1",
+        "lastModified": 1730636221330,
+        "dev": true,
+        "actions": {
+            "addAdult": "data().adt+=1;prev().refresh();():[nthParent():4.positioner].next().refresh();pricingDetails()?data().adt+data().chd<9||form().groupType=Group;data().adt+data().chd<bookedAvailabilities:().():[cabins.availabilities.availableSeats].min()",
+            "addChild": "data().chd+=1;prev().refresh();():[nthParent():4.positioner].next().refresh();pricingDetails()?data().adt+data().chd<9||form().groupType=Group;data().adt+data().chd<bookedAvailabilities:().():[cabins.availabilities.availableSeats].min()",
+            "addInfant": "data().inf+=1;prev().refresh();pricingDetails()?data().inf<data().adt",
+            "pricingDetails": "@view.component.manager.flight.pricingDetails;pricingDetails()"
+        },
+        "comments": [
+            {
+                "note": "adt",
+                "path": [
+                    "views",
+                    0
+                ]
+            },
+            {
+                "note": "adt",
+                "path": [
+                    "views",
+                    0,
+                    "views",
+                    0
+                ]
+            },
+            {
+                "note": "rem",
+                "path": [
+                    "views",
+                    0,
+                    "views",
+                    1
+                ]
+            },
+            {
+                "note": "num",
+                "path": [
+                    "views",
+                    0,
+                    "views",
+                    2
+                ]
+            },
+            {
+                "note": "add",
+                "path": [
+                    "views",
+                    0,
+                    "views",
+                    3
+                ]
+            },
+            {
+                "note": "divider",
+                "path": [
+                    "views",
+                    1
+                ]
+            },
+            {
+                "note": "chd",
+                "path": [
+                    "views",
+                    2
+                ]
+            },
+            {
+                "note": "chd",
+                "path": [
+                    "views",
+                    2,
+                    "views",
+                    0
+                ]
+            },
+            {
+                "note": "rem",
+                "path": [
+                    "views",
+                    2,
+                    "views",
+                    1
+                ]
+            },
+            {
+                "note": "num",
+                "path": [
+                    "views",
+                    2,
+                    "views",
+                    2
+                ]
+            },
+            {
+                "note": "add",
+                "path": [
+                    "views",
+                    2,
+                    "views",
+                    3
+                ]
+            },
+            {
+                "note": "divider",
+                "path": [
+                    "views",
+                    3
+                ]
+            },
+            {
+                "note": "inf",
+                "path": [
+                    "views",
+                    4
+                ]
+            },
+            {
+                "note": "inf",
+                "path": [
+                    "views",
+                    4,
+                    "views",
+                    0
+                ]
+            },
+            {
+                "note": "rem",
+                "path": [
+                    "views",
+                    4,
+                    "views",
+                    1
+                ]
+            },
+            {
+                "note": "num",
+                "path": [
+                    "views",
+                    4,
+                    "views",
+                    2
+                ]
+            },
+            {
+                "note": "add",
+                "path": [
+                    "views",
+                    4,
+                    "views",
+                    3
+                ]
+            }
+        ],
+        "collapsed": [
+            {
+                "path": [
+                    "views",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "views",
+                    0,
+                    "views",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "views",
+                    0,
+                    "views",
+                    0,
+                    "container"
+                ]
+            },
+            {
+                "path": [
+                    "views",
+                    0,
+                    "views",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "views",
+                    0,
+                    "views",
+                    2
+                ]
+            },
+            {
+                "path": [
+                    "views",
+                    0,
+                    "views",
+                    3
+                ]
+            },
+            {
+                "path": [
+                    "views",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "views",
+                    2
+                ]
+            },
+            {
+                "path": [
+                    "views",
+                    2,
+                    "views",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "views",
+                    2,
+                    "views",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "views",
+                    2,
+                    "views",
+                    2
+                ]
+            },
+            {
+                "path": [
+                    "views",
+                    2,
+                    "views",
+                    3
+                ]
+            },
+            {
+                "path": [
+                    "views",
+                    3
+                ]
+            },
+            {
+                "path": [
+                    "views",
+                    4
+                ]
+            },
+            {
+                "path": [
+                    "views",
+                    4,
+                    "views",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "views",
+                    4,
+                    "views",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "views",
+                    4,
+                    "views",
+                    2
+                ]
+            },
+            {
+                "path": [
+                    "views",
+                    4,
+                    "views",
+                    3
+                ]
+            }
+        ],
+        "arrange": {
+            "": [
+                "style",
+                "class",
+                "views",
+                "addAdult",
+                "addChild",
+                "addInfant",
+                "pricingDetails"
+            ],
+            "views.0": [
+                "type",
+                "style",
+                "class",
+                "views"
+            ],
+            "views.0.views.0": [
+                "type",
+                "text",
+                "style",
+                "container"
+            ],
+            "views.0.views.0.container": [
+                "style"
+            ],
+            "views.0.views.1": [
+                "style",
+                "container",
+                "icon",
+                "google",
+                "type"
+            ],
+            "views.0.views.1.container": [
+                "class",
+                "style",
+                "actions"
+            ],
+            "views.0.views.2": [
+                "container",
+                "text",
+                "style",
+                "type"
+            ],
+            "views.0.views.2.container": [
+                "class",
+                "style"
+            ],
+            "views.0.views.3": [
+                "container",
+                "google",
+                "icon",
+                "style",
+                "type"
+            ],
+            "views.0.views.3.container": [
+                "class",
+                "style",
+                "actions"
+            ],
+            "views.1": [
+                "type",
+                "style"
+            ],
+            "views.2": [
+                "class",
+                "style",
+                "type",
+                "views"
+            ],
+            "views.2.views.0": [
+                "container",
+                "style",
+                "text",
+                "type"
+            ],
+            "views.2.views.0.container": [
+                "style"
+            ],
+            "views.2.views.1": [
+                "container",
+                "google",
+                "icon",
+                "style",
+                "type"
+            ],
+            "views.2.views.1.container": [
+                "actions",
+                "class",
+                "style"
+            ],
+            "views.2.views.2": [
+                "container",
+                "style",
+                "text",
+                "type"
+            ],
+            "views.2.views.2.container": [
+                "class",
+                "style"
+            ],
+            "views.2.views.3": [
+                "container",
+                "google",
+                "icon",
+                "style",
+                "type"
+            ],
+            "views.2.views.3.container": [
+                "actions",
+                "class",
+                "style"
+            ],
+            "views.3": [
+                "style",
+                "type"
+            ],
+            "views.4": [
+                "class",
+                "style",
+                "type",
+                "views"
+            ],
+            "views.4.views.0": [
+                "container",
+                "style",
+                "text",
+                "type"
+            ],
+            "views.4.views.0.container": [
+                "style"
+            ],
+            "views.4.views.1": [
+                "container",
+                "google",
+                "icon",
+                "style",
+                "type"
+            ],
+            "views.4.views.1.container": [
+                "actions",
+                "class",
+                "style"
+            ],
+            "views.4.views.2": [
+                "container",
+                "style",
+                "text",
+                "type"
+            ],
+            "views.4.views.2.container": [
+                "class",
+                "style"
+            ],
+            "views.4.views.3": [
+                "container",
+                "google",
+                "icon",
+                "style",
+                "type"
+            ],
+            "views.4.views.3.container": [
+                "actions",
+                "class",
+                "style"
+            ]
+        },
+        "schema": {},
+        "secured": false,
+        "size": 6905
+    },
+    "views": [
+        {
+            "type": "view",
+            "views": [
+                {
+                    "type": "text",
+                    "text": "Adults",
+                    "container": {
+                        "style": "width=10rem"
+                    },
+                    "style": "fontSize=1.3rem"
+                },
+                {
+                    "type": "icon",
+                    "style": "fontSize=1.4rem",
+                    "icon": "remove",
+                    "google": true,
+                    "container": {
+                        "class": "flexbox pointer",
+                        "style": "border=1px solid #ddd;borderRadius=.5rem;height=2.5rem;width=2.5rem;transition=.2s",
+                        "actions": "hover.style.backgroundColor=#f6f6f6;[click?data().adt-=1;next().refresh();():[nthParent():4.positioner].next().refresh()?data().adt>1]"
+                    }
+                },
+                {
+                    "type": "text",
+                    "style": "fontSize=1.4rem",
+                    "container": {
+                        "class": "flexbox",
+                        "style": "border=1px solid #ddd;borderRadius=.5rem;height=2.5rem;width=2.5rem;transition=.2s"
+                    },
+                    "text": "data().adt"
+                },
+                {
+                    "type": "icon",
+                    "style": "fontSize=1.4rem",
+                    "icon": "add",
+                    "google": true,
+                    "container": {
+                        "class": "flexbox pointer",
+                        "style": "border=1px solid #ddd;borderRadius=.5rem;height=2.5rem;width=2.5rem;transition=.2s",
+                        "actions": "hover.style.backgroundColor=#f6f6f6;[click?@view.schema.manager.adtChdInf;addAdult()]"
+                    }
+                }
+            ],
+            "style": "gap=.5rem",
+            "class": "flex align-center"
+        },
+        {
+            "type": "divider",
+            "style": "width=100%;height=1px;backgroundColor=#ddd"
+        },
+        {
+            "type": "view",
+            "views": [
+                {
+                    "type": "text",
+                    "text": "Children",
+                    "container": {
+                        "style": "width=10rem"
+                    },
+                    "style": "fontSize=1.3rem"
+                },
+                {
+                    "type": "icon",
+                    "style": "fontSize=1.4rem",
+                    "icon": "remove",
+                    "google": true,
+                    "container": {
+                        "class": "flexbox pointer",
+                        "style": "border=1px solid #ddd;borderRadius=.5rem;height=2.5rem;width=2.5rem;transition=.2s",
+                        "actions": "hover.style.backgroundColor=#f6f6f6;[click?data().chd-=1;next().refresh();():[nthParent():4.positioner].next().refresh()?data().chd>0]"
+                    }
+                },
+                {
+                    "type": "text",
+                    "style": "fontSize=1.4rem",
+                    "container": {
+                        "class": "flexbox",
+                        "style": "border=1px solid #ddd;borderRadius=.5rem;height=2.5rem;width=2.5rem;transition=.2s"
+                    },
+                    "text": "data().chd"
+                },
+                {
+                    "type": "icon",
+                    "style": "fontSize=1.4rem",
+                    "icon": "add",
+                    "google": true,
+                    "container": {
+                        "class": "flexbox pointer",
+                        "style": "border=1px solid #ddd;borderRadius=.5rem;height=2.5rem;width=2.5rem;transition=.2s",
+                        "actions": "hover.style.backgroundColor=#f6f6f6;[click?@view.schema.manager.adtChdInf;addChild()]"
+                    }
+                }
+            ],
+            "style": "gap=.5rem",
+            "class": "flex align-center"
+        },
+        {
+            "type": "divider",
+            "style": "width=100%;height=1px;backgroundColor=#ddd"
+        },
+        {
+            "type": "view",
+            "views": [
+                {
+                    "type": "text",
+                    "text": "Infants",
+                    "container": {
+                        "style": "width=10rem"
+                    },
+                    "style": "fontSize=1.3rem"
+                },
+                {
+                    "type": "icon",
+                    "style": "fontSize=1.4rem",
+                    "icon": "remove",
+                    "google": true,
+                    "container": {
+                        "class": "flexbox pointer",
+                        "style": "border=1px solid #ddd;borderRadius=.5rem;height=2.5rem;width=2.5rem;transition=.2s",
+                        "actions": "hover.style.backgroundColor=#f6f6f6;[click?data().inf-=1;next().refresh()?data().inf>0]"
+                    }
+                },
+                {
+                    "type": "text",
+                    "style": "fontSize=1.4rem",
+                    "container": {
+                        "class": "flexbox",
+                        "style": "border=1px solid #ddd;borderRadius=.5rem;height=2.5rem;width=2.5rem;transition=.2s"
+                    },
+                    "text": "data().inf"
+                },
+                {
+                    "type": "icon",
+                    "style": "fontSize=1.4rem",
+                    "icon": "add",
+                    "google": true,
+                    "container": {
+                        "class": "flexbox pointer",
+                        "style": "border=1px solid #ddd;borderRadius=.5rem;height=2.5rem;width=2.5rem;transition=.2s",
+                        "actions": "hover.style.backgroundColor=#f6f6f6;[click?@view.schema.manager.adtChdInf;addInfant()]"
+                    }
+                }
+            ],
+            "style": "gap=.5rem",
+            "class": "flex align-center"
+        }
+    ],
+    "style": "gap=1rem;padding=1rem",
+    "class": "column"
+}

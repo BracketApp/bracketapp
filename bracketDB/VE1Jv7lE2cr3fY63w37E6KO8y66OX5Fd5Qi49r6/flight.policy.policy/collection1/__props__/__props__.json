@@ -5,12 +5,12 @@
     "lastChunk": 1,
     "docsLength": 3,
     "counter": 3,
-    "reads": 40,
-    "writes": 53,
+    "reads": 1699,
+    "writes": 131,
     "deletes": 0,
-    "size": 1118,
-    "payloadIn": null,
-    "payloadOut": 13015,
+    "size": 479,
+    "payloadIn": 3660,
+    "payloadOut": 844339,
     "indexes": [],
     "lastIndex": 0,
     "schema": {
@@ -32,8 +32,13 @@
                 {
                     "path": [
                         "schema",
-                        "type",
-                        "options"
+                        "trip"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "perPnrOrTicket"
                     ]
                 },
                 {
@@ -63,12 +68,6 @@
                 {
                     "path": [
                         "schema",
-                        "fareDifferenceSubjectToPayment"
-                    ]
-                },
-                {
-                    "path": [
-                        "schema",
                         "freeAmount"
                     ]
                 },
@@ -82,6 +81,12 @@
                     "path": [
                         "schema",
                         "freeUnit"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "fareDifferenceSubjectToPayment"
                     ]
                 },
                 {
@@ -149,14 +154,16 @@
                 "schema": [
                     "name",
                     "type",
+                    "trip",
+                    "perPnrOrTicket",
                     "chargesFeesAmount",
                     "chargesFeesCurrency",
                     "chargesFeesPercentage",
                     "description",
-                    "fareDifferenceSubjectToPayment",
                     "freeAmount",
                     "freeCurrency",
                     "freeUnit",
+                    "fareDifferenceSubjectToPayment",
                     "minimumPurchaseAmount",
                     "minimumPurchaseCurrency",
                     "minimumPurchaseUnit",
@@ -170,6 +177,16 @@
                     "type"
                 ],
                 "schema.type": [
+                    "options",
+                    "type"
+                ],
+                "schema.trip": [
+                    "default",
+                    "options",
+                    "type"
+                ],
+                "schema.perPnrOrTicket": [
+                    "default",
                     "options",
                     "type"
                 ],
@@ -189,10 +206,6 @@
                     "required",
                     "type"
                 ],
-                "schema.fareDifferenceSubjectToPayment": [
-                    "required",
-                    "type"
-                ],
                 "schema.freeAmount": [
                     "required",
                     "type"
@@ -203,6 +216,10 @@
                 ],
                 "schema.freeUnit": [
                     "options",
+                    "required",
+                    "type"
+                ],
+                "schema.fareDifferenceSubjectToPayment": [
                     "required",
                     "type"
                 ],
@@ -268,18 +285,6 @@
                 ],
                 "required": false
             },
-            "description": {
-                "type": "text",
-                "required": false
-            },
-            "fareDifferenceSubjectToPayment": {
-                "type": "boolean",
-                "required": false
-            },
-            "freeAmount": {
-                "type": "number",
-                "required": false
-            },
             "minimumPurchaseAmount": {
                 "type": "number",
                 "required": false
@@ -291,32 +296,8 @@
                 ],
                 "required": false
             },
-            "freeUnit": {
-                "type": "text",
-                "options": [
-                    "Kg",
-                    "Seat"
-                ],
-                "required": false
-            },
-            "freeCurrency": {
-                "type": "text",
-                "required": false
-            },
-            "chargesFeesCurrency": {
-                "type": "text",
-                "required": false
-            },
-            "chargesFeesAmount": {
-                "type": "number",
-                "required": false
-            },
             "minimumPurchaseCurrency": {
                 "type": "text",
-                "required": false
-            },
-            "chargesFeesPercentage": {
-                "type": "number",
                 "required": false
             },
             "name": {
@@ -327,18 +308,16 @@
                 "options": [
                     "Booking",
                     "Cancellation",
-                    "Auto Cancellation",
-                    "Refund",
                     "Change",
-                    "Hand Baggage",
-                    "Baggage",
+                    "Transfer",
+                    "Carry-on Baggage",
+                    "Checked Baggage",
                     "No-show",
                     "Overbooking",
                     "Class of Service",
                     "Loyalty Program",
                     "Travel Insurance",
-                    "Rebooking",
-                    "Reissuing",
+                    "Rebook",
                     "Seat Selection",
                     "Upgrade",
                     "Low Fare",
@@ -356,13 +335,68 @@
             "referenceDurationOperator": {
                 "type": "text",
                 "options": [
-                    "Less Than",
-                    "Greater Than"
+                    "Less than",
+                    "Greater than"
                 ],
                 "required": false
             },
             "referenceDuration": {
                 "type": "timestamp",
+                "required": false
+            },
+            "trip": {
+                "type": "text",
+                "options": [
+                    "Round trip",
+                    "One way",
+                    "Multi city",
+                    "Open return"
+                ],
+                "default": "Round trip"
+            },
+            "perPnrOrTicket": {
+                "type": "text",
+                "default": "PNR",
+                "options": [
+                    "PNR",
+                    "Ticket"
+                ]
+            },
+            "chargesFeesAmount": {
+                "type": "number",
+                "required": false
+            },
+            "chargesFeesCurrency": {
+                "type": "text",
+                "required": false
+            },
+            "chargesFeesPercentage": {
+                "type": "number",
+                "required": false
+            },
+            "fareDifferenceSubjectToPayment": {
+                "type": "boolean",
+                "required": false
+            },
+            "description": {
+                "type": "text",
+                "required": false
+            },
+            "freeAmount": {
+                "type": "number",
+                "required": false
+            },
+            "freeCurrency": {
+                "type": "text",
+                "required": false
+            },
+            "freeUnit": {
+                "type": "text",
+                "options": [
+                    "Kg",
+                    "Seat",
+                    "Duration"
+                ],
                 "required": false
             }
         }

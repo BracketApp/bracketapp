@@ -1,21 +1,70 @@
 {
-    "session": "Ba1so7aR2Ki9c12xC5S01ny8xF6x09467QE9Yp6",
-    "user": "user1",
-    "expiryDate": 1729338269797,
+    "session": "0d1Sf7El32P0HI5477v23Ar1wu5rT4n63Js5G94",
+    "user": {
+        "firstName": "Mohamad Baker",
+        "lastName": "Obeid",
+        "agency": {
+            "name": "Beirut Group Travel & Tourism",
+            "contactBook": {
+                "city": "Beirut",
+                "country": "Lebanon",
+                "contactNumber": "009611234567",
+                "address": "Mcharrafiyeh",
+                "name": "Beirut Group Travel & Tourism",
+                "email": "ceo@beirutgrouptt.com"
+            },
+            "commissionSheets": [
+                {
+                    "airline": "Turkish Airlines",
+                    "amount": 5,
+                    "percentage": true,
+                    "releaseDate": 1729424612804,
+                    "expiryDate": 1729424603084,
+                    "referencePrice": "Gross Fare",
+                    "supplier": "supplier1",
+                    "name": "Commission Sheet 1",
+                    "trips": [
+                        "One way",
+                        "Round trip"
+                    ],
+                    "service": "Flight",
+                    "age": [
+                        "Adult",
+                        "Child"
+                    ]
+                }
+            ],
+            "permissions": {
+                "flight": {
+                    "searchByGroup": true
+                }
+            }
+        },
+        "contactBook": {
+            "city": "Beirut",
+            "country": "Lebanon",
+            "contactNumber": "009611234567",
+            "address": "Mcharrafiyeh",
+            "name": "Beirut Group Travel & Tourism",
+            "email": "ceo@beirutgrouptt.com"
+        }
+    },
+    "expiryDate": 1730659554354,
     "__props__": {
-        "id": "p1v792k9Z2g521U8m6x928h0h1",
+        "id": "41A7V3l015p7Y3b1N554e3J5b5",
         "doc": "session4",
         "counter": 4,
-        "creationDate": 1729251869801,
+        "creationDate": 1730573154355,
         "collection": "account.user.session",
         "chunk": "chunk1",
-        "lastModified": 1729251869801,
+        "lastModified": 1730573154355,
         "dev": true,
         "actions": {},
         "comments": [],
         "collapsed": [],
-        "arrange": [],
+        "arrange": {},
+        "schema": {},
         "secured": false,
-        "size": 365
+        "size": 1167
     }
 }

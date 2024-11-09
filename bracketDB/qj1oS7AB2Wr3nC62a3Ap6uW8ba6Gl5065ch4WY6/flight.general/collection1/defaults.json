@@ -6,7 +6,7 @@
         "creationDate": 1729946405086,
         "collection": "flight.general",
         "chunk": "chunk1",
-        "lastModified": 1729946440376,
+        "lastModified": 1730498524774,
         "dev": true,
         "actions": {},
         "comments": [],
@@ -16,8 +16,20 @@
                 "topAirports"
             ]
         },
+        "schema": {
+            "hideProps": true,
+            "schema": {
+                "topAirports": {
+                    "type": "list",
+                    "value": {
+                        "type": "document",
+                        "collection": "public.airport"
+                    }
+                }
+            }
+        },
         "secured": false,
-        "size": 321
+        "size": 448
     },
     "topAirports": [
         "airport1",

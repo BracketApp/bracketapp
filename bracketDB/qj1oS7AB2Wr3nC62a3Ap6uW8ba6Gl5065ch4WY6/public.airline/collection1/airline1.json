@@ -6,22 +6,23 @@
         "creationDate": 1729416135146,
         "collection": "public.airline",
         "chunk": "chunk1",
-        "lastModified": 1729808408534,
+        "lastModified": 1730050173029,
         "dev": true,
         "actions": {},
         "comments": [],
         "collapsed": [],
         "arrange": {
             "": [
-                "airline",
+                "name",
                 "country",
                 "logo"
             ]
         },
+        "schema": {},
         "secured": false,
-        "size": 462
+        "size": 468
     },
-    "airline": "Turkish Airlines",
     "country": "Istanbul",
-    "logo": "/storage/ku1h97gg20f3t26YL3wC64l82B6RI5Xi5QP4iP6/files/bucket1/FS1Ts7822JM89C3c33d47JE8mr3T07ZY8939xa6.png"
+    "logo": "/storage/ku1h97gg20f3t26YL3wC64l82B6RI5Xi5QP4iP6/files/bucket1/FS1Ts7822JM89C3c33d47JE8mr3T07ZY8939xa6.png",
+    "name": "Turkish Airlines"
 }

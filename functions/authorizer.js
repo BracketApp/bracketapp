@@ -17,10 +17,10 @@ const authorizer = async ({ _window, req, res }) => {
 
   logger({ _window, data: { key: "authorization", start: true } })
 
-  const { data, success, message, cached } = await getSession({ _window, req, res })
+  const { data, success, message } = await getSession({ _window, req, res })
   global.manifest.session = data
 
-  if (!cached) logger({ _window, data: { key: "authorization", end: true } })
+ logger({ _window, data: { key: "authorization", end: true } })
 
   if (!success) respond({ res, response: { success, message } }) // not auth
 
@@ -30,7 +30,6 @@ const authorizer = async ({ _window, req, res }) => {
 const getSession = async ({ _window, req, res, success = true, cached = false }) => {
 
   const global = _window.global, sessionID = global.manifest.cookies.__session__
-  let sessionNotExpired = false
 
   // get session by sessionID
   if (sessionID) {
@@ -55,9 +54,10 @@ const getSession = async ({ _window, req, res, success = true, cached = false })
       removeAppCaches(sessions)
 
     } else {
-
-      sessionNotExpired = session.path.join("/") === global.manifest.path.join("/") && session.host === global.manifest.host && global.manifest.action === "createWebApp()"
+      let canLoadCache = session.path.join("/") === global.manifest.path.join("/") && session.host === global.manifest.host && global.manifest.action === "createWebApp()"
+      
       updateSession({ _window, req, session })
+      global.manifest.session.canLoadCache = canLoadCache
     }
   }
 
@@ -76,9 +76,6 @@ const getSession = async ({ _window, req, res, success = true, cached = false })
   // accsessabilities
   getAccessabilities({ _window, publicID: session.publicID, session })
 
-  // session not expired
-  if (sessionNotExpired) var { success, cached } = await appCacheHandler({ _window, session, res })
-
   // activity
   // recordActivity({ _window, session })
 
@@ -86,7 +83,9 @@ const getSession = async ({ _window, req, res, success = true, cached = false })
 }
 
 const updateSession = ({ _window, req, session }) => {
-  if (_window.global.manifest.action === "createWebApp()") session.path = _window.global.manifest.path
+  if (_window.global.manifest.action === "createWebApp()") {
+    session.path = _window.global.manifest.path
+  }
   session.expiryDate = new Date().getTime() + 86400000
   _window.global.manifest.session = session = database({ _window, req, action: "save()", data: { db: bracketDB, collection: "session", data: session } }).data
 }
@@ -201,24 +200,34 @@ const getAccessabilities = ({ _window, publicID, session }) => {
   // if (session) session.accessabilities = accessabilities
 }
 
-const appCacheHandler = async ({ _window, session, res, success = true }) => {
-
+const getCache = ({_window}) => {
+  
+  const session = _window.global.manifest.session
   const cacheID = session.dev ? session.devDB : session.db
-  if (!fs.existsSync(`cache/${cacheID}/${session.__props__.id}`)) return { success }
+
+  if (!session.canLoadCache) return ({})
+
+  if (!fs.existsSync(`cache/${cacheID}/${session.__props__.id}`)) return ({})
 
   logger({ _window, data: { key: "LoadCache", start: true } })
 
-  let doc = fs.readFileSync(`cache/${cacheID}/${session.__props__.id}`)
-  
+  let data = fs.readFileSync(`cache/${cacheID}/${session.__props__.id}`)
+
+  return {data}
+}
+
+const appCacheHandler = async ({ _window, lookupActions, stack, props, id, address, req, res, __, data }) => {
+
   // encode
-  doc = await gzip(doc)
+  data = await gzip(data)
 
   res.setHeader("Content-Encoding", "gzip")
-  res.write(doc)
+  res.write(data)
   res.end()
 
   logger({ _window, data: { key: "LoadCache", end: true } })
-  return { success: false, cached: true }
+
+  actions["stackManager()"]({ _window, lookupActions, stack, props, id, address, req, res, __ })
 }
 
 const removeAppCaches = (sessions) => {
@@ -228,4 +237,4 @@ const removeAppCaches = (sessions) => {
 })
 }
 
-module.exports = { authorizer }
+module.exports = { authorizer, appCacheHandler, getCache }

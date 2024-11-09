@@ -12,14 +12,14 @@
         "creationDate": 1728994963500,
         "collection": "view.application",
         "chunk": "chunk1",
-        "lastModified": 1729103884049,
+        "lastModified": 1730240950743,
         "dev": true,
         "actions": {
             "authorize": {
-                "_": "checkCookie();checkSession()?manifest:().page=portal;manifest:().action!='createWebApp()'",
-                "checkSession": "search():[collection=account.user.session;findOne:[session=getCookie():session]]:[session:()=_.data?_.data?failureHandler()]",
+                "_": "checkCookie();checkSession()::failureHandler()?manifest:().page=portal;manifest:().action!='createWebApp()'",
+                "checkSession": "search():[collection=account.user.session;findOne:[session=getCookie():session]]:[session:()=_.data]",
                 "checkCookie": "send():[success=false;message=Login to get access!;unauthorized=true]?!getCookie():session",
-                "failureHandler": "send():[success=false;message=You are not authorized!;unauthorized=true]"
+                "failureHandler": "send():[success=false;message=You are not authorized!;unauthorized=true]?!session:()"
             }
         },
         "comments": [],
@@ -40,7 +40,8 @@
                 "failureHandler"
             ]
         },
+        "schema": {},
         "secured": true,
-        "size": 926
+        "size": 944
     }
 }
