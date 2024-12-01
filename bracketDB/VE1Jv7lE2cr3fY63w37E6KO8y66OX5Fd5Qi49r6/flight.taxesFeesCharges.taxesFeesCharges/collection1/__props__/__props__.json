@@ -5,8 +5,8 @@
     "lastChunk": 1,
     "docsLength": 0,
     "counter": 0,
-    "reads": 24,
-    "writes": 10,
+    "reads": 26,
+    "writes": 11,
     "deletes": 0,
     "size": 0,
     "payloadIn": null,
@@ -17,6 +17,12 @@
         "__props__": {
             "actions": {},
             "collapsed": [
+                {
+                    "path": [
+                        "schema",
+                        "id"
+                    ]
+                },
                 {
                     "path": [
                         "schema",
@@ -55,10 +61,14 @@
                     "schema"
                 ],
                 "schema": [
+                    "id",
                     "amount",
                     "currency",
                     "description",
                     "name",
+                    "type"
+                ],
+                "schema.id": [
                     "type"
                 ],
                 "schema.amount": [
@@ -96,6 +106,9 @@
             },
             "description": {
                 "type": "text"
+            },
+            "id": {
+                "type": "id"
             }
         }
     }

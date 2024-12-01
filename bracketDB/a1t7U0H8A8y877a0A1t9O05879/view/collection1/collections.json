@@ -7,7 +7,7 @@
                     "view": "View?id=[data()||gen()];class=flex pointer align-center;hover.style.backgroundColor=#e9e9e9;style:[minHeight=3rem;width=100%;maxWidth=100%;position=relative];[click?openCollection()];[hover?displayOptionsIcons()?mouseentered?hideOptionsIcons()]",
                     "children": [
                         {
-                            "view": "Icon?name=bi-chevron-right;style:[fontSize=1.1rem;width=2rem;transition=.2s;transform=['rotate(90deg)'?data:().editor.[data()]?'rotate(0deg)']]"
+                            "view": "Icon?name=[bi-caret-right-fill?data:().editor.[data()]?bi-caret-right];style:[fontSize=1.1rem;width=2rem;transition=.2s];[loaded?timer():[rotate()=45?data:().editor.[data()]?rotate()=0]:0]"
                         },
                         {
                             "view": "Text?class=hide-scrollbar;text=data().split():'.'.[3rdParent().collectionIndex];tooltip.text=.text;style:[display=inline;overflow=hidden;textOverflow=ellipsis;whiteSpace=nowrap;fontSize=1.3rem;flex=1];[keydown?[editCollectionName()]():[path=collectionEditorHandler]?e().key=Enter];[blur;[keydown??e().key=Tab||e().key=Escape]?refresh()?text?2ndParent().rem()]"
@@ -41,7 +41,7 @@
                             "view": "[View]:[data=data:().editor.[parent().data()].keys().sort():[ascending];mount]?class=flex pointer align-center;style:[minHeight=3rem;width=100%;position=relative];[loaded?loadedHandler()];[click?displayOpenedDoc();openDoc():[doc=data();collection=parent().data();data=data:().editor.[parent().data()].[data()].clone()]?clicked()!=lastChild()];[mouseenter?showOptionIcon()];[mouseleave?hideOptionIcon()]?data()||[!openDoc:();openCollection:()=parent().data()]",
                             "children": [
                                 {
-                                    "view": "Icon?name=bi-file-earmark;style:[fontSize=1.1rem;minWidth=2rem];click:[2ndNext().focus()]"
+                                    "view": "Icon?name=bi-view-stacked;style:[fontSize=1.1rem;minWidth=2rem;color=#888];click:[2ndNext().focus()]"
                                 },
                                 {
                                     "view": "Text?class=dots;text=data();tooltip.text=data();style.fontSize=1.3rem"
@@ -67,7 +67,7 @@
         "creationDate": 1710330786484,
         "collection": "view",
         "chunk": "chunk1",
-        "lastModified": 1729948844367,
+        "lastModified": 1731675662534,
         "dev": false,
         "actions": {
             "clickCreateNewDoc": "parent().next().display();1stSibling().style().rotate()=90;if():[!duplicateDoc:()]:[openDoc:().del()];openCollection:()=data();parent().next().insert():[view=parent().next();viewPath=:children:1;index=0;data='']:[_.view.():[2ndChild().hide();3rdChild().():[display();txt()='';focus()]];hideActionPopup()]",
@@ -134,7 +134,7 @@
                 }
             },
             "openCollection": {
-                "_": "searchDocs()?clicked()!=nthLastChild():3;clicked()!=nthLastChild():2;clicked()!=nthLastChild():1;clicked()!=input()",
+                "_": "searchDocs()::[1stChild().refresh()]?clicked()!=nthLastChild():3;clicked()!=nthLastChild():2;clicked()!=nthLastChild():1;clicked()!=input()",
                 "searchDocs": "hideOptionsIcons();next().children().():[rem():[preventDefault=true]];searchDocsRequest()::[displayOptionsIcons()?mouseentered]?1stChild().style().transform='rotate(0deg)'?closeCollection()",
                 "searchDocsRequest": "[getData():[publicID=project:().publicID;collection=data()]:[data:().editor.[data()]=_.data||[];1stChild().rotate()=90;next().refresh()::[next().display()]]]():[collection=actions;doc=db]",
                 "closeCollection": "data:().editor.[data()].del();1stChild().rotate()=0;next().children().():[rem():[preventDefault=true]];hideOptionsIcons();lastChild().display()"
@@ -213,11 +213,6 @@
             {
                 "path": [
                     "issueInDocName"
-                ]
-            },
-            {
-                "path": [
-                    "openCollection"
                 ]
             },
             {
@@ -365,7 +360,8 @@
                 "_"
             ]
         },
+        "schema": {},
         "secured": false,
-        "size": 16343
+        "size": 16407
     }
 }

@@ -1,4 +1,4 @@
-const { toApproval, actions } = require("./kernel")
+const { toCondition, actions } = require("./kernel")
 const { clone } = require("./clone")
 const { toParam } = require("./kernel")
 const { toValue } = require("./kernel")
@@ -12,7 +12,7 @@ const watch = ({ lookupActions, __, stack, string, id }) => {
 
     let watch = actions["encode()"]({ _window, id, stack, string: actions["encode()"]({ _window, id, stack, string, start: "'" }) })
 
-    let approved = toApproval({ id, lookupActions, stack, props, __, data: watch.split('?')[2] })
+    let approved = toCondition({ id, lookupActions, stack, props, __, data: watch.split('?')[2] })
     if (!approved || !watch) return
 
     watch.split('?')[0].split(';').map(_watch => {
@@ -32,7 +32,7 @@ const watch = ({ lookupActions, __, stack, string, id }) => {
             toParam({ id, lookupActions, stack, props, data: watch.split('?')[1], object: [view], __ })
             
             // approval
-            let approved = toApproval({ id, lookupActions, stack, props, data: watch.split('?')[2], __ })
+            let approved = toCondition({ id, lookupActions, stack, props, data: watch.split('?')[2], __ })
             if (!approved) return
                 
             // params

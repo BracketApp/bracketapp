@@ -1,4 +1,4 @@
-const { toApproval } = require("./kernel")
+const { toCondition } = require("./kernel")
 const { toParam } = require("./kernel")
 
 module.exports = {
@@ -19,7 +19,7 @@ module.exports = {
     var elseParams = view.__name__.split("?")[3]
 
     // approval
-    var approved = toApproval({ _window, lookupActions, stack, props, data: conditions, id, __ })
+    var approved = toCondition({ _window, lookupActions, stack, props, data: conditions, id, __ })
     if (!approved) {
       if (elseParams) params = otherParams
       else return delete views[id]

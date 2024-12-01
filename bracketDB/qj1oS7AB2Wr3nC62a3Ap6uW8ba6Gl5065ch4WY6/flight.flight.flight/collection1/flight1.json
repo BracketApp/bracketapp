@@ -6,7 +6,7 @@
         "creationDate": 1728239596897,
         "collection": "flight.flight.flight",
         "chunk": "chunk1",
-        "lastModified": 1730988577285,
+        "lastModified": 1731326060170,
         "dev": true,
         "actions": {},
         "comments": [],
@@ -21,12 +21,13 @@
                 "departure",
                 "arrival",
                 "flightDuration",
-                "cabins"
+                "cabins",
+                "id"
             ]
         },
         "schema": {},
         "secured": false,
-        "size": 587
+        "size": 639
     },
     "flightNumber": "TK1221",
     "from": "airport1",
@@ -38,6 +39,7 @@
         "cabin1",
         "cabin2"
     ],
-    "travelDate": 1733781600000,
-    "flightDuration": 7200000
+    "travelDate": 1734040800000,
+    "flightDuration": 7200000,
+    "id": "7d1J87RV31m1y83B227T6cZ09Y5u80oF0pi7f83"
 }

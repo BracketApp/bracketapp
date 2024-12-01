@@ -6,7 +6,7 @@
         "creationDate": 1728239449547,
         "collection": "flight.availability.availability",
         "chunk": "chunk1",
-        "lastModified": 1731169772781,
+        "lastModified": 1731326082099,
         "dev": true,
         "actions": {},
         "comments": [],
@@ -23,7 +23,7 @@
         },
         "schema": {},
         "secured": false,
-        "size": 537
+        "size": 584
     },
     "class": "A",
     "pricings": [
@@ -37,5 +37,6 @@
         "policy2",
         "policy3"
     ],
-    "termsAndConditions": []
+    "termsAndConditions": [],
+    "id": "4R1aO7dL3yT1OG3Fy2SE65f0vN80r2Qy0bH96I9"
 }

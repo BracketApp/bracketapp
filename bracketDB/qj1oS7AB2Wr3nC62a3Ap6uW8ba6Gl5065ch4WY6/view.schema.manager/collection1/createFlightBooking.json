@@ -6,7 +6,7 @@
         "creationDate": 1724170563877,
         "collection": "view.schema.manager",
         "chunk": "chunk1",
-        "lastModified": 1731096095151,
+        "lastModified": 1731321495236,
         "dev": true,
         "actions": {
             "updateReturnDateByDuration": {

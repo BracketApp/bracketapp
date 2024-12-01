@@ -16,7 +16,7 @@ const { override } = require("./merge")
 require('dotenv').config()
 const bracketDB = process.env.BRACKETDB
 
-const database = ({ _window = {global:{manifest:{}}}, req, res, action, preventDefault, data, stack, props, __, verified, unpopulate, checkExistsForSave }) => {
+const database = ({ _window = { global: { manifest:{} } }, req, res, action, preventDefault, data, stack, props, __, verified, unpopulate, checkExistsForSave }) => {
 
     data = JSON.parse(JSON.stringify(data))
     let timer = (new Date()).getTime(), global = _window.global, responses = []
@@ -207,15 +207,15 @@ const getData = ({ _window = {}, req, res, search, action = "search()", verified
                 
                 while (limit > 0 && (i <= docs.length - 1)) {
 
-                    var doc = docs[i]
+                    let doc = docs[i]
 
                     toArray(find).map((find, index) => {
 
                         if (limit === 0) return
                         delete find.preventDefault
-                        var searchFields = Object.keys(find)
-                        var push = true
-                        var chunk = chunks[index]
+                        let searchFields = Object.keys(find)
+                        let push = true
+                        let chunk = chunks[index]
                         
                         searchFields.map(searchField => {
 
@@ -1432,26 +1432,23 @@ const checkIndexing = ({ global, path, search, finds, chunkName, collectionProps
         // get index
         indexing = JSON.parse(fs.readFileSync(`${path}/collection1/__props__/${chunkName}/${indexProps.doc}.json`))
 
-        // update index expiryDate
-        indexProps.lastRead = new Date().getTime()
-        indexProps.expiryDate = indexProps.lastRead + 2592000000
-
         // read index
         fs.readFileSync(`${path}/collection1/__props__/${chunkName}/${indexProps.doc}.json`)
         
         chunks[index] = { indexing, find: searchFields }
     }
     
-    return {success, message, chunks, docs}
+    return { success, message, chunks, docs }
 }
 
 const getFieldValue = (fields, object) => {
 
-    var breakRequest = false
-    var lastIndex = fields.length - 1
-    var success = true, message = "Index created successfully!"
+    let breakRequest = false
+    let lastIndex = fields.length - 1
+    let success = true, message = "Index created successfully!"
 
-    var answer = fields.reduce((o, k, i) => {
+    let answer = fields.reduce((o, k, i) => {
+
         if (breakRequest || !o) return o
         
         if (Array.isArray(o) && !isNumber(k)) {
@@ -1461,7 +1458,7 @@ const getFieldValue = (fields, object) => {
         else if (i === lastIndex && o[k] !== undefined) return o[k]
         else if (k.slice(-2) === "()") return actions[k]({o})
         else if (i !== lastIndex) {
-            if (typeof o !== "object"/* || (typeof o === "string" && !isNumber(k))*/) {
+            if (typeof o !== "object") {
                 breakRequest = true
                 success = false
                 message = "Accessing a non object through field " + k + "!"
@@ -1631,20 +1628,20 @@ const createIndex = ({ collectionProps, searchFields, path, indexed = false }) =
 
     for (let index = 1; index <= collectionProps.lastChunk; index++) {
 
-        var chunkName = "chunk" + index
-        var chunkProps = JSON.parse(fs.readFileSync(`${path}/collection1/__props__/${chunkName}/__props__.json`))
-        var { docs } = chunkProps
-        var indexing = {}
+        let chunkName = "chunk" + index
+        let chunkProps = JSON.parse(fs.readFileSync(`${path}/collection1/__props__/${chunkName}/__props__.json`))
+        let { docs } = chunkProps
+        let indexing = {}
         
         // loop over all docs
         for (let i = 0; i < docs.length; i++) {
 
-            var doc = docs[i];
+            let doc = docs[i];
             if (!success) break;
 
             // loop over find fields
             for (let j = 0; j < searchFields.length; j++) {
-                var field = searchFields[j];
+                let field = searchFields[j];
 
                 // get value
                 var { success, value, message } = getFieldValue(field.split("."), JSON.parse(fs.readFileSync(`${path}/collection1/${doc}.json`)))

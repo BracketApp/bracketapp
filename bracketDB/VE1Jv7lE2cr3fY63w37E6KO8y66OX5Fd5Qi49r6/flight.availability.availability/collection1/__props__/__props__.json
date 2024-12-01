@@ -5,18 +5,24 @@
     "lastChunk": 1,
     "docsLength": 4,
     "counter": 4,
-    "reads": 2328,
-    "writes": 81,
+    "reads": 2638,
+    "writes": 87,
     "deletes": 0,
     "size": 1686,
-    "payloadIn": 15189,
-    "payloadOut": 1232013,
+    "payloadIn": 2450,
+    "payloadOut": 1411824,
     "indexes": [],
     "lastIndex": 0,
     "schema": {
         "__props__": {
             "actions": {},
             "collapsed": [
+                {
+                    "path": [
+                        "schema",
+                        "id"
+                    ]
+                },
                 {
                     "path": [
                         "schema",
@@ -61,12 +67,16 @@
                     "schema"
                 ],
                 "schema": [
+                    "id",
                     "policies",
                     "class",
                     "bookedSeats",
                     "availableSeats",
                     "termsAndConditions",
                     "pricings"
+                ],
+                "schema.id": [
+                    "type"
                 ],
                 "schema.policies": [
                     "type",
@@ -139,6 +149,9 @@
                     "collection": "flight.pricing.pricing",
                     "required": false
                 }
+            },
+            "id": {
+                "type": "id"
             }
         },
         "hideProps": true

@@ -5,12 +5,12 @@
     "lastChunk": 1,
     "docsLength": 2,
     "counter": 2,
-    "reads": 1175,
-    "writes": 60,
+    "reads": 1336,
+    "writes": 67,
     "deletes": 0,
     "size": 956,
-    "payloadIn": 8540,
-    "payloadOut": 697067,
+    "payloadIn": 1976,
+    "payloadOut": 797429,
     "indexes": [
         {
             "find": [
@@ -19,8 +19,8 @@
                 "travelDate"
             ],
             "doc": "index1",
-            "lastRead": 1731172135758,
-            "expiryDate": 1733764135758
+            "lastRead": 1732454453237,
+            "expiryDate": 1735046453237
         },
         {
             "find": [
@@ -45,6 +45,12 @@
         "__props__": {
             "actions": {},
             "collapsed": [
+                {
+                    "path": [
+                        "schema",
+                        "id"
+                    ]
+                },
                 {
                     "path": [
                         "schema",
@@ -107,6 +113,7 @@
                     "schema"
                 ],
                 "schema": [
+                    "id",
                     "flightNumber",
                     "aircraft",
                     "from",
@@ -116,6 +123,9 @@
                     "cabins",
                     "travelDate",
                     "flightDuration"
+                ],
+                "schema.id": [
+                    "type"
                 ],
                 "schema.flightNumber": [
                     "type"
@@ -190,6 +200,9 @@
             },
             "flightDuration": {
                 "type": "timestamp"
+            },
+            "id": {
+                "type": "id"
             }
         },
         "hideProps": true

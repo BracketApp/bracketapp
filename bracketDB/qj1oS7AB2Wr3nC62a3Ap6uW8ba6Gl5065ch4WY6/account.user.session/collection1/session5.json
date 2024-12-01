@@ -1,5 +1,5 @@
 {
-    "session": "ls1Cl76t3490uS5A073N3fO2gA1Tp8C65xI4fR2",
+    "session": "pe1Ct7Ka39l1s73IK2wN8ZB1339m308h59N7mu5",
     "user": {
         "firstName": "Mohamad Baker",
         "lastName": "Obeid",
@@ -49,15 +49,15 @@
             "email": "ceo@beirutgrouptt.com"
         }
     },
-    "expiryDate": 1730659618542,
+    "expiryDate": 1731414590575,
     "__props__": {
-        "id": "m1j7x3t0X5s793v2Y1Q845Y4Q5",
+        "id": "61T7t3C1l3Q2b8Z199J0j5q7j6",
         "doc": "session5",
         "counter": 5,
-        "creationDate": 1730573218545,
+        "creationDate": 1731328190576,
         "collection": "account.user.session",
         "chunk": "chunk1",
-        "lastModified": 1730573218545,
+        "lastModified": 1731328190576,
         "dev": true,
         "actions": {},
         "comments": [],

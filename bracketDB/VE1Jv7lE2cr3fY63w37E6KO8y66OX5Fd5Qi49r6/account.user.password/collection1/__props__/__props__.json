@@ -5,32 +5,32 @@
     "lastChunk": 1,
     "docsLength": 0,
     "counter": 0,
-    "reads": 156,
+    "reads": 169,
     "writes": 10,
     "deletes": 0,
     "size": 25,
     "payloadIn": null,
-    "payloadOut": 51604,
+    "payloadOut": 56387,
     "indexes": [
-        {
-            "find": [
-                "password",
-                "username"
-            ],
-            "doc": "index2",
-            "lastRead": 1729253163565,
-            "expiryDate": 1731845163565
-        },
         {
             "find": [
                 "password"
             ],
             "doc": "index3",
-            "lastRead": 1730907517590,
-            "expiryDate": 1733499517590
+            "lastRead": 1732454428951,
+            "expiryDate": 1735046428951
+        },
+        {
+            "find": [
+                "password",
+                "usernameID"
+            ],
+            "doc": "index4",
+            "lastRead": 1731320920403,
+            "expiryDate": 1733912920403
         }
     ],
-    "lastIndex": 3,
+    "lastIndex": 4,
     "schema": {
         "__props__": {
             "actions": {},

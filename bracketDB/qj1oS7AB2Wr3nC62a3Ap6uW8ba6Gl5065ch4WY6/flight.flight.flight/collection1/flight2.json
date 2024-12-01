@@ -6,7 +6,7 @@
         "creationDate": 1728239600277,
         "collection": "flight.flight.flight",
         "chunk": "chunk1",
-        "lastModified": 1730988589344,
+        "lastModified": 1731326058092,
         "dev": true,
         "actions": {},
         "comments": [],
@@ -26,7 +26,7 @@
         },
         "schema": {},
         "secured": false,
-        "size": 587
+        "size": 634
     },
     "flightNumber": "TK1222",
     "from": "airport2",
@@ -38,6 +38,7 @@
         "cabin3",
         "cabin4"
     ],
-    "travelDate": 1734386400000,
-    "flightDuration": 7200000
+    "travelDate": 1734645600000,
+    "flightDuration": 7200000,
+    "id": "J213Y7VW38p1JE3wf2em6h20b65m88100ja9Nd3"
 }

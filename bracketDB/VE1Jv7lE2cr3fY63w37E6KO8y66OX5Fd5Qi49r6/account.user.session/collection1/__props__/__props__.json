@@ -1,44 +1,35 @@
 {
-    "creationDate": 1730569441451,
+    "creationDate": 1731325195675,
     "collection": 1,
     "maxSize": 1000,
     "lastChunk": 1,
-    "docsLength": 192,
-    "counter": 195,
-    "reads": 2127,
-    "writes": 198,
+    "docsLength": 29,
+    "counter": 30,
+    "reads": 265,
+    "writes": 32,
     "deletes": 0,
-    "size": 229013,
-    "payloadIn": 230523,
-    "payloadOut": 2484046,
+    "size": 33864,
+    "payloadIn": 34241,
+    "payloadOut": 286898,
     "indexes": [
+        {
+            "find": [
+                "user"
+            ],
+            "doc": "index1",
+            "lastRead": 1732454429001,
+            "expiryDate": 1735046429001
+        },
         {
             "find": [
                 "session"
             ],
-            "doc": "index1",
-            "lastRead": 1731172344683,
-            "expiryDate": 1733764344683
-        },
-        {
-            "find": [
-                "session",
-                "user"
-            ],
             "doc": "index2",
-            "lastRead": 1730907517623,
-            "expiryDate": 1733499517623
-        },
-        {
-            "find": [
-                "user"
-            ],
-            "doc": "index3",
-            "lastRead": 1730907517633,
-            "expiryDate": 1733499517633
+            "lastRead": 1732582119128,
+            "expiryDate": 1735174119128
         }
     ],
-    "lastIndex": 3,
+    "lastIndex": 2,
     "schema": {
         "__props__": {
             "actions": {},

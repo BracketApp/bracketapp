@@ -5,8 +5,8 @@
     "lastChunk": 1,
     "docsLength": 0,
     "counter": 0,
-    "reads": 12,
-    "writes": 5,
+    "reads": 14,
+    "writes": 6,
     "deletes": 0,
     "size": 0,
     "payloadIn": null,
@@ -16,7 +16,32 @@
     "schema": {
         "__props__": {
             "actions": {},
-            "collapsed": [],
+            "collapsed": [
+                {
+                    "path": [
+                        "schema",
+                        "id"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "name"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "type"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "description"
+                    ]
+                }
+            ],
             "comments": [],
             "arrange": {
                 "": [
@@ -24,9 +49,13 @@
                     "schema"
                 ],
                 "schema": [
+                    "id",
                     "name",
                     "type",
                     "description"
+                ],
+                "schema.id": [
+                    "type"
                 ],
                 "schema.name": [
                     "type"
@@ -51,6 +80,9 @@
             },
             "description": {
                 "type": "text"
+            },
+            "id": {
+                "type": "id"
             }
         }
     }

@@ -59,9 +59,6 @@ const actions = {
         if (typeof o === "object" && o.__props__) return o.__props__.doc
     },
     "if()": () => { }, // inorder not to check in actions
-    "__props__()": ({ o, args }) => {
-        if (args[1] === "clearActions") return clearActions(o)
-    },
     "caret()": ({ o }) => ({ index: getCaretIndex(o) }),
     "device()": ({ global }) => global.manifest.device.device,
     "mobile()": ({ global }) => global.manifest.device.device.type === "smartphone",
@@ -752,7 +749,7 @@ const actions = {
 
     }, "while()": ({ _window, global, req, res, o, stack, props, lookupActions, id, e, __, args, object }) => {
 
-        while (toApproval({ req, res, _window, lookupActions, stack, object, props: { isValue: true }, id, data: args[1], __, e })) {
+        while (toCondition({ req, res, _window, lookupActions, stack, object, props: { isValue: true }, id, data: args[1], __, e })) {
             toValue({ req, res, _window, lookupActions, stack, props: { isValue: true }, id, data: args[2], __, e })
         }
         return true
@@ -1217,7 +1214,7 @@ const actions = {
             if (stack.server) return o
             else throw "Pulling from a non list at pull() => " + decode({ _window, string: pathJoined })
         }
-        var items = o.filter(o => toApproval({ _window, e, data: args[1], id, object: [o, ...object], __, lookupActions, stack, props }))
+        var items = o.filter(o => toCondition({ _window, e, data: args[1], id, object: [o, ...object], __, lookupActions, stack, props }))
 
         items.filter(data => data !== undefined && data !== null).map(_item => {
             var _index = o.findIndex(item => isEqual(item, _item))
@@ -1900,7 +1897,7 @@ const actions = {
         if (o.length === 0) o.push(newItem)
         else {
             o.map((item, i) => {
-                if (toApproval({ _window, lookupActions, stack, props, e, data: args[1], id, __, req, res, object: [item, ...toArray(object)] })) {
+                if (toCondition({ _window, lookupActions, stack, props, e, data: args[1], id, __, req, res, object: [item, ...toArray(object)] })) {
                     pushed = true
                     o[i] = newItem
                 }
@@ -2032,23 +2029,23 @@ const actions = {
 
         if (isnot) return toArray(o).filter(o => o !== "" && o !== undefined && o !== null)
 
-        if (underScored) return toArray(o).filter((o, index) => toApproval({ _window, lookupActions, stack, props: { isCondition: true, isValue: false }, e, data: args[0], id, __: [o, ...__], object, req, res }))
-        else return toArray(o).filter((o, index) => toApproval({ _window, lookupActions, stack, props: { isCondition: true, isValue: false }, e, data: args[0], id, object: [o, ...object], req, res, __ }))
+        if (underScored) return toArray(o).filter((o, index) => toCondition({ _window, lookupActions, stack, props: { isCondition: true, isValue: false }, e, data: args[0], id, __: [o, ...__], object, req, res }))
+        else return toArray(o).filter((o, index) => toCondition({ _window, lookupActions, stack, props: { isCondition: true, isValue: false }, e, data: args[0], id, object: [o, ...object], req, res, __ }))
 
     }, "find()": ({ _window, req, res, o, stack, props, lookupActions, id, e, __, args, underScored, i, lastIndex, value, key, answer, object }) => {
 
         if (i === lastIndex && key && value !== undefined) {
 
             var index
-            if (underScored) index = toArray(o).findIndex(o => toApproval({ _window, lookupActions, stack, props: { isCondition: true, isValue: false }, e, data: args[1], id, __: [o, ...__], req, res, object }))
-            else index = toArray(o).findIndex(o => toApproval({ _window, lookupActions, stack, props, e, data: args[1], id, __, req, res, object: [o, ...toArray(object)] }))
+            if (underScored) index = toArray(o).findIndex(o => toCondition({ _window, lookupActions, stack, props: { isCondition: true, isValue: false }, e, data: args[1], id, __: [o, ...__], req, res, object }))
+            else index = toArray(o).findIndex(o => toCondition({ _window, lookupActions, stack, props, e, data: args[1], id, __, req, res, object: [o, ...toArray(object)] }))
             if (index !== undefined && index !== -1) o[index] = answer = value
             return answer
 
         } else {
 
-            if (underScored) return toArray(o).find(o => toApproval({ _window, lookupActions, stack, props: { isCondition: true, isValue: false }, e, data: args[1], id, __: [o, ...__], req, res, object }))
-            else return toArray(o).find(o => toApproval({ _window, lookupActions, stack, props, e, data: args[1], id, __, req, res, object: [o, ...toArray(object)] }))
+            if (underScored) return toArray(o).find(o => toCondition({ _window, lookupActions, stack, props: { isCondition: true, isValue: false }, e, data: args[1], id, __: [o, ...__], req, res, object }))
+            else return toArray(o).find(o => toCondition({ _window, lookupActions, stack, props, e, data: args[1], id, __, req, res, object: [o, ...toArray(object)] }))
         }
 
     }, "sort()": ({ _window, req, res, o, stack, props, lookupActions, id, e, __, args, answer, object, pathJoined }) => {
@@ -2064,8 +2061,8 @@ const actions = {
 
         if (typeof o !== "object") return
 
-        if (underScored) return toArray(o).findIndex(o => toApproval({ _window, lookupActions, stack, props, e, data: args[1], id, __: [o, ...__], req, res }))
-        else return toArray(o).findIndex(o => toApproval({ _window, lookupActions, stack, props, e, data: args[1], id, __, req, res, object: [o, ...toArray(object)] }))
+        if (underScored) return toArray(o).findIndex(o => toCondition({ _window, lookupActions, stack, props, e, data: args[1], id, __: [o, ...__], req, res }))
+        else return toArray(o).findIndex(o => toCondition({ _window, lookupActions, stack, props, e, data: args[1], id, __, req, res, object: [o, ...toArray(object)] }))
 
     }, "map()": ({ _window, req, res, global, o, stack, props, lookupActions, id, e, __, args, object }) => {
 
@@ -2119,8 +2116,7 @@ const actions = {
 
         } else if (args[1] && underScored) {
 
-            var data = toArray(o).map(o => toValue({ req, res, _window, lookupActions, stack, props: { ...props, isValue: false }, id, data: args[1] || "", object, __: [o, ...__], e }))
-            answer = notArray ? data[0] : data
+            answer = toArray(o).map(o => toValue({ req, res, _window, lookupActions, stack, props: { ...props, isValue: false }, id, data: args[1] || "", object, __: [o, ...__], e }))
 
         } else if (args[1]) {
 
@@ -2846,18 +2842,18 @@ const actions = {
             blockRelatedAddressesByViewID({ stack, id: data.id })
 
             // address for post update
-            actions["addresser()"]({ _window, id, stack, props, switchNextAddressIDWith: address, type: "function", function: "refresh", __, lookupActions, data: { ...data, childIndex: __childIndex__, index: __index__, elements, timer, parent, postUpdate: true } })
+            actions["addresser()"]({ _window, id, stack, props, switchNextAddressIDWith: address, type: "function", function: "refresh", __, lookupActions: __lookupActions__, data: { ...data, childIndex: __childIndex__, index: __index__, elements, timer, parent, postUpdate: true } })
 
             // address for rendering view
             address = actions["addresser()"]({ _window, id, stack, props, nextAddress: address, status: "Start", type: "function", function: "view", interpreting: true, __: my__, lookupActions: __lookupActions__, data: { view: reducedView, parent: parent.id } }).address
-            
+
             // render
             let myView = actions["view()"]({ _window, lookupActions: __lookupActions__, stack, props, req, res, address, __: my__, data: { view: reducedView, parent: parent.id } })
             
             // seq: END:toView => END:refresh() => START:postUpdate => END:postUpdate => START:waits => END:waits => START:spliceBlockedAddresses
 
             // address
-            actions["stackManager()"]({ _window, lookupActions, stack, props, address, id, req, res, __ })
+            actions["stackManager()"]({ _window, lookupActions: __lookupActions__, stack, props, address, id, req, res, __ })
             
             return myView
 
@@ -3411,7 +3407,7 @@ const actions = {
             }
 
             // conditions
-            var approved = toApproval({ _window, lookupActions, stack, props, data: view.__conditions__, id, req, res, __, object: [view] })
+            var approved = toCondition({ _window, lookupActions, stack, props, data: view.__conditions__, id, req, res, __, object: [view] })
             if (!approved) return removeView({ _window, global, views, id, stack, props, address, lookupActions, req, res, __ })
 
             // params
@@ -3475,6 +3471,8 @@ const actions = {
             // continue to custom view
             else {
 
+                let additionalLookup = { collection, doc: view.__name__ }
+
                 var newView = {
                     ...clone(global.__queries__[collection][view.__name__]),
                     __paramsInterpreted__: false,
@@ -3484,7 +3482,7 @@ const actions = {
                     __prevViewPath__: view.__prevViewPath__ || [...view.__viewPath__],
                     __prevViewCollection__: prevCollection,
                     __customViewPath__: [...view.__customViewPath__, view.__name__],
-                    __lookupActions__: [{ collection, doc: view.__name__ }, ...view.__lookupActions__]
+                    __lookupActions__: ((additionalLookup.collection !== view.__lookupActions__[0].collection) || (additionalLookup.doc !== view.__lookupActions__[0].doc)) ? [{ collection, doc: view.__name__ }, ...view.__lookupActions__] : [...view.__lookupActions__]
                 }
 
                 // id
@@ -4083,6 +4081,7 @@ const toValue = ({ _window, lookupActions = [], stack = { addresses: [], returns
     else if (value === ":[]") return ([{}])
     else if (value === " ") return value
     else if (value === ":") return ([])
+    else if (value === "{}") return (new Set())
 
     // loader
     if (value === "loader.show" || value === "loader.hide") return loader({ _window, show: value === "loader.show" })
@@ -4213,8 +4212,15 @@ const toValue = ({ _window, lookupActions = [], stack = { addresses: [], returns
         }
     }
 
-    // list => check calculations then list
+    // list
     if (value.charAt(0) === ":") return value.split(":").slice(1).map(item => toValue({ req, res, _window, id, stack, props: { isValue: true }, lookupActions, __, e, data: item, key, object })) // :item1:item2
+    
+    // set
+    if (value.charAt(0) === "{}") {
+        let set = new Set()
+        value.split(":").slice(1).map(item => set.add(toValue({ req, res, _window, id, stack, props: { isValue: true }, lookupActions, __, e, data: item, key, object }))) // {}:item1:item2
+        return set
+    }
 
     var path = typeof value === "string" ? value.split(".") : []
 
@@ -4261,7 +4267,7 @@ const toParam = ({ _window, lookupActions, stack = { addresses: [], returns: [] 
     }
 
     // conditions
-    if (props.isCondition || isCondition({ _window, string })) return toApproval({ id, lookupActions, stack, props, e, data: string, req, res, _window, __, object })
+    if (props.isCondition || isCondition({ _window, string })) return toCondition({ id, lookupActions, stack, props, e, data: string, req, res, _window, __, object })
 
     // init
     if (object.length === 0) object.push({})
@@ -4489,20 +4495,22 @@ const reducer = ({ _window, lookupActions = [], stack = { addresses: [], returns
 
         if (doc && collection) {
 
+            let newLookupActions = [...lookupActions]
             if (!keyName) {
 
-                lookupActions = [{ doc, collection, path }, ...lookupActions]
+                let additionalLookup = { doc, collection, path }
+                if (lookupActions[0].doc !== doc || lookupActions[0].collection !== collection || (lookupActions[0].path || []) !== path) newLookupActions = [additionalLookup, ...lookupActions]
             }
 
             if (keyName && (!global.__queries__[collection] || !(doc in global.__queries__[collection]))) {
 
                 let mydata = { data: { collection, doc }, searchDoc: true }
                 let waits = keyName ? [`${keyName}=__queries__:().'${collection}'.'${doc}'.reduce():[path=:${path.join(":")}];${strings.slice(index+1).join(";")}`] : []
-                searchDoc({ _window, lookupActions, stack, id, __, e, req, res, data: mydata, object, waits })
+                searchDoc({ _window, lookupActions: newLookupActions, stack, id, __, e, req, res, data: mydata, object, waits })
             
             } else if (!keyName) {
                 
-                toParam({ req, res, _window, lookupActions, stack, props, id, e, data: strings.slice(index+1).join(";"), __, object })
+                toParam({ req, res, _window, lookupActions: newLookupActions, stack, props, id, e, data: strings.slice(index+1).join(";"), __, object })
 
             } else if (keyName && global.__queries__[collection]) return clone(path.reduce((o, k) => o[k], global.__queries__[collection][doc]))
         }
@@ -4514,13 +4522,13 @@ const reducer = ({ _window, lookupActions = [], stack = { addresses: [], returns
     else if (path0 === "if()") {
 
         var data
-        var approved = toApproval({ _window, lookupActions, stack, props: { isValue: true }, e, data: args[1], id, __, req, res, object })
+        var approved = toCondition({ _window, lookupActions, stack, props: { isValue: true }, e, data: args[1], id, __, req, res, object })
 
         if (!approved) {
 
             if (args[3]) {
 
-                if (props.isCondition) return toApproval({ _window, lookupActions, stack, props, e, data: args[3], id, __, req, res, object })
+                if (props.isCondition) return toCondition({ _window, lookupActions, stack, props, e, data: args[3], id, __, req, res, object })
                 else return toValue({ req, res, _window, lookupActions, stack, props, id, data: args[3], __, e, object })
 
             } else if (path[1] && path[1].includes("elif()")) {
@@ -4533,7 +4541,7 @@ const reducer = ({ _window, lookupActions = [], stack = { addresses: [], returns
 
         } else {
 
-            //if (props.isCondition) return toApproval({ _window, lookupActions, stack, props, e, data: args[2], id, __, req, res, object })
+            //if (props.isCondition) return toCondition({ _window, lookupActions, stack, props, e, data: args[2], id, __, req, res, object })
             if (path[1]) data = toValue({ req, res, _window, lookupActions, stack, props, id, data: args[2], __, e, object })
             else return toValue({ req, res, _window, lookupActions, stack, props, id, data: args[2], __, e, object })
 
@@ -4692,7 +4700,7 @@ const reducer = ({ _window, lookupActions = [], stack = { addresses: [], returns
     return answer
 }
 
-const toApproval = ({ _window, lookupActions, stack, props, e, data: string, id, __, req, res, object = [] }) => {
+const toCondition = ({ _window, lookupActions, stack, props, e, data: string, id, __, req, res, object = [] }) => {
 
     // no string but object exists
     if (!string)
@@ -4782,7 +4790,7 @@ const toApproval = ({ _window, lookupActions, stack, props, e, data: string, id,
                 key = key.slice(1)
                 notEqual = true
                 if (key.slice(0, 2) === "@$" && key.length === 7) {
-                    key = toApproval({ _window, lookupActions, stack, props, e, data: key, id, __, req, res, object })
+                    key = toCondition({ _window, lookupActions, stack, props, e, data: key, id, __, req, res, object })
                 }
             }
         }
@@ -4936,7 +4944,7 @@ const toLine = ({ _window, lookupActions, stack, props = {}, address = {}, id, e
     var conditions = stringList[i + 1], elseParams = stringList[i + 2]
     string = stringList[i + 0]
 
-    var approved = toApproval({ _window, data: conditions || "", id, e, req, res, __, stack, props, lookupActions, object })
+    var approved = toCondition({ _window, data: conditions || "", id, e, req, res, __, stack, props, lookupActions, object })
 
     if (!approved && elseParams) {
 
@@ -4961,7 +4969,7 @@ const toLine = ({ _window, lookupActions, stack, props = {}, address = {}, id, e
         else if (props.isParam) {
             action = "toParam"
             props.isParam = false
-        } else if (props.isCondition || isCondition({ _window, string })) action = "toApproval"
+        } else if (props.isCondition || isCondition({ _window, string })) action = "toCondition"
         else if (isParam({ _window, string })) action = "toParam"
 
     } else if (action === "conditional") {
@@ -4971,7 +4979,7 @@ const toLine = ({ _window, lookupActions, stack, props = {}, address = {}, id, e
     }
 
     if (action === "toValue") data = toValue({ _window, lookupActions, address, stack, props, id, e, data: string, req, res, __, object })
-    else if (action === "toApproval") data = toApproval({ _window, lookupActions, address, stack, props, id, e, data: string, req, res, __, object })
+    else if (action === "toCondition") data = toCondition({ _window, lookupActions, address, stack, props, id, e, data: string, req, res, __, object })
     else if (action === "toParam") data = toParam({ _window, lookupActions, address, stack, props, id, e, data: string, req, res, __, object })
 
     if (dblExecute && executable({ _window, string: data, object })) data = toLine({ _window, lookupActions, stack, props, id, e, data: { string: data }, req, res, __, object, tt: true }).data
@@ -6132,7 +6140,7 @@ const starter = ({ lookupActions, stack, props, __, address, id }) => {
     Object.keys(builtinEvents).map(key => view[key] && view.__controls__.push(...builtinEvents[key]))
 
     // events
-    view.__controls__.map(data => addEventListener({ lookupActions, stack, props, address, __, id, ...data }))
+    view.__controls__.map(data => addEventListener({ lookupActions: view.__lookupActions__, stack, props, address, __, id, ...data }))
 
     // related events
     global.__events__[id] && Object.values(global.__events__[id]).map(address => view.__element__.addEventListener(address.event, address.eventListener))
@@ -6629,7 +6637,7 @@ const server = async ({ lookupActions, stack, props, address, id, __, data }) =>
     // address toView document
     address = actions["addresser()"]({ stack, props, status: "Start", type: "function", function: "view", nextAddress: address, lookupActions, __: my__ }).address    
     
-    return actions["view()"]({ stack, props, address, lookupActions, __: my__, data: { view: { view: "@view.application.browser" } } })
+    return actions["view()"]({ stack, props, address, lookupActions, __: my__, data: { view: { view: "@view.application.browser", __lookupActions__: [{collection: "view.application", doc: "browser"}] } } })
 }
 
 const loader = ({ _window, show }) => {
@@ -6771,7 +6779,7 @@ const getFileExtension = (fileName) => {
     return extension[0]
 }
 
-const interpretName = ({_window, lookupActions, view, global, stack, props, data, __, id, req, res, object, collection, prevCollection}) => {
+const interpretName = ({ _window, lookupActions, view, global, stack, props, data, __, id, req, res, object, collection, prevCollection }) => {
     
     view.__name__ = view.__name__.slice(1)
     var name = view.__name__.split(".").slice(-1)[0]
@@ -6790,7 +6798,7 @@ const interpretName = ({_window, lookupActions, view, global, stack, props, data
 }
 
 module.exports = {
-    actions, kernel, toValue, toParam, reducer, toApproval, toAction, toLine, addEventListener,
+    actions, kernel, toValue, toParam, reducer, toCondition, toAction, toLine, addEventListener,
     getDeepChildren, getDeepChildrenId, calcSubs, calcDivision, calcModulo, emptySpaces, isNumber, printAddress, endAddress, resetAddress,
     closePublicViews, updateDataPath, remove, initView, getViewParams, removeView, defaultEventHandler,
     toNumber, defaultAppEvents, clearActions, server, eventExecuter, starter, loader

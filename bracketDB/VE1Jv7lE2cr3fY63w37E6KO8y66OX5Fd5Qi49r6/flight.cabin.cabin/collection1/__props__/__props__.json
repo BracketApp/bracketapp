@@ -5,18 +5,24 @@
     "lastChunk": 1,
     "docsLength": 4,
     "counter": 4,
-    "reads": 2190,
-    "writes": 48,
+    "reads": 2492,
+    "writes": 53,
     "deletes": 0,
     "size": 1462,
-    "payloadIn": 1668,
-    "payloadOut": 892760,
+    "payloadIn": 1856,
+    "payloadOut": 1023311,
     "indexes": [],
     "lastIndex": 0,
     "schema": {
         "__props__": {
             "actions": {},
             "collapsed": [
+                {
+                    "path": [
+                        "schema",
+                        "id"
+                    ]
+                },
                 {
                     "path": [
                         "schema",
@@ -43,9 +49,13 @@
                     "schema"
                 ],
                 "schema": [
+                    "id",
                     "class",
                     "seatCapacity",
                     "availabilities"
+                ],
+                "schema.id": [
+                    "type"
                 ],
                 "schema.class": [
                     "type",
@@ -85,6 +95,9 @@
                     "Business",
                     "First Class"
                 ]
+            },
+            "id": {
+                "type": "id"
             }
         },
         "hideProps": true

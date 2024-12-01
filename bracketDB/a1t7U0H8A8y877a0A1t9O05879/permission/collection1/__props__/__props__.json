@@ -5,12 +5,12 @@
     "lastChunk": 1,
     "docsLength": 9,
     "counter": 85,
-    "reads": 84250,
+    "reads": 84722,
     "writes": 246,
     "deletes": 0,
     "size": 3273,
     "payloadIn": 307373,
-    "payloadOut": 62656665,
+    "payloadOut": 62967779,
     "dirTree": [],
     "indexes": [
         {
@@ -24,8 +24,8 @@
                 "userID"
             ],
             "doc": "index2",
-            "lastRead": 1731172188409,
-            "expiryDate": 1733764188409
+            "lastRead": 1732582051411,
+            "expiryDate": 1735174051411
         }
     ],
     "lastIndex": 2

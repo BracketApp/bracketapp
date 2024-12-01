@@ -6,7 +6,7 @@
         "creationDate": 1729810786396,
         "collection": "flight.cabin.cabin",
         "chunk": "chunk1",
-        "lastModified": 1730209052745,
+        "lastModified": 1731326101764,
         "dev": true,
         "actions": {},
         "comments": [],
@@ -20,11 +20,12 @@
         },
         "schema": {},
         "secured": false,
-        "size": 395
+        "size": 442
     },
     "seatCapacity": 32,
     "availabilities": [
         "availability4"
     ],
-    "class": "Business"
+    "class": "Business",
+    "id": "FS13o7FC3EN1f03XB2ru6LA1mv0Wj1hi7zr6uH4"
 }

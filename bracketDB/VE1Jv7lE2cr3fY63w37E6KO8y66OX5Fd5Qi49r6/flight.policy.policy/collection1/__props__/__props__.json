@@ -5,18 +5,24 @@
     "lastChunk": 1,
     "docsLength": 3,
     "counter": 3,
-    "reads": 1699,
-    "writes": 131,
+    "reads": 1920,
+    "writes": 132,
     "deletes": 0,
     "size": 479,
-    "payloadIn": 3660,
-    "payloadOut": 844339,
+    "payloadIn": null,
+    "payloadOut": 995303,
     "indexes": [],
     "lastIndex": 0,
     "schema": {
         "__props__": {
             "actions": {},
             "collapsed": [
+                {
+                    "path": [
+                        "schema",
+                        "id"
+                    ]
+                },
                 {
                     "path": [
                         "schema",
@@ -152,6 +158,7 @@
                     "schema"
                 ],
                 "schema": [
+                    "id",
                     "name",
                     "type",
                     "trip",
@@ -172,6 +179,9 @@
                     "referenceBeforeAfter",
                     "referenceDuration",
                     "referenceDurationOperator"
+                ],
+                "schema.id": [
+                    "type"
                 ],
                 "schema.name": [
                     "type"
@@ -398,6 +408,9 @@
                     "Duration"
                 ],
                 "required": false
+            },
+            "id": {
+                "type": "id"
             }
         }
     }
