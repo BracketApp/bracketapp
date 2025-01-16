@@ -8,6 +8,48 @@
             "admin": true,
             "editData": true,
             "accessConsole": true
+        },
+        {
+            "projectID": "e1o7n3a671u849v435y2B4v3a6",
+            "createBranch": true,
+            "admin": true,
+            "editData": true,
+            "accessConsole": true
+        },
+        {
+            "projectID": "L1k7d3T6X2P7N7H1X2n0A625q4",
+            "createBranch": true,
+            "admin": true,
+            "editData": true,
+            "accessConsole": true
+        },
+        {
+            "projectID": "21u7g3L6e2B7H7E4z455p5s7z4",
+            "createBranch": true,
+            "admin": true,
+            "editData": true,
+            "accessConsole": true
+        },
+        {
+            "projectID": "J1p793z6G2o7x757t8M246B5T1",
+            "createBranch": true,
+            "admin": true,
+            "editData": true,
+            "accessConsole": true
+        },
+        {
+            "projectID": "F1C7C3y6g2L759P5T381M8W2H0",
+            "createBranch": true,
+            "admin": true,
+            "editData": true,
+            "accessConsole": true
+        },
+        {
+            "projectID": "e1W7B316H2a7T9u7G5l1f6L6e9",
+            "createBranch": true,
+            "admin": true,
+            "editData": true,
+            "accessConsole": true
         }
     ],
     "getBillingAccounts": true,
@@ -22,13 +64,14 @@
         "creationDate": 1723636865564,
         "collection": "permission",
         "chunk": "chunk1",
-        "lastModified": 1723636865564,
+        "lastModified": 1736279751699,
         "dev": false,
         "actions": {},
         "comments": [],
         "collapsed": [],
         "arrange": [],
+        "schema": {},
         "secured": false,
-        "size": 586
+        "size": 1276
     }
 }

@@ -1,0 +1,37 @@
+{
+    "view": "View?id=root",
+    "children": [
+        {
+            "view": "droplist"
+        },
+        {
+            "view": "note"
+        },
+        {
+            "view": "tooltip"
+        },
+        {
+            "view": "loader"
+        },
+        {
+            "view": "@view.page.[manifest:().page]"
+        }
+    ],
+    "__props__": {
+        "id": "E177s3R6b2P7k9d7F7M319X682",
+        "doc": "root",
+        "counter": 3,
+        "creationDate": 1736279773962,
+        "collection": "view.application",
+        "chunk": "chunk1",
+        "lastModified": 1736279773962,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {},
+        "schema": {},
+        "secured": false,
+        "size": 424
+    }
+}

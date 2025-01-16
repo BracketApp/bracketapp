@@ -1,0 +1,30 @@
+{
+    "creationDate": 1736225541253,
+    "collection": 1,
+    "maxSize": 1000,
+    "lastChunk": 1,
+    "docsLength": 1,
+    "counter": 1,
+    "reads": 17,
+    "writes": 3,
+    "deletes": 0,
+    "size": 302,
+    "payloadIn": 637,
+    "payloadOut": 5024,
+    "indexes": [
+        {
+            "find": [
+                "username"
+            ],
+            "doc": "index1"
+        }
+    ],
+    "lastIndex": 1,
+    "schema": {
+        "__props__": {
+            "actions": {}
+        },
+        "hideProps": true,
+        "schema": {}
+    }
+}

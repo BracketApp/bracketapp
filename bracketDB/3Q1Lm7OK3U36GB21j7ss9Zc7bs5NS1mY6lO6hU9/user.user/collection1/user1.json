@@ -1,0 +1,26 @@
+{
+    "__props__": {
+        "id": "f1M7Z3R6y2f8E2K515A8o2u492",
+        "doc": "user1",
+        "counter": 1,
+        "creationDate": 1736282558242,
+        "collection": "user.user",
+        "chunk": "chunk1",
+        "lastModified": 1736282584554,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "name",
+                "email"
+            ]
+        },
+        "schema": {},
+        "secured": false,
+        "size": 343
+    },
+    "name": "Shawn Elbaz",
+    "email": "shwan.elbaz@valsoft.com"
+}

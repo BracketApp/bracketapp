@@ -1,0 +1,106 @@
+{
+    "view": "View?id=main;class=flexbox column;style:[height=100vh;width=100vw;gap=3rem];data=@view.schema.mainPageSchema",
+    "children": [
+        {
+            "view": "Text?text=_.welcomeStatement;style:[fontSize=4rem]"
+        },
+        {
+            "view": "Text?text=_.name;style=[color=red;fontSize=4rem]"
+        },
+        {
+            "view": "View?class=flexbox;style=[gap=2rem];data=:[name=person;color=red]:[name=check;color=blue]",
+            "children": [
+                {
+                    "view": "[Icon]?name=_.name;google.symbol;style=[fontSize=2rem;color=_.color]"
+                }
+            ]
+        },
+        {
+            "view": "View?class=flexbox column;style=[padding=3rem;borderRadius=.5rem;border=1px solid #ddd;gap=3rem;width=50rem];form=userData",
+            "children": [
+                {
+                    "view": "[View]:[inputsData()]?class=flex column;style=[gap=.5rem;width=100%]",
+                    "children": [
+                        {
+                            "view": "Text?text=_.label;style=[fontSize=2rem;textAlign=left]"
+                        },
+                        {
+                            "view": "Input?type=_.type;inputStyles()"
+                        }
+                    ]
+                },
+                {
+                    "view": "Text?class=flexbox pointer;text=Login;style=[color=#fff;backgroundColor=red;opacity=.8;transition=.2s;height=5.5rem;fontSize=2rem;width=100%;borderRadius=.5rem];hover.style.opacity=1;[click?login()]"
+                }
+            ]
+        }
+    ],
+    "__props__": {
+        "id": "T1Q773Z6t2u719U7p7M3Q928d3",
+        "doc": "main",
+        "counter": 1,
+        "creationDate": 1736279773983,
+        "collection": "view.page",
+        "chunk": "chunk1",
+        "lastModified": 1736281899493,
+        "dev": true,
+        "actions": {
+            "inputsData": "data=:[label=Username;type=text;path=username]:[label=Password;type=password;path=password;padding=.5rem]",
+            "inputStyles": "style=[fontSize=2rem;height=5.5rem;borderRadius=.5rem;border=1px solid #ddd];path=_.path",
+            "login": {
+                "_": "login()?usernameAndPasswordExists()?note():[text=Enter missing data!;type=danger]",
+                "usernameAndPasswordExists": "form().username;form().password",
+                "login": "@view.server.login;login():[form()]:[log():[_]]"
+            }
+        },
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "view",
+                "children",
+                "inputsData",
+                "inputStyles",
+                "login"
+            ],
+            "children.0": [
+                "view"
+            ],
+            "children.1": [
+                "view"
+            ],
+            "children.2": [
+                "view",
+                "children"
+            ],
+            "children.2.children.0": [
+                "view"
+            ],
+            "children.3": [
+                "view",
+                "children"
+            ],
+            "children.3.children.0": [
+                "view",
+                "children"
+            ],
+            "children.3.children.0.children.0": [
+                "view"
+            ],
+            "children.3.children.0.children.1": [
+                "view"
+            ],
+            "children.3.children.1": [
+                "view"
+            ],
+            "login": [
+                "_",
+                "usernameAndPasswordExists",
+                "login"
+            ]
+        },
+        "schema": {},
+        "secured": false,
+        "size": 2132
+    }
+}

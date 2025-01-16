@@ -3,66 +3,46 @@
     "collection": "host",
     "chunkMaxSizeMB": 20,
     "lastChunk": 1,
-    "docsLength": 6,
-    "counter": 82,
-    "reads": 177244,
-    "writes": 183,
+    "docsLength": 14,
+    "counter": 90,
+    "reads": 179678,
+    "writes": 191,
     "deletes": 0,
-    "size": 8489,
-    "payloadIn": 68788,
-    "payloadOut": 72023370,
+    "size": 12227,
+    "payloadIn": 72526,
+    "payloadOut": 73166141,
     "indexes": [
         {
             "find": [
                 "port"
             ],
-            "doc": "index1",
-            "lastRead": 1732582051403,
-            "expiryDate": 1735174051403
-        },
-        {
-            "find": [
-                "localhost"
-            ],
-            "doc": "index2",
-            "lastRead": 1732582126132,
-            "expiryDate": 1735174126132
-        },
-        {
-            "find": [
-                "publicID"
-            ],
-            "doc": "index3",
-            "lastRead": 1732582051445,
-            "expiryDate": 1735174051445
+            "doc": "index1"
         },
         {
             "find": [
                 "private",
                 "publicID"
             ],
-            "doc": "index4",
-            "lastRead": 1732581519949,
-            "expiryDate": 1735173519949
+            "doc": "index2"
+        },
+        {
+            "find": [
+                "publicID"
+            ],
+            "doc": "index3"
+        },
+        {
+            "find": [
+                "localhost"
+            ],
+            "doc": "index4"
         },
         {
             "find": [
                 "host"
             ],
-            "doc": "index5",
-            "lastRead": 1732582126132,
-            "expiryDate": 1735174126132
-        },
-        {
-            "find": [
-                "publicID",
-                "port",
-                "dev"
-            ],
-            "doc": "index7",
-            "lastRead": 1732454403586,
-            "expiryDate": 1735046403586
+            "doc": "index5"
         }
     ],
-    "lastIndex": 7
+    "lastIndex": 5
 }

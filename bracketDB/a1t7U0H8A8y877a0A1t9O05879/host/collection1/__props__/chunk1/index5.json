@@ -1,6 +1,18 @@
 {
+    "host90": {
+        "host": "dev.valsoft.brackettechnologies.com"
+    },
+    "host89": {
+        "host": "valsoft.brackettechnologies.com"
+    },
+    "host84": {
+        "host": "dev.test2.brackettechnologies.com"
+    },
+    "host83": {
+        "host": "test1.brackettechnologies.com"
+    },
     "host80": {
-        "host": "dev.brackettechnologies.brackettechnologies.com"
+        "host": "dev.brackettechnologies.com"
     },
     "host79": {
         "host": "dev.flightbookingplatform.brackettechnologies.com"

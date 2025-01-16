@@ -5089,7 +5089,7 @@ const isAction = ({ _window, lookupActions, stack, props, address, id, __, e, re
         if (collection && doc === false) continue
         
         // not queried yet => query
-        if (!collection || !doc || (doc.__props__.secured && !stack.server && !(name in (lookupAction.path || []).reduce((o, k, i) => o[k] ? o[k] : {}, doc.__props__.actions)))) {
+        if (!collection || !doc || !doc.__props__ || (doc.__props__.secured && !stack.server && !(name in (lookupAction.path || []).reduce((o, k, i) => o[k] ? o[k] : {}, doc.__props__.actions)))) {
             
             checkInViewsInDatastore = true
             var mydata = { data: { ...lookupAction, path: [...(lookupAction.path || []), name] }, action, lookupServerActions: true, searchDoc: true }
@@ -5745,7 +5745,14 @@ const loopOverView = ({ _window, id, stack, props, lookupActions, __, address, d
 
         data.__dataPath__ = [...((data.form || data.data) ? [] : view.__dataPath__), ...path]
         data.form = data.form || ((("path" in data) || ("keys" in data) || noParams) && view.form) || generate()
-        global[data.form] = global[data.form] || data.data || {}
+        global[data.form] = global[data.form] || data.data// || {}
+        
+        if (noParams && !global[data.form]) {
+            data.mount = false
+            global[data.form] = __[0]
+            
+        }
+        else if (noParams) global[data.form] = {}
 
         data.data = kernel({ _window, lookupActions, stack, props: {}, id, data: { path: data.__dataPath__, data: global[data.form] }, req, res, __ })
     }

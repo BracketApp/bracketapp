@@ -1,14 +1,8 @@
 {
     "docs": [
-        "subscription19",
-        "subscription18",
-        "subscription17",
-        "subscription16",
-        "subscription15",
-        "subscription14",
-        "subscription13",
-        "subscription12",
-        "subscription11",
+        "subscription28",
+        "subscription27",
+        "subscription26",
         "subscription10",
         "subscription9",
         "subscription8",
@@ -21,6 +15,6 @@
         "subscription1"
     ],
     "chunk": "chunk1",
-    "docsLength": 19,
-    "size": 11432
+    "docsLength": 28,
+    "size": 16994
 }

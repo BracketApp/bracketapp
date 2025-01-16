@@ -3,23 +3,21 @@
     "collection": 1,
     "maxSize": 1000,
     "lastChunk": 1,
-    "docsLength": 4,
-    "counter": 24,
-    "reads": 84533,
-    "writes": 13767,
-    "deletes": 78,
-    "size": 2828,
-    "payloadIn": 10477870,
-    "payloadOut": 60313785,
+    "docsLength": 12,
+    "counter": 12,
+    "reads": 88187,
+    "writes": 15609,
+    "deletes": 80,
+    "size": 11249,
+    "payloadIn": 11861618,
+    "payloadOut": 63059201,
     "indexes": [
         {
             "find": [
                 "__props__.id",
                 "publicID"
             ],
-            "doc": "index1",
-            "lastRead": 1732582126134,
-            "expiryDate": 1735174126134
+            "doc": "index2"
         }
     ],
     "lastIndex": 2

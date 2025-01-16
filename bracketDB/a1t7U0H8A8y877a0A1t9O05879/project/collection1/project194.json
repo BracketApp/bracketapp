@@ -1,0 +1,28 @@
+{
+    "name": "valsoft",
+    "active": true,
+    "main": true,
+    "accountID": "61L7E2u3c6j3z6I8y6O555p1q4",
+    "publicID": "mL1507Id3i26tP2yT7XJ9e37VM5aU1ni6ua5no3",
+    "subdomain": "valsoft",
+    "__props__": {
+        "id": "e1W7B316H2a7T9u7G5l1f6L6e9",
+        "doc": "project194",
+        "counter": 194,
+        "creationDate": 1736279751669,
+        "collection": "project",
+        "chunk": "chunk1",
+        "lastModified": 1736279751669,
+        "dev": false,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {},
+        "schema": {},
+        "secured": false,
+        "size": 434
+    },
+    "db": "lQ1Mw7kd3az6W92pN7MU9YE79C50Y10t6vo6h09",
+    "devDB": "3Q1Lm7OK3U36GB21j7ss9Zc7bs5NS1mY6lO6hU9",
+    "storage": "VY1aq7Ua3DH6aP2Wn7Xs90w70S52n1In6K969V9"
+}

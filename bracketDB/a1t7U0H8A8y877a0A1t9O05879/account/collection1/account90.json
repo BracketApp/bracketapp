@@ -1,0 +1,21 @@
+{
+    "email": "test@gmail.com",
+    "availableCreateNewProjects": 1,
+    "__props__": {
+        "id": "Z1B7E3U6o2m7i659H049b6k6N1",
+        "doc": "account90",
+        "counter": 90,
+        "creationDate": 1736276909661,
+        "collection": "account",
+        "chunk": "chunk1",
+        "lastModified": 1736276909714,
+        "dev": false,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {},
+        "schema": {},
+        "secured": false,
+        "size": 329
+    }
+}

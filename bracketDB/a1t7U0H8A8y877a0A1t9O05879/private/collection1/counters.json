@@ -6,14 +6,15 @@
         "creationDate": 1718270457366,
         "collection": "private",
         "chunk": "chunk1",
-        "lastModified": 1727722146542,
+        "lastModified": 1736279757827,
         "dev": false,
         "actions": {},
         "comments": [],
         "collapsed": [],
         "arrange": [],
+        "schema": {},
         "secured": false,
-        "size": 269
+        "size": 281
     },
-    "port": 86
+    "port": 98
 }

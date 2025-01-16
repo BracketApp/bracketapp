@@ -5,13 +5,17 @@
         "doc": "bracketAccount",
         "counter": 41,
         "creationDate": 1716032270176,
-        "active": true,
+        "collection": "account",
+        "chunk": "chunk1",
+        "lastModified": 1736182896623,
+        "dev": false,
         "actions": {},
         "comments": [],
         "collapsed": [],
-        "chunk": "chunk1",
+        "arrange": {},
+        "schema": {},
         "secured": false,
-        "collection": "account"
+        "size": 347
     },
-    "availableCreateNewProjects": 2
+    "availableCreateNewProjects": 1
 }

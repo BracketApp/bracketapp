@@ -10,7 +10,7 @@
     "deletes": 0,
     "size": 956,
     "payloadIn": 1976,
-    "payloadOut": 797429,
+    "payloadOut": 797433,
     "indexes": [
         {
             "find": [
@@ -18,29 +18,10 @@
                 "to",
                 "travelDate"
             ],
-            "doc": "index1",
-            "lastRead": 1732454453237,
-            "expiryDate": 1735046453237
-        },
-        {
-            "find": [
-                "travelDate"
-            ],
-            "doc": "index2",
-            "lastRead": 1730212144428,
-            "expiryDate": 1732804144428
-        },
-        {
-            "find": [
-                "from",
-                "travelDate"
-            ],
-            "doc": "index3",
-            "lastRead": 1730068765355,
-            "expiryDate": 1732660765355
+            "doc": "index4"
         }
     ],
-    "lastIndex": 3,
+    "lastIndex": 4,
     "schema": {
         "__props__": {
             "actions": {},

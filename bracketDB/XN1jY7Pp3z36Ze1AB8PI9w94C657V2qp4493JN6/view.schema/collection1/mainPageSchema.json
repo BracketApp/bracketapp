@@ -1,0 +1,20 @@
+{
+    "welcomeStatement": "Welcome to Bracket Technologies!",
+    "__props__": {
+        "id": "A1D7D3r6m1p8J915L7s8U7P3c7",
+        "doc": "mainPageSchema",
+        "counter": 1,
+        "creationDate": 1736189578737,
+        "collection": "view.schema",
+        "chunk": "chunk1",
+        "lastModified": 1736189578737,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {},
+        "schema": {},
+        "secured": false,
+        "size": 334
+    }
+}

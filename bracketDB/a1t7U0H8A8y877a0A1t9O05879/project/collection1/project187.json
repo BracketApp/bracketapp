@@ -1,0 +1,28 @@
+{
+    "name": "Test",
+    "active": true,
+    "main": true,
+    "accountID": "1197B078m8x8q4e9T5X949d858",
+    "publicID": "px1kI7P73Cn6oy1oy8Sc2Ne8LY9Hu6dy5uX9da5",
+    "subdomain": "test1",
+    "__props__": {
+        "id": "T117q3g6N1Q8B288N97606E051",
+        "doc": "project187",
+        "counter": 187,
+        "creationDate": 1736182896601,
+        "collection": "project",
+        "chunk": "chunk1",
+        "lastModified": 1736182896601,
+        "dev": false,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {},
+        "schema": {},
+        "secured": false,
+        "size": 429
+    },
+    "db": "V51ao7iN3sw6MJ1Sq8Zr2n98xF9xx6zA6ub0eP1",
+    "devDB": "Sa1Ud7Jx3Oo65B1z58Ps2co8Wo98n6jE6DI0YV1",
+    "storage": "sV14N7Lu3oj6yg1OY8702Se8t092c6LD6jy0LB1"
+}

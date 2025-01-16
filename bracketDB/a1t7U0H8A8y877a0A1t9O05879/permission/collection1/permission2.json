@@ -22,6 +22,13 @@
             "admin": true,
             "accessConsole": true,
             "createProject": true
+        },
+        {
+            "projectID": "T117q3g6N1Q8B288N97606E051",
+            "createBranch": true,
+            "admin": true,
+            "editData": true,
+            "accessConsole": true
         }
     ],
     "__props__": {
@@ -31,12 +38,15 @@
         "creationDate": 1711031360204,
         "collection": "permission",
         "chunk": "chunk1",
+        "lastModified": 1736182896631,
+        "dev": false,
         "actions": {},
         "comments": [],
         "collapsed": [],
         "arrange": [],
+        "schema": {},
         "secured": false,
-        "size": 788
+        "size": 954
     },
     "createProject": true,
     "deleteProject": true,

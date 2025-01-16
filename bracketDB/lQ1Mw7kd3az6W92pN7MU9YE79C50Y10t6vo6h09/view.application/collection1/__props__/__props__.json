@@ -1,0 +1,23 @@
+{
+    "creationDate": 1736279773914,
+    "collection": 1,
+    "maxSize": 1000,
+    "lastChunk": 1,
+    "docsLength": 3,
+    "counter": 3,
+    "reads": 1300,
+    "writes": 4,
+    "deletes": 0,
+    "size": 1241,
+    "payloadIn": 1241,
+    "payloadOut": 246806,
+    "indexes": [],
+    "lastIndex": 0,
+    "schema": {
+        "__props__": {
+            "actions": {}
+        },
+        "hideProps": true,
+        "schema": {}
+    }
+}

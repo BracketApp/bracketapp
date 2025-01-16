@@ -1,0 +1,24 @@
+{
+    "__props__": {
+        "id": "J1H783Z6O2x8U2U5Q0c9u8m7V1",
+        "doc": "username1",
+        "counter": 1,
+        "creationDate": 1736282509871,
+        "collection": "user.username",
+        "chunk": "chunk1",
+        "lastModified": 1736282523721,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "username"
+            ]
+        },
+        "schema": {},
+        "secured": false,
+        "size": 311
+    },
+    "username": "shawn"
+}

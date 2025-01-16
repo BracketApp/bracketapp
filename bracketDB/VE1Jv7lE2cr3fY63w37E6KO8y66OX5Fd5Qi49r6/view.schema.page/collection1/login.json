@@ -364,7 +364,7 @@
                     "text": "Signup",
                     "style": "color=#fb3b1e;cursor=pointer;textDecoration=underline;fontSize=1.2rem",
                     "type": "text",
-                    "actions": "[click?win().open():'http://192.168.0.100:81']"
+                    "actions": "[click?win().open():'http://192.168.0.112:81']"
                 },
                 {
                     "text": "Forget password",

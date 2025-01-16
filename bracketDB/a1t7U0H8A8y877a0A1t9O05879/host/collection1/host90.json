@@ -1,0 +1,28 @@
+{
+    "publicID": "mL1507Id3i26tP2yT7XJ9e37VM5aU1ni6ua5no3",
+    "port": [
+        98
+    ],
+    "localhost": "dev.valsoft.localhost",
+    "host": "dev.valsoft.brackettechnologies.com",
+    "active": true,
+    "subdomain": "dev.valsoft",
+    "dev": true,
+    "__props__": {
+        "id": "21Y7d3U6c2J7g997a5B7T8E352",
+        "doc": "host90",
+        "counter": 90,
+        "creationDate": 1736279757832,
+        "collection": "host",
+        "chunk": "chunk1",
+        "lastModified": 1736279757832,
+        "dev": false,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {},
+        "schema": {},
+        "secured": false,
+        "size": 464
+    }
+}

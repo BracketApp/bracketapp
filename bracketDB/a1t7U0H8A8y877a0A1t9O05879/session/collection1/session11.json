@@ -1,0 +1,36 @@
+{
+    "publicID": "Xm1gQ7rC3yw6qP2KL7lP9NP5xz3ZC1637JV9kB8",
+    "projectID": "F1C7C3y6g2L759P5T381M8W2H0",
+    "projectDoc": "project193",
+    "subdomain": "valsoft",
+    "host": "dev.valsoft.localhost",
+    "path": [
+        "",
+        ""
+    ],
+    "db": "Og1tf7ex3HT6mu2e97ep9Q95wJ3uE1A98jm2oL0",
+    "storage": "ip1TC7Sp3ez6pF2oO7wP9KR5WR3bE1FY8fh2wX0",
+    "devDB": "1K1r67jC3cQ6jL2vo7w89oh5ls3CD1W98sc2Lg0",
+    "dev": true,
+    "expiryDate": 1736365977408,
+    "encryptionKey": "UONoP",
+    "userID": "",
+    "username": "",
+    "__props__": {
+        "id": "i1n7S3s632a799z5o7o7v4x0i9",
+        "doc": "session11",
+        "counter": 11,
+        "creationDate": 1736279577409,
+        "collection": "session",
+        "chunk": "chunk1",
+        "lastModified": 1736279577409,
+        "dev": false,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {},
+        "schema": {},
+        "secured": false,
+        "size": 698
+    }
+}

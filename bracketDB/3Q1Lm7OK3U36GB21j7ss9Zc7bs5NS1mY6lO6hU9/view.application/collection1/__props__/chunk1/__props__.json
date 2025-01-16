@@ -1,0 +1,10 @@
+{
+    "docs": [
+        "root",
+        "document",
+        "server"
+    ],
+    "chunk": "chunk1",
+    "docsLength": 3,
+    "size": 1175
+}

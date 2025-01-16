@@ -5,29 +5,25 @@
     "lastChunk": 1,
     "docsLength": 1,
     "counter": 2,
-    "reads": 3929,
+    "reads": 3955,
     "writes": 15,
     "deletes": 0,
     "size": 250,
     "payloadIn": 5425,
-    "payloadOut": 1788576,
+    "payloadOut": 1805630,
     "indexes": [
-        {
-            "find": [
-                "__props__.id"
-            ],
-            "doc": "index1",
-            "lastRead": 1730740204404,
-            "expiryDate": 1733332204404
-        },
         {
             "find": [
                 "packageID"
             ],
-            "doc": "index2",
-            "lastRead": 1732582126141,
-            "expiryDate": 1735174126141
+            "doc": "index3"
+        },
+        {
+            "find": [
+                "__props__.id"
+            ],
+            "doc": "index4"
         }
     ],
-    "lastIndex": 2
+    "lastIndex": 4
 }

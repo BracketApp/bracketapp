@@ -1,0 +1,60 @@
+{
+    "creationDate": 1736225546773,
+    "collection": "user.password",
+    "maxSize": 1000,
+    "lastChunk": 1,
+    "docsLength": 0,
+    "counter": 0,
+    "reads": 14,
+    "writes": 8,
+    "deletes": 0,
+    "size": -63,
+    "payloadIn": 785,
+    "payloadOut": 3828,
+    "indexes": [
+        {
+            "find": [
+                "password",
+                "username"
+            ],
+            "doc": "index1"
+        }
+    ],
+    "lastIndex": 1,
+    "schema": {
+        "__props__": {
+            "actions": {},
+            "collapsed": [],
+            "comments": [],
+            "arrange": {
+                "": [
+                    "hideProps",
+                    "schema"
+                ],
+                "schema": [
+                    "username",
+                    "user"
+                ],
+                "schema.username": [
+                    "type",
+                    "collection"
+                ],
+                "schema.user": [
+                    "type",
+                    "collection"
+                ]
+            }
+        },
+        "hideProps": true,
+        "schema": {
+            "username": {
+                "type": "document",
+                "collection": "user.username"
+            },
+            "user": {
+                "type": "document",
+                "collection": "user.user"
+            }
+        }
+    }
+}

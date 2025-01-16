@@ -1102,42 +1102,6 @@ const queries = ({ global, data, search, collection }) => {
     }
 }
 
-const createDB = ({ data }) => {
-
-    data.db = generate({ universal: true })
-    data.devDB = generate({ universal: true })
-    data.storage = generate({ universal: true })
-
-    var newProjectProps = {
-        creationDate: 0,
-        collectionsLength: 0,
-        docsLength: 0,
-        reads: 0,
-        writes: 0,
-        deletes: 0,
-        size: 0,
-        payloadIn: 0,
-        payloadOut: 0
-    }
-
-    // devDB
-    fs.mkdirSync(`bracketDB/${data.devDB}`)
-
-    // db
-    fs.mkdirSync(`bracketDB/${data.db}`)
-    fs.mkdirSync(`bracketDB/${data.db}/__props__`)
-    fs.writeFileSync(`bracketDB/${data.db}/__props__/db.json`, JSON.stringify(newProjectProps, null, 4))
-
-    // storage
-    fs.mkdirSync(`storage/${data.storage}`)
-    fs.mkdirSync(`storage/${data.storage}/__props__`)
-    fs.writeFileSync(`storage/${data.storage}/__props__/db.json`, JSON.stringify(newProjectProps, null, 4))
-
-    // cache
-    fs.mkdirSync(`cache/${data.db}`)
-    fs.mkdirSync(`cache/${data.devDB}`)
-}
-
 const authorizeDB = ({ _window, global, action, data }) => {
 
     let authorizations = []
@@ -1471,6 +1435,42 @@ const getFieldValue = (fields, object) => {
     return { success, value: answer, message }
 }
 
+const createDB = ({ data }) => {
+
+    data.db = generate({ universal: true })
+    data.devDB = generate({ universal: true })
+    data.storage = generate({ universal: true })
+
+    var newProjectProps = {
+        creationDate: 0,
+        collectionsLength: 0,
+        docsLength: 0,
+        reads: 0,
+        writes: 0,
+        deletes: 0,
+        size: 0,
+        payloadIn: 0,
+        payloadOut: 0
+    }
+
+    // devDB
+    fs.mkdirSync(`bracketDB/${data.devDB}`)
+
+    // db
+    fs.mkdirSync(`bracketDB/${data.db}`)
+    fs.mkdirSync(`bracketDB/${data.db}/__props__`)
+    fs.writeFileSync(`bracketDB/${data.db}/__props__/db.json`, JSON.stringify(newProjectProps, null, 4))
+
+    // storage
+    fs.mkdirSync(`storage/${data.storage}`)
+    fs.mkdirSync(`storage/${data.storage}/__props__`)
+    fs.writeFileSync(`storage/${data.storage}/__props__/db.json`, JSON.stringify(newProjectProps, null, 4))
+
+    // cache
+    fs.mkdirSync(`cache/${data.db}`)
+    fs.mkdirSync(`cache/${data.devDB}`)
+}
+
 const createCollection = ({ _window, req, db, chunkName = "chunk1", collection, liveDB, collectionProps = {}, dev, datastore = "bracketDB" }) => {
 
     if (fs.existsSync(`${datastore}/${liveDB}/${collection}`)) return
@@ -1500,7 +1500,7 @@ const createCollection = ({ _window, req, db, chunkName = "chunk1", collection, 
         payloadOut: 0,
         indexes: [],
         lastIndex: 0,
-        schema: {__props__: {actions: {}}, hideProps: true, schema: {}}
+        schema: {__props__: {actions: {}}, hideProps: false, schema: {}}
     }
 
     // collection props
@@ -1883,7 +1883,7 @@ const getSchema = ({ search, liveDB, collection, collectionProps, dbProps }) => 
 
     // props
     readProps({ collectionProps, dbProps, db: liveDB, collection })
-    let data = collectionProps.schema || {__props__: {actions: {}}, schema: {}, hideProps: true}
+    let data = collectionProps.schema || {__props__: {actions: {}}, schema: {}, hideProps: false}
 
     return { id: generate(), data, message: "Data queried successfully!", success: true, dev: search.dev, search }
 }

@@ -3,40 +3,34 @@
     "collection": "project",
     "chunkMaxSizeMB": 20,
     "lastChunk": 1,
-    "docsLength": 4,
-    "counter": 186,
-    "reads": 437373,
-    "writes": 331,
+    "docsLength": 12,
+    "counter": 194,
+    "reads": 437964,
+    "writes": 339,
     "deletes": 5,
-    "size": 5336,
-    "payloadIn": 166162,
-    "payloadOut": 82594772,
+    "size": 10212,
+    "payloadIn": 171038,
+    "payloadOut": 82954270,
     "dirTree": [],
     "indexes": [
         {
             "find": [
-                "__props__.id"
-            ],
-            "doc": "index1",
-            "lastRead": 1732581519940,
-            "expiryDate": 1735173519940
-        },
-        {
-            "find": [
                 "publicID"
             ],
-            "doc": "index2",
-            "lastRead": 1732582106366,
-            "expiryDate": 1735174106366
+            "doc": "index1"
         },
         {
             "find": [
-                "accountID"
+                "__props__.id"
             ],
-            "doc": "index6",
-            "lastRead": 1730740217401,
-            "expiryDate": 1733332217401
+            "doc": "index2"
+        },
+        {
+            "find": [
+                "subdomain"
+            ],
+            "doc": "index3"
         }
     ],
-    "lastIndex": 6
+    "lastIndex": 3
 }

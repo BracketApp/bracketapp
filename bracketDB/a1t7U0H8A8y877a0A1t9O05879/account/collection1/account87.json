@@ -1,6 +1,6 @@
 {
     "email": "m.obeid@brackettechnologies.com",
-    "availableCreateNewProjects": 1,
+    "availableCreateNewProjects": 11109,
     "__props__": {
         "id": "61L7E2u3c6j3z6I8y6O555p1q4",
         "doc": "account87",
@@ -8,13 +8,14 @@
         "creationDate": 1723636865514,
         "collection": "account",
         "chunk": "chunk1",
-        "lastModified": 1723636865560,
+        "lastModified": 1736279751692,
         "dev": false,
         "actions": {},
         "comments": [],
         "collapsed": [],
         "arrange": [],
+        "schema": {},
         "secured": false,
-        "size": 334
+        "size": 350
     }
 }

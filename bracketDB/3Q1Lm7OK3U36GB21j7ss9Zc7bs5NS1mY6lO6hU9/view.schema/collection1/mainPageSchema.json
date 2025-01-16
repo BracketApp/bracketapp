@@ -1,0 +1,26 @@
+{
+    "welcomeStatement": "Welcome to Bracket Technologies!",
+    "__props__": {
+        "id": "D1a7m336o2O7Y9R7j7o4V0C0k5",
+        "doc": "mainPageSchema",
+        "counter": 1,
+        "creationDate": 1736279774005,
+        "collection": "view.schema",
+        "chunk": "chunk1",
+        "lastModified": 1736281176918,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "welcomeStatement",
+                "name"
+            ]
+        },
+        "schema": {},
+        "secured": false,
+        "size": 385
+    },
+    "name": "Shawn Elbaz"
+}

@@ -1,36 +1,9 @@
 {
     "docs": [
-        "session30",
-        "session29",
-        "session28",
-        "session27",
-        "session26",
-        "session25",
-        "session24",
-        "session23",
-        "session22",
-        "session21",
-        "session20",
-        "session19",
-        "session18",
-        "session17",
-        "session16",
-        "session15",
-        "session14",
-        "session13",
-        "session12",
-        "session11",
-        "session10",
-        "session9",
-        "session8",
-        "session7",
-        "session6",
-        "session5",
-        "session4",
-        "session3",
-        "session2"
+        "session32",
+        "session31"
     ],
     "chunk": "chunk1",
-    "docsLength": 29,
-    "size": 33095
+    "docsLength": 2,
+    "size": 34643
 }

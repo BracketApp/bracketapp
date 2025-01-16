@@ -1,0 +1,25 @@
+{
+    "firstName": "Mohamad",
+    "lastName": "Obeid",
+    "accountID": "Z1B7E3U6o2m7i659H049b6k6N1",
+    "email": "test@gmail.com",
+    "username": "mohamadobeid",
+    "newUser": false,
+    "__props__": {
+        "id": "d1q7o396u2Z7L6m9Q0j926a7r7",
+        "doc": "user91",
+        "counter": 91,
+        "creationDate": 1736276909677,
+        "collection": "user",
+        "chunk": "chunk1",
+        "lastModified": 1736276909730,
+        "dev": false,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {},
+        "schema": {},
+        "secured": false,
+        "size": 416
+    }
+}

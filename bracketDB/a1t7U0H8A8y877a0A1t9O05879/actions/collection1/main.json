@@ -65,13 +65,13 @@
                 "resHandler": "send():[msg=Project created successfully!;success=true]",
                 "createProject": "[createProject():[[_].flat();[mainProject=mainProject:()?mainProject:()]]:[updateSession()]]():[path=:]",
                 "getMainProject": {
-                    "_": "getProject():[publicID=_.headProjectPublicID;main=true;end=true]:[checkProject();mainProject:()=_.project.clone()]",
+                    "_": "getProject():[publicID=_.headProjectPublicID;main=true;end=true]:[checkProject();mainProject:()=_.project.clone()]?_.headProjectPublicID",
                     "checkProject": "send():[success=false;msg=['Cannot create a branch to this project!'?!_.project.branch?'Cannot create a branch to a branch project!']]?!_.project.main"
                 },
                 "checkConditions": {
                     "_": "checkPermissions();checkData();checkAvNewProjects();checkPluginIDPackageID()",
                     "checkPermissions": "send():[msg=You dont have permission to add a new project!;success=false]?!manifest:().session.permissions.createProject",
-                    "checkData": "send():[success=false;msg=Missing data!]?!_.organization||[!_.headProjectPublicID?_.addBranch?true]",
+                    "checkData": "send():[success=false;msg=Missing data!]?!_.organization||[!_.headProjectPublicID?_.addBranch?false]",
                     "checkAvNewProjects": "send():[msg=You cannot create more projects unless you subscribe!;success=false]?!account:().availableCreateNewProjects",
                     "checkPluginIDPackageID": "send():[msg=Choose a plugin and a package!;success=false]?_.subscribeToPlugin;[!_.pluginID||!_.packageID]"
                 },
@@ -133,14 +133,14 @@
                 "checkEmail": "search():[collection=account;find:[email=_.email]]:[send():[success=false;msg=This email has subscribed before to the platform! Use another email.]?_.data.value()]",
                 "createSubscription": "[createSubscription()?_.packageID;_.pluginID]():[path=:]"
             },
-            "localIP": "'http://192.168.0.100'",
+            "localIP": "'http://192.168.0.112'",
             "getProject": {
                 "_": "start();getProject()::[getHost()::[resHandler()]]?_.projectID||_.publicID||_.subdomain?missingDataHandler()",
                 "checkProject": "project:()=_.data?_.data?[send():[success=false;msg=Project was not found!]?!stack().renderer;!__.end?end():[success=false;msg=Project was not found!]]",
                 "checkPermission": "send():[success=false;msg=You do not have the permission to access this project!]?!manifest:().session.permissions.projects.find():[projectID=project:().id()];!__.authorized",
                 "resHandler": {
                     "_": "browserVersionProjectData();send():[project=project:()]?!stack().renderer;!_.end?end():[project=project:()]",
-                    "browserVersionProjectData": "project:()._():[project:()=[name=_.name;subdomain=_.subdomain;host=localIP()+':'+host:().port;main=_.main;publicID=_.publicID]]"
+                    "browserVersionProjectData": "project:()._():[project:()=[name=_.name;subdomain=_.subdomain;host=localIP()+[':'+host:().port?host:().port?''];main=_.main;publicID=_.publicID]]"
                 },
                 "getHost": "search():[collection=host;findOne:[publicID=project:().publicID]]:[checkHost()]",
                 "getProject": "search():[collection=project;findOne:[[publicID=_.publicID?_.publicID];['__props__.id'=_.projectID?_.projectID];[subdomain=_.subdomain?_.subdomain];[main=true?_.main]]]:[checkProject();checkPermission()]",
@@ -172,7 +172,7 @@
                     "_": "[createSubscription()]():[path=:]:[subscribeToConsole()]",
                     "subscribeToConsole": {
                         "_": "[getSubscription():[[_].flat();end=true]]()::[createHost()?_.pluginID=Q1p78107R4j1n2Z9a2E1K1r912;subscription:().free]",
-                        "createHost": "[checkHost()::[createHost():[[_].flat();dev=true]?!host:()]]():[path=:]",
+                        "createHost": "[checkHost()::[createHost():[[_].flat();dev=true]]]():[path=:]",
                         "checkHost": "search():[collection=host;findOne:[publicID=_.publicID]]:[host:()=_.data]"
                     }
                 },
@@ -190,7 +190,8 @@
                 "getUserAccount": "[getUserAccount()]():[path=:]?!account:()||!user:()"
             },
             "createHost": {
-                "_": "getProject()::[getPortCounter()::[createPrivateHost()]]",
+                "_": "start();getProject()::checkHostExist()::getPortCounter()::createPrivateHost()",
+                "checkHostExist": "search():[collection=host;findOne=[localhost='dev.'+project:().subdomain+'.localhost']]:[end()?_.data]?_.dev",
                 "getPortCounter": "search():[collection=private;doc=counters]:[counters:()=_.data;counters:().port=counters:().port+1;save():[collection=private;data=counters:()]]",
                 "createPrivateHost": "host:()=[publicID=project:().publicID;port=:[counters:().port];localhost=['dev.'?_.dev?'']+project:().subdomain+'.localhost';host=['dev.'?_.dev?'']+project:().subdomain+'.brackettechnologies.com';active=true;subdomain=['dev.'?_.dev?'']+project:().subdomain;[dev=true?_.dev]];save():[collection=host;data=host:()]",
                 "getProject": "[getProject():[publicID=_.publicID;end=true]]():[path=:]?!project:();_.publicID?send():[success=false;msg=Missing data!]?!project:()"
@@ -206,7 +207,7 @@
                     "branchSubdomainHandler": "().subdomainCounter+=1;project:().subdomain=().subdomain+().subdomainCounter+'.'+mainProject:().subdomain;checkSubdomain()",
                     "projectSubdomainHandler": "().subdomainCounter+=1;project:().subdomain=().subdomain+().subdomainCounter;checkSubdomainLength();checkSubdomain()"
                 },
-                "createProject": "save():[collection=project;data=project:()]:[project:()=_.data;updateAccountAvNewProjects();[createPermission()?user:().newUser?updatePermission()]()::[createHost()]]",
+                "createProject": "save():[collection=project;data=project:()]:[project:()=_.data;updateAccountAvNewProjects();[createPermission()?user:().newUser?updatePermission()]()::[createHost()::[createHost():[dev=true]]]]",
                 "createPermission": "permission:()=[userID=user:().id();accountID=account:().id();projects=:[projectID=project:().id();createBranch=true;admin=true;editData=true;accessConsole=true];getBillingAccounts=true;getPaymentMethods=true;createProject=true;deleteProject=true;chargeAccount=true];save():[collection=permission;data=permission:()]:[permission:()=_.data;updateUser()]",
                 "updatePermission": "permission:().projects.push():[projectID=project:().id();[createBranch=true;admin=true?!mainProject:()];editData=true;accessConsole=true];save():[collection=permission;data=permission:()]",
                 "checkSubdomainLength": "project:().subdomain+=1;checkSubdomainLength()?project:().subdomain.len()<5",
@@ -238,7 +239,7 @@
                 "endHandler": "send():[paymentMethods=paymentMethods:()]?!stack().renderer;!_.end?end():[paymentMethods=paymentMethods:()]"
             },
             "getHost": {
-                "_": "search():[collection=host;findOne:[publicID=_.publicID;port.gte=80;[dev=_.dev?_.dev]]]:[_.data.ip=localIP()+':'+_.data.port.0;send():[host=_.data]]"
+                "_": "search():[collection=host;findOne:[publicID=_.publicID;port.gte=80;[dev=_.dev?_.dev]]]:[_.data.ip=localIP()+[':'+_.data.port.0?_.data.port?''];send():[host=_.data]]"
             },
             "getPlugin": {
                 "_": "start();getPlugin()::[getPackage()::[getAccessability()::[getSubscriptions()::[resHandler()]]]]",

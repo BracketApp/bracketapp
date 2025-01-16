@@ -5,22 +5,13 @@
     "lastChunk": 1,
     "docsLength": 0,
     "counter": 0,
-    "reads": 5984,
+    "reads": 6025,
     "writes": 23,
     "deletes": 0,
     "size": 21,
     "payloadIn": null,
-    "payloadOut": 838178,
-    "indexes": [
-        {
-            "find": [
-                "id"
-            ],
-            "doc": "index2",
-            "lastRead": 1731320947135,
-            "expiryDate": 1733912947135
-        }
-    ],
+    "payloadOut": 853136,
+    "indexes": [],
     "lastIndex": 2,
     "schema": {
         "__props__": {
