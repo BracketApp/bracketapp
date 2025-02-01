@@ -45,7 +45,7 @@ const document = async ({ _window, res, stack, props, address, __ }) => {
         <html lang="${language}" dir="${direction}" class="html">
             <head>
                 <!-- css -->
-                <link rel="stylesheet" href="/storage/resources/index.css?sid=${res.serverID}">
+                <link rel="stylesheet" href="/resources/index.css?sid=${res.serverID}">
                 <style>
                     ${views.document.stylesheet ? `${Object.entries(views.document.stylesheet).map(([key, value]) => typeof value === "object" && !Array.isArray(value)
             ? `${key}{
@@ -93,7 +93,7 @@ const document = async ({ _window, res, stack, props, address, __ }) => {
                 ${views.body.__html__ || ""}
   
                 <!-- engine -->
-                <script src="/storage/resources/engine.js?sid=${res.serverID}"></script>
+                <script src="/resources/engine.js?sid=${res.serverID}"></script>
   
                 <!-- google icons -->
                 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined"/>

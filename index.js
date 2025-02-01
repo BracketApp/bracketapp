@@ -33,12 +33,12 @@ if (!port) {
   // minify
   minify({
     compressor: terser,
-    input: "./storage/resources/engine.js",
-    output: "./storage/resources/engine.js",
+    input: "./resources/engine.js",
+    output: "./resources/engine.js",
     callback: async (err, min) => {
       
-      let engine = await gzip(fs.readFileSync("./storage/resources/engine.js"))
-      fs.writeFileSync("./storage/resources/engine.js", engine)
+      let engine = await gzip(fs.readFileSync("./resources/engine.js"))
+      fs.writeFileSync("./resources/engine.js", engine)
     }
   });
 

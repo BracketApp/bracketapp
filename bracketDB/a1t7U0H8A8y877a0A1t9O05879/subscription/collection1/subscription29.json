@@ -1,0 +1,28 @@
+{
+    "accountID": "61L7E2u3c6j3z6I8y6O555p1q4",
+    "publicID": "F113n7lK2Cd3tB6Cu3L76gq8xH6lS5825xK4Mx2",
+    "pluginID": "Q1p78107R4j1n2Z9a2E1K1r912",
+    "packageID": "O1B7Z1b7B4o2u0Q833o9R5o2e9",
+    "startDate": 1737642204552,
+    "status": "Confirmed",
+    "free": true,
+    "description": "Subscribed to plugin: Developer Editor, package: Starter.",
+    "expiryDate": 1738247004552,
+    "__props__": {
+        "id": "r1W7D3z7a6Z4W202B024v5g5v3",
+        "doc": "subscription29",
+        "counter": 29,
+        "creationDate": 1737642204553,
+        "collection": "subscription",
+        "chunk": "chunk1",
+        "lastModified": 1737642204553,
+        "dev": false,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {},
+        "schema": {},
+        "secured": false,
+        "size": 618
+    }
+}

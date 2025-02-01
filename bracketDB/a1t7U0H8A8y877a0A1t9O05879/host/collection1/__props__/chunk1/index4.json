@@ -2,12 +2,6 @@
     "host89": {
         "localhost": "valsoft.localhost"
     },
-    "host84": {
-        "localhost": "dev.test2.localhost"
-    },
-    "host83": {
-        "localhost": "test1.localhost"
-    },
     "host80": {
         "localhost": "dev.brackettechnologies.localhost"
     },
