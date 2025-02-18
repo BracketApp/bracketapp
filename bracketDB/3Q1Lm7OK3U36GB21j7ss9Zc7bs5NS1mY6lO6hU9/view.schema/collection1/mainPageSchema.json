@@ -1,13 +1,12 @@
 {
-    "welcomeStatement": "Welcome to Bracket Technologies!",
     "__props__": {
-        "id": "D1a7m336o2O7Y9R7j7o4V0C0k5",
+        "id": "W1m7H338k609o0Q6Q8R5p6c1E8",
         "doc": "mainPageSchema",
         "counter": 1,
-        "creationDate": 1736279774005,
+        "creationDate": 1738690685618,
         "collection": "view.schema",
         "chunk": "chunk1",
-        "lastModified": 1736281176918,
+        "lastModified": 1738690726390,
         "dev": true,
         "actions": {},
         "comments": [],
@@ -20,7 +19,8 @@
         },
         "schema": {},
         "secured": false,
-        "size": 385
+        "size": 387
     },
-    "name": "Shawn Elbaz"
+    "welcomeStatement": "Welcome to Bracket Technologies!",
+    "name": "Salim Rennewi"
 }

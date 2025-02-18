@@ -28,7 +28,7 @@ module.exports = {
     // params
     if (params) {
       
-      params = toParam({ _window, lookupActions, stack, props, data: params, id, object: [view], __ })
+      params = toParam({ _window, lookupActions, stack, props, data: {string: params}, id, object: [view], __ })
 
       if (params.id) {
         

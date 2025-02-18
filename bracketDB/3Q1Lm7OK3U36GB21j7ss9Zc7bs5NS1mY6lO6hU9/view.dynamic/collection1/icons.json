@@ -1,0 +1,45 @@
+{
+    "__props__": {
+        "id": "D1d7p3M8R7p7O4N3i9L6y7n9L3",
+        "doc": "icons",
+        "counter": 2,
+        "creationDate": 1738774396793,
+        "collection": "view.dynamic",
+        "chunk": "chunk1",
+        "lastModified": 1738786703520,
+        "dev": true,
+        "actions": {
+            "icons": ":[name=person;color=red]:[name=check;color=blue]"
+        },
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "view",
+                "children",
+                "icons"
+            ],
+            "children.0": [
+                "view",
+                "children"
+            ],
+            "children.0.children.0": [
+                "view"
+            ]
+        },
+        "schema": {},
+        "secured": false,
+        "size": 702
+    },
+    "view": "View?class=flexbox;style=[gap=2rem];@override;data=icons()",
+    "children": [
+        {
+            "view": "[View]?class=flexbox;style=[border=1px solid #ddd;borderRadius=.5rem;height=4rem;width=4rem]",
+            "children": [
+                {
+                    "view": "Icon?name=_.name;google.symbol;style=[fontSize=2rem;color=_.color]"
+                }
+            ]
+        }
+    ]
+}

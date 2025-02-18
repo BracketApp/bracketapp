@@ -1,0 +1,36 @@
+{
+    "publicID": "mL1507Id3i26tP2yT7XJ9e37VM5aU1ni6ua5no3",
+    "projectID": "e1W7B316H2a7T9u7G5l1f6L6e9",
+    "projectDoc": "project194",
+    "subdomain": "sellabroad",
+    "host": "dev.sellabroad.localhost",
+    "path": [
+        "",
+        ""
+    ],
+    "db": "lQ1Mw7kd3az6W92pN7MU9YE79C50Y10t6vo6h09",
+    "storage": "VY1aq7Ua3DH6aP2Wn7Xs90w70S52n1In6K969V9",
+    "devDB": "3Q1Lm7OK3U36GB21j7ss9Zc7bs5NS1mY6lO6hU9",
+    "dev": true,
+    "expiryDate": 1738877269293,
+    "encryptionKey": "CfmQt",
+    "userID": "",
+    "username": "",
+    "__props__": {
+        "id": "l1t7G3O836l8H6R8u7O2r852C5",
+        "doc": "session21",
+        "counter": 21,
+        "creationDate": 1738686872825,
+        "collection": "session",
+        "chunk": "chunk1",
+        "lastModified": 1738790869299,
+        "dev": false,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {},
+        "schema": {},
+        "secured": false,
+        "size": 704
+    }
+}

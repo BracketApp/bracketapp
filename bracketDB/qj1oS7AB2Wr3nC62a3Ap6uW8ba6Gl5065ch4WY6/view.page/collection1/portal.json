@@ -1,0 +1,63 @@
+{
+    "view": "View?id=portal;class=column;title=Portal | Flight Booking Platform;style:[height=100vh];data=@application.application1",
+    "children": [
+        {
+            "view": "View?class=column;style:[height=100%]",
+            "children": [
+                {
+                    "view": "@view.component.topbar.topbar"
+                },
+                {
+                    "view": "View?class=flex;style:[height=calc(100% - 4.5rem)]",
+                    "children": [
+                        {
+                            "view": "@view.component.sidebar.sidebar"
+                        },
+                        {
+                            "view": "@view.component.manager.manager"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "__props__": {
+        "id": "e1b7x308k4C4K0Z9t1u019T8z0",
+        "doc": "portal",
+        "counter": 2,
+        "creationDate": 1738440910980,
+        "collection": "view.page",
+        "chunk": "chunk1",
+        "lastModified": 1738485803823,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "view",
+                "children"
+            ],
+            "children.0": [
+                "view",
+                "children"
+            ],
+            "children.0.children.0": [
+                "view"
+            ],
+            "children.0.children.1": [
+                "view",
+                "children"
+            ],
+            "children.0.children.1.children.0": [
+                "view"
+            ],
+            "children.0.children.1.children.1": [
+                "view"
+            ]
+        },
+        "schema": {},
+        "secured": false,
+        "size": 895
+    }
+}

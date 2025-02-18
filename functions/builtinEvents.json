@@ -24,10 +24,13 @@
     ],
     "hover": [
         {
-            "event": "mouseenter?hover.style.keys()._():[style().[_]=hover.style.[_]]?!hover.disable"
+            "event": "loaded?style().transition=.2s"
         },
         {
-            "event": "mouseleave?hover.style.keys()._():[style().[_]=style.[_]||null]?!hover.disable"
+            "event": "menter?hover.style.keys()._():[style().[_]=hover.style.[_]]?!hover.disable"
+        },
+        {
+            "event": "mleave?hover.style.keys()._():[style().[_]=style.[_]||null]?!hover.disable"
         }
     ],
     "mininote": [

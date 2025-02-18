@@ -1,0 +1,177 @@
+{
+    "view": "View:sidebar?style:[height=100%];data=@.schema",
+    "children": [
+        {
+            "view": "View?class=column;style:[height=100%;width=19rem;backgroundColor=#f5f5f5;transition=.2s;overflow=hidden]",
+            "children": [
+                {
+                    "view": "View?class=flex column;style:[overflowY=auto;overflowX=hidden]",
+                    "children": [
+                        {
+                            "view": "[View]:[data=_.items]?class=column;style:[width=100%]",
+                            "children": [
+                                {
+                                    "view": "sidebarItem"
+                                },
+                                {
+                                    "view": "View?class=column;style:[width=100%;overflow=hidden;height=0;transition=.2s;gap=.05rem;padding=0 .2rem 0 .8rem;justifyContent=space-around]?_.subSidebar",
+                                    "children": [
+                                        {
+                                            "view": "[sidebarSubItem]:[data=_.subSidebar]"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "view": "View?id=sidebarExpander;class=flexbox;style:[height=4.5rem;width=100%;borderRight=2px solid #00000000;marginTop=auto;cursor=pointer];opened=true;[click?expandSidebar()];hover.style:[backgroundColor=#ddd]",
+                    "children": [
+                        {
+                            "view": "Icon?name=arrow_forward;google.symbol;style:[fontSize=2.5rem;color=#453f3f;transition=.2s;transform=rotate(180deg)]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "__props__": {
+        "id": "A1Y7i3l874h8A6h0J3E151T2A8",
+        "doc": "sidebar",
+        "counter": 2,
+        "creationDate": 1738486031128,
+        "collection": "view.component.sidebar",
+        "chunk": "chunk1",
+        "lastModified": 1738592971290,
+        "dev": true,
+        "actions": {
+            "expandSidebar": {
+                "collapseSidebar": "1stChild().rotate()=0;parent().1stChild().children().():[1stChild().2ndChild().style():[opacity=0;width=0];1stChild().lastChild().style():[opacity=0;width=0]];parent().width()=4.5rem;nthParent():3.next().width()='calc(100% - 4.5rem)'",
+                "expandSidebar": "1stChild().rotate()=180;parent().1stChild().children().():[1stChild().2ndChild().style():[opacity=1;width=10rem];[1stChild().lastChild().style():[opacity=1;width=2.5rem]?._.subSidebar]];parent().width()=19rem;nthParent():3.next().width()='calc(100% - 19rem)'",
+                "_": "opened=true;expandSidebar();openSubSidebar()?!opened?opened=false;collapseSidebar();closeSubSidebar()",
+                "closeSubSidebar": "parent().1stChild().children().():[2ndChild().height()=0;2ndChild().selected=false]",
+                "openSubSidebar": "parent().1stChild().children().():[2ndChild().height()=._.subSidebar.len()*3.4+'rem'?1stChild().selected]"
+            },
+            "openManager": "():[_.view||manager].refresh():[data=_]?!_.subSidebar",
+            "openCreateForm": "openManager()::[():create.click()]"
+        },
+        "comments": [
+            {
+                "note": "items",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "main item",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "sub items",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "note": "expand icon",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    1
+                ]
+            }
+        ],
+        "collapsed": [
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "expandSidebar"
+                ]
+            }
+        ],
+        "arrange": {
+            "": [
+                "view",
+                "children",
+                "expandSidebar",
+                "openManager",
+                "openCreateForm"
+            ],
+            "children.0": [
+                "view",
+                "children"
+            ],
+            "children.0.children.0": [
+                "view",
+                "children"
+            ],
+            "children.0.children.0.children.0": [
+                "view",
+                "children"
+            ],
+            "children.0.children.0.children.0.children.0": [
+                "view"
+            ],
+            "children.0.children.0.children.0.children.1": [
+                "view",
+                "children"
+            ],
+            "children.0.children.0.children.0.children.1.children.0": [
+                "view"
+            ],
+            "children.0.children.1": [
+                "view",
+                "children"
+            ],
+            "children.0.children.1.children.0": [
+                "view"
+            ],
+            "expandSidebar": [
+                "_",
+                "closeSubSidebar",
+                "collapseSidebar",
+                "expandSidebar",
+                "openSubSidebar"
+            ]
+        },
+        "schema": {},
+        "secured": false,
+        "size": 3199
+    }
+}

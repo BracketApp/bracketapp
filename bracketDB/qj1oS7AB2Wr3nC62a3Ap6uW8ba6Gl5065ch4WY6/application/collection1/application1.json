@@ -1,0 +1,26 @@
+{
+    "__props__": {
+        "id": "O1l7p3v8H4f305L926t3x5c243",
+        "doc": "application1",
+        "counter": 1,
+        "creationDate": 1738435963523,
+        "collection": "application",
+        "chunk": "chunk1",
+        "lastModified": 1738437368283,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "logo",
+                "appName"
+            ]
+        },
+        "schema": {},
+        "secured": false,
+        "size": 451
+    },
+    "logo": "/storage/eU1YM75W2Nq1Xo8JS3a24tw3d48yg5Mw0GI4Ff7/files/bucket1/Bv1HS7lS2oO27w0Td0vn5C332K2F29321tf7uA2.png",
+    "appName": "Flight Booking Platform"
+}

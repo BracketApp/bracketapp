@@ -29,14 +29,14 @@ const watch = ({ lookupActions, __, stack, string, id }) => {
             view[`${_watch}-watch`] = clone(value)
             
             // params
-            toParam({ id, lookupActions, stack, props, data: watch.split('?')[1], object: [view], __ })
+            toParam({ id, lookupActions, stack, props, data: {string: watch.split('?')[1]}, object: [view], __ })
             
             // approval
             let approved = toCondition({ id, lookupActions, stack, props, data: watch.split('?')[2], __ })
             if (!approved) return
                 
             // params
-            if (view.await) toParam({ id, lookupActions, stack, props, data: view.await.join(';'), __ })
+            if (view.await) toParam({ id, lookupActions, stack, props, data: {string: view.await.join(';')}, __ })
         }
 
         view.__timers__.push(setInterval(myFn, timer))

@@ -41,7 +41,7 @@ module.exports = {
             /* Convert the final array to JSON */
             console.log(result)
             window.views[id].file = window.global.file = { data: result, message: "Data converted successfully!" }
-            toParam({ id, e, data: onload, object: [views[id]], __: [window.global.file, ...__] })
+            toParam({ id, e, data: {string: onload}, object: [views[id]], __: [window.global.file, ...__] })
         };
 
         // start reading the file. When it is done, calls the onload event defined above.

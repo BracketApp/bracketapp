@@ -1,0 +1,210 @@
+{
+    "__props__": {
+        "id": "S1h7m3Y8b5I7e2C0P0S593I909",
+        "doc": "header",
+        "counter": 2,
+        "creationDate": 1738572005399,
+        "collection": "view.component.manager",
+        "chunk": "chunk1",
+        "lastModified": 1738572687105,
+        "dev": true,
+        "actions": {
+            "myIcons": [
+                {
+                    "icon": "filter_alt",
+                    "tooltip": "filter",
+                    "actions": "[click?openFilter()]"
+                },
+                {
+                    "icon": "print",
+                    "tooltip": "print",
+                    "actions": "[click?printData()]"
+                },
+                {
+                    "icon": "download",
+                    "tooltip": "import",
+                    "actions": "[click?importData()]"
+                },
+                {
+                    "icon": "upload",
+                    "tooltip": "export",
+                    "actions": "[click?exportData()]"
+                },
+                {
+                    "icon": "add",
+                    "tooltip": "create",
+                    "actions": "[click?openForm()]"
+                }
+            ]
+        },
+        "comments": [
+            {
+                "note": "title",
+                "path": [
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "icons",
+                "path": [
+                    "children",
+                    1
+                ]
+            },
+            {
+                "note": "filter",
+                "path": [
+                    "myIcons",
+                    0
+                ]
+            },
+            {
+                "note": "print",
+                "path": [
+                    "myIcons",
+                    1
+                ]
+            },
+            {
+                "note": "import",
+                "path": [
+                    "myIcons",
+                    2
+                ]
+            },
+            {
+                "note": "export",
+                "path": [
+                    "myIcons",
+                    3
+                ]
+            },
+            {
+                "note": "create",
+                "path": [
+                    "myIcons",
+                    4
+                ]
+            }
+        ],
+        "collapsed": [
+            {
+                "path": [
+                    "children",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "myIcons",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "myIcons",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "myIcons",
+                    2
+                ]
+            },
+            {
+                "path": [
+                    "myIcons",
+                    3
+                ]
+            },
+            {
+                "path": [
+                    "myIcons",
+                    4
+                ]
+            }
+        ],
+        "arrange": {
+            "": [
+                "view",
+                "children",
+                "myIcons"
+            ],
+            "children.0": [
+                "view",
+                "children"
+            ],
+            "children.0.children.0": [
+                "view"
+            ],
+            "children.0.children.1": [
+                "view"
+            ],
+            "children.1": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0": [
+                "view"
+            ],
+            "myIcons.0": [
+                "actions",
+                "icon",
+                "tooltip"
+            ],
+            "myIcons.1": [
+                "actions",
+                "icon",
+                "tooltip"
+            ],
+            "myIcons.2": [
+                "actions",
+                "icon",
+                "tooltip"
+            ],
+            "myIcons.3": [
+                "actions",
+                "icon",
+                "tooltip"
+            ],
+            "myIcons.4": [
+                "actions",
+                "icon",
+                "tooltip"
+            ]
+        },
+        "schema": {},
+        "secured": false,
+        "size": 1935
+    },
+    "children": [
+        {
+            "view": "View?class=flexbox;style:[height=100%;cursor=default;gap=1rem]",
+            "children": [
+                {
+                    "view": "View?class=flex;style:[height=2.5rem;width=.2rem;backgroundColor=#fb3b1e]"
+                },
+                {
+                    "view": "Text?text=_.title;style:[fontSize=1.5rem]"
+                }
+            ]
+        },
+        {
+            "view": "View?class=flex;style=[display=flex;gap=.75rem]",
+            "children": [
+                {
+                    "view": "[@.iconBtn]:[data=myIcons()]"
+                }
+            ]
+        }
+    ],
+    "view": "View?class=flexbox;style:[height=3.5rem;width=100%;justifyContent=space-between;position=relative]"
+}

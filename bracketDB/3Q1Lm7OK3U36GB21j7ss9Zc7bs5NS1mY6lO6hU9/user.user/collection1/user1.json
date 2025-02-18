@@ -6,7 +6,7 @@
         "creationDate": 1736282558242,
         "collection": "user.user",
         "chunk": "chunk1",
-        "lastModified": 1736282584554,
+        "lastModified": 1738790510303,
         "dev": true,
         "actions": {},
         "comments": [],
@@ -19,8 +19,8 @@
         },
         "schema": {},
         "secured": false,
-        "size": 343
+        "size": 336
     },
-    "name": "Shawn Elbaz",
-    "email": "shwan.elbaz@valsoft.com"
+    "name": "Salim Rennewi",
+    "email": "test@gmail.com"
 }

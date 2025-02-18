@@ -3,10 +3,10 @@
     "port": [
         98
     ],
-    "localhost": "dev.valsoft.localhost",
-    "host": "dev.valsoft.brackettechnologies.com",
+    "localhost": "dev.sellabroad.localhost",
+    "host": "dev.sellabroad.brackettechnologies.com",
     "active": true,
-    "subdomain": "dev.valsoft",
+    "subdomain": "dev.sellabroad",
     "dev": true,
     "__props__": {
         "id": "21Y7d3U6c2J7g997a5B7T8E352",

@@ -3,14 +3,14 @@
     "collection": 1,
     "maxSize": 1000,
     "lastChunk": 1,
-    "docsLength": 31,
-    "counter": 31,
-    "reads": 88092,
-    "writes": 15546,
+    "docsLength": 32,
+    "counter": 32,
+    "reads": 88459,
+    "writes": 15547,
     "deletes": 80,
-    "size": 13193,
-    "payloadIn": 11814436,
-    "payloadOut": 62985254,
+    "size": 13841,
+    "payloadIn": 11815084,
+    "payloadOut": 63224628,
     "indexes": [
         {
             "find": [

@@ -82,7 +82,7 @@
             },
             "createDoc": {
                 "_": "openCollection:()=2ndParent().data();createDoc()?!openDoc||duplicateData:();e().key=Enter||e().key=Tab;!data:().editor.[2ndParent().data()].[txt()];!txt().inc():' '",
-                "createDoc": "[openData:()=duplicateData:().clone()?duplicateData:()?openData:()=[view='View?id='+txt()]?openCollection:()=view?openData:()=[]];[start();saveData():[publicID=project:().publicID;collection=openCollection:();[doc=().txt()?().txt()];data=openData:()]:[end():[_]]]():[collection=actions;doc=db]:[postCreateDocHandler()]",
+                "createDoc": "[openData:()=duplicateData:().clone()?duplicateData:()?openData:()=[view='View?id='+txt()]?openCollection:()=view?openData:()=[''='']];[start();saveData():[publicID=project:().publicID;collection=openCollection:();[doc=().txt()?().txt()];data=openData:()]:[end():[_]]]():[collection=actions;doc=db]:[postCreateDocHandler()]",
                 "postCreateDocHandler": "data:().editor.[openCollection:()].[_.data.__props__.doc]=_.data;duplicateData:().del();note():[text='Document created successfully!'];():[2ndParent().data()+'-list'].refresh()::[_.view.display()]"
             },
             "importDoc": {

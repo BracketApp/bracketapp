@@ -1,0 +1,70 @@
+{
+    "__props__": {
+        "id": "i1575378A7B7J4r3N8E1J0x5U7",
+        "doc": "form",
+        "counter": 1,
+        "creationDate": 1738774381057,
+        "collection": "view.dynamic",
+        "chunk": "chunk1",
+        "lastModified": 1738793313238,
+        "dev": true,
+        "actions": {
+            "login": {
+                "_": "login()?usernameAndPasswordExists()?note():[text=Enter missing data!;type=danger]",
+                "usernameAndPasswordExists": "form().username;form().password",
+                "login": "@view.server.login;login():[form()]:[note():[text=_.user.name]?_.success?note():[text=_.message;danger]]"
+            },
+            "inputs": ":[label=Username;type=text;path=username]:[label=Password;type=password;path=password]",
+            "styles": "[fontSize=2rem;height=5.5rem;borderRadius=.5rem;border=1px solid #ddd;padding=.5rem]"
+        },
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "view",
+                "children",
+                "styles",
+                "inputs",
+                "login"
+            ],
+            "children.0": [
+                "view",
+                "children"
+            ],
+            "children.0.children.0": [
+                "view"
+            ],
+            "children.0.children.1": [
+                "view"
+            ],
+            "children.1": [
+                "view"
+            ],
+            "login": [
+                "_",
+                "login",
+                "usernameAndPasswordExists"
+            ]
+        },
+        "schema": {},
+        "secured": false,
+        "size": 1539
+    },
+    "children": [
+        {
+            "view": "[View]:[@override;data=inputs()]?class=flex column;style=[gap=.5rem;width=100%]",
+            "children": [
+                {
+                    "view": "Text?text=_.label;style=[fontSize=2rem;textAlign=left]"
+                },
+                {
+                    "view": "Input?type=_.type;style=styles();path=_.path"
+                }
+            ]
+        },
+        {
+            "view": "Text?class=flexbox pointer;text=Login;style=[color=#fff;backgroundColor=red;opacity=.8;transition=.2s;height=5.5rem;fontSize=2rem;width=100%;borderRadius=.5rem];hover.style.opacity=1;[click?login()]"
+        }
+    ],
+    "view": "View?class=flexbox column;style=[padding=3rem;borderRadius=.5rem;border=1px solid #ddd;gap=3rem;width=50rem];form=userData"
+}

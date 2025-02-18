@@ -12,6 +12,8 @@ const isValue = ({ _window, string }) => {
 
     if (isCalc({ _window, string })) return true
 
+    if (string.charAt(0) === ":") return true
+
     else return false
 }
 

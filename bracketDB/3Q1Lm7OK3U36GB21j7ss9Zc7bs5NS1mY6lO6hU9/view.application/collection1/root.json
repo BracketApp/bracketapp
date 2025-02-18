@@ -1,4 +1,41 @@
 {
+    "__props__": {
+        "id": "Y1M7V3B8d6W9Y0Y4o5g8Z2C285",
+        "doc": "root",
+        "counter": 3,
+        "creationDate": 1738690458225,
+        "collection": "view.application",
+        "chunk": "chunk1",
+        "lastModified": 1738690639728,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "view",
+                "children"
+            ],
+            "children.0": [
+                "view"
+            ],
+            "children.1": [
+                "view"
+            ],
+            "children.2": [
+                "view"
+            ],
+            "children.3": [
+                "view"
+            ],
+            "children.4": [
+                "view"
+            ]
+        },
+        "schema": {},
+        "secured": false,
+        "size": 556
+    },
     "view": "View?id=root",
     "children": [
         {
@@ -16,22 +53,5 @@
         {
             "view": "@view.page.[manifest:().page]"
         }
-    ],
-    "__props__": {
-        "id": "E177s3R6b2P7k9d7F7M319X682",
-        "doc": "root",
-        "counter": 3,
-        "creationDate": 1736279773962,
-        "collection": "view.application",
-        "chunk": "chunk1",
-        "lastModified": 1736279773962,
-        "dev": true,
-        "actions": {},
-        "comments": [],
-        "collapsed": [],
-        "arrange": {},
-        "schema": {},
-        "secured": false,
-        "size": 424
-    }
+    ]
 }

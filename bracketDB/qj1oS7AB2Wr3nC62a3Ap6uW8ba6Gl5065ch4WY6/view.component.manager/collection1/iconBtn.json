@@ -1,0 +1,33 @@
+{
+    "__props__": {
+        "id": "11l7S3h815R7k1r8X8Y6g3G895",
+        "doc": "iconBtn",
+        "counter": 1,
+        "creationDate": 1738571886385,
+        "collection": "view.component.manager",
+        "chunk": "chunk1",
+        "lastModified": 1738572644282,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "view",
+                "children"
+            ],
+            "children.0": [
+                "view"
+            ]
+        },
+        "schema": {},
+        "secured": false,
+        "size": 638
+    },
+    "view": "View?class=flexbox;style:[height=3.5rem;width=3.5rem;border=1px solid #ddd;borderRadius=.8rem;cursor=pointer];[tooltip.text=_.tooltip?_.tooltip];hover.style.backgroundColor=#f6f6f6;[[_.actions]]",
+    "children": [
+        {
+            "view": "Icon?style:[fontSize=2rem;[[[_.style]].flat()?_.style]];name=_.icon;google.symbol"
+        }
+    ]
+}

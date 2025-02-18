@@ -1,26 +1,26 @@
 {
-    "creationDate": 1731325195675,
+    "creationDate": 1738442003898,
     "collection": 1,
     "maxSize": 1000,
     "lastChunk": 1,
-    "docsLength": 31,
-    "counter": 32,
-    "reads": 289,
+    "docsLength": 1,
+    "counter": 1,
+    "reads": 230,
     "writes": 34,
     "deletes": 0,
-    "size": 35463,
-    "payloadIn": 35840,
-    "payloadOut": 300601,
+    "size": 449,
+    "payloadIn": 11629,
+    "payloadOut": 91826,
     "indexes": [
         {
             "find": [
-                "user"
+                "session"
             ],
             "doc": "index1"
         },
         {
             "find": [
-                "session"
+                "user"
             ],
             "doc": "index2"
         }
@@ -37,33 +37,19 @@
                     "schema"
                 ],
                 "schema": [
-                    "expiryDate",
-                    "session",
                     "user"
                 ],
-                "schema.expiryDate": [
-                    "type"
-                ],
-                "schema.session": [
-                    "type"
-                ],
                 "schema.user": [
-                    "collection",
-                    "type"
+                    "type",
+                    "collection"
                 ]
             }
         },
-        "hideProps": true,
+        "hideProps": false,
         "schema": {
-            "session": {
-                "type": "text"
-            },
             "user": {
                 "type": "document",
                 "collection": "account.user.user"
-            },
-            "expiryDate": {
-                "type": "timestamp"
             }
         }
     }

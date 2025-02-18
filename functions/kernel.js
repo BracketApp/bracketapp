@@ -94,7 +94,7 @@ const actions = {
         })*/
 
         if (!o.__rendered__) return
-        const params = toParam({ req, res, _window, lookupActions, stack, object, id, data: args[1], __, e })
+        const params = toParam({ req, res, _window, lookupActions, stack, object, id, data: { string: args[1] }, __, e })
 
         global.__clicker__ = views[id]
         global.__clicked__/* = global.__droplistPositioner__*/ = o
@@ -2050,7 +2050,7 @@ const actions = {
 
     }, "sort()": ({ _window, req, res, o, stack, props, lookupActions, id, e, __, args, answer, object, pathJoined }) => {
 
-        let data = toParam({ req, res, _window, lookupActions, stack, props, object: [{}, ...object], id, e, __, data: args[1] })
+        let data = toParam({ req, res, _window, lookupActions, stack, props, object: [{}, ...object], id, e, __, data: {string: args[1]} })
         data.data = data.data || o
 
         data.data = answer = sort({ _window, lookupActions, stack, props, __, id, e, sort: data })
@@ -2334,7 +2334,7 @@ const actions = {
 
         if (!isNumber(o)) return
 
-        let data = toParam({ req, res, _window, lookupActions, stack, props, object, id, e, __, data: args[1] })
+        let data = toParam({ req, res, _window, lookupActions, stack, props, object, id, e, __, data: {string: args[1]} })
         if (!data.decimal) data.decimal = 2
         return parseFloat(o).toFixed(data.decimal)
 
@@ -3413,7 +3413,7 @@ const actions = {
             // params
             if (view.__params__) {
 
-                toParam({ _window, lookupActions, stack, props, data: view.__params__, id, req, res, object: [view], __ })
+                toParam({ _window, lookupActions, stack, props, data: {string: view.__params__}, id, req, res, object: [view], __ })
 
                 // id changed
                 if (view.id !== id) id = view.id
@@ -3995,7 +3995,7 @@ const kernel = ({ _window, lookupActions, stack, props = {}, id, __, e, req, res
 
             o[k0] = o[k0] || {}
 
-            if (args[1]) answer = toParam({ req, res, _window, lookupActions, stack, props, id, e, object: [o[k0], ...object], data: args[1], __ })
+            if (args[1]) answer = toParam({ req, res, _window, lookupActions, stack, props, id, e, object: [o[k0], ...object], data: {string: args[1]}, __ })
             else return
         }
 
@@ -4058,7 +4058,7 @@ const toValue = ({ _window, lookupActions = [], stack = { addresses: [], returns
     if (value.split("?").length > 1) return toLine({ _window, lookupActions, stack, props, id, e, data: { string: value }, req, res, __, object, action: "toValue" }).data
 
     // value is a param it has key=value
-    if (isParam({ _window, string: value })) return toParam({ req, res, _window, id, lookupActions, address, stack, props, e, data: value, __, object: props.isValue && !props.isCondition ? [{}, ...object] : object })
+    if (isParam({ _window, string: value })) return toParam({ req, res, _window, id, lookupActions, address, stack, props, e, data: {string: value}, __, object: props.isValue && !props.isCondition ? [{}, ...object] : object })
 
     // no value
     if (value === "()") return views[id]
@@ -4104,7 +4104,7 @@ const toValue = ({ _window, lookupActions = [], stack = { addresses: [], returns
 
                 value = value.slice(0, -2)
                 let newValue = actions["encode()"]({ _window, id, stack, string: actions["encode()"]({ _window, id, stack, string: `${value}=[${value}||0]+1`, start: "'" }) })
-                toParam({ req, res, _window, lookupActions, id, e, data: newValue, __, object, props })
+                toParam({ req, res, _window, lookupActions, id, e, data: {string: newValue}, __, object, props })
                 
                 return (toValue({ _window, lookupActions, stack, props, data: value, __, id, e, req, res, object }) - 1)
 
@@ -4231,7 +4231,7 @@ const toValue = ({ _window, lookupActions = [], stack = { addresses: [], returns
     return value
 }
 
-const toParam = ({ _window, lookupActions, stack = { addresses: [], returns: [] }, props = {}, address, data: string, e, id, req, res, object = [], __ }) => {
+const toParam = ({ _window, lookupActions, stack = { addresses: [], returns: [] }, props = {}, address, data: {string, isObj}, e, id, req, res, object = [], __ }) => {
 
     let views = _window ? _window.views : window.views
     let global = _window ? _window.global : window.global
@@ -4253,7 +4253,7 @@ const toParam = ({ _window, lookupActions, stack = { addresses: [], returns: [] 
         if (typeof string !== "string") return string
 
         string = actions["encode()"]({ _window, id, stack, string: actions["encode()"]({ _window, id, stack, string, start: "'" }) })
-        return toParam({ req, res, _window, lookupActions, stack, props, id, e, object, data: string, __ })
+        return toParam({ req, res, _window, lookupActions, stack, props, id, e, object, data: {string}, __ })
     }
 
     // check event else interpret
@@ -4270,12 +4270,16 @@ const toParam = ({ _window, lookupActions, stack = { addresses: [], returns: [] 
     if (props.isCondition || isCondition({ _window, string })) return toCondition({ id, lookupActions, stack, props, e, data: string, req, res, _window, __, object })
 
     // init
-    if (object.length === 0) object.push({})
+    if (isObj) object.unshift({})
+    else if (object.length === 0) object.push({})
     let params = object[0]
 
     props.isValue = false
 
     let strings = string.split(";")
+
+    // list
+    if (string.charAt(0) === ":") return toValue({ id, lookupActions, stack, props, e, data: string, req, res, _window, __, object })
 
     for (let j = 0; j < strings.length; j++) {
 
@@ -4309,7 +4313,7 @@ const toParam = ({ _window, lookupActions, stack = { addresses: [], returns: [] 
 
             let newParam = key + "=" + value
             param.split("=").slice(1).map(key => { newParam += ";" + key + "=" + value })
-            params = { ...params, ...toParam({ _window, lookupActions, stack, props, data: param, e, id, req, res, object, __ }) }
+            params = { ...params, ...toParam({ _window, lookupActions, stack, props, data: {string:param}, e, id, req, res, object, __ }) }
             continue
         }
 
@@ -4413,7 +4417,7 @@ const reducer = ({ _window, lookupActions = [], stack = { addresses: [], returns
     if (path[0] !== undefined) args = path[0].toString().split(":")
         
     // toParam
-    if (isParam({ _window, string: pathJoined })) return toParam({ req, res, _window, lookupActions, stack, props, id, e, data: pathJoined, __, object })
+    if (isParam({ _window, string: pathJoined })) return toParam({ req, res, _window, lookupActions, stack, props, id, e, data: {string: pathJoined, isObj: true}, __, object })
         
     // toValue
     if (isCalc({ _window, string: pathJoined }) && !key) return toValue({ _window, lookupActions, stack, props, data: pathJoined, __, id, e, req, res, object })
@@ -4471,6 +4475,7 @@ const reducer = ({ _window, lookupActions = [], stack = { addresses: [], returns
     // key=@collection.doc or @collection.doc
     else if (pathJoined.charAt(0) === "@" && pathJoined.charAt(1) !== "$") {
 
+        if (pathJoined === "@override") return object[0].__annotations__ = { ...(object[0].__annotations__ || {}), override: true }
         pathJoined = pathJoined.slice(1)
         let path = pathJoined.split(":")[1]
         pathJoined = pathJoined.split(":")[0]
@@ -4510,7 +4515,7 @@ const reducer = ({ _window, lookupActions = [], stack = { addresses: [], returns
             
             } else if (!keyName) {
                 
-                toParam({ req, res, _window, lookupActions: newLookupActions, stack, props, id, e, data: strings.slice(index+1).join(";"), __, object })
+                toParam({ req, res, _window, lookupActions: newLookupActions, stack, props, id, e, data: {string: strings.slice(index+1).join(";")}, __, object })
 
             } else if (keyName && global.__queries__[collection]) return clone(path.reduce((o, k) => o[k], global.__queries__[collection][doc]))
         }
@@ -4581,16 +4586,22 @@ const reducer = ({ _window, lookupActions = [], stack = { addresses: [], returns
 
         if (!isNumber(path[1].charAt(0))) {
 
-            var index = 0
+            let index = 0
             while (pathJoined.charAt(index) === ".") { index++ }
             path = path.slice(index)
-            var t = kernel({ _window, lookupActions, stack, props, id, __, e, req, res, object, data: { data: object[index - 1], path, value, key, pathJoined } })
+            if (key) console.log("path", path, index, object.slice(index - 1));
+            
+            let t = kernel({ _window, lookupActions, stack, props, id, __, e, req, res, object, data: { data: object[index - 1], path, value, key, pathJoined } })
+            
+            // path & data & doc
+            if (key && (object[index - 1] || {}).__view__ && !view.__fake__) mountData({ _window, view, views, global, id, stack, key: pathJoined.slice(index), lookupActions, object, __, e, req, res })
+        
             //console.log(decode({_window, string: pathJoined}), clone(object), t);
             return t
         } else return pathJoined
     }
 
-    // @$coded
+    // @$encoded
     else if (path0.slice(0, 2) === "@$" && path[0].length === 7) {
 
         var data
@@ -4980,7 +4991,7 @@ const toLine = ({ _window, lookupActions, stack, props = {}, address = {}, id, e
 
     if (action === "toValue") data = toValue({ _window, lookupActions, address, stack, props, id, e, data: string, req, res, __, object })
     else if (action === "toCondition") data = toCondition({ _window, lookupActions, address, stack, props, id, e, data: string, req, res, __, object })
-    else if (action === "toParam") data = toParam({ _window, lookupActions, address, stack, props, id, e, data: string, req, res, __, object })
+    else if (action === "toParam") data = toParam({ _window, lookupActions, address, stack, props, id, e, data: {string}, req, res, __, object })
 
     if (dblExecute && executable({ _window, string: data, object })) data = toLine({ _window, lookupActions, stack, props, id, e, data: { string: data }, req, res, __, object, tt: true }).data
 
@@ -5070,7 +5081,7 @@ const addEventListener = ({ event, id, string, __, stack, props, lookupActions, 
 
 const isAction = ({ _window, lookupActions, stack, props, address, id, __, e, req, res, action, name, object }) => {
     
-    if (actions[name + "()"]) return {}
+    if (!object[0]?.__annotations__?.override && actions[name + "()"]) return {}
 
     var global = _window ? _window.global : window.global
     var serverAction = false, actionFound = false, newLookupActions, checkInViewsInDatastore = false
@@ -5160,7 +5171,7 @@ const then = async ({ _window, req, res, o, stack, props, lookupActions, k0, id,
     else */if (k0.slice(-2) === "()" && typeof o[k0.slice(0, -2)] === "function") response = await o[k0.slice(0, -2)](...data)
     else response = await o[k0]
     
-    if (string) toParam({ _window, lookupActions, stack, props, data: string, e, id, req, res, object, __: [response, ...__] })
+    if (string) toParam({ _window, lookupActions, stack, props, data: {string}, e, id, req, res, object, __: [response, ...__] })
 }
 
 const getDeepChildren = ({ _window, id }) => {
@@ -5519,13 +5530,13 @@ const closePublicViews = ({ _window, stack, id, __, lookupActions }) => {
     if (_window) return
 
     // close droplist
-    if (id !== "droplist") toParam({ id: "droplist", data: actions["encode()"]({ stack, string: "__droplistMouseleaveTimer__:()=0;():droplist.mouseleave()" }), __, lookupActions })
+    if (id !== "droplist") toParam({ id: "droplist", data: {string: actions["encode()"]({ stack, string: "__droplistMouseleaveTimer__:()=0;():droplist.mouseleave()" })}, __, lookupActions })
 
     // close tooltip
-    toParam({ id: "tooltip", data: actions["encode()"]({ stack, string: "clearTimer():[__tooltipTimer__:()];__tooltipTimer__:().del();():tooltip.style().opacity=0" }), __, lookupActions })
+    toParam({ id: "tooltip", data: {string: actions["encode()"]({ stack, string: "clearTimer():[__tooltipTimer__:()];__tooltipTimer__:().del();():tooltip.style().opacity=0" })}, __, lookupActions })
 
     // close mininote
-    toParam({ id: "mininote", data: actions["encode()"]({ stack, string: "():mininote.style():[opacity=0;transform=scale(0)]" }), __, lookupActions })
+    toParam({ id: "mininote", data: {string: actions["encode()"]({ stack, string: "():mininote.style():[opacity=0;transform=scale(0)]" })}, __, lookupActions })
 }
 
 const remove = ({ _window, stack, props, data = {}, id, __, lookupActions }) => {
@@ -6655,7 +6666,7 @@ const loader = ({ _window, show }) => {
     document.getElementById("loader-container").style.display = show ? "flex" : "none"
 }
 
-const mountData = ({ _window, object, view, views, global, key, id, stack, lookupActions, params, props, __, e, req, res }) => {
+const mountData = ({ _window, object, view, views, global, key, id, stack, lookupActions, params = {}, props, __, e, req, res }) => {
 
     // data without doc => push to underscore
     if (key === "data" && view.data !== undefined && !view.__interpretingSubparams__) {

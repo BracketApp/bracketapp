@@ -1,0 +1,39 @@
+{
+    "__props__": {
+        "id": "L1V793Q8h747R4M4V0f8d1j5q9",
+        "doc": "header",
+        "counter": 3,
+        "creationDate": 1738774408159,
+        "collection": "view.dynamic",
+        "chunk": "chunk1",
+        "lastModified": 1738774419558,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "view",
+                "children"
+            ],
+            "children.0": [
+                "view"
+            ],
+            "children.1": [
+                "view"
+            ]
+        },
+        "schema": {},
+        "secured": false,
+        "size": 556
+    },
+    "view": "View?class=flex column;style=[gap=3rem];data=@view.schema.mainPageSchema",
+    "children": [
+        {
+            "view": "Text?text=_.welcomeStatement;style:[fontSize=4rem]"
+        },
+        {
+            "view": "Text?text=_.name;style=[color=red;fontSize=3rem]"
+        }
+    ]
+}

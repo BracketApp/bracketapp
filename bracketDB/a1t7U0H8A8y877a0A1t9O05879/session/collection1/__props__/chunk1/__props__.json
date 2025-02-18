@@ -1,5 +1,12 @@
 {
     "docs": [
+        "session23",
+        "session22",
+        "session21",
+        "session20",
+        "session19",
+        "session18",
+        "session17",
         "session16",
         "session15",
         "session14",
@@ -12,6 +19,6 @@
         "session7"
     ],
     "chunk": "chunk1",
-    "docsLength": 10,
-    "size": 7191
+    "docsLength": 17,
+    "size": 12343
 }

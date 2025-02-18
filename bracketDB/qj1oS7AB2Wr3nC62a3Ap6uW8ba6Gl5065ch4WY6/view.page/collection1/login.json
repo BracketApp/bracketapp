@@ -1,0 +1,321 @@
+{
+    "view": "View?id=login;class=flexbox;style:[minHeight=100vh;width=100%;backgroundColor=#f8f8f8];title='Login | Flight Booking Platform';data=@application.application1",
+    "children": [
+        {
+            "view": "View?style=[display=flex;flexDirection=column;gap=3rem;padding=5rem 3rem;backgroundColor=#fff;borderRadius=1rem;width=50rem];form=login",
+            "children": [
+                {
+                    "view": "View?style=[display=flex;justifyContent=center]",
+                    "children": [
+                        {
+                            "view": "Image?src=_.logo;style=[height=12rem;width=10rem;cursor=pointer];[click?root():main]"
+                        }
+                    ]
+                },
+                {
+                    "view": "View?style=[gap=.5rem;display=flex;flexDirection=column]",
+                    "children": [
+                        {
+                            "view": "Text?text=Welcome To;style=[fontSize=1.5rem]"
+                        },
+                        {
+                            "view": "Text?text=_.appName;style=[fontSize=2rem]"
+                        }
+                    ]
+                },
+                {
+                    "view": "View?style=[display=flex;flexDirection=column;gap=3rem]",
+                    "children": [
+                        {
+                            "view": "@view.component.custom.labelInput?inputStyle=[fontSize=1.4rem;height=4rem;width=100%];pathname=username;label=[style=[fontSize=1.4rem];text=Username];actions=username()"
+                        },
+                        {
+                            "view": "@view.component.custom.labelInput?inputStyle=[fontSize=1.4rem;height=4rem;width=100%];pathname=password;label=[style=[fontSize=1.4rem];text=Password];actions=password();inputType=password;password.style.height=4rem"
+                        }
+                    ]
+                },
+                {
+                    "view": "Text?text=Login;style=[width=100%;backgroundColor=#fb3b1e;color=#fff;fontSize=1.8rem;transition=.2s;borderRadius=.75rem;padding=1rem 0;cursor=pointer;textAlign=center;alignSelf=center];hover.style=[backgroundColor=#de2307];[click?login()]"
+                },
+                {
+                    "view": "View?style=[display=flex;gap=.5rem;width=100%]",
+                    "children": [
+                        {
+                            "view": "Text?text=Get your own flight booking system!;style=[fontSize=1.2rem]"
+                        },
+                        {
+                            "view": "Text?text=Sign up;style=[color=#fb3b1e;cursor=pointer;textDecoration=underline;fontSize=1.2rem];[click?win().open():'http://192.168.0.112:81']"
+                        },
+                        {
+                            "view": "Text?text=Forget password;style=[cursor=pointer;textDecoration=underline;fontSize=1.2rem;marginLeft=auto];[click?root():forgetpassword]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "__props__": {
+        "id": "o1d7m3R8Y4I3p682D4h3w5R3y4",
+        "doc": "login",
+        "counter": 1,
+        "creationDate": 1738436243534,
+        "collection": "view.page",
+        "chunk": "chunk1",
+        "lastModified": 1738439768793,
+        "dev": true,
+        "actions": {
+            "login": {
+                "_": "@view.server.login;login():[form()]:[successHandler()?_.success?failHandler()]?form().username;form().password?missingData()",
+                "missingData": "note():[text='Enter username & password!';type=danger]",
+                "failHandler": "note():[text=_.message;type=danger]",
+                "successHandler": "form().del();user:()=_.user;user:().verified=true;root():portal"
+            },
+            "username": "'[keydown?[login()?data()?note():[text=Enter username!;danger]]?e().key=Enter];[loaded?focus()]'",
+            "password": "'[keydown?[login()?data()?note():[text=Enter password!;danger]]?e().key=Enter]'"
+        },
+        "comments": [
+            {
+                "note": "logo",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "welcome",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "note": "username & password",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    2
+                ]
+            },
+            {
+                "note": "username",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    2,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "password",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    2,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "note": "login btn",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    3
+                ]
+            },
+            {
+                "note": "footer",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    4
+                ]
+            },
+            {
+                "note": "get your own",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    4,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "signup",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    4,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "note": "forget password",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    4,
+                    "children",
+                    2
+                ]
+            }
+        ],
+        "collapsed": [
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    2
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    3
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    4
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    4,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    4,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    4,
+                    "children",
+                    2
+                ]
+            },
+            {
+                "path": [
+                    "login"
+                ]
+            }
+        ],
+        "arrange": {
+            "": [
+                "view",
+                "children",
+                "login",
+                "username",
+                "password"
+            ],
+            "children.0": [
+                "view",
+                "children"
+            ],
+            "children.0.children.0": [
+                "view",
+                "children"
+            ],
+            "children.0.children.0.children.0": [
+                "view"
+            ],
+            "children.0.children.1": [
+                "view",
+                "children"
+            ],
+            "children.0.children.1.children.0": [
+                "view"
+            ],
+            "children.0.children.1.children.1": [
+                "view"
+            ],
+            "children.0.children.2": [
+                "view",
+                "children"
+            ],
+            "children.0.children.2.children.0": [
+                "view"
+            ],
+            "children.0.children.2.children.1": [
+                "view"
+            ],
+            "children.0.children.3": [
+                "view"
+            ],
+            "children.0.children.4": [
+                "view",
+                "children"
+            ],
+            "children.0.children.4.children.0": [
+                "view"
+            ],
+            "children.0.children.4.children.1": [
+                "view"
+            ],
+            "children.0.children.4.children.2": [
+                "view"
+            ],
+            "login": [
+                "_",
+                "missingData",
+                "successHandler",
+                "failHandler"
+            ]
+        },
+        "schema": {},
+        "secured": false,
+        "size": 4391
+    }
+}

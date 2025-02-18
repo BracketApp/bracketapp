@@ -1,0 +1,39 @@
+{
+    "__props__": {
+        "id": "v1K7B3a8W6v980F1J2u1G7U6x8",
+        "doc": "header",
+        "counter": 1,
+        "creationDate": 1738690121768,
+        "collection": "view.component",
+        "chunk": "chunk1",
+        "lastModified": 1738767710711,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "view",
+                "children"
+            ],
+            "children.0": [
+                "view"
+            ],
+            "children.1": [
+                "view"
+            ]
+        },
+        "schema": {},
+        "secured": false,
+        "size": 546
+    },
+    "view": "View?class=flex column;style=[gap=3rem]",
+    "children": [
+        {
+            "view": "Text?text=Welcome to Bracket Technologies!;style:[fontSize=4rem]"
+        },
+        {
+            "view": "Text?text=Salim Rennewi;style=[color=red;fontSize=3rem]"
+        }
+    ]
+}

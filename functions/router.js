@@ -22,8 +22,8 @@ module.exports = async ({ req, res }) => {
 
   const path = decodeURI(req.url).split("/"), id = "server"
 
-  // storage/resources
-  if (path[1] === "storage") return getLocalFile({ req, res })
+  // resources
+  if (path[1] === "resources" || path[1] === "storage") return getLocalFile({ req, res })
 
   // initialize
   var { _window, success } = initializer({ id, req, res, path })

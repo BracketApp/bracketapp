@@ -1,18 +1,18 @@
 {
     "__props__": {
-        "id": "k177W3K6G2U8R1w7y3m8b758f6",
+        "id": "f147S358s758z7O5o9M030y6E4",
         "doc": "login",
         "counter": 1,
-        "creationDate": 1736281738786,
+        "creationDate": 1738787590064,
         "collection": "view.server",
         "chunk": "chunk1",
-        "lastModified": 1736283088550,
+        "lastModified": 1738790267267,
         "dev": true,
         "actions": {
             "login": {
                 "_": "checkUsername()::checkPassword()::successfulResponse()?_.username;_.password",
-                "checkUsername": "search():[collection=user.username;findOne=[username=_.username]]:[send():[success=false;msg=Username doesnot exist!]?!_.data?username:()=_.doc]",
-                "checkPassword": "search():[collection=user.password;findOne=[username=username:();password=_.password]]:[send():[success=false;msg=Wrong password!]?!_.data?user:()=_.data.user]",
+                "checkUsername": "search():[collection=user.username;findOne=[username=_.username]]:[send():[success=false;msg=Wrong username or password!]?!_.data?username:()=_.doc]",
+                "checkPassword": "search():[collection=user.password;findOne=[username=username:();password=_.password]]:[send():[success=false;msg=Wrong username or password!]?!_.data?user:()=_.data.user]",
                 "successfulResponse": "send():[user=user:()]"
             }
         },
@@ -31,6 +31,6 @@
         },
         "schema": {},
         "secured": true,
-        "size": 827
+        "size": 843
     }
 }

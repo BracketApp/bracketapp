@@ -1,9 +1,8 @@
 {
     "docs": [
-        "schema",
         "topbar"
     ],
     "chunk": "chunk1",
-    "docsLength": 2,
-    "size": 4787
+    "docsLength": 1,
+    "size": 1022
 }

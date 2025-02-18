@@ -13,7 +13,7 @@ const getParam = ({ string, param, defValue }) => {
   string = string.find((el) => el.includes(param))
   if (!string) return defValue
 
-  let params = toParam({ data: string })
+  let params = toParam({ data: {string} })
   if (params[param]) value = params[param]
 
   return value

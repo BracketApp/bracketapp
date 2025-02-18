@@ -1,6 +1,6 @@
 {
     "host89": {
-        "localhost": "valsoft.localhost"
+        "localhost": "sellabroad.localhost"
     },
     "host80": {
         "localhost": "dev.brackettechnologies.localhost"
@@ -15,6 +15,6 @@
         "localhost": "localhost"
     },
     "host90": {
-        "localhost": "dev.valsoft.localhost"
+        "localhost": "dev.sellabroad.localhost"
     }
 }

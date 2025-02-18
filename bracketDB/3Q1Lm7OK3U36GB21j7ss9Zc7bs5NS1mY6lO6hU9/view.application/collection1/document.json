@@ -1,4 +1,36 @@
 {
+    "__props__": {
+        "id": "91j7o3V8q6i9i0c49535D3w8E3",
+        "doc": "document",
+        "counter": 2,
+        "creationDate": 1738690455383,
+        "collection": "view.application",
+        "chunk": "chunk1",
+        "lastModified": 1738690587987,
+        "dev": true,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {
+            "": [
+                "view",
+                "children"
+            ],
+            "children.0": [
+                "view"
+            ],
+            "children.1": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0": [
+                "view"
+            ]
+        },
+        "schema": {},
+        "secured": false,
+        "size": 505
+    },
     "view": "View?id=document",
     "children": [
         {
@@ -12,22 +44,5 @@
                 }
             ]
         }
-    ],
-    "__props__": {
-        "id": "u1G7k386P2D749R7Q7R3u9m543",
-        "doc": "document",
-        "counter": 2,
-        "creationDate": 1736279773953,
-        "collection": "view.application",
-        "chunk": "chunk1",
-        "lastModified": 1736279773953,
-        "dev": true,
-        "actions": {},
-        "comments": [],
-        "collapsed": [],
-        "arrange": {},
-        "schema": {},
-        "secured": false,
-        "size": 395
-    }
+    ]
 }

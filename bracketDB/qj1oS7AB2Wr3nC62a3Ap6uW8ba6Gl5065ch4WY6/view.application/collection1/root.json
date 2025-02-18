@@ -30,13 +30,13 @@
         "creationDate": 1723636899231,
         "collection": "view.application",
         "chunk": "chunk1",
-        "lastModified": 1730914385148,
+        "lastModified": 1738485302472,
         "dev": true,
         "actions": {
             "checkSession": {
-                "_": "@view.server.login;checkSession()::[successHandler()?_.success?failHandler()]?getCookie():session;!user:().verified?failHandler()?!getCookie():session?root():portal?manifest:().page=login",
-                "successHandler": "user:()=_.user;user:().verified=true;[root():portal?manifest:().page=login]",
-                "failHandler": "[root():login?manifest:().page=portal];eraseCookie():session"
+                "_": "@view.server.login;checkSession()::resHandler()?getCookie():session;!user:().verified?failHandler()?!getCookie():session?root():portal?manifest:().page=login",
+                "failHandler": "[root():login?manifest:().page=portal];eraseCookie():session",
+                "resHandler": "user:()=_.user;user:().verified=true;[root():portal?manifest:().page=login]?_.success?failHandler()"
             },
             "openPopup": {
                 "_": "openPopup()?():popup.positioner!=.id?closePopup()",
@@ -46,13 +46,7 @@
             "getDefaults": "@view.server.portal;getDefaults()::[defaults:()=_.data]?manifest:().page=portal;session:()"
         },
         "comments": [],
-        "collapsed": [
-            {
-                "path": [
-                    "checkSession"
-                ]
-            }
-        ],
+        "collapsed": [],
         "arrange": {
             "": [
                 "view",
@@ -84,7 +78,7 @@
             ],
             "checkSession": [
                 "_",
-                "successHandler",
+                "resHandler",
                 "failHandler"
             ],
             "openPopup": [
@@ -95,6 +89,6 @@
         },
         "schema": {},
         "secured": false,
-        "size": 1662
+        "size": 1623
     }
 }

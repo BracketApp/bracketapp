@@ -1,0 +1,711 @@
+{
+    "__props__": {
+        "id": "G1r7y3z8z4t8A67479D2h3s3N8",
+        "doc": "schema",
+        "counter": 4,
+        "creationDate": 1738486492338,
+        "collection": "view.component.sidebar",
+        "chunk": "chunk1",
+        "lastModified": 1738570020553,
+        "dev": true,
+        "actions": {},
+        "comments": [
+            {
+                "note": "dashboard",
+                "path": [
+                    "items",
+                    0
+                ]
+            },
+            {
+                "note": "flight",
+                "path": [
+                    "items",
+                    1
+                ]
+            },
+            {
+                "note": "create booking",
+                "path": [
+                    "items",
+                    1,
+                    "subSidebar",
+                    0
+                ]
+            },
+            {
+                "note": "create flight",
+                "path": [
+                    "items",
+                    1,
+                    "subSidebar",
+                    1
+                ]
+            },
+            {
+                "note": "create availability",
+                "path": [
+                    "items",
+                    1,
+                    "subSidebar",
+                    2
+                ]
+            },
+            {
+                "note": "manage bookings",
+                "path": [
+                    "items",
+                    1,
+                    "subSidebar",
+                    3
+                ]
+            },
+            {
+                "note": "hotel",
+                "path": [
+                    "items",
+                    2
+                ]
+            },
+            {
+                "note": "create accommodation",
+                "path": [
+                    "items",
+                    2,
+                    "subSidebar",
+                    0
+                ]
+            },
+            {
+                "note": "create hotel",
+                "path": [
+                    "items",
+                    2,
+                    "subSidebar",
+                    1
+                ]
+            },
+            {
+                "note": "create availability",
+                "path": [
+                    "items",
+                    2,
+                    "subSidebar",
+                    2
+                ]
+            },
+            {
+                "note": "create Facility",
+                "path": [
+                    "items",
+                    2,
+                    "subSidebar",
+                    3
+                ]
+            },
+            {
+                "note": "manage bookings",
+                "path": [
+                    "items",
+                    2,
+                    "subSidebar",
+                    4
+                ]
+            },
+            {
+                "note": "package",
+                "path": [
+                    "items",
+                    3
+                ]
+            },
+            {
+                "note": "book package",
+                "path": [
+                    "items",
+                    3,
+                    "subSidebar",
+                    0
+                ]
+            },
+            {
+                "note": "create package",
+                "path": [
+                    "items",
+                    3,
+                    "subSidebar",
+                    1
+                ]
+            },
+            {
+                "note": "create availability",
+                "path": [
+                    "items",
+                    3,
+                    "subSidebar",
+                    2
+                ]
+            },
+            {
+                "note": "manage bookings",
+                "path": [
+                    "items",
+                    3,
+                    "subSidebar",
+                    3
+                ]
+            },
+            {
+                "note": "accounting",
+                "path": [
+                    "items",
+                    4
+                ]
+            },
+            {
+                "note": "accounts",
+                "path": [
+                    "items",
+                    4,
+                    "subSidebar",
+                    0
+                ]
+            },
+            {
+                "note": "transactions",
+                "path": [
+                    "items",
+                    4,
+                    "subSidebar",
+                    1
+                ]
+            },
+            {
+                "note": "vouchers",
+                "path": [
+                    "items",
+                    4,
+                    "subSidebar",
+                    2
+                ]
+            },
+            {
+                "note": "invoices",
+                "path": [
+                    "items",
+                    4,
+                    "subSidebar",
+                    3
+                ]
+            },
+            {
+                "note": "sheets",
+                "path": [
+                    "items",
+                    5
+                ]
+            },
+            {
+                "note": "gallery",
+                "path": [
+                    "items",
+                    6
+                ]
+            },
+            {
+                "note": "settings",
+                "path": [
+                    "items",
+                    7
+                ]
+            }
+        ],
+        "collapsed": [
+            {
+                "path": [
+                    "items",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "items",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "items",
+                    1,
+                    "subSidebar",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "items",
+                    1,
+                    "subSidebar",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "items",
+                    1,
+                    "subSidebar",
+                    2
+                ]
+            },
+            {
+                "path": [
+                    "items",
+                    1,
+                    "subSidebar",
+                    3
+                ]
+            },
+            {
+                "path": [
+                    "items",
+                    2
+                ]
+            },
+            {
+                "path": [
+                    "items",
+                    2,
+                    "subSidebar"
+                ]
+            },
+            {
+                "path": [
+                    "items",
+                    2,
+                    "subSidebar",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "items",
+                    2,
+                    "subSidebar",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "items",
+                    2,
+                    "subSidebar",
+                    2
+                ]
+            },
+            {
+                "path": [
+                    "items",
+                    2,
+                    "subSidebar",
+                    3
+                ]
+            },
+            {
+                "path": [
+                    "items",
+                    2,
+                    "subSidebar",
+                    4
+                ]
+            },
+            {
+                "path": [
+                    "items",
+                    3
+                ]
+            },
+            {
+                "path": [
+                    "items",
+                    3,
+                    "subSidebar",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "items",
+                    3,
+                    "subSidebar",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "items",
+                    3,
+                    "subSidebar",
+                    2
+                ]
+            },
+            {
+                "path": [
+                    "items",
+                    3,
+                    "subSidebar",
+                    3
+                ]
+            },
+            {
+                "path": [
+                    "items",
+                    4
+                ]
+            },
+            {
+                "path": [
+                    "items",
+                    4,
+                    "subSidebar",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "items",
+                    4,
+                    "subSidebar",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "items",
+                    4,
+                    "subSidebar",
+                    2
+                ]
+            },
+            {
+                "path": [
+                    "items",
+                    4,
+                    "subSidebar",
+                    3
+                ]
+            },
+            {
+                "path": [
+                    "items",
+                    5
+                ]
+            },
+            {
+                "path": [
+                    "items",
+                    6
+                ]
+            },
+            {
+                "path": [
+                    "items",
+                    7
+                ]
+            }
+        ],
+        "arrange": {
+            "": [
+                "items"
+            ],
+            "items.0": [
+                "icon",
+                "tooltip",
+                "text",
+                "view"
+            ],
+            "items.1": [
+                "icon",
+                "subSidebar",
+                "tooltip",
+                "text"
+            ],
+            "items.1.subSidebar.0": [
+                "schema",
+                "text",
+                "tooltip"
+            ],
+            "items.1.subSidebar.1": [
+                "schema",
+                "text",
+                "tooltip",
+                "createBtn"
+            ],
+            "items.1.subSidebar.2": [
+                "text",
+                "tooltip",
+                "schema"
+            ],
+            "items.1.subSidebar.3": [
+                "schema",
+                "text",
+                "tooltip"
+            ],
+            "items.2": [
+                "icon",
+                "tooltip",
+                "subSidebar",
+                "text"
+            ],
+            "items.2.subSidebar.0": [
+                "schema",
+                "text",
+                "tooltip"
+            ],
+            "items.2.subSidebar.1": [
+                "schema",
+                "text",
+                "tooltip",
+                "createBtn"
+            ],
+            "items.2.subSidebar.2": [
+                "schema",
+                "text",
+                "tooltip"
+            ],
+            "items.2.subSidebar.3": [
+                "schema",
+                "text",
+                "tooltip",
+                "createBtn"
+            ],
+            "items.2.subSidebar.4": [
+                "schema",
+                "text",
+                "tooltip"
+            ],
+            "items.3": [
+                "icon",
+                "tooltip",
+                "subSidebar",
+                "text"
+            ],
+            "items.3.subSidebar.0": [
+                "schema",
+                "text",
+                "tooltip"
+            ],
+            "items.3.subSidebar.1": [
+                "schema",
+                "text",
+                "tooltip",
+                "createBtn"
+            ],
+            "items.3.subSidebar.2": [
+                "schema",
+                "text",
+                "tooltip"
+            ],
+            "items.3.subSidebar.3": [
+                "schema",
+                "text",
+                "tooltip"
+            ],
+            "items.4": [
+                "icon",
+                "tooltip",
+                "text",
+                "subSidebar"
+            ],
+            "items.4.subSidebar.0": [
+                "schema",
+                "text",
+                "tooltip",
+                "createBtn"
+            ],
+            "items.4.subSidebar.1": [
+                "schema",
+                "text",
+                "tooltip"
+            ],
+            "items.4.subSidebar.2": [
+                "schema",
+                "text",
+                "tooltip",
+                "createBtn"
+            ],
+            "items.4.subSidebar.3": [
+                "createBtn",
+                "schema",
+                "text",
+                "tooltip"
+            ],
+            "items.5": [
+                "icon",
+                "schema",
+                "tooltip",
+                "text"
+            ],
+            "items.6": [
+                "icon",
+                "schema",
+                "tooltip",
+                "text"
+            ],
+            "items.7": [
+                "icon",
+                "text",
+                "schema",
+                "tooltip"
+            ]
+        },
+        "schema": {},
+        "secured": false,
+        "size": 5908
+    },
+    "items": [
+        {
+            "icon": "speed",
+            "tooltip": "dashboard",
+            "view": "dashbaord",
+            "text": "Dashboard"
+        },
+        {
+            "subSidebar": [
+                {
+                    "tooltip": "create booking",
+                    "text": "Create Booking",
+                    "schema": "createFlightBooking"
+                },
+                {
+                    "tooltip": "create flight",
+                    "text": "Create Flight",
+                    "createBtn": true,
+                    "schema": "createFlight"
+                },
+                {
+                    "tooltip": "create availability",
+                    "text": "Create Availability",
+                    "schema": "createFlightAvailability"
+                },
+                {
+                    "tooltip": "manage bookings",
+                    "text": "Manage Bookings",
+                    "schema": "manageFlightBookings"
+                }
+            ],
+            "icon": "flight_takeoff",
+            "tooltip": "tickets",
+            "text": "Tickets"
+        },
+        {
+            "subSidebar": [
+                {
+                    "tooltip": "create accommodation",
+                    "text": "Create Accommodation",
+                    "schema": "createAccommodation"
+                },
+                {
+                    "tooltip": "create hotel",
+                    "text": "Create Hotel",
+                    "createBtn": true,
+                    "schema": "createHotel"
+                },
+                {
+                    "tooltip": "create availability",
+                    "text": "Create Availability",
+                    "schema": "createHotelAvailability"
+                },
+                {
+                    "tooltip": "create facility",
+                    "text": "Create Facility",
+                    "createBtn": true,
+                    "schema": "createHotelFacility"
+                },
+                {
+                    "tooltip": "manage bookings",
+                    "text": "Manage Bookings",
+                    "schema": "manageHotelBookings"
+                }
+            ],
+            "icon": "bed",
+            "tooltip": "stays",
+            "text": "Accommodations"
+        },
+        {
+            "subSidebar": [
+                {
+                    "tooltip": "book package",
+                    "text": "Book Package",
+                    "schema": "bookPackage"
+                },
+                {
+                    "tooltip": "create package",
+                    "text": "Create Package",
+                    "createBtn": true,
+                    "schema": "createPackage"
+                },
+                {
+                    "tooltip": "create availability",
+                    "text": "Create Availability",
+                    "schema": "createPackageAvailability"
+                },
+                {
+                    "tooltip": "manage bookings",
+                    "text": "Manage Bookings",
+                    "schema": "managePackageBookings"
+                }
+            ],
+            "icon": "flights_and_hotels",
+            "tooltip": "packages",
+            "text": "Packages"
+        },
+        {
+            "icon": "Account_Balance",
+            "tooltip": "accounting",
+            "text": "Accounting",
+            "subSidebar": [
+                {
+                    "tooltip": "accounts",
+                    "text": "Accounts",
+                    "createBtn": true,
+                    "schema": "account"
+                },
+                {
+                    "tooltip": "transactions",
+                    "text": "Transactions",
+                    "schema": "transaction"
+                },
+                {
+                    "tooltip": "vouchers",
+                    "text": "Vouchers",
+                    "createBtn": true,
+                    "schema": "voucher"
+                },
+                {
+                    "tooltip": "invoices",
+                    "text": "Invoices",
+                    "createBtn": true,
+                    "schema": "invoice"
+                }
+            ]
+        },
+        {
+            "icon": "format_list_bulleted_add",
+            "tooltip": "sheets",
+            "text": "Sheets",
+            "schema": "sheet"
+        },
+        {
+            "icon": "gallery_thumbnail",
+            "tooltip": "gallery",
+            "text": "Gallery",
+            "schema": "gallery"
+        },
+        {
+            "icon": "settings",
+            "tooltip": "settings",
+            "text": "Settings",
+            "schema": "settings"
+        }
+    ]
+}

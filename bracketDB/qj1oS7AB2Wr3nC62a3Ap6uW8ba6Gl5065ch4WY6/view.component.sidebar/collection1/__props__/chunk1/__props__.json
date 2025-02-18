@@ -1,8 +1,11 @@
 {
     "docs": [
+        "schema",
+        "sidebarItem",
+        "sidebar",
         "sidebarSubItem"
     ],
     "chunk": "chunk1",
-    "docsLength": -1,
-    "size": -7689
+    "docsLength": 2,
+    "size": 4109
 }
