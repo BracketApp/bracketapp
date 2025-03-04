@@ -66,7 +66,7 @@ const actions = {
     "tablet()": ({ global }) => global.manifest.device.device.type === "tablet",
     "stack()": ({ stack }) => stack,
     "props()": ({ object, lookupActions, props, __, stack }) => ({ object, lookupActions, props, __, stack }),
-    "address()": ({ stack }) => stack.addresses.find(({ id }) => id === stack.interpretingAddressID),
+    "address()": ({ stack }) => stack.addresses[stack.interpretingAddressID],
     "toInt()": ({ o }) => {
 
         if (!isNumber(o)) return
@@ -2605,8 +2605,8 @@ const actions = {
 
     }, "search()": ({ _window, global, req, res, o, stack, props, lookupActions, id, e, __, args, object }) => {
 
-        var action = "search()"
-        var { address, data } = actions["addresser()"]({ _window, stack, props, args, status: "Start", id: o.id || id, type: "Data", action, object, lookupActions, __ })
+        let action = "search()"
+        let { address, data } = actions["addresser()"]({ _window, stack, props, args, status: "Start", id: o.id || id, type: "Data", action, object, lookupActions, __ })
         if (!_window) action = `search():[${jsonToBracket(data)}]:[send():[_]]`
         return callServer({ _window, lookupActions, stack, props, address, id, e, __, req, res, data: { data: data === undefined ? __[0] : data, action, server: "datastore" } })
 
@@ -2626,7 +2626,7 @@ const actions = {
 
     }, "start()": ({ global, stack, props }) => {
 
-        var address = stack.addresses.find(address => address.id === stack.interpretingAddressID)
+        var address = stack.addresses[stack.interpretingAddressID]
         address.starter = true
         var startID = generate()
         global.__startAddresses__[startID] = { id: startID, address }
@@ -2840,7 +2840,7 @@ const actions = {
             
             // address for delete blocked addresses (switch with second next address => execute after end of update waits)
             blockRelatedAddressesByViewID({ stack, id: data.id })
-
+            
             // address for post update
             actions["addresser()"]({ _window, id, stack, props, switchNextAddressIDWith: address, type: "function", function: "refresh", __, lookupActions: __lookupActions__, data: { ...data, childIndex: __childIndex__, index: __index__, elements, timer, parent, postUpdate: true } })
 
@@ -2849,12 +2849,12 @@ const actions = {
 
             // render
             let myView = actions["view()"]({ _window, lookupActions: __lookupActions__, stack, props, req, res, address, __: my__, data: { view: reducedView, parent: parent.id } })
-            
+
             // seq: END:toView => END:refresh() => START:postUpdate => END:postUpdate => START:waits => END:waits => START:spliceBlockedAddresses
 
             // address
             actions["stackManager()"]({ _window, lookupActions: __lookupActions__, stack, props, address, id, req, res, __ })
-            
+
             return myView
 
         } else { // post update
@@ -3464,7 +3464,6 @@ const actions = {
                 address.status = "Wait"
                 address.data = { view }
                 address.params.id = id
-
                 return searchDoc({ _window, lookupActions, stack, props, address, id, __, req, res, object: [view], data: { data: { collection, doc: view.__name__ }, searchDoc: true } })
             }
 
@@ -3495,14 +3494,12 @@ const actions = {
 
                 // inorder to stop recursion 
                 if (!newView.view) child.view = ""
-
                 let data = getViewParams({ view })
-                
                 return actions["view()"]({ _window, stack, props, address, req, res, lookupActions: child.__lookupActions__, __: Object.keys(data).length > 0 ? [data, ...__] : [...__], data: { view: child, parent: view.__parent__ } })
             }
         }
         
-        var toViewAddress = address
+        let toViewAddress = address
         toViewAddress.interpreting = false
 
         // render children
@@ -3610,11 +3607,11 @@ const actions = {
     }, "stackManager()": ({ _window, req, res, address = {}, addressID, lookupActions, stack, props = {}, id, e, _, __ }) => {
         
         // no more addresses
-        if (stack.addresses.length === 0) return endStack({ _window, stack })
+        if (Object.keys(stack.addresses).length === 0) return endStack({ _window, stack })
 
         const global = _window ? _window.global : window.global
         
-        if (addressID && !address.id) address = stack.addresses.find(address => address.id === addressID)
+        if (addressID && !address.id) address = stack.addresses[addressID]
         if (!address.id || stack.terminated || address.hold || address.starter || address.end) return
     
         // params
@@ -3627,7 +3624,7 @@ const actions = {
         if (stack.blocked && !address.blocked) stack.blocked = false
     
         // address
-        const nextAddress = stack.addresses.find(nextAddress => nextAddress.id === address.nextAddressID) || {}
+        const nextAddress = stack.addresses[address.nextAddressID] || {}
     
         if (address.blocked || address.status === "Start") {
     
@@ -3637,11 +3634,8 @@ const actions = {
             printAddress({ stack, address, nextAddress })
     
             // remove address
-            const index = stack.addresses.findIndex(waitingAddress => waitingAddress.id === address.id)
-            if (index !== -1) {
-                stack.addresses[index] = null
-                stack.addresses.splice(index, 1)
-            }
+            stack.addresses[address.id] = null
+            delete stack.addresses[address.id]
     
             // pass underscores to waits
             if (address.hasWaits && nextAddress.params && !nextAddress.ended) {
@@ -3670,12 +3664,6 @@ const actions = {
             const params = { _window, lookupActions, stack, props, id, e, req, res, address, nextAddress, ...(address.params || {}), data: address.data, __: my__ }
     
             if (address.function) {
-                /*const func = address.function || "toLine"
-    
-                if (func === "view") actions["view()"](params)
-                else if (func === "html") actions["html()"](params)
-                else if (func === "refresh") actions["refresh()"](params)
-                else if (func === "createWebApp") actions["createWebApp()"](params)*/
                 actions[`${address.function}()`] && actions[`${address.function}()`](params)
 
     
@@ -3694,25 +3682,26 @@ const actions = {
         // asynchronous unholds nextAddresses
         if (address.nextAddressID && !address.nextStackID && nextAddress.interpreting === false) {
     
-            const otherWaiting = stack.addresses.findIndex(waitingAddress => waitingAddress.nextAddressID === address.nextAddressID)
+            const otherWaitingAddresses = Object.values(stack.addresses).filter(waitingAddress => waitingAddress.nextAddressID === address.nextAddressID)
     
-            if (otherWaiting === -1 || (otherWaiting > -1 && !stack.addresses.find(waitingAddress => waitingAddress.nextAddressID === address.nextAddressID && !address.blocked))) {
+            if (otherWaitingAddresses.length === 0 || !otherWaitingAddresses.find(address => !address.blocked)) {
     
                 nextAddress.hold = false
+                
                 return actions["stackManager()"]({ _window, lookupActions, stack, props, address: nextAddress, id, req, res, __, e })
             }
     
         } else if (nextAddress.interpreting) stack.interpretingAddressID = nextAddress.id
     
         // address is for another stack
-        if (address.nextStackID && global.__stacks__[address.nextStackID] && global.__stacks__[address.nextStackID].addresses.find(({ id }) => address.nextStackID === id)) {
+        if (address.nextStackID && global.__stacks__[address.nextStackID] && global.__stacks__[address.nextStackID].addresses[address.nextStackID]) {
     
             actions["stackManager()"]({ _window, lookupActions, stack: global.__stacks__[address.nextStackID], props, address, id, e, req, res, __ })
         }
     
         actions["stackManager()"]({ _window, stack, props })
 
-    }, "addresser()": ({ _window, addressID = generate(), index = 0, stack, unhold = false, hold = false, props = {}, args = [], req, res, e, type = "action", status = "Wait", file, data, waits, hasWaits, params, function: func, newLookupActions, nextAddressID, nextStack = {}, nextAddress = {}, blocked, blockable = true, dataInterpretAction, asynchronous = false, interpreting = false, renderer = false, action, __, id, object, lookupActions, logger, isAction, switchNextAddressIDWith }) => {
+    }, "addresser()": ({ _window, addressID = generate(), stack, unhold = false, hold = false, props = {}, args = [], req, res, e, type = "action", status = "Wait", file, data, waits, hasWaits, params, function: func, newLookupActions, nextAddressID, nextStack = {}, nextAddress = {}, blocked, blockable = true, dataInterpretAction, asynchronous = false, interpreting = false, renderer = false, action, __, id, object, lookupActions, logger, isAction, switchNextAddressIDWith }) => {
         
         const global = _window ? _window.global : window.global
         if (switchNextAddressIDWith) {
@@ -3725,7 +3714,7 @@ const actions = {
         }
 
         // find nextAddress by nextAddressID
-        if (nextAddressID && !nextAddress.id) nextAddress = stack.addresses.find(nextAddress => nextAddress.id === nextAddressID) || {}
+        if (nextAddressID && !nextAddress.id) nextAddress = stack.addresses[nextAddressID] || {}
 
         if (status === "Start") nextAddress.interpreting = false
 
@@ -3738,12 +3727,12 @@ const actions = {
             nextAddress = actions["addresser()"]({ _window, stack, props, req, res, e, type: "waits", action: action + "::[...]", data: { string: waits }, nextAddress, blockable, __, id, object, lookupActions }).address
         })
 
-        const address = { id: addressID, stackID: stack.id, props, viewID: id, type, data, status, hold, file, function: func, hasWaits: hasWaits !== undefined ? hasWaits : (toArray(waits).length > 0 ? true : false), nextStackID: nextStack.id, nextAddressID: nextAddress.id, blocked, blockable: nextAddress.starter ? false : blockable, index: stack.addresses.length, action, asynchronous, interpreting, renderer, logger, isAction, executionStartTime: (new Date()).getTime() }
-        const stackLength = stack.addresses.length
+        const stackLength = Object.keys(stack.addresses).length
+        const address = { id: addressID, stackID: stack.id, props, viewID: id, type, data, status, hold, file, function: func, hasWaits: hasWaits !== undefined ? hasWaits : (toArray(waits).length > 0 ? true : false), nextStackID: nextStack.id, nextAddressID: nextAddress.id, blocked, blockable: nextAddress.starter ? false : blockable, index: stackLength, action, asynchronous, interpreting, renderer, logger, isAction, executionStartTime: (new Date()).getTime() }
 
         // Start => set interpretingAddressID
         if (address.status === "Start" && !asynchronous) {
-            //var interpretingAddress = stack.addresses.find(add => add.id === stack.interpretingAddressID)
+            //var interpretingAddress = stack.addresses[stack.interpretingAddressID]
             //if (interpretingAddress) interpretingAddress.interpreting = false
             stack.interpretingAddressID = address.id
             //address.interpreting = true
@@ -3751,33 +3740,25 @@ const actions = {
 
         // set nextAddressID
         if (stackLength > 0 && !nextAddress.id) {
-
-            var nextAddressIndex = 0
-
-            // nextAddress is interpreting or renderer
-            while (nextAddressIndex < stackLength && !stack.addresses[nextAddressIndex].interpreting && !stack.addresses[nextAddressIndex].renderer) { nextAddressIndex += 1 }
-
-            // there exist a head address
-            if (nextAddressIndex < stackLength) {
-
-                address.nextAddressID = stack.addresses[nextAddressIndex].id
-
-                // get head address
-                nextAddress = stack.addresses.find(nextAddress => nextAddress.id === address.nextAddressID)
+            
+            nextAddress = Object.values(stack.addresses).find(nextAddress => nextAddress.id === stack.interpretingAddressID)
+            let x = stackLength, n, adds = Object.values(stack.addresses);
+            while (x >= 0 && !n) {
+                n = adds.find(add => add.index === x && (add.interpreting || add.renderer))
+                x--;
             }
+            nextAddress = n
+            if (nextAddress) address.nextAddressID = nextAddress.id
         }
 
-        // set all head addresses asynchronous
+        // asynchronous? hold all next addresses
         if ((asynchronous && (!unhold || !_window)) || hold) {
 
-            var nextAddressID = !address.nextStackID && address.nextAddressID
-            while (nextAddressID) {
+            let nextAddressID = !address.nextStackID && address.nextAddressID
+            while (nextAddressID && stack.addresses[nextAddressID]) {
 
-                var holdnextAddress = stack.addresses.find(nextAddress => nextAddress.id === nextAddressID)
-                if (holdnextAddress) {
-                    holdnextAddress.hold = true
-                    nextAddressID = !address.nextStackID && holdnextAddress.nextAddressID
-                } else nextAddressID = false
+                stack.addresses[nextAddressID].hold = true
+                nextAddressID = !address.nextStackID && stack.addresses[nextAddressID].nextAddressID
             }
         }
 
@@ -3789,8 +3770,7 @@ const actions = {
         address.params = { __, id, object, props, lookupActions: newLookupActions || lookupActions }
 
         // push to stack
-        if (index) stack.addresses.splice(index, 0, address)
-        else stack.addresses.unshift(address)
+        stack.addresses[address.id] = address
 
         // print
         // if (address.status !== "Wait") printAddress({ stack, address, nextAddress, newAddress: true })
@@ -4440,7 +4420,7 @@ const reducer = ({ _window, lookupActions = [], stack = { addresses: [], returns
 
             if ("condition" in data) {
                 address.params.props.isCondition = data.condition
-                if (address.hasWaits) stack.addresses.find(({ id }) => id === address.nextAddressID).params.isCondition = data.condition
+                if (address.hasWaits) stack.addresses[address.nextAddressID].params.isCondition = data.condition
             }
 
             if (data.view) {
@@ -5419,14 +5399,14 @@ const endAddress = ({ _window, stack, props, data, req, res, id, e, __, lookupAc
 
     const global = _window ? _window.global : window.global
     let nextAddressID = stack.interpretingAddressID, currentStackID = stack.id
-    let address = stack.addresses.find(address => address.id === nextAddressID)
+    let address = stack.addresses[nextAddressID]
 
     const endStarterAddress = ({ address, stack, props }) => {
 
         address.starter = false
 
         // get start nextAddress to push data to its underscores
-        let starterNextAddress = stack.addresses.find(nextAddress => nextAddress.id === address.nextAddressID)
+        let starterNextAddress = stack.addresses[address.nextAddressID]
         if (starterNextAddress) {
 
             // push response to underscore
@@ -5440,7 +5420,7 @@ const endAddress = ({ _window, stack, props, data, req, res, id, e, __, lookupAc
 
             while (blockedAddress && nextAddressID && nextAddressID !== starterNextAddress.id) {
 
-                blockedAddress = stack.addresses.find(address => address.id === nextAddressID)
+                blockedAddress = stack.addresses[nextAddressID]
                 if (blockedAddress) {
 
                     if (blockedAddress.blockable) {
@@ -5463,7 +5443,7 @@ const endAddress = ({ _window, stack, props, data, req, res, id, e, __, lookupAc
             stack.blocked = true
 
             // block current address
-            address = stack.addresses.find(address => address.id === stack.interpretingAddressID)
+            address = stack.addresses[stack.interpretingAddressID]
             address.blocked = true
             address.status = "End"
 
@@ -5493,7 +5473,7 @@ const endAddress = ({ _window, stack, props, data, req, res, id, e, __, lookupAc
         while (nextAddressID && stack) {
 
             // start from self address (by interpretingAddressID) to reach the start head address
-            let address = stack.addresses.find(address => address.id === nextAddressID)
+            let address = stack.addresses[nextAddressID]
             if (!address) break
 
             if (address.starter) {
@@ -5978,27 +5958,27 @@ const deepDelete = ({ obj, key }) => {
     delete obj[key]
 }
 
-const blockRelatedAddressesBynextAddress = ({ stack, index }) => {
+const blockRelatedAddressesBynextAddress = ({ stack, address, addresses }) => {
 
-    var address = stack.addresses[index], index
     address.interpreting = false
 
     // block nextAddress
-    if (address.blockable) stack.addresses[index].blocked = true
+    if (address.blockable) address.blocked = true
 
     // remove child addresses
-    while (index !== -1) {
+    while (address) {
         
-        index = stack.addresses.findIndex(({ nextAddressID, blocked, blockable }) => blockable && !blocked && nextAddressID === address.id)
-        if (index !== -1) blockRelatedAddressesBynextAddress({ stack, index })
+        address = addresses.find(({ nextAddressID, blocked, blockable }) => blockable && !blocked && nextAddressID === address.id)
+        if (address) blockRelatedAddressesBynextAddress({ stack, address, addresses })
     }
 }
 
 const blockRelatedAddressesByViewID = ({ stack, id }) => {
 
-    // delete addresses
-    var index = stack.addresses.findIndex(({ viewID, blocked, blockable, action }) => blockable && !blocked && viewID === id && action !== "refresh()::[...]")
-    if (index !== -1) blockRelatedAddressesBynextAddress({ stack, index })
+    // block addresses
+    let addresses = Object.values(stack.addresses)
+    let address = addresses.find(({ viewID, blocked, blockable, action }) => blockable && !blocked && viewID === id && action !== "refresh()::[...]")
+    if (address) blockRelatedAddressesBynextAddress({ stack, address, addresses })
 }
 
 const eventExecuter = ({ _window, event, eventID, id, lookupActions, e, string, stack: nextStack, props, address: nextAddress, __, object = [] }) => {
@@ -6541,7 +6521,7 @@ const root = ({ id, _window, root = {}, stack, props, lookupActions, address, re
 
     if (!views.root) return
 
-    let anotherRootAddress = stack.addresses.find(({ data = {} }) => data.id === "root" && data.postUpdate)
+    let anotherRootAddress = Object.values(stack.addresses).find(({ data = {} }) => data.id === "root" && data.postUpdate)
     if (anotherRootAddress) {
         anotherRootAddress.blocked = true
         anotherRootAddress.data.elements.map(element => element.remove())
@@ -6568,24 +6548,20 @@ const getNumberAfterString = (str, variable) => {
 const searchDoc = ({ _window, lookupActions, stack, props, address, id, __, req, res, data, object, waits }) => {
 
     var { address } = actions["addresser()"]({ _window, id, stack, props, __, lookupActions, nextAddress: address, stack, props, type: "data", action: "search()", status: "Start", waits, asynchronous: true, unhold: _window ? true : false, object })
-    
+
     // action
     if (!_window) data.action = `search():[collection=${data.data.collection};doc=${data.data.doc}]:[send():[_]]`
     else data.action = "search()"
-
+    
     return callServer({ _window, lookupActions, stack, props, address, id, __, req, res, data: { ...data, action: data.action } })
 }
 
 const callServer = async ({ _window, lookupActions, stack, props, address, id, req, res, e, __, data, object }) => {
 
     data.server = data.server || "datastore"
-
+    
     // call server
-    if (!_window) {
-
-        address = actions["addresser()"]({ stack, props, status: "Start", type: "function", nextAddress: address, interpreting: true, asynchronous: true, id, action: "server()", hasWaits: true, object, lookupActions, __ }).address
-        return server({ lookupActions, stack, props, address, id, req, __, res, e, data })
-    }
+    if (!_window) return server({ lookupActions, stack, props, address, id, req, __, res, e, data, object })
 
     // storage
     else if (data.data.storage) var data = await require("./storage").storage({ _window, req, res, action: data.action, stack, props, data: data.data || {}, __ })
@@ -6600,9 +6576,11 @@ const callServer = async ({ _window, lookupActions, stack, props, address, id, r
     return actions["stackManager()"]({ _window, lookupActions, stack, props, id, address, e, req, res, _: data, __ })
 }
 
-const server = async ({ lookupActions, stack, props, address, id, __, data }) => {
+const server = async ({ lookupActions, stack, props, address, id, __, data, object }) => {
 
     loader({ show: "loader.show" })
+
+    address = actions["addresser()"]({ stack, props, status: "Start", type: "function", nextAddress: address, interpreting: true, asynchronous: true, id, action: "server()", hasWaits: true, object, lookupActions, __ }).address
 
     // headers
     let options = {

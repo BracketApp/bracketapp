@@ -39,7 +39,7 @@ module.exports = async ({ req, res }) => {
   const stack = openStack({ _window, id, event: req.method.toLowerCase(), server: global.manifest.server, action: global.manifest.action })
 
   // address end server request
-  actions["addresser()"]({ _window, req, res, id, stack, props: {}, __: [], object: [{}], data: { string: "send():[success=true;message=Done!]" } })
+  actions["addresser()"]({ _window, req, res, id, addressID: "12345", stack, props: {}, __: [], object: [{}], data: { string: "send():[success=true;message=Done!]" } })
 
   // get view view
   const { data } = database({ _window, req, res, stack, props: {}, action: "search()", preventDefault: true, data: { collection: "view.application", doc: "server" } })
@@ -54,7 +54,7 @@ module.exports = async ({ req, res }) => {
   logger({ _window, data: { key: "server", start: true } })
 
   // address toView
-  const address = actions["addresser()"]({ _window, req, res, id, status: "Start", type: "function", function: "view", nextAddress: stack.addresses[0], stack, props: {}, __, data: { view }, logger: { key: "server", end: true } }).address
+  const address = actions["addresser()"]({ _window, req, res, id, status: "Start", type: "function", function: "view", nextAddress: stack.addresses["12345"], stack, props: {}, __, data: { view }, logger: { key: "server", end: true } }).address
 
   // render view
   actions["view()"]({ _window, req, res, stack, props: { rendering: true }, __, address, lookupActions: view.__lookupActions__, data: { view } })

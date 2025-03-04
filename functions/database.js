@@ -1172,7 +1172,7 @@ const start = (port, serverID) => {
     var child = spawn("node", ["index.js", port, serverID])
     
     // running server
-    //database({ action: "save()", data: { db: bracketDB, collection: "runningServer", find: { port, serverID }, data: { port, serverID, creationDate: new Date().getTime(), closes: [] } } })
+    // database({ action: "save()", data: { db: bracketDB, collection: "runningServer", find: { port, serverID }, data: { port, serverID, creationDate: new Date().getTime(), closes: [] } } })
 
     child.stdout.on("data", function (data) {
         //start(port, true)

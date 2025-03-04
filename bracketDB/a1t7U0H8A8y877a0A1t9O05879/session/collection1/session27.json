@@ -6,25 +6,24 @@
     "host": "localhost",
     "path": [
         "",
-        "console",
-        "mL1507Id3i26tP2yT7XJ9e37VM5aU1ni6ua5no3"
+        "tap"
     ],
     "db": "a1t7U0H8A8y877a0A1t9O05879",
     "storage": "eU1YM75W2Nq1Xo8JS3a24tw3d48yg5Mw0GI4Ff7",
     "devDB": "",
     "dev": false,
-    "expiryDate": 1737796292499,
-    "encryptionKey": "P7Fgh",
-    "userID": "t1j792H396D3B6x8J615X5R2N8",
-    "username": "Anonymous Anonymous",
+    "expiryDate": 1740916384360,
+    "encryptionKey": "vbjgk",
+    "userID": "",
+    "username": "",
     "__props__": {
-        "id": "T1d713E7J6U2m5s4h1b3d3J5s7",
-        "doc": "session13",
-        "counter": 13,
-        "creationDate": 1737625413357,
+        "id": "Q1w7T4H0e8s2U9o9k8n41356R2",
+        "doc": "session27",
+        "counter": 27,
+        "creationDate": 1740829984362,
         "collection": "session",
         "chunk": "chunk1",
-        "lastModified": 1737709892502,
+        "lastModified": 1740829984362,
         "dev": false,
         "actions": {},
         "comments": [],
@@ -32,8 +31,6 @@
         "arrange": {},
         "schema": {},
         "secured": false,
-        "size": 779
-    },
-    "canLoadCache": false,
-    "accessabilities": []
+        "size": 646
+    }
 }

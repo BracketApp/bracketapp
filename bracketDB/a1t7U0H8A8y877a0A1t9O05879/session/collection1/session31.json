@@ -6,25 +6,24 @@
     "host": "localhost",
     "path": [
         "",
-        "console",
-        "F113n7lK2Cd3tB6Cu3L76gq8xH6lS5825xK4Mx2"
+        "tap"
     ],
     "db": "a1t7U0H8A8y877a0A1t9O05879",
     "storage": "eU1YM75W2Nq1Xo8JS3a24tw3d48yg5Mw0GI4Ff7",
     "devDB": "",
     "dev": false,
-    "expiryDate": 1738679940846,
-    "encryptionKey": "QEUlo",
+    "expiryDate": 1741098512323,
+    "encryptionKey": "HHLUR",
     "userID": "t1j792H396D3B6x8J615X5R2N8",
     "username": "Anonymous Anonymous",
     "__props__": {
-        "id": "j1n7T3b8O4E2l5J5b6V229M541",
-        "doc": "session16",
-        "counter": 16,
-        "creationDate": 1738425562951,
+        "id": "x1Z7U4I1b0k031L3c310Q8h1h3",
+        "doc": "session31",
+        "counter": 31,
+        "creationDate": 1741001330814,
         "collection": "session",
         "chunk": "chunk1",
-        "lastModified": 1738593540848,
+        "lastModified": 1741012112338,
         "dev": false,
         "actions": {},
         "comments": [],
@@ -32,8 +31,6 @@
         "arrange": {},
         "schema": {},
         "secured": false,
-        "size": 779
-    },
-    "canLoadCache": false,
-    "accessabilities": []
+        "size": 691
+    }
 }

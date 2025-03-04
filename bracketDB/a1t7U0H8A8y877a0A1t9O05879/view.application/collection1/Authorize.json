@@ -5,7 +5,7 @@
         "doc": "Authorize",
         "counter": 42,
         "creationDate": 1714942476122,
-        "collection": "view",
+        "collection": "view.application",
         "chunk": "chunk1",
         "actions": {
             "authUser": {

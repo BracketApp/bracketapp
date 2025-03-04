@@ -16,7 +16,7 @@ const openStack = ({ _window, id: viewID, string = "", ...data }) => {
     string: string ? decode({ _window, string }) : "",
     executionStartTime: (new Date()).getTime(),
     executedActions: [],
-    addresses: [],
+    addresses: {},
     logs: [],
     returns: [],
     refs: [],
@@ -37,12 +37,12 @@ const clearStack = ({ stack }) => {
   console.log("STACK", (new Date()).getTime() - stack.executionStartTime, stack, props.event.toUpperCase())
 
   stack.terminated = true
-  stack.addresses = []
+  stack.addresses = {}
 }
 
 const endStack = ({ _window, stack }) => {
 
-  if (stack.addresses.length !== 0) return
+  if (Object.keys(stack.addresses).length !== 0) return
 
   const global = _window ? _window.global : window.global
   //const logs = `%cSTACK ${(new Date()).getTime() - stack.executionStartTime} ${stack.event}`

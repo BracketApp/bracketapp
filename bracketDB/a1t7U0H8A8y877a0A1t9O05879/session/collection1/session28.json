@@ -3,27 +3,27 @@
     "projectID": "K1x7d0l898q817C0w1W9c2j4d6",
     "projectDoc": "brackettechnologies",
     "subdomain": "brackettechnologies",
-    "host": "192.168.0.112",
+    "host": "localhost",
     "path": [
         "",
-        "projects"
+        "tap"
     ],
     "db": "a1t7U0H8A8y877a0A1t9O05879",
     "storage": "eU1YM75W2Nq1Xo8JS3a24tw3d48yg5Mw0GI4Ff7",
     "devDB": "",
     "dev": false,
-    "expiryDate": 1736369488291,
-    "encryptionKey": "9vFqP",
-    "userID": "t1j792H396D3B6x8J615X5R2N8",
-    "username": "Anonymous Anonymous",
+    "expiryDate": 1740916389817,
+    "encryptionKey": "goBTN",
+    "userID": "",
+    "username": "",
     "__props__": {
-        "id": "d1E7L3T6F2x7s730Y4J922I7f4",
-        "doc": "session10",
-        "counter": 10,
-        "creationDate": 1736277049274,
+        "id": "v1x7D4z0a8r2n9K9O8D9K8J1t8",
+        "doc": "session28",
+        "counter": 28,
+        "creationDate": 1740829989818,
         "collection": "session",
         "chunk": "chunk1",
-        "lastModified": 1736283088300,
+        "lastModified": 1740829989818,
         "dev": false,
         "actions": {},
         "comments": [],
@@ -31,8 +31,6 @@
         "arrange": {},
         "schema": {},
         "secured": false,
-        "size": 742
-    },
-    "canLoadCache": false,
-    "accessabilities": []
+        "size": 646
+    }
 }

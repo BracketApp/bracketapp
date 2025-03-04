@@ -3,7 +3,7 @@
     "projectID": "a1u7e2r3W6n3M6s8A6U5e5c456",
     "projectDoc": "project184",
     "subdomain": "flightbookingplatform",
-    "host": "flightbookingplatform.localhost",
+    "host": "dev.flightbookingplatform.localhost",
     "path": [
         "",
         "login"
@@ -11,19 +11,19 @@
     "db": "VE1Jv7lE2cr3fY63w37E6KO8y66OX5Fd5Qi49r6",
     "storage": "ku1h97gg20f3t26YL3wC64l82B6RI5Xi5QP4iP6",
     "devDB": "qj1oS7AB2Wr3nC62a3Ap6uW8ba6Gl5065ch4WY6",
-    "dev": false,
-    "expiryDate": 1738513275956,
-    "encryptionKey": "UbIZC",
+    "dev": true,
+    "expiryDate": 1741117665744,
+    "encryptionKey": "vtMjT",
     "userID": "",
     "username": "",
     "__props__": {
-        "id": "f1e733I8D4A2l6S8N538Y3D975",
-        "doc": "session17",
-        "counter": 17,
-        "creationDate": 1738426858396,
+        "id": "M1r7M491M0K1B2r498a7z5G628",
+        "doc": "session33",
+        "counter": 33,
+        "creationDate": 1741012487568,
         "collection": "session",
         "chunk": "chunk1",
-        "lastModified": 1738426875960,
+        "lastModified": 1741031265748,
         "dev": false,
         "actions": {},
         "comments": [],
@@ -31,6 +31,6 @@
         "arrange": {},
         "schema": {},
         "secured": false,
-        "size": 728
+        "size": 731
     }
 }
