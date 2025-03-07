@@ -1,0 +1,36 @@
+{
+    "publicID": "e4t6R0N8X8Yrtyc030q8S8W7O3",
+    "projectID": "K1x7d0l898q817C0w1W9c2j4d6",
+    "projectDoc": "brackettechnologies",
+    "subdomain": "brackettechnologies",
+    "host": "localhost",
+    "path": [
+        "",
+        "tap"
+    ],
+    "db": "a1t7U0H8A8y877a0A1t9O05879",
+    "storage": "eU1YM75W2Nq1Xo8JS3a24tw3d48yg5Mw0GI4Ff7",
+    "devDB": "",
+    "dev": false,
+    "expiryDate": 1741248556916,
+    "encryptionKey": "VB6kr",
+    "userID": "",
+    "username": "",
+    "__props__": {
+        "id": "I1X7T4W1q1b64271u5k6P9U1C7",
+        "doc": "session54",
+        "counter": 54,
+        "creationDate": 1741162156917,
+        "collection": "session",
+        "chunk": "chunk1",
+        "lastModified": 1741162156917,
+        "dev": false,
+        "actions": {},
+        "comments": [],
+        "collapsed": [],
+        "arrange": {},
+        "schema": {},
+        "secured": false,
+        "size": 646
+    }
+}

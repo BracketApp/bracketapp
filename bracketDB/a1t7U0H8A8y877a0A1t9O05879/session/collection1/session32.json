@@ -1,29 +1,29 @@
 {
-    "publicID": "e4t6R0N8X8Yrtyc030q8S8W7O3",
-    "projectID": "K1x7d0l898q817C0w1W9c2j4d6",
-    "projectDoc": "brackettechnologies",
-    "subdomain": "brackettechnologies",
-    "host": "localhost",
+    "publicID": "F113n7lK2Cd3tB6Cu3L76gq8xH6lS5825xK4Mx2",
+    "projectID": "a1u7e2r3W6n3M6s8A6U5e5c456",
+    "projectDoc": "project184",
+    "subdomain": "flightbookingplatform",
+    "host": "dev.flightbookingplatform.localhost",
     "path": [
         "",
-        "tap"
+        "login"
     ],
-    "db": "a1t7U0H8A8y877a0A1t9O05879",
-    "storage": "eU1YM75W2Nq1Xo8JS3a24tw3d48yg5Mw0GI4Ff7",
-    "devDB": "",
-    "dev": false,
-    "expiryDate": 1741117134724,
-    "encryptionKey": "M8MIo",
-    "userID": "t1j792H396D3B6x8J615X5R2N8",
-    "username": "Anonymous Anonymous",
+    "db": "VE1Jv7lE2cr3fY63w37E6KO8y66OX5Fd5Qi49r6",
+    "storage": "ku1h97gg20f3t26YL3wC64l82B6RI5Xi5QP4iP6",
+    "devDB": "qj1oS7AB2Wr3nC62a3Ap6uW8ba6Gl5065ch4WY6",
+    "dev": true,
+    "expiryDate": 1741264406350,
+    "encryptionKey": "haFTi",
+    "userID": "",
+    "username": "",
     "__props__": {
-        "id": "G1Z724P1d0n1A2C3C6X1e2M7O4",
+        "id": "N1F7K4R1p047Y8X1k7z8q8B7H7",
         "doc": "session32",
         "counter": 32,
-        "creationDate": 1741012361274,
+        "creationDate": 1741078178878,
         "collection": "session",
         "chunk": "chunk1",
-        "lastModified": 1741030734732,
+        "lastModified": 1741178006357,
         "dev": false,
         "actions": {},
         "comments": [],
@@ -31,8 +31,6 @@
         "arrange": {},
         "schema": {},
         "secured": false,
-        "size": 733
-    },
-    "canLoadCache": false,
-    "accessabilities": []
+        "size": 731
+    }
 }

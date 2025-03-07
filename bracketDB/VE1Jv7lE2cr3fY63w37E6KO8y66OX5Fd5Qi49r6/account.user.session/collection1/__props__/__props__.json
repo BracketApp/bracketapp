@@ -5,12 +5,12 @@
     "lastChunk": 1,
     "docsLength": 1,
     "counter": 1,
-    "reads": 252,
-    "writes": 36,
+    "reads": 413,
+    "writes": 53,
     "deletes": 0,
-    "size": 473,
-    "payloadIn": 12431,
-    "payloadOut": 100690,
+    "size": 401,
+    "payloadIn": 19248,
+    "payloadOut": 165775,
     "indexes": [
         {
             "find": [
@@ -23,9 +23,16 @@
                 "user"
             ],
             "doc": "index2"
+        },
+        {
+            "find": [
+                "session",
+                "user"
+            ],
+            "doc": "index3"
         }
     ],
-    "lastIndex": 2,
+    "lastIndex": 0,
     "schema": {
         "__props__": {
             "actions": {},
