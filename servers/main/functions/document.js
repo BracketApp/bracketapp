@@ -1,10 +1,11 @@
 const cssStyleKeyNames = require("./cssStyleKeyNames")
 const { actions } = require("./kernel")
-const { hideSecured, respond, filePath } = require("./database")
+const { hideSecured, respond, filePath } = require("../../db/functions/database")
 const { gzip } = require("node-gzip")
 const fs = require("fs")
 const { logger } = require("./logger")
 const { clone } = require("./clone")
+const { cachePath } = require("./authorizer")
 
 const document = async ({ _window, res, stack, props, address, __ }) => {
 
@@ -45,7 +46,7 @@ const document = async ({ _window, res, stack, props, address, __ }) => {
         <html lang="${language}" dir="${direction}" class="html">
             <head>
                 <!-- css -->
-                <link rel="stylesheet" href="/resources/index.css?sid=${res.serverID}">
+                <link rel="stylesheet" href="http://localhost:3001/resources/index.css?sid=${res.serverID}">
                 <style>
                     ${views.document.stylesheet ? `${Object.entries(views.document.stylesheet).map(([key, value]) => typeof value === "object" && !Array.isArray(value)
             ? `${key}{
@@ -93,7 +94,7 @@ const document = async ({ _window, res, stack, props, address, __ }) => {
                 ${views.body.__html__ || ""}
   
                 <!-- engine -->
-                <script src="/resources/engine.js?sid=${res.serverID}"></script>
+                <script src="http://localhost:3001/resources/engine.js?sid=${res.serverID}"></script>
   
                 <!-- google icons -->
                 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined"/>
@@ -128,10 +129,10 @@ const createAppCache = ({ _window, session, doc }) => {
     const cacheID = session.dev ? session.devDB : session.db
 
     // cache
-    if (!fs.existsSync(filePath(`cache/${cacheID}`))) fs.mkdirSync(filePath(`cache/${cacheID}`))
+    if (!fs.existsSync(cachePath(`cache/${cacheID}`))) fs.mkdirSync(cachePath(`cache/${cacheID}`))
 
     // cache app
-    fs.writeFileSync(filePath(`cache/${cacheID}/${session.__props__.id}`), doc)
+    fs.writeFileSync(cachePath(`cache/${cacheID}/${session.__props__.id}`), doc)
 
     logger({ _window, data: { key: "caching", end: false } })
 }

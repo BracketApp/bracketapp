@@ -1,5 +1,5 @@
 const http = require('node:http');
-const { saveDB, database } = require('../main/functions/database');
+const { database } = require('../db/functions/database');
 const { generate } = require('../main/functions/generate');
 
 const port = 3000;

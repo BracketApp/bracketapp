@@ -1,5 +1,5 @@
 const { actions } = require("./kernel")
-const { database, respond, dbserver, dbserver1 } = require("./database")
+const { database, respond, dbserver, dbserver1 } = require("../../db/functions/database")
 const { logger } = require("./logger")
 const { generate } = require("./generate")
 const fs = require("fs")
@@ -204,16 +204,16 @@ const getAccessabilities = async ({ _window, publicID, session }) => {
 
 const getCache = ({_window}) => {
   
-  const session = _window.global.manifest.session
-  const cacheID = session.dev ? session.devDB : session.db
+  let session = _window.global.manifest.session
+  let cacheID = session.dev ? session.devDB : session.db
 
   if (!session.canLoadCache) return ({})
 
-  if (!fs.existsSync(`cache/${cacheID}/${session.__props__.id}`)) return ({})
+  if (!fs.existsSync(cachePath(`cache/${cacheID}/${session.__props__.id}`))) return ({})
 
   logger({ _window, data: { key: "LoadCache", start: true } })
 
-  let data = fs.readFileSync(`cache/${cacheID}/${session.__props__.id}`)
+  let data = fs.readFileSync(cachePath(`cache/${cacheID}/${session.__props__.id}`))
 
   return {data}
 }
@@ -234,9 +234,10 @@ const appCacheHandler = async ({ _window, lookupActions, stack, props, id, addre
 
 const removeAppCaches = (sessions) => {
   Object.values(sessions).map(session => {
-    if (fs.existsSync(`cache/${session.dev ? session.devDB : session.db}/${session.__props__.id}`))
-      fs.unlinkSync(`cache/${session.dev ? session.devDB : session.db}/${session.__props__.id}`)
+    if (fs.existsSync(cachePath(`cache/${session.dev ? session.devDB : session.db}/${session.__props__.id}`)))
+      fs.unlinkSync(cachePath(`cache/${session.dev ? session.devDB : session.db}/${session.__props__.id}`))
 })
 }
 
-module.exports = { authorizer, appCacheHandler, getCache }
+const cachePath = (path) => `../storage/${path}`
+module.exports = { authorizer, appCacheHandler, getCache, cachePath }

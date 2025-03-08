@@ -4,7 +4,7 @@
   "description": "Bracket Technologies",
   "scripts": {
     "servers": "node index.js",
-    "browserify": "browserify ./functions/index.js > ./resources/engine.js -u ./functions/database.js -u ./functions/storage.js -u ./functions/document.js",
+    "browserify": "browserify ./functions/index.js > ../storage/resources/engine.js -u ./functions/database.js -u ./functions/storage.js -u ./functions/document.js",
     "start": "npm run browserify && npm run servers"
   },
   "engines": {

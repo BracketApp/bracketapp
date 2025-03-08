@@ -1,7 +1,7 @@
 const http = require('node:http')
 const fs = require("fs")
 // const EasyTunnel = require("./functions/easy-tunnel")
-const { getData, start, postData, database, getFolderNames, getDocNames, filePath } = require("./functions/database")
+const { getData, start, postData, database, getFolderNames, getDocNames } = require("../db/functions/database")
 const router = require('./functions/router')
 const { generate } = require('./functions/generate')
 const { connectToWebSocket, createWebSocket } = require('./functions/websocket')
@@ -24,21 +24,21 @@ const port = parseInt(process.argv[2])
 // get hosts => run applications
 if (!port) {
 
-  getFolderNames("cache").map(cacheID => {
-    getDocNames(`cache/${cacheID}`).map(id => {
-      fs.unlinkSync(filePath(`cache/${cacheID}/${id}`))
+  getFolderNames("../storage/cache").map(cacheID => {
+    getDocNames(`../storage/cache/${cacheID}`).map(id => {
+      fs.unlinkSync(filePath(`../storage/cache/${cacheID}/${id}`))
     })
   })
 
   // minify
   minify({
     compressor: terser,
-    input: "./resources/engine.js",
-    output: "./resources/engine.js",
+    input: "../storage/resources/engine.js",
+    output: "../storage/resources/engine.js",
     callback: async (err, min) => {
       
-      let engine = await gzip(fs.readFileSync("./resources/engine.js"))
-      fs.writeFileSync("./resources/engine.js", engine)
+      let engine = await gzip(fs.readFileSync("../storage/resources/engine.js"))
+      fs.writeFileSync("../storage/resources/engine.js", engine)
     }
   });
 

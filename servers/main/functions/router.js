@@ -1,8 +1,7 @@
 const { authorizer } = require("./authorizer")
-const { getLocalFile } = require("./storageLocal")
 const { openStack, endStack } = require("./stack")
 const { isNumber, actions } = require("./kernel")
-const { database, respond, dbserver1 } = require("./database")
+const { database, respond, dbserver1 } = require("../../db/functions/database")
 const { logger } = require("./logger")
 const { parseCookies } = require("./cookie")
 
@@ -23,7 +22,7 @@ module.exports = async ({ req, res }) => {
   const path = decodeURI(req.url).split("/"), id = "server"
 
   // resources
-  if (path[1] === "resources" || path[1] === "storage") return getLocalFile({ req, res })
+  // if (path[1] === "resources" || path[1] === "storage") return getLocalFile({ req, res })
 
   // initialize
   var { _window, success } = await initializer({ id, req, res, path })
@@ -162,7 +161,7 @@ const initializer = async ({ id, req, res }) => {
   }
 
   // log
-  console.log((new Date()).getHours() + ":" + (new Date()).getMinutes() + " " + req.method, path.join("/"), action || "");
+  console.log((new Date()).getHours() + ":" + (new Date()).getMinutes() + " " + global.manifest.server.toUpperCase(), path.join("/"), action || "");
 
   return { _window, success: true }
 }

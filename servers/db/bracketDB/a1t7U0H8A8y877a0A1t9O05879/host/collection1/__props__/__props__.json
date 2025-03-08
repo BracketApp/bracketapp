@@ -1,0 +1,48 @@
+{
+    "creationDate": 1716719387112,
+    "collection": "host",
+    "chunkMaxSizeMB": 20,
+    "lastChunk": 1,
+    "docsLength": 14,
+    "counter": 90,
+    "reads": 183716,
+    "writes": 191,
+    "deletes": 0,
+    "size": 12227,
+    "payloadIn": 72526,
+    "payloadOut": 75126687,
+    "indexes": [
+        {
+            "find": [
+                "port"
+            ],
+            "doc": "index1"
+        },
+        {
+            "find": [
+                "private",
+                "publicID"
+            ],
+            "doc": "index2"
+        },
+        {
+            "find": [
+                "publicID"
+            ],
+            "doc": "index3"
+        },
+        {
+            "find": [
+                "localhost"
+            ],
+            "doc": "index4"
+        },
+        {
+            "find": [
+                "host"
+            ],
+            "doc": "index5"
+        }
+    ],
+    "lastIndex": 5
+}

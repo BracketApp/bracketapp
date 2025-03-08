@@ -1,0 +1,2161 @@
+{
+    "view": "View?id=console;style:[overflow=hidden;height=100vh;width=100vw];authProject()::[metaData();ctrlSaveHandler();[root():login?!user:()];[getProjects()::[projects:()=_.projects]]():[collection=actions;doc=main]]",
+    "children": [
+        {
+            "view": "actionlist"
+        },
+        {
+            "view": "View?id=navbar;class=flex-start;style:[position=absolute;zIndex=1;backgroundColor=#f9f9f9;top=0;whiteSpace=nowrap;width=100%;height=4rem]",
+            "children": [
+                {
+                    "view": "View?id=test;style:[display=flex;alignItems=center;height=100%;width=100%;position=relative]",
+                    "children": [
+                        {
+                            "view": "Image?class=pointer;src='http://localhost:3001/storage/eU1YM75W2Nq1Xo8JS3a24tw3d48yg5Mw0GI4Ff7/files/bucket1/xw15d77t2CV2f90Jh03q53l61e59t1Cl5DM1S58.png';style:[height=80%;marginLeft=.75rem];[click?[clearPrevProjectData()]():[path=:projectDroplistHandler];root():main]"
+                        },
+                        {
+                            "view": "View?class=flex-box;style.justifyContent=flex-end;style.flex=1;style.height=100%",
+                            "children": [
+                                {
+                                    "view": "View?class=flex align-center;style:[gap=3rem]",
+                                    "children": [
+                                        {
+                                            "view": "View?class=flex pointer;style:[borderRadius=.25rem;width=50rem;height=3.25rem;marginLeft=auto;transition=width .3s;position=relative];[click?3rdChild().style():[opacity=1;height=fit-content]?2ndChild().1stChild().txt().len()>2;!3rdChild().contains():[clicked()]];[click:root?3rdChild().style():[opacity=0;height=0]?!().contains():[clicked()]]",
+                                            "children": [
+                                                {
+                                                    "view": "View?class=flexbox",
+                                                    "children": [
+                                                        {
+                                                            "view": "Icon?class=flexbox;name=search;google.symbol.outlined;style:[fontSize=2.2rem;minWidth=3.25rem;width=3.25rem;height=2.2rem]"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "view": "View?class=flexbox;style:[flex=1;height=100%;borderRadius=1.5rem;overflow=hidden;border=1px solid #ddd]",
+                                                    "children": [
+                                                        {
+                                                            "view": "Input?placeholder='Enter a search key or value...';style:[padding=0 1.5rem;flex=1;height=100%;border=1px solid #00000000;backgroundColor=#fff];[keyup?searchCollection()]"
+                                                        },
+                                                        {
+                                                            "view": "View?class=flexbox;style:[justifySelf=flex-end;height=100%;padding=1rem;backgroundColor=#eee;borderLeft=1px solid #ddd];[click?getCollections()];droplist:[items='collections:()';align=center;preventDefault];[click:droplist?searchCollectionDroplistHandler()]",
+                                                            "children": [
+                                                                {
+                                                                    "view": "Input?id=searchByCollectionName;class=dots;placeholder=collection;readonly;tooltip.text='txt()';style:[fontSize=1.3rem;border=1px solid #00000000;width=7rem;padding=0]"
+                                                                },
+                                                                {
+                                                                    "view": "Icon?name=expand_more;google.symbol;style:[fontSize=2rem;width=2rem;height=2rem]"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "view": "View:searchResults?class=flex column;style:[position=absolute;top=3.5rem;height=0;maxHeight=70rem;opacity=0;borderRadius=.5rem;border=1px solid #ddd;width=100%;backgroundColor=#fff;overflow=auto]",
+                                                    "children": [
+                                                        {
+                                                            "view": "[View]:[data=_.keys()]",
+                                                            "children": [
+                                                                {
+                                                                    "view": "View?class=flex pointer align-center;style:[minHeight=3rem;width=100%;position=relative;backgroundColor=#f3f3f3];click:[toggleSearchResultsByDocument()]",
+                                                                    "children": [
+                                                                        {
+                                                                            "view": "Icon?name=bi-chevron-right;style:[fontSize=1.3rem;width=2.25rem;transition=.2s;transform='rotate(90deg)']"
+                                                                        },
+                                                                        {
+                                                                            "view": "Text?class=dots;text=_;style:[fontSize=1.3rem]"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "view": "View?class=flex column;style:[marginLeft=1.2rem;borderLeft=1px solid #ddd;display=flex]",
+                                                                    "children": [
+                                                                        {
+                                                                            "view": "[View]:[data=__.[_]]?class=flex pointer align-center;style:[minHeight=3rem;width=100%;position=relative;paddingLeft=1rem];hover.style.backgroundColor=#f3f3f3;click:[openDoc()]",
+                                                                            "children": [
+                                                                                {
+                                                                                    "view": "Text?colorize;class=dots;text=_;style:[fontSize=1.3rem]"
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "view": "View?class=flexbox;tooltip.text=billing;[click?[clearPrevProjectData()]():[path=:projectDroplistHandler];root():billing]",
+                                            "children": [
+                                                {
+                                                    "view": "Icon?class=flexbox pointer;name=monetization_on;google.symbol.outlined;style:[fontSize=2.2rem;width=2.2rem;transition=.2s]"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "view": "View?class=flexbox;tooltip.text=activity;[click?openProjectActivity()]?user:().email=x",
+                                            "children": [
+                                                {
+                                                    "view": "Icon?class=flexbox pointer;name=browse_activity;google.symbol.outlined;style:[fontSize=2.2rem;width=2.2rem;transition=.2s]"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "view": "View?class=flexbox;tooltip.text=projects;[click?[clearPrevProjectData()]():[path=:projectDroplistHandler];root():projects]",
+                                            "children": [
+                                                {
+                                                    "view": "Icon?class=flexbox pointer;name=dashboard_customize;google.symbol.outlined;style:[fontSize=2.2rem;width=2.2rem;transition=.2s]"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "view": "View?class=flexbox;[click?formument().documentElement.classList.toggle():darkmode]",
+                                            "children": [
+                                                {
+                                                    "view": "Icon?class=flexbox pointer;name=light_mode;google.symbol.outlined;style:[fontSize=2.2rem;width=2.2rem;transition=.2s];hover.style.color=orange"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "view": "View?class=flexbox;[click?facebook():[auth=true]]",
+                                            "children": [
+                                                {
+                                                    "view": "Icon?class=flexbox pointer;name=support_agent;google.symbol.outlined;style:[fontSize=2.2rem;width=2.2rem;transition=.2s];hover.style.color=blue"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "view": "View?class=flexbox",
+                                            "children": [
+                                                {
+                                                    "view": "Icon?class=flexbox pointer;name=notifications;google.symbol.outlined;style:[fontSize=2.2rem;width=2.2rem;transition=.2s];hover.style.color=red;mouseenter:[enterNotificationIcon()];mouseleave:[leaveNotificationIcon()]"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "view": "View?class=flexbox;style:[height=2.5rem;width=1px;backgroundColor=#ddd]"
+                                        },
+                                        {
+                                            "view": "View?class=flexbox pointer;style:[gap=.5rem];droplist:[items=[:Manage User:User Activity:Sign out?user:().email=x?:Manage User:Sign out];item.style:[fontSize=1.3rem;minHeight=3.5rem];preventDefault];[click:droplist?userDroplistHandler()]",
+                                            "children": [
+                                                {
+                                                    "view": "Icon?name=person;google.symbol.outlined;style:[fontSize=2.4rem;width=2.5rem]"
+                                                },
+                                                {
+                                                    "view": "Text?id=accountName;text=;style:[fontSize=1.4rem];loaded:[txt()=Hi +user:().firstName]"
+                                                },
+                                                {
+                                                    "view": "View?class=flexbox",
+                                                    "children": [
+                                                        {
+                                                            "view": "Icon?name=expand_more;google.symbol.outlined;style:[fontSize=2rem;width=2rem;paddingTop=.25rem]"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "view": "View?class=flexbox;style:[height=2.5rem;width=1px;backgroundColor=#ddd]"
+                                        },
+                                        {
+                                            "view": "View?class=flex-box pointer;style:[gap=.5rem];droplist:[items=projects:().():name;item.style:[fontSize=1.3rem;minHeight=3.5rem];preventDefault];[click:droplist?projectDroplistHandler()]",
+                                            "children": [
+                                                {
+                                                    "view": "Text?id=projectName;text=project:().name;style:[fontSize=1.4rem]"
+                                                },
+                                                {
+                                                    "view": "View?class=flexbox",
+                                                    "children": [
+                                                        {
+                                                            "view": "Icon?name=expand_more;google.symbol.outlined;style:[fontSize=2rem;width=2rem;paddingTop=.25rem]"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "view": "View?class=flexbox;style:[height=2.5rem;width=1px;backgroundColor=#ddd]"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "view": "View?class=flexbox pointer;tooltip.text=export project;hover.style.backgroundColor=#ddd;style:[width=4.5rem;height=100%;transition=.2s];undo:()=:;click:[exportProject()]",
+                                    "children": [
+                                        {
+                                            "view": "Icon?name=upgrade;google.symbol.outlined;style:[fontSize=2.4rem;width=2.4rem]"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "view": "View?class=flexbox pointer;tooltip.text=undo;hover.style.backgroundColor=#ddd;style:[width=4.5rem;height=100%;transition=.2s];undoEdit:()=[];click:[undo()]",
+                                    "children": [
+                                        {
+                                            "view": "Icon?name=undo;google.symbol.outlined;style:[fontSize=2.4rem;width=2.4rem]"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "view": "View?class=flexbox pointer;tooltip.text=redo;hover.style.backgroundColor=#ddd;style:[width=4.5rem;height=100%;transition=.2s];redoEdit:()=[];click:[redo()]",
+                                    "children": [
+                                        {
+                                            "view": "Icon?name=redo;google.symbol.outlined;style:[fontSize=2.4rem;width=2.4rem]"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "view": "View?class=flexbox pointer;tooltip.text=publish & preview;hover.style.backgroundColor=#ddd;style:[width=4.5rem;height=100%;transition=.2s];[click?publishAndPreview()]",
+                                    "children": [
+                                        {
+                                            "view": "Icon?name=language;google.symbol.outlined;style:[fontSize=2.4rem;width=2.4rem]"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "view": "View?class=flexbox pointer;tooltip.text=preview;hover.style.backgroundColor=#ddd;style:[width=4.5rem;height=100%;transition=.2s];click:[openHost():[dev=true]]",
+                                    "children": [
+                                        {
+                                            "view": "Icon?name=preview;google.symbol.outlined;style:[fontSize=2.4rem;width=2.4rem]"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "view": "View?id=saveBtn;class=flexbox pointer;tooltip.text=save;hover.style.backgroundColor=#ddd;style:[width=4.5rem;height=100%;transition=.2s];click:[saveDocHandler()]",
+                                    "children": [
+                                        {
+                                            "view": "Icon?name=save_as;google.symbol.outlined;style:[fontSize=2.4rem;width=2.4rem]"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "view": "View?class=vertical;style.minHeight=100%;style.width=100%;style.marginTop=4rem",
+            "children": [
+                {
+                    "view": "View?class=flex;style.width=100%",
+                    "children": [
+                        {
+                            "view": "consoleSidebar"
+                        },
+                        {
+                            "view": "View:open-view?class=flex column;style:[width=100%;position=relative;borderLeft=1px solid #ddd;borderTop=1px solid #ddd;backgroundColor=#fff];openDocs:()||=:",
+                            "children": [
+                                {
+                                    "view": "View?id=dataViewerBar;class=inline-flex;style:[width=100%;height=3.4rem;backgroundColor=#f0f0f0;display=if():[openDocs:().len()=0]:none:flex]",
+                                    "children": [
+                                        {
+                                            "view": "View?class=flexbox pointer;style:[height=100%;width=fit-content;position=relative;maxWidth=22rem];hover.style.backgroundColor=#f9f9f9;click:[switchTab()];[auxclick?clickCloseTab()]?().data",
+                                            "children": [
+                                                {
+                                                    "view": "View?style:[width=1px;position=absolute;height=50%;left=0;backgroundColor=#ddd]"
+                                                },
+                                                {
+                                                    "view": "Icon?name=[bi-file-earmark?data().split():'/'.[-1]!=__schema__?bi-diagram-3];style:[fontSize=1.3rem;height=2.25rem;width=2.25rem;minWidth=2.25rem;borderRadius=2rem;margin=0 .5rem]"
+                                                },
+                                                {
+                                                    "view": "Text?class=dots;text=[data().split():'/'.[-1]?data().split():'/'.[-1]!=__schema__?data().split():'/__schema__'.0];tooltip.text=[data().split():'/'.[-1]?data().split():'/'.[-1]!=__schema__?data().split():'/__schema__'.0];style:[fontSize=1.3rem;paddingRight=3.5rem]"
+                                                },
+                                                {
+                                                    "view": "Icon?class=pointer;name=bi-x;style:[fontSize=2rem;position=absolute;right=.5rem;borderRadius=.5rem;height=2.5rem;width=2.5rem];hover.style.backgroundColor=#e9e9e9;[click?closeTab()]"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "view": "View?id=mainDataViewer;style:[position=relative;width=100%;height='calc(100vh - 7.5rem)'];click:[class():dataViewer.find():[style().display=flex]._():[openData:()=_.openData;openCollection:()=_.openCollection;openDoc:()=_.openDoc]]",
+                                    "children": [
+                                        {
+                                            "view": "View?id=dataViewer;style:[width='calc(100vw - '+[[():sidebarWidthController.width||0]+[():sidebarWidthController.diff||0]+4.5]+'rem)';height='calc(100% - '+actionsHeight:()+'rem)';transition=.2s]",
+                                            "children": [
+                                                {
+                                                    "view": "View?class=flex dataViewer;style:[display=flex;height=100%;width=100%;overflowY=auto]?openData:()",
+                                                    "children": [
+                                                        {
+                                                            "view": "View?class=flex;style:[width=100%;height=fit-content]",
+                                                            "children": [
+                                                                {
+                                                                    "view": "Map?arrange=:view:children;viewIndex:()=0;wrapperId=parent().id"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "view": "View?id=mainActionsContainer;class=flex column;style:[borderTop=1px solid #ccc;display=none;position=fixed;bottom=0;width='calc(100vw - '+[[():sidebarWidthController.width||0]+[():sidebarWidthController.diff||0]+4.5]+'rem)';height=actionsHeight:()+rem;maxHeight=calc(100% - 7.5rem);marginTop=auto;backgroundColor=#fff;borderTop=1px solid #ddd;transition=.2s];mouseenter:[1stChild().style():[height=3.1rem;top=-3.1rem];children().1.style():[opacity=1;pointerEvents=auto]];mouseleave:[1stChild().style():[height=0;top=-.1rem];children().1.style():[opacity=0;pointerEvents=none]]",
+                                            "children": [
+                                                {
+                                                    "view": "View?class=flexbox;style:[top=-.1rem;height=0;position=absolute;zIndex=10;right=1rem;overflow=hidden;border=1px solid #ddd;borderRadius=.5rem;borderBottom=1px solid #fff;transition=.3s]",
+                                                    "children": [
+                                                        {
+                                                            "view": "View?id=hide;class=flexbox pointer;tooltip.text=hide;hotBtnsStyles();hotBtnsHoverEffects();click:[actionsFitted:()=false;actionsHeight:()=0;2ndParent().style().height=actionsHeight:();():dataViewer.style().height=100%]",
+                                                            "children": [
+                                                                {
+                                                                    "view": "Icon?name=expand_more;google.symbol.outlined;style:[fontSize=2rem;color=#888]"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "view": "View?class=flexbox pointer;tooltip.text=mini;hotBtnsStyles();hotBtnsHoverEffects();click:[actionsHeight:()=20;2ndParent().style().height=actionsHeight:()+rem;():dataViewer.style().height='calc(100% - '+actionsHeight:()+'rem)']",
+                                                            "children": [
+                                                                {
+                                                                    "view": "Icon?name=bottom_panel_close;google.symbol.outlined;style:[fontSize=1.8rem;color=#888]"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "view": "View?class=flexbox pointer;tooltip.text=maxi;hotBtnsStyles();hotBtnsHoverEffects();click:[actionsHeight:()=60;2ndParent().style().height=actionsHeight:()+rem;():dataViewer.style().height='calc(100% - '+actionsHeight:()+'rem)']",
+                                                            "children": [
+                                                                {
+                                                                    "view": "Icon?name=top_panel_close;google.symbol.outlined;style:[fontSize=1.8rem;color=#888]"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "view": "View?id=fit;class=flexbox pointer;tooltip.text=fit;hotBtnsStyles();hotBtnsHoverEffects();click:[actionsFitted:()=true;2ndParent().style().height='calc(100% - 7.5rem)';():dataViewer.style().height=0rem;timer():[actionsHeight:()=parent().element.offsetHeight/10]:200]",
+                                                            "children": [
+                                                                {
+                                                                    "view": "Icon?name=expand_more;google.symbol.outlined;style:[fontSize=2rem;transform=rotate(180deg);color=#888]"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "view": "View?style:[minWidth=100%;height=7px;backgroundColor=#34aeeb;cursor=ns-resize;position=absolute;left=0;top=-0.3rem;zIndex=100;opacity=0;transition=.2s];[mousedown:body?holdHorizontalSeparator()];[mousemove:body?changeActionsViewHeight()];[mouseup:body?releaseHorizontalSeperator()]"
+                                                },
+                                                {
+                                                    "view": "View?id=actions;class=flex column;style:[width=100%;overflowY=auto;height=100%]",
+                                                    "children": [
+                                                        {
+                                                            "view": "View?class=flex column actions;style:[height=100%;width=100%]?openData:()",
+                                                            "children": [
+                                                                {
+                                                                    "view": "View?class=flex;style:[width=100%]",
+                                                                    "children": [
+                                                                        {
+                                                                            "view": "Map?sort=true;viewIndex:()=0;wrapperId=parent().id"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "view": "gallery"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "view": "View?id=actionPopup;class=box-shadow;style():[transition=opacity .2s, transform .2s;width=fit-content;height=fit-content;overflowY=auto;transform=scale(0);opacity=0;pointerEvents=none;position=fixed;overflowY=auto;borderRadius=.5rem;backgroundColor=#fff;padding=.2rem];():body.click:[closeHotBtnsPopup()];mouseleave:[style():[opacity=0;pointerEvents=none;transform=scale(0)]]",
+            "children": [
+                {
+                    "view": "Icon?class=pointer;tooltip.text=rename;name=bi-input-cursor-text;style:[fontSize=1.5rem;width=3.25rem;height=3.5rem;borderRadius=.5rem .5rem 0 0];hover.style.backgroundColor=#f0f0f0;click:[renameDoc()]"
+                },
+                {
+                    "view": "Icon?class=pointer;tooltip.text=duplicate;name=bi-files;style:[fontSize=1.5rem;width=3.25rem;height=3.5rem];hover.style.backgroundColor=#f0f0f0;click:[duplicateDoc()]"
+                },
+                {
+                    "view": "Icon?class=pointer;tooltip.text=info;name=bi-info-circle;style:[fontSize=1.5rem;width=3.25rem;height=3.5rem];hover.style.backgroundColor=#f0f0f0;[data=[collection=parent().openCollection;doc=parent().openDoc];infoDroplist()]():[doc=Map]"
+                },
+                {
+                    "view": "Icon?class=pointer;tooltip.text=duplicate;name=bi-diagram-3;style:[fontSize=1.5rem;width=3.25rem;height=3.5rem];hover.style.backgroundColor=#f0f0f0;[click?openDocSchema()]"
+                },
+                {
+                    "view": "Icon?class=pointer;tooltip.text=export;name=bi-upload;style:[fontSize=1.5rem;width=3.25rem;height=3.5rem];hover.style.backgroundColor=#f0f0f0;click:[exportDoc()]"
+                },
+                {
+                    "view": "Icon?class=pointer;tooltip.text=remove;name=bi-trash;style:[fontSize=1.5rem;width=3.25rem;height=3.5rem;borderRadius=0 0 .5rem .5rem];hover.style.backgroundColor=#f0f0f0;click:[eraseDoc()]"
+                }
+            ]
+        },
+        {
+            "view": "fileForm"
+        }
+    ],
+    "__props__": {
+        "id": "j1H7G1P0l3o3F0z7m8S684b887",
+        "doc": "console",
+        "counter": 11,
+        "creationDate": 1710330786487,
+        "collection": "view",
+        "chunk": "chunk1",
+        "lastModified": 1729958270100,
+        "dev": false,
+        "actions": {
+            "openActionPopup": "():actionPopup.style():[opacity=1;pointerEvents=auto;zIndex=10;transform='scale(1)']",
+            "hotBtnsHoverEffects": "mouseenter:[style():[backgroundColor=#ddd];1stChild().style():[color=#000]];mouseleave:[style():[backgroundColor=#fff];1stChild().style():[color=#888]]",
+            "blurSearchInput": "2ndParent().style().width=3.5rem;parent().style().border=1px solid #00000000;focused=false?!2ndParent().contains():[clicked()]",
+            "exportDoc": "export():[json;name=parent().openDoc;data=data:().editor.[parent().openCollection].[parent().openDoc]];hideActionPopup()",
+            "hideActionPopup": "():actionPopup.style():[opacity=0;pointerEvents=none;transform='scale(0)']",
+            "focusSearchInput": "2ndParent().style().width=50rem;focused=true",
+            "redo": "if():[redoEdit:().[openDoc:()+'/'+openCollection:()].len()>0]:[loader.show;class():dataViewer.find():[openDoc=openDoc:();openCollection=openCollection:();openDB=openDB:()].():[form()=redoEdit:().[openDoc:()+'/'+openCollection:()].lastEl().value.clone();refresh()::[loader.hide]];undoEdit:().[openDoc:()+'/'+openCollection:()].push():[redoEdit:().[openDoc:()+'/'+openCollection:()].lastEl().clone()];redoEdit:().[openDoc:()+'/'+openCollection:()].pullLast()]?false",
+            "duplicateDoc": "duplicateData:()=data:().editor.[parent().openCollection].[parent().openDoc].clone();duplicateData:().__props__.():[id.del();doc.del()];[saveDoc()]():[doc=collections;path=:importDoc];hideActionPopup()",
+            "clickCloseTab": "e().preventDefault();[closeTab()]():[view=lastChild()]?e().button=1||=4",
+            "undo": "if():[undoEdit:().[openDoc:()+'/'+openCollection:()].len()>0]:[loader.show;class():dataViewer.find():[openDoc=openDoc:();openCollection=openCollection:()].():[form()=undoEdit:().[openDoc:()+'/'+openCollection:()].lastEl().prev_value.clone();refresh()::[loader.hide]];redoEdit:().[openDoc:()+'/'+openCollection:()].push():[undoEdit:().[openDoc:()+'/'+openCollection:()].lastEl().clone()];undoEdit:().[openDoc:()+'/'+openCollection:()].pullLast()]?false",
+            "eraseDoc": {
+                "_": "[eraseData():[publicID=project:().publicID;collection=parent().openCollection;doc=parent().openDoc]]():[collection=actions;doc=db]:[updateCollection()]",
+                "clickPrevTab": "():dataViewerBar.children().find():[openCollection=parent().openCollection;openDoc=parent().openDoc].lastChild().click()?!():dataViewerBar.children().find():[openCollection=parent().openCollection;openDoc=parent().openDoc].hidden()",
+                "handler": "note():[text='Document has been erased!'];data:().editor.[parent().openCollection].[parent().openDoc].del();openDocs:().pullItem():[parent().openCollection+'/'+parent().openDoc]",
+                "closeCollection": "[closeCollection()]():[doc=collections;path=openCollection;view=():[parent().openCollection]]?data:().editor.[parent().openCollection].keys().len()=0",
+                "updateCollection": "handler();():[parent().openCollection+'-list'].refresh()::[_.view.display();clickPrevTab();#closeCollection()]"
+            },
+            "toggleActionEditor": "[():hide.click()?actionsFitted:()?():fit.click()]?e().ctrlKey;e().keyCode=192?actionsFitted:()=false?openCollection:()!=view;e().ctrlKey;e().keyCode=192",
+            "hasNestedArray": "if():_:[if():[_.values()._find():[if():[_.type()=list]:[_._find():[if():[_.type()=list]:true.elif():[_.type()=map]:[hasNestedArray():_]:false]].elif():[_.type()=map]:[hasNestedArray():_]:false]]:[note():[text=You cannot create nested arrays!;danger];true]:false]:false",
+            "getViewLength": "if():[_.data.type()=list]:[range():[_.data.len()]]:[_.data.keys()]._():[if():[_!='actions']:[if():[[form()._view_;_.type()!=number;_!=children]||!form()._view_]:[numbersColumn:().[2ndParent().id].push():[index=numbersColumn:().[2ndParent().id].len()+1;path=__.path.clone().push():[_]]];if():[__.data.[_].type()=list||__.data.[_].type()=map]:[getViewLength():[data=__.data.[_];path=__.path.clone().push():[_]]]]]",
+            "changeActionsViewHeight": "diff=[e().screenY-().screenY]/10;if():[actionsHeight:()=7.5]:[actionsHeight:()=parent().el().offsetHeight/10];parent().style().height=[actionsHeight:()-().diff]+rem;():dataViewer.style().height='calc(100% - '+[actionsHeight:()-().diff]+'rem)'?mousedowned",
+            "leaveNotificationIcon": "clearTimer():[trans-bell-1:()]:[trans-bell-2:()]:[trans-bell-3:()]:[trans-bell-4:()];style().transform=rotate(0)",
+            "switchTab": {
+                "hideAllMapsAndActions": "class():dataViewer.():[style().display=none];class():actions.():[style().display=none]",
+                "displayOpenMapAndAction": "class():dataViewer.find():[openDoc=().openDoc;openCollection=().openCollection]._():[_.style().display=flex;openDoc:()=_.openDoc;openCollection:()=_.openCollection;openData:()=_.data()];class():actions.find():[openDoc=().openDoc;openCollection=().openCollection]._():[_.style().display=flex]",
+                "_": "parent().children().():[style().backgroundColor=inherit;hover.disable=false];style().backgroundColor=#fff;hover.disable=true;hideAllMapsAndActions();displayOpenMapAndAction()?clicked()!=lastChild()"
+            },
+            "closeTab": {
+                "closeData": "class():dataViewer.find():[openDoc=parent().openDoc;openCollection=parent().openCollection].rem()",
+                "closeActions": "class():actions.find():[openDoc=parent().openDoc;openCollection=parent().openCollection].rem()",
+                "clickTab": {
+                    "setActionsDisplayHeight": "():mainActionsContainer.style().height=actionsHeight:()+rem;():dataViewer.style().height='calc(100% - '+actionsHeight:()+'rem)'",
+                    "displayTab": "_.():[_.style().backgroundColor=#fff;_.hover.disable=true]",
+                    "displayData": "class():dataViewer.find():[openDoc=_.openDoc;openCollection=_.openCollection]._():[_.style().display=flex;openDoc:()=_.openDoc;openCollection:()=_.openCollection;openData:()=_.openData]",
+                    "displayActions": "class():actions.find():[openDoc=openDoc:();openCollection=openCollection:()].style().display=flex",
+                    "_": "displayTab();displayData();displayActions();setActionsDisplayHeight()"
+                },
+                "allClosed": "if():[openDocs:().len()=0||class():dataViewer.len()=0]:[openDocs:()=:;():dataViewerBar.style().display=none;():mainActionsContainer.style().display=none]",
+                "closeTab": "():dataViewerBar.children().find():[openDoc=parent().openDoc;openCollection=parent().openCollection].rem()",
+                "_": "pullDocFromOpenDocs();closeData();closeActions();allClosed();chooseTabToClick();closeTab()",
+                "pullDocFromOpenDocs": "openDocs:().pullItem():[parent().openCollection+'/'+parent().openDoc]",
+                "chooseTabToClick": "if():[openDoc:()=parent().openDoc;parent().next();!parent().prev()]:[clickTab():[parent().next()]].elif():[openDoc:()=parent().openDoc;parent().prev()]:[clickTab():[parent().prev()]]"
+            },
+            "exportProject": {
+                "exportProject": "export():[json;name=Project Data;data=export:()]",
+                "getData": "[getData():[publicID=project:().publicID]:[_.data._():[getData():[publicID=project:().publicID;collection=_;limit=1000]:[export:().[__]=_.data]]]]():[collection=actions;doc=db]",
+                "_": "loader.show;getData()::[loader.hide;exportProject()]"
+            },
+            "enterSearchInput": "style():[width=50rem];2ndChild().style():[border=1px solid #ddd]",
+            "leaveSearchInput": "style().width=3.25rem;2ndChild().style():[backgroundColor=#fff;border=1px solid #00000000]?!2ndChild().1stChild().focused;():droplist.style().opacity!='1'",
+            "renameDoc": "():[parent().caller].():[2ndPrev().style().display=none;prev().style().display=flex;prev().focus()];hideActionPopup()",
+            "closeHotBtnsPopup": "style():[opacity=0;pointerEvents=none;transform=scale(0)]?!contains():[clicked()];caller!=clicked().id",
+            "enterNotificationIcon": "style().transform='rotate(30deg)';trans-bell-1:()=timer():[style().transform=rotate(-30deg)]:200;trans-bell-2:()=timer():[style().transform=rotate(30deg)]:400;trans-bell-3:()=timer():[style().transform=rotate(-30deg)]:600;trans-bell-4:()=timer():[style().transform=rotate(0deg)]:800",
+            "hasEmptyField": "if():_:[if():[_.type()=map]:[if():[_.keys()._find():[_=''||!_]='']:[note():[text=You cannot leave an empty field!;danger];true].elif():[_.values()._find():[hasEmptyField():_]]:true:false].elif():[_.type()=list]:[_._find():[hasEmptyField():_]]:false]:false",
+            "popupActions": {
+                "_": "if():[_.action=remove]:[removeDoc()].elif():[_.action=export]:[exportDoc()].elif():[_.action=duplicate]:[duplicateDoc()].elif():[_.action=]:[]"
+            },
+            "hotBtnsStyles": "style:[height=3rem;width=3.25rem;backgroundColor=#fff;transition=.2s]",
+            "releaseHorizontalSeperator": "mousedowned=false;():document.style().cursor=default;parent().style().transition=.2s;class():dataViewer.filter():[!hidden()].():[style().overflowY=auto];actionsHeight:()-=().diff?mousedowned",
+            "metaData": "actionsHeight:()=20;name=Console | Bracket Technologies;title='Console | '+project:().name",
+            "saveDocHandler": {
+                "_": "[docSchemaHandler()?openDoc:().split():'/'.1='__schema__'?setProps()];saveData()?():dataViewer.children().find():[style().display=flex]._():[openCollection:()=_.openCollection;openDoc:()=_.openDoc]",
+                "saveData": "[start();saveData():[publicID=project:().publicID;collection=openCollection:();doc=openDoc:();data=openData:()]:[end():[_]]]():[collection=actions;doc=db]:[note():[text=_.message;type=[danger?!_.success?success]];[tabBorder();updateData()?_.success]]",
+                "setComments": "_.class():comment._filter():[_.txt()]._():[openData:().__props__.comments+=[note=_.txt();path=_.path()]]",
+                "setCollapsed": "_.class():collapsed._filter():[!_.open]._():[openData:().__props__.collapsed+=[path=_.path()]]",
+                "setArrange": "_.class():keyName._():[arrange.[_.path().slice():0:[-1].join():'.'].push():[_.path().[-1]]];openData:().__props__.arrange=.arrange",
+                "setProps": "resetProps();():dataViewer.children().find():[openCollection=openCollection:();openDoc=openDoc:()]._():[setComments();setCollapsed();setArrange()];():actions.children().find():[openCollection=openCollection:();openDoc=openDoc:()]._():[setComments();setCollapsed();setArrange()]",
+                "resetProps": "openData:().__props__.collapsed=:;openData:().__props__.comments=:;arrange=[]",
+                "updateData": "data:().editor.[openCollection:()].[openDoc:()]=_.data.clone()?openDoc:()!=__schema__",
+                "docSchemaHandler": "tabBorder();openDoc:()=openDoc:().split():'/__schema__'.0;data:().editor.[openCollection:()].[openDoc:()].__props__.schema=openData:().clone();openData:()=data:().editor.[openCollection:()].[openDoc:()].clone()",
+                "tabBorder": "class():[openDoc:()+openCollection:()+'publish'].0.display();():dataViewerBar.children().find():[openCollection=openCollection:();openDoc=openDoc:()].2ndChild().style().border=0"
+            },
+            "ctrlSaveHandler": "[keydown:document?[e().preventDefault();():saveBtn.click()?e().ctrlKey;e().key=s];toggleActionEditor()]",
+            "searchCollection": {
+                "_": "searchTimer.clearTimer();searchTimer=timer():[[start();getData():[publicID=project:().publicID;collection=next().1stChild().txt();findAny=txt()]:[end():_]]():[collection=actions;doc=db]:[resultHandler()]]:200?e().key!=Control;txt().len()>2;[true?next().1stChild().txt()?note():[text=Enter collection name!;type=danger]]?resultHandler():[data=[]]?txt().len()<=2",
+                "resultHandler": "():searchResults.refresh():[data=_.data]:[_.view.style():[height=fit-content;opacity=1]?__.data.keys().len()>0?_.view.style():[height=0;opacity=0]]"
+            },
+            "getCollections": "[getCollections()::[clicked()=null;click()]]():[doc=collections;path=toggleCollectionsFolder]?!collections:().len()",
+            "searchCollectionDroplistHandler": "input().txt()=clicked().txt();[[searchCollection()]():[prev()]?prev().txt().len()>2]",
+            "toggleSearchResultsByDocument": {
+                "_": "next().style().display=none;1stChild().rotate():0?next().style().display=flex?next().style().display=flex;1stChild().rotate():90"
+            },
+            "openDoc": {
+                "_": "[init()::[[displayViews();hideOtherData();[loader.show;insertTab();insertData();insertActions()]()::[loader.hide]]():[doc=collections;path=:openDoc]]?!openDocs:().inc():[():searchByCollectionName.txt()+'/'+__]?displayOpenedDoc()]()::[closeSearchWindow()]",
+                "getDoc": "[getData():[publicID=project:().publicID;collection=openCollection:();doc=openDoc:()]:[data:().editor.[openCollection:()].[openDoc:()]=_.data]]():[collection=actions;doc=db]?!data:().editor.[openCollection:()].[openDoc:()]",
+                "init": "openDoc:()=__;openCollection:()=():searchByCollectionName.txt();getDoc()::[openData:()=data:().editor.[openCollection:()].[openDoc:()].clone();openDocs:().push():[openCollection:()+'/'+openDoc:()]]",
+                "displayOpenedDoc": {
+                    "_": "init();[displayViews();hideOtherData()]():[view=collections;path=:openDoc];[displayTab();displayData();displayActions()]():[view=collections;path=:displayOpenedDoc]"
+                },
+                "closeSearchWindow": "():searchResults.style():[opacity=0;height=0]"
+            },
+            "holdHorizontalSeparator": "mousedowned=true;():document.style().cursor=ns-resize;parent().style().transition=null;screenY=e().screenY;class():dataViewer.filter():[!hidden()].():[style().overflowY=hidden]?contains():[clicked()]",
+            "authProject": {
+                "_": "[getProject():[publicID=manifest:().path.2]:[projectHandler()?_.project?root():projects]]():[collection=actions;doc=main]?manifest:().path.2?root():projects",
+                "projectHandler": "project:()=_.project;_.project._():[projectSubdomain:()=_.subdomain;projectDB:()=_.db;username:()=_.username]"
+            },
+            "projectDroplistHandler": {
+                "clearPrevProjectData": "data:().editor.del();collections:().del();openData:().del();openDocs:().del();export:().del();openDoc:().del();openCollection:().del();projectName:()=clicked().txt();projectDB:().del();data:().editor=[]",
+                "_": "clearPrevProjectData();root():[path='/console/'+projects:().find():[name=clicked().txt()].publicID]"
+            },
+            "openHost": "[getHost():[publicID=project:().publicID;dev=[_.dev||false]]:[win().open():[_.host.ip]]]():[collection=actions;doc=main]",
+            "openProjectActivity": "[openForm():[schema=activityTable;collection=tableSchema]]():[doc=form]",
+            "userDroplistHandler": {
+                "_": "signout()?clicked().txt()=Sign out?openUserActivity()",
+                "signout": "[clearPrevProjectData();user:().del()]():[path=:projectDroplistHandler];eraseCookie():__session__;root():tap",
+                "openUserActivity": "[openForm():[schema=userActivityTable;collection=tableSchema]]():[doc=form]?clicked().txt()=User Activity"
+            },
+            "publishAndPreview": "[publish():[publicID=project:().publicID]:[note():[text=_.message;[danger=true?!_.success]]]]():[collection=actions;doc=db]:[openHost()]",
+            "openDocSchema": "[openDoc():[collection=parent().openCollection;data=data:().editor.[parent().openCollection].[parent().openDoc].__props__.schema.clone()||[hideProps=true;schema=[]];doc=parent().openDoc+'/__schema__']]():[doc=collections]"
+        },
+        "comments": [
+            {
+                "note": "action list",
+                "path": [
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "topbar",
+                "path": [
+                    "children",
+                    1
+                ]
+            },
+            {
+                "note": "logo",
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "section: search, mode, support, notification, user, project",
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "search input",
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "search icon",
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "search input and collection input",
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "note": "search input",
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "collection input",
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "note": "search results container",
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    2
+                ]
+            },
+            {
+                "note": "billing",
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "note": "project activity",
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    2
+                ]
+            },
+            {
+                "note": "support",
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    6
+                ]
+            },
+            {
+                "note": "divider",
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    7
+                ]
+            },
+            {
+                "note": "account",
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    8
+                ]
+            },
+            {
+                "note": "divider",
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    9
+                ]
+            },
+            {
+                "note": "projects",
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    10
+                ]
+            },
+            {
+                "note": "mode",
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    11
+                ]
+            },
+            {
+                "note": "export",
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "note": "undo",
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    2
+                ]
+            },
+            {
+                "note": "redo",
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    3
+                ]
+            },
+            {
+                "note": "publish & preview",
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    4
+                ]
+            },
+            {
+                "note": "preview",
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    5
+                ]
+            },
+            {
+                "note": "save",
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    6
+                ]
+            },
+            {
+                "note": "sidebar and editor",
+                "path": [
+                    "children",
+                    2
+                ]
+            },
+            {
+                "note": "sidebar",
+                "path": [
+                    "children",
+                    2,
+                    "children",
+                    0,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "editor",
+                "path": [
+                    "children",
+                    2,
+                    "children",
+                    0,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "note": "editor top bar",
+                "path": [
+                    "children",
+                    2,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "main editor",
+                "path": [
+                    "children",
+                    2,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "note": "map editor",
+                "path": [
+                    "children",
+                    2,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    1,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "actions editor",
+                "path": [
+                    "children",
+                    2,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    1,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "note": "hot btns",
+                "path": [
+                    "children",
+                    2,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    1,
+                    "children",
+                    1,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "hide",
+                "path": [
+                    "children",
+                    2,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    1,
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "mini",
+                "path": [
+                    "children",
+                    2,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    1,
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "note": "maxi",
+                "path": [
+                    "children",
+                    2,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    1,
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    2
+                ]
+            },
+            {
+                "note": "fit",
+                "path": [
+                    "children",
+                    2,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    1,
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    3
+                ]
+            },
+            {
+                "note": "separator",
+                "path": [
+                    "children",
+                    2,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    1,
+                    "children",
+                    1,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "note": "actions editor",
+                "path": [
+                    "children",
+                    2,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    1,
+                    "children",
+                    1,
+                    "children",
+                    2
+                ]
+            },
+            {
+                "note": "gallery view",
+                "path": [
+                    "children",
+                    2,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    2
+                ]
+            },
+            {
+                "note": "action popup",
+                "path": [
+                    "children",
+                    3
+                ]
+            },
+            {
+                "note": "rename",
+                "path": [
+                    "children",
+                    3,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "duplicate",
+                "path": [
+                    "children",
+                    3,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "note": "info",
+                "path": [
+                    "children",
+                    3,
+                    "children",
+                    2
+                ]
+            },
+            {
+                "note": "schema",
+                "path": [
+                    "children",
+                    3,
+                    "children",
+                    3
+                ]
+            },
+            {
+                "note": "export",
+                "path": [
+                    "children",
+                    3,
+                    "children",
+                    4
+                ]
+            },
+            {
+                "note": "remove",
+                "path": [
+                    "children",
+                    3,
+                    "children",
+                    5
+                ]
+            },
+            {
+                "note": "image window",
+                "path": [
+                    "children",
+                    4
+                ]
+            }
+        ],
+        "collapsed": [
+            {
+                "path": [
+                    "children",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    0,
+                    "children",
+                    2
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    2
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    3
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    4
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    5
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    6
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    7
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    8
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    9
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    10
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    11
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    2
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    3
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    4
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    5
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    6
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    2,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    2,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    1,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    2,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    1,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    2,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    1,
+                    "children",
+                    1,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    2,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    1,
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    2,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    1,
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    2,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    1,
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    2
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    2,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    1,
+                    "children",
+                    1,
+                    "children",
+                    0,
+                    "children",
+                    3
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    2,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    1,
+                    "children",
+                    1,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    2,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    1,
+                    "children",
+                    1,
+                    "children",
+                    2
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    2,
+                    "children",
+                    0,
+                    "children",
+                    1,
+                    "children",
+                    2
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    4
+                ]
+            },
+            {
+                "path": [
+                    "authProject"
+                ]
+            },
+            {
+                "path": [
+                    "closeTab"
+                ]
+            },
+            {
+                "path": [
+                    "closeTab",
+                    "clickTab"
+                ]
+            },
+            {
+                "path": [
+                    "eraseDoc"
+                ]
+            },
+            {
+                "path": [
+                    "exportProject"
+                ]
+            },
+            {
+                "path": [
+                    "popupActions"
+                ]
+            },
+            {
+                "path": [
+                    "projectDroplistHandler"
+                ]
+            },
+            {
+                "path": [
+                    "saveDocHandler"
+                ]
+            },
+            {
+                "path": [
+                    "searchCollection"
+                ]
+            },
+            {
+                "path": [
+                    "switchTab"
+                ]
+            },
+            {
+                "path": [
+                    "toggleSearchResultsByDocument"
+                ]
+            },
+            {
+                "path": [
+                    "userDroplistHandler"
+                ]
+            },
+            {
+                "path": [
+                    "openDoc"
+                ]
+            },
+            {
+                "path": [
+                    "openDoc",
+                    "displayOpenedDoc"
+                ]
+            }
+        ],
+        "arrange": {
+            "": [
+                "view",
+                "children",
+                "authProject",
+                "blurSearchInput",
+                "changeActionsViewHeight",
+                "clickCloseTab",
+                "closeHotBtnsPopup",
+                "closeTab",
+                "ctrlSaveHandler",
+                "duplicateDoc",
+                "enterNotificationIcon",
+                "enterSearchInput",
+                "eraseDoc",
+                "exportDoc",
+                "exportProject",
+                "focusSearchInput",
+                "getCollections",
+                "getViewLength",
+                "hasEmptyField",
+                "hasNestedArray",
+                "hideActionPopup",
+                "holdHorizontalSeparator",
+                "hotBtnsHoverEffects",
+                "hotBtnsStyles",
+                "leaveNotificationIcon",
+                "leaveSearchInput",
+                "metaData",
+                "openActionPopup",
+                "openHost",
+                "openProjectActivity",
+                "popupActions",
+                "projectDroplistHandler",
+                "publishAndPreview",
+                "redo",
+                "releaseHorizontalSeperator",
+                "renameDoc",
+                "saveDocHandler",
+                "searchCollection",
+                "searchCollectionDroplistHandler",
+                "switchTab",
+                "toggleActionEditor",
+                "toggleSearchResultsByDocument",
+                "undo",
+                "userDroplistHandler",
+                "openDoc",
+                "openDocSchema"
+            ],
+            "children.0": [
+                "view"
+            ],
+            "children.1": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0.children.0": [
+                "view"
+            ],
+            "children.1.children.0.children.1": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0.children.1.children.0": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0.children.1.children.0.children.0": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0.children.1.children.0.children.0.children.0": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0.children.1.children.0.children.0.children.0.children.0": [
+                "view"
+            ],
+            "children.1.children.0.children.1.children.0.children.0.children.1": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0.children.1.children.0.children.0.children.1.children.0": [
+                "view"
+            ],
+            "children.1.children.0.children.1.children.0.children.0.children.1.children.1": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0.children.1.children.0.children.0.children.1.children.1.children.0": [
+                "view"
+            ],
+            "children.1.children.0.children.1.children.0.children.0.children.1.children.1.children.1": [
+                "view"
+            ],
+            "children.1.children.0.children.1.children.0.children.0.children.2": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0.children.1.children.0.children.0.children.2.children.0": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0.children.1.children.0.children.0.children.2.children.0.children.0": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0.children.1.children.0.children.0.children.2.children.0.children.0.children.0": [
+                "view"
+            ],
+            "children.1.children.0.children.1.children.0.children.0.children.2.children.0.children.0.children.1": [
+                "view"
+            ],
+            "children.1.children.0.children.1.children.0.children.0.children.2.children.0.children.1": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0.children.1.children.0.children.0.children.2.children.0.children.1.children.0": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0.children.1.children.0.children.0.children.2.children.0.children.1.children.0.children.0": [
+                "view"
+            ],
+            "children.1.children.0.children.1.children.0.children.1": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0.children.1.children.0.children.1.children.0": [
+                "view"
+            ],
+            "children.1.children.0.children.1.children.0.children.2": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0.children.1.children.0.children.2.children.0": [
+                "view"
+            ],
+            "children.1.children.0.children.1.children.0.children.3": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0.children.1.children.0.children.3.children.0": [
+                "view"
+            ],
+            "children.1.children.0.children.1.children.0.children.4": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0.children.1.children.0.children.4.children.0": [
+                "view"
+            ],
+            "children.1.children.0.children.1.children.0.children.5": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0.children.1.children.0.children.5.children.0": [
+                "view"
+            ],
+            "children.1.children.0.children.1.children.0.children.6": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0.children.1.children.0.children.6.children.0": [
+                "view"
+            ],
+            "children.1.children.0.children.1.children.0.children.7": [
+                "view"
+            ],
+            "children.1.children.0.children.1.children.0.children.8": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0.children.1.children.0.children.8.children.0": [
+                "view"
+            ],
+            "children.1.children.0.children.1.children.0.children.8.children.1": [
+                "view"
+            ],
+            "children.1.children.0.children.1.children.0.children.8.children.2": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0.children.1.children.0.children.8.children.2.children.0": [
+                "view"
+            ],
+            "children.1.children.0.children.1.children.0.children.9": [
+                "view"
+            ],
+            "children.1.children.0.children.1.children.0.children.10": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0.children.1.children.0.children.10.children.0": [
+                "view"
+            ],
+            "children.1.children.0.children.1.children.0.children.10.children.1": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0.children.1.children.0.children.10.children.1.children.0": [
+                "view"
+            ],
+            "children.1.children.0.children.1.children.0.children.11": [
+                "view"
+            ],
+            "children.1.children.0.children.1.children.1": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0.children.1.children.1.children.0": [
+                "view"
+            ],
+            "children.1.children.0.children.1.children.2": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0.children.1.children.2.children.0": [
+                "view"
+            ],
+            "children.1.children.0.children.1.children.3": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0.children.1.children.3.children.0": [
+                "view"
+            ],
+            "children.1.children.0.children.1.children.4": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0.children.1.children.4.children.0": [
+                "view"
+            ],
+            "children.1.children.0.children.1.children.5": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0.children.1.children.5.children.0": [
+                "view"
+            ],
+            "children.1.children.0.children.1.children.6": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0.children.1.children.6.children.0": [
+                "view"
+            ],
+            "children.2": [
+                "view",
+                "children"
+            ],
+            "children.2.children.0": [
+                "view",
+                "children"
+            ],
+            "children.2.children.0.children.0": [
+                "view"
+            ],
+            "children.2.children.0.children.1": [
+                "view",
+                "children"
+            ],
+            "children.2.children.0.children.1.children.0": [
+                "view",
+                "children"
+            ],
+            "children.2.children.0.children.1.children.0.children.0": [
+                "view",
+                "children"
+            ],
+            "children.2.children.0.children.1.children.0.children.0.children.0": [
+                "view"
+            ],
+            "children.2.children.0.children.1.children.0.children.0.children.1": [
+                "view"
+            ],
+            "children.2.children.0.children.1.children.0.children.0.children.2": [
+                "view"
+            ],
+            "children.2.children.0.children.1.children.0.children.0.children.3": [
+                "view"
+            ],
+            "children.2.children.0.children.1.children.1": [
+                "view",
+                "children"
+            ],
+            "children.2.children.0.children.1.children.1.children.0": [
+                "view",
+                "children"
+            ],
+            "children.2.children.0.children.1.children.1.children.0.children.0": [
+                "view",
+                "children"
+            ],
+            "children.2.children.0.children.1.children.1.children.0.children.0.children.0": [
+                "view",
+                "children"
+            ],
+            "children.2.children.0.children.1.children.1.children.0.children.0.children.0.children.0": [
+                "view"
+            ],
+            "children.2.children.0.children.1.children.1.children.1": [
+                "view",
+                "children"
+            ],
+            "children.2.children.0.children.1.children.1.children.1.children.0": [
+                "view",
+                "children"
+            ],
+            "children.2.children.0.children.1.children.1.children.1.children.0.children.0": [
+                "view",
+                "children"
+            ],
+            "children.2.children.0.children.1.children.1.children.1.children.0.children.0.children.0": [
+                "view"
+            ],
+            "children.2.children.0.children.1.children.1.children.1.children.0.children.1": [
+                "view",
+                "children"
+            ],
+            "children.2.children.0.children.1.children.1.children.1.children.0.children.1.children.0": [
+                "view"
+            ],
+            "children.2.children.0.children.1.children.1.children.1.children.0.children.2": [
+                "view",
+                "children"
+            ],
+            "children.2.children.0.children.1.children.1.children.1.children.0.children.2.children.0": [
+                "view"
+            ],
+            "children.2.children.0.children.1.children.1.children.1.children.0.children.3": [
+                "view",
+                "children"
+            ],
+            "children.2.children.0.children.1.children.1.children.1.children.0.children.3.children.0": [
+                "view"
+            ],
+            "children.2.children.0.children.1.children.1.children.1.children.1": [
+                "view"
+            ],
+            "children.2.children.0.children.1.children.1.children.1.children.2": [
+                "view",
+                "children"
+            ],
+            "children.2.children.0.children.1.children.1.children.1.children.2.children.0": [
+                "view",
+                "children"
+            ],
+            "children.2.children.0.children.1.children.1.children.1.children.2.children.0.children.0": [
+                "view",
+                "children"
+            ],
+            "children.2.children.0.children.1.children.1.children.1.children.2.children.0.children.0.children.0": [
+                "view"
+            ],
+            "children.2.children.0.children.1.children.2": [
+                "view"
+            ],
+            "children.3": [
+                "view",
+                "children"
+            ],
+            "children.3.children.0": [
+                "view"
+            ],
+            "children.3.children.1": [
+                "view"
+            ],
+            "children.3.children.2": [
+                "view"
+            ],
+            "children.3.children.3": [
+                "view"
+            ],
+            "children.3.children.4": [
+                "view"
+            ],
+            "children.3.children.5": [
+                "view"
+            ],
+            "children.4": [
+                "view"
+            ],
+            "authProject": [
+                "projectHandler",
+                "_"
+            ],
+            "closeTab": [
+                "allClosed",
+                "chooseTabToClick",
+                "clickTab",
+                "closeActions",
+                "closeData",
+                "closeTab",
+                "pullDocFromOpenDocs",
+                "_"
+            ],
+            "closeTab.clickTab": [
+                "displayActions",
+                "displayData",
+                "displayTab",
+                "setActionsDisplayHeight",
+                "_"
+            ],
+            "eraseDoc": [
+                "clickPrevTab",
+                "closeCollection",
+                "handler",
+                "updateCollection",
+                "_"
+            ],
+            "exportProject": [
+                "exportProject",
+                "getData",
+                "_"
+            ],
+            "popupActions": [
+                "_"
+            ],
+            "projectDroplistHandler": [
+                "clearPrevProjectData",
+                "_"
+            ],
+            "saveDocHandler": [
+                "saveData",
+                "updateData",
+                "setArrange",
+                "setCollapsed",
+                "setComments",
+                "tabBorder",
+                "_",
+                "resetProps",
+                "setProps",
+                "docSchemaHandler"
+            ],
+            "searchCollection": [
+                "resultHandler",
+                "_"
+            ],
+            "switchTab": [
+                "displayOpenMapAndAction",
+                "hideAllMapsAndActions",
+                "_"
+            ],
+            "toggleSearchResultsByDocument": [
+                "_"
+            ],
+            "userDroplistHandler": [
+                "openUserActivity",
+                "signout",
+                "_"
+            ],
+            "openDoc": [
+                "closeSearchWindow",
+                "displayOpenedDoc",
+                "getDoc",
+                "init",
+                "_"
+            ],
+            "openDoc.displayOpenedDoc": [
+                "_"
+            ]
+        },
+        "schema": {},
+        "secured": false,
+        "size": 45034
+    }
+}

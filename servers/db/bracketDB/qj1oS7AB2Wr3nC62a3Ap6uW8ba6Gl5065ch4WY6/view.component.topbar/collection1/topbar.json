@@ -1,0 +1,307 @@
+{
+    "view": "View?id=topbar;style:[height=4.5rem]",
+    "children": [
+        {
+            "view": "View?style=[display=flex;backgroundColor=#f5f5f5;height=100%;width=100%;alignItems=center;padding=0 1rem;gap=2rem]",
+            "children": [
+                {
+                    "view": "View?style=[display=flex;alignItems=center]",
+                    "children": [
+                        {
+                            "view": "Image?src=_.logo;style=[height=3.5rem;cursor=pointer];[click?root():main]"
+                        }
+                    ]
+                },
+                {
+                    "view": "View?style=[gap=2rem;display=flex;marginLeft=auto]",
+                    "children": [
+                        {
+                            "view": "View?style=[display=flex;justifyContent=center;alignItems=center]",
+                            "children": [
+                                {
+                                    "view": "Icon?name=search;google.symbol;style=[color=#453f3f;fontSize=2.2rem;cursor=pointer];[click?clearCollections()]"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "view": "View?style=[position=relative;display=flex]",
+                    "children": [
+                        {
+                            "view": "View?style=[display=flex;justifyContent=center;alignItems=center]",
+                            "children": [
+                                {
+                                    "view": "Icon?name=notifications;google.symbol;style=[color=#453f3f;fontSize=2rem;cursor=pointer;transition=.2s];[mouseenter?style().color=#fb3b1e;ring()];[mouseleave?stopRinging()]"
+                                }
+                            ]
+                        },
+                        {
+                            "view": "View?style=[display=flex;alignItems=center;justifyContent=center;position=absolute;borderRadius=1rem;minWidth=1.1rem;height=1.2rem;backgroundColor=red;left=13px;top=-2px;padding=.2rem;cursor=pointer]?dueNotifications:().len()>0",
+                            "children": [
+                                {
+                                    "view": "Text?id=notificationIcon;text=3;style=[fontSize=1rem;color=#fff;cursor=pointer]"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "view": "View?style=[backgroundColor=#b2beb5;width=1px;height=2.5rem]"
+                },
+                {
+                    "view": "View?style=[display=flex;gap=1rem;marginRight=1rem;cursor=pointer];profileDroplist()",
+                    "children": [
+                        {
+                            "view": "View?style=[display=flex;justifyContent=center;alignItems=center]",
+                            "children": [
+                                {
+                                    "view": "Icon?name=person;google.symbol;style=[fontSize=2.2rem;color=#453f3f]"
+                                }
+                            ]
+                        },
+                        {
+                            "view": "View?style=[display=flex;justifyContent=center;alignItems=center]",
+                            "children": [
+                                {
+                                    "view": "Text?id=profileName;text=[user:().firstName.capitalize()+' '+user:().lastName.capitalize()?user:()?Profile Name];style=[fontSize=1.3rem;color=#453f3f]"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "__props__": {
+        "id": "31T7E3O062f4b4I0I8L662Q2M5",
+        "doc": "topbar",
+        "counter": 1,
+        "creationDate": 1730244086225,
+        "collection": "view.component.topbar",
+        "chunk": "chunk1",
+        "lastModified": 1738486586215,
+        "dev": true,
+        "actions": {
+            "profileDroplist": "droplist:[items=:Profile:Logout;align=right;style:[width=10rem];item.text.style:[justifyContent=center];preventDefault];[click:droplist?@view.server.login;remSession()::[eraseCookie():session;root():login]?clicked().txt()='Logout']",
+            "stopRinging": "timer.():[clearTimer():[.]];style():[color=#000;rotate()=0]",
+            "ring": "timer.():[clearTimer():[.]];timer=:;deg=30;range():0:1000:200._():[timer+=[timer():[rotate()=.deg;deg*=[-1]]:[_]]?_<=800?timer():[rotate()=0]:[_]]"
+        },
+        "comments": [
+            {
+                "note": "logo",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "search",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "note": "notifications",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    2
+                ]
+            },
+            {
+                "note": "bell",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    2,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "text",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    2,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "note": "divider",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    3
+                ]
+            },
+            {
+                "note": "username",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    4
+                ]
+            },
+            {
+                "note": "icon",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    4,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "username",
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    4,
+                    "children",
+                    1
+                ]
+            }
+        ],
+        "collapsed": [
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    2
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    2,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    3
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    0,
+                    "children",
+                    4
+                ]
+            }
+        ],
+        "arrange": {
+            "": [
+                "view",
+                "children",
+                "profileDroplist",
+                "ring",
+                "stopRinging"
+            ],
+            "children.0": [
+                "view",
+                "children"
+            ],
+            "children.0.children.0": [
+                "view",
+                "children"
+            ],
+            "children.0.children.0.children.0": [
+                "view"
+            ],
+            "children.0.children.1": [
+                "view",
+                "children"
+            ],
+            "children.0.children.1.children.0": [
+                "view",
+                "children"
+            ],
+            "children.0.children.1.children.0.children.0": [
+                "view"
+            ],
+            "children.0.children.2": [
+                "view",
+                "children"
+            ],
+            "children.0.children.2.children.0": [
+                "view",
+                "children"
+            ],
+            "children.0.children.2.children.0.children.0": [
+                "view"
+            ],
+            "children.0.children.2.children.1": [
+                "view",
+                "children"
+            ],
+            "children.0.children.2.children.1.children.0": [
+                "view"
+            ],
+            "children.0.children.3": [
+                "view"
+            ],
+            "children.0.children.4": [
+                "view",
+                "children"
+            ],
+            "children.0.children.4.children.0": [
+                "view",
+                "children"
+            ],
+            "children.0.children.4.children.0.children.0": [
+                "view"
+            ],
+            "children.0.children.4.children.1": [
+                "view",
+                "children"
+            ],
+            "children.0.children.4.children.1.children.0": [
+                "view"
+            ]
+        },
+        "schema": {},
+        "secured": false,
+        "size": 4354
+    }
+}

@@ -1,0 +1,30 @@
+{
+    "creationDate": 1721292127012,
+    "collection": 1,
+    "maxSize": 1000,
+    "lastChunk": 1,
+    "docsLength": 73,
+    "counter": 90,
+    "reads": 92453,
+    "writes": 17818,
+    "deletes": 81,
+    "size": 52007,
+    "payloadIn": 13541661,
+    "payloadOut": 66314948,
+    "indexes": [
+        {
+            "find": [
+                "__props__.id",
+                "publicID"
+            ],
+            "doc": "index2"
+        },
+        {
+            "find": [
+                "expiryDate"
+            ],
+            "doc": "index3"
+        }
+    ],
+    "lastIndex": 3
+}

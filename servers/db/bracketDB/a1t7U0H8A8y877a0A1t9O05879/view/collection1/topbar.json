@@ -1,0 +1,295 @@
+{
+    "view": "View?id=topbar;class=flexbox;style:[height=5rem;width=100%;gap=5%;borderBottom=1px solid #ddd]",
+    "__props__": {
+        "id": "h1k7G1d367h7U9r6n0y1P9b7y8",
+        "doc": "topbar",
+        "counter": 19,
+        "creationDate": 1713779601978,
+        "collection": "view",
+        "chunk": "chunk1",
+        "lastModified": 1725177488621,
+        "dev": false,
+        "actions": {
+            "topbarBtns": ":[text=Features & Facilities;page=main;mount=[true?manifest:().path.1=tap?false]]:[text=Pricing;page=pricing]:[text=Online Training;page=training]:[text=Blog;page=blog]:[text=Contact Us;page=contactus]",
+            "headerMouseenterHandler": "():underline.():[width()=..width();position():[distance=-2;align=left]]",
+            "headerMouseleaveHandler": "[headerMouseenterHandler()]():[view=():[form().find():[mount].id]]?form().find():[mount]?():underline.width()=0",
+            "headerClickHandler": "form().find():[mount].mount=false;data().mount=true",
+            "accountDroplistHandlers": {
+                "_": "droplist:[preventDefault;items=:'Account Settings':Sign out];droplistHandler()",
+                "droplistHandler": "[click:droplist?user:().del();eraseCookie():__session__;root():tap?clicked().txt()=Sign out]"
+            },
+            "logo": "'http://localhost:3001/storage/eU1YM75W2Nq1Xo8JS3a24tw3d48yg5Mw0GI4Ff7/files/bucket1/Bv1HS7lS2oO27w0Td0vn5C332K2F29321tf7uA2.png'?manifest:().page=tap?'http://localhost:3001/storage/eU1YM75W2Nq1Xo8JS3a24tw3d48yg5Mw0GI4Ff7/files/bucket1/xw15d77t2CV2f90Jh03q53l61e59t1Cl5DM1S58.png'"
+        },
+        "comments": [
+            {
+                "note": "logo",
+                "path": [
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "headers",
+                "path": [
+                    "children",
+                    1
+                ]
+            },
+            {
+                "note": "btns and account",
+                "path": [
+                    "children",
+                    2
+                ]
+            },
+            {
+                "note": "hot btns: help, billing, projects",
+                "path": [
+                    "children",
+                    2,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "note": "divider",
+                "path": [
+                    "children",
+                    2,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "note": "login btn",
+                "path": [
+                    "children",
+                    2,
+                    "children",
+                    2
+                ]
+            },
+            {
+                "note": "account btn",
+                "path": [
+                    "children",
+                    2,
+                    "children",
+                    3
+                ]
+            }
+        ],
+        "collapsed": [
+            {
+                "path": [
+                    "children",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    2
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    2,
+                    "children",
+                    0
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    2,
+                    "children",
+                    1
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    2,
+                    "children",
+                    2
+                ]
+            },
+            {
+                "path": [
+                    "children",
+                    2,
+                    "children",
+                    3
+                ]
+            },
+            {
+                "path": [
+                    "accountDroplistHandlers"
+                ]
+            }
+        ],
+        "arrange": {
+            "": [
+                "view",
+                "children",
+                "accountDroplistHandlers",
+                "headerClickHandler",
+                "headerMouseenterHandler",
+                "headerMouseleaveHandler",
+                "logo",
+                "topbarBtns"
+            ],
+            "children.0": [
+                "view",
+                "children"
+            ],
+            "children.0.children.0": [
+                "view"
+            ],
+            "children.0.children.1": [
+                "view"
+            ],
+            "children.1": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0.children.0": [
+                "view",
+                "children"
+            ],
+            "children.1.children.0.children.0.children.0": [
+                "view"
+            ],
+            "children.1.children.1": [
+                "view"
+            ],
+            "children.2": [
+                "view",
+                "children"
+            ],
+            "children.2.children.0": [
+                "view",
+                "children"
+            ],
+            "children.2.children.0.children.0": [
+                "view"
+            ],
+            "children.2.children.0.children.1": [
+                "view"
+            ],
+            "children.2.children.0.children.2": [
+                "view"
+            ],
+            "children.2.children.0.children.3": [
+                "view"
+            ],
+            "children.2.children.1": [
+                "view"
+            ],
+            "children.2.children.2": [
+                "view"
+            ],
+            "children.2.children.3": [
+                "view",
+                "children"
+            ],
+            "children.2.children.3.children.0": [
+                "view"
+            ],
+            "children.2.children.3.children.1": [
+                "view"
+            ],
+            "accountDroplistHandlers": [
+                "_",
+                "droplistHandler"
+            ]
+        },
+        "secured": false,
+        "size": 5375
+    },
+    "children": [
+        {
+            "view": "View?id=logo;class=pointer flexbox;style:[paddingLeft=1rem;gap=1rem];[click?root():tap]",
+            "children": [
+                {
+                    "view": "Image?src=logo();style:[height=3rem;width=3rem]"
+                },
+                {
+                    "view": "Text?text=[Travel Accounting Platform?manifest:().page=tap?Bracket Platform];style:[fontSize=1.75rem]"
+                }
+            ]
+        },
+        {
+            "view": "View?id=headers;class=flexbox;style:[flex=1]",
+            "children": [
+                {
+                    "view": "View?class=flexbox",
+                    "children": [
+                        {
+                            "view": "[View]:[data=topbarBtns();mount]?data().id=().id;class=pointer flexbox;style:[padding=1.5rem 3rem];[loaded:underline?headerMouseenterHandler()?_.mount];[menter?headerMouseenterHandler()];[mleave?headerMouseleaveHandler()];[click?headerClickHandler()]",
+                            "children": [
+                                {
+                                    "view": "Text?text=data().text;style:[fontSize=1.5rem]"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "view": "View?id=underline;style:[zIndex=1;height=.3rem;borderRadius=2rem 2rem 0 0;backgroundColor=#fb3e1e;position=absolute;width=0;transition=.2s;left=0;bottom=0]"
+                }
+            ]
+        },
+        {
+            "view": "View?class=flex align-center;style:[gap=1rem;padding=0 2rem]",
+            "children": [
+                {
+                    "view": "View?class=flexbox;style:[gap=3rem;marginRight=2rem]",
+                    "children": [
+                        {
+                            "view": "Icon?class=pointer;name=live_help;google.symbol;tooltip.text=help;style:[fontSize=2rem;width=2rem];[click?#root():help;note():[text=Help is unavailable for now!;type=danger]]"
+                        },
+                        {
+                            "view": "Icon?class=pointer;name=monetization_on;google.symbol;tooltip.text=billings & subscriptions;style:[fontSize=2rem;width=2rem];[click?root():billing]?user:()"
+                        },
+                        {
+                            "view": "Icon?class=pointer;name=manage_accounts;google.symbol;tooltip.text=profile;style:[fontSize=2.2rem;width=2rem];[click?#root():profile;note():[text=Edit profile is unavailable for now!;type=danger]]?user:()"
+                        },
+                        {
+                            "view": "Icon?class=pointer;name=dashboard_customize;google.symbol;tooltip.text=projects;style:[fontSize=2rem;width=2rem];[click?root():projects]?user:()"
+                        }
+                    ]
+                },
+                {
+                    "view": "View?style:[width=1px;height=2rem;backgroundColor=#aaa;marginRight=[2rem?!user:()?0]]"
+                },
+                {
+                    "view": "Text?text=Login;style:[cursor=pointer;fontSize=1.5rem;color=#fff;backgroundColor=#fb3e1e;borderRadius=.5rem;opacity=.8;padding=.5rem 4rem;transition=.2s];hover.style.opacity=1;[click?root():login]?!user:()"
+                },
+                {
+                    "view": "View?class=flexbox;style:[cursor=pointer;gap=1rem;borderRadius=.5rem;padding=.5rem 1rem;transition=.2s];accountDroplistHandlers()?user:()",
+                    "children": [
+                        {
+                            "view": "Icon?name=person;google.symbol;style:[fontSize=2.5rem;width=2.5rem]"
+                        },
+                        {
+                            "view": "Text?text=Hi, +user:().firstName;style:[fontSize=1.5rem]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

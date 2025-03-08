@@ -1,0 +1,237 @@
+{
+    "creationDate": 1724585781412,
+    "collection": 1,
+    "maxSize": 1000,
+    "lastChunk": 1,
+    "docsLength": 1,
+    "counter": 1,
+    "reads": 3413,
+    "writes": 50,
+    "deletes": 0,
+    "size": 443,
+    "payloadIn": 745,
+    "payloadOut": 2177955,
+    "indexes": [],
+    "lastIndex": 0,
+    "schema": {
+        "__props__": {
+            "actions": {},
+            "collapsed": [
+                {
+                    "path": [
+                        "schema",
+                        "service"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "supplier"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "airline"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "amount"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "currency"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "percentage"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "releaseDate"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "expiryDate"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "referencePrice"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "name"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "trips"
+                    ]
+                },
+                {
+                    "path": [
+                        "schema",
+                        "age"
+                    ]
+                }
+            ],
+            "comments": [],
+            "arrange": {
+                "": [
+                    "hideProps",
+                    "schema"
+                ],
+                "schema": [
+                    "service",
+                    "supplier",
+                    "airline",
+                    "amount",
+                    "currency",
+                    "percentage",
+                    "releaseDate",
+                    "expiryDate",
+                    "referencePrice",
+                    "name",
+                    "trips",
+                    "age"
+                ],
+                "schema.service": [
+                    "type",
+                    "options"
+                ],
+                "schema.supplier": [
+                    "type",
+                    "collection",
+                    "required"
+                ],
+                "schema.airline": [
+                    "type"
+                ],
+                "schema.amount": [
+                    "type"
+                ],
+                "schema.currency": [
+                    "type",
+                    "required"
+                ],
+                "schema.percentage": [
+                    "default",
+                    "type"
+                ],
+                "schema.releaseDate": [
+                    "type"
+                ],
+                "schema.expiryDate": [
+                    "type"
+                ],
+                "schema.referencePrice": [
+                    "type",
+                    "options"
+                ],
+                "schema.name": [
+                    "type"
+                ],
+                "schema.trips": [
+                    "type",
+                    "required",
+                    "value"
+                ],
+                "schema.trips.value": [
+                    "type",
+                    "options"
+                ],
+                "schema.age": [
+                    "type",
+                    "value"
+                ],
+                "schema.age.value": [
+                    "type",
+                    "options"
+                ]
+            }
+        },
+        "hideProps": true,
+        "schema": {
+            "airline": {
+                "type": "text"
+            },
+            "amount": {
+                "type": "number"
+            },
+            "percentage": {
+                "type": "boolean",
+                "default": true
+            },
+            "currency": {
+                "type": "text",
+                "required": false
+            },
+            "releaseDate": {
+                "type": "timestamp"
+            },
+            "expiryDate": {
+                "type": "timestamp"
+            },
+            "name": {
+                "type": "text"
+            },
+            "referencePrice": {
+                "type": "text",
+                "options": [
+                    "Base Fare",
+                    "Gross Fare",
+                    "Net Price",
+                    "Selling Price"
+                ]
+            },
+            "supplier": {
+                "type": "document",
+                "collection": "account.agency.supplier",
+                "required": false
+            },
+            "service": {
+                "type": "text",
+                "options": [
+                    "Flight"
+                ]
+            },
+            "trips": {
+                "type": "list",
+                "required": false,
+                "value": {
+                    "type": "text",
+                    "options": [
+                        "One way",
+                        "Round trip"
+                    ]
+                }
+            },
+            "age": {
+                "type": "list",
+                "value": {
+                    "type": "text",
+                    "options": [
+                        "Adult",
+                        "Child",
+                        "Infant"
+                    ]
+                }
+            }
+        }
+    }
+}

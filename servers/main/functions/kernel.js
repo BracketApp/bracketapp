@@ -436,7 +436,7 @@ const actions = {
         // wait address
         let { address, data } = actions["addresser()"]({ _window, stack, props, args, status: "Start", asynchronous: true, id: o.id || id, action: "qrcode()", object, lookupActions, __, id })
         
-        if (stack.server) return require("./database").qrCode({ _window, id, req, res, data, e, __, stack, props, address, lookupActions })
+        if (stack.server) return require("../../db/functions/database").qrCode({ _window, id, req, res, data, e, __, stack, props, address, lookupActions })
         else return qrcode({ _window, id, req, res, data, e, __, stack, props, address, lookupActions })
 
     }, "contact()": ({ _window, req, res, o, id, e, __, args, object }) => {
@@ -444,7 +444,7 @@ const actions = {
         var data = toValue({ req, res, _window, id, e, __, data: args[1], object, props: { isValue: true } })
         if (typeof data !== "obejct") return o
 
-        if (stack.server) return require("./database").vcard({ _window, id, req, res, data, e, __ })
+        if (stack.server) return require("../../db/functions/database").vcard({ _window, id, req, res, data, e, __ })
         else return vcard({ _window, id, req, res, data, e, __ })
 
     }, "bracket()": ({ o }) => {
@@ -2434,8 +2434,6 @@ const actions = {
 
     }, "eraseCookie()": ({ _window, req, res, views, stack, props, pathJoined, lookupActions, id, e, __, args, object }) => {
 
-        if (_window) return views.root && views.root.__controls__.push({ event: `loading?${decode({ _window, string: pathJoined })}` })
-
         // getCookie():name
         if (isParam({ _window, req, res, string: args[1] })) {
             var data = toValue({ req, res, _window, lookupActions, stack, props: { isValue: true }, object, id, e, __, data: args[1] })
@@ -2444,7 +2442,8 @@ const actions = {
 
         var _name = toValue({ req, res, _window, lookupActions, stack, props: { isValue: true }, object, id, e, __, data: args[1] })
         var _cookie = eraseCookie({ name: _name, req, res, _window })
-        return _cookie
+        
+        //if (_window) return views.root && views.root.__controls__.push({ event: `loading?${decode({ _window, string: pathJoined })}` })
 
     }, "setCookie()": ({ _window, req, res, views, stack, props, pathJoined, lookupActions, id, e, __, args, object }) => {
 
@@ -2583,7 +2582,7 @@ const actions = {
     }, "passport()": ({ _window, req, res, o, stack, props, lookupActions, id, e, __, args, object }) => {
 
         var { address, data } = actions["addresser()"]({ _window, stack, props, args, req, res, status: "Start", dataInterpretAction: "toParam", id: o.id, type: "Auth", action: "passport()", object, lookupActions, __, id })
-        require("./database").passport({ _window, lookupActions, stack, props, address, id, e, __, req, res, data })
+        require("../../db/functions/database").passport({ _window, lookupActions, stack, props, address, id, e, __, req, res, data })
 
     }, "server()": ({ _window, req, res, o, stack, props, lookupActions, id, __, args, object }) => {
 
@@ -2594,8 +2593,8 @@ const actions = {
 
     }, "upload()": ({ _window, req, res, o, stack, props, lookupActions, id, e, __, args, object }) => {
 
-        var { address, data } = actions["addresser()"]({ _window, stack, props, args, status: "Start", id: o.id || id, type: "Storage", action: "save()", object, lookupActions, __ })
-        data.storage = true
+        var { address, data } = actions["addresser()"]({ _window, stack, props, args, status: "Start", id: o.id || id, type: "Storage", action: "upload()", object, lookupActions, __ })
+        if (!_window) action = `upload()::[send():[_]]`
         return callServer({ _window, lookupActions, stack, props, address, id, e, __, req, res, data: { data: data === undefined ? __[0] : data, action: "save()", server: "storage" } })
 
     }, "db()": ({ _window, req, res, o, stack, props, lookupActions, id, e, __, args, object }) => {
@@ -2667,7 +2666,7 @@ const actions = {
 
         if (stack.renderer && !data.preventDefault) return actions["end()"]({ _window, req, res, stack, props, lookupActions, id, e, __, args, object, pathJoined, data })
 
-        require("./database").respond({ res, stack, props, global, response, __ })
+        require("../../db/functions/database").respond({ res, stack, props, global, response, __ })
         return response
 
     }, "sent()": ({ res }) => {
@@ -2752,7 +2751,7 @@ const actions = {
         const global = _window ? _window.global : window.global
 
         if (o.__view__) {
-            var { address, data = {} } = actions["addresser()"]({ _window, stack, props, args, interpreting: true, status: "Start", type: "action", dataInterpretAction: "toValue", renderer: true, blockable: false, id, action: "refresh()", object, lookupActions, __ })
+            var { address, data = {} } = actions["addresser()"]({ _window, stack, props, args, interpreting: true, status: "Start", type: "action", dataInterpretAction: "toValue", address, renderer: true, blockable: false, id, action: "refresh()", object, lookupActions, __ })
             data.id = data.id || o.id
         } else if (!data) return false
 
@@ -2826,10 +2825,11 @@ const actions = {
 
             // remove views
             if (!data.insert && parent.__rendered__) {
-                    parent.__childrenRef__.filter(({ index, childIndex }) => 
-                    (data.__childIndex__ === undefined && view.__loop__) ? (index === view.__index__) : (childIndex === __childIndex__))
-                    .map(({ id }) => elements.push(removeView({ _window, global, views, id, stack, props, main: true, insert: data.insert }))
-                )
+
+                    parent.__childrenRef__
+                    .filter(({ index, childIndex }) => (data.__childIndex__ === undefined && view.__loop__) ? (index === view.__index__) : (childIndex === __childIndex__))
+                    .map(({ id }) => elements.push(removeView({ _window, global, views, id, stack, props, main: true, insert: data.insert })))
+
             } else if (!parent.__rendered__) removeView({ _window, global, views, id: data.id, stack, props, main: true })
 
             // remove loop
@@ -2837,7 +2837,7 @@ const actions = {
                 reducedView.view = actions["encode()"]({ id, stack, string: actions["encode()"]({ _window, id, stack, string: reducedView.view, start: "'" }) })
                 reducedView.view = global.__refs__[reducedView.view.slice(0, 7)].data + "?" + decode({ string: reducedView.view.split("?").slice(1).join("?") })
             }
-            
+
             // address for delete blocked addresses (switch with second next address => execute after end of update waits)
             blockRelatedAddressesByViewID({ stack, id: data.id })
             
@@ -3652,7 +3652,7 @@ const actions = {
     
             address.status = "Start"
             address.interpreting = true
-            // nextAddress.interpreting = false
+            
             printAddress({ stack, address, nextAddress })
     
             // actions executed
@@ -3668,7 +3668,6 @@ const actions = {
             if (address.function) {
                 actions[`${address.function}()`] && actions[`${address.function}()`](params)
 
-    
                 address.interpreting = false
     
                 return !address.asynchronous && actions["stackManager()"]({ _window, lookupActions, stack, props, address, id, e, req, res, __: my__ })
@@ -3681,8 +3680,8 @@ const actions = {
     
         if (stack.terminated) return
     
-        // asynchronous unholds/plays nextAddresses
-        if (address.nextAddressID && !address.nextStackID && nextAddress.interpreting === false) {
+        // unhold/play nextAddresses
+        if (address.nextAddressID && !address.nextStackID && !nextAddress.interpreting) {
     
             const otherWaitingAddresses = Object.values(stack.addresses).filter(waitingAddress => waitingAddress.nextAddressID === address.nextAddressID)
     
@@ -3744,7 +3743,8 @@ const actions = {
         }
 
         // Start => set interpretingAddressID
-        if (address.status === "Start" || interpreting) {
+        if (address.status === "Start") {
+            
             nextAddress.interpreting = false
             stack.interpretingAddressID = address.id
         }
@@ -4014,7 +4014,7 @@ const kernel = ({ _window, lookupActions, stack, props = {}, id, __, e, req, res
     return answer
 }
 
-const toValue = ({ _window, lookupActions = [], stack = { addresses: [], returns: [] }, props = { isValue: true }, address, data: value, key, __, id, e, req, res, object = [] }) => {
+const toValue = ({ _window, lookupActions = [], stack = { addresses: [], returns: [] }, props = { isValue: true }, address, data: value, key, __, id, e, req, res, object = [], strings, index }) => {
 
     var views = _window ? _window.views : window.views
     var global = _window ? _window.global : window.global
@@ -4204,7 +4204,7 @@ const toValue = ({ _window, lookupActions = [], stack = { addresses: [], returns
 
     // number
     if (isNumber(value)) value = parseFloat(value)
-    else if (path.length > 1 || path.find(path => executableRegex.test(path)) || !props.isValue || props.isKey) value = reducer({ _window, lookupActions, stack, props, id, data: { path, value, keyName: key }, object, __, e, req, res })
+    else if (path.length > 1 || path.find(path => executableRegex.test(path)) || !props.isValue || props.isKey) value = reducer({ _window, lookupActions, stack, props, id, data: { path, value, keyName: key, strings, index }, object, __, e, req, res })
 
     return value
 }
@@ -4353,8 +4353,8 @@ const toParam = ({ _window, lookupActions, stack = { addresses: [], returns: [] 
         // interpret value
         if (typeof value === "string") {
 
-            keyValue = toValue({ _window, lookupActions, stack, props: { /*...props, hasValue: false, */isValue: true }, req, res, id, e, data: value, __, object, key, param })
-            if (keyValue === "__promise__") continue
+            keyValue = toValue({ _window, lookupActions, stack, props: { /*...props, hasValue: false, */isValue: true }, req, res, id, e, data: value, __, object, key, param, strings, index: j })
+            if (keyValue === "__promise__") return params
             if (keyValue && typeof keyValue === "string") keyValue = replaceNbsps(keyValue)
             hasValue = true
             
@@ -4489,6 +4489,7 @@ const reducer = ({ _window, lookupActions = [], stack = { addresses: [], returns
 
                 let mydata = { data: { collection, doc }, searchDoc: true }
                 let waits = keyName ? [`${keyName}=__queries__:().'${collection}'.'${doc}'.reduce():[path=:${path.join(":")}];${strings.slice(index+1).join(";")}`] : []
+                
                 searchDoc({ _window, lookupActions: newLookupActions, stack, id, __, e, req, res, data: mydata, object, waits })
             
             } else if (!keyName) {
@@ -4818,7 +4819,7 @@ const toAction = ({ _window, id, req, res, __, e, data: { action }, object = [],
     // action not found
     if (actionFound === undefined) return "__continue__"
         
-    var { address, data } = actions["addresser()"]({ _window, req, res, stack, props, args: action.split(":"), waits: action.split(":").slice(2), newLookupActions, asynchronous: serverAction, e, id, data: { string: serverAction ? "" : actionFound }, action: action0, isAction: true, __, id, object, lookupActions })
+    var { address, data } = actions["addresser()"]({ _window, req, res, stack, props, args: action.split(":"), waits: action.split(":").slice(2), newLookupActions, /*asynchronous: serverAction, */e, id, data: { string: serverAction ? "" : actionFound }, action: action0, isAction: true, __, id, object, lookupActions })
 
     // server action
     if (serverAction) {
@@ -5963,10 +5964,11 @@ const blockRelatedAddressesBynextAddress = ({ stack, address, addresses }) => {
     // block nextAddress
     if (address.blockable) address.blocked = true
 
-    // remove child addresses
+    // block child addresses
     while (address) {
         
         address = addresses.find(({ nextAddressID, blocked, blockable }) => blockable && !blocked && nextAddressID === address.id)
+        
         if (address) blockRelatedAddressesBynextAddress({ stack, address, addresses })
     }
 }
@@ -5975,7 +5977,8 @@ const blockRelatedAddressesByViewID = ({ stack, id }) => {
 
     // block addresses
     let addresses = Object.values(stack.addresses)
-    let address = addresses.find(({ viewID, blocked, blockable, action }) => blockable && !blocked && viewID === id && action !== "refresh()::[...]")
+    let address = addresses.find(({ viewID, blocked, blockable, function: func }) => blockable && !blocked && viewID === id && func === "view")
+    
     if (address) blockRelatedAddressesBynextAddress({ stack, address, addresses })
 }
 
@@ -6561,15 +6564,12 @@ const callServer = async ({ _window, lookupActions, stack, props, address, id, r
     // call server
     if (!_window) return server({ lookupActions, stack, props, address, id, req, __, res, e, data, object })
 
-    // database
-    else if (data.server === "datastore") return require("./database").dbserver({ _window, req, res, lookupActions, stack, props, address, id, __, data, object })
+    // datastore
+    else if (data.server === "datastore") return require("../../db/functions/database").dbserver({ _window, req, res, lookupActions, stack, props, address, id, __, data, object })
 
     // storage
-    else if (data.data.storage) var data = await require("./storage").storage({ _window, req, res, action: data.action, stack, props, data: data.data || {}, __ })
+    else if (data.server === "storage") return require("../../storage/functions/storage").storageServer({ _window, req, res, lookupActions, stack, props, address, id, __, data, object })
 
-    // mail
-    // else if (data.server === "mail") var data = await mail({ _window, req, res, action: data.action, stack, props, data: data.data || {}, __ })
-    
     // awaits
     return actions["stackManager()"]({ _window, lookupActions, stack, props, id, address, e, req, res, _: data, __ })
 }
